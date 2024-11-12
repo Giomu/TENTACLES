@@ -1,0 +1,542 @@
+#' @import ggplot2
+
+# ----------------- BATCH PLOTS ----------------------------
+
+# Helper function to plot PCA before and after batch correction
+batch.pca.plot <- function(split.before, split.after, batch, metadata) {
+    perform.pca <- function(data) {
+        # Perform PCA
+        pca.data <- stats::prcomp(data[, -ncol(data)], scale = TRUE)
+        pca.data <- as.data.frame(pca.data$x)
+        pca.data <- pca.data[, 1:2] # Keep only first two PCs
+
+        return(pca.data)
+    }
+
+    before_train <- rsample::training(split.before)
+    after_train <- rsample::training(split.after)
+    before_test <- rsample::testing(split.before)
+    after_test <- rsample::testing(split.after)
+
+    metadata_train <- match.samples(before_train, metadata)
+    metadata_test <- match.samples(before_test, metadata)
+
+    pca_training_before <- perform.pca(before_train)
+    pca_training_before$split <- "Training"
+    pca_training_before$correction <- "Before"
+    pca_training_before$batch <- metadata_train[[batch]]
+
+    pca_test_before <- perform.pca(before_test)
+    pca_test_before$split <- "Test"
+    pca_test_before$correction <- "Before"
+    pca_test_before$batch <- metadata_test[[batch]]
+
+    # Perform PCA after batch correction (train and test)
+    pca_training_after <- perform.pca(after_train)
+    pca_training_after$split <- "Training"
+    pca_training_after$correction <- "After"
+    pca_training_after$batch <- metadata_train[[batch]]
+
+    pca_test_after <- perform.pca(after_test)
+    pca_test_after$split <- "Test"
+    pca_test_after$correction <- "After"
+    pca_test_after$batch <- metadata_test[[batch]]
+
+    # Combine PCA data
+    pca_data <- rbind(pca_training_before, pca_test_before, pca_training_after, pca_test_after)
+    pca_data$split <- factor(pca_data$split, levels = c("Training", "Test"))
+    pca_data$correction <- factor(pca_data$correction, levels = c("Before", "After"))
+
+    # Plot PCA and show them in grid
+    PC1 <- NULL
+    PC2 <- NULL
+    p <- ggplot(pca_data, aes(x = PC1, y = PC2, color = batch)) +
+        geom_point(#size = 4,
+                   alpha = 0.75) +
+        suppressMessages(ggside::geom_ysidedensity(aes(color = batch), linewidth = 0.65, show.legend = FALSE)) +
+        suppressMessages(ggside::geom_xsidedensity(aes(color = batch), linewidth = 0.65, show.legend = FALSE)) +
+        labs(color = "Batch") +
+        scale_color_brewer(palette = "Set2") +
+        scale_fill_brewer(palette = "Set2") +
+        guides(fill = "none") +
+        theme_minimal() +
+        theme(
+            legend.position = "bottom",
+            axis.text = element_blank(),
+            axis.title = element_text(size = 14, color = "#696969"),
+            legend.title = element_text(size = 10),
+            legend.text = element_text(size = 10),
+            strip.text = element_text(size = 14, color = "#696969"),
+            panel.grid.major = element_line(color = "#d3d3d355"),
+            panel.border = element_rect(colour = "gray", fill = NA, size = 0.8),
+            axis.line = element_blank(),
+            axis.ticks = element_blank(),
+            ggside.panel.grid = element_blank(),
+            ggside.panel.border = element_blank(),
+            ggside.axis.line = element_blank()
+        ) +
+        facet_grid(split ~ correction, scales = "fixed")
+
+
+    return(p)
+}
+
+# Helper function to plot PVCA before and after batch correction
+batch_pvca_plot <- function(split.before, split.after, metadata, class, batch, covar) {
+    # Extract data
+    before_train <- rsample::training(split.before)
+    after_train <- rsample::training(split.after)
+    before_test <- rsample::testing(split.before)
+    after_test <- rsample::testing(split.after)
+
+    metadata_train <- match.samples(before_train, metadata)
+    metadata_test <- match.samples(before_test, metadata)
+
+    # Run PVCA
+    run_PVCA <- function(data, metadata) {
+        matrix_data <- t(as.matrix(data))
+        metadata <- Biobase::AnnotatedDataFrame(metadata)
+        eset <- Biobase::ExpressionSet(assayData = matrix_data, phenoData = metadata)
+
+        if (!is.null(covar)) {
+            batch_factors <- c(batch, class, covar)
+        } else {
+            batch_factors <- c(batch, class)
+        }
+
+        pvca_result <- suppressMessages(pvca::pvcaBatchAssess(eset, batch_factors, threshold = 0.6))
+        pvca_values <- pvca_result$dat
+        colnames(pvca_values) <- pvca_result$label
+        pvca_df <- as.data.frame(t(pvca_values))
+
+        return(pvca_df)
+    }
+
+    pvca_training_before <- run_PVCA(before_train, metadata_train)
+    pvca_training_before$split <- "Training"
+    pvca_training_before$correction <- "Before"
+    pvca_training_before$Effects <- rownames(pvca_training_before)
+
+    pvca_test_before <- run_PVCA(before_test, metadata_test)
+    pvca_test_before$split <- "Test"
+    pvca_test_before$correction <- "Before"
+    pvca_test_before$Effects <- rownames(pvca_test_before)
+
+    pvca_training_after <- run_PVCA(after_train, metadata_train)
+    pvca_training_after$split <- "Training"
+    pvca_training_after$correction <- "After"
+    pvca_training_after$Effects <- rownames(pvca_training_after)
+
+    pvca_test_after <- run_PVCA(after_test, metadata_test)
+    pvca_test_after$split <- "Test"
+    pvca_test_after$correction <- "After"
+    pvca_test_after$Effects <- rownames(pvca_test_after)
+
+    pvca_data <- rbind(pvca_training_before, pvca_test_before, pvca_training_after, pvca_test_after)
+    pvca_data$correction <- factor(pvca_data$correction, levels = c("Before", "After"))
+    pvca_data$split <- factor(pvca_data$split, levels = c("Training", "Test"))
+
+    # Filter out the resid
+    pvca_data <- pvca_data[!grepl("resid", pvca_data$Effects), ]
+
+    # order Effects based on mean V1
+    pvca_data$Effects <- factor(pvca_data$Effects, levels = unique(pvca_data[order(pvca_data$V1), "Effects"]))
+
+    # Plot PVCA
+    p <- ggplot(pvca_data, aes(x = V1, y = Effects, color = correction)) + # TODO fix color for training and test
+        geom_line(aes(group = Effects),
+            size = 2,
+            color = "lightgray", alpha = 0.75
+        ) +
+        geom_point(size = 4,
+                   alpha = 0.95) +
+        scale_color_brewer(palette = "Paired") +
+        labs(x = "Weighted average proportion variance", color = "Batch correction") +
+        scale_x_continuous(
+            labels = scales::percent,
+            limits = c(0, max(pvca_data$V1)),
+            breaks = c(0, max(pvca_data$V1))
+        ) +
+        theme_minimal() +
+        theme(
+            legend.position = "right",
+            axis.text = element_text(size = 14, color = "#696969"),
+            axis.title = element_text(size = 14, color = "#696969"),
+            axis.title.y = element_blank(),
+            axis.line.x = element_line(color = "gray", size = 0.2),
+            axis.ticks.x = element_line(color = "gray", size = 0.8),
+            legend.title = element_text(size = 12),
+            legend.text = element_text(size = 12),
+            legend.key.size = unit(0.5, "cm"),
+            panel.grid.minor = element_blank(),
+            panel.grid.major.x = element_blank(),
+            strip.text = element_text(size = 16, color = "#696969"),
+        ) +
+        facet_wrap(~split, scales = "fixed", ncol = 1, strip.position = "right")
+
+    return(p)
+}
+
+
+
+# ----------------- CLASSIFICATION PLOTS ----------------------------
+
+#' @title upset.plot
+#' @description This function generates an UpSet plot to visualize the overlap of
+#' features across different models.
+#'
+#' @param data.obj An object of class ensBP.
+#'
+#' @return An UpSet plot visualizing the overlap of features across different models.
+#'
+#' @import ggplot2
+#' @importFrom UpSetR fromList upset
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage of upset.plot function
+#' upset.plot(data.obj)}
+#'
+#' @export
+upset.plot <- function(data.obj) { # TODO fix upset plot
+    model_features_list <- data.obj@model.features
+    features <- lapply(model_features_list, function(x) unique(x$Variable))
+    names(features) <- names(model_features_list)
+    upset_list <- UpSetR::fromList(features)
+
+    color <- "steelblue"
+
+    p <- UpSetR::upset(upset_list,
+        order.by = "freq",
+        keep.order = TRUE,
+        nsets = length(upset_list),
+        nintersects = NA,
+        sets.x.label = "Set size",
+        mainbar.y.label = "Intersection size",
+        point.size = 4,
+        line.size = 1.5,
+        text.scale = c(2.8, 2.4, 2.3, 2.4, 2.4, 2.4),
+        # text.scale = c(5.8, 5.4, 5.3, 5.4, 5.4, 5.4),
+        mb.ratio = c(0.6, 0.4),
+        matrix.color = color,
+        sets.bar.color = color,
+        main.bar.color = color,
+        shade.color = color,
+        shade.alpha = 0.09,
+    )
+
+    return(p)
+}
+
+
+#' @title upset.plot2
+#' @description This function generates an UpSet plot to visualize the overlap of
+#' features across different models using the ComplexUpSet library.
+#'
+#' @param data.obj An object of class ensBP.
+#'
+#' @return An UpSet plot visualizing the overlap of features across different models.
+#'
+#' @import ggplot2
+#' @importFrom ComplexUpset intersection_size upset upset_modify_themes
+#' @importFrom UpSetR fromList
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage of upset.plot2 function
+#' upset.plot2(data.obj)}
+#'
+#' @export
+upset.plot2 <- function(data.obj) {
+    # Extract features
+    model_features_list <- data.obj@model.features
+    features <- lapply(model_features_list, function(x) unique(x$Variable))
+    names(features) <- names(model_features_list)
+
+    # Convert Data in right format
+    upset_data <- UpSetR::fromList(features)
+
+    # Build Upset plot with ComplexUpSet library
+    p <- ComplexUpset::upset(
+        upset_data,
+        intersect = names(features), # Nomi dei set
+        width_ratio = 0.2,
+        height_ratio = 1.5,
+        name = "",
+        stripes = c(alpha("grey90", 0.45), alpha("white", 0.3)),
+        base_annotations = list(
+            "Intersection size" = ComplexUpset::intersection_size(
+                text = list(size = 4),
+                # color = '',
+                fill = "steelblue"
+            )
+        ),
+        themes = ComplexUpset::upset_modify_themes(
+            list(
+                "intersections_matrix" = ggplot2::theme(
+                    axis.text = ggplot2::element_text(size = 10),
+                    plot.background = element_rect(fill = "transparent", color = NA)
+                )
+            )
+        )
+    )
+
+    return(p)
+}
+
+
+#' @title performances.plot
+#' @description This function generates a bar plot to visualize the performances of different models.
+#'
+#' @param performances A data frame containing the performances of different models.
+#'
+#' @return A bar plot visualizing the performances of different models.
+#'
+#' @import ggplot2
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage of performances.plot function
+#' performances.plot(performances)}
+#'
+#' @export
+performances.plot <- function(performances) {
+    tuning_performances <- performances$tuning_metrics
+    test_performances <- performances$test_metrics
+
+    tuning_performances$type <- "Tuning"
+    test_performances$type <- "Test"
+
+    colnames(tuning_performances)[colnames(tuning_performances) == ".metric"] <- "metric"
+    colnames(tuning_performances)[colnames(tuning_performances) == "wflow_id"] <- "model"
+    colnames(test_performances)[colnames(test_performances) == ".metric"] <- "metric"
+    colnames(test_performances)[colnames(test_performances) == ".estimate"] <- "mean"
+
+    tuning_performances <- tuning_performances[, c("model", "metric", "mean", "type")]
+    test_performances <- test_performances[, c("model", "metric", "mean", "type")]
+
+    performances <- rbind(tuning_performances, test_performances)
+
+    # rename accuracy to Accuracy brier_class to Brier score and roc_auc to AUC
+    performances$metric <- factor(performances$metric,
+        levels = c("accuracy", "brier_class", "roc_auc"),
+        labels = c("Accuracy", "Brier Score", "AUC")
+    )
+    performances$type <- factor(performances$type, levels = c("Tuning", "Test"))
+
+    fill_colors <- c("Tuning" = "#66C2A5", "Test" = "#FC8D62")
+
+    model <- NULL
+    mean <- NULL
+    type <- NULL
+    p <- ggplot(performances, aes(x = model, y = mean, fill = type)) +
+        geom_bar(stat = "identity", position = "dodge", color = "darkgrey", width = 0.5) +
+        labs(title = "Model performances", x = "", y = "", fill = "") +
+        theme_minimal() +
+        scale_fill_manual(values = fill_colors) +
+        theme_minimal() +
+        theme(axis.text.x = element_text(angle = 270, vjust = 0.1, hjust=0.1)) +
+        #coord_flip() +
+        # theme(
+        #     axis.text.x = element_text(size = 12),
+        #     axis.text.y = element_text(size = 12),
+        #     axis.title.x = element_text(size = 14),
+        #     axis.title.y = element_text(size = 14),
+        #     legend.position = "bottom",
+        #     legend.title = element_text(size = 14),
+        #     legend.text = element_text(size = 12),
+        #     strip.text = element_text(size = 16),
+        #     panel.grid.minor = element_blank(),
+        #     panel.border = element_rect(colour = "black", fill = NA, size = 0.5),
+        #     plot.title = element_text(size = 18, hjust = 0.5)
+        # ) +
+        facet_wrap(~metric, scales = "free_y")
+
+    return(p)
+}
+
+
+# ---------------------------------------------- ENRICHMENT PLOTS ----------------------------------------------
+
+#' Generate Bar Plot for Enrichment Results
+#'
+#' This function generates a bar plot visualizing enrichment results based on adjusted p-values.
+#' Each bar represents a different enriched module or pathway, ordered by significance.
+#'
+#' @param enrichment_results A data frame containing enrichment results with columns 'Description' and 'p.adjust'.
+#' @param pcutoff Numeric specifying the adjusted p-value cutoff for highlighting significance (default: 0.05).
+#' @param low.col Character specifying the color for low p-values (default: "indianred").
+#' @param high.col Character specifying the color for high p-values (default: "lightblue").
+#'
+#' @details
+#' The function orders the enrichment results by adjusted p-values and creates a bar plot where each bar represents
+#' a module or pathway. Bars are colored based on the adjusted p-value, using a gradient from 'low.col' to 'high.col'.
+#' A vertical dashed line is added at -log10(pcutoff) for visualizing the significance cutoff.
+#'
+#' @import ggplot2
+#' @importFrom stats reorder
+#'
+#' @return A bar plot visualizing enrichment results based on adjusted p-values.
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage of bar.plot function
+#' # Assuming enrichment_results is a data frame with columns 'Description' and 'p.adjust'
+#' bar.plot(enrichment_results = enrichment_results, pcutoff = 0.05)
+#' bar.plot(enrichment_results = go_grouped_signif)
+#' bar.plot(enrichment_results = go_grouped_signif[go_grouped_signif$p.adjust < 0.08, ])
+#' bar.plot(enrichment_results = kegg_res)
+#' }
+#'
+#' @export
+bar.plot <- function(enrichment_results, pcutoff = 0.05, low.col = "indianred",
+                     high.col = "lightblue") {
+    # suppressMessages(library(viridis))
+
+    enrichment_results <- enrichment_results[order(enrichment_results$p.adjust), ]
+
+    ggplot(data = enrichment_results, aes(
+        x = -log10(enrichment_results$p.adjust),
+        y = reorder(
+            enrichment_results$Description,
+            -enrichment_results$p.adjust
+        ),
+        fill = enrichment_results$p.adjust
+    )) +
+        geom_bar(stat = "identity") +
+        # scale_fill_viridis(option = viridis.pal) +
+        scale_fill_gradient(low = low.col, high = high.col) +
+        geom_vline(
+            xintercept = -log10(pcutoff), linetype = "dashed",
+            color = "indianred"
+        ) +
+        theme_minimal() +
+        ylab("") +
+        xlab("-log10(adjusted p-value)") +
+        labs(fill = "p.adj")
+}
+
+#' Generate Circos Plot for Enrichment Results
+#'
+#' This function generates a Circos plot visualizing enrichment results using the chordDiagram function
+#' from the circlize package. It plots genes and their enriched modules or pathways based on enrichment
+#' results provided.
+#'
+#' @param enrichment_results A data frame containing enrichment results with columns 'ID' and 'Description'.
+#' @param palette_genes Character specifying the color palette for genes (default: "Set2").
+#' @param palette_modules Character specifying the color palette for modules or pathways (default: "Paired").
+#' @param transparency Numeric specifying the transparency level for the plot elements (default: 0.5).
+#' @param facing Character specifying the facing direction of text labels ("clockwise" or "counterclockwise", default: "clockwise").
+#' @param cex Numeric specifying the character expansion factor for text labels (default: 0.7).
+#' @param legend Logical indicating whether to include a legend in the plot (default: TRUE).
+#' @param legend_title Character specifying the title for the legend (default: "circos_plot_legend").
+#'
+#' @details
+#' The function prepares data for the Circos plot by converting enrichment results into a matrix format
+#' suitable for chordDiagram. It then creates a Circos plot using chordDiagram from circlize, with genes
+#' and modules/pathways represented by different colors. If legend is enabled, it adds a legend to the plot
+#' showing the modules or pathways and their descriptions.
+#'
+#' @importFrom circlize chordDiagram circos.trackPlotRegion circos.axis get.cell.meta.data
+#' @importFrom stringr str_trunc str_split
+#' @import reshape2
+#' @import RColorBrewer
+#' @import ggplot2
+#' @importFrom grDevices colorRampPalette
+#' @importFrom graphics par
+#'
+#' @return  A Circos plot visualizing enrichment results based on genes and modules or pathways.
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage of circos.plot function
+#' # Assuming enrichment_results is a data frame with columns 'ID' and 'Description'
+#' circos.plot(
+#'     enrichment_results = enrichment_results,
+#'     palette_genes = "Set2", palette_modules = "Paired"
+#' )
+#' }
+#'
+#' @export
+circos.plot <- function(enrichment_results,
+                        palette_genes = "Set2", palette_modules = "Paired",
+                        transparency = 0.5, facing = "clockwise",
+                        cex = 0.7, legend = TRUE, legend_title = "circos_plot_legend") {
+    geni_sel <- unique(unlist(str_split(enrichment_results$geneID, "/")))
+
+    big_dat <- matrix(nrow = length(geni_sel), ncol = nrow(enrichment_results))
+    rownames(big_dat) <- geni_sel
+    colnames(big_dat) <- c(enrichment_results$ID)
+
+    for (i in 1:ncol(big_dat)) {
+        big_dat[, i] <- as.numeric(rownames(big_dat) %in%
+            unlist(str_split(enrichment_results$geneID[i], "/")))
+    }
+
+    big_dat <- as.data.frame(big_dat)
+    df <- big_dat
+    df$ID <- rownames(df)
+    df <- melt(df, by = df$ID)
+
+    colori_geni <- colorRampPalette(brewer.pal(brewer.pal.info[palette_genes, 1],
+        name = palette_genes
+    ))(length(unique(df$ID)))
+    colori_moduli <- colorRampPalette(brewer.pal(brewer.pal.info[palette_modules, 1],
+        name = palette_modules
+    ))(length(unique(df$variable)))
+
+    circos_enriched <- function() {
+        if (legend == T) {
+            par(mar = c(0, 0, 0, 15))
+        } else {
+            par(mar = c(0, 0, 0, 0))
+        }
+        circlize::chordDiagram(df,
+            transparency = 0.5,
+            annotationTrack = c("grid", "axis"),
+            preAllocateTracks = 1,
+            big.gap = 10,
+            grid.col = c(colori_geni, colori_moduli),
+            col = c(colori_geni, colori_moduli)
+        )
+
+        circlize::circos.trackPlotRegion(track.index = 1, panel.fun = function(x, y) {
+            xlim <- circlize::get.cell.meta.data("xlim")
+            ylim <- circlize::get.cell.meta.data("ylim")
+            sector.name <- circlize::get.cell.meta.data("sector.index")
+            circlize::circos.text(mean(xlim),
+                ylim[1] + .1,
+                sector.name,
+                facing = "clockwise",
+                niceFacing = TRUE,
+                adj = c(0, 0.5),
+                cex = 0.7
+            )
+            circlize::circos.axis(
+                h = "top",
+                labels.cex = 0.2,
+                sector.index = sector.name,
+                track.index = 2
+            )
+        }, bg.border = NA)
+        #
+        if (legend == T) {
+            # Aggiungi la legenda
+            legend_df <- enrichment_results[, c("ID", "Description")]
+            # Imposta le coordinate per la legenda
+            par(xpd = TRUE)
+            lgd.x <- par("usr")[2] * 0.9
+            lgd.y <- par("usr")[3] * (-0.9)
+            legend(
+                x = lgd.x, y = lgd.y,
+                title = legend_title,
+                title.cex = 0.7,
+                legend = str_trunc(legend_df$Description, 40),
+                fill = colori_moduli,
+                col = "black", cex = 0.6, bty = "n", inset = c(0, 0.1)
+            )
+        }
+    }
+
+    circos_enriched()
+}
