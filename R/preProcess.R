@@ -254,6 +254,7 @@ preProcess <- function(
     cli::cli_alert_success("Batch correction complete!")
 
     if (plot) {
+
       cli::cli_alert_info("Creating PCA plots...")
       p <- batch.pca.plot(normalized_data, corrected_data, batch = batch, metadata = data.obj@metadata)
       print(p)
