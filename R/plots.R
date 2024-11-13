@@ -249,7 +249,7 @@ upset.plot2 <- function(data.obj) {
 #' @export
 performances.plot <- function(performances) {
     tuning_performances <- performances$tuning_metrics
-    test_performances <- performances$test_metrics
+    test_performances <- performances$final_metrics
 
     tuning_performances$type <- "Tuning"
     test_performances$type <- "Test"
@@ -266,8 +266,8 @@ performances.plot <- function(performances) {
 
     # rename accuracy to Accuracy brier_class to Brier score and roc_auc to AUC
     performances$metric <- factor(performances$metric,
-        levels = c("accuracy", "brier_class", "roc_auc"),
-        labels = c("Accuracy", "Brier Score", "AUC")
+        levels = c("accuracy", "f_meas", "precision", "recall"),
+        labels = c("Accuracy", "F-score", "Precision", "Recall")
     )
     performances$type <- factor(performances$type, levels = c("Tuning", "Test"))
 
@@ -282,8 +282,8 @@ performances.plot <- function(performances) {
         theme_minimal() +
         scale_fill_manual(values = fill_colors) +
         theme_minimal() +
-        theme(axis.text.x = element_text(angle = 270, vjust = 0.1, hjust=0.1)) +
-        #coord_flip() +
+        #theme(axis.text.x = element_text(angle = 270, vjust = 0.1, hjust=0.1)) +
+        coord_flip() +
         # theme(
         #     axis.text.x = element_text(size = 12),
         #     axis.text.y = element_text(size = 12),
@@ -297,7 +297,7 @@ performances.plot <- function(performances) {
         #     panel.border = element_rect(colour = "black", fill = NA, size = 0.5),
         #     plot.title = element_text(size = 18, hjust = 0.5)
         # ) +
-        facet_wrap(~metric, scales = "free_y")
+        facet_wrap(~metric)#, scales = "free_y")
 
     return(p)
 }

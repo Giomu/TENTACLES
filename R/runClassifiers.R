@@ -90,36 +90,42 @@ create_model_specs <- function() {
 }
 
 # Helper function to create dynamic workflow sets
-create_dynamic_workflow_sets <- function(models, selector.recipes, train) {
+create_dynamic_workflow_sets <- function(models, selector.recipes, data) {
   model_specs <- create_model_specs()
 
   # Recipe with Boruta Feature Selection
-  recipe_boruta <- recipes::recipe(class ~ ., data = train) %>%
+  recipe_boruta <- recipes::recipe(class ~ ., data = data) %>%
     recipes::step_nzv(recipes::all_predictors()) %>%
     recipes::step_normalize(recipes::all_numeric_predictors()) %>%
     #recipes::step_corr(recipes::all_predictors(), threshold = 0.8) %>%
     colino::step_select_boruta(recipes::all_predictors(), outcome = "class")
 
   # Recipe with ROC-based Feature Selection
-  recipe_ROC <- recipes::recipe(class ~ ., data = train) %>%
+  recipe_ROC <- recipes::recipe(class ~ ., data = data) %>%
     recipes::step_nzv(recipes::all_predictors()) %>%
     recipes::step_normalize(recipes::all_numeric_predictors()) %>%
     #recipes::step_corr(recipes::all_predictors(), threshold = 0.8) %>%
     colino::step_select_roc(recipes::all_predictors(), outcome = "class", threshold = 0.95)
 
   # Recipe with Information Gain Feature Selection
-  recipe_INFGAIN <- recipes::recipe(class ~ ., data = train) %>%
+  recipe_INFGAIN <- recipes::recipe(class ~ ., data = data) %>%
     recipes::step_nzv(recipes::all_predictors()) %>%
     recipes::step_normalize(recipes::all_numeric_predictors()) %>%
     #recipes::step_corr(recipes::all_predictors(), threshold = 0.8) %>%
     colino::step_select_infgain(recipes::all_predictors(), outcome = "class", threshold = 0.95)
 
   # Recipe with Max Relevancy Min Redundancy Feature Selection
-  recipe_MRMR <- recipes::recipe(class ~ ., data = train) %>%
+  recipe_MRMR <- recipes::recipe(class ~ ., data = data) %>%
     recipes::step_nzv(recipes::all_predictors()) %>%
     recipes::step_normalize(recipes::all_numeric_predictors()) %>%
     #recipes::step_corr(recipes::all_predictors(), threshold = 0.8) %>%
     colino::step_select_mrmr(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+
+  # Recipe correlation-based Feature Selection
+  recipe_corr <- recipes::recipe(class ~ ., data = data) %>%
+    recipes::step_nzv(recipes::all_predictors()) %>%
+    recipes::step_normalize(recipes::all_numeric_predictors()) %>%
+    recipes::step_corr(recipes::all_predictors(), threshold = 0.8)
 
   # Filter to keep only models selected by User
   filtered_specs <- model_specs[models]
@@ -129,7 +135,8 @@ create_dynamic_workflow_sets <- function(models, selector.recipes, train) {
     boruta = recipe_boruta,
     roc = recipe_ROC,
     infgain = recipe_INFGAIN,
-    mrmr = recipe_MRMR
+    mrmr = recipe_MRMR,
+    corr = recipe_corr
   )
 
   # Create workflow_set() for every model and recipe combination
@@ -160,9 +167,9 @@ create_dynamic_workflow_sets <- function(models, selector.recipes, train) {
 # Helper function to tune and fit models
 tune_and_fit <- function(
     models, selector.recipes,
-    tuning.method, n, metric, train_resamples, train, train_test_split) {
+    tuning.method, n, metric, train_resamples, data) {
   # Create dynamic workflow sets
-  tune_workflows <- create_dynamic_workflow_sets(models, selector.recipes, train = train)
+  tune_workflows <- create_dynamic_workflow_sets(models, selector.recipes, data = data)
 
   cli::cli_h2("Tuning Model Parameters")
   # Tune the models
@@ -173,6 +180,8 @@ tune_and_fit <- function(
         fn = tuning.method,
         resamples = train_resamples,
         grid = n,
+        metrics = yardstick::metric_set(
+          yardstick::accuracy, yardstick::precision, yardstick::recall, yardstick::f_meas),
         verbose = TRUE
       )
   } else if (tuning.method %in% c("tune_bayes", "tune_sim_anneal")) {
@@ -181,6 +190,8 @@ tune_and_fit <- function(
         fn = tuning.method,
         resamples = train_resamples,
         iter = n,
+        metrics = yardstick::metric_set(
+          yardstick::accuracy, yardstick::precision, yardstick::recall, yardstick::f_meas),
         verbose = TRUE
       )
   } else {
@@ -194,8 +205,7 @@ tune_and_fit <- function(
   best_params <- purrr::map(
     tune_results$wflow_id,
     ~ tune::select_best(workflowsets::extract_workflow_set_result(tune_results, id = .x),
-      metric = metric
-    )
+                        metric = metric)
   )
   cli::cli_alert_success("Succesfully selected parameters!")
 
@@ -213,20 +223,29 @@ tune_and_fit <- function(
   cli::cli_alert_success("Succesfully finalized the workflows!")
 
   cli::cli_h2("Model Fitting")
-  cli::cli_alert_info("Fitting models on the entire split ...")
-  # Fit the finalized workflows on the full training set and test on the test set
+  cli::cli_alert_info("Fitting models on the entire dataset ...")
+  # Fit the finalized workflows on the entire dataset
   last_fit_results <- purrr::map(
     final_workflows,
-    ~ tune::last_fit(.x, split = train_test_split)
+    ~ parsnip::fit(.x, data = data)
   )
   cli::cli_alert_success("Models fitted succesfully.")
 
-  cli::cli_alert_info("Computing performances on Test set ...")
-  #cli::cli_h3("Model Performances")
-  # Collect the tuning and test metrics
-  tuning_metrics <- as.data.frame(workflowsets::rank_results(tune_results, select_best = TRUE))
-  test_metrics <- last_fit_results %>%
-    purrr::imap_dfr(~ workflowsets::collect_metrics(.x) %>% mutate(model = .y))
+  cli::cli_alert_info("Computing metric performances ...")
+  # Compute metrics on tuning set selecting the best model based on the metric provided
+  tuning_metrics <- as.data.frame(workflowsets::rank_results(
+    tune_results, rank_metric = metric, select_best = TRUE))
+  # Define metrics to compute on test set
+  multi_met <- yardstick::metric_set(yardstick::accuracy, yardstick::f_meas,
+                                     yardstick::precision, yardstick::recall)
+  # Compute metrics on test set
+  test_metrics <- purrr::map_dfr(
+    last_fit_results,
+    ~ {
+      predictions <- predict(.x, new_data = data) %>%
+        dplyr::bind_cols(data) %>%
+        multi_met(truth = class, estimate = .pred_class)},
+    .id = "model")
   test_metrics <- as.data.frame(test_metrics)
   cli::cli_alert_success("Metrics computed succesfully.")
   cli::cli_alert_success("Succesfully accomplished model fitting!")
@@ -235,13 +254,12 @@ tune_and_fit <- function(
   ensBP.obj <- methods::new("ensBP.obj",
     models.info = final_workflows,
     model.features = list(),
-    performances = list(tuning_metrics = tuning_metrics, test_metrics = test_metrics)
+    performances = list(tuning_metrics = tuning_metrics, final_metrics = test_metrics)
   )
 
   return(list(ensBP.obj, last_fit_results))
 }
 
-# TODO: remove negative Importances from VIP computed with permutation-based method
 # Helper function to calculate VIP for all models in last_fit_results
 calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
   # Wrapper function for predictions with models
@@ -319,7 +337,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 
 
 
-#' @title ensembleBP
+#' @title runClassifiers
 #' @description This function performs the ensemble of models using the ensBP approach.
 #'
 #' @param preProcess.obj An object of class preProcess.
@@ -328,7 +346,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #'               'C5_rules', 'mars', 'bag_mars', 'mlp', 'bag_mlp', 'decision_tree',
 #'               'rand_forest', 'svm_linear', 'svm_poly', 'svm_rbf'.
 #' @param selector.recipes A character vector specifying the selector recipes to be used.
-#'                         Possible values are 'boruta', 'roc', 'infgain', 'mrmr'.
+#'                         Possible values are 'boruta', 'roc', 'infgain', 'mrmr', 'corr'.
 #' @param tuning.method A character string specifying the tuning method to be used.
 #'                      Possible values are 'tune_grid (default)', tune_race_anova',
 #'                      tune_race_win_loss', 'tune_bayes', 'tune_sim_anneal'.
@@ -368,53 +386,53 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #'
 #' @examples
 #' /dontrun{
-#' enso <- ensembleBP(preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"),
+#' rc <- runClassifiers(preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"),
 #'                    selector.recipes = "boruta", tuning.method = "tune_grid", n = 5,
 #'                    v = 3, metric = "accuracy", nsim = 2, seed = 123)}
 #'
 #' @export
-ensembleBP <- function(
+runClassifiers <- function(
     preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"), selector.recipes = "boruta",
     tuning.method = "tune_grid", n = 5, v = 3, metric = "accuracy",
     nsim = 2, seed = 123) {
-  future::plan(future::multisession, workers = parallel::detectCores() - 1)
-  cli::cli_h1("ensembleBP")
 
+  future::plan(future::multisession, workers = parallel::detectCores() - 1)
+  cli::cli_h1("runClassifiers")
+
+  # Vector of available classifiers
   available_models <- c(
     "xgboost", "bag_tree", "lightGBM", "pls", "logistic",
     "C5_rules", "mars", "bag_mars", "mlp", "bag_mlp",
     "decision_tree", "rand_forest", "svm_linear", "svm_poly",
-    "svm_rbf"
-  )
-  available_selectors <- c("boruta", "roc", "infgain", "mrmr")
+    "svm_rbf")
+  # Vector of available feature selectors
+  available_selectors <- c("boruta", "roc", "infgain", "mrmr", "corr")
 
   withr::with_seed(
     seed = seed,
     code = {
 
-      ## KEEP ONLY GENES ANNOTATED IN GO AND KEGG DATABASE
+      ## Keep only genes annotated in GO and KEGG databases
       cli::cli_alert_info("Filtering genes non-annotated in GO and KEGG db ...")
       # Upload annotated genes database
       data(annotated.genes)
       # Compute the number of columns before filtering. class col is excluded from computation
-      ncol_pre <- ncol(preProcess.obj@splits$adjusted.split$data) - 1
+      ncol_pre <- ncol(preProcess.obj@processed$adjusted.data) - 1
       # Save class column to cbind it after filtering
-      class <- preProcess.obj@splits$adjusted.split$data$class
+      class <- preProcess.obj@processed$adjusted.data$class
       # Filter genes that are not present in the DB
-      preProcess.obj@splits$adjusted.split$data <-
-        preProcess.obj@splits$adjusted.split$data[, colnames(preProcess.obj@splits$adjusted.split$data) %in%
+      preProcess.obj@processed$adjusted.data <-
+        preProcess.obj@processed$adjusted.data[, colnames(preProcess.obj@processed$adjusted.data) %in%
                                                     annotated.genes$genes_to_retrieve]
       # cbind class column that has been filtered out
-      preProcess.obj@splits$adjusted.split$data <- cbind(preProcess.obj@splits$adjusted.split$data, class)
+      preProcess.obj@processed$adjusted.data <- cbind(preProcess.obj@processed$adjusted.data, class)
       # Compute the number of columns after filter. class col is excluded from computation
-      ncol_post <- ncol(preProcess.obj@splits$adjusted.split$data) - 1
+      ncol_post <- ncol(preProcess.obj@processed$adjusted.data) - 1
       cli::cli_alert_success("Filtered {ncol_pre - ncol_post} genes. Total number of genes is now: {ncol_post}!")
 
-      train_test_split <- preProcess.obj@splits$adjusted.split
-      train <- rsample::training(train_test_split)
-      test <- rsample::testing(train_test_split)
-
-      train_resamples <- rsample::vfold_cv(train, v = v, strata = class)
+      # Split data into v resamples for tuning inside cross-validation
+      data <- preProcess.obj@processed$adjusted.data
+      train_resamples <- rsample::vfold_cv(data, v = v, strata = class)
 
 
       if (length(selector.recipes) >= 1 && length(selector.recipes) != length(models)) {
@@ -438,15 +456,13 @@ ensembleBP <- function(
         n = n,
         metric = metric,
         train_resamples = train_resamples,
-        train = train,
-        train_test_split = train_test_split
-      )
+        data = data)
 
       cli::cli_h2("Variable Importances")
       vip_results <- calculate_vip(
         last_fit_results = t_and_f_output[[2]],
-        test_x = test[, -ncol(test)],
-        test_y = test$class,
+        test_x = data[, -ncol(data)],
+        test_y = data$class,
         n_sim = nsim
       )
     }
@@ -456,7 +472,18 @@ ensembleBP <- function(
   obj@model.features <- vip_results
   future::plan(future::sequential)
 
-  cli::cli_alert_success("Successfully executed ensembleBP function!")
+  cli::cli_h2("Plots")
+  cli::cli_alert_info("Generating UpSet plot ...")
+  up <- upset.plot2(obj)
+  print(up)
+  cli::cli_alert_success("Successfully generated UpSet plot!")
+
+  cli::cli_alert_info("Generating performances plot ...")
+  perf <- performances.plot(obj@performances)
+  print(perf)
+  cli::cli_alert_success("Successfully generated performances plot!")
+
+  cli::cli_alert_success("Successfully executed runClassifiers function!")
 
   return(obj)
 }
