@@ -7,7 +7,7 @@
 runClassifiers(
   preProcess.obj,
   models = c("bag_mlp", "rand_forest", "svm_poly"),
-  selector.recipes = "boruta",
+  selector.recipes = c("boruta", "roc", "boruta"),
   tuning.method = "tune_grid",
   n = 5,
   v = 3,

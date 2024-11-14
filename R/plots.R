@@ -302,6 +302,30 @@ performances.plot <- function(performances) {
     return(p)
 }
 
+#' @export
+predheat.plot <- function(predictions_df){
+
+    predictions_df <- predictions_df %>%
+        dplyr::mutate(correct = ifelse(class == .pred_class, "Correct", "Incorrect"))
+
+    # Creiamo un plot con ggplot
+    p <- ggplot(predictions_df, aes(x = model, y = ID, fill = correct)) +
+        geom_tile(
+            color = "white", lwd = 1, linetype = 1) +
+        scale_fill_manual(
+            values = c("Correct" = "lightblue", "Incorrect" = "indianred")) +
+        theme_minimal() +
+        labs(title = "Predictions Heatmap",
+             x = "",
+             y = "",
+             fill = "Prediction Status") +
+        theme_minimal() +
+        theme(axis.text.x = element_text(angle = 270, hjust = 0, vjust = 0.5),
+              axis.text.y = element_text(size = 5))
+
+    return(p)
+}
+
 
 # ---------------------------------------------- ENRICHMENT PLOTS ----------------------------------------------
 

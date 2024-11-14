@@ -13,6 +13,7 @@ methods::setClass("ensBP.obj",
 #' @import bonsai
 #' @import plsmod
 #' @import rules
+#' @import themis
 
 # Helper function to create model specifications
 create_model_specs <- function() {
@@ -125,7 +126,8 @@ create_dynamic_workflow_sets <- function(models, selector.recipes, data) {
   recipe_corr <- recipes::recipe(class ~ ., data = data) %>%
     recipes::step_nzv(recipes::all_predictors()) %>%
     recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-    recipes::step_corr(recipes::all_predictors(), threshold = 0.8)
+    recipes::step_corr(recipes::all_predictors(), threshold = 0.8) %>%
+    themis::step_rose(class)
 
   # Filter to keep only models selected by User
   filtered_specs <- model_specs[models]
@@ -238,26 +240,40 @@ tune_and_fit <- function(
   # Define metrics to compute on test set
   multi_met <- yardstick::metric_set(yardstick::accuracy, yardstick::f_meas,
                                      yardstick::precision, yardstick::recall)
-  # Compute metrics on test set
-  test_metrics <- purrr::map_dfr(
+  # Combine metrics and predictions in a list
+  results <- purrr::map(
     last_fit_results,
     ~ {
+      # Prediction step
       predictions <- predict(.x, new_data = data) %>%
-        dplyr::bind_cols(data) %>%
-        multi_met(truth = class, estimate = .pred_class)},
-    .id = "model")
-  test_metrics <- as.data.frame(test_metrics)
+        dplyr::bind_cols(class = data$class, ID = row.names(data)) %>%
+        dplyr::mutate(model = dplyr::cur_group_id())
+
+      # Calcolo delle metriche usando multi_met()
+      metrics <- predictions %>%
+        multi_met(truth = class, estimate = .pred_class) %>%
+        dplyr::mutate(model = dplyr::cur_group_id())
+
+      # Return a list with predictions and metrics
+      list(predictions = predictions, metrics = metrics)
+    }
+  )
+
+  # Extract predictions and metrics from results list
+  predictions_df <- as.data.frame(purrr::map_dfr(results, ~ .x$predictions, .id = "model"))
+  test_metrics <- as.data.frame(purrr::map_dfr(results, ~ .x$metrics, .id = "model"))
   cli::cli_alert_success("Metrics computed succesfully.")
   cli::cli_alert_success("Succesfully accomplished model fitting!")
 
-
+  # Update the object of class ensBP.obj
   ensBP.obj <- methods::new("ensBP.obj",
     models.info = final_workflows,
     model.features = list(),
-    performances = list(tuning_metrics = tuning_metrics, final_metrics = test_metrics)
+    performances = list(
+      tuning_metrics = tuning_metrics, final_metrics = test_metrics)
   )
 
-  return(list(ensBP.obj, last_fit_results))
+  return(list(ensBP.obj, last_fit_results, predictions_df))
 }
 
 # Helper function to calculate VIP for all models in last_fit_results
@@ -308,7 +324,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
             dplyr::filter(Importance != 0)
         },
         error = function(e) {
-          cli::cli_alert_info("Direct VIP failed for model {name}. Using permutation-based method...")
+          cli::cli_alert_info("Direct VIP is not supported for model {name}. Using permutation-based method...")
           vip::vip(
             object = model_fit,
             method = "permute",
@@ -392,7 +408,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #'
 #' @export
 runClassifiers <- function(
-    preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"), selector.recipes = "boruta",
+    preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"), selector.recipes = c("boruta", "roc", "boruta"),
     tuning.method = "tune_grid", n = 5, v = 3, metric = "accuracy",
     nsim = 2, seed = 123) {
 
@@ -482,6 +498,11 @@ runClassifiers <- function(
   perf <- performances.plot(obj@performances)
   print(perf)
   cli::cli_alert_success("Successfully generated performances plot!")
+
+  cli::cli_alert_info("Generating predictions heatmap ...")
+  heat <- predheat.plot(t_and_f_output[[3]])
+  print(heat)
+  cli::cli_alert_success("Successfully generated predictions heatmap plot!")
 
   cli::cli_alert_success("Successfully executed runClassifiers function!")
 
