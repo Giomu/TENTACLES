@@ -483,14 +483,12 @@ evaluate_clustering <- function(count_table, gene_list, labels) {
 # Assuming 'gene_list' is a vector of genes you want to analyze.
 # labels is a vector of known labels for validation purposes.
 
-# count_table <- read.csv("path_to_data.csv", row.names = 1)
-# gene_list <- c("Gene1", "Gene2", "Gene3")  # Example gene list
-# labels <- factor(c("Group1", "Group2", "Group1", "Group2", "Group1", "Group2"))  # Known labels
 
-count_table <- as.data.frame((b@data$adjusted.data))
-gene_list <- c$consensusGenes[1:5]
-labels <- as.numeric(b@data$metadata$class)
-result <- evaluate_clustering(count_table, gene_list, labels)
+
+# count_table <- as.data.frame((b@data$adjusted.data))
+# gene_list <- c$consensusGenes[1:5]
+# labels <- as.numeric(b@data$metadata$class)
+# result <- evaluate_clustering(count_table, gene_list, labels)
 
 
 
