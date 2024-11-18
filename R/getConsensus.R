@@ -187,5 +187,11 @@ getConsensus <- function(ensBP.obj, n.min = NULL,
     cli::cli_alert_success("Consensus successfully generated!")
   }
 
+  # Test consensus genes in the adjusted dataset contained in ensBP.obj@data
+  testConsensus(df.count = ensBP.obj@data$adjusted.data,
+                cons_genes = consensus.list[[1]],
+                class = as.factor(ensBP.obj@data$metadata$class))
+  cli::cli_alert_success("Consensus genes computed and tested!")
+
   return(consensus)
 }

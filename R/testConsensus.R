@@ -1,4 +1,4 @@
-# Helper function to validateConsensus
+# Helper function to testConsensus
 # This function computes the AUROC and Fold Change for the consensus genes
 #' @export
 compute.auroc.FC <- function(df, cons_genes, class) {
@@ -70,7 +70,7 @@ compute.auroc.FC <- function(df, cons_genes, class) {
 }
 
 # TODO fix the legend
-# Helper function to validateConsensus
+# Helper function to testConsensus
 # This function creates a heatmap plot. It is simply a wrapper around
 # the heatmaply package
 heatmap.plot <- function(
@@ -165,7 +165,7 @@ heatmap.plot <- function(
 }
 
 
-# Helper function to validateConsensus
+# Helper function to testConsensus
 # This function performs the validation of the consensus genes using a MLP model
 validation.model <- function(df, cons_genes, class) {
     #future::plan(future::multisession, workers = parallel::detectCores() - 1)
@@ -182,7 +182,8 @@ validation.model <- function(df, cons_genes, class) {
 
             # Create a new train and test dataset
             cli::cli_alert_info("Splitting data into train and test ...")
-            train_test_split <- split.train.test(df, prop = 0.7, seed = 456)
+            train_test_split <- rsample::initial_split(df, prop = 0.7, strata = class)
+            #train_test_split <- split.train.test(df, prop = 0.7, seed = 456)
             train <- rsample::training(train_test_split)
             test <- rsample::testing(train_test_split)
             train_resamples <- rsample::vfold_cv(train, v = 3, strata = class)
@@ -312,7 +313,7 @@ validation.model <- function(df, cons_genes, class) {
     return(p)
 }
 
-# Helper function to validateConsensus
+# Helper function to testConsensus
 # This function performs PCA on the consensus genes
 pca.validation <- function(df, cons_genes, class) {
     # Create a matrix from our table of counts
@@ -433,21 +434,13 @@ pca.validation <- function(df, cons_genes, class) {
 
 
 
-#' @title Validate Consensus
+#' @title Test Consensus
 #' @description This function validates the consensus genes by performing PCA,
-#' AUROC, Heatmap, and Validation MLP Model on new data.
+#' AUROC, Heatmap, and Validation MLP Model on the entire dataset.
 #'
 #' @param df.count A data frame containing the counts data
-#' @param df.clin A data frame containing the clinical data
-#' @param getConsensus.obj An object containing the consensus genes
+#' @param cons_genes A vector list containing consensus genes to test
 #' @param class The column name of the class
-#' @param case.label The label of the case
-#' @param data.type The type of data. Options are "rnaseq" or "microarray"
-#' @param batch The column name of the batch
-#' @param mincpm The minimum count per million to keep a gene
-#' @param minfraction The minimum fraction of samples to keep a gene
-#' @param covar.mod The covariate model
-#' @param is.normalized A boolean indicating if the data is normalized
 #' @return The PCA plot, AUROC plot, Heatmap plot, and Validation MLP Model plot
 #'
 #' @details
@@ -485,113 +478,34 @@ pca.validation <- function(df, cons_genes, class) {
 #'
 #' @examples
 #' /dontrun{
-#' validateConsensus(
-#'    df.count = acc.count, df.clin = acc.clin,
-#'    getConsensus.obj = consensus,
-#'    class = "class", batch = "batch_col",
-#'    )}
+#' testConsensus(
+#'    df.count, cons_genes, class)}
 #'
 #' @export
-validateConsensus <- function(
-    df.count, df.clin,
-    getConsensus.obj,
-    class = "class",
-    case.label = NULL,
-    data.type = "rnaseq",
-    batch = NULL,
-    mincpm = 1,
-    minfraction = 0.1,
-    covar.mod = NULL,
-    is.normalized = FALSE) {
+testConsensus <- function(df.count, cons_genes, class) {
 
-    # Import data
-    data.obj <- data.import(
-        df.count = df.count, df.clin = df.clin,
-        class = class, case.label = case.label,
-        data.type = data.type, is.normalized = is.normalized
-    )
 
-    # Print title message
-    cli::cli_h1("Consensus Validation")
-    # Print message to inform the user that the validation is starting
-    cli::cli_alert_info("Importing necessary data ...")
-    df <- data.obj@unsplit[, -which(colnames(data.obj@unsplit) == class)]
-    data.info <- data.obj@data.info
-    metadata <- data.obj@metadata
-    class <- metadata$class
-    cons_genes <- getConsensus.obj$consensusGenes
-    cli::cli_alert_success("Data imported successfully!")
-
-    # Normalization
-    data.info <- data.obj@data.info
-    if (data.info[["type"]] == "rnaseq" && data.info[["normalized"]] == FALSE) {
-        cli::cli_alert_info("Normalizing data ...")
-        df_norm <- t(df)
-        df_norm <- edgeR::DGEList(counts = df_norm, gene = rownames(df_norm), group = class)
-        df_norm <- edgeR::calcNormFactors(df_norm)
-        df_norm <- edgeR::cpm(df_norm, normalized.lib.sizes = TRUE, log = FALSE)
-        keep <- rowSums(edgeR::cpm(df_norm) > mincpm) >= ncol(df_norm) * minfraction
-        df_norm <- df_norm[keep, ]
-        df_norm <- log2(df_norm + 1)
-        df_norm <- as.data.frame(t(df_norm))
-        cli::cli_alert_success("Data normalized successfully!")
-    } else {
-        df_norm <- df
-    }
-
-    if (!is.null(batch)) {
-        cli::cli_alert_info("Applying batch correction ...")
-        if (!batch %in% names(metadata)) {
-            cli::cli_abort("Batch variable {batch} not found in metadata.")
-        }
-
-        if (!is.null(covar.mod)) {
-            if (!all(covar.mod %in% names(metadata))) {
-                cli::cli_abort("covar.mod variable {covar.mod} not found in metadata.")
-            }
-
-            # Ensure covar.mod is either a single string or a character vector
-            if (length(covar.mod) == 1) {
-                # When covar.mod is a single string
-                covar_mod <- model.matrix(~ as.factor(metadata[[covar.mod]]), data = metadata)
-            } else {
-                # When covar.mod is a character vector (multiple columns)
-                # Combine the columns to create a single factor variable
-                combined_factor <- do.call(paste, c(metadata[covar.mod], sep = "_")) # Create a combined factor variable
-                combined_factor <- as.factor(combined_factor)
-                covar_mod <- model.matrix(~combined_factor, data = metadata)
-            }
-        } else {
-            covar_mod <- NULL
-        }
-        batch_col <- as.factor(metadata[, batch])
-        df_norm <- t(df_norm)
-        bc_norm <- suppressMessages(sva::ComBat(dat = df_norm, batch = batch_col, mod = covar_mod))
-        bc_norm <- as.data.frame(t(bc_norm))
-        cli::cli_alert_success("Batch correction applied successfully!")
-    } else {
-        bc_norm <- df_norm
-    }
+    cli::cli_h2("Consensus Genes Testing")
 
     # Run the PCA anlysis
-    cli::cli_h2("Principal Component Analysis")
-    pca_plot <- pca.validation(bc_norm, cons_genes, class)
+    cli::cli_h3("Principal Component Analysis")
+    pca_plot <- pca.validation(df.count, cons_genes, class)
     print(pca_plot)
     cli::cli_alert_success("PCA analysis completed successfully!")
 
-    cli::cli_h2("AUROC Analysis")
-    auroc_plot <- compute.auroc.FC(bc_norm, cons_genes, class)
+    cli::cli_h3("AUROC Analysis")
+    auroc_plot <- compute.auroc.FC(df.count, cons_genes, class)
     print(auroc_plot)
     cli::cli_alert_success("AUROC analysis completed successfully!")
 
-    cli::cli_h2("Heatmap Analysis")
-    heatmap <- heatmap.plot(bc_norm, cons_genes, class)
+    cli::cli_h3("Heatmap Analysis")
+    heatmap <- heatmap.plot(df.count, cons_genes, class)
     print(heatmap)
     cli::cli_alert_success("Heatmap analysis completed successfully!")
 
     # Run the validation model
-    cli::cli_h2("Validation MLP Model")
-    model_plot <- validation.model(bc_norm, cons_genes, class)
+    cli::cli_h3("Validation MLP Model")
+    model_plot <- validation.model(df.count, cons_genes, class)
     print(model_plot)
     cli::cli_alert_success("Validation MLP Model completed successfully!")
 }

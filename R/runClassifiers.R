@@ -2,6 +2,7 @@
 # Create a class.
 methods::setClass("ensBP.obj",
   slots = list(
+    data = "list",
     models.info = "list",
     model.features = "list",
     performances = "list"
@@ -266,12 +267,13 @@ tune_and_fit <- function(
   cli::cli_alert_success("Succesfully accomplished model fitting!")
 
   # Update the object of class ensBP.obj
-  ensBP.obj <- methods::new("ensBP.obj",
+  ensBP.obj <- methods::new(
+    "ensBP.obj",
+    data = list(),
     models.info = final_workflows,
     model.features = list(),
     performances = list(
-      tuning_metrics = tuning_metrics, final_metrics = test_metrics)
-  )
+      tuning_metrics = tuning_metrics, final_metrics = test_metrics))
 
   return(list(ensBP.obj, last_fit_results, predictions_df))
 }
@@ -503,6 +505,9 @@ runClassifiers <- function(
   heat <- predheat.plot(t_and_f_output[[3]])
   print(heat)
   cli::cli_alert_success("Successfully generated predictions heatmap plot!")
+  obj@data$adjusted.data <- preProcess.obj@processed$adjusted.data
+  obj@data$metadata <- preProcess.obj@metadata
+
 
   cli::cli_alert_success("Successfully executed runClassifiers function!")
 
