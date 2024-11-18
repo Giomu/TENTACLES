@@ -393,20 +393,17 @@
 
 
 # ------------------- OPZIONE 3 -------------------
-# Required Libraries
-library(cluster)        # For silhouette
-library(fpc)            # For Davies-Bouldin
-library(mclust)         # For Gaussian Mixture Model
-library(factoextra)     # For clustering evaluation
-library(umap)           # For UMAP
-library(Rtsne)          # For t-SNE
-library(ggplot2)        # For plotting
+##TODO: Add more metrics to each method
+##TODO: Add tryCatch for each method
+##TODO: Run the function for each gene combination
+##TODO: Store the results in a list or data frame
+#--> All code needed fot TODOs is already provided in the functions above!
 
-# Function for Clustering and Dimensionality Reduction
 evaluate_clustering <- function(count_table, gene_list, labels) {
 
   # Subset the count table based on the given genes
   count_subset <- count_table[, gene_list, drop = FALSE]
+
   # Ensure the count data is numeric and remove non-numeric columns
   count_subset <- as.data.frame(lapply(count_subset, as.numeric))
   count_subset <- scale(count_subset) # Standardize the data
@@ -416,58 +413,81 @@ evaluate_clustering <- function(count_table, gene_list, labels) {
   clustering_results <- list()
 
   # a) K-Means Clustering
-  set.seed(123) # for reproducibility
+  set.seed(123)
   kmeans_result <- stats::kmeans(count_subset, centers = 2, iter.max = 100, algorithm = "MacQueen")
   clustering_results$KMeans <- list(
     clusters = kmeans_result$cluster,
-    silhouette = cluster::silhouette(kmeans_result$cluster, factoextra::get_dist(count_subset)),
-    avg.silwidth = mean(as.data.frame(cluster::silhouette(kmeans_result$cluster, factoextra::get_dist(count_subset)))$sil_width)
+    avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), kmeans_result$cluster)$avg.silwidth,
+    Accuracy = MLmetrics::Accuracy(labels, kmeans_result$cluster),
+    Precision = MLmetrics::Precision(labels, kmeans_result$cluster, positive = "1"),
+    Recall = MLmetrics::Recall(labels, kmeans_result$cluster, positive = "1"),
+    FScore = MLmetrics::F1_Score(labels, kmeans_result$cluster, positive = "1")
   )
+  # Calcola le metriche
 
-  # c) Gaussian Mixture Model (GMM)
-  gmm_result <- Mclust(count_subset, G = 2)
+  # b) Gaussian Mixture Model (GMM)
+  gmm_result <- mclust::Mclust(count_subset, G = 2)
   clustering_results$GMM <- list(
     clusters = gmm_result$classification,
-    silhouette = cluster::silhouette(gmm_result$classification, factoextra::get_dist(count_subset)),
-    avg.silwidth = mean(as.data.frame(cluster::silhouette(gmm_result$classification, factoextra::get_dist(count_subset)))$sil_width)
+    avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), gmm_result$classification)$avg.silwidth,
+    Accuracy = MLmetrics::Accuracy(labels, gmm_result$classification),
+    Precision = MLmetrics::Precision(labels, gmm_result$classification, positive = "1"),
+    Recall = MLmetrics::Recall(labels, gmm_result$classification, positive = "1"),
+    FScore = MLmetrics::F1_Score(labels, gmm_result$classification, positive = "1")
   )
 
   # d) Hierarchical Clustering
-  hc_result <- hclust(dist(count_subset), method = "complete") # complete linkage
-  hc_clusters <- cutree(hc_result, k = 2) # assuming 3 clusters
+  hc_result <- stats::hclust(dist(count_subset), method = "complete")
+  hc_clusters <- stats::cutree(hc_result, k = 2)
   clustering_results$Hierarchical <- list(
     clusters = hc_clusters,
-    avg.silwidth = fpc::cluster.stats(dist(count_subset), hc_clusters)$avg.silwidth
+    avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), hc_clusters)$avg.silwidth,
+    Accuracy = MLmetrics::Accuracy(labels, hc_clusters),
+    Precision = MLmetrics::Precision(labels, hc_clusters, positive = "1"),
+    Recall = MLmetrics::Recall(labels, hc_clusters, positive = "1"),
+    FScore = MLmetrics::F1_Score(labels, hc_clusters, positive = "1")
   )
 
   # 2. Dimensionality Reduction and Separation Metrics
   reduction_results <- list()
 
   # a) PCA
-  pca_result <- prcomp(count_subset, scale = F)
+  pca_result <- stats::prcomp(count_subset, scale = FALSE)
   pca_data <- data.frame(pca_result$x)
-  pca_clusters <- kmeans(pca_data[, 1:2], centers = 2)$cluster
+  pca_clusters <- stats::kmeans(pca_data[, 1:2], centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
   reduction_results$PCA <- list(
     clusters = pca_clusters,
-    avg.silwidth = fpc::cluster.stats(dist(pca_data[, 1:2]), pca_clusters)$avg.silwidth
+    avg.silwidth = fpc::cluster.stats(stats::dist(pca_data[, 1:2]), pca_clusters)$avg.silwidth,
+    Accuracy = MLmetrics::Accuracy(labels, pca_clusters),
+    Precision = MLmetrics::Precision(labels, pca_clusters, positive = "1"),
+    Recall = MLmetrics::Recall(labels, pca_clusters, positive = "1"),
+    FScore = MLmetrics::F1_Score(labels, pca_clusters, positive = "1")
   )
 
   # b) t-SNE
-  tsne_result <- Rtsne(count_subset, dims = 2, perplexity = 10)
+  tsne_result <- Rtsne::Rtsne(count_subset, dims = 2, perplexity = 10)
   tsne_data <- tsne_result$Y
-  tsne_clusters <- kmeans(tsne_data, centers = 2)$cluster
+  tsne_clusters <- stats::kmeans(tsne_data, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
   reduction_results$tSNE <- list(
     clusters = tsne_clusters,
-    avg.silwidth = cluster.stats(dist(tsne_data), tsne_clusters)$avg.silwidth
+    avg.silwidth = fpc::cluster.stats(stats::dist(tsne_data), tsne_clusters)$avg.silwidth,
+    Accuracy = MLmetrics::Accuracy(labels, tsne_clusters),
+    Precision = MLmetrics::Precision(labels, tsne_clusters, positive = "1"),
+    Recall = MLmetrics::Recall(labels, tsne_clusters, positive = "1"),
+    FScore = MLmetrics::F1_Score(labels, tsne_clusters, positive = "1")
   )
 
   # c) UMAP
-  umap_result <- umap(count_subset)
+  umap_result <- umap::umap(count_subset)
   umap_data <- as.data.frame(umap_result$layout)
-  umap_clusters <- kmeans(umap_data, centers = 3)$cluster
+  umap_clusters <- stats::kmeans(umap_data, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
   reduction_results$UMAP <- list(
     clusters = umap_clusters,
-    silhouette = cluster.stats(dist(umap_data), umap_clusters)$avg.silwidth
+    avg.silwidth = fpc::cluster.stats(stats::dist(umap_data), umap_clusters)$avg.silwidth,
+    Accuracy = MLmetrics::Accuracy(labels, umap_clusters),
+    Precision = MLmetrics::Precision(labels, umap_clusters, positive = "1"),
+    Recall = MLmetrics::Recall(labels, umap_clusters, positive = "1"),
+    FScore = MLmetrics::F1_Score(labels, umap_clusters, positive = "1")
   )
 
   # 3. Return Results
@@ -477,6 +497,15 @@ evaluate_clustering <- function(count_table, gene_list, labels) {
   ))
 }
 
+# Example usage
+# count_table <- read.csv("path_to_data.csv", row.names = 1)
+# gene_list <- c("Gene1", "Gene2", "Gene3")
+# labels <- factor(c("Group1", "Group2", "Group1", "Group2", "Group1", "Group2"))
+
+# result <- evaluate_clustering(count_table, gene_list, labels)
+# Print the results
+# print(result)
+
 # Example of calling the function
 # Example count_table (gene expression data) and labels (true labels for validation)
 # Assuming 'count_table' is a data frame with genes as rows and samples as columns.
@@ -485,10 +514,10 @@ evaluate_clustering <- function(count_table, gene_list, labels) {
 
 
 
-# count_table <- as.data.frame((b@data$adjusted.data))
-# gene_list <- c$consensusGenes[1:5]
-# labels <- as.numeric(b@data$metadata$class)
-# result <- evaluate_clustering(count_table, gene_list, labels)
+count_table <- as.data.frame((b@data$adjusted.data))
+gene_list <- c$consensusGenes[1:5]
+labels <- as.numeric(b@data$metadata$class)
+result <- evaluate_clustering(count_table, gene_list, labels)
 
 
 
