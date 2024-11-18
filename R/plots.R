@@ -302,6 +302,7 @@ performances.plot <- function(performances) {
     return(p)
 }
 
+## TODO: make it more beautiful!!
 #' @export
 predheat.plot <- function(predictions_df){
 
@@ -329,6 +330,7 @@ predheat.plot <- function(predictions_df){
 
 # ---------------------------------------------- ENRICHMENT PLOTS ----------------------------------------------
 
+# TODO: truncate long y labels. Add a parameter to set the max length of the labels
 #' Generate Bar Plot for Enrichment Results
 #'
 #' This function generates a bar plot visualizing enrichment results based on adjusted p-values.
@@ -387,6 +389,7 @@ bar.plot <- function(enrichment_results, pcutoff = 0.05, low.col = "indianred",
         labs(fill = "p.adj")
 }
 
+# TODO: Solve legend problem, it is never in a good position
 #' Generate Circos Plot for Enrichment Results
 #'
 #' This function generates a Circos plot visualizing enrichment results using the chordDiagram function
