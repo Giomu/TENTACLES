@@ -19,16 +19,19 @@ knitr::opts_chunk$set(
 devtools::load_all()
 
 # Load data
-df.count <- read.csv2("../Varie/ACC_Count.csv", row.names = 1)
-df.clin <- read.csv2("../Varie/ACC_Pheno.csv", row.names = 1)
+# df.count <- read.csv2("../Varie/ACC_Count.csv", row.names = 1)
+# df.clin <- read.csv2("../Varie/ACC_Pheno.csv", row.names = 1)
 ```
+
 ##Pre-Processing
+
 ```{r preProcess}
 # pre-Process data
 a <- preProcess(df.count = df.count, df.clin = df.clin, batch = "patient.gender")
 ```
 
 ##Run Classifiers
+
 ```{r runClassifiers}
 # Run classifiers
 b <- runClassifiers(a, models = c("bag_mlp", "rand_forest", "svm_poly", "mlp", "C5_rules"),
@@ -36,12 +39,14 @@ b <- runClassifiers(a, models = c("bag_mlp", "rand_forest", "svm_poly", "mlp", "
 ```
 
 ##Get and Test Consensus
+
 ```{r getConsensus}
 # Get and test consensus
 c <- getConsensus(b, n.min = 5)
 ```
 
 ##Validation
+
 ```{r validation, message=FALSE, warning=TRUE}
 # Import NEW data
 count_table <- as.data.frame((b@data$adjusted.data))
@@ -54,4 +59,6 @@ d <- valConsensus(count_table, gene_list, labels, N = 10, metric = "FScore")
 tictoc::toc()
 ```
 
-
+```{r}
+# Gira fino a qui
+```

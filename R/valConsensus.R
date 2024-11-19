@@ -202,8 +202,7 @@ valConsensus <- function(df.count, gene_list, class, N = 10, metric = "FScore") 
   # Add a new element to the list to store the top genes combinations by running the selectTopCombinations function
   cli::cli_h3("Selecting Top Combinations")
   cli::cli_alert_info("Selecting top {N} combinations based on {metric} ...")
-  topCombinations <- selectTopCombinations(
-    all_results, N = N, metric = metric)
+  topCombinations <- selectTopCombinations(all_results, N = N, metric = metric)
   cli::cli_alert_success("Top combinations selected successfully!")
 
   # Plot the top combinations using the plotTopMetrics function

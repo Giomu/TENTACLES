@@ -519,7 +519,6 @@ circos.plot <- function(enrichment_results,
 
 # ----------------- VALIDATION ----------------------------
 
-# TODO: The function is not plotting UMAP Precision recall and fscore dont know why!
 #' Plot the performance metrics for the top gene combinations.
 plotTopMetrics <- function(top_results) {
     # Mappatura delle combinazioni di geni con etichette brevi
@@ -534,7 +533,8 @@ plotTopMetrics <- function(top_results) {
     # Preparazione dei dati: da wide a long usando tidyr::pivot_longer
     long_results <- top_results %>%
         tidyr::pivot_longer(
-            cols = starts_with("KMeans"):starts_with("UMAP"), # Seleziona tutte le colonne dei metodi
+            #cols = starts_with("KMeans"):starts_with("UMAP"), # Seleziona tutte le colonne dei metodi
+            tidyselect::matches("^(KMeans|GMM|HC|PCA|tSNE|UMAP)_"),
             names_to = c("Model", "Metric"),
             names_sep = "_", # Divide il nome in base al separatore "_"
             values_to = "Value"
@@ -553,7 +553,7 @@ plotTopMetrics <- function(top_results) {
     # Creazione del plot usando ggplot2
     p <- ggplot2::ggplot(long_results, ggplot2::aes(x = Short_Label, y = Value, fill = Model)) +
         ggplot2::geom_bar(stat = "identity", position = "dodge") + # Bar plot con i modelli affiancati
-        ggplot2::facet_wrap(~ Metric, scales = "free_y") +        # Un riquadro per ogni metrica
+        ggplot2::facet_wrap(~ Metric, scales = "fixed") +        # Un riquadro per ogni metrica
         ggplot2::scale_fill_manual(values = model_colors) +       # Imposta i colori personalizzati
         ggplot2::theme_minimal() +
         ggplot2::labs(
@@ -566,7 +566,7 @@ plotTopMetrics <- function(top_results) {
         ggplot2::theme(
             axis.text.x = ggplot2::element_text(angle = 90, hjust = 1, face = "bold"),
             plot.caption = ggplot2::element_text(
-                size = 8, hjust = 0, vjust = 1, margin = ggplot2::margin(t = 10) ,
+                size = 5, hjust = 0, vjust = 1, margin = ggplot2::margin(t = 10) ,
                 color = "darkgray", face = "italic")
         ) +
         ggplot2::guides(fill = ggplot2::guide_legend(ncol = 1))
