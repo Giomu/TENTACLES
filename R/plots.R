@@ -514,3 +514,87 @@ circos.plot <- function(enrichment_results,
 
     circos_enriched()
 }
+
+
+
+# ----------------- VALIDATION ----------------------------
+
+# TODO: The function is not plotting UMAP Precision recall and fscore dont know why!
+#' Plot the performance metrics for the top gene combinations.
+plotTopMetrics <- function(top_results) {
+    # Mappatura delle combinazioni di geni con etichette brevi
+    gene_mapping <- data.frame(
+        Gene_Combination = unique(top_results$Gene_Combination),
+        Short_Label = paste0("comb", seq_along(unique(top_results$Gene_Combination)))
+    )
+
+    # Uniamo la mappatura ai risultati
+    top_results <- dplyr::left_join(top_results, gene_mapping, by = "Gene_Combination")
+
+    # Preparazione dei dati: da wide a long usando tidyr::pivot_longer
+    long_results <- top_results %>%
+        tidyr::pivot_longer(
+            cols = starts_with("KMeans"):starts_with("UMAP"), # Seleziona tutte le colonne dei metodi
+            names_to = c("Model", "Metric"),
+            names_sep = "_", # Divide il nome in base al separatore "_"
+            values_to = "Value"
+        )
+
+    # Definisci i colori manualmente per ogni modello
+    model_colors <- c("KMeans" = "#83B8C6", "GMM" = "#F3D17C", "HC" = "#C5DBC4",
+                      "PCA" = "#F49595", "tSNE" = "#C4C7E2", "UMAP" = "#EEC18E")
+
+    # Crea un'etichetta per la casella di testo che mostra le corrispondenze
+    gene_correspondence_text <- paste(
+        gene_mapping$Short_Label, ":", gene_mapping$Gene_Combination, collapse = "\n"
+    )
+
+
+    # Creazione del plot usando ggplot2
+    p <- ggplot2::ggplot(long_results, ggplot2::aes(x = Short_Label, y = Value, fill = Model)) +
+        ggplot2::geom_bar(stat = "identity", position = "dodge") + # Bar plot con i modelli affiancati
+        ggplot2::facet_wrap(~ Metric, scales = "free_y") +        # Un riquadro per ogni metrica
+        ggplot2::scale_fill_manual(values = model_colors) +       # Imposta i colori personalizzati
+        ggplot2::theme_minimal() +
+        ggplot2::labs(
+            title = "Performance Metrics by Model and Gene Combination",
+            x = "Gene Combination",
+            y = "Metric Value",
+            fill = "Model",
+            caption = gene_correspondence_text
+        ) +
+        ggplot2::theme(
+            axis.text.x = ggplot2::element_text(angle = 90, hjust = 1, face = "bold"),
+            plot.caption = ggplot2::element_text(
+                size = 8, hjust = 0, vjust = 1, margin = ggplot2::margin(t = 10) ,
+                color = "darkgray", face = "italic")
+        ) +
+        ggplot2::guides(fill = ggplot2::guide_legend(ncol = 1))
+
+    return(p)
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

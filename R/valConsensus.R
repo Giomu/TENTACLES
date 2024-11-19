@@ -1,550 +1,226 @@
+#' Helper function to plot the performance metrics for the top gene combinations
+selectTopCombinations <- function(results, N, metric) {
 
-# ------------------- OPZIONE 1 -------------------
+  # Initialize an empty list to store the flattened results
+  flattened_results <- list()
 
-# # Carichiamo le librerie necessarie
-# library(cluster)
-# library(combinat)
-# library(MASS)
-# library(keras)
-# library(caret)
-# library(dplyr)
-# library(ks)
-#
-# # Funzione per calcolare il Silhouette Score
-# calculate_silhouette <- function(data, labels) {
-#   labels <- as.numeric(as.factor(labels))
-#   dist_matrix <- dist(data)
-#
-#   # Controllo per evitare silhouette su matrici di distanza non valide
-#   if (any(is.na(dist_matrix)) || any(is.infinite(dist_matrix))) {
-#     warning("La matrice delle distanze contiene NA/Inf, impostando il Silhouette Score a NA.")
-#     return(NA)
-#   }
-#
-#   sil <- silhouette(as.numeric(labels), dist_matrix)
-#   mean(sil[, 3], na.rm = TRUE) # Restituisce il Silhouette Score medio
-# }
-#
-# # Funzione per eseguire PCA e calcolare il Silhouette Score
-# pca_silhouette <- function(data, labels, n_components = 2) {
-#   pca_result <- prcomp(data, scale. = TRUE)
-#
-#   # Impostiamo il numero di componenti in base alla dimensione dei dati
-#   actual_components <- min(n_components, ncol(pca_result$x))
-#
-#   # Riduciamo i dati al numero effettivo di componenti disponibili
-#   reduced_data <- pca_result$x[, 1:actual_components, drop = FALSE]
-#
-#   calculate_silhouette(reduced_data, labels)
-# }
-#
-# # Funzione per K-means clustering e valutazione con Adjusted Rand Index (ARI)
-# kmeans_ari <- function(data, labels, k = 2) {
-#   kmeans_result <- kmeans(data, centers = k, nstart = 25)
-#   mclust::adjustedRandIndex(labels, kmeans_result$cluster)
-# }
-#
-# # Funzione per Autoencoder e calcolo Silhouette Score sullo spazio latente
-# autoencoder_silhouette <- function(data, labels) {
-#   n_features <- ncol(data)
-#
-#   # Definizione dell'autoencoder
-#   input_layer <- layer_input(shape = n_features)
-#   encoded <- input_layer %>%
-#     layer_dense(units = round(n_features / 2), activation = 'relu') %>%
-#     layer_dense(units = round(n_features / 4), activation = 'relu')
-#
-#   decoded <- encoded %>%
-#     layer_dense(units = round(n_features / 2), activation = 'relu') %>%
-#     layer_dense(units = n_features, activation = 'linear')
-#
-#   autoencoder_model <- keras_model(inputs = input_layer, outputs = decoded)
-#   encoder_model <- keras_model(inputs = input_layer, outputs = encoded)
-#
-#   autoencoder_model %>% compile(
-#     loss = 'mean_squared_error',
-#     optimizer = optimizer_adam()
-#   )
-#
-#   # Addestramento dell'autoencoder
-#   autoencoder_model %>% fit(as.matrix(data), as.matrix(data),
-#                             epochs = 50, batch_size = 8, verbose = 0)
-#
-#   # Estrazione delle feature dallo spazio latente
-#   latent_space <- encoder_model %>% predict(as.matrix(data))
-#
-#   # Controllo dei valori NA/NaN/Inf
-#   if (any(is.na(latent_space)) || any(is.nan(latent_space)) || any(is.infinite(latent_space))) {
-#     warning("Lo spazio latente contiene NA/NaN/Inf, impostando il Silhouette Score a NA.")
-#     return(NA)
-#   }
-#
-#   # Calcolo del Silhouette Score sullo spazio latente
-#   calculate_silhouette(latent_space, labels)
-# }
-#
-# # Funzione per Kernel Density Estimation (KDE)
-# # kde_separation <- function(data, labels) {
-# #   # Calcolo della densità usando la funzione kde() del pacchetto 'ks'
-# #   density_case <- kde(data[labels == "case", ])
-# #   density_control <- kde(data[labels == "control", ])
-# #
-# #   # Calcolo della distanza tra le due distribuzioni
-# #   overlap <- sum(pmin(density_case$estimate, density_control$estimate))
-# #   1 - overlap # Più basso è l'overlap, migliore è la separazione
-# # }
-# kde_separation <- function(subset_data, classes) {
-#   # Separazione dei dati in due gruppi basati sulle classi
-#   data_control <- subset_data[classes == 0, , drop = FALSE]
-#   data_case <- subset_data[classes == 1, , drop = FALSE]
-#
-#   # Controlli aggiuntivi sui dati
-#   cat("\nControlli aggiuntivi:\n")
-#   cat("Range control:", range(data_control), "\n")
-#   cat("Range case:", range(data_case), "\n")
-#
-#   # Controlla se i dati contengono solo un valore unico
-#   if (length(unique(data_control)) == 1 || length(unique(data_case)) == 1) {
-#     cat("Attenzione: dati con varianza nulla\n")
-#     return(NA)
-#   }
-#
-#   # Calcolo delle densità kernel
-#   tryCatch({
-#     kde_control <- kde(data_control)
-#     kde_case <- kde(data_case)
-#
-#     # Verifica se la densità è finita
-#     if (any(!is.finite(kde_control$estimate)) || any(!is.finite(kde_case$estimate))) {
-#       cat("Densità non finite rilevate\n")
-#       return(NA)
-#     }
-#
-#     # Calcolo della separazione (ad esempio, distanza tra le medie)
-#     separation_score <- abs(mean(kde_control$estimate) - mean(kde_case$estimate))
-#
-#     return(separation_score)
-#   }, error = function(e) {
-#     cat("Errore in kde_separation:", e$message, "\n")
-#     return(NA)
-#   })
-# }
-#
-# # Funzione per Linear Discriminant Analysis (LDA)
-# lda_accuracy <- function(data, labels) {
-#   lda_model <- lda(labels ~ ., data = as.data.frame(data))
-#   predictions <- predict(lda_model)$class
-#   mean(predictions == labels) # Accuratezza della classificazione LDA
-# }
-#
-# # Funzione principale per calcolare le metriche per ogni combinazione di geni
-# evaluate_gene_combinations <- function(genes, count_table, classes) {
-#   results <- data.frame()
-#
-#   # Genera tutte le combinazioni di geni (fino a 10)
-#   for (i in 1:length(genes)) {
-#     gene_combinations <- combn(genes, i, simplify = FALSE)
-#
-#     for (comb in gene_combinations) {
-#       print(paste0("i = ", i, "\ncomb = ", comb))
-#       subset_data <- count_table[, comb, drop = FALSE]
-#
-#       # Calcola tutte le metriche
-#       silhouette <- calculate_silhouette(subset_data, classes)
-#       pca_sil <- pca_silhouette(subset_data, classes)
-#       kmeans_acc <- kmeans_ari(subset_data, classes)
-#       autoencoder_sil <- autoencoder_silhouette(subset_data, classes)
-#       kde_score <- kde_separation(subset_data, classes)
-#       lda_acc <- lda_accuracy(subset_data, classes)
-#
-#       # Crea una riga con i risultati
-#       result_row <- data.frame(
-#         Genes = paste(comb, collapse = ", "),
-#         Silhouette = silhouette,
-#         PCA_Silhouette = pca_sil,
-#         Kmeans_ARI = kmeans_acc,
-#         Autoencoder_Silhouette = autoencoder_sil,
-#         KDE_Score = kde_score,
-#         LDA_Accuracy = lda_acc
-#       )
-#
-#       # Aggiungi la riga ai risultati
-#       results <- rbind(results, result_row)
-#     }
-#   }
-#
-#   return(results)
-# }
+  # Loop through each gene combination
+  for (combo_name in names(results)) {
+    combo_results <- results[[combo_name]]
 
-# Esempio di utilizzo della funzione
-# Supponiamo di avere:
-# genes <- c("Gene1", "Gene2", "Gene3", "Gene4", "Gene5")
-# count_table <- matrix(rnorm(1000), nrow = 100, ncol = 5) # 100 campioni, 10 geni
-# colnames(count_table) <- genes
-# classes <- sample(c("case", "control"), 100, replace = TRUE)
+    # Calculate the mean of the selected metric across all methods
+    total_metric <- mean(sapply(combo_results, function(method_result) method_result[[metric]]))
 
+    # Store the data, including all metrics for each method
+    flattened_results[[length(flattened_results) + 1]] <- data.frame(
+      Gene_Combination = combo_name,
+      Mean_Metric = total_metric,
+      KMeans_Accuracy = combo_results$KMeans[["Accuracy"]],
+      KMeans_Precision = combo_results$KMeans[["Precision"]],
+      KMeans_Recall = combo_results$KMeans[["Recall"]],
+      KMeans_FScore = combo_results$KMeans[["FScore"]],
+      GMM_Accuracy = combo_results$GMM[["Accuracy"]],
+      GMM_Precision = combo_results$GMM[["Precision"]],
+      GMM_Recall = combo_results$GMM[["Recall"]],
+      GMM_FScore = combo_results$GMM[["FScore"]],
+      HC_Accuracy = combo_results$HC[["Accuracy"]],
+      HC_Precision = combo_results$HC[["Precision"]],
+      HC_Recall = combo_results$HC[["Recall"]],
+      HC_FScore = combo_results$HC[["FScore"]],
+      PCA_Accuracy = combo_results$PCA[["Accuracy"]],
+      PCA_Precision = combo_results$PCA[["Precision"]],
+      PCA_Recall = combo_results$PCA[["Recall"]],
+      PCA_FScore = combo_results$PCA[["FScore"]],
+      tSNE_Accuracy = combo_results$tSNE[["Accuracy"]],
+      tSNE_Precision = combo_results$tSNE[["Precision"]],
+      tSNE_Recall = combo_results$tSNE[["Recall"]],
+      tSNE_FScore = combo_results$tSNE[["FScore"]],
+      UMAP_Accuracy = combo_results$UMAP[["Accuracy"]],
+      UMAP_Precision = combo_results$UMAP[["Precision"]],
+      UMAP_Recall = combo_results$UMAP[["Recall"]],
+      UMAP_FScore = combo_results$UMAP[["FScore"]],
+      stringsAsFactors = FALSE
+    )
+  }
 
-# genes <- c$consensusGenes
-# genes <- genes[1:4]
-# count_table <- b@data$adjusted.data
-# count_table <- count_table[, genes]
-# count_table <- as.matrix(count_table)
-# classes <- b@data$metadata$class
+  # Combine all rows into a single dataframe
+  final_df <- dplyr::bind_rows(flattened_results)
 
+  # Select the top N combinations based on the mean of the selected metric
+  top_combinations <- final_df %>%
+    dplyr::arrange(desc(Mean_Metric)) %>%
+    dplyr::slice_head(n = N)
 
-# # Calcola i risultati
-# result_table <- evaluate_gene_combinations(genes, count_table, classes)
-# print(result_table)
-
-# ------------------- OPZIONE 2 -------------------
-
-# Carichiamo i pacchetti necessari
-# library(cluster)        # Per silhouette score e clustering
-# library(factoextra)     # Per PCA e visualizzazione
-# library(Rtsne)          # Per t-SNE
-# library(umap)           # Per UMAP
-# library(MASS)           # Per LDA
-# library(e1071)          # Per SVM
-# library(densityClust)   # Per KDE e analisi basate su densità
-# library(fpc)            # Per Davies-Bouldin index
-# library(DescTools)      # Per Dunn index
-# library(EnvStats)       # Per Earth Mover's Distance
-# library(ROCR)           # Per ROC AUC
-# library(combinat)       # Per tutte le combinazioni possibili
-#
-# # Funzione aggiornata con controlli
-# analyze_gene_combinations <- function(data, labels, genes) {
-#
-#   # Converti labels in numerico se sono fattori
-#   if (is.factor(labels)) {
-#     labels <- as.numeric(as.character(labels))
-#   }
-#
-#   # Genera tutte le possibili combinazioni di geni
-#   all_combinations <- unlist(lapply(1:length(genes), function(x) combn(genes, x, simplify = FALSE)), recursive = FALSE)
-#
-#   # Inizializziamo una lista per i risultati
-#   results <- list()
-#
-#   # Funzione per calcolare silhouette score
-#   calculate_silhouette <- function(data, labels) {
-#     if (length(unique(labels)) > 1) {
-#       dist_matrix <- dist(data)
-#       sil <- silhouette(labels, dist_matrix)
-#       mean(sil[, 3])  # Restituisce il valore medio del silhouette
-#     } else {
-#       NA
-#     }
-#   }
-#
-#   # Loop su tutte le combinazioni di geni
-#   for (gene_set in all_combinations) {
-#     # Estrai i dati relativi alla combinazione corrente
-#     subset_data <- data[, gene_set, drop = FALSE]
-#
-#     # Verifica che il subset_data non sia vuoto
-#     if (ncol(subset_data) == 0) {
-#       print(paste("Combinazione vuota per:", paste(gene_set, collapse = ", ")))
-#       next
-#     }
-#
-#     # Stampa i dati per debuggare
-#     print(paste("Gene set:", paste(gene_set, collapse = ", ")))
-#     #print(subset_data)
-#
-#     # Inizializza una lista per i risultati della combinazione attuale
-#     res <- list(
-#       Gene_Set = paste(gene_set, collapse = ","),
-#       Silhouette = calculate_silhouette(subset_data, labels),
-#       Dunn = tryCatch(dunn(as.matrix(dist(subset_data)), labels), error = function(e) NA),
-#       Davies_Bouldin = tryCatch(cluster.stats(as.matrix(dist(subset_data)), labels)$davies.bouldin, error = function(e) NA)
-#     )
-#
-#     # PCA + k-means clustering
-#     pca_res <- tryCatch(prcomp(subset_data, scale. = TRUE), error = function(e) NULL)
-#     if (!is.null(pca_res) && ncol(pca_res$x) >= 2) {
-#       kmeans_res <- kmeans(pca_res$x[, 1:2], centers = 2)
-#       res$PCA_Separazione <- calculate_silhouette(pca_res$x[, 1:2], kmeans_res$cluster)
-#     } else {
-#       res$PCA_Separazione <- NA
-#     }
-#
-#     # t-SNE con controllo sulla perplexity
-#     num_samples <- nrow(subset_data)
-#     tsne_perplexity <- min(30, max(1, floor(num_samples / 3)))
-#     tsne_res <- tryCatch({
-#       Rtsne(subset_data, perplexity = tsne_perplexity)$Y
-#     }, error = function(e) matrix(NA, nrow = num_samples, ncol = 2))
-#     if (!any(is.na(tsne_res))) {
-#       tsne_kmeans <- kmeans(tsne_res, centers = 2)
-#       res$tSNE_Separazione <- calculate_silhouette(tsne_res, tsne_kmeans$cluster)
-#     } else {
-#       res$tSNE_Separazione <- NA
-#     }
-#
-#     # UMAP
-#     umap_res <- tryCatch(umap(subset_data)$layout, error = function(e) matrix(NA, nrow = num_samples, ncol = 2))
-#     if (!any(is.na(umap_res))) {
-#       umap_kmeans <- kmeans(umap_res, centers = 2)
-#       res$UMAP_Separazione <- calculate_silhouette(umap_res, umap_kmeans$cluster)
-#     } else {
-#       res$UMAP_Separazione <- NA
-#     }
-#
-#     # LDA (Linear Discriminant Analysis)
-#     lda_res <- tryCatch(lda(labels ~ ., data = as.data.frame(subset_data)), error = function(e) NULL)
-#     if (!is.null(lda_res)) {
-#       lda_pred <- predict(lda_res)$class
-#       res$LDA_Accuracy <- mean(lda_pred == labels)
-#     } else {
-#       res$LDA_Accuracy <- NA
-#     }
-#
-#     # ROC AUC (usando SVM con decision_function)
-#     svm_model <- tryCatch(svm(as.factor(labels) ~ ., data = as.data.frame(subset_data), probability = TRUE), error = function(e) NULL)
-#     if (!is.null(svm_model)) {
-#       svm_preds <- predict(svm_model, as.data.frame(subset_data), decision.values = TRUE)
-#       pred <- prediction(attributes(svm_preds)$decision.values, labels)
-#       auc_perf <- performance(pred, measure = "auc")
-#       res$ROC_AUC <- auc_perf@y.values[[1]]
-#     } else {
-#       res$ROC_AUC <- NA
-#     }
-#
-#     # Wilcoxon Rank Sum Test per ogni gene
-#     wilcox_pvalues <- sapply(gene_set, function(gene) {
-#       tryCatch(wilcox.test(subset_data[, gene] ~ labels)$p.value, error = function(e) NA)
-#     })
-#     res$Wilcox_MeanP <- mean(wilcox_pvalues, na.rm = TRUE)
-#
-#     # Aggiungi i risultati alla lista generale
-#     results[[length(results) + 1]] <- res
-#   }
-#
-#   # Filtra i risultati vuoti e converti in una tabella
-#   results <- Filter(function(x) !is.null(x), results)
-#
-#   results_df <- lapply(results, function(x) {
-#     data.frame(
-#       Gene_Set = x$Gene_Set,
-#       Silhouette = x$Silhouette,
-#       Dunn = x$Dunn,
-#       Davies_Bouldin = ifelse(is.null(x$Davies_Bouldin), NA, x$Davies_Bouldin),  # Replace NULL with NA
-#       PCA_Separazione = x$PCA_Separazione,
-#       tSNE_Separazione = x$tSNE_Separazione,
-#       UMAP_Separazione = x$UMAP_Separazione,
-#       LDA_Accuracy = x$LDA_Accuracy,
-#       ROC_AUC = x$ROC_AUC,
-#       Wilcox_MeanP = x$Wilcox_MeanP
-#     )
-#   })
-#
-#   # Combine all rows into a single dataframe
-#   results_df <- bind_rows(results_df)
-#
-#   # Converti i risultati in un data.frame
-#   #results_df <- do.call(rbind, lapply(results, as.data.frame))
-#   return(results)
-# }
-#
-#
-#
-#
-# # Esempio d'uso
-# # dataset <- matrix(rnorm(1000), nrow = 50, ncol = 20) # Dataset di esempio
-# # labels <- sample(c(0, 1), 50, replace = TRUE)        # True labels
-# # cons_genes <- c("gene1", "gene2", "gene3", "gene4")  # Lista di geni
-# genes <- c$consensusGenes
-# genes <- genes[1:7]
-# cons_genes <- genes
-# count_table <- b@data$adjusted.data
-# count_table <- count_table[, genes]
-# count_table <- as.matrix(count_table)
-# dataset <- count_table
-# labels <- as.numeric(b@data$metadata$class)
-# results_table <- analyze_gene_combinations(dataset, labels, cons_genes)
-# print(results_table)
-#
-#
-# library(dplyr)
-#
-# # Create a function to convert each list element into a dataframe row
-# results_df <- lapply(results_table, function(x) {
-#   data.frame(
-#     Gene_Set = x$Gene_Set,
-#     Silhouette = x$Silhouette,
-#     Dunn = x$Dunn,
-#     Davies_Bouldin = ifelse(is.null(x$Davies_Bouldin), NA, x$Davies_Bouldin),  # Replace NULL with NA
-#     PCA_Separazione = x$PCA_Separazione,
-#     tSNE_Separazione = x$tSNE_Separazione,
-#     UMAP_Separazione = x$UMAP_Separazione,
-#     LDA_Accuracy = x$LDA_Accuracy,
-#     ROC_AUC = x$ROC_AUC,
-#     Wilcox_MeanP = x$Wilcox_MeanP
-#   )
-# })
-#
-# # Combine all rows into a single dataframe
-# results_df <- bind_rows(results_df)
-#
-# # View the results
-# head(results_df)
-
-
-
-# ------------------- OPZIONE 3 -------------------
-##TODO: Add more metrics to each method
-##TODO: Add tryCatch for each method
-##TODO: Run the function for each gene combination
-##TODO: Store the results in a list or data frame
-#--> All code needed fot TODOs is already provided in the functions above!
-
-evaluate_clustering <- function(count_table, gene_list, labels) {
-
-  # Subset the count table based on the given genes
-  count_subset <- count_table[, gene_list, drop = FALSE]
-
-  # Ensure the count data is numeric and remove non-numeric columns
-  count_subset <- as.data.frame(lapply(count_subset, as.numeric))
-  count_subset <- scale(count_subset) # Standardize the data
-  rownames(count_subset) <- rownames(count_table)
-
-  # 1. Clustering Methods
-  clustering_results <- list()
-
-  # a) K-Means Clustering
-  set.seed(123)
-  kmeans_result <- stats::kmeans(count_subset, centers = 2, iter.max = 100, algorithm = "MacQueen")
-  clustering_results$KMeans <- list(
-    clusters = kmeans_result$cluster,
-    avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), kmeans_result$cluster)$avg.silwidth,
-    Accuracy = MLmetrics::Accuracy(labels, kmeans_result$cluster),
-    Precision = MLmetrics::Precision(labels, kmeans_result$cluster, positive = "1"),
-    Recall = MLmetrics::Recall(labels, kmeans_result$cluster, positive = "1"),
-    FScore = MLmetrics::F1_Score(labels, kmeans_result$cluster, positive = "1")
-  )
-  # Calcola le metriche
-
-  # b) Gaussian Mixture Model (GMM)
-  gmm_result <- mclust::Mclust(count_subset, G = 2)
-  clustering_results$GMM <- list(
-    clusters = gmm_result$classification,
-    avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), gmm_result$classification)$avg.silwidth,
-    Accuracy = MLmetrics::Accuracy(labels, gmm_result$classification),
-    Precision = MLmetrics::Precision(labels, gmm_result$classification, positive = "1"),
-    Recall = MLmetrics::Recall(labels, gmm_result$classification, positive = "1"),
-    FScore = MLmetrics::F1_Score(labels, gmm_result$classification, positive = "1")
-  )
-
-  # d) Hierarchical Clustering
-  hc_result <- stats::hclust(dist(count_subset), method = "complete")
-  hc_clusters <- stats::cutree(hc_result, k = 2)
-  clustering_results$Hierarchical <- list(
-    clusters = hc_clusters,
-    avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), hc_clusters)$avg.silwidth,
-    Accuracy = MLmetrics::Accuracy(labels, hc_clusters),
-    Precision = MLmetrics::Precision(labels, hc_clusters, positive = "1"),
-    Recall = MLmetrics::Recall(labels, hc_clusters, positive = "1"),
-    FScore = MLmetrics::F1_Score(labels, hc_clusters, positive = "1")
-  )
-
-  # 2. Dimensionality Reduction and Separation Metrics
-  reduction_results <- list()
-
-  # a) PCA
-  pca_result <- stats::prcomp(count_subset, scale = FALSE)
-  pca_data <- data.frame(pca_result$x)
-  pca_clusters <- stats::kmeans(pca_data[, 1:2], centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
-  reduction_results$PCA <- list(
-    clusters = pca_clusters,
-    avg.silwidth = fpc::cluster.stats(stats::dist(pca_data[, 1:2]), pca_clusters)$avg.silwidth,
-    Accuracy = MLmetrics::Accuracy(labels, pca_clusters),
-    Precision = MLmetrics::Precision(labels, pca_clusters, positive = "1"),
-    Recall = MLmetrics::Recall(labels, pca_clusters, positive = "1"),
-    FScore = MLmetrics::F1_Score(labels, pca_clusters, positive = "1")
-  )
-
-  # b) t-SNE
-  tsne_result <- Rtsne::Rtsne(count_subset, dims = 2, perplexity = 10)
-  tsne_data <- tsne_result$Y
-  tsne_clusters <- stats::kmeans(tsne_data, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
-  reduction_results$tSNE <- list(
-    clusters = tsne_clusters,
-    avg.silwidth = fpc::cluster.stats(stats::dist(tsne_data), tsne_clusters)$avg.silwidth,
-    Accuracy = MLmetrics::Accuracy(labels, tsne_clusters),
-    Precision = MLmetrics::Precision(labels, tsne_clusters, positive = "1"),
-    Recall = MLmetrics::Recall(labels, tsne_clusters, positive = "1"),
-    FScore = MLmetrics::F1_Score(labels, tsne_clusters, positive = "1")
-  )
-
-  # c) UMAP
-  umap_result <- umap::umap(count_subset)
-  umap_data <- as.data.frame(umap_result$layout)
-  umap_clusters <- stats::kmeans(umap_data, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
-  reduction_results$UMAP <- list(
-    clusters = umap_clusters,
-    avg.silwidth = fpc::cluster.stats(stats::dist(umap_data), umap_clusters)$avg.silwidth,
-    Accuracy = MLmetrics::Accuracy(labels, umap_clusters),
-    Precision = MLmetrics::Precision(labels, umap_clusters, positive = "1"),
-    Recall = MLmetrics::Recall(labels, umap_clusters, positive = "1"),
-    FScore = MLmetrics::F1_Score(labels, umap_clusters, positive = "1")
-  )
-
-  # 3. Return Results
-  return(list(
-    clustering = clustering_results,
-    dimensionality_reduction = reduction_results
-  ))
+  return(top_combinations)
 }
 
-# Example usage
-# count_table <- read.csv("path_to_data.csv", row.names = 1)
-# gene_list <- c("Gene1", "Gene2", "Gene3")
-# labels <- factor(c("Group1", "Group2", "Group1", "Group2", "Group1", "Group2"))
 
-# result <- evaluate_clustering(count_table, gene_list, labels)
-# Print the results
-# print(result)
+#' @title valConsensus
+#' @description This function validates the consensus genes in a new dataset using clustering methods.
+#'
+#' @param count_table A numeric matrix containing the gene expression data. Rows represent samples and columns represent genes.
+#' @param gene_list A character vector specifying the consensus genes to be evaluated.
+#' @param labels A factor vector specifying the true class labels for the samples.
+#' @param N An integer specifying the number of top gene combinations to select based on the metric.
+#' @param metric A character string specifying the metric to use for selecting the top gene combinations. Possible values are 'Accuracy', 'Precision', 'Recall', and 'FScore'.
+#'
+#' @return A list containing the clustering results for each combination of genes and clustering methods.
+#'
+#' @details
+#' The function evaluates the clustering performance of different combinations of genes using various clustering methods.
+#' The function calculates the accuracy, precision, recall, and F1 score for each clustering method.
+#' The function supports the following clustering methods: K-Means, Gaussian Mixture Model (GMM), Hierarchical Clustering, PCA, t-SNE, and UMAP.
+#'
+#' @importFrom stats kmeans hclust prcomp
+#' @importFrom mclust Mclust mclustBIC
+#' @importFrom Rtsne Rtsne
+#' @importFrom umap umap
+#' @importFrom MLmetrics Accuracy Precision Recall F1_Score
+#'
+#' @examples
+#' /dontrun{
+#' count_table <- matrix(rnorm(1000), nrow = 100, ncol = 10)
+#' gene_list <- c("Gene1", "Gene2", "Gene3")
+#' labels <- factor(sample(1:2, 100, replace = TRUE))
+#' result <- evaluate_clustering_combinations(count_table, gene_list, labels)}
+#'
+#' @export
+valConsensus <- function(df.count, gene_list, class, N = 10, metric = "FScore") {
 
-# Example of calling the function
-# Example count_table (gene expression data) and labels (true labels for validation)
-# Assuming 'count_table' is a data frame with genes as rows and samples as columns.
-# Assuming 'gene_list' is a vector of genes you want to analyze.
-# labels is a vector of known labels for validation purposes.
+  cli::cli_h1("Validating Consensus Genes")
+  # Numero massimo di geni da considerare
+  max_genes <- length(unique(gene_list))
+  labels <- class
+
+  # Lista per salvare i risultati per tutte le combinazioni
+  all_results <- list()
+
+  # For each number of genes up to the maximum
+  for (n in 2:max_genes) {
+    gene_combinations <- combn(gene_list, n, simplify = FALSE)
+
+    # For each combination of genes
+    for (combo in gene_combinations) {
+      cli::cli_h3("Combination: {combo} ")
+      # Subset la tabella con i geni specificati
+      count_subset <- df.count[, combo, drop = FALSE]
+
+      # Ensure data is numeric and scaled
+      count_subset <- as.data.frame(lapply(count_subset, as.numeric))
+      count_subset <- scale(count_subset)
+      rownames(count_subset) <- rownames(df.count)
+
+      clustering_results <- list()
+
+      # K-Means Clustering
+      set.seed(123)
+      kmeans_result <- stats::kmeans(count_subset, centers = 2, iter.max = 100, algorithm = "MacQueen")
+      clustering_results$KMeans <- list(
+        clusters = kmeans_result$cluster,
+        #avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), kmeans_result$cluster)$avg.silwidth,
+        Accuracy = max(MLmetrics::Accuracy(labels, kmeans_result$cluster), MLmetrics::Accuracy(labels, 3 - kmeans_result$cluster)),
+        Precision = max(MLmetrics::Precision(labels, kmeans_result$cluster, positive = "1"), MLmetrics::Precision(labels, 3 - kmeans_result$cluster, positive = "1")),
+        Recall = max(MLmetrics::Recall(labels, kmeans_result$cluster, positive = "1"), MLmetrics::Recall(labels, 3 - kmeans_result$cluster, positive = "1")),
+        FScore = max(MLmetrics::F1_Score(labels, kmeans_result$cluster, positive = "1"), MLmetrics::F1_Score(labels, 3 - kmeans_result$cluster, positive = "1"))
+      )
+      cli::cli_alert_success("K-Means")
+
+      # Gaussian Mixture Model (GMM)
+      gmm_result <- mclust::Mclust(count_subset, G = 2, verbose = FALSE)
+      clustering_results$GMM <- list(
+        clusters = gmm_result$classification,
+        #avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), gmm_result$classification)$avg.silwidth,
+        Accuracy = max(MLmetrics::Accuracy(labels, gmm_result$classification), MLmetrics::Accuracy(labels, 3 - gmm_result$classification)),
+        Precision = max(MLmetrics::Precision(labels, gmm_result$classification, positive = "1"), MLmetrics::Precision(labels, 3 - gmm_result$classification, positive = "1")),
+        Recall = max(MLmetrics::Recall(labels, gmm_result$classification, positive = "1"), MLmetrics::Recall(labels, 3 - gmm_result$classification, positive = "1")),
+        FScore = max(MLmetrics::F1_Score(labels, gmm_result$classification, positive = "1"), MLmetrics::F1_Score(labels, 3 - gmm_result$classification, positive = "1"))
+      )
+      cli::cli_alert_success("GMM")
+
+      # Hierarchical Clustering
+      hc_result <- stats::hclust(dist(count_subset), method = "complete")
+      hc_clusters <- stats::cutree(hc_result, k = 2)
+      clustering_results$HC <- list(
+        clusters = hc_clusters,
+        #avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), hc_clusters)$avg.silwidth,
+        Accuracy = max(MLmetrics::Accuracy(labels, hc_clusters),MLmetrics::Accuracy(labels, 3 - hc_clusters)),
+        Precision = max(MLmetrics::Precision(labels, hc_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - hc_clusters, positive = "1")),
+        Recall = max(MLmetrics::Recall(labels, hc_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - hc_clusters, positive = "1")),
+        FScore = max(MLmetrics::F1_Score(labels, hc_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - hc_clusters, positive = "1"))
+      )
+      cli::cli_alert_success("Hierarchical Clustering")
+
+      # PCA + KMeans
+      pca_result <- stats::prcomp(count_subset, scale = FALSE)
+      pca_data <- data.frame(pca_result$x)
+      pca_clusters <- stats::kmeans(pca_data[, 1:2], centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
+      clustering_results$PCA <- list(
+        clusters = pca_clusters,
+        #avg.silwidth = fpc::cluster.stats(stats::dist(pca_data[, 1:2]), pca_clusters)$avg.silwidth,
+        Accuracy = max(MLmetrics::Accuracy(labels, pca_clusters), MLmetrics::Accuracy(labels, 3 - pca_clusters)),
+        Precision = max(MLmetrics::Precision(labels, pca_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - pca_clusters, positive = "1")),
+        Recall = max(MLmetrics::Recall(labels, pca_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - pca_clusters, positive = "1")),
+        FScore = max(MLmetrics::F1_Score(labels, pca_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - pca_clusters, positive = "1"))
+      )
+      cli::cli_alert_success("PCA + KMeans")
+
+      # t-SNE + KMeans
+      tsne_result <- Rtsne::Rtsne(count_subset, dims = 2, perplexity = 10)
+      tsne_data <- tsne_result$Y
+      tsne_clusters <- stats::kmeans(tsne_data, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
+      clustering_results$tSNE <- list(
+        clusters = tsne_clusters,
+        #avg.silwidth = fpc::cluster.stats(stats::dist(tsne_data), tsne_clusters)$avg.silwidth,
+        Accuracy = max(MLmetrics::Accuracy(labels, tsne_clusters), MLmetrics::Accuracy(labels, 3 - tsne_clusters)),
+        Precision = max(MLmetrics::Precision(labels, tsne_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - tsne_clusters, positive = "1")),
+        Recall = max(MLmetrics::Recall(labels, tsne_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - tsne_clusters, positive = "1")),
+        FScore = max(MLmetrics::F1_Score(labels, tsne_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - tsne_clusters, positive = "1"))
+      )
+      cli::cli_alert_success("t-SNE + KMeans")
+
+      # UMAP + KMeans
+      umap_result <- umap::umap(count_subset)
+      umap_data <- as.data.frame(umap_result$layout)
+      umap_clusters <- stats::kmeans(umap_data, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
+      clustering_results$UMAP <- list(
+        clusters = umap_clusters,
+        #avg.silwidth = fpc::cluster.stats(stats::dist(umap_data), umap_clusters)$avg.silwidth,
+        Accuracy = max(MLmetrics::Accuracy(labels, umap_clusters), MLmetrics::Accuracy(labels, 3 - umap_clusters)),
+        Precision = max(MLmetrics::Precision(labels, umap_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - umap_clusters, positive = "1")),
+        Recall = max(MLmetrics::Recall(labels, umap_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - umap_clusters, positive = "1")),
+        FScore = max(MLmetrics::F1_Score(labels, umap_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - umap_clusters, positive = "1"))
+      )
+      cli::cli_alert_success("UMAP + KMeans")
+
+      # Salva i risultati per questa combinazione
+      all_results[[paste(combo, collapse = "_")]] <- clustering_results
+      cli::cli_alert_success("Combination {combo} evaluated successfully!")
+    }
+  }
 
 
+  # Add a new element to the list to store the top genes combinations by running the selectTopCombinations function
+  cli::cli_h3("Selecting Top Combinations")
+  cli::cli_alert_info("Selecting top {N} combinations based on {metric} ...")
+  topCombinations <- selectTopCombinations(
+    all_results, N = N, metric = metric)
+  cli::cli_alert_success("Top combinations selected successfully!")
 
-count_table <- as.data.frame((b@data$adjusted.data))
-gene_list <- c$consensusGenes[1:5]
-labels <- as.numeric(b@data$metadata$class)
-result <- evaluate_clustering(count_table, gene_list, labels)
+  # Plot the top combinations using the plotTopMetrics function
+  cli::cli_h3("Plotting Top Combinations")
+  cli::cli_alert_info("Generating plots of top {N} combinations ...")
+  p <- plotTopMetrics(topCombinations)
+  print(p)
+  cli::cli_alert_success("Top combinations plotted successfully!")
 
+  # Store the results in a list
+  results <- list(
+    allResults = all_results,
+    topCombinations = topCombinations
+  )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  return(results)
+}
 
 
 
