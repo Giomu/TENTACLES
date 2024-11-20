@@ -127,8 +127,8 @@ create_dynamic_workflow_sets <- function(models, selector.recipes, data) {
   recipe_corr <- recipes::recipe(class ~ ., data = data) %>%
     recipes::step_nzv(recipes::all_predictors()) %>%
     recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-    recipes::step_corr(recipes::all_predictors(), threshold = 0.8) %>%
-    themis::step_rose(class)
+    recipes::step_corr(recipes::all_predictors(), threshold = 0.8) #%>%
+    # themis::step_rose(class)
 
   # Filter to keep only models selected by User
   filtered_specs <- model_specs[models]
