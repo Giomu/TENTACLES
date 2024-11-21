@@ -144,7 +144,7 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
   g <- string_db$get_subnetwork(final_genes)
 
   # Import igraph to manipulate resulting network
-  suppressMessages(library(igraph))
+  # suppressMessages(library(igraph))
 
   # Change protein names with preferred_name
   igraph::V(g)$name <- names$preferred_name
@@ -213,9 +213,9 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
   # g2 <- set_edge_attr(g2, "weight", value = edge_betweenness(g2))
   cli::cli_alert_success("Communities detected!")
 
-  suppressMessages(library(ggraph))
-  suppressMessages(library(grid))
-  suppressMessages(library(tidyverse))
+  # suppressMessages(library(ggraph))
+  # suppressMessages(library(grid))
+  # suppressMessages(library(tidyverse))
 
   cli::cli_alert_info("Generating Network visualization ...")
   # Function to create custom labels for communities

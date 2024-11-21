@@ -4,7 +4,6 @@
 
 # Helper function to plot PCA before and after batch correction
 batch.pca.plot <- function(data.before, data.after, batch, metadata) {
-
     # Helpler function to perform PCA
     perform.pca <- function(data) {
         # Perform PCA
@@ -31,12 +30,18 @@ batch.pca.plot <- function(data.before, data.after, batch, metadata) {
     pca_data$correction <- factor(pca_data$correction, levels = c("Before", "After"))
 
     # Plot PCA
+    PC1 <- NULL
+    PC2 <- NULL
+    colors <- colorRampPalette(brewer.pal(brewer.pal.info["Set2", 1], name = "Set2"))(length(unique(pca_data$batch)))
     p <- ggplot(pca_data, aes(x = PC1, y = PC2, color = batch)) +
-        geom_point(alpha = 0.75) +
+        geom_point( # size = 4,
+            alpha = 0.75
+        ) +
         suppressMessages(ggside::geom_ysidedensity(aes(color = batch), linewidth = 0.65, show.legend = FALSE)) +
         suppressMessages(ggside::geom_xsidedensity(aes(color = batch), linewidth = 0.65, show.legend = FALSE)) +
         labs(color = "Batch") +
-        scale_color_brewer(palette = "Set2") +
+        scale_color_manual(values = colors) +
+        guides(fill = "none") +
         theme_minimal() +
         theme(
             legend.position = "bottom",
@@ -48,7 +53,10 @@ batch.pca.plot <- function(data.before, data.after, batch, metadata) {
             panel.grid.major = element_line(color = "#d3d3d355"),
             panel.border = element_rect(colour = "gray", fill = NA, size = 0.8),
             axis.line = element_blank(),
-            axis.ticks = element_blank()
+            axis.ticks = element_blank(),
+            ggside.panel.grid = element_blank(),
+            ggside.panel.border = element_blank(),
+            ggside.axis.line = element_blank()
         ) +
         facet_wrap(~correction, scales = "fixed")
 
@@ -57,7 +65,6 @@ batch.pca.plot <- function(data.before, data.after, batch, metadata) {
 
 # Helper function to plot PVCA before and after batch correction
 batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, covar) {
-
     # Match data with metadata
     metadata <- match.samples(data.before, metadata)
 
@@ -102,78 +109,85 @@ batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, cov
 
     # Plot PVCA
     p <- ggplot(pvca_data, aes(x = V1, y = Effects, color = correction)) +
-        geom_line(aes(group = Effects), size = 2, color = "lightgray", alpha = 0.75) +
-        geom_point(size = 4, alpha = 0.95) +
+        geom_line(aes(group = Effects), size = 2.5, color = "lightgray", alpha = 0.75) +
+        geom_point(size = 10, alpha = 0.95) +
         scale_color_brewer(palette = "Paired") +
         labs(x = "Weighted average proportion variance", color = "Batch correction") +
-        scale_x_continuous(labels = scales::percent) +
+        scale_x_continuous(
+            labels = scales::percent,
+            limits = c(0, max(pvca_data$V1)),
+            breaks = c(0, max(pvca_data$V1) / 2, max(pvca_data$V1))
+        ) +
         theme_minimal() +
         theme(
-            legend.position = "right",
-            axis.text = element_text(size = 14, color = "#696969"),
+            legend.position = "bottom",
+            axis.text.x = element_text(size = 14, color = "#696969"),
+            axis.text.y = element_text(size = 16, color = "#696969"),
             axis.title = element_text(size = 14, color = "#696969"),
             axis.title.y = element_blank(),
             axis.line.x = element_line(color = "gray", size = 0.2),
             axis.ticks.x = element_line(color = "gray", size = 0.8),
             legend.title = element_text(size = 12),
             legend.text = element_text(size = 12),
-            legend.key.size = unit(0.5, "cm")
-        ) +
-        facet_wrap(~correction, scales = "fixed", ncol = 1, strip.position = "right")
+            legend.key.size = unit(0.5, "cm"),
+            panel.grid.minor = element_blank(),
+            panel.grid.major.x = element_blank(),
+            strip.text = element_text(size = 16, color = "#696969"),
+        )
 
     return(p)
 }
-
 
 
 # ----------------- CLASSIFICATION PLOTS ----------------------------
 
-#' @title upset.plot
-#' @description This function generates an UpSet plot to visualize the overlap of
-#' features across different models.
-#'
-#' @param data.obj An object of class ensBP.
-#'
-#' @return An UpSet plot visualizing the overlap of features across different models.
-#'
-#' @import ggplot2
-#' @importFrom UpSetR fromList upset
-#'
-#' @examples
-#' \dontrun{
-#' # Example usage of upset.plot function
-#' upset.plot(data.obj)}
-#'
-#' @export
-upset.plot <- function(data.obj) { # TODO fix upset plot
-    model_features_list <- data.obj@model.features
-    features <- lapply(model_features_list, function(x) unique(x$Variable))
-    names(features) <- names(model_features_list)
-    upset_list <- UpSetR::fromList(features)
+# #' @title upset.plot
+# #' @description This function generates an UpSet plot to visualize the overlap of
+# #' features across different models.
+# #'
+# #' @param data.obj An object of class ensBP.
+# #'
+# #' @return An UpSet plot visualizing the overlap of features across different models.
+# #'
+# #' @import ggplot2
+# #' @importFrom UpSetR fromList upset
+# #'
+# #' @examples
+# #' \dontrun{
+# #' # Example usage of upset.plot function
+# #' upset.plot(data.obj)
+# #' }
+# #'
+# #' @export
+# upset.plot <- function(data.obj) { # TODO fix upset plot
+#     model_features_list <- data.obj@model.features
+#     features <- lapply(model_features_list, function(x) unique(x$Variable))
+#     names(features) <- names(model_features_list)
+#     upset_list <- UpSetR::fromList(features)
 
-    color <- "steelblue"
+#     color <- "steelblue"
 
-    p <- UpSetR::upset(upset_list,
-        order.by = "freq",
-        keep.order = TRUE,
-        nsets = length(upset_list),
-        nintersects = NA,
-        sets.x.label = "Set size",
-        mainbar.y.label = "Intersection size",
-        point.size = 4,
-        line.size = 1.5,
-        text.scale = c(2.8, 2.4, 2.3, 2.4, 2.4, 2.4),
-        # text.scale = c(5.8, 5.4, 5.3, 5.4, 5.4, 5.4),
-        mb.ratio = c(0.6, 0.4),
-        matrix.color = color,
-        sets.bar.color = color,
-        main.bar.color = color,
-        shade.color = color,
-        shade.alpha = 0.09,
-    )
+#     p <- UpSetR::upset(upset_list,
+#         order.by = "freq",
+#         keep.order = TRUE,
+#         nsets = length(upset_list),
+#         nintersects = NA,
+#         sets.x.label = "Set size",
+#         mainbar.y.label = "Intersection size",
+#         point.size = 4,
+#         line.size = 1.5,
+#         text.scale = c(2.8, 2.4, 2.3, 2.4, 2.4, 2.4),
+#         # text.scale = c(5.8, 5.4, 5.3, 5.4, 5.4, 5.4),
+#         mb.ratio = c(0.6, 0.4),
+#         matrix.color = color,
+#         sets.bar.color = color,
+#         main.bar.color = color,
+#         shade.color = color,
+#         shade.alpha = 0.09,
+#     )
 
-    return(p)
-}
+#     return(p)
+# }
 
 
 #' @title upset.plot2
@@ -191,7 +205,8 @@ upset.plot <- function(data.obj) { # TODO fix upset plot
 #' @examples
 #' \dontrun{
 #' # Example usage of upset.plot2 function
-#' upset.plot2(data.obj)}
+#' upset.plot2(data.obj)
+#' }
 #'
 #' @export
 upset.plot2 <- function(data.obj) {
@@ -206,7 +221,7 @@ upset.plot2 <- function(data.obj) {
     # Build Upset plot with ComplexUpSet library
     p <- ComplexUpset::upset(
         upset_data,
-        intersect = names(features), # Nomi dei set
+        intersect = names(features),
         width_ratio = 0.2,
         height_ratio = 1.5,
         name = "",
@@ -220,13 +235,14 @@ upset.plot2 <- function(data.obj) {
         ),
         themes = ComplexUpset::upset_modify_themes(
             list(
-                "intersections_matrix" = ggplot2::theme(
-                    axis.text = ggplot2::element_text(size = 10),
+                "intersections_matrix" = theme(
+                    axis.text = element_text(size = 10),
                     plot.background = element_rect(fill = "transparent", color = NA)
                 )
             )
         )
     )
+
 
     return(p)
 }
@@ -244,7 +260,8 @@ upset.plot2 <- function(data.obj) {
 #' @examples
 #' \dontrun{
 #' # Example usage of performances.plot function
-#' performances.plot(performances)}
+#' performances.plot(performances)
+#' }
 #'
 #' @export
 performances.plot <- function(performances) {
@@ -271,58 +288,96 @@ performances.plot <- function(performances) {
     )
     performances$type <- factor(performances$type, levels = c("Tuning", "Test"))
 
-    fill_colors <- c("Tuning" = "#66C2A5", "Test" = "#FC8D62")
+    fill_colors <- c("Tuning" = "#8da0cb", "Test" = "#e78ac3")
 
-    model <- NULL
-    mean <- NULL
-    type <- NULL
-    p <- ggplot(performances, aes(x = model, y = mean, fill = type)) +
-        geom_bar(stat = "identity", position = "dodge", color = "darkgrey", width = 0.5) +
-        labs(title = "Model performances", x = "", y = "", fill = "") +
-        theme_minimal() +
-        scale_fill_manual(values = fill_colors) +
-        theme_minimal() +
-        #theme(axis.text.x = element_text(angle = 270, vjust = 0.1, hjust=0.1)) +
-        coord_flip() +
-        # theme(
-        #     axis.text.x = element_text(size = 12),
-        #     axis.text.y = element_text(size = 12),
-        #     axis.title.x = element_text(size = 14),
-        #     axis.title.y = element_text(size = 14),
-        #     legend.position = "bottom",
-        #     legend.title = element_text(size = 14),
-        #     legend.text = element_text(size = 12),
-        #     strip.text = element_text(size = 16),
-        #     panel.grid.minor = element_blank(),
-        #     panel.border = element_rect(colour = "black", fill = NA, size = 0.5),
-        #     plot.title = element_text(size = 18, hjust = 0.5)
-        # ) +
-        facet_wrap(~metric)#, scales = "free_y")
+    # Circular plot using circlize
+    # To test, filter by type = Tuining
+    # filt_perf <- performances[performances$type == "Tuning", ]
+    # circos_colors <- c("firebrick", "dodgerblue", "forestgreen", "darkorange")
+
+    # # Circos parameters
+    # circos.par(cell.padding = c(0, 0, 0, 0), track.height = 0.4)
+
+    # # Initialize
+    # circos.initialize(factors = filt_perf$model, x = 1, y = filt_perf$mean, xlim = c(0, 1))
+
+    # # Track
+    # circos.trackPlotRegion(
+    #     factors = filt_perf$model,
+    #     y = filt_perf$mean,
+    #     panel.fun = function(x, y) {
+    #         circos.axis(h = "top", labels.cex = 0.5)
+    #         circos.text(
+    #             x = 1, y = 0.5, labels = filt_perf$metric, facing = "clockwise",
+    #             niceFacing = TRUE, cex = 0.5
+    #         )
+    #     },
+    #     bg.border = NA
+    # )
+
+    # circos.trackLines(
+    #     factors = filt_perf$model,
+    #     y = filt_perf$mean,
+    #     col = circos_colors,
+    #     lwd = 5
+    # )
+
+
+    # model <- NULL
+    # mean <- NULL
+    # type <- NULL
+    # p <- ggplot(performances, aes(x = model, y = mean, fill = type)) +
+    #     geom_bar(stat = "identity", position = "dodge", color = "darkgrey", width = 0.5) +
+    #     labs(title = "Model performances", x = "", y = "", fill = "") +
+    #     theme_minimal() +
+    #     scale_fill_manual(values = fill_colors) +
+    #     theme_minimal() +
+    #     # theme(axis.text.x = element_text(angle = 270, vjust = 0.1, hjust=0.1)) +
+    #     coord_flip() +
+    #     # theme(
+    #     #     axis.text.x = element_text(size = 12),
+    #     #     axis.text.y = element_text(size = 12),
+    #     #     axis.title.x = element_text(size = 14),
+    #     #     axis.title.y = element_text(size = 14),
+    #     #     legend.position = "bottom",
+    #     #     legend.title = element_text(size = 14),
+    #     #     legend.text = element_text(size = 12),
+    #     #     strip.text = element_text(size = 16),
+    #     #     panel.grid.minor = element_blank(),
+    #     #     panel.border = element_rect(colour = "black", fill = NA, size = 0.5),
+    #     #     plot.title = element_text(size = 18, hjust = 0.5)
+    #     # ) +
+    #     facet_wrap(~metric) # , scales = "free_y")
 
     return(p)
 }
 
 ## TODO: make it more beautiful!!
 #' @export
-predheat.plot <- function(predictions_df){
-
+predheat.plot <- function(predictions_df) {
     predictions_df <- predictions_df %>%
         dplyr::mutate(correct = ifelse(class == .pred_class, "Correct", "Incorrect"))
 
     # Creiamo un plot con ggplot
     p <- ggplot(predictions_df, aes(x = model, y = ID, fill = correct)) +
         geom_tile(
-            color = "white", lwd = 1, linetype = 1) +
+            color = "white", lwd = 1, linetype = 1
+        ) +
         scale_fill_manual(
-            values = c("Correct" = "lightblue", "Incorrect" = "indianred")) +
+            values = c("Correct" = "lightblue", "Incorrect" = "indianred")
+        ) +
         theme_minimal() +
-        labs(title = "Predictions Heatmap",
-             x = "",
-             y = "",
-             fill = "Prediction Status") +
+        labs(
+            title = "Predictions Heatmap",
+            x = "",
+            y = "",
+            fill = "Prediction Status"
+        ) +
         theme_minimal() +
-        theme(axis.text.x = element_text(angle = 270, hjust = 0, vjust = 0.5),
-              axis.text.y = element_text(size = 5))
+        theme(
+            axis.text.x = element_text(angle = 270, hjust = 0, vjust = 0.5),
+            axis.text.y = element_text(size = 5)
+        )
 
     return(p)
 }
@@ -533,7 +588,7 @@ plotTopMetrics <- function(top_results) {
     # Preparazione dei dati: da wide a long usando tidyr::pivot_longer
     long_results <- top_results %>%
         tidyr::pivot_longer(
-            #cols = starts_with("KMeans"):starts_with("UMAP"), # Seleziona tutte le colonne dei metodi
+            # cols = starts_with("KMeans"):starts_with("UMAP"), # Seleziona tutte le colonne dei metodi
             tidyselect::matches("^(KMeans|GMM|HC|PCA|tSNE|UMAP)_"),
             names_to = c("Model", "Metric"),
             names_sep = "_", # Divide il nome in base al separatore "_"
@@ -541,20 +596,23 @@ plotTopMetrics <- function(top_results) {
         )
 
     # Definisci i colori manualmente per ogni modello
-    model_colors <- c("KMeans" = "#83B8C6", "GMM" = "#F3D17C", "HC" = "#C5DBC4",
-                      "PCA" = "#F49595", "tSNE" = "#C4C7E2", "UMAP" = "#EEC18E")
+    model_colors <- c(
+        "KMeans" = "#83B8C6", "GMM" = "#F3D17C", "HC" = "#C5DBC4",
+        "PCA" = "#F49595", "tSNE" = "#C4C7E2", "UMAP" = "#EEC18E"
+    )
 
     # Crea un'etichetta per la casella di testo che mostra le corrispondenze
     gene_correspondence_text <- paste(
-        gene_mapping$Short_Label, ":", gene_mapping$Gene_Combination, collapse = "\n"
+        gene_mapping$Short_Label, ":", gene_mapping$Gene_Combination,
+        collapse = "\n"
     )
 
 
     # Creazione del plot usando ggplot2
     p <- ggplot2::ggplot(long_results, ggplot2::aes(x = Short_Label, y = Value, fill = Model)) +
         ggplot2::geom_bar(stat = "identity", position = "dodge") + # Bar plot con i modelli affiancati
-        ggplot2::facet_wrap(~ Metric, scales = "fixed") +        # Un riquadro per ogni metrica
-        ggplot2::scale_fill_manual(values = model_colors) +       # Imposta i colori personalizzati
+        ggplot2::facet_wrap(~Metric, scales = "fixed") + # Un riquadro per ogni metrica
+        ggplot2::scale_fill_manual(values = model_colors) + # Imposta i colori personalizzati
         ggplot2::theme_minimal() +
         ggplot2::labs(
             title = "Performance Metrics by Model and Gene Combination",
@@ -566,35 +624,11 @@ plotTopMetrics <- function(top_results) {
         ggplot2::theme(
             axis.text.x = ggplot2::element_text(angle = 90, hjust = 1, face = "bold"),
             plot.caption = ggplot2::element_text(
-                size = 5, hjust = 0, vjust = 1, margin = ggplot2::margin(t = 10) ,
-                color = "darkgray", face = "italic")
+                size = 5, hjust = 0, vjust = 1, margin = ggplot2::margin(t = 10),
+                color = "darkgray", face = "italic"
+            )
         ) +
         ggplot2::guides(fill = ggplot2::guide_legend(ncol = 1))
 
     return(p)
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
