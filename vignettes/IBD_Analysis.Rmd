@@ -133,13 +133,18 @@ This object serves as a structured container, enabling seamless integration with
 options(future.globals.maxSize = 2 * 1024^3)
 # Define models to run and recipes to use
 models <- c(
-  'xgboost', 'bag_tree', 'lightGBM', 'pls', 'logistic', 'C5_rules', 
-  'mars', 'bag_mars', 'mlp', 'bag_mlp', 'decision_tree', 'rand_forest')#, 
+  'xgboost', 'bag_tree', 'lightGBM', 'C5_rules', 
+  'mlp', 'bag_mlp', 'decision_tree', 'rand_forest')#, 
   #'svm_linear', 'svm_poly', 'svm_rbf')
-selector.recipes <- c("corr")
+selector.recipes <- c("boruta")
 # Run classifiers
 enso <- runClassifiers(
   preProcess.obj = pre_proc, models = models, selector.recipes = selector.recipes, 
   tuning.method = "tune_grid", n = 3, v = 3, metric = "accuracy", nsim = 2, seed = 123)
 
 ```
+```{r}
+# Plot upset.plot2
+upset.plot2(enso)
+```
+

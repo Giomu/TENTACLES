@@ -34,7 +34,7 @@ a <- preProcess(df.count = df.count, df.clin = df.clin, batch = "patient.gender"
 
 ```{r runClassifiers}
 # Run classifiers
-b <- runClassifiers(a, models = c("bag_mlp", "rand_forest", "svm_poly", "mlp", "C5_rules"),
+b <- runClassifiers(a, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
                     selector.recipes = c("boruta"))
 ```
 
@@ -42,7 +42,7 @@ b <- runClassifiers(a, models = c("bag_mlp", "rand_forest", "svm_poly", "mlp", "
 
 ```{r getConsensus}
 # Get and test consensus
-c <- getConsensus(b, n.min = 5)
+c <- getConsensus(b, n.min = 4)
 ```
 
 ##Validation
