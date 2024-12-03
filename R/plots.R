@@ -141,56 +141,7 @@ batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, cov
 
 # ----------------- CLASSIFICATION PLOTS ----------------------------
 
-# #' @title upset.plot
-# #' @description This function generates an UpSet plot to visualize the overlap of
-# #' features across different models.
-# #'
-# #' @param data.obj An object of class ensBP.
-# #'
-# #' @return An UpSet plot visualizing the overlap of features across different models.
-# #'
-# #' @import ggplot2
-# #' @importFrom UpSetR fromList upset
-# #'
-# #' @examples
-# #' \dontrun{
-# #' # Example usage of upset.plot function
-# #' upset.plot(data.obj)
-# #' }
-# #'
-# #' @export
-# upset.plot <- function(data.obj) { # TODO fix upset plot
-#     model_features_list <- data.obj@model.features
-#     features <- lapply(model_features_list, function(x) unique(x$Variable))
-#     names(features) <- names(model_features_list)
-#     upset_list <- UpSetR::fromList(features)
-
-#     color <- "steelblue"
-
-#     p <- UpSetR::upset(upset_list,
-#         order.by = "freq",
-#         keep.order = TRUE,
-#         nsets = length(upset_list),
-#         nintersects = NA,
-#         sets.x.label = "Set size",
-#         mainbar.y.label = "Intersection size",
-#         point.size = 4,
-#         line.size = 1.5,
-#         text.scale = c(2.8, 2.4, 2.3, 2.4, 2.4, 2.4),
-#         # text.scale = c(5.8, 5.4, 5.3, 5.4, 5.4, 5.4),
-#         mb.ratio = c(0.6, 0.4),
-#         matrix.color = color,
-#         sets.bar.color = color,
-#         main.bar.color = color,
-#         shade.color = color,
-#         shade.alpha = 0.09,
-#     )
-
-#     return(p)
-# }
-
-
-#' @title upset.plot2
+#' @title upset.plot
 #' @description This function generates an UpSet plot to visualize the overlap of
 #' features across different models using the ComplexUpSet library.
 #'
@@ -205,11 +156,10 @@ batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, cov
 #' @examples
 #' \dontrun{
 #' # Example usage of upset.plot2 function
-#' upset.plot2(data.obj)
-#' }
+#' upset.plot(data.obj)}
 #'
 #' @export
-upset.plot2 <- function(data.obj) {
+upset.plot <- function(data.obj) {
     # Extract features
     model_features_list <- data.obj@model.features
     features <- lapply(model_features_list, function(x) unique(x$Variable))
@@ -218,34 +168,55 @@ upset.plot2 <- function(data.obj) {
     # Convert Data in right format
     upset_data <- UpSetR::fromList(features)
 
-    # Build Upset plot with ComplexUpSet library
+    # Build Upset plot with ComplexUpset library
     p <- ComplexUpset::upset(
         upset_data,
-        intersect = names(features),
+        intersect = names(features), # Nomi dei set
         width_ratio = 0.2,
         height_ratio = 1.5,
         name = "",
+        set_sizes = ComplexUpset::upset_set_size(
+            geom = ggplot2::geom_bar(
+                fill = "#EDAE49", width = 0.4, alpha = 0.6),
+            position = "right"
+        ),
         stripes = c(alpha("grey90", 0.45), alpha("white", 0.3)),
         base_annotations = list(
             "Intersection size" = ComplexUpset::intersection_size(
-                text = list(size = 4),
-                # color = '',
-                fill = "steelblue"
+                text = list(size = 2),
+                fill = "#00798C",
+                width = 0.8
             )
         ),
         themes = ComplexUpset::upset_modify_themes(
             list(
-                "intersections_matrix" = theme(
-                    axis.text = element_text(size = 10),
-                    plot.background = element_rect(fill = "transparent", color = NA)
+                "intersections_matrix" = ggplot2::theme(
+                    axis.text = ggplot2::element_text(size = 10),
+                    plot.background = ggplot2::element_rect(fill = "transparent", color = NA),
+                    panel.grid.major = ggplot2::element_line(linewidth = 0.5),
+                    panel.grid.minor = ggplot2::element_blank()
                 )
             )
         )
     )
 
+    # Modifica i pallini nella matrice delle intersezioni per renderli quadrati
+    p$layers <- lapply(p$layers, function(layer) {
+        if ("GeomPoint" %in% class(layer$geom)) {
+            layer$geom$default_aes$shape <- 15  # Quadrati
+            layer$geom$default_aes$size <- 2.5    # Dimensione
+        }
+        if ("GeomSegment" %in% class(layer$geom)) {
+            layer$geom$default_aes$linetype <- "dotted"  # Linee tratteggiate
+            layer$geom$default_aes$size <- 0.2           # Spessore della linea
+            layer$geom$default_aes$colour <- "grey30"       # Colore grigio
+        }
+        layer
+    })
 
     return(p)
 }
+
 
 
 #' @title performances.plot
@@ -375,9 +346,9 @@ predheat.plot <- function(predictions_df) {
         ) +
         theme_minimal() +
         theme(
-            axis.text.x = element_text(angle = 270, hjust = 0, vjust = 0.5),
-            axis.text.y = element_text(size = 5)
-        )
+            axis.text.x = element_text(angle = 90, hjust = 0, vjust = 0.5),
+            axis.text.y = element_text(size = 7)) +
+        coord_flip()
 
     return(p)
 }
