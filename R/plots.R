@@ -128,52 +128,52 @@ batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, cov
 
 # ----------------- CLASSIFICATION PLOTS ----------------------------
 
-#' @title upset.plot
-#' @description This function generates an UpSet plot to visualize the overlap of
-#' features across different models.
+#' #' @title upset.plot
+#' #' @description This function generates an UpSet plot to visualize the overlap of
+#' #' features across different models.
+#' #'
+#' #' @param data.obj An object of class ensBP.
+#' #'
+#' #' @return An UpSet plot visualizing the overlap of features across different models.
+#' #'
+#' #' @import ggplot2
+#' #' @importFrom UpSetR fromList upset
+#' #'
+#' #' @examples
+#' #' \dontrun{
+#' #' # Example usage of upset.plot function
+#' #' upset.plot(data.obj)}
+#' #'
+#' #' @export
+#' upset.plot <- function(data.obj) { # TODO fix upset plot
+#'     model_features_list <- data.obj@model.features
+#'     features <- lapply(model_features_list, function(x) unique(x$Variable))
+#'     names(features) <- names(model_features_list)
+#'     upset_list <- UpSetR::fromList(features)
 #'
-#' @param data.obj An object of class ensBP.
+#'     color <- "steelblue"
 #'
-#' @return An UpSet plot visualizing the overlap of features across different models.
+#'     p <- UpSetR::upset(upset_list,
+#'         order.by = "freq",
+#'         keep.order = TRUE,
+#'         nsets = length(upset_list),
+#'         nintersects = NA,
+#'         sets.x.label = "Set size",
+#'         mainbar.y.label = "Intersection size",
+#'         point.size = 4,
+#'         line.size = 1.5,
+#'         text.scale = c(2.8, 2.4, 2.3, 2.4, 2.4, 2.4),
+#'         # text.scale = c(5.8, 5.4, 5.3, 5.4, 5.4, 5.4),
+#'         mb.ratio = c(0.6, 0.4),
+#'         matrix.color = color,
+#'         sets.bar.color = color,
+#'         main.bar.color = color,
+#'         shade.color = color,
+#'         shade.alpha = 0.09,
+#'     )
 #'
-#' @import ggplot2
-#' @importFrom UpSetR fromList upset
-#'
-#' @examples
-#' \dontrun{
-#' # Example usage of upset.plot function
-#' upset.plot(data.obj)}
-#'
-#' @export
-upset.plot <- function(data.obj) { # TODO fix upset plot
-    model_features_list <- data.obj@model.features
-    features <- lapply(model_features_list, function(x) unique(x$Variable))
-    names(features) <- names(model_features_list)
-    upset_list <- UpSetR::fromList(features)
-
-    color <- "steelblue"
-
-    p <- UpSetR::upset(upset_list,
-        order.by = "freq",
-        keep.order = TRUE,
-        nsets = length(upset_list),
-        nintersects = NA,
-        sets.x.label = "Set size",
-        mainbar.y.label = "Intersection size",
-        point.size = 4,
-        line.size = 1.5,
-        text.scale = c(2.8, 2.4, 2.3, 2.4, 2.4, 2.4),
-        # text.scale = c(5.8, 5.4, 5.3, 5.4, 5.4, 5.4),
-        mb.ratio = c(0.6, 0.4),
-        matrix.color = color,
-        sets.bar.color = color,
-        main.bar.color = color,
-        shade.color = color,
-        shade.alpha = 0.09,
-    )
-
-    return(p)
-}
+#'     return(p)
+#' }
 
 
 #' @title upset.plot2
@@ -191,10 +191,10 @@ upset.plot <- function(data.obj) { # TODO fix upset plot
 #' @examples
 #' \dontrun{
 #' # Example usage of upset.plot2 function
-#' upset.plot2(data.obj)}
+#' upset.plot(data.obj)}
 #'
 #' @export
-upset.plot2 <- function(data.obj) {
+upset.plot <- function(data.obj) {
     # Extract features
     model_features_list <- data.obj@model.features
     features <- lapply(model_features_list, function(x) unique(x$Variable))
@@ -333,7 +333,7 @@ predheat.plot <- function(predictions_df){
     # Creiamo un plot con ggplot
     p <- ggplot(predictions_df, aes(x = model, y = ID, fill = correct)) +
         geom_tile(
-            color = "white", lwd = 1, linetype = 1) +
+            color = "white", lwd = 0.5, linetype = 1) +
         scale_fill_manual(
             values = c("Correct" = "lightblue", "Incorrect" = "indianred")) +
         theme_minimal() +
@@ -342,12 +342,13 @@ predheat.plot <- function(predictions_df){
              y = "",
              fill = "Prediction Status") +
         theme_minimal() +
-        theme(axis.text.x = element_text(angle = 270, hjust = 0, vjust = 0.5),
-              axis.text.y = element_text(size = 5))
-
+        theme(axis.text.x = element_text(
+            angle = 90, hjust = 0, vjust = 0.5, size = 2),
+              axis.text.y = element_text(size = 7)) +
+        coord_flip()
     return(p)
 }
-
+# predheat.plot(predictions_df)
 
 # ---------------------------------------------- ENRICHMENT PLOTS ----------------------------------------------
 

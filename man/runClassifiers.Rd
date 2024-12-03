@@ -46,7 +46,7 @@ Possible values are 'accuracy', 'roc_auc', 'sensitivity', 'specificity'.}
 An object of class ensBP.
 }
 \description{
-This function performs the ensemble of models using the ensBP approach.
+This function tunes and fits specified models paired with feature selectors methods on preprocessed data and computes variable importances for each method.
 }
 \details{
 The function performs the ensemble of models using the ensBP approach.

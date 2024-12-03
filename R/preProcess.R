@@ -82,8 +82,6 @@ data.import <- function(
   return(preProcess.obj)
 }
 
-
-
 # Helper function to normalize data
 normalization <- function(df.count, mincpm = 1, minfraction = 0.1) {
 
@@ -157,7 +155,7 @@ correct.batches <- function(data, metadata,
   # Format data for ComBat
   data_noclass <- data[, -ncol(data)]
   data_noclass <- t(data_noclass)
-  batch_factor <- as.factor(metadata[, batch]) # TODO possible bugs after dividing batch and covar.mod between splits. They could disappear from one split.
+  batch_factor <- as.factor(metadata[, batch])
 
   # Perform batch correction using ComBat
   corrected_data <- suppressMessages(sva::ComBat(dat = data_noclass, batch = batch_factor, mod = covar_mod_matrix))
@@ -167,9 +165,6 @@ correct.batches <- function(data, metadata,
 
   return(corrected_data)
 }
-
-
-
 
 
 #' @title Pre-process data

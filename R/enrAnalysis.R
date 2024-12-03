@@ -1,6 +1,6 @@
-#suppressMessages(library(clusterProfiler))
-suppressMessages(library(org.Hs.eg.db))
-suppressMessages(library(stringr))
+# suppressMessages(library(clusterProfiler))
+# suppressMessages(library(org.Hs.eg.db))
+# suppressMessages(library(stringr))
 
 
 
@@ -42,41 +42,43 @@ suppressMessages(library(stringr))
 #'
 #' @export
 enrich.GO <- function(gene_list, keyType = "SYMBOL", pval = 0.05,
-                      ont = "BP", groupGO = TRUE, signif = TRUE, level = 4){
+                      ont = "BP", groupGO = TRUE, signif = TRUE, level = 4) {
+  go_results <- clusterProfiler::enrichGO(
+    gene = gene_list,
+    OrgDb = org.Hs.eg.db,
+    keyType = keyType,
+    ont = ont,
+    pvalueCutoff = pval,
+    pool = 1
+  )
 
-  go_results <- clusterProfiler::enrichGO(gene = gene_list,
-                                          OrgDb = org.Hs.eg.db,
-                                          keyType = keyType,
-                                          ont = ont,
-                                          pvalueCutoff = pval,
-                                          pool = 1)
-
-  if (groupGO == TRUE & signif == TRUE){
+  if (groupGO == TRUE & signif == TRUE) {
     padj <- pval
-    group_go <- clusterProfiler::groupGO(gene_list, OrgDb='org.Hs.eg.db',
-                                         keyType = keyType, ont = ont,
-                                         level = level)
+    group_go <- clusterProfiler::groupGO(gene_list,
+      OrgDb = "org.Hs.eg.db",
+      keyType = keyType, ont = ont,
+      level = level
+    )
     go_level <- group_go@result$ID
     go_signif <- go_results@result[go_results@result$p.adjust < padj, ]
     go_signif <- go_signif[go_signif$ID %in% go_level, ]
     return(go_signif)
-
-  } else if (groupGO == TRUE & signif == FALSE){
+  } else if (groupGO == TRUE & signif == FALSE) {
     padj <- pval
-    group_go <- clusterProfiler::groupGO(gene_list, OrgDb='org.Hs.eg.db',
-                                         keyType = keyType, ont = ont,
-                                         level = level)
+    group_go <- clusterProfiler::groupGO(gene_list,
+      OrgDb = "org.Hs.eg.db",
+      keyType = keyType, ont = ont,
+      level = level
+    )
     go_level <- group_go@result$ID
     go_signif <- go_results@result
     go_signif <- go_signif[go_signif$ID %in% go_level, ]
     return(go_signif)
-
-  } else if (groupGO == FALSE & signif == TRUE){
+  } else if (groupGO == FALSE & signif == TRUE) {
     padj <- pval
     go_signif <- go_results@result[go_results@result$p.adjust < padj, ]
     return(go_signif)
-
-  } else{
+  } else {
     return(go_results@result)
   }
 }
@@ -111,17 +113,18 @@ enrich.GO <- function(gene_list, keyType = "SYMBOL", pval = 0.05,
 #' }
 #'
 #' @export
-enrich.kegg <- function(gene_list, keyType = 'SYMBOL', pval = 0.05, signif = TRUE){
-
+enrich.kegg <- function(gene_list, keyType = "SYMBOL", pval = 0.05, signif = TRUE) {
   # Map gene SYMBOL into entrezID
   entrez_genes <- as.character(AnnotationDbi::mapIds(org.Hs.eg.db, gene_list, "ENTREZID", keyType))
-  kegg_results <- clusterProfiler::enrichKEGG(gene = entrez_genes,
-                                              organism = "hsa",
-                                              keyType = "kegg",
-                                              pvalueCutoff = pval)
+  kegg_results <- clusterProfiler::enrichKEGG(
+    gene = entrez_genes,
+    organism = "hsa",
+    keyType = "kegg",
+    pvalueCutoff = pval
+  )
 
   # Condition to return only significant results or not
-  if (signif == TRUE){
+  if (signif == TRUE) {
     padj <- pval
     kegg_results_filtered <- kegg_results@result[kegg_results@result$p.adjust < padj, ]
   } else {
@@ -136,8 +139,3 @@ enrich.kegg <- function(gene_list, keyType = 'SYMBOL', pval = 0.05, signif = TRU
 
   return(kegg_results_filtered)
 }
-
-
-
-
-

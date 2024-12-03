@@ -356,7 +356,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 
 
 #' @title runClassifiers
-#' @description This function performs the ensemble of models using the ensBP approach.
+#' @description This function tunes and fits specified models paired with feature selectors methods on preprocessed data and computes variable importances for each method.
 #'
 #' @param preProcess.obj An object of class preProcess.
 #' @param models A character vector specifying the models to be used.
@@ -410,7 +410,8 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #'
 #' @export
 runClassifiers <- function(
-    preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"), selector.recipes = c("boruta", "roc", "boruta"),
+    preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"),
+    selector.recipes = c("boruta", "roc", "boruta"),
     tuning.method = "tune_grid", n = 5, v = 3, metric = "accuracy",
     nsim = 2, seed = 123) {
 
@@ -492,7 +493,7 @@ runClassifiers <- function(
 
   cli::cli_h2("Plots")
   cli::cli_alert_info("Generating UpSet plot ...")
-  up <- upset.plot2(obj)
+  up <- upset.plot(obj)
   print(up)
   cli::cli_alert_success("Successfully generated UpSet plot!")
 
