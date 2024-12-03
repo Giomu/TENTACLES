@@ -492,7 +492,7 @@ runClassifiers <- function(
 
   cli::cli_h2("Plots")
   cli::cli_alert_info("Generating UpSet plot ...")
-  up <- upset.plot2(obj)
+  up <- upset.plot(obj)
   print(up)
   cli::cli_alert_success("Successfully generated UpSet plot!")
 

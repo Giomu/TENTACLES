@@ -18,6 +18,7 @@ This function generates a bar plot to visualize the performances of different mo
 \examples{
 \dontrun{
 # Example usage of performances.plot function
-performances.plot(performances)}
+performances.plot(performances)
+}
 
 }

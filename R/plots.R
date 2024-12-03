@@ -294,31 +294,31 @@ performances.plot <- function(performances) {
     # )
 
 
-    # model <- NULL
-    # mean <- NULL
-    # type <- NULL
-    # p <- ggplot(performances, aes(x = model, y = mean, fill = type)) +
-    #     geom_bar(stat = "identity", position = "dodge", color = "darkgrey", width = 0.5) +
-    #     labs(title = "Model performances", x = "", y = "", fill = "") +
-    #     theme_minimal() +
-    #     scale_fill_manual(values = fill_colors) +
-    #     theme_minimal() +
-    #     # theme(axis.text.x = element_text(angle = 270, vjust = 0.1, hjust=0.1)) +
-    #     coord_flip() +
-    #     # theme(
-    #     #     axis.text.x = element_text(size = 12),
-    #     #     axis.text.y = element_text(size = 12),
-    #     #     axis.title.x = element_text(size = 14),
-    #     #     axis.title.y = element_text(size = 14),
-    #     #     legend.position = "bottom",
-    #     #     legend.title = element_text(size = 14),
-    #     #     legend.text = element_text(size = 12),
-    #     #     strip.text = element_text(size = 16),
-    #     #     panel.grid.minor = element_blank(),
-    #     #     panel.border = element_rect(colour = "black", fill = NA, size = 0.5),
-    #     #     plot.title = element_text(size = 18, hjust = 0.5)
-    #     # ) +
-    #     facet_wrap(~metric) # , scales = "free_y")
+    model <- NULL
+    mean <- NULL
+    type <- NULL
+    p <- ggplot(performances, aes(x = model, y = mean, fill = type)) +
+        geom_bar(stat = "identity", position = "dodge", color = "darkgrey", width = 0.5) +
+        labs(title = "Model performances", x = "", y = "", fill = "") +
+        theme_minimal() +
+        scale_fill_manual(values = fill_colors) +
+        theme_minimal() +
+        # theme(axis.text.x = element_text(angle = 270, vjust = 0.1, hjust=0.1)) +
+        coord_flip() +
+        # theme(
+        #     axis.text.x = element_text(size = 12),
+        #     axis.text.y = element_text(size = 12),
+        #     axis.title.x = element_text(size = 14),
+        #     axis.title.y = element_text(size = 14),
+        #     legend.position = "bottom",
+        #     legend.title = element_text(size = 14),
+        #     legend.text = element_text(size = 12),
+        #     strip.text = element_text(size = 16),
+        #     panel.grid.minor = element_blank(),
+        #     panel.border = element_rect(colour = "black", fill = NA, size = 0.5),
+        #     plot.title = element_text(size = 18, hjust = 0.5)
+        # ) +
+        facet_wrap(~metric) # , scales = "free_y")
 
     return(p)
 }

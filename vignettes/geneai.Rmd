@@ -16,11 +16,12 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 # library(geneMarkR)
+devtools::document()
 devtools::load_all()
 
 # Load data
-# df.count <- read.csv2("../Varie/ACC_Count.csv", row.names = 1)
-# df.clin <- read.csv2("../Varie/ACC_Pheno.csv", row.names = 1)
+df.count <- read.csv2("../../../Varie/ACC_Count.csv", row.names = 1)
+df.clin <- read.csv2("../../../Varie/ACC_Pheno.csv", row.names = 1)
 ```
 
 ##Pre-Processing

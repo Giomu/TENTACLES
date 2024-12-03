@@ -14,11 +14,11 @@ An UpSet plot visualizing the overlap of features across different models.
 }
 \description{
 This function generates an UpSet plot to visualize the overlap of
-features across different models.
+features across different models using the ComplexUpSet library.
 }
 \examples{
 \dontrun{
-# Example usage of upset.plot function
+# Example usage of upset.plot2 function
 upset.plot(data.obj)}
 
 }
