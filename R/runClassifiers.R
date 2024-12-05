@@ -1,6 +1,6 @@
 #' @export
 # Create a class.
-methods::setClass("ensBP.obj",
+methods::setClass("runClassifiers.obj",
   slots = list(
     data = "list",
     models.info = "list",
@@ -266,16 +266,16 @@ tune_and_fit <- function(
   cli::cli_alert_success("Metrics computed succesfully.")
   cli::cli_alert_success("Succesfully accomplished model fitting!")
 
-  # Update the object of class ensBP.obj
-  ensBP.obj <- methods::new(
-    "ensBP.obj",
+  # Update the object of class runClassifiers.obj
+  runClassifiers.obj <- methods::new(
+    "runClassifiers.obj",
     data = list(),
     models.info = final_workflows,
     model.features = list(),
     performances = list(
       tuning_metrics = tuning_metrics, final_metrics = test_metrics))
 
-  return(list(ensBP.obj, last_fit_results, predictions_df))
+  return(list(runClassifiers.obj, last_fit_results, predictions_df))
 }
 
 # Helper function to calculate VIP for all models in last_fit_results
@@ -356,7 +356,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 
 
 #' @title runClassifiers
-#' @description This function performs the ensemble of models using the ensBP approach.
+#' @description This function run classifiers specified on pre-processed data.
 #'
 #' @param preProcess.obj An object of class preProcess.
 #' @param models A character vector specifying the models to be used.
@@ -375,10 +375,10 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #' @param nsim An integer specifying the number of simulations for the permutation-based VIP.
 #' @param seed An integer specifying the seed for reproducibility.
 #'
-#' @return An object of class ensBP.
+#' @return An object of class runClassifiers.obj.
 #'
 #' @details
-#' The function performs the ensemble of models using the ensBP approach.
+#' The function runs several classifiers on the preprocessed data.
 #' The function first filters the genes that are not annotated in the GO and KEGG databases.
 #' Then, the function tunes and fits the models using the specified tuning method.
 #' The function computes the variable importances for each model using the permutation-based VIP,

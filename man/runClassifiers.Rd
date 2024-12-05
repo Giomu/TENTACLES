@@ -43,13 +43,13 @@ Possible values are 'accuracy', 'roc_auc', 'sensitivity', 'specificity'.}
 \item{seed}{An integer specifying the seed for reproducibility.}
 }
 \value{
-An object of class ensBP.
+An object of class runClassifiers.obj.
 }
 \description{
-This function performs the ensemble of models using the ensBP approach.
+This function run classifiers specified on pre-processed data.
 }
 \details{
-The function performs the ensemble of models using the ensBP approach.
+The function runs several classifiers on the preprocessed data.
 The function first filters the genes that are not annotated in the GO and KEGG databases.
 Then, the function tunes and fits the models using the specified tuning method.
 The function computes the variable importances for each model using the permutation-based VIP,

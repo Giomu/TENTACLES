@@ -1,6 +1,6 @@
 setOldClass("igraph", igraph::make_empty_graph())
 
-#' Class ppiNetworkResult
+#' Class ppiNetwork.obj
 #'
 #' A class to store the results of the ppiNetwork function, including the network graph, initial interactions, new interactions, final genes, and enrichment results.
 #'
@@ -12,7 +12,7 @@ setOldClass("igraph", igraph::make_empty_graph())
 #' @slot inputParams A list of input parameters used to generate the ppiNetwork result.
 #'
 #' @export
-setClass("ppiNetworkResult",
+setClass("ppiNetwork.obj",
   slots = list(
     graph = "igraph",
     initialInteractions = "data.frame",
@@ -57,7 +57,7 @@ setClass("ppiNetworkResult",
 #' @importFrom utils head
 #' @importFrom stats p.adjust
 #'
-#' @return An object of class `ppiNetworkResult` containing the PPI network, initial and
+#' @return An object of class `ppiNetwork` containing the PPI network, initial and
 #' new interactions, final genes, and enrichment results (only significant ones).
 #' @examples
 #' \dontrun{
@@ -137,14 +137,9 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
   cli::cli_alert_success("Neighbors added!")
   cli::cli_alert_success("Gene Mapping done!")
 
-
-
   # Build Network with final_genes
   cli::cli_h2("Network Building")
   g <- string_db$get_subnetwork(final_genes)
-
-  # Import igraph to manipulate resulting network
-  # suppressMessages(library(igraph))
 
   # Change protein names with preferred_name
   igraph::V(g)$name <- names$preferred_name
@@ -212,10 +207,6 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
   # Set edge weight based on edge betweenness
   # g2 <- set_edge_attr(g2, "weight", value = edge_betweenness(g2))
   cli::cli_alert_success("Communities detected!")
-
-  # suppressMessages(library(ggraph))
-  # suppressMessages(library(grid))
-  # suppressMessages(library(tidyverse))
 
   cli::cli_alert_info("Generating Network visualization ...")
   # Function to create custom labels for communities
@@ -360,7 +351,7 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
   )
   cli::cli_alert_success("Enrichment of total ppi-Network done!")
 
-  result <- new("ppiNetworkResult",
+  result <- new("ppiNetwork.obj",
     graph = g2,
     initialInteractions = initial_interactions,
     newInteractions = new_interactions,

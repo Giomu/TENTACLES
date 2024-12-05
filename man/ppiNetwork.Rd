@@ -49,7 +49,7 @@ Options include "leiden", "edge_betweenness", "infomap", "label_prop", "leading_
 \item{size_label}{Label size. Default is 2.}
 }
 \value{
-An object of class `ppiNetworkResult` containing the PPI network, initial and
+An object of class `ppiNetwork` containing the PPI network, initial and
 new interactions, final genes, and enrichment results (only significant ones).
 }
 \description{
