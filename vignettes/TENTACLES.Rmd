@@ -1,8 +1,8 @@
 ---
-title: "geneai"
+title: "TENTACLES"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{geneai}
+  %\VignetteIndexEntry{TENTACLES}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -20,8 +20,8 @@ devtools::document()
 devtools::load_all()
 
 # Load data
-df.count <- read.csv2("../../../Varie/ACC_Count.csv", row.names = 1)
-df.clin <- read.csv2("../../../Varie/ACC_Pheno.csv", row.names = 1)
+# df.count <- read.csv2("../../../Varie/ACC_Count.csv", row.names = 1)
+# df.clin <- read.csv2("../../../Varie/ACC_Pheno.csv", row.names = 1)
 ```
 
 ##Pre-Processing
