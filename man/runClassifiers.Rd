@@ -13,6 +13,7 @@ runClassifiers(
   v = 3,
   metric = "accuracy",
   nsim = 2,
+  filter = TRUE,
   seed = 123
 )
 }

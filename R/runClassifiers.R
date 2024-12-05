@@ -410,9 +410,10 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #'
 #' @export
 runClassifiers <- function(
-    preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"), selector.recipes = c("boruta", "roc", "boruta"),
+    preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"),
+    selector.recipes = c("boruta", "roc", "boruta"),
     tuning.method = "tune_grid", n = 5, v = 3, metric = "accuracy",
-    nsim = 2, seed = 123) {
+    nsim = 2, filter = TRUE, seed = 123) {
 
   future::plan(future::multisession, workers = parallel::detectCores() - 1)
   cli::cli_h1("runClassifiers")
@@ -430,23 +431,28 @@ runClassifiers <- function(
     seed = seed,
     code = {
 
-      ## Keep only genes annotated in GO and KEGG databases
-      cli::cli_alert_info("Filtering genes non-annotated in GO and KEGG db ...")
-      # Upload annotated genes database
-      data(annotated.genes)
-      # Compute the number of columns before filtering. class col is excluded from computation
-      ncol_pre <- ncol(preProcess.obj@processed$adjusted.data) - 1
-      # Save class column to cbind it after filtering
-      class <- preProcess.obj@processed$adjusted.data$class
-      # Filter genes that are not present in the DB
-      preProcess.obj@processed$adjusted.data <-
-        preProcess.obj@processed$adjusted.data[, colnames(preProcess.obj@processed$adjusted.data) %in%
-                                                    annotated.genes$genes_to_retrieve]
-      # cbind class column that has been filtered out
-      preProcess.obj@processed$adjusted.data <- cbind(preProcess.obj@processed$adjusted.data, class)
-      # Compute the number of columns after filter. class col is excluded from computation
-      ncol_post <- ncol(preProcess.obj@processed$adjusted.data) - 1
-      cli::cli_alert_success("Filtered {ncol_pre - ncol_post} genes. Total number of genes is now: {ncol_post}!")
+      if (filter == TRUE){
+        ## Keep only genes annotated in GO and KEGG databases
+        cli::cli_alert_info("Filtering genes non-annotated in GO and KEGG db ...")
+        # Upload annotated genes database
+        data(annotated.genes)
+        # Compute the number of columns before filtering. class col is excluded from computation
+        ncol_pre <- ncol(preProcess.obj@processed$adjusted.data) - 1
+        # Save class column to cbind it after filtering
+        class <- preProcess.obj@processed$adjusted.data$class
+        # Filter genes that are not present in the DB
+        preProcess.obj@processed$adjusted.data <-
+          preProcess.obj@processed$adjusted.data[, colnames(preProcess.obj@processed$adjusted.data) %in%
+                                                   annotated.genes$genes_to_retrieve]
+        # cbind class column that has been filtered out
+        preProcess.obj@processed$adjusted.data <- cbind(preProcess.obj@processed$adjusted.data, class)
+        # Compute the number of columns after filter. class col is excluded from computation
+        ncol_post <- ncol(preProcess.obj@processed$adjusted.data) - 1
+        cli::cli_alert_success("Filtered {ncol_pre - ncol_post} genes. Total number of genes is now: {ncol_post}!")
+      } else {
+        preProcess.obj@processed$adjusted.data <- preProcess.obj@processed$adjusted.data
+        cli::cli_alert_info("Skipping gene filtering using {ncol(preProcess.obj@processed$adjusted.data) - 1} genes ...")
+      }
 
       # Split data into v resamples for tuning inside cross-validation
       data <- preProcess.obj@processed$adjusted.data

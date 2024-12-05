@@ -20,8 +20,8 @@ devtools::document()
 devtools::load_all()
 
 # Load data
-# df.count <- read.csv2("../../../Varie/ACC_Count.csv", row.names = 1)
-# df.clin <- read.csv2("../../../Varie/ACC_Pheno.csv", row.names = 1)
+df.count <- read.csv2("../../Varie/ACC_Count.csv", row.names = 1)
+df.clin <- read.csv2("../../Varie/ACC_Pheno.csv", row.names = 1)
 ```
 
 ##Pre-Processing
@@ -36,7 +36,7 @@ a <- preProcess(df.count = df.count, df.clin = df.clin, batch = "patient.gender"
 ```{r runClassifiers}
 # Run classifiers
 b <- runClassifiers(a, models = c("bag_mlp", "rand_forest", "svm_poly", "mlp", "C5_rules"),
-                    selector.recipes = c("boruta"))
+                    selector.recipes = c("boruta"), filter = FALSE)
 ```
 
 ##Get and Test Consensus
