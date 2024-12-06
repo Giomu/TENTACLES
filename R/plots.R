@@ -34,7 +34,8 @@ batch.pca.plot <- function(data.before, data.after, batch, metadata) {
     PC2 <- NULL
     colors <- colorRampPalette(brewer.pal(brewer.pal.info["Set2", 1], name = "Set2"))(length(unique(pca_data$batch)))
     p <- ggplot(pca_data, aes(x = PC1, y = PC2, color = batch)) +
-        geom_point( # size = 4,
+        geom_point(
+            size = 4,
             alpha = 0.75
         ) +
         suppressMessages(ggside::geom_ysidedensity(aes(color = batch), linewidth = 0.65, show.legend = FALSE)) +
@@ -108,9 +109,12 @@ batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, cov
     pvca_data$Effects <- factor(pvca_data$Effects, levels = unique(pvca_data[order(pvca_data$V1), "Effects"]))
 
     # Plot PVCA
+    V1 <- NULL
+    Effects <- NULL
+    correction <- NULL
     p <- ggplot(pvca_data, aes(x = V1, y = Effects, color = correction)) +
         geom_line(aes(group = Effects), size = 2.5, color = "lightgray", alpha = 0.75) +
-        geom_point(size = 10, alpha = 0.95) +
+        geom_point(size = 12, alpha = 0.95) +
         scale_color_brewer(palette = "Paired") +
         labs(x = "Weighted average proportion variance", color = "Batch correction") +
         scale_x_continuous(
@@ -156,9 +160,9 @@ batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, cov
 #' @examples
 #' \dontrun{
 #' # Example usage of upset.plot2 function
-#' upset.plot(data.obj)}
+#' upset.plot(data.obj)
+#' }
 #'
-#' @export
 upset.plot <- function(data.obj) {
     # Extract features
     model_features_list <- data.obj@model.features
@@ -177,7 +181,8 @@ upset.plot <- function(data.obj) {
         name = "",
         set_sizes = ComplexUpset::upset_set_size(
             geom = ggplot2::geom_bar(
-                fill = "#EDAE49", width = 0.4, alpha = 0.6),
+                fill = "#EDAE49", width = 0.4, alpha = 0.6
+            ),
             position = "right"
         ),
         stripes = c(alpha("grey90", 0.45), alpha("white", 0.3)),
@@ -203,21 +208,19 @@ upset.plot <- function(data.obj) {
     # Modifica i pallini nella matrice delle intersezioni per renderli quadrati
     p$layers <- lapply(p$layers, function(layer) {
         if ("GeomPoint" %in% class(layer$geom)) {
-            layer$geom$default_aes$shape <- 15  # Quadrati
-            layer$geom$default_aes$size <- 2.5    # Dimensione
+            layer$geom$default_aes$shape <- 15 # Quadrati
+            layer$geom$default_aes$size <- 2.5 # Dimensione
         }
         if ("GeomSegment" %in% class(layer$geom)) {
-            layer$geom$default_aes$linetype <- "dotted"  # Linee tratteggiate
-            layer$geom$default_aes$size <- 0.2           # Spessore della linea
-            layer$geom$default_aes$colour <- "grey30"       # Colore grigio
+            layer$geom$default_aes$linetype <- "dotted" # Linee tratteggiate
+            layer$geom$default_aes$size <- 0.2 # Spessore della linea
+            layer$geom$default_aes$colour <- "grey30" # Colore grigio
         }
         layer
     })
 
     return(p)
 }
-
-
 
 #' @title performances.plot
 #' @description This function generates a bar plot to visualize the performances of different models.
@@ -234,65 +237,31 @@ upset.plot <- function(data.obj) {
 #' performances.plot(performances)
 #' }
 #'
-#' @export
 performances.plot <- function(performances) {
     tuning_performances <- performances$tuning_metrics
-    test_performances <- performances$final_metrics
+    fit_performances <- performances$final_metrics
 
     tuning_performances$type <- "Tuning"
-    test_performances$type <- "Test"
+    fit_performances$type <- "Fitting"
 
     colnames(tuning_performances)[colnames(tuning_performances) == ".metric"] <- "metric"
     colnames(tuning_performances)[colnames(tuning_performances) == "wflow_id"] <- "model"
-    colnames(test_performances)[colnames(test_performances) == ".metric"] <- "metric"
-    colnames(test_performances)[colnames(test_performances) == ".estimate"] <- "mean"
+    colnames(fit_performances)[colnames(fit_performances) == ".metric"] <- "metric"
+    colnames(fit_performances)[colnames(fit_performances) == ".estimate"] <- "mean"
 
     tuning_performances <- tuning_performances[, c("model", "metric", "mean", "type")]
-    test_performances <- test_performances[, c("model", "metric", "mean", "type")]
+    fit_performances <- fit_performances[, c("model", "metric", "mean", "type")]
 
-    performances <- rbind(tuning_performances, test_performances)
+    performances <- rbind(tuning_performances, fit_performances)
 
     # rename accuracy to Accuracy brier_class to Brier score and roc_auc to AUC
     performances$metric <- factor(performances$metric,
         levels = c("accuracy", "f_meas", "precision", "recall"),
         labels = c("Accuracy", "F-score", "Precision", "Recall")
     )
-    performances$type <- factor(performances$type, levels = c("Tuning", "Test"))
+    performances$type <- factor(performances$type, levels = c("Tuning", "Fitting"))
 
-    fill_colors <- c("Tuning" = "#8da0cb", "Test" = "#e78ac3")
-
-    # Circular plot using circlize
-    # To test, filter by type = Tuining
-    # filt_perf <- performances[performances$type == "Tuning", ]
-    # circos_colors <- c("firebrick", "dodgerblue", "forestgreen", "darkorange")
-
-    # # Circos parameters
-    # circos.par(cell.padding = c(0, 0, 0, 0), track.height = 0.4)
-
-    # # Initialize
-    # circos.initialize(factors = filt_perf$model, x = 1, y = filt_perf$mean, xlim = c(0, 1))
-
-    # # Track
-    # circos.trackPlotRegion(
-    #     factors = filt_perf$model,
-    #     y = filt_perf$mean,
-    #     panel.fun = function(x, y) {
-    #         circos.axis(h = "top", labels.cex = 0.5)
-    #         circos.text(
-    #             x = 1, y = 0.5, labels = filt_perf$metric, facing = "clockwise",
-    #             niceFacing = TRUE, cex = 0.5
-    #         )
-    #     },
-    #     bg.border = NA
-    # )
-
-    # circos.trackLines(
-    #     factors = filt_perf$model,
-    #     y = filt_perf$mean,
-    #     col = circos_colors,
-    #     lwd = 5
-    # )
-
+    fill_colors <- c("Tuning" = "#8da0cb", "Fitting" = "#e78ac3")
 
     model <- NULL
     mean <- NULL
@@ -322,20 +291,19 @@ performances.plot <- function(performances) {
 
     return(p)
 }
-
-## TODO: make it more beautiful!!
 #' @export
+## TODO: make it more beautiful!!
 predheat.plot <- function(predictions_df) {
     predictions_df <- predictions_df %>%
         dplyr::mutate(correct = ifelse(class == .pred_class, "Correct", "Incorrect"))
 
     # Creiamo un plot con ggplot
-    p <- ggplot(predictions_df, aes(x = model, y = ID, fill = correct)) +
+    p <- ggplot(predictions_df, aes(x = ID, y = model, fill = correct)) +
         geom_tile(
-            color = "white", lwd = 1, linetype = 1
+            color = "white", lwd = 1, linetype = 1, size = 3
         ) +
         scale_fill_manual(
-            values = c("Correct" = "lightblue", "Incorrect" = "indianred")
+            values = c("Correct" = "skyblue3", "Incorrect" = "indianred")
         ) +
         theme_minimal() +
         labs(
@@ -347,8 +315,9 @@ predheat.plot <- function(predictions_df) {
         theme_minimal() +
         theme(
             axis.text.x = element_text(angle = 90, hjust = 0, vjust = 0.5),
-            axis.text.y = element_text(size = 7)) +
-        coord_flip()
+            axis.text.y = element_text(size = 7)
+        ) +
+        coord_fixed(ratio = 1)
 
     return(p)
 }
