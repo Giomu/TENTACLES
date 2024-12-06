@@ -14,7 +14,8 @@ runClassifiers(
   metric = "accuracy",
   nsim = 2,
   filter = TRUE,
-  seed = 123
+  seed = 123,
+  downsample = FALSE
 )
 }
 \arguments{

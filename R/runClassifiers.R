@@ -24,29 +24,23 @@ create_model_specs <- function() {
       mtry = tune(), trees = tune(),
       min_n = tune(), tree_depth = tune(),
       learn_rate = tune(), loss_reduction = tune(),
-      sample_size = tune(), stop_iter = tune()
-    ),
+      sample_size = tune(), stop_iter = tune()),
     bag_tree = parsnip::bag_tree(
       mode = "classification", engine = "rpart",
-      tree_depth = tune(), min_n = tune()
-    ),
+      tree_depth = tune(), min_n = tune()),
     lightGBM = parsnip::boost_tree(
       mode = "classification", engine = "lightgbm",
       mtry = tune(), trees = tune(),
       min_n = tune(), tree_depth = tune(),
-      learn_rate = tune(), loss_reduction = tune()
-    ),
+      learn_rate = tune(), loss_reduction = tune()),
     pls = parsnip::pls(
       mode = "classification", num_comp = tune(),
-      predictor_prop = tune(), engine = "mixOmics"
-    ),
+      predictor_prop = tune(), engine = "mixOmics"),
     logistic = parsnip::logistic_reg(
-      mode = "classification", engine = "glm"
-    ),
+      mode = "classification", engine = "glm"),
     C5_rules = parsnip::C5_rules(
       mode = "classification", engine = "C5.0",
-      trees = tune(), min_n = tune()
-    ),
+      trees = tune(), min_n = tune()),
     mars = parsnip::mars(
       mode = "classification",
       num_terms = tune(), prod_degree = tune()
@@ -58,17 +52,14 @@ create_model_specs <- function() {
     mlp = parsnip::mlp(
       mode = "classification", engine = "nnet",
       hidden_units = tune(), penalty = tune(),
-      epochs = tune()
-    ),
+      epochs = tune()),
     bag_mlp = parsnip::bag_mlp(
       mode = "classification", engine = "nnet",
       hidden_units = tune(), penalty = tune(),
-      epochs = tune()
-    ),
+      epochs = tune()),
     decision_tree = parsnip::decision_tree(
       mode = "classification", tree_depth = tune(),
-      min_n = tune(), engine = "rpart"
-    ),
+      min_n = tune(), engine = "rpart"),
     rand_forest = parsnip::rand_forest(
       mode = "classification", mtry = tune(),
       trees = 300, min_n = tune()
@@ -76,59 +67,90 @@ create_model_specs <- function() {
       parsnip::set_engine("ranger", importance = "impurity"),
     svm_linear = parsnip::svm_linear(
       mode = "classification", engine = "kernlab",
-      cost = tune(), margin = tune()
-    ),
+      cost = tune(), margin = tune()),
     svm_poly = parsnip::svm_poly(
       mode = "classification", engine = "kernlab",
       cost = tune(), degree = tune(),
-      scale_factor = tune(), margin = tune()
-    ),
+      scale_factor = tune(), margin = tune()),
     svm_rbf = parsnip::svm_rbf(
       mode = "classification", engine = "kernlab",
       cost = tune(), rbf_sigma = tune(),
-      margin = tune()
-    )
+      margin = tune())
   )
 }
 
 # Helper function to create dynamic workflow sets
-create_dynamic_workflow_sets <- function(models, selector.recipes, data) {
+create_dynamic_workflow_sets <- function(models, selector.recipes, data, downsample) {
   model_specs <- create_model_specs()
 
-  # Recipe with Boruta Feature Selection
-  recipe_boruta <- recipes::recipe(class ~ ., data = data) %>%
-    recipes::step_nzv(recipes::all_predictors()) %>%
-    recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-    #recipes::step_corr(recipes::all_predictors(), threshold = 0.8) %>%
-    colino::step_select_boruta(recipes::all_predictors(), outcome = "class")
+  if (downsample == TRUE) {
+    cli::cli_alert_info("Majority class will be downsampled ...")
+    # Recipe with Boruta Feature Selection
+    recipe_boruta <- recipes::recipe(class ~ ., data = data) %>%
+      themis::step_downsample(class) %>%
+      recipes::step_nzv(recipes::all_predictors()) %>%
+      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
+      colino::step_select_boruta(recipes::all_predictors(), outcome = "class")
 
-  # Recipe with ROC-based Feature Selection
-  recipe_ROC <- recipes::recipe(class ~ ., data = data) %>%
-    recipes::step_nzv(recipes::all_predictors()) %>%
-    recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-    #recipes::step_corr(recipes::all_predictors(), threshold = 0.8) %>%
-    colino::step_select_roc(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+    # Recipe with ROC-based Feature Selection
+    recipe_ROC <- recipes::recipe(class ~ ., data = data) %>%
+      themis::step_downsample(class) %>%
+      recipes::step_nzv(recipes::all_predictors()) %>%
+      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
+      colino::step_select_roc(recipes::all_predictors(), outcome = "class", threshold = 0.95)
 
-  # Recipe with Information Gain Feature Selection
-  recipe_INFGAIN <- recipes::recipe(class ~ ., data = data) %>%
-    recipes::step_nzv(recipes::all_predictors()) %>%
-    recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-    #recipes::step_corr(recipes::all_predictors(), threshold = 0.8) %>%
-    colino::step_select_infgain(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+    # Recipe with Information Gain Feature Selection
+    recipe_INFGAIN <- recipes::recipe(class ~ ., data = data) %>%
+      themis::step_downsample(class) %>%
+      recipes::step_nzv(recipes::all_predictors()) %>%
+      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
+      colino::step_select_infgain(recipes::all_predictors(), outcome = "class", threshold = 0.95)
 
-  # Recipe with Max Relevancy Min Redundancy Feature Selection
-  recipe_MRMR <- recipes::recipe(class ~ ., data = data) %>%
-    recipes::step_nzv(recipes::all_predictors()) %>%
-    recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-    #recipes::step_corr(recipes::all_predictors(), threshold = 0.8) %>%
-    colino::step_select_mrmr(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+    # Recipe with Max Relevancy Min Redundancy Feature Selection
+    recipe_MRMR <- recipes::recipe(class ~ ., data = data) %>%
+      themis::step_downsample(class) %>%
+      recipes::step_nzv(recipes::all_predictors()) %>%
+      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
+      colino::step_select_mrmr(recipes::all_predictors(), outcome = "class", threshold = 0.95)
 
-  # Recipe correlation-based Feature Selection
-  recipe_corr <- recipes::recipe(class ~ ., data = data) %>%
-    recipes::step_nzv(recipes::all_predictors()) %>%
-    recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-    recipes::step_corr(recipes::all_predictors(), threshold = 0.8) #%>%
-    # themis::step_rose(class)
+    # Recipe correlation-based Feature Selection
+    recipe_corr <- recipes::recipe(class ~ ., data = data) %>%
+      themis::step_downsample(class) %>%
+      recipes::step_nzv(recipes::all_predictors()) %>%
+      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
+      recipes::step_corr(recipes::all_predictors(), threshold = 0.8)
+
+  } else {
+    # Recipe with Boruta Feature Selection
+    recipe_boruta <- recipes::recipe(class ~ ., data = data) %>%
+      recipes::step_nzv(recipes::all_predictors()) %>%
+      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
+      colino::step_select_boruta(recipes::all_predictors(), outcome = "class")
+
+    # Recipe with ROC-based Feature Selection
+    recipe_ROC <- recipes::recipe(class ~ ., data = data) %>%
+      recipes::step_nzv(recipes::all_predictors()) %>%
+      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
+      colino::step_select_roc(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+
+    # Recipe with Information Gain Feature Selection
+    recipe_INFGAIN <- recipes::recipe(class ~ ., data = data) %>%
+      recipes::step_nzv(recipes::all_predictors()) %>%
+      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
+      colino::step_select_infgain(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+
+    # Recipe with Max Relevancy Min Redundancy Feature Selection
+    recipe_MRMR <- recipes::recipe(class ~ ., data = data) %>%
+      recipes::step_nzv(recipes::all_predictors()) %>%
+      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
+      colino::step_select_mrmr(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+
+    # Recipe correlation-based Feature Selection
+    recipe_corr <- recipes::recipe(class ~ ., data = data) %>%
+      recipes::step_nzv(recipes::all_predictors()) %>%
+      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
+      recipes::step_corr(recipes::all_predictors(), threshold = 0.8)
+  }
 
   # Filter to keep only models selected by User
   filtered_specs <- model_specs[models]
@@ -170,9 +192,9 @@ create_dynamic_workflow_sets <- function(models, selector.recipes, data) {
 # Helper function to tune and fit models
 tune_and_fit <- function(
     models, selector.recipes,
-    tuning.method, n, metric, train_resamples, data) {
+    tuning.method, n, metric, train_resamples, data, downsample) {
   # Create dynamic workflow sets
-  tune_workflows <- create_dynamic_workflow_sets(models, selector.recipes, data = data)
+  tune_workflows <- create_dynamic_workflow_sets(models, selector.recipes, data = data, downsample = downsample)
 
   cli::cli_h2("Tuning Model Parameters")
   # Tune the models
@@ -413,7 +435,7 @@ runClassifiers <- function(
     preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"),
     selector.recipes = c("boruta", "roc", "boruta"),
     tuning.method = "tune_grid", n = 5, v = 3, metric = "accuracy",
-    nsim = 2, filter = TRUE, seed = 123) {
+    nsim = 2, filter = TRUE, seed = 123, downsample = FALSE) {
 
   future::plan(future::multisession, workers = parallel::detectCores() - 1)
   cli::cli_h1("runClassifiers")
@@ -480,7 +502,8 @@ runClassifiers <- function(
         n = n,
         metric = metric,
         train_resamples = train_resamples,
-        data = data)
+        data = data,
+        downsample = downsample)
 
       cli::cli_h2("Variable Importances")
       vip_results <- calculate_vip(

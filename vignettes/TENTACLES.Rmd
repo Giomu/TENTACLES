@@ -35,8 +35,9 @@ a <- preProcess(df.count = df.count, df.clin = df.clin, batch = "patient.gender"
 
 ```{r runClassifiers}
 # Run classifiers
-b <- runClassifiers(a, models = c("bag_mlp", "rand_forest", "svm_poly", "mlp", "C5_rules"),
-                    selector.recipes = c("boruta"), filter = FALSE)
+b <- runClassifiers(a, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
+                    selector.recipes = c("boruta", "roc", "boruta", "boruta"), 
+                    filter = TRUE, downsample = TRUE)
 ```
 
 ##Get and Test Consensus
