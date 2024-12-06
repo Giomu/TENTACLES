@@ -5,7 +5,7 @@
 \title{runClassifiers}
 \usage{
 runClassifiers(
-  preProcess.obj,
+  preProcess.obj = NULL,
   ...,
   models = c("bag_mlp", "rand_forest", "svm_poly"),
   selector.recipes = c("boruta", "roc", "boruta"),

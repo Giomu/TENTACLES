@@ -1,8 +1,8 @@
-# Helper function to create binary dataframe from ensBP object
+# Helper function to create binary dataframe from runClassifiers object
 create_binary_df <- function(b) {
   # Check if b@model.features is a list
   if (!is.list(b@model.features)) {
-    cli::cli_abort("ensBP.obj@model.features must be a list containing algorithm results.")
+    cli::cli_abort("runClassifiers.obj@model.features must be a list containing algorithm results.")
   }
 
   # Initialize a list to store all unique genes
@@ -28,9 +28,9 @@ create_binary_df <- function(b) {
 
 
 #' @title getConsensus
-#' @description This function computes the consensus genes from an ensBP object.
+#' @description This function computes the consensus genes from a runClassifiers object or a binary data frame.
 #'
-#' @param ensBP.obj An object of class ensBP.
+#' @param x An object of class runClassifiers.obj or a binary df.
 #' @param n.min An integer specifying the minimum number of algorithms in which a gene must be present to be considered as a consensus gene.
 #' @param group1 A character vector specifying the algorithms to be considered in the first group.
 #' @param group2 A character vector specifying the algorithms to be considered in the second group.
@@ -43,7 +43,7 @@ create_binary_df <- function(b) {
 #'         and the input parameters.
 #'
 #' @details
-#' The function computes the consensus genes from an ensBP object.
+#' The function computes the consensus genes from a runClassifiers object or a binary data frame.
 #' The consensus genes are the genes that are present in at least n.min algorithms,
 #' or the genes that are present in the algorithms specified in group1,
 #' or the genes that are present in the algorithms specified in group1 and group2.
@@ -53,13 +53,13 @@ create_binary_df <- function(b) {
 #'
 #' @examples
 #' /dontrun{
-#' cons.1 <- getConsensus(ensBP.obj, n.min = 3)
-#' cons.2 <- getConsensus(ensBP.obj, group1 = c("alg1", "alg2"), meth1 = "intersect")
-#' cons.3 <- getConsensus(ensBP.obj, group1 = c("alg1", "alg2"), group2 = c("alg3", "alg4"),
+#' cons.1 <- getConsensus(runClassifiers.obj, n.min = 3)
+#' cons.2 <- getConsensus(runClassifiers.obj, group1 = c("alg1", "alg2"), meth1 = "intersect")
+#' cons.3 <- getConsensus(runClassifiers.obj, group1 = c("alg1", "alg2"), group2 = c("alg3", "alg4"),
 #'                        meth1 = "intersect", meth2 = "intersect", meth.comb = "intersect")}
 #'
 #' @export
-getConsensus <- function(ensBP.obj, n.min = NULL,
+getConsensus <- function(x, n.min = NULL,
                          group1 = NULL, group2 = NULL,
                          meth1 = NULL, meth2 = NULL, meth.comb = NULL,
                          exclude = NULL) {
@@ -75,15 +75,15 @@ getConsensus <- function(ensBP.obj, n.min = NULL,
   cli::cli_h1("Computing Consensus Genes")
 
   # Check class of input object. If binary data.frame simply assign it, else apply create_binary_df()
-  if (class(ensBP.obj) == "data.frame") {
-    # Assign ensBP.obj to df and print message
-    df <- ensBP.obj
-    cli::cli_alert_success("Informations successfully extracted from your data frame.")
+  if (class(x) == "data.frame") {
+    # Assign x to df and print message
+    df <- x
+    cli::cli_alert_success("Informations successfully extracted from data frame provided.")
   } else {
     # Print message to advise
-    cli::cli_alert_info("Getting variables from ensBP.obj")
-    df <- create_binary_df(ensBP.obj)
-    cli::cli_alert_success("Variables information successfully extracted from ensBP.obj.")
+    cli::cli_alert_info("Getting variables from runClassifiers.obj")
+    df <- create_binary_df(x)
+    cli::cli_alert_success("Variables information successfully extracted from runClassifiers.obj.")
   }
 
   # Preliminary check: verify if specified columns exist in the dataframe
@@ -187,11 +187,16 @@ getConsensus <- function(ensBP.obj, n.min = NULL,
     cli::cli_alert_success("Consensus successfully generated!")
   }
 
-  # Test consensus genes in the adjusted dataset contained in ensBP.obj@data
-  testConsensus(df.count = ensBP.obj@data$adjusted.data,
-                cons_genes = consensus.list[[1]],
-                class = as.factor(ensBP.obj@data$metadata$class))
-  cli::cli_alert_success("Consensus genes computed and tested!")
+  if (class(x) == "data.frame") {
+    cli::cli_alert_info("Can't run testConsensus on a binary df. Skipping..")
+  } else {
+    # Test consensus genes in the adjusted dataset contained in runClassifiers.obj@data
+    testConsensus(df.count = x@data$adjusted.data,
+                  cons_genes = consensus.list[[1]],
+                  class = as.factor(x@data$metadata$class))
+  }
+
+  cli::cli_alert_success("Consensus genes computed successfully!")
 
   return(consensus)
 }

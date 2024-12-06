@@ -5,7 +5,7 @@
 \title{getConsensus}
 \usage{
 getConsensus(
-  ensBP.obj,
+  x,
   n.min = NULL,
   group1 = NULL,
   group2 = NULL,
@@ -16,7 +16,7 @@ getConsensus(
 )
 }
 \arguments{
-\item{ensBP.obj}{An object of class ensBP.}
+\item{x}{An object of class runClassifiers.obj or a binary df.}
 
 \item{n.min}{An integer specifying the minimum number of algorithms in which a gene must be present to be considered as a consensus gene.}
 
@@ -37,10 +37,10 @@ A list containing the consensus genes, the binary data frame,
         and the input parameters.
 }
 \description{
-This function computes the consensus genes from an ensBP object.
+This function computes the consensus genes from a runClassifiers object or a binary data frame.
 }
 \details{
-The function computes the consensus genes from an ensBP object.
+The function computes the consensus genes from a runClassifiers object or a binary data frame.
 The consensus genes are the genes that are present in at least n.min algorithms,
 or the genes that are present in the algorithms specified in group1,
 or the genes that are present in the algorithms specified in group1 and group2.
@@ -48,9 +48,9 @@ The consensus genes can be computed using the 'intersect' or 'union' method.
 }
 \examples{
 /dontrun{
-cons.1 <- getConsensus(ensBP.obj, n.min = 3)
-cons.2 <- getConsensus(ensBP.obj, group1 = c("alg1", "alg2"), meth1 = "intersect")
-cons.3 <- getConsensus(ensBP.obj, group1 = c("alg1", "alg2"), group2 = c("alg3", "alg4"),
+cons.1 <- getConsensus(runClassifiers.obj, n.min = 3)
+cons.2 <- getConsensus(runClassifiers.obj, group1 = c("alg1", "alg2"), meth1 = "intersect")
+cons.3 <- getConsensus(runClassifiers.obj, group1 = c("alg1", "alg2"), group2 = c("alg3", "alg4"),
                        meth1 = "intersect", meth2 = "intersect", meth.comb = "intersect")}
 
 }

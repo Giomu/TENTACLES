@@ -432,7 +432,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #'
 #' @export
 runClassifiers <- function(
-    preProcess.obj, ..., models = c("bag_mlp", "rand_forest", "svm_poly"),
+    preProcess.obj = NULL, ..., models = c("bag_mlp", "rand_forest", "svm_poly"),
     selector.recipes = c("boruta", "roc", "boruta"),
     tuning.method = "tune_grid", n = 5, v = 3, metric = "accuracy",
     nsim = 2, filter = TRUE, seed = 123, downsample = FALSE) {
@@ -448,11 +448,11 @@ runClassifiers <- function(
     cli::cli_alert_info("preProcess.obj not provided, looking for df.count, df.clin and class in ...")
 
     if ("df.count" %in% names(dots) && "df.clin" %in% names(dots) && "class" %in% names(dots)) {
-      cli::cli_alert_info("Found df.count, df.clin and class in ...")
+      cli::cli_alert_success("Found df.count, df.clin and class in ...")
       # Create a preProcess object
       preProcess.obj <- preProcess(df.count = dots$df.count, df.clin = dots$df.clin, class = dots$class,
                                    is.normalized = TRUE, plot = FALSE)
-      cli::cli_alert_success("Successfully created preProcess object from data provided!")
+      # cli::cli_alert_success("Successfully created preProcess object from data provided!")
     } else {
       cli::cli_abort("df.count, df.clin and class not found in ... Please refer to the documentation for valid options.")
     }
