@@ -154,7 +154,7 @@ batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, cov
 #' @return An UpSet plot visualizing the overlap of features across different models.
 #'
 #' @import ggplot2
-#' @importFrom ComplexUpset intersection_size upset upset_modify_themes
+#' @importFrom ComplexUpset intersection_size upset upset_modify_themes intersection_matrix
 #' @importFrom UpSetR fromList
 #'
 #' @examples
@@ -169,56 +169,56 @@ upset.plot <- function(data.obj) {
     features <- lapply(model_features_list, function(x) unique(x$Variable))
     names(features) <- names(model_features_list)
 
-    # Convert Data in right format
-    upset_data <- UpSetR::fromList(features)
+    # Create membership matrix
+    all_elements <- unique(unlist(features))
+    membership_matrix <- sapply(features, function(set) as.integer(all_elements %in% set))
+    rownames(membership_matrix) <- all_elements
+    membership_matrix <- as.data.frame(membership_matrix)
 
     # Build Upset plot with ComplexUpset library
     p <- ComplexUpset::upset(
-        upset_data,
-        intersect = names(features), # Nomi dei set
+        membership_matrix,
+        intersect = colnames(membership_matrix),
         width_ratio = 0.2,
         height_ratio = 1.5,
         name = "",
         set_sizes = ComplexUpset::upset_set_size(
-            geom = ggplot2::geom_bar(
-                fill = "#EDAE49", width = 0.4, alpha = 0.6
+            geom = geom_bar(
+                fill = "#EDAE49", width = 0.4
             ),
             position = "right"
+        ) + theme(
+            panel.grid.minor = element_blank(),
+            panel.grid.major.y = element_blank(),
+            axis.title.x = element_text(size = 18, color = "darkgray"),
+            axis.text.x = element_text(size = 13, color = "gray"),
         ),
-        stripes = c(alpha("grey90", 0.45), alpha("white", 0.3)),
         base_annotations = list(
             "Intersection size" = ComplexUpset::intersection_size(
-                text = list(size = 2),
+                text = list(size = 7),
                 fill = "#00798C",
                 width = 0.8
+            ) + theme(
+                panel.grid.minor = element_blank(),
+                axis.text.y = element_text(size = 15, color = "gray"),
+                axis.title.y = element_text(size = 20, color = "darkgray"),
             )
         ),
-        themes = ComplexUpset::upset_modify_themes(
+        stripes = "white",
+        matrix = (
+            intersection_matrix(
+                geom = geom_point(size = 5, shape = "circle"),
+                segment = geom_segment(linetype = "solid", color = "black")
+            )
+        ),
+        themes = upset_modify_themes(
             list(
-                "intersections_matrix" = ggplot2::theme(
-                    axis.text = ggplot2::element_text(size = 10),
-                    plot.background = ggplot2::element_rect(fill = "transparent", color = NA),
-                    panel.grid.major = ggplot2::element_line(linewidth = 0.5),
-                    panel.grid.minor = ggplot2::element_blank()
+                "intersections_matrix" = theme(
+                    text = element_text(size = 20, color = "gray")
                 )
             )
         )
     )
-
-    # Modifica i pallini nella matrice delle intersezioni per renderli quadrati
-    p$layers <- lapply(p$layers, function(layer) {
-        if ("GeomPoint" %in% class(layer$geom)) {
-            layer$geom$default_aes$shape <- 15 # Quadrati
-            layer$geom$default_aes$size <- 2.5 # Dimensione
-        }
-        if ("GeomSegment" %in% class(layer$geom)) {
-            layer$geom$default_aes$linetype <- "dotted" # Linee tratteggiate
-            layer$geom$default_aes$size <- 0.2 # Spessore della linea
-            layer$geom$default_aes$colour <- "grey30" # Colore grigio
-        }
-        layer
-    })
-
     return(p)
 }
 
@@ -291,7 +291,7 @@ performances.plot <- function(performances) {
 
     return(p)
 }
-#' @export
+
 ## TODO: make it more beautiful!!
 predheat.plot <- function(predictions_df) {
     predictions_df <- predictions_df %>%
