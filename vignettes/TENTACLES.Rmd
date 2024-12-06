@@ -44,7 +44,7 @@ b <- runClassifiers(a, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
 
 ```{r getConsensus}
 # Get and test consensus
-c <- getConsensus(b, n.min = 5)
+c <- getConsensus(b, n.min = 4)
 ```
 
 ##Validation
@@ -61,6 +61,11 @@ d <- valConsensus(count_table, gene_list, labels, N = 10, metric = "FScore")
 tictoc::toc()
 ```
 
-```{r}
-# Gira fino a qui
+```{r, message=FALSE, warning=TRUE}
+# Import NEW data
+count_table <- as.data.frame((b@data$adjusted.data))
+gene_list <- c$consensusGenes
+labels <- as.factor(b@data$metadata$class)
+# test consensus on an external dataset
+e <- testConsensus(df.count = count_table, cons_genes = gene_list, class = labels)
 ```
