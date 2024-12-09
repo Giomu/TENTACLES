@@ -4,30 +4,27 @@
 \alias{testConsensus}
 \title{Test Consensus}
 \usage{
-testConsensus(df.count, cons_genes, class)
+testConsensus(df.count, gene.list, class)
 }
 \arguments{
-\item{df.count}{A data frame containing the counts data}
+\item{df.count}{A data frame containing the counts data. Gene names on columns and samples on rows.}
 
-\item{cons_genes}{A vector list containing consensus genes to test}
+\item{gene.list}{A vector list containing consensus genes to test.}
 
-\item{class}{The column name of the class}
+\item{class}{A vector containing the true class labels.}
 }
 \value{
 The PCA plot, AUROC plot, Heatmap plot, and Validation MLP Model plot
 }
 \description{
-This function validates the consensus genes by performing PCA,
-AUROC, Heatmap, and Validation MLP Model on the entire dataset.
+This function tests a list of consensus genes on a df.count performing PCA,
+AUROC, Heatmap, and tuning and fitting a MLP Model.
 }
 \details{
-This function validates the consensus genes by performing PCA, AUROC, Heatmap,
-and Validation MLP Model on the same dataset or a new one. The function first
-normalizes the data if it is not already normalized. It then applies batch
-correction if a batch variable is provided. The PCA analysis is then performed
-on the normalized data. The AUROC analysis is then performed on the consensus
-genes. The Heatmap analysis is then performed on the consensus genes. Finally,
-the Validation MLP Model is performed on the consensus genes.
+This function tests the consensus genes by performing PCA, AUROC, Heatmap,
+and Validation MLP Model on the provided dataset. PCA is performed on the consensus genes,
+AUROC is computed for each gene, Heatmap is created using the consensus genes,
+and a MLP model is tuned and fitted on the filtered dataset.
 }
 \examples{
 /dontrun{

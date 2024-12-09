@@ -29,6 +29,8 @@ create_binary_df <- function(b) {
 
 #' @title getConsensus
 #' @description This function computes the consensus genes from a runClassifiers object or a binary data frame.
+#' After consensus genes are selected and if x is an object of class runClassifiers.obj it also runs the testConsensus
+#' function on the adjusted data stored in the runClassifiers.obj.
 #'
 #' @param x An object of class runClassifiers.obj or a binary df.
 #' @param n.min An integer specifying the minimum number of algorithms in which a gene must be present to be considered as a consensus gene.
@@ -44,17 +46,20 @@ create_binary_df <- function(b) {
 #'
 #' @details
 #' The function computes the consensus genes from a runClassifiers object or a binary data frame.
-#' The consensus genes are the genes that are present in at least n.min algorithms,
+#' The consensus genes can be choosen to be the genes that are present in at least n.min algorithms,
 #' or the genes that are present in the algorithms specified in group1,
 #' or the genes that are present in the algorithms specified in group1 and group2.
-#' The consensus genes can be computed using the 'intersect' or 'union' method.
+#' The consensus genes can be computed using the 'intersect' or 'union' methods.
 #'
 #' @importFrom cli cli_alert_info cli_alert_success cli_alert_danger cli_abort cli_warn
 #'
 #' @examples
 #' /dontrun{
+#' # consensus genes are the genes that are present in at least 3 algorithms
 #' cons.1 <- getConsensus(runClassifiers.obj, n.min = 3)
+#' # consensus genes are the genes that are present in both alg1 and alg2
 #' cons.2 <- getConsensus(runClassifiers.obj, group1 = c("alg1", "alg2"), meth1 = "intersect")
+#' # consensus genes are the genes that are present in alg1 and alg2 and alg3 and alg4
 #' cons.3 <- getConsensus(runClassifiers.obj, group1 = c("alg1", "alg2"), group2 = c("alg3", "alg4"),
 #'                        meth1 = "intersect", meth2 = "intersect", meth.comb = "intersect")}
 #'

@@ -4,35 +4,37 @@
 \alias{valConsensus}
 \title{valConsensus}
 \usage{
-valConsensus(df.count, gene_list, class, N = 10, metric = "FScore")
+valConsensus(df.count, gene.list, class, N = 10, metric = "FScore")
 }
 \arguments{
-\item{gene_list}{A character vector specifying the consensus genes to be evaluated.}
+\item{df.count}{A numeric matrix containing the gene expression data. Rows represent samples and columns represent genes.}
+
+\item{gene.list}{A character vector specifying the consensus genes to be evaluated.}
+
+\item{class}{A factor vector specifying the true class labels for the samples.}
 
 \item{N}{An integer specifying the number of top gene combinations to select based on the metric.}
 
-\item{metric}{A character string specifying the metric to use for selecting the top gene combinations. Possible values are 'Accuracy', 'Precision', 'Recall', and 'FScore'.}
-
-\item{count_table}{A numeric matrix containing the gene expression data. Rows represent samples and columns represent genes.}
-
-\item{labels}{A factor vector specifying the true class labels for the samples.}
+\item{metric}{A character string specifying the metric to use for selecting the top gene combinations.
+Possible values are 'Accuracy', 'Precision', 'Recall', and 'FScore'.}
 }
 \value{
 A list containing the clustering results for each combination of genes and clustering methods.
 }
 \description{
-This function validates the consensus genes in a new dataset using clustering methods.
+This function validates the consensus genes in a provided dataset using clustering methods.
 }
 \details{
 The function evaluates the clustering performance of different combinations of genes using various clustering methods.
 The function calculates the accuracy, precision, recall, and F1 score for each clustering method.
-The function supports the following clustering methods: K-Means, Gaussian Mixture Model (GMM), Hierarchical Clustering, PCA, t-SNE, and UMAP.
+The function implements the following clustering methods: K-Means, Gaussian Mixture Model (GMM),
+Hierarchical Clustering, k-Means on PCA dimensions, k-Means on t-SNE dimensions, and k-Means on UMAP dimensions.
 }
 \examples{
 /dontrun{
 count_table <- matrix(rnorm(1000), nrow = 100, ncol = 10)
 gene_list <- c("Gene1", "Gene2", "Gene3")
 labels <- factor(sample(1:2, 100, replace = TRUE))
-result <- evaluate_clustering_combinations(count_table, gene_list, labels)}
+vc <- valConsensus(df.count = count_table, gene.list = gene_list, class = labels, N = 10, metric = "FScore")}
 
 }

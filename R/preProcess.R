@@ -1,5 +1,13 @@
+
+#' class preProcess.obj
+#' @description
+#' Creates a class for data import that will be used to stock pre-processed data.
+#'
+#' @slot raw A data frame containing the raw data.
+#' @slot processed A list containing the processed data.
+#' @slot metadata A data frame containing the metadata.
+#' @slot data.info A list containing the data type and normalization status.
 #' @export
-# create a class for data import that will be used throughout the package
 methods::setClass("preProcess.obj",
   slots = list(
     raw = "data.frame",
@@ -82,7 +90,7 @@ data.import <- function(
   return(preProcess.obj)
 }
 
-# Helper function to normalize data
+# Helper function to normalize data in log2(CPM + 1) scale
 normalization <- function(df.count, mincpm = 1, minfraction = 0.1) {
 
   # Filter Low CPM function
@@ -117,7 +125,7 @@ normalization <- function(df.count, mincpm = 1, minfraction = 0.1) {
   return(norm_data)
 }
 
-# Helper function to perform batch correction
+# Helper function to perform batch correction using ComBat
 correct.batches <- function(data, metadata,
                             batch,
                             covar.mod) {
@@ -188,12 +196,10 @@ correct.batches <- function(data, metadata,
 #'
 #' @details
 #' The function performs the following steps:
-#' 1. Import the data.
-#' 2. Split the data into training and test sets.
-#' 3. Normalize the data if the data type is RNA-seq and the data is not normalized.
-#' 4. Perform batch correction if the batch variable is provided.
-#' 5. Generate PCA and PVCA plots before and after batch correction.
-#' 6. Apply training data parameters to test data.
+#' 1. Import the data and match samples in both data tables.
+#' 2. Normalize the data if the data type is RNA-seq and the data is not normalized.
+#' 3. Perform batch correction if the batch variable is provided.
+#' 4. Generate PCA and PVCA plots before and after batch correction.
 #'
 #' @import ggplot2
 #' @importFrom cli cli_h1 cli_alert_info cli_alert_success cli_alert_danger cli_abort

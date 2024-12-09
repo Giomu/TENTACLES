@@ -27,7 +27,7 @@ setClass("ppiNetwork.obj",
 
 #' @title ppiNetwork
 #' @description Protein-Protein Interaction Network Analysis. This function builds a protein-protein
-#' interaction (PPI) network for a list of genes, clusters the network, and performs enrichment
+#' interaction (PPI) network from a list of genes, finds communities in the Network, and performs enrichment
 #' analysis for each cluster.
 #'
 #' @param gene_list A character vector of gene identifiers.

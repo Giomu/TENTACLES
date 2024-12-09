@@ -51,12 +51,10 @@ batch correction.
 }
 \details{
 The function performs the following steps:
-1. Import the data.
-2. Split the data into training and test sets.
-3. Normalize the data if the data type is RNA-seq and the data is not normalized.
-4. Perform batch correction if the batch variable is provided.
-5. Generate PCA and PVCA plots before and after batch correction.
-6. Apply training data parameters to test data.
+1. Import the data and match samples in both data tables.
+2. Normalize the data if the data type is RNA-seq and the data is not normalized.
+3. Perform batch correction if the batch variable is provided.
+4. Generate PCA and PVCA plots before and after batch correction.
 }
 \examples{
 /dontrun{

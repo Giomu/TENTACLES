@@ -56,20 +56,22 @@ selectTopCombinations <- function(results, N, metric) {
 
 
 #' @title valConsensus
-#' @description This function validates the consensus genes in a new dataset using clustering methods.
+#' @description This function validates the consensus genes in a provided dataset using clustering methods.
 #'
-#' @param count_table A numeric matrix containing the gene expression data. Rows represent samples and columns represent genes.
-#' @param gene_list A character vector specifying the consensus genes to be evaluated.
-#' @param labels A factor vector specifying the true class labels for the samples.
+#' @param df.count A numeric matrix containing the gene expression data. Rows represent samples and columns represent genes.
+#' @param gene.list A character vector specifying the consensus genes to be evaluated.
+#' @param class A factor vector specifying the true class labels for the samples.
 #' @param N An integer specifying the number of top gene combinations to select based on the metric.
-#' @param metric A character string specifying the metric to use for selecting the top gene combinations. Possible values are 'Accuracy', 'Precision', 'Recall', and 'FScore'.
+#' @param metric A character string specifying the metric to use for selecting the top gene combinations.
+#' Possible values are 'Accuracy', 'Precision', 'Recall', and 'FScore'.
 #'
 #' @return A list containing the clustering results for each combination of genes and clustering methods.
 #'
 #' @details
 #' The function evaluates the clustering performance of different combinations of genes using various clustering methods.
 #' The function calculates the accuracy, precision, recall, and F1 score for each clustering method.
-#' The function supports the following clustering methods: K-Means, Gaussian Mixture Model (GMM), Hierarchical Clustering, PCA, t-SNE, and UMAP.
+#' The function implements the following clustering methods: K-Means, Gaussian Mixture Model (GMM),
+#' Hierarchical Clustering, k-Means on PCA dimensions, k-Means on t-SNE dimensions, and k-Means on UMAP dimensions.
 #'
 #' @importFrom stats kmeans hclust prcomp
 #' @importFrom mclust Mclust mclustBIC
@@ -82,10 +84,12 @@ selectTopCombinations <- function(results, N, metric) {
 #' count_table <- matrix(rnorm(1000), nrow = 100, ncol = 10)
 #' gene_list <- c("Gene1", "Gene2", "Gene3")
 #' labels <- factor(sample(1:2, 100, replace = TRUE))
-#' result <- evaluate_clustering_combinations(count_table, gene_list, labels)}
+#' vc <- valConsensus(df.count = count_table, gene.list = gene_list, class = labels, N = 10, metric = "FScore")}
 #'
 #' @export
-valConsensus <- function(df.count, gene_list, class, N = 10, metric = "FScore") {
+valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") {
+
+  gene_list <- gene.list
 
   cli::cli_h1("Validating Consensus Genes")
   # Numero massimo di geni da considerare

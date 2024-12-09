@@ -1,5 +1,12 @@
+#' Class for the runClassifiers object
+#' @description
+#' Create a class for the runClassifiers object.
+#'
+#' @slot data A list containing the adjusted data and metadata.
+#' @slot models.info A list containing the finalized workflows for each model.
+#' @slot model.features A list containing the variable importances for each model.
+#' @slot performances A list containing the tuning and final metrics for each model.
 #' @export
-# Create a class.
 methods::setClass("runClassifiers.obj",
   slots = list(
     data = "list",
@@ -15,6 +22,8 @@ methods::setClass("runClassifiers.obj",
 #' @import plsmod
 #' @import rules
 #' @import themis
+#' @import nnet
+#' @import NeuralNetTools
 
 # Helper function to create model specifications
 create_model_specs <- function() {
@@ -198,7 +207,6 @@ tune_and_fit <- function(
 
   cli::cli_h2("Tuning Model Parameters")
   # Tune the models
-  # tictoc::tic("Model tuning and fitting")
   if (tuning.method %in% c("tune_grid", "tune_race_anova", "tune_race_win_loss")) {
     tune_results <- tune_workflows %>%
       workflowsets::workflow_map(
@@ -222,7 +230,6 @@ tune_and_fit <- function(
   } else {
     cli::cli_abort("Invalid tuning method. Please refer to the documentation for valid options.")
   }
-  # tictoc::toc()
 
   cli::cli_h3("Best Parameters Selection")
   cli::cli_alert_info("Selecting best parameters for each model ...")
@@ -378,32 +385,40 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 
 
 #' @title runClassifiers
-#' @description This function run classifiers specified on pre-processed data.
+#' @description This function run classifiers specified on an object of class preProcess.obj or
+#' on the data provided in the arguments ...
 #'
 #' @param preProcess.obj An object of class preProcess.
 #' @param models A character vector specifying the models to be used.
-#'               Possible values are 'xgboost', 'bag_tree', 'lightGBM', 'pls', 'logistic',
-#'               'C5_rules', 'mars', 'bag_mars', 'mlp', 'bag_mlp', 'decision_tree',
-#'               'rand_forest', 'svm_linear', 'svm_poly', 'svm_rbf'.
+#' Possible values are 'xgboost', 'bag_tree', 'lightGBM', 'pls', 'logistic',
+#' 'C5_rules', 'mars', 'bag_mars', 'mlp', 'bag_mlp', 'decision_tree',
+#' 'rand_forest', 'svm_linear', 'svm_poly', 'svm_rbf'.
 #' @param selector.recipes A character vector specifying the selector recipes to be used.
-#'                         Possible values are 'boruta', 'roc', 'infgain', 'mrmr', 'corr'.
+#' Possible values are 'boruta', 'roc', 'infgain', 'mrmr', 'corr'. Models and selector.recipes will be paired
+#' in the order they are provided. If the number of recipes doesn't match the number of models, the first recipe will be used for all models.
 #' @param tuning.method A character string specifying the tuning method to be used.
-#'                      Possible values are 'tune_grid (default)', tune_race_anova',
-#'                      tune_race_win_loss', 'tune_bayes', 'tune_sim_anneal'.
+#' Possible values are 'tune_grid (default)', tune_race_anova', tune_race_win_loss', 'tune_bayes', 'tune_sim_anneal'.
 #' @param n An integer specifying the number of iterations for the tuning method.
 #' @param v An integer specifying the number of folds for the cross-validation during the hyperparameters tuning.
 #' @param metric A character string specifying the metric to be used for tuning.
-#'              Possible values are 'accuracy', 'roc_auc', 'sensitivity', 'specificity'.
 #' @param nsim An integer specifying the number of simulations for the permutation-based VIP.
 #' @param seed An integer specifying the seed for reproducibility.
+#' @param filter A logical specifying whether to filter genes not annotated in the GO and KEGG databases.
+#' @param downsample A logical specifying whether to downsample the majority class.
+#' @param ... Arguments passed to the function. If preProcess.obj is not provided, the function looks
+#' for df.count, df.clin and class in ... as specified in the documentation of preProcess function.
 #'
-#' @return An object of class runClassifiers.obj.
+#' @return An object of class runClassifiers.obj containing:
+#' data: A list containing the adjusted data and metadata.
+#' models.info: A list containing the finalized workflows for each model.
+#' model.features: A list containing the variable importances for each model.
+#' performances: A list containing the tuning and final metrics for each model.
 #'
 #' @details
-#' The function runs several classifiers on the preprocessed data.
-#' The function first filters the genes that are not annotated in the GO and KEGG databases.
+#' The function runs specified classifiers paired with provided selector.recipes on pre-processed data.
+#' If filter = TRUE, the function first filters the genes that are not annotated in the GO and KEGG databases.
 #' Then, the function tunes and fits the models using the specified tuning method.
-#' The function computes the variable importances for each model using the permutation-based VIP,
+#' Finally it computes the variable importances for each model using the permutation-based VIP,
 #' when the direct VIP computation fails.
 #'
 #' @import dplyr

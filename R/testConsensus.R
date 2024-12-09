@@ -435,22 +435,19 @@ pca.validation <- function(df, cons_genes, class) {
 
 
 #' @title Test Consensus
-#' @description This function validates the consensus genes by performing PCA,
-#' AUROC, Heatmap, and Validation MLP Model on the entire dataset.
+#' @description This function tests a list of consensus genes on a df.count performing PCA,
+#' AUROC, Heatmap, and tuning and fitting a MLP Model.
 #'
-#' @param df.count A data frame containing the counts data
-#' @param cons_genes A vector list containing consensus genes to test
-#' @param class The column name of the class
+#' @param df.count A data frame containing the counts data. Gene names on columns and samples on rows.
+#' @param gene.list A vector list containing consensus genes to test.
+#' @param class A vector containing the true class labels.
 #' @return The PCA plot, AUROC plot, Heatmap plot, and Validation MLP Model plot
 #'
 #' @details
-#' This function validates the consensus genes by performing PCA, AUROC, Heatmap,
-#' and Validation MLP Model on the same dataset or a new one. The function first
-#' normalizes the data if it is not already normalized. It then applies batch
-#' correction if a batch variable is provided. The PCA analysis is then performed
-#' on the normalized data. The AUROC analysis is then performed on the consensus
-#' genes. The Heatmap analysis is then performed on the consensus genes. Finally,
-#' the Validation MLP Model is performed on the consensus genes.
+#' This function tests the consensus genes by performing PCA, AUROC, Heatmap,
+#' and Validation MLP Model on the provided dataset. PCA is performed on the consensus genes,
+#' AUROC is computed for each gene, Heatmap is created using the consensus genes,
+#' and a MLP model is tuned and fitted on the filtered dataset.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -482,9 +479,9 @@ pca.validation <- function(df, cons_genes, class) {
 #'    df.count, cons_genes, class)}
 #'
 #' @export
-testConsensus <- function(df.count, cons_genes, class) {
+testConsensus <- function(df.count, gene.list, class) {
 
-
+    cons_genes <- gene.list
     cli::cli_h2("Consensus Genes Testing")
 
     # Run the PCA anlysis

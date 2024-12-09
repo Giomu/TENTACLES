@@ -54,7 +54,7 @@ new interactions, final genes, and enrichment results (only significant ones).
 }
 \description{
 Protein-Protein Interaction Network Analysis. This function builds a protein-protein
-interaction (PPI) network for a list of genes, clusters the network, and performs enrichment
+interaction (PPI) network from a list of genes, finds communities in the Network, and performs enrichment
 analysis for each cluster.
 }
 \examples{

@@ -1,10 +1,3 @@
-# suppressMessages(library(clusterProfiler))
-# suppressMessages(library(org.Hs.eg.db))
-# suppressMessages(library(stringr))
-
-
-
-
 #' @title enrich.GO
 #' @description Perform Gene Ontology Enrichment Analysis. This function performs Gene Ontology (GO)
 #' enrichment analysis using the enrichGO function from the clusterProfiler package.
