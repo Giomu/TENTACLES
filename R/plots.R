@@ -1,7 +1,6 @@
 #' @import ggplot2
 
-# ----------------- BATCH PLOTS ----------------------------
-
+# ----------------- PLOTS FOR preProcess() ----------------------------
 # Helper function to plot PCA before and after batch correction
 batch.pca.plot <- function(data.before, data.after, batch, metadata) {
     # Helpler function to perform PCA
@@ -135,34 +134,16 @@ batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, cov
             legend.text = element_text(size = 12),
             legend.key.size = unit(0.5, "cm"),
             panel.grid.minor = element_blank(),
-            panel.grid.major.x = element_blank(),
-            strip.text = element_text(size = 16, color = "#696969"),
+            # panel.grid.major.x = element_blank(),
+            strip.text = element_text(size = 16, color = "#696969")
         )
 
     return(p)
 }
 
 
-# ----------------- CLASSIFICATION PLOTS ----------------------------
-
-#' @title upset.plot
-#' @description This function generates an UpSet plot to visualize the overlap of
-#' features across different models using the ComplexUpSet library.
-#'
-#' @param data.obj An object of class ensBP.
-#'
-#' @return An UpSet plot visualizing the overlap of features across different models.
-#'
-#' @import ggplot2
-#' @importFrom ComplexUpset intersection_size upset upset_modify_themes intersection_matrix
-#' @importFrom UpSetR fromList
-#'
-#' @examples
-#' \dontrun{
-#' # Example usage of upset.plot2 function
-#' upset.plot(data.obj)
-#' }
-#'
+# ----------------- PLOTS FOR runClassifiers() ----------------------------
+# Helper function to plot the intersection of features between models.
 upset.plot <- function(data.obj) {
     # Extract features
     model_features_list <- data.obj@model.features
@@ -195,9 +176,9 @@ upset.plot <- function(data.obj) {
         ),
         base_annotations = list(
             "Intersection size" = ComplexUpset::intersection_size(
-                text = list(size = 7),
                 fill = "#00798C",
-                width = 0.8
+                width = 0.8,
+                text = list(size = 4.5),
             ) + theme(
                 panel.grid.minor = element_blank(),
                 axis.text.y = element_text(size = 15, color = "gray"),
@@ -207,8 +188,8 @@ upset.plot <- function(data.obj) {
         stripes = "white",
         matrix = (
             intersection_matrix(
-                geom = geom_point(size = 5, shape = "circle"),
-                segment = geom_segment(linetype = "solid", color = "black")
+                segment = geom_segment(linetype = "dotted", color = "black"),
+                geom = geom_point(size = 5, shape = "square")
             )
         ),
         themes = upset_modify_themes(
@@ -222,22 +203,9 @@ upset.plot <- function(data.obj) {
     return(p)
 }
 
-#' @title performances.plot
-#' @description This function generates a bar plot to visualize the performances of different models.
-#'
-#' @param performances A data frame containing the performances of different models.
-#'
-#' @return A bar plot visualizing the performances of different models.
-#'
-#' @import ggplot2
-#'
-#' @examples
-#' \dontrun{
-#' # Example usage of performances.plot function
-#' performances.plot(performances)
-#' }
-#'
-performances.plot <- function(performances) {
+# Helper function to plot the performances of models during tunning and fitting.
+performances.plot <- function(data.obj) {
+    performances <- data.obj@performances
     tuning_performances <- performances$tuning_metrics
     fit_performances <- performances$final_metrics
 
@@ -257,67 +225,70 @@ performances.plot <- function(performances) {
     # rename accuracy to Accuracy brier_class to Brier score and roc_auc to AUC
     performances$metric <- factor(performances$metric,
         levels = c("accuracy", "f_meas", "precision", "recall"),
-        labels = c("Accuracy", "F-score", "Precision", "Recall")
+        labels = c("Accuracy", "F1-Score", "Precision", "Recall")
     )
-    performances$type <- factor(performances$type, levels = c("Tuning", "Fitting"))
+    performances$type <- factor(performances$type, levels = c("Fitting", "Tuning"))
 
-    fill_colors <- c("Tuning" = "#8da0cb", "Fitting" = "#e78ac3")
+    fill_colors <- c("Tuning" = "#8d96a3", "Fitting" = "#2e4057")
 
     model <- NULL
     mean <- NULL
     type <- NULL
     p <- ggplot(performances, aes(x = model, y = mean, fill = type)) +
-        geom_bar(stat = "identity", position = "dodge", color = "darkgrey", width = 0.5) +
-        labs(title = "Model performances", x = "", y = "", fill = "") +
+        geom_bar(stat = "identity", position = "dodge", alpha = 0.9, color = "black", width = 0.5, linewidth = 0.3) +
         theme_minimal() +
-        scale_fill_manual(values = fill_colors) +
+        scale_fill_manual(values = fill_colors, breaks = c("Tuning", "Fitting")) +
         theme_minimal() +
-        # theme(axis.text.x = element_text(angle = 270, vjust = 0.1, hjust=0.1)) +
+        labs(y = "Score", x = "", fill = "") +
         coord_flip() +
-        # theme(
-        #     axis.text.x = element_text(size = 12),
-        #     axis.text.y = element_text(size = 12),
-        #     axis.title.x = element_text(size = 14),
-        #     axis.title.y = element_text(size = 14),
-        #     legend.position = "bottom",
-        #     legend.title = element_text(size = 14),
-        #     legend.text = element_text(size = 12),
-        #     strip.text = element_text(size = 16),
-        #     panel.grid.minor = element_blank(),
-        #     panel.border = element_rect(colour = "black", fill = NA, size = 0.5),
-        #     plot.title = element_text(size = 18, hjust = 0.5)
-        # ) +
+        theme(
+            axis.text.x = element_text(size = 11.5, color = "#7e7e7e"),
+            axis.text.y = element_text(size = 13),
+            axis.title.x = element_text(size = 14, color = "#7e7e7e"),
+            #     legend.position = "bottom",
+            #     legend.title = element_text(size = 14),
+            #     legend.text = element_text(size = 12),
+            strip.text = element_text(size = 13),
+            #     panel.grid.minor = element_blank(),
+            #     panel.border = element_rect(colour = "black", fill = NA, size = 0.5),
+            #     plot.title = element_text(size = 18, hjust = 0.5)
+        ) +
         facet_wrap(~metric) # , scales = "free_y")
 
     return(p)
 }
 
-## TODO: make it more beautiful!!
-predheat.plot <- function(predictions_df) {
-    predictions_df <- predictions_df %>%
-        dplyr::mutate(correct = ifelse(class == .pred_class, "Correct", "Incorrect"))
+wrong.preds.plot <- function(predictions_df) {
+    predictions_df$result <- ifelse(predictions_df$.pred_class == predictions_df$class, "Correct", "Wrong")
+    wrong_ids <- unique(predictions_df[predictions_df$result == "Wrong", "ID"])
+    x_breaks <- ifelse(predictions_df$ID %in% wrong_ids, predictions_df$ID, "")
 
-    # Creiamo un plot con ggplot
-    p <- ggplot(predictions_df, aes(x = ID, y = model, fill = correct)) +
-        geom_tile(
-            color = "white", lwd = 1, linetype = 1, size = 3
-        ) +
-        scale_fill_manual(
-            values = c("Correct" = "skyblue3", "Incorrect" = "indianred")
-        ) +
-        theme_minimal() +
+    p <- ggplot(predictions_df, aes(x = ID, y = model, color = result)) +
+        geom_point(size = if_else(d$result == "Wrong", 4, 1.5), alpha = 0.9) +
+        scale_color_manual(values = c("Correct" = "gray", "Wrong" = "indianred")) +
         labs(
-            title = "Predictions Heatmap",
             x = "",
             y = "",
-            fill = "Prediction Status"
+            color = "Prediction"
         ) +
+        # put breaks on the x-axis only on the Wrong samples
+        scale_x_discrete(breaks = x_breaks) +
         theme_minimal() +
         theme(
-            axis.text.x = element_text(angle = 90, hjust = 0, vjust = 0.5),
-            axis.text.y = element_text(size = 7)
+            axis.text.x = element_text(angle = 45, hjust = 1, vjust = 2, margin = margin(t = 50), size = 9, color = "#7c7b7b"),
+            axis.text.y = element_text(size = 13),
+            panel.grid.y = element_blank(),
+            panel.grid.major.x = element_line(color = "gray", size = 0.8, linetype = "dotted"),
+            legend.position = "right"
         ) +
-        coord_fixed(ratio = 1)
+        scale_x_discrete(breaks = x_breaks)
+    theme(
+        axis.text.x = element_text(angle = 45, hjust = 1, vjust = 2, margin = margin(t = 50), size = 9, color = "#7c7b7b"),
+        axis.text.y = element_text(size = 13),
+        panel.grid.y = element_blank(),
+        panel.grid.major.x = element_line(color = "gray", size = 0.8, linetype = "dotted"),
+        legend.position = "right"
+    )
 
     return(p)
 }
@@ -569,6 +540,165 @@ plotTopMetrics <- function(top_results) {
             )
         ) +
         ggplot2::guides(fill = ggplot2::guide_legend(ncol = 1))
+
+    return(p)
+}
+
+
+# ----------------- PLOTS FOR testConsensus() ----------------------------
+# Helper function to plot the PCA for consensus genes
+pca.consensus <- function(df, cons_genes, class) {
+    # Create a matrix from our table of counts
+    # rows: samples, cols: genes
+    pca_matrix <- as.matrix(df[, colnames(df) %in% cons_genes])
+
+    # Perform the PCA
+    cli::cli_alert_info("Generating PCA plots for consensus genes...")
+    sample_pca <- stats::prcomp(pca_matrix, scale = TRUE)
+    # extract the eigenvalues
+    pc_eigenvalues <- sample_pca$sdev^2
+
+    # create a data frame with the eigenvalues
+    pc_eigenvalues <- data.frame(
+        PC = factor(1:length(pc_eigenvalues)),
+        variance = pc_eigenvalues
+    )
+    # add a new column with the percent variance
+    pc_eigenvalues$pct <- pc_eigenvalues$variance / sum(pc_eigenvalues$variance) * 100
+    # add another column with the cumulative variance explained
+    pc_eigenvalues$pct_cum <- cumsum(pc_eigenvalues$pct)
+
+    # extract the PC scores
+    pc_scores <- sample_pca$x
+    pc_scores <- data.frame(sample = rownames(pc_scores), pc_scores)
+
+    # extract the PC loadings
+    pc_loadings <- sample_pca$rotation
+    pc_loadings <- data.frame(gene = rownames(pc_loadings), pc_loadings)
+
+    # reshape the loadings to long format
+    pc_loadings_long <- reshape2::melt(pc_loadings, id.vars = "gene", measure.vars = c("PC1", "PC2"), variable.name = "PC", value.name = "loading")
+    pc_loadings_long <- pc_loadings_long[order(-abs(pc_loadings_long$loading)), ]
+    # get the top 15 genes for each PC
+    top_genes <- unique(pc_loadings_long$gene[1:15]) # TODO: make this a parameter
+    top_loadings <- pc_loadings[pc_loadings$gene %in% top_genes, ]
+
+    # get the PC scores from prcomp object
+    pc_scores_p <- data.frame(sample = rownames(sample_pca$x), sample_pca$x)
+    # create the plot
+    pca_plot <- ggplot(pc_scores_p, aes(x = PC1, y = PC2, colour = factor(class))) +
+        scale_color_manual(values = c("skyblue3", "indianred")) +
+        geom_point(size = 3) +
+        stat_ellipse(linewidth = 0.7, linetype = 2, type = "norm") +
+        stat_ellipse(type = "t") +
+        theme_minimal() +
+        coord_fixed(ratio = 1) +
+        labs(colour = "Class") +
+        theme(
+            legend.box.just = "right", legend.position = "bottom",
+            legend.title = element_text(size = 10),
+            legend.text = element_text(size = 10),
+            axis.text = element_text(size = 10, color = "#8f8f8f"),
+            axis.title = element_text(size = 13, color = "#8f8f8f"),
+        )
+
+
+    # Create Color Column named 'Col'
+    top_loadings$Col <- NA
+    top_loadings[top_loadings$PC1 > 0 & top_loadings$PC2 > 0, "Col"] <- "#66C2A5"
+    top_loadings[top_loadings$PC1 < 0 & top_loadings$PC2 < 0, "Col"] <- "#E5C494"
+    top_loadings[top_loadings$PC1 > 0 & top_loadings$PC2 < 0, "Col"] <- "#8DA0CB"
+    top_loadings[top_loadings$PC1 < 0 & top_loadings$PC2 > 0, "Col"] <- "#FC8D62"
+
+    # plot dei top_loadings per ognuna delle PC1 e PC2
+    loadings_plot <- ggplot(data = top_loadings) +
+        geom_segment(aes(x = 0, y = 0, xend = PC1, yend = PC2),
+            arrow = arrow(length = unit(0.08, "in")),
+            linewidth = 0.8,
+            colour = top_loadings$Col
+        ) +
+        ggrepel::geom_text_repel(aes(x = PC1, y = PC2, label = gene),
+            nudge_y = 0.001, size = 2.5
+        ) +
+        scale_x_continuous(expand = c(0.02, 0.02)) +
+        theme_minimal() +
+        coord_fixed(ratio = 1) +
+        labs(x = "PC1", y = "PC2") +
+        theme(
+            axis.text = element_text(size = 10, color = "#8f8f8f"),
+            axis.title = element_text(size = 13, color = "#8f8f8f"),
+            panel.grid.minor = element_blank()
+        )
+    p <- (pca_plot | loadings_plot)
+    cli::cli_alert_success("Plots created!")
+
+    return(p)
+}
+
+auroc.FC.consensus <- function(df, cons_genes, class) {
+    df <- df[, colnames(df) %in% cons_genes]
+    results <- tibble::tibble(
+        gene = character(),
+        auroc = numeric(),
+        auroc_upper = numeric(),
+        auroc_lower = numeric(),
+        FC = numeric()
+    )
+
+    cli::cli_alert_info("Computing AUROC and Fold Change ...")
+    for (gene in colnames(df)) {
+        predictor <- df[[gene]]
+        auc_obj <- pROC::roc(class, predictor, auc = TRUE, ci = TRUE, direction = "<", levels = (c(0, 1)))
+
+        # Calculate Fold Change manually
+        pred_with_class <- data.frame(predictor, class)
+        FC <- mean(pred_with_class[pred_with_class$class == 1, "predictor"]) -
+            mean(pred_with_class[pred_with_class$class == 0, "predictor"])
+
+        results <- results %>%
+            dplyr::add_row(
+                gene = gene,
+                auroc = auc_obj$auc[1],
+                auroc_upper = auc_obj$ci[1],
+                auroc_lower = auc_obj$ci[3],
+                FC = FC
+            )
+    }
+    cli::cli_alert_success("AUROC and Fold Change computed successfully!")
+
+    # Auroc Plot
+    cli::cli_alert_info("Creating AUROC plot ...")
+    p <- results %>%
+        group_by(gene) %>%
+        dplyr::mutate(mean_auroc = mean(auroc)) %>%
+        dplyr::ungroup() %>%
+        dplyr::mutate(gene = forcats::fct_reorder(gene, mean_auroc)) %>% # Order by AUC
+        ggplot(aes(x = gene, y = auroc)) +
+        geom_hline(yintercept = 0.5, linetype = "solid", color = "#7e7e7e", linewidth = 0.4) +
+        geom_errorbar(aes(ymin = auroc_lower, ymax = auroc_upper, color = FC), width = 0, linewidth = 0.4, position = position_dodge(0.5)) +
+        geom_point(aes(color = FC), size = 5, position = position_dodge(0.5)) +
+        scale_color_gradient2(low = "blue", mid = "lightgray", high = "red", midpoint = 0, limits = c(-2.1, 2.1)) +
+        # geom_line(aes(y = mean_auc, group = 1), color = "green", linetype = "solid", linewidth = 0.2) +
+        scale_y_continuous(limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1)) +
+        scale_shape_manual(values = c(16, 17, 15, 3, 4, 18, 8)) +
+        labs(x = "", y = "AUROC") +
+        # coord_flip() +
+        theme_minimal() +
+        theme(
+            # legend.position = "right",
+            # legend.justification = "center",
+            axis.text.x = element_text(size = 13, angle = 90, vjust = 0.5, hjust = 1, color = "#7e7e7e"),
+            axis.text.y = element_text(hjust = 1, size = 13, color = "#7e7e7e"),
+            axis.title.y = element_text(size = 16, color = "#7e7e7e"),
+            legend.title = element_text(size = 12, vjust = 0.5, hjust = 0),
+            legend.text = element_text(size = 11, hjust = 0),
+            panel.grid.minor = element_blank(),
+            panel.grid.major.x = element_blank(),
+            axis.ticks = element_line(color = "#7e7e7e", size = 0.3),
+            axis.line.x = element_line(color = "#7e7e7e", linewidth = 0.3),
+            axis.line.y = element_line(color = "#7e7e7e", linewidth = 0.3)
+        )
+    cli::cli_alert_success("AUROC plot created successfully!")
 
     return(p)
 }
