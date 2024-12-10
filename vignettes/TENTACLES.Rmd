@@ -14,62 +14,136 @@ knitr::opts_chunk$set(
 )
 ```
 
-##Data Loading
+## Data Loading
 
-```{r setup}
+```{r setup, warning=FALSE}
 # library(TENTACLES)
 devtools::document()
 devtools::load_all()
 
 # Load data
-df.count <- data("acc.count")
-df.clin <- data("acc.clin")
+data(acc.count, acc.clin)
 ```
 
-##Pre-Processing
+## Pre-Processing
 
-```{r preProcess}
+Main steps of the preProcess function include:
+
+1.  **Normalization**: *log2(CPM + 1)* transformation, if `is.normalized = FALSE`
+
+2.  **Low count filter**: removes genes with low expression in a fraction of the population based on `mincpm` and `minfraction` parameters
+
+3.  **Batch correction**: uses comBat for batch correction based on `batch` and `covar.mod` parameters
+
+4.  **Plots**: PCA and PVCA before and after batch correction if `plot = TRUE` and batch correction is performed.
+
+```{r preProcess, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
 # pre-Process data
-a <- preProcess(df.count = df.count, df.clin = df.clin, batch = "patient.gender")
+pp <- preProcess(df.count = acc.count, df.clin = acc.clin, 
+                 batch = "patient.gender", 
+                 covar.mod = "patient.primary_pathology.laterality")
 ```
 
-##Run Classifiers
+The `preProcess` function returns an object of class preProcess.obj that contains the preprocessed data and intermediate results. Specifically, it includes:
 
-```{r runClassifiers}
+-   The raw count table of the input data.
+
+-   Count tables after each pre-processing step, such as normalization and batch correction.
+
+-   The clinical metadata table provided as input.
+
+This object serves as a structured container, enabling seamless integration with downstream analysis. For instance, you can directly use the preProcess object as input to the runClassifiers function to perform comparative classification analysis between
+
+## Run Classifiers
+
+Main steps of `runClassifiers` function include:
+
+1.  **Filter non-annotated genes**: removes genes non-annotated in GO and KEGG databases, if `filter = TRUE`.
+
+2.  **Models tuning**: splits dataset into `v` resamples, tests a grid of `n` combinations using `tuning.method` on feature selected (`selector.recipes`) expression matrix and select parameters that maximize `metric` for each model
+
+3.  **Fit models**: on the provided pre-processed dataset (contained in `preProcess.obj` or in `...`)
+
+4.  **Variable Importances**: computes variable importances using *vip* and when not supported uses *vi_permute* with `nsim` permutations
+
+5.  **Plots**: generates plots of:
+
+    -   Heatmap of misclassified samples
+
+    -   Performance plot for each pair of classifier-feature selector implemented
+
+    -   UpSet plot of common genes found
+
+```{r runClassifiers, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
 # Increase max size for parallel processing
 options(future.globals.maxSize = 2 * 1024^3)
 # Run classifiers
-b <- runClassifiers(a, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
+rc <- runClassifiers(pp, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
                     selector.recipes = c("boruta", "roc", "boruta", "boruta"), 
                     filter = TRUE, downsample = TRUE)
 ```
 
-##Get Consensus genes
+## Get Consensus genes
 
-```{r getConsensus}
+Main steps of `getConsensus` function include:
+
+1.  **Get Consensus**: compute consensus biomarkers based on 3 possible approaches:
+
+    -   Assign values to `n_min` and `exclude` parameters. In this way we can exclude algorithms with poor performances and pick as consensus genes, those that appeared in at least a number of `n_min` algorithms.
+
+    -   Leave as `NULL` these 2 parameters and specify instead `group1` and `meth1` parameters. In this way we can take the `'union'` or the `'intersection'` of the algorithms listed in `group1`.
+
+    -   Leave as `NULL` `n_min` and `exclude` while specifying `group1`, `group2`, `meth1`, `meth2` and `meth_comb` parameters all together. In this way we can take genes based on the `meth1` of `group1`, `meth_comb` with the `meth2` of `group2`. e.g. take the union (`meth1 = "union"`) of genes in `group1`, the union (`meth2 = "union"`) of genes in `group2` and pick the intersection (`meth_comb = "intersect"`) of these two groups.
+
+2.  **Test Consensus (Plots)**: compute AUROC for each gene, PCA analysis, Hierarchical Clustering heatmap and tunes and fits a Multi Layer Perceptron.
+
+```{r getConsensus, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
 # Get and test consensus
-c <- getConsensus(b, n.min = 4)
+gc <- getConsensus(rc, n.min = 4)
 ```
 
-##Validate Consensus genes
+## Validate Consensus genes
 
-```{r validation, message=FALSE, warning=TRUE}
+Main steps of valConsensus include:
+
+1.  **Gene combinations**: given a `gene.list`, it computes all possible combinations of variable length of genes
+
+2.  **Unsupervised Clustering**: it computes for each combination of genes, 6 clustering methods on the `df.count` provided: 
+
+    -   k-Means
+
+    -   Gaussian Mixture Model (GMM)
+
+    -   Hierarchical Clustering (HC)
+
+    -   PCA followed by k-Means
+
+    -   t-SNE followed by k-Means
+
+    -   UMAP followed by k-Means
+
+3.  **Top combinations**: it selects the best `N` combinations of genes that maximize the mean of `metric` across the 6 clustering methods
+
+4.  **Plots**: for the top `N` combinations it plots performances (Accuracy, Precision, Recall, F-Score) of the 6 methods and the AUROC heatmap
+
+```{r validation, message=FALSE, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
 # Import NEW data
-count_table <- as.data.frame((b@data$adjusted.data))
-gene_list <- c$consensusGenes
-labels <- as.factor(b@data$metadata$class)
+count_table <- as.data.frame((rc@data$adjusted.data))
+gene_list <- gc$consensusGenes
+labels <- as.factor(rc@data$metadata$class)
 
 # Validation
-d <- valConsensus(count_table, gene_list, labels, N = 10, metric = "FScore")
+vc <- valConsensus(df.count = count_table, gene.list = gene_list, 
+                   class = labels, N = 10, metric = "FScore")
 ```
 
-##Test Consensus genes
+## Test Consensus genes
 
-```{r, message=FALSE, warning=TRUE}
+```{r, message=FALSE, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
 # Import NEW data
-count_table <- as.data.frame((b@data$adjusted.data))
-gene_list <- c$consensusGenes
-labels <- as.factor(b@data$metadata$class)
+count_table <- as.data.frame((rc@data$adjusted.data))
+gene_list <- gc$consensusGenes
+labels <- as.factor(rc@data$metadata$class)
 # test consensus on an external dataset
-e <- testConsensus(df.count = count_table, cons_genes = gene_list, class = labels)
+tc <- testConsensus(df.count = count_table, gene.list = gene_list, class = labels)
 ```
