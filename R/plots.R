@@ -143,6 +143,7 @@ batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, cov
 
 
 # ----------------- PLOTS FOR runClassifiers() ----------------------------
+
 # Helper function to plot the intersection of features between models.
 upset.plot <- function(data.obj) {
     # Extract features
@@ -187,12 +188,12 @@ upset.plot <- function(data.obj) {
         ),
         stripes = "white",
         matrix = (
-            intersection_matrix(
+            ComplexUpset::intersection_matrix(
                 segment = geom_segment(linetype = "dotted", color = "black"),
                 geom = geom_point(size = 5, shape = "square")
             )
         ),
-        themes = upset_modify_themes(
+        themes = ComplexUpset::upset_modify_themes(
             list(
                 "intersections_matrix" = theme(
                     text = element_text(size = 20, color = "gray")
@@ -264,7 +265,7 @@ wrong.preds.plot <- function(predictions_df) {
     x_breaks <- ifelse(predictions_df$ID %in% wrong_ids, predictions_df$ID, "")
 
     p <- ggplot(predictions_df, aes(x = ID, y = model, color = result)) +
-        geom_point(size = if_else(d$result == "Wrong", 4, 1.5), alpha = 0.9) +
+        geom_point(size = if_else(predictions_df$result == "Wrong", 4, 1.5), alpha = 0.9) +
         scale_color_manual(values = c("Correct" = "gray", "Wrong" = "indianred")) +
         labs(
             x = "",
@@ -677,7 +678,7 @@ auroc.FC.consensus <- function(df, cons_genes, class) {
         geom_hline(yintercept = 0.5, linetype = "solid", color = "#7e7e7e", linewidth = 0.4) +
         geom_errorbar(aes(ymin = auroc_lower, ymax = auroc_upper, color = FC), width = 0, linewidth = 0.4, position = position_dodge(0.5)) +
         geom_point(aes(color = FC), size = 5, position = position_dodge(0.5)) +
-        scale_color_gradient2(low = "blue", mid = "lightgray", high = "red", midpoint = 0, limits = c(-2.1, 2.1)) +
+        scale_color_gradient2(low = "#187498", mid = "gray90", high = "#C62E2E", midpoint = 0, limits = c(-2.1, 2.1)) +
         # geom_line(aes(y = mean_auc, group = 1), color = "green", linetype = "solid", linewidth = 0.2) +
         scale_y_continuous(limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1)) +
         scale_shape_manual(values = c(16, 17, 15, 3, 4, 18, 8)) +
@@ -700,5 +701,258 @@ auroc.FC.consensus <- function(df, cons_genes, class) {
         )
     cli::cli_alert_success("AUROC plot created successfully!")
 
+    return(p)
+}
+
+# This function performs the test of the consensus genes using a MLP model
+mlp.model <- function(df, cons_genes, class) {
+    # future::plan(future::multisession, workers = parallel::detectCores() - 1)
+
+    withr::with_seed(
+        seed = 123,
+        code = {
+            # Keep from df only genes of consensus
+            df <- df[, colnames(df) %in% cons_genes]
+            cli::cli_alert_info("Setting up MLP on {length(cons_genes)} genes ...")
+
+            # Put class column at the end
+            df$class <- class
+
+            # Create a new train and test dataset
+            cli::cli_alert_info("Splitting data into train and test ...")
+            train_test_split <- rsample::initial_split(df, prop = 0.7, strata = class)
+            # train_test_split <- split.train.test(df, prop = 0.7, seed = 456)
+            train <- rsample::training(train_test_split)
+            test <- rsample::testing(train_test_split)
+            train_resamples <- rsample::vfold_cv(train, v = 3, strata = class)
+            cli::cli_alert_success("Data splitted successfully!")
+
+
+            # define the recipe
+            cli::cli_alert_info("Setting up the recipe ...")
+            df_recipe <-
+                # which consists of the formula (outcome ~ predictors)
+                recipes::recipe(class ~ ., data = df) %>%
+                # and some pre-processing steps
+                recipes::step_zv(recipes::all_predictors()) %>%
+                recipes::step_normalize(recipes::all_numeric()) %>%
+                recipes::step_corr(recipes::all_predictors())
+            cli::cli_alert_success("Recipe set up successfully!")
+
+            # apply the recipe to the training data
+            cli::cli_alert_info("Applying the recipe to the training data ...")
+            df_train_preprocessed <- df_recipe %>%
+                # apply recipe to training data
+                recipes::prep(train) %>%
+                # extract pre-processed data
+                recipes::juice()
+            cli::cli_alert_success("Recipe applied successfully!")
+
+            ## Setup the models
+            # mlp model
+            cli::cli_alert_info("Setting up MLP model ...")
+            mlp_model <-
+                # specify that the model is a random forest
+                parsnip::mlp() %>%
+                # specify parameters that need to be tuned
+                parsnip::set_args(
+                    hidden_units = tune(),
+                    penalty = tune(),
+                    epochs = tune()
+                ) %>%
+                # select the engine/package that underlies the model
+                parsnip::set_engine("nnet") %>%
+                # choose either the continuous regression or binary classification mode
+                parsnip::set_mode("classification")
+
+            # set the workflow
+            mlp_workflow <- workflows::workflow() %>%
+                # add the recipe
+                workflows::add_recipe(df_recipe) %>%
+                # add the model
+                workflows::add_model(mlp_model)
+            cli::cli_alert_success("MLP model set up successfully!")
+
+            # extract results
+            cli::cli_alert_info("Tuning MLP model ...")
+            mlp_tune_results <- mlp_workflow %>%
+                tune::tune_grid(
+                    resamples = train_resamples, # CV object
+                    grid = 10
+                )
+            cli::cli_alert_success("MLP model tuned successfully!")
+
+            # print results
+            mlp_tune_results %>%
+                workflowsets::collect_metrics()
+
+            # finalize the workflow
+            cli::cli_alert_info("Finalizing MLP model ...")
+            param_final <- mlp_tune_results %>%
+                tune::select_best(metric = "roc_auc")
+
+            mlp_workflow <- mlp_workflow %>%
+                tune::finalize_workflow(param_final)
+            cli::cli_alert_success("MLP model finalized successfully!")
+
+            # Evaluate on test set
+            cli::cli_alert_info("Evaluating MLP model on test set ...")
+            mlp_fit <- mlp_workflow %>%
+                # fit on the training set and evaluate on test set
+                tune::last_fit(train_test_split)
+
+            # Inspect performances on test set
+            test_performance <- mlp_fit %>% workflowsets::collect_metrics()
+
+            # Fitting and using final model
+            final_model <- parsnip::fit(mlp_workflow, df)
+            cli::cli_alert_success("MLP model evaluated successfully!")
+
+            # Assess variable importance
+            cli::cli_alert_info("Assessing variable importance ...")
+            mlp_obj <- workflowsets::extract_fit_parsnip(final_model)
+
+            importances <- as.data.frame(vip::vi(mlp_obj))
+            cli::cli_alert_success("Variable importance assessed successfully!")
+        }
+    )
+
+    # future::plan(future::sequential)
+
+    # rescale Importance column in importances df in range -1 and 1
+    importances$Importance <- scales::rescale(importances$Importance, to = c(-1, 1))
+    importances$type <- ifelse(importances$Importance < 0, 0.026, -0.026)
+    importances$type_hjust <- ifelse(importances$Importance < 0, 0, 1)
+    # importances$score_hjust <- ifelse(importances$Importance < 0, 2, -1)
+
+    # Create the plot
+    cli::cli_alert_info("Creating plot ...")
+    p <- ggplot(
+        importances,
+        aes(x = reorder(Variable, Importance), y = Importance, label = Variable)
+    ) +
+        geom_segment(aes(y = 0, x = Variable, yend = Importance, xend = Variable), linewidth = 0.8, color = "gray") +
+        geom_point(
+            stat = "identity",
+            size = 7.5,
+            color = if_else(importances$Importance < 0, "#995caf", "#e8ab1b")
+        ) +
+        geom_text(aes(label = Variable, y = type, hjust = type_hjust), color = "black", size = 4) +
+        geom_text(aes(label = round(Importance, 2), vjust = -2.1), color = "#7e7e7e", size = 3.5) +
+        annotate("text",
+            x = length(unique(importances$Variable)) - 0.1,
+            y = -0.98, label = paste0(
+                "MLP metrics: \n",
+                "Accuracy: ", round(test_performance$.estimate[[1]], 3), "\n",
+                "AUROC: ", round(test_performance$.estimate[[2]], 3), "\n",
+                "Brier Score: ", round(test_performance$.estimate[[3]], 3)
+            ), hjust = 0, vjust = 0.5, size = 5, color = "#7e7e7e",
+            bg = "white",
+            box.padding = unit(0.5, "lines")
+        ) +
+        labs(x = "", y = "Scaled importance") +
+        theme_minimal() +
+        guides(y = "none") +
+        theme(
+            panel.grid.major.y = element_blank(),
+            panel.grid.minor.y = element_blank(),
+            panel.grid.minor.x = element_blank(),
+            axis.title.x = element_text(size = 14, color = "#7e7e7e"),
+            axis.text.x = element_text(size = 12, color = "#7e7e7e")
+        ) +
+        coord_flip()
+    cli::cli_alert_success("Plot created successfully!")
+
+    return(p)
+}
+
+heatmap.plot <- function(
+    df, cons_genes,
+    class,
+    dendrogram = "both",
+    show_dendrogram = c(FALSE, TRUE),
+    scale = "row",
+    custom_colors = c("1" = "#2e1457", "0" = "#66a182"),
+    # custom_colors = c("1" = "#9c3f2d", "0" = "#3f7ab9"),
+    margins = c(60, 100, 40, 20),
+    grid_color = "white",
+    grid_width = 0.00001,
+    branches_lwd = 0.4,
+    fontsize_row = 12,
+    fontsize_col = 5,
+    colors = NULL,
+    hclust.method = "complete",
+    distance.method = "euclidean",
+    k_row = NULL,
+    k_col = NULL,
+    Rowv = TRUE,
+    Colv = TRUE,
+    scale_fill_gradient_fun = NULL,
+    limits = NULL,
+    na.value = "grey50",
+    cellnote = NULL,
+    cellnote_size = NULL,
+    cellnote_textposition = "middle center",
+    key.title = "",
+    key.xlab = "Value",
+    key.ylab = "Frequency") {
+    # Crea i colori laterali per la heatmap
+    side_colors_df <- data.frame(class = as.factor(class))
+    # Select genes of interest
+    df <- df[, colnames(df) %in% cons_genes]
+    # Traspose df
+    df <- as.data.frame(t(df))
+
+
+    # Assicurati che siano forniti i colori personalizzati
+    if (is.null(colors)) {
+        colors <- viridis::viridis(n = 64)
+    }
+
+    # Clustering per righe e colonne separatamente
+    cli::cli_alert_info("Clustering rows and columns using {hclust.method} ...")
+    hc_rows <- stats::hclust(stats::dist(as.matrix(df), method = distance.method), method = hclust.method)
+    hc_cols <- stats::hclust(stats::dist(t(df), method = distance.method), method = hclust.method)
+    cli::cli_alert_success("Rows and columns clustered successfully!")
+
+    # Crea la heatmap usando heatmaply
+    cli::cli_alert_info("Creating heatmap ...")
+    p <- heatmaply::heatmaply(
+        df,
+        Rowv = stats::as.dendrogram(hc_rows),
+        Colv = stats::as.dendrogram(hc_cols),
+        dendrogram = dendrogram,
+        show_dendrogram = show_dendrogram,
+        xlab = "",
+        ylab = "",
+        main = "",
+        scale = scale,
+        margins = margins,
+        grid_color = grid_color,
+        grid_width = grid_width,
+        titleX = FALSE,
+        hide_colorbar = FALSE,
+        branches_lwd = branches_lwd,
+        fontsize_row = fontsize_row,
+        fontsize_col = fontsize_col,
+        showticklabels = c(FALSE, TRUE),
+        labRow = rownames(df),
+        plot_method = "ggplot",
+        colors = colors,
+        col_side_colors = side_colors_df,
+        col_side_palette = custom_colors,
+        scale_fill_gradient_fun = scale_fill_gradient_fun,
+        limits = limits,
+        na.value = na.value,
+        cellnote = cellnote,
+        cellnote_size = cellnote_size,
+        cellnote_textposition = cellnote_textposition,
+        key.title = key.title,
+        key.xlab = key.xlab,
+        key.ylab = key.ylab
+    )
+    cli::cli_alert_success("Heatmap created successfully!")
+
+    # Stampa il plot
     return(p)
 }
