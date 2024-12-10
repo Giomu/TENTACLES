@@ -47,7 +47,7 @@ The TENTACLES workflow is built around five key steps:
 
 The following flowchart illustrates the functionality of TENTACLES:\
 
-![](images/TENTACLES_flowchart copia-01.png)
+![TENTACLES Workflow](images/TENTACLES_flowchart.png)
 
 ### Additional Analyses
 
