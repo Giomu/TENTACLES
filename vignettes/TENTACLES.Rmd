@@ -14,14 +14,16 @@ knitr::opts_chunk$set(
 )
 ```
 
+##Data Loading
+
 ```{r setup}
-# library(geneMarkR)
+# library(TENTACLES)
 devtools::document()
 devtools::load_all()
 
 # Load data
-df.count <- read.csv2("../../Varie/ACC_Count.csv", row.names = 1)
-df.clin <- read.csv2("../../Varie/ACC_Pheno.csv", row.names = 1)
+df.count <- data("acc.count")
+df.clin <- data("acc.clin")
 ```
 
 ##Pre-Processing
@@ -42,14 +44,14 @@ b <- runClassifiers(a, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
                     filter = TRUE, downsample = TRUE)
 ```
 
-##Get and Test Consensus
+##Get Consensus genes
 
 ```{r getConsensus}
 # Get and test consensus
 c <- getConsensus(b, n.min = 4)
 ```
 
-##Validation
+##Validate Consensus genes
 
 ```{r validation, message=FALSE, warning=TRUE}
 # Import NEW data
@@ -58,10 +60,10 @@ gene_list <- c$consensusGenes
 labels <- as.factor(b@data$metadata$class)
 
 # Validation
-tictoc::tic()
 d <- valConsensus(count_table, gene_list, labels, N = 10, metric = "FScore")
-tictoc::toc()
 ```
+
+##Test Consensus genes
 
 ```{r, message=FALSE, warning=TRUE}
 # Import NEW data
