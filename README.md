@@ -60,3 +60,25 @@ Beyond the main workflow, TENTACLES also supports:
 ## Installation
 
 To install TENTACLES, simply run the following commands in R:
+
+## Applications
+
+-   **Biomarker Discovery**: Identify robust gene markers for diseases or conditions.
+
+-   **Transcriptomic Analysis**: Analyze RNA-Seq and microarray datasets with ease.
+
+-   **Model Validation**: Validate biomarkers across diverse datasets to ensure reproducibility.
+
+## License
+
+TENTACLES is licensed under the MIT License.
+
+## Contributing
+
+Contributions are welcome! Please refer to the [Contributing Guidelines](CONTRIBUTING.md) for more details.
+
+## Acknowledgments
+
+This package was developed with a focus on integrating state-of-the-art machine learning techniques for transcriptomics. Special thanks to all collaborators and contributors.
+
+Citations:
