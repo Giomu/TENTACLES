@@ -44,7 +44,7 @@ pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
                  covar.mod = "patient.primary_pathology.laterality")
 ```
 
-The `preProcess` function returns an object of class preProcess.obj that contains the preprocessed data and intermediate results. Specifically, it includes:
+The `preProcess` function returns an object of class `preProcess.obj` that contains the preprocessed data and intermediate results. Specifically, it includes:
 
 -   The raw count table of the input data.
 
@@ -104,7 +104,7 @@ gc <- getConsensus(rc, n.min = 4)
 
 ## Validate Consensus genes
 
-Main steps of valConsensus include:
+Main steps of `valConsensus` include:
 
 1.  **Gene combinations**: given a `gene.list`, it computes all possible combinations of variable length of genes
 
