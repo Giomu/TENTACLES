@@ -99,13 +99,29 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
   # Lista per salvare i risultati per tutte le combinazioni
   all_results <- list()
 
+  # Compute total number of combinations
+  total_combinations <- as.integer(sum(sapply(2:max_genes, function(n) choose(length(gene_list), n))))
+  cli::cli_alert_info("Applying models to {total_combinations} combinations ...")
+  if (total_combinations > 1000000) {
+    cli::cli_alert_warning("The number of combinations is > 1M. This may take a long time to complete. Consider reducing the number of genes.")
+  }
+
+  # Initialize progress bar
+  progress_bar <- cli::cli_progress_bar(
+    format = "Tested combinations: {cli::pb_bar} {cli::pb_percent} ({cli::pb_current}/{cli::pb_total})",
+    total = total_combinations,
+    clear = FALSE
+  )
+  ###
+
   # For each number of genes up to the maximum
   for (n in 2:max_genes) {
     gene_combinations <- combn(gene_list, n, simplify = FALSE)
 
     # For each combination of genes
     for (combo in gene_combinations) {
-      cli::cli_h3("Combination: {combo} ")
+      # Increment progress bar
+      cli::cli_progress_update(inc = 1)
       # Subset la tabella con i geni specificati
       count_subset <- df.count[, combo, drop = FALSE]
 
@@ -127,7 +143,6 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
         Recall = max(MLmetrics::Recall(labels, kmeans_result$cluster, positive = "1"), MLmetrics::Recall(labels, 3 - kmeans_result$cluster, positive = "1")),
         FScore = max(MLmetrics::F1_Score(labels, kmeans_result$cluster, positive = "1"), MLmetrics::F1_Score(labels, 3 - kmeans_result$cluster, positive = "1"))
       )
-      cli::cli_alert_success("K-Means")
 
       # Gaussian Mixture Model (GMM)
       gmm_result <- mclust::Mclust(count_subset, G = 2, verbose = FALSE)
@@ -139,7 +154,6 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
         Recall = max(MLmetrics::Recall(labels, gmm_result$classification, positive = "1"), MLmetrics::Recall(labels, 3 - gmm_result$classification, positive = "1")),
         FScore = max(MLmetrics::F1_Score(labels, gmm_result$classification, positive = "1"), MLmetrics::F1_Score(labels, 3 - gmm_result$classification, positive = "1"))
       )
-      cli::cli_alert_success("GMM")
 
       # Hierarchical Clustering
       hc_result <- stats::hclust(dist(count_subset), method = "complete")
@@ -152,7 +166,6 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
         Recall = max(MLmetrics::Recall(labels, hc_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - hc_clusters, positive = "1")),
         FScore = max(MLmetrics::F1_Score(labels, hc_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - hc_clusters, positive = "1"))
       )
-      cli::cli_alert_success("Hierarchical Clustering")
 
       # PCA + KMeans
       pca_result <- stats::prcomp(count_subset, scale = FALSE)
@@ -166,7 +179,6 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
         Recall = max(MLmetrics::Recall(labels, pca_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - pca_clusters, positive = "1")),
         FScore = max(MLmetrics::F1_Score(labels, pca_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - pca_clusters, positive = "1"))
       )
-      cli::cli_alert_success("PCA + KMeans")
 
       # t-SNE + KMeans
       tsne_result <- Rtsne::Rtsne(count_subset, dims = 2, perplexity = 10)
@@ -180,7 +192,6 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
         Recall = max(MLmetrics::Recall(labels, tsne_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - tsne_clusters, positive = "1")),
         FScore = max(MLmetrics::F1_Score(labels, tsne_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - tsne_clusters, positive = "1"))
       )
-      cli::cli_alert_success("t-SNE + KMeans")
 
       # UMAP + KMeans
       umap_result <- umap::umap(count_subset)
@@ -194,23 +205,24 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
         Recall = max(MLmetrics::Recall(labels, umap_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - umap_clusters, positive = "1")),
         FScore = max(MLmetrics::F1_Score(labels, umap_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - umap_clusters, positive = "1"))
       )
-      cli::cli_alert_success("UMAP + KMeans")
 
-      # Salva i risultati per questa combinazione
+      # Save results for this combination
       all_results[[paste(combo, collapse = "_")]] <- clustering_results
-      cli::cli_alert_success("Combination {combo} evaluated successfully!")
     }
   }
 
+  # End Progress bar
+  cli::cli_progress_done()
+  cli::cli_alert_success("All combinations tested successfully!")
 
   # Add a new element to the list to store the top genes combinations by running the selectTopCombinations function
-  cli::cli_h3("Selecting Top Combinations")
+  cli::cli_h3("Top Combinations Selection")
   cli::cli_alert_info("Selecting top {N} combinations based on {metric} ...")
   topCombinations <- selectTopCombinations(all_results, N = N, metric = metric)
   cli::cli_alert_success("Top combinations selected successfully!")
 
   # Plot the top combinations using the plotTopMetrics function
-  cli::cli_h3("Plotting Top Combinations")
+  cli::cli_h3("Top Combinations Plotting")
   cli::cli_alert_info("Generating plots of top {N} combinations ...")
   p <- plotTopMetrics(topCombinations)
   print(p)
@@ -224,15 +236,3 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
 
   return(results)
 }
-
-
-
-
-
-
-
-
-
-
-
-
