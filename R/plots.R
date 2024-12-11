@@ -279,17 +279,9 @@ wrong.preds.plot <- function(predictions_df) {
             axis.text.x = element_text(angle = 45, hjust = 1, vjust = 2, margin = margin(t = 50), size = 9, color = "#7c7b7b"),
             axis.text.y = element_text(size = 13),
             panel.grid.y = element_blank(),
-            panel.grid.major.x = element_line(color = "gray", size = 0.8, linetype = "dotted"),
+            panel.grid.major.x = element_line(color = "lightgray", size = 0.5, linetype = "solid"),
             legend.position = "right"
-        ) +
-        scale_x_discrete(breaks = x_breaks)
-    theme(
-        axis.text.x = element_text(angle = 45, hjust = 1, vjust = 2, margin = margin(t = 50), size = 9, color = "#7c7b7b"),
-        axis.text.y = element_text(size = 13),
-        panel.grid.y = element_blank(),
-        panel.grid.major.x = element_line(color = "gray", size = 0.8, linetype = "dotted"),
-        legend.position = "right"
-    )
+        )
 
     return(p)
 }
@@ -521,26 +513,26 @@ plotTopMetrics <- function(top_results) {
 
 
     # Creazione del plot usando ggplot2
-    p <- ggplot2::ggplot(long_results, ggplot2::aes(x = Short_Label, y = Value, fill = Model)) +
-        ggplot2::geom_bar(stat = "identity", position = "dodge") + # Bar plot con i modelli affiancati
-        ggplot2::facet_wrap(~Metric, scales = "fixed") + # Un riquadro per ogni metrica
-        ggplot2::scale_fill_manual(values = model_colors) + # Imposta i colori personalizzati
-        ggplot2::theme_minimal() +
-        ggplot2::labs(
+    p <- ggplot(long_results, ggplot2::aes(x = Short_Label, y = Value, fill = Model)) +
+        geom_bar(stat = "identity", position = "dodge") + # Bar plot con i modelli affiancati
+        facet_wrap(~Metric, scales = "fixed") + # Un riquadro per ogni metrica
+        scale_fill_manual(values = model_colors) + # Imposta i colori personalizzati
+        theme_minimal() +
+        labs(
             title = "Performance Metrics by Model and Gene Combination",
             x = "Gene Combination",
             y = "Metric Value",
             fill = "Model",
             caption = gene_correspondence_text
         ) +
-        ggplot2::theme(
+        theme(
             axis.text.x = ggplot2::element_text(angle = 90, hjust = 1, face = "bold"),
             plot.caption = ggplot2::element_text(
                 size = 5, hjust = 0, vjust = 1, margin = ggplot2::margin(t = 10),
                 color = "darkgray", face = "italic"
             )
         ) +
-        ggplot2::guides(fill = ggplot2::guide_legend(ncol = 1))
+        guides(fill = ggplot2::guide_legend(ncol = 1))
 
     return(p)
 }
