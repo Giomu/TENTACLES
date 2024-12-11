@@ -559,13 +559,13 @@ runClassifiers <- function(
   cli::cli_alert_success("Successfully generated UpSet plot!")
 
   cli::cli_alert_info("Generating performances plot ...")
-  perf <- performances.plot(obj@performances)
+  perf <- performances.plot(obj)
   print(perf)
   cli::cli_alert_success("Successfully generated performances plot!")
 
   cli::cli_alert_info("Generating predictions heatmap ...")
-  heat <- predheat.plot(t_and_f_output[[3]])
-  print(heat)
+  wp <- wrong.preds.plot(t_and_f_output[[3]])
+  print(wp)
   cli::cli_alert_success("Successfully generated predictions heatmap plot!")
   obj@data$adjusted.data <- preProcess.obj@processed$adjusted.data
   obj@data$metadata <- preProcess.obj@metadata

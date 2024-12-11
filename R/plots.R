@@ -705,7 +705,7 @@ auroc.FC.consensus <- function(df, cons_genes, class) {
 }
 
 # This function performs the test of the consensus genes using a MLP model
-mlp.model <- function(df, cons_genes, class) {
+mlp.model.plot <- function(df, cons_genes, class) {
     # future::plan(future::multisession, workers = parallel::detectCores() - 1)
 
     withr::with_seed(
@@ -834,13 +834,13 @@ mlp.model <- function(df, cons_genes, class) {
         geom_segment(aes(y = 0, x = Variable, yend = Importance, xend = Variable), linewidth = 0.8, color = "gray") +
         geom_point(
             stat = "identity",
-            size = 7.5,
+            size = 4.5,
             color = if_else(importances$Importance < 0, "#995caf", "#e8ab1b")
         ) +
-        geom_text(aes(label = Variable, y = type, hjust = type_hjust), color = "black", size = 4) +
-        geom_text(aes(label = round(Importance, 2), vjust = -2.1), color = "#7e7e7e", size = 3.5) +
+        geom_text(aes(label = Variable, y = type, hjust = type_hjust), color = "black", size = 3.5) +
+        # geom_text(aes(label = round(Importance, 2), vjust = -2.1), color = "#7e7e7e", size = 3.5) +
         annotate("text",
-            x = length(unique(importances$Variable)) - 0.1,
+            x = length(unique(importances$Variable)) - length(unique(importances$Variable)) * 0.1,
             y = -0.98, label = paste0(
                 "MLP metrics: \n",
                 "Accuracy: ", round(test_performance$.estimate[[1]], 3), "\n",

@@ -197,7 +197,7 @@ getConsensus <- function(x, n.min = NULL,
   } else {
     # Test consensus genes in the adjusted dataset contained in runClassifiers.obj@data
     testConsensus(df.count = x@data$adjusted.data,
-                  cons_genes = consensus.list[[1]],
+                  gene.list = consensus.list[[1]],
                   class = as.factor(x@data$metadata$class))
   }
 
