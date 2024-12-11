@@ -19,6 +19,7 @@ features across different models using the ComplexUpSet library.
 \examples{
 \dontrun{
 # Example usage of upset.plot2 function
-upset.plot(data.obj)}
+upset.plot(data.obj)
+}
 
 }
