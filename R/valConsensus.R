@@ -114,6 +114,10 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
   )
   ###
 
+
+withr::with_seed(
+        seed = 123,
+        code = {
   # For each number of genes up to the maximum
   for (n in 2:max_genes) {
     gene_combinations <- combn(gene_list, n, simplify = FALSE)
@@ -133,7 +137,6 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
       clustering_results <- list()
 
       # K-Means Clustering
-      set.seed(123)
       kmeans_result <- stats::kmeans(count_subset, centers = 2, iter.max = 100, algorithm = "MacQueen")
       clustering_results$KMeans <- list(
         clusters = kmeans_result$cluster,
@@ -210,6 +213,7 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
       all_results[[paste(combo, collapse = "_")]] <- clustering_results
     }
   }
+})
 
   # End Progress bar
   cli::cli_progress_done()
