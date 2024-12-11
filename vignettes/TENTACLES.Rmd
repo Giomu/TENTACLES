@@ -25,11 +25,13 @@ devtools::load_all()
 data(acc.count, acc.clin)
 ```
 
+The count table (`acc.count`) should have samples as rows in the row names, and the row names of the clinical table (`acc.clin`) should correspond to the row names from the count data.
+
 ## Pre-Processing
 
 Main steps of the preProcess function include:
 
-1.  **Normalization**: *log2(CPM + 1)* transformation, if `is.normalized = FALSE`
+1.  **Normalization**: $log_2(CPM+1)$ transformation, if `is.normalized = FALSE`
 
 2.  **Low count filter**: removes genes with low expression in a fraction of the population based on `mincpm` and `minfraction` parameters
 
@@ -44,15 +46,15 @@ pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
                  covar.mod = "patient.primary_pathology.laterality")
 ```
 
-The `preProcess` function returns an object of class `preProcess.obj` that contains the preprocessed data and intermediate results. Specifically, it includes:
+The `preProcess` function returns an object of class `preProcess.obj` that contains the pre-processed data and intermediate results. Specifically, it includes:
 
--   The raw count table of the input data.
+-   **raw**: the raw count table of the input data.
 
--   Count tables after each pre-processing step, such as normalization and batch correction.
+-   **processed**: count tables after each pre-processing step, such as normalization and batch correction.
 
--   The clinical metadata table provided as input.
+-   **metadata**: the clinical metadata table provided as input.
 
-This object serves as a structured container, enabling seamless integration with downstream analysis. For instance, you can directly use the preProcess object as input to the runClassifiers function to perform comparative classification analysis between
+-   **data.info**: informations about data type and normalization
 
 ## Run Classifiers
 
@@ -68,7 +70,7 @@ Main steps of `runClassifiers` function include:
 
 5.  **Plots**: generates plots of:
 
-    -   Heatmap of misclassified samples
+    -   Heatmap of mis-classified samples
 
     -   Performance plot for each pair of classifier-feature selector implemented
 
@@ -83,6 +85,16 @@ rc <- runClassifiers(pp, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules")
                     filter = TRUE, downsample = TRUE)
 ```
 
+The function returns an object of class `runClassifiers.obj`, which includes the following components:
+
+-   **data**: Contains the adjusted input data (`adjusted.data`) and the associated `metadata`.
+
+-   **models.info**: Stores detailed information about the models implemented during the process, including the best hyperparameters obtained from tuning. It is possible to access this information by using `rc@models.info`.
+
+-   **model.features**: Includes the variable importance scores calculated for each model.
+
+-   **performances**: Provides the performance metrics for each model, recorded during both the tuning and fitting phases.
+
 ## Get Consensus genes
 
 Main steps of `getConsensus` function include:
@@ -95,12 +107,20 @@ Main steps of `getConsensus` function include:
 
     -   Leave as `NULL` `n_min` and `exclude` while specifying `group1`, `group2`, `meth1`, `meth2` and `meth_comb` parameters all together. In this way we can take genes based on the `meth1` of `group1`, `meth_comb` with the `meth2` of `group2`. e.g. take the union (`meth1 = "union"`) of genes in `group1`, the union (`meth2 = "union"`) of genes in `group2` and pick the intersection (`meth_comb = "intersect"`) of these two groups.
 
-2.  **Test Consensus (Plots)**: compute AUROC for each gene, PCA analysis, Hierarchical Clustering heatmap and tunes and fits a Multi Layer Perceptron.
+2.  **Test Consensus (Plots)**: visual outputs and summaries for PCA, AUROC analysis, heatmap visualization, and testing using a Multi-Layer Perceptron (MLP) model.
 
 ```{r getConsensus, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
 # Get and test consensus
 gc <- getConsensus(rc, n.min = 4)
 ```
+
+The function returns a list containing three objects:
+
+-   **consensusGenes**: A vector listing the consensus biomarkers identified.
+
+-   **dataFrame**: A binary data frame indicating the presence (`1`) or absence (`0`) of each gene across the implemented models.
+
+-   **inputParams**: A list of the input parameters provided to the function.Validate Consensus genes
 
 ## Validate Consensus genes
 
@@ -137,7 +157,15 @@ vc <- valConsensus(df.count = count_table, gene.list = gene_list,
                    class = labels, N = 10, metric = "FScore")
 ```
 
+The function returns a list containing two elements:
+
+-   **allResults**: A list of results for each gene combination, with details provided for each of the six implemented clustering algorithms. For each algorithm, it includes the predicted clustering labels and the associated performance metrics.
+
+-   **topCombinations**: A data frame summarizing the performance metrics of the top `N` gene combinations, ranked based on their mean `metric` values.
+
 ## Test Consensus genes
+
+The `testConsensus` function evaluates a list of consensus genes (`gene.list`) using a series of analyses to assess their performance and relevance in classifying samples in the provided (pre-processed) `df.count`. It provides visual outputs and summaries for Principal Component Analysis (PCA), AUROC analysis, heatmap visualization, and validation using a Multi-Layer Perceptron (MLP) model.
 
 ```{r, message=FALSE, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
 # Import NEW data
@@ -145,5 +173,15 @@ count_table <- as.data.frame((rc@data$adjusted.data))
 gene_list <- gc$consensusGenes
 labels <- as.factor(rc@data$metadata$class)
 # test consensus on an external dataset
-tc <- testConsensus(df.count = count_table, gene.list = gene_list, class = labels)
+testConsensus(df.count = count_table, gene.list = gene_list, class = labels)
 ```
+
+The function performs the following steps, generating visualizations for each:
+
+1.  **Principal Component Analysis (PCA)**: Examines how well the consensus genes separate the classes in a PCA plot.
+
+2.  **AUROC Analysis**: Evaluates the ability of the consensus genes to classify samples, producing an AUROC plot.
+
+3.  **Heatmap Analysis**: Creates a heatmap showing hierarchical clustering of samples based on consensus gene expression.
+
+4.  **Validation with MLP Model**: Fits and visualizes a Multi-Layer Perceptron model to validate the classification performance of the consensus genes.
