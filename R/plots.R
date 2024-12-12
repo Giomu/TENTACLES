@@ -1,6 +1,12 @@
-#' @import ggplot2
+utils::globalVariables(c(
+    "PC1", "PC2", "V1", "Effects", "correction",
+    "model", "mean", "type", "ID", "result", "auroc", "mean_auroc",
+    "auroc_lower", "auroc_upper", "gene", "Short_Label", "Model", "Variable",
+    "Importance", "type_hjust", "Value", "combined_score", "size", "color",
+    "name"
+))
 
-# ----------------- PLOTS FOR preProcess() ----------------------------
+# ----------------- PLOTS for preProcess() ----------------------------
 # Helper function to plot PCA before and after batch correction
 batch.pca.plot <- function(data.before, data.after, batch, metadata) {
     # Helpler function to perform PCA
@@ -29,9 +35,7 @@ batch.pca.plot <- function(data.before, data.after, batch, metadata) {
     pca_data$correction <- factor(pca_data$correction, levels = c("Before", "After"))
 
     # Plot PCA
-    PC1 <- NULL
-    PC2 <- NULL
-    colors <- colorRampPalette(brewer.pal(brewer.pal.info["Set2", 1], name = "Set2"))(length(unique(pca_data$batch)))
+    colors <- colorRampPalette(RColorBrewer::brewer.pal(RColorBrewer::brewer.pal.info["Set2", 1], name = "Set2"))(length(unique(pca_data$batch)))
     p <- ggplot(pca_data, aes(x = PC1, y = PC2, color = batch)) +
         geom_point(
             size = 4,
@@ -108,9 +112,6 @@ batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, cov
     pvca_data$Effects <- factor(pvca_data$Effects, levels = unique(pvca_data[order(pvca_data$V1), "Effects"]))
 
     # Plot PVCA
-    V1 <- NULL
-    Effects <- NULL
-    correction <- NULL
     p <- ggplot(pvca_data, aes(x = V1, y = Effects, color = correction)) +
         geom_line(aes(group = Effects), size = 2.5, color = "lightgray", alpha = 0.75) +
         geom_point(size = 12, alpha = 0.95) +
@@ -232,9 +233,6 @@ performances.plot <- function(data.obj) {
 
     fill_colors <- c("Tuning" = "#8d96a3", "Fitting" = "#2e4057")
 
-    model <- NULL
-    mean <- NULL
-    type <- NULL
     p <- ggplot(performances, aes(x = model, y = mean, fill = type)) +
         geom_bar(stat = "identity", position = "dodge", alpha = 0.9, color = "black", width = 0.5, linewidth = 0.3) +
         theme_minimal() +
@@ -305,9 +303,6 @@ wrong.preds.plot <- function(predictions_df) {
 #' a module or pathway. Bars are colored based on the adjusted p-value, using a gradient from 'low.col' to 'high.col'.
 #' A vertical dashed line is added at -log10(pcutoff) for visualizing the significance cutoff.
 #'
-#' @import ggplot2
-#' @importFrom stats reorder
-#'
 #' @return A bar plot visualizing enrichment results based on adjusted p-values.
 #'
 #' @examples
@@ -323,13 +318,11 @@ wrong.preds.plot <- function(predictions_df) {
 #' @export
 bar.plot <- function(enrichment_results, pcutoff = 0.05, low.col = "indianred",
                      high.col = "lightblue") {
-    # suppressMessages(library(viridis))
-
     enrichment_results <- enrichment_results[order(enrichment_results$p.adjust), ]
 
     ggplot(data = enrichment_results, aes(
         x = -log10(enrichment_results$p.adjust),
-        y = reorder(
+        y = stats::reorder(
             enrichment_results$Description,
             -enrichment_results$p.adjust
         ),
@@ -370,13 +363,6 @@ bar.plot <- function(enrichment_results, pcutoff = 0.05, low.col = "indianred",
 #' and modules/pathways represented by different colors. If legend is enabled, it adds a legend to the plot
 #' showing the modules or pathways and their descriptions.
 #'
-#' @importFrom circlize chordDiagram circos.trackPlotRegion circos.axis get.cell.meta.data
-#' @importFrom stringr str_trunc str_split
-#' @import reshape2
-#' @import RColorBrewer
-#' @import ggplot2
-#' @importFrom grDevices colorRampPalette
-#' @importFrom graphics par
 #'
 #' @return  A Circos plot visualizing enrichment results based on genes and modules or pathways.
 #'
@@ -395,7 +381,17 @@ circos.plot <- function(enrichment_results,
                         palette_genes = "Set2", palette_modules = "Paired",
                         transparency = 0.5, facing = "clockwise",
                         cex = 0.7, legend = TRUE, legend_title = "circos_plot_legend") {
-    geni_sel <- unique(unlist(str_split(enrichment_results$geneID, "/")))
+    if (!requireNamespace("circlize", quietly = TRUE)) {
+        stop("circlize package is required for this function.")
+    }
+
+    if (!requireNamespace("stringr", quietly = TRUE)) {
+        stop("stringr package is required for this function.")
+    }
+
+
+
+    geni_sel <- unique(unlist(stringr::str_split(enrichment_results$geneID, "/")))
 
     big_dat <- matrix(nrow = length(geni_sel), ncol = nrow(enrichment_results))
     rownames(big_dat) <- geni_sel
@@ -403,26 +399,26 @@ circos.plot <- function(enrichment_results,
 
     for (i in 1:ncol(big_dat)) {
         big_dat[, i] <- as.numeric(rownames(big_dat) %in%
-            unlist(str_split(enrichment_results$geneID[i], "/")))
+            unlist(stringr::str_split(enrichment_results$geneID[i], "/")))
     }
 
     big_dat <- as.data.frame(big_dat)
     df <- big_dat
     df$ID <- rownames(df)
-    df <- melt(df, by = df$ID)
+    df <- reshape2::melt(df, by = df$ID)
 
-    colori_geni <- colorRampPalette(brewer.pal(brewer.pal.info[palette_genes, 1],
+    colori_geni <- colorRampPalette(RColorBrewer::brewer.pal(RColorBrewer::brewer.pal.info[palette_genes, 1],
         name = palette_genes
     ))(length(unique(df$ID)))
-    colori_moduli <- colorRampPalette(brewer.pal(brewer.pal.info[palette_modules, 1],
+    colori_moduli <- colorRampPalette(RColorBrewer::brewer.pal(RColorBrewer::brewer.pal.info[palette_modules, 1],
         name = palette_modules
     ))(length(unique(df$variable)))
 
     circos_enriched <- function() {
         if (legend == T) {
-            par(mar = c(0, 0, 0, 15))
+            graphics::par(mar = c(0, 0, 0, 15))
         } else {
-            par(mar = c(0, 0, 0, 0))
+            graphics::par(mar = c(0, 0, 0, 0))
         }
         circlize::chordDiagram(df,
             transparency = 0.5,
@@ -457,14 +453,14 @@ circos.plot <- function(enrichment_results,
             # Aggiungi la legenda
             legend_df <- enrichment_results[, c("ID", "Description")]
             # Imposta le coordinate per la legenda
-            par(xpd = TRUE)
-            lgd.x <- par("usr")[2] * 0.9
-            lgd.y <- par("usr")[3] * (-0.9)
+            graphics::par(xpd = TRUE)
+            lgd.x <- graphics::par("usr")[2] * 0.9
+            lgd.y <- graphics::par("usr")[3] * (-0.9)
             legend(
                 x = lgd.x, y = lgd.y,
                 title = legend_title,
                 title.cex = 0.7,
-                legend = str_trunc(legend_df$Description, 40),
+                legend = stringr::str_trunc(legend_df$Description, 40),
                 fill = colori_moduli,
                 col = "black", cex = 0.6, bty = "n", inset = c(0, 0.1)
             )
@@ -475,7 +471,33 @@ circos.plot <- function(enrichment_results,
 }
 
 # ----------------- PLOTS FOR testConsensus() ----------------------------
-# Helper function to plot the PCA for consensus genes
+#' Perform PCA on Consensus Genes and Generate Plots
+#'
+#' This function performs Principal Component Analysis (PCA) on a given dataframe of gene expression data, specifically focusing on a subset of consensus genes. It generates two plots: one for PCA scores (PC1 vs. PC2) and another showing the loadings of the top 15 genes for the first two principal components.
+#'
+#' @param df A data frame containing gene expression data, where rows represent samples and columns represent genes. The column names must match the gene identifiers used in the `cons_genes` vector.
+#' @param cons_genes A character vector of gene names to be included in the PCA analysis. These are the consensus genes used for the PCA computation.
+#' @param class A factor or vector representing the class labels for the samples. This is used to color the points in the PCA plot and differentiate the sample groups.
+#'
+#' @return A combined plot containing two ggplot objects: one showing the PCA scores for PC1 and PC2, and another displaying the top 15 genes with the highest loadings for both principal components.
+#'
+#' @details The function first filters the gene expression data to include only the consensus genes provided. It then performs PCA on this subset of genes, extracting eigenvalues, scores, and loadings. The PCA scores are plotted to show how samples group based on their principal component values, colored by their class labels. The top 15 genes with the highest loadings on PC1 and PC2 are also plotted as vectors in a second plot. The function utilizes the `ggplot2`, `cli`, and `reshape2` packages to generate the plots.
+#'
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage:
+#' # Assuming `df` is a data frame of gene expression,
+#' # `cons_genes` is a vector of consensus gene names,
+#' # and `class_labels` is a factor of class labels for each sample.
+#' pca_plot <- pca.consensus(
+#'     df = gene_expression_data,
+#'     cons_genes = consensus_gene_list, class = class_labels
+#' )
+#' print(pca_plot)
+#' }
+#'
+#' @export
 pca.consensus <- function(df, cons_genes, class) {
     # Create a matrix from our table of counts
     # rows: samples, cols: genes
@@ -564,6 +586,41 @@ pca.consensus <- function(df, cons_genes, class) {
     return(p)
 }
 
+#' Compute AUROC and Fold Change for Consensus Genes
+#'
+#' This function computes the Area Under the Receiver Operating Characteristic curve (AUROC)
+#' and the Fold Change (FC) for each gene in a set of consensus genes. It returns a plot of
+#' AUROC values for each gene, with error bars representing the confidence interval for each AUROC
+#' and colors indicating the Fold Change values.
+#'
+#' @param df A data frame containing gene expression data with rows as samples and columns as genes.
+#' @param cons_genes A character vector of selected consensus genes to be analyzed.
+#' @param class A vector of class labels (0 or 1) corresponding to the samples in `df`.
+#'
+#' @return A ggplot object displaying the AUROC values for each gene, with fold change color-coding
+#' and error bars for the confidence interval of AUROC.
+#'
+#' @details
+#' The function uses the \code{\link[pROC]{roc}} function to compute the AUROC for each gene in the
+#' consensus set and calculates the Fold Change manually as the difference in the mean expression
+#' between the two classes (class 1 and class 0).
+#'
+#' The output plot orders genes based on their mean AUROC and color-codes the points according to
+#' their corresponding Fold Change. The error bars represent the 95% confidence intervals for the
+#' AUROC values.
+#'
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage:
+#' # Assuming 'expression_data' is a data frame with
+#' # gene expression data and 'labels' is a vector of class labels
+#' # cons_genes <- c("Gene1", "Gene2", "Gene3") # Example of consensus genes
+#' # result_plot <- auroc.FC.consensus(expression_data, cons_genes, labels)
+#' # print(result_plot)
+#' }
+#'
+#' @export
 auroc.FC.consensus <- function(df, cons_genes, class) {
     df <- df[, colnames(df) %in% cons_genes]
     results <- tibble::tibble(
@@ -597,6 +654,10 @@ auroc.FC.consensus <- function(df, cons_genes, class) {
 
     # Auroc Plot
     cli::cli_alert_info("Creating AUROC plot ...")
+    auroc <- NULL
+    mean_auroc <- NULL
+    auroc_lower <- NULL
+    auroc_upper <- NULL
     p <- results %>%
         group_by(gene) %>%
         dplyr::mutate(mean_auroc = mean(auroc)) %>%
@@ -632,7 +693,24 @@ auroc.FC.consensus <- function(df, cons_genes, class) {
     return(p)
 }
 
-# This function performs the test of the consensus genes using a MLP model
+#' Create a Plot for MLP Model Variable Importance
+#'
+#' This function tunes and evaluates a multilayer perceptron (MLP) model using a dataset of consensus genes and creates a plot to visualize the variable importance. The plot shows the scaled importance of each variable in the model, and includes key performance metrics (accuracy, AUROC, and Brier score).
+#'
+#' @param df A data frame containing the gene expression data. The dataframe must include a column for the class variable (`class`), which is used for stratified sampling.
+#' @param cons_genes A character vector containing the names of consensus genes to be used for model training.
+#' @param class A factor or numeric vector representing the class labels. This is the outcome variable used for classification.
+#'
+#' @return A `ggplot` object showing the scaled variable importance for the MLP model, with an annotation of model performance metrics.
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage
+#' plot <- mlp.model.plot(df = gene_data, cons_genes = consensus_genes, class = class_labels)
+#' print(plot)
+#' }
+#'
+#' @export
 mlp.model.plot <- function(df, cons_genes, class) {
     # future::plan(future::multisession, workers = parallel::detectCores() - 1)
 
@@ -757,7 +835,7 @@ mlp.model.plot <- function(df, cons_genes, class) {
     cli::cli_alert_info("Creating plot ...")
     p <- ggplot(
         importances,
-        aes(x = reorder(Variable, Importance), y = Importance, label = Variable)
+        aes(x = stats::reorder(Variable, Importance), y = Importance, label = Variable)
     ) +
         geom_segment(aes(y = 0, x = Variable, yend = Importance, xend = Variable), linewidth = 0.8, color = "gray") +
         geom_point(
@@ -794,6 +872,50 @@ mlp.model.plot <- function(df, cons_genes, class) {
     return(p)
 }
 
+#' Create a Heatmap with Hierarchical Clustering
+#'
+#' This function generates a heatmap from gene expression data, with hierarchical clustering of both rows and columns. The heatmap can be customized with various parameters, such as dendrogram visibility, scaling method, color schemes, and additional annotations.
+#'
+#' @param df A data frame containing gene expression data. The dataframe must include the genes of interest for the heatmap (specified in `cons_genes`).
+#' @param cons_genes A character vector containing the names of genes to be used in the heatmap.
+#' @param class A factor or numeric vector representing the class labels for the samples. This is used to assign colors to the side of the heatmap.
+#' @param dendrogram A character string specifying which dendrograms to display. Possible values are "both" (both row and column), "row" (only row dendrogram), and "column" (only column dendrogram).
+#' @param show_dendrogram A logical vector specifying whether to show the dendrogram for rows and/or columns.
+#' @param scale A character string specifying how to scale the data for the heatmap. Options are "row", "column", or "none".
+#' @param custom_colors A named vector specifying custom colors for the class labels. The names should match the values in `class`.
+#' @param margins A numeric vector specifying the margins for the heatmap plot. The format is `c(bottom, left, top, right)`.
+#' @param grid_color A color for the grid lines of the heatmap.
+#' @param grid_width The width of the grid lines.
+#' @param branches_lwd The line width for the branches in the dendrogram.
+#' @param fontsize_row The font size for row labels.
+#' @param fontsize_col The font size for column labels.
+#' @param colors A vector of colors for the heatmap cells. Defaults to `viridis::viridis(n = 64)` if not specified.
+#' @param hclust.method A character string specifying the hierarchical clustering method to use. Default is "complete".
+#' @param distance.method A character string specifying the distance method for clustering. Default is "euclidean".
+#' @param k_row The number of clusters for rows (optional).
+#' @param k_col The number of clusters for columns (optional).
+#' @param Rowv A logical value specifying whether to reorder rows based on hierarchical clustering. Default is `TRUE`.
+#' @param Colv A logical value specifying whether to reorder columns based on hierarchical clustering. Default is `TRUE`.
+#' @param scale_fill_gradient_fun A function to apply a custom gradient scale for the heatmap. Default is `NULL`.
+#' @param limits A numeric vector specifying the color limits for the heatmap. Default is `NULL`.
+#' @param na.value A color to use for missing values in the heatmap. Default is "grey50".
+#' @param cellnote A matrix or data frame providing cell annotations. Default is `NULL`.
+#' @param cellnote_size The font size for the cell annotations.
+#' @param cellnote_textposition A string specifying the position of the text within the cell. Default is "middle center".
+#' @param key.title A string specifying the title for the color key.
+#' @param key.xlab A string specifying the x-axis label for the color key.
+#' @param key.ylab A string specifying the y-axis label for the color key.
+#'
+#' @return A `ggplot` object representing the heatmap with hierarchical clustering.
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage
+#' heatmap_plot <- heatmap.plot(df = gene_data, cons_genes = consensus_genes, class = class_labels)
+#' print(heatmap_plot)
+#' }
+#'
+#' @export
 heatmap.plot <- function(
     df, cons_genes,
     class,
@@ -887,7 +1009,7 @@ heatmap.plot <- function(
 
 # ----------------- PLOTS FOR valConsensus() ----------------------------
 
-#' Plot the performance metrics for the top gene combinations.
+# Plot the performance metrics for the top gene combinations.
 plotTopMetrics <- function(top_results) {
     # Mappatura delle combinazioni di geni con etichette brevi
     gene_mapping <- data.frame(
@@ -920,9 +1042,6 @@ plotTopMetrics <- function(top_results) {
         collapse = "\n"
     )
 
-    # order gene labels my Mean_Metric column value
-    long_results$Short_Label <- factor(long_results$Short_Label, levels = long_results$Short_Label[order(long_results$Value)])
-
     # Create a heatmap using ggplot2
     heatmap_plot <- ggplot(long_results, aes(x = Short_Label, y = Model, fill = Value)) +
         geom_tile(color = "white", size = 0.2) +
@@ -951,25 +1070,3 @@ plotTopMetrics <- function(top_results) {
 
     return(heatmap_plot)
 }
-
-
-# p <- ggplot(long_results, aes(x = Short_Label, y = Value, fill = Model)) +
-#     geom_bar(stat = "identity", position = "dodge") + # Bar plot con i modelli affiancati
-#     facet_wrap(~Metric, scales = "fixed") + # Un riquadro per ogni metrica
-#     scale_fill_manual(values = model_colors) + # Imposta i colori personalizzati
-#     theme_minimal() +
-#     labs(
-#         x = "",
-#         y = "Score",
-#         fill = "Model",
-#         caption = gene_correspondence_text
-#     ) +
-#     theme(
-#         axis.text.x = element_text(angle = 90, hjust = 1, face = "bold"),
-#         plot.caption = element_text(
-#             size = 5, hjust = 0, vjust = 1, margin = margin(t = 10),
-#             color = "darkgray", face = "italic"
-#         )
-#     ) +
-#     guides(fill = guide_legend(ncol = 1)) +
-#     coord_flip()

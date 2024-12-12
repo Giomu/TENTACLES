@@ -57,10 +57,13 @@ The function performs the following steps:
 4. Generate PCA and PVCA plots before and after batch correction.
 }
 \examples{
-/dontrun{
-preProcess(df.count, df.clin, class = "class",
-           case.label = "case", mincpm = 1, minfraction = 0.1,
-           data.type = "rnaseq", is.normalized = FALSE,
-           batch = "batch", covar.mod = "covar", plot = TRUE)}
+\dontrun{
+preProcess(df.count, df.clin,
+  class = "class",
+  case.label = "case", mincpm = 1, minfraction = 0.1,
+  data.type = "rnaseq", is.normalized = FALSE,
+  batch = "batch", covar.mod = "covar", plot = TRUE
+)
+}
 
 }

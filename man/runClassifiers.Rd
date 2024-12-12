@@ -70,9 +70,12 @@ Finally it computes the variable importances for each model using the permutatio
 when the direct VIP computation fails.
 }
 \examples{
-/dontrun{
-rc <- runClassifiers(preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"),
-                   selector.recipes = "boruta", tuning.method = "tune_grid", n = 5,
-                   v = 3, metric = "accuracy", nsim = 2, seed = 123)}
+\dontrun{
+rc <- runClassifiers(preProcess.obj,
+  models = c("bag_mlp", "rand_forest", "svm_poly"),
+  selector.recipes = "boruta", tuning.method = "tune_grid", n = 5,
+  v = 3, metric = "accuracy", nsim = 2, seed = 123
+)
+}
 
 }

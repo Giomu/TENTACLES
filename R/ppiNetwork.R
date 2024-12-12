@@ -23,8 +23,6 @@ setClass("ppiNetwork.obj",
   )
 )
 
-# @importClassesFrom igraph igraph
-
 #' @title ppiNetwork
 #' @description Protein-Protein Interaction Network Analysis. This function builds a protein-protein
 #' interaction (PPI) network from a list of genes, finds communities in the Network, and performs enrichment
@@ -45,17 +43,6 @@ setClass("ppiNetwork.obj",
 #' @param size_label Label size. Default is 2.
 #' @param bundling Logical. Wether or not bundling edges. Default is TRUE.
 #'
-#' @import STRINGdb
-#' @import ggplot2
-#' @import dplyr
-#' @importFrom igraph V degree delete_vertices cluster_leiden cluster_edge_betweenness cluster_infomap cluster_label_prop cluster_leading_eigen cluster_louvain cluster_spinglass cluster_walktrap
-#' @import ggraph
-#' @import grid
-#' @import tidyverse
-#' @importFrom S4Vectors from to
-#' @importFrom grDevices colorRampPalette
-#' @importFrom utils head
-#' @importFrom stats p.adjust
 #'
 #' @return An object of class `ppiNetwork` containing the PPI network, initial and
 #' new interactions, final genes, and enrichment results (only significant ones).
@@ -80,6 +67,23 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
     palette = palette, max.overlaps = max.overlaps
   )
 
+  if (!requireNamespace("igraph", quietly = TRUE)) {
+    stop("igraph package is required for this function.")
+  }
+
+  if (!requireNamespace("ggraph", quietly = TRUE)) {
+    stop("ggraph package is required for this function.")
+  }
+
+  if (!requireNamespace("STRINGdb", quietly = TRUE)) {
+    stop("STRINGdb package is required for this function.")
+  }
+
+  if (!requireNamespace("S4Vectors", quietly = TRUE)) {
+    stop("S4Vectors package is required for this function.")
+  }
+
+
   cli::cli_h1("ppi-Network")
   # Change type of gene_list from list to df
   gene_data <- as.data.frame(gene_list)
@@ -89,7 +93,7 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
   cli::cli_h2("Genes Mapping")
   # Initialize STRING database
   cli::cli_alert_info("Uploading STRINGdb ...")
-  string_db <- STRINGdb$new(
+  string_db <- STRINGdb::STRINGdb$new(
     version = version, species = species,
     network_type = "full", input_directory = "",
     score_threshold = score_threshold
@@ -121,12 +125,12 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
   all_interactions <- string_db$get_interactions(all_genes)
   # Remove initial_interactions from all_interactions
   all_interactions <- all_interactions %>%
-    dplyr::filter(!(from %in% mapped_genes_ids & to %in% mapped_genes_ids))
+    dplyr::filter(!(S4Vectors::from %in% mapped_genes_ids & S4Vectors::to %in% mapped_genes_ids))
   # Take the top max_interactors interactions that involve at least one initial gene
   new_interactions <- all_interactions %>%
-    filter(from %in% mapped_genes_ids | to %in% mapped_genes_ids) %>%
+    filter(S4Vectors::from %in% mapped_genes_ids | S4Vectors::to %in% mapped_genes_ids) %>%
     arrange(desc(combined_score)) %>%
-    head(max_interactors)
+    utils::head(max_interactors)
   # create a vector containing new genes
   new_genes <- unique(c(new_interactions$from, new_interactions$to))
   # Combine new_genes with initial genes to retrieve a final list of genes
@@ -224,13 +228,13 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
 
   if (bundling == TRUE) {
     # Generate Graph plot
-    p <- ggraph(g2, layout = layout, circular = circular) +
+    p <- ggraph::ggraph(g2, layout = layout, circular = circular) +
       # geom_edge_arc(strength = 0.1, width = 0.1, colour = "lightgrey") +
-      geom_edge_bundle_path(width = 0.1, colour = "lightgrey") +
-      scale_edge_size_continuous(range = c(0.1, 1)) +
-      geom_node_point(aes(size = (size / max(size)), colour = factor(color))) +
+      ggraph::geom_edge_bundle_path(width = 0.1, colour = "lightgrey") +
+      ggraph::scale_edge_size_continuous(range = c(0.1, 1)) +
+      ggraph::geom_node_point(aes(size = (size / max(size)), colour = factor(color))) +
       scale_color_manual(values = cols_f(length(cluster_labels)), labels = cluster_labels) +
-      geom_node_label(aes(label = ifelse(size > median(igraph::V(g2)$size), name, NA_character_), size = size),
+      ggraph::geom_node_label(aes(label = ifelse(size > stats::median(igraph::V(g2)$size), name, NA_character_), size = size),
         repel = TRUE,
         max.overlaps = max.overlaps,
         color = "black",
@@ -247,14 +251,14 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
     print(p)
   } else {
     # Generate Graph plot
-    p <- ggraph(g2, layout = layout, circular = circular) +
-      geom_edge_arc(strength = 0.1, width = 0.1, colour = "lightgrey") +
-      geom_edge_link(width = 0.1, colour = "lightgrey") +
+    p <- ggraph::ggraph(g2, layout = layout, circular = circular) +
+      ggraph::geom_edge_arc(strength = 0.1, width = 0.1, colour = "lightgrey") +
+      ggraph::geom_edge_link(width = 0.1, colour = "lightgrey") +
       # geom_edge_bundle_path(width = 0.1, colour = "lightgrey") +
-      scale_edge_size_continuous(range = c(0.1, 1)) +
-      geom_node_point(aes(size = (size / max(size)), colour = factor(color))) +
+      ggraph::scale_edge_size_continuous(range = c(0.1, 1)) +
+      ggraph::geom_node_point(aes(size = (size / max(size)), colour = factor(color))) +
       scale_color_manual(values = cols_f(length(cluster_labels)), labels = cluster_labels) +
-      geom_node_label(aes(label = ifelse(size > median(igraph::V(g2)$size), name, NA_character_), size = size),
+      ggraph::geom_node_label(aes(label = ifelse(size > stats::median(igraph::V(g2)$size), name, NA_character_), size = size),
         repel = TRUE,
         max.overlaps = max.overlaps,
         color = "black",
@@ -289,7 +293,7 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
     enrichmentGO$term <- NULL
     enrichmentGO$geneID <- enrichmentGO$preferredNames
     enrichmentGO$geneID <- gsub(",", "/", enrichmentGO$geneID, fixed = TRUE)
-    enrichmentGO$p.adjust <- p.adjust(enrichmentGO$p_value, method = "BH")
+    enrichmentGO$p.adjust <- stats::p.adjust(enrichmentGO$p_value, method = "BH")
     colnames(enrichmentGO)[which(names(enrichmentGO) == "p_value")] <- "pvalue"
     colnames(enrichmentGO)[which(names(enrichmentGO) == "description")] <- "Description"
     cli::cli_alert_success("GO enrichment computed!")
@@ -303,7 +307,7 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
     enrichmentKEGG$term <- NULL
     enrichmentKEGG$geneID <- enrichmentKEGG$preferredNames
     enrichmentKEGG$geneID <- gsub(",", "/", enrichmentKEGG$geneID, fixed = TRUE)
-    enrichmentKEGG$p.adjust <- p.adjust(enrichmentKEGG$p_value, method = "BH")
+    enrichmentKEGG$p.adjust <- stats::p.adjust(enrichmentKEGG$p_value, method = "BH")
     colnames(enrichmentKEGG)[which(names(enrichmentKEGG) == "p_value")] <- "pvalue"
     colnames(enrichmentKEGG)[which(names(enrichmentKEGG) == "description")] <- "Description"
     cli::cli_alert_success("GO enrichment computed!")
@@ -326,7 +330,7 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
   enrichmentGO$term <- NULL
   enrichmentGO$geneID <- enrichmentGO$preferredNames
   enrichmentGO$geneID <- gsub(",", "/", enrichmentGO$geneID, fixed = TRUE)
-  enrichmentGO$p.adjust <- p.adjust(enrichmentGO$p_value, method = "BH")
+  enrichmentGO$p.adjust <- stats::p.adjust(enrichmentGO$p_value, method = "BH")
   colnames(enrichmentGO)[which(names(enrichmentGO) == "p_value")] <- "pvalue"
   colnames(enrichmentGO)[which(names(enrichmentGO) == "description")] <- "Description"
   cli::cli_alert_success("GO enrichment computed!")
@@ -340,7 +344,7 @@ ppiNetwork <- function(gene_list, version = "12", species = 9606, score_threshol
   enrichmentKEGG$term <- NULL
   enrichmentKEGG$geneID <- enrichmentKEGG$preferredNames
   enrichmentKEGG$geneID <- gsub(",", "/", enrichmentKEGG$geneID, fixed = TRUE)
-  enrichmentKEGG$p.adjust <- p.adjust(enrichmentKEGG$p_value, method = "BH")
+  enrichmentKEGG$p.adjust <- stats::p.adjust(enrichmentKEGG$p_value, method = "BH")
   colnames(enrichmentKEGG)[which(names(enrichmentKEGG) == "p_value")] <- "pvalue"
   colnames(enrichmentKEGG)[which(names(enrichmentKEGG) == "description")] <- "Description"
   cli::cli_alert_success("KEGG enrichment computed!")

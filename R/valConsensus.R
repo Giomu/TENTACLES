@@ -1,6 +1,6 @@
-#' Helper function to plot the performance metrics for the top gene combinations
-selectTopCombinations <- function(results, N, metric) {
+utils::globalVariables("Mean_Metric")
 
+selectTopCombinations <- function(results, N, metric) {
   # Initialize an empty list to store the flattened results
   flattened_results <- list()
 
@@ -54,7 +54,6 @@ selectTopCombinations <- function(results, N, metric) {
   return(top_combinations)
 }
 
-
 #' @title valConsensus
 #' @description This function validates the consensus genes in a provided dataset using clustering methods.
 #'
@@ -73,22 +72,22 @@ selectTopCombinations <- function(results, N, metric) {
 #' The function implements the following clustering methods: K-Means, Gaussian Mixture Model (GMM),
 #' Hierarchical Clustering, k-Means on PCA dimensions, k-Means on t-SNE dimensions, and k-Means on UMAP dimensions.
 #'
-#' @importFrom stats kmeans hclust prcomp
 #' @importFrom mclust Mclust mclustBIC
-#' @importFrom Rtsne Rtsne
-#' @importFrom umap umap
 #' @importFrom MLmetrics Accuracy Precision Recall F1_Score
 #'
 #' @examples
-#' /dontrun{
+#' \dontrun{
 #' count_table <- matrix(rnorm(1000), nrow = 100, ncol = 10)
 #' gene_list <- c("Gene1", "Gene2", "Gene3")
 #' labels <- factor(sample(1:2, 100, replace = TRUE))
-#' vc <- valConsensus(df.count = count_table, gene.list = gene_list, class = labels, N = 10, metric = "FScore")}
+#' vc <- valConsensus(
+#'   df.count = count_table, gene.list = gene_list,
+#'   class = labels, N = 10, metric = "FScore"
+#' )
+#' }
 #'
 #' @export
 valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") {
-
   gene_list <- gene.list
 
   cli::cli_h1("Validating Consensus Genes")
@@ -112,108 +111,107 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
     total = total_combinations,
     clear = FALSE
   )
-  ###
 
+  withr::with_seed(
+    seed = 123,
+    code = {
+      # For each number of genes up to the maximum
+      for (n in 2:max_genes) {
+        gene_combinations <- combn(gene_list, n, simplify = FALSE)
 
-withr::with_seed(
-        seed = 123,
-        code = {
-  # For each number of genes up to the maximum
-  for (n in 2:max_genes) {
-    gene_combinations <- combn(gene_list, n, simplify = FALSE)
+        # For each combination of genes
+        for (combo in gene_combinations) {
+          # Increment progress bar
+          cli::cli_progress_update(inc = 1)
+          # Subset la tabella con i geni specificati
+          count_subset <- df.count[, combo, drop = FALSE]
 
-    # For each combination of genes
-    for (combo in gene_combinations) {
-      # Increment progress bar
-      cli::cli_progress_update(inc = 1)
-      # Subset la tabella con i geni specificati
-      count_subset <- df.count[, combo, drop = FALSE]
+          # Ensure data is numeric and scaled
+          count_subset <- as.data.frame(lapply(count_subset, as.numeric))
+          count_subset <- scale(count_subset)
+          rownames(count_subset) <- rownames(df.count)
 
-      # Ensure data is numeric and scaled
-      count_subset <- as.data.frame(lapply(count_subset, as.numeric))
-      count_subset <- scale(count_subset)
-      rownames(count_subset) <- rownames(df.count)
+          clustering_results <- list()
 
-      clustering_results <- list()
+          # K-Means Clustering
+          kmeans_result <- stats::kmeans(count_subset, centers = 2, iter.max = 100, algorithm = "MacQueen")
+          clustering_results$KMeans <- list(
+            clusters = kmeans_result$cluster,
+            # avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), kmeans_result$cluster)$avg.silwidth,
+            Accuracy = max(MLmetrics::Accuracy(labels, kmeans_result$cluster), MLmetrics::Accuracy(labels, 3 - kmeans_result$cluster)),
+            Precision = max(MLmetrics::Precision(labels, kmeans_result$cluster, positive = "1"), MLmetrics::Precision(labels, 3 - kmeans_result$cluster, positive = "1")),
+            Recall = max(MLmetrics::Recall(labels, kmeans_result$cluster, positive = "1"), MLmetrics::Recall(labels, 3 - kmeans_result$cluster, positive = "1")),
+            FScore = max(MLmetrics::F1_Score(labels, kmeans_result$cluster, positive = "1"), MLmetrics::F1_Score(labels, 3 - kmeans_result$cluster, positive = "1"))
+          )
 
-      # K-Means Clustering
-      kmeans_result <- stats::kmeans(count_subset, centers = 2, iter.max = 100, algorithm = "MacQueen")
-      clustering_results$KMeans <- list(
-        clusters = kmeans_result$cluster,
-        #avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), kmeans_result$cluster)$avg.silwidth,
-        Accuracy = max(MLmetrics::Accuracy(labels, kmeans_result$cluster), MLmetrics::Accuracy(labels, 3 - kmeans_result$cluster)),
-        Precision = max(MLmetrics::Precision(labels, kmeans_result$cluster, positive = "1"), MLmetrics::Precision(labels, 3 - kmeans_result$cluster, positive = "1")),
-        Recall = max(MLmetrics::Recall(labels, kmeans_result$cluster, positive = "1"), MLmetrics::Recall(labels, 3 - kmeans_result$cluster, positive = "1")),
-        FScore = max(MLmetrics::F1_Score(labels, kmeans_result$cluster, positive = "1"), MLmetrics::F1_Score(labels, 3 - kmeans_result$cluster, positive = "1"))
-      )
+          # Gaussian Mixture Model (GMM)
+          gmm_result <- mclust::Mclust(count_subset, G = 2, verbose = FALSE)
+          clustering_results$GMM <- list(
+            clusters = gmm_result$classification,
+            # avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), gmm_result$classification)$avg.silwidth,
+            Accuracy = max(MLmetrics::Accuracy(labels, gmm_result$classification), MLmetrics::Accuracy(labels, 3 - gmm_result$classification)),
+            Precision = max(MLmetrics::Precision(labels, gmm_result$classification, positive = "1"), MLmetrics::Precision(labels, 3 - gmm_result$classification, positive = "1")),
+            Recall = max(MLmetrics::Recall(labels, gmm_result$classification, positive = "1"), MLmetrics::Recall(labels, 3 - gmm_result$classification, positive = "1")),
+            FScore = max(MLmetrics::F1_Score(labels, gmm_result$classification, positive = "1"), MLmetrics::F1_Score(labels, 3 - gmm_result$classification, positive = "1"))
+          )
 
-      # Gaussian Mixture Model (GMM)
-      gmm_result <- mclust::Mclust(count_subset, G = 2, verbose = FALSE)
-      clustering_results$GMM <- list(
-        clusters = gmm_result$classification,
-        #avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), gmm_result$classification)$avg.silwidth,
-        Accuracy = max(MLmetrics::Accuracy(labels, gmm_result$classification), MLmetrics::Accuracy(labels, 3 - gmm_result$classification)),
-        Precision = max(MLmetrics::Precision(labels, gmm_result$classification, positive = "1"), MLmetrics::Precision(labels, 3 - gmm_result$classification, positive = "1")),
-        Recall = max(MLmetrics::Recall(labels, gmm_result$classification, positive = "1"), MLmetrics::Recall(labels, 3 - gmm_result$classification, positive = "1")),
-        FScore = max(MLmetrics::F1_Score(labels, gmm_result$classification, positive = "1"), MLmetrics::F1_Score(labels, 3 - gmm_result$classification, positive = "1"))
-      )
+          # Hierarchical Clustering
+          hc_result <- stats::hclust(dist(count_subset), method = "complete")
+          hc_clusters <- stats::cutree(hc_result, k = 2)
+          clustering_results$HC <- list(
+            clusters = hc_clusters,
+            # avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), hc_clusters)$avg.silwidth,
+            Accuracy = max(MLmetrics::Accuracy(labels, hc_clusters), MLmetrics::Accuracy(labels, 3 - hc_clusters)),
+            Precision = max(MLmetrics::Precision(labels, hc_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - hc_clusters, positive = "1")),
+            Recall = max(MLmetrics::Recall(labels, hc_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - hc_clusters, positive = "1")),
+            FScore = max(MLmetrics::F1_Score(labels, hc_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - hc_clusters, positive = "1"))
+          )
 
-      # Hierarchical Clustering
-      hc_result <- stats::hclust(dist(count_subset), method = "complete")
-      hc_clusters <- stats::cutree(hc_result, k = 2)
-      clustering_results$HC <- list(
-        clusters = hc_clusters,
-        #avg.silwidth = fpc::cluster.stats(stats::dist(count_subset), hc_clusters)$avg.silwidth,
-        Accuracy = max(MLmetrics::Accuracy(labels, hc_clusters),MLmetrics::Accuracy(labels, 3 - hc_clusters)),
-        Precision = max(MLmetrics::Precision(labels, hc_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - hc_clusters, positive = "1")),
-        Recall = max(MLmetrics::Recall(labels, hc_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - hc_clusters, positive = "1")),
-        FScore = max(MLmetrics::F1_Score(labels, hc_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - hc_clusters, positive = "1"))
-      )
+          # PCA + KMeans
+          pca_result <- stats::prcomp(count_subset, scale = FALSE)
+          pca_data <- data.frame(pca_result$x)
+          pca_clusters <- stats::kmeans(pca_data[, 1:2], centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
+          clustering_results$PCA <- list(
+            clusters = pca_clusters,
+            # avg.silwidth = fpc::cluster.stats(stats::dist(pca_data[, 1:2]), pca_clusters)$avg.silwidth,
+            Accuracy = max(MLmetrics::Accuracy(labels, pca_clusters), MLmetrics::Accuracy(labels, 3 - pca_clusters)),
+            Precision = max(MLmetrics::Precision(labels, pca_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - pca_clusters, positive = "1")),
+            Recall = max(MLmetrics::Recall(labels, pca_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - pca_clusters, positive = "1")),
+            FScore = max(MLmetrics::F1_Score(labels, pca_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - pca_clusters, positive = "1"))
+          )
 
-      # PCA + KMeans
-      pca_result <- stats::prcomp(count_subset, scale = FALSE)
-      pca_data <- data.frame(pca_result$x)
-      pca_clusters <- stats::kmeans(pca_data[, 1:2], centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
-      clustering_results$PCA <- list(
-        clusters = pca_clusters,
-        #avg.silwidth = fpc::cluster.stats(stats::dist(pca_data[, 1:2]), pca_clusters)$avg.silwidth,
-        Accuracy = max(MLmetrics::Accuracy(labels, pca_clusters), MLmetrics::Accuracy(labels, 3 - pca_clusters)),
-        Precision = max(MLmetrics::Precision(labels, pca_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - pca_clusters, positive = "1")),
-        Recall = max(MLmetrics::Recall(labels, pca_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - pca_clusters, positive = "1")),
-        FScore = max(MLmetrics::F1_Score(labels, pca_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - pca_clusters, positive = "1"))
-      )
+          # t-SNE + KMeans
+          tsne_result <- Rtsne::Rtsne(count_subset, dims = 2, perplexity = 10)
+          tsne_data <- tsne_result$Y
+          tsne_clusters <- stats::kmeans(tsne_data, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
+          clustering_results$tSNE <- list(
+            clusters = tsne_clusters,
+            # avg.silwidth = fpc::cluster.stats(stats::dist(tsne_data), tsne_clusters)$avg.silwidth,
+            Accuracy = max(MLmetrics::Accuracy(labels, tsne_clusters), MLmetrics::Accuracy(labels, 3 - tsne_clusters)),
+            Precision = max(MLmetrics::Precision(labels, tsne_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - tsne_clusters, positive = "1")),
+            Recall = max(MLmetrics::Recall(labels, tsne_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - tsne_clusters, positive = "1")),
+            FScore = max(MLmetrics::F1_Score(labels, tsne_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - tsne_clusters, positive = "1"))
+          )
 
-      # t-SNE + KMeans
-      tsne_result <- Rtsne::Rtsne(count_subset, dims = 2, perplexity = 10)
-      tsne_data <- tsne_result$Y
-      tsne_clusters <- stats::kmeans(tsne_data, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
-      clustering_results$tSNE <- list(
-        clusters = tsne_clusters,
-        #avg.silwidth = fpc::cluster.stats(stats::dist(tsne_data), tsne_clusters)$avg.silwidth,
-        Accuracy = max(MLmetrics::Accuracy(labels, tsne_clusters), MLmetrics::Accuracy(labels, 3 - tsne_clusters)),
-        Precision = max(MLmetrics::Precision(labels, tsne_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - tsne_clusters, positive = "1")),
-        Recall = max(MLmetrics::Recall(labels, tsne_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - tsne_clusters, positive = "1")),
-        FScore = max(MLmetrics::F1_Score(labels, tsne_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - tsne_clusters, positive = "1"))
-      )
+          # UMAP + KMeans
+          umap_result <- umap::umap(count_subset)
+          umap_data <- as.data.frame(umap_result$layout)
+          umap_clusters <- stats::kmeans(umap_data, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
+          clustering_results$UMAP <- list(
+            clusters = umap_clusters,
+            # avg.silwidth = fpc::cluster.stats(stats::dist(umap_data), umap_clusters)$avg.silwidth,
+            Accuracy = max(MLmetrics::Accuracy(labels, umap_clusters), MLmetrics::Accuracy(labels, 3 - umap_clusters)),
+            Precision = max(MLmetrics::Precision(labels, umap_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - umap_clusters, positive = "1")),
+            Recall = max(MLmetrics::Recall(labels, umap_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - umap_clusters, positive = "1")),
+            FScore = max(MLmetrics::F1_Score(labels, umap_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - umap_clusters, positive = "1"))
+          )
 
-      # UMAP + KMeans
-      umap_result <- umap::umap(count_subset)
-      umap_data <- as.data.frame(umap_result$layout)
-      umap_clusters <- stats::kmeans(umap_data, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
-      clustering_results$UMAP <- list(
-        clusters = umap_clusters,
-        #avg.silwidth = fpc::cluster.stats(stats::dist(umap_data), umap_clusters)$avg.silwidth,
-        Accuracy = max(MLmetrics::Accuracy(labels, umap_clusters), MLmetrics::Accuracy(labels, 3 - umap_clusters)),
-        Precision = max(MLmetrics::Precision(labels, umap_clusters, positive = "1"), MLmetrics::Precision(labels, 3 - umap_clusters, positive = "1")),
-        Recall = max(MLmetrics::Recall(labels, umap_clusters, positive = "1"), MLmetrics::Recall(labels, 3 - umap_clusters, positive = "1")),
-        FScore = max(MLmetrics::F1_Score(labels, umap_clusters, positive = "1"), MLmetrics::F1_Score(labels, 3 - umap_clusters, positive = "1"))
-      )
-
-      # Save results for this combination
-      all_results[[paste(combo, collapse = "_")]] <- clustering_results
+          # Save results for this combination
+          all_results[[paste(combo, collapse = "_")]] <- clustering_results
+        }
+      }
     }
-  }
-})
+  )
 
   # End Progress bar
   cli::cli_progress_done()

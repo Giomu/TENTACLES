@@ -17,8 +17,6 @@
 #' based on the specified p-value cutoff if signif is TRUE. The function utilizes org.Hs.eg.db for
 #' gene annotation in human species.
 #'
-#' @importFrom clusterProfiler enrichGO groupGO
-#' @import org.Hs.eg.db
 #'
 #' @return A data frame containing enriched GO terms with associated statistics.
 #'
@@ -36,16 +34,28 @@
 #' @export
 enrich.GO <- function(gene_list, keyType = "SYMBOL", pval = 0.05,
                       ont = "BP", groupGO = TRUE, signif = TRUE, level = 4) {
+  # require namespace for clusterProfiler and org.Hs.eg.db
+  if (!requireNamespace("clusterProfiler", quietly = TRUE)) {
+    stop("clusterProfiler package is required for this function.")
+  }
+
+  if (!requireNamespace("org.Hs.eg.db", quietly = TRUE)) {
+    stop("org.Hs.eg.db package is required for this function.")
+  }
+
+
+
   go_results <- clusterProfiler::enrichGO(
     gene = gene_list,
-    OrgDb = org.Hs.eg.db,
+    OrgDb = org.Hs.eg.db::org.Hs.eg.db,
     keyType = keyType,
     ont = ont,
     pvalueCutoff = pval,
     pool = 1
   )
 
-  if (groupGO == TRUE & signif == TRUE) {
+
+  if (groupGO == TRUE && signif == TRUE) {
     padj <- pval
     group_go <- clusterProfiler::groupGO(gene_list,
       OrgDb = "org.Hs.eg.db",
@@ -56,7 +66,7 @@ enrich.GO <- function(gene_list, keyType = "SYMBOL", pval = 0.05,
     go_signif <- go_results@result[go_results@result$p.adjust < padj, ]
     go_signif <- go_signif[go_signif$ID %in% go_level, ]
     return(go_signif)
-  } else if (groupGO == TRUE & signif == FALSE) {
+  } else if (groupGO == TRUE && signif == FALSE) {
     padj <- pval
     group_go <- clusterProfiler::groupGO(gene_list,
       OrgDb = "org.Hs.eg.db",
@@ -67,7 +77,7 @@ enrich.GO <- function(gene_list, keyType = "SYMBOL", pval = 0.05,
     go_signif <- go_results@result
     go_signif <- go_signif[go_signif$ID %in% go_level, ]
     return(go_signif)
-  } else if (groupGO == FALSE & signif == TRUE) {
+  } else if (groupGO == FALSE && signif == TRUE) {
     padj <- pval
     go_signif <- go_results@result[go_results@result$p.adjust < padj, ]
     return(go_signif)
@@ -75,7 +85,6 @@ enrich.GO <- function(gene_list, keyType = "SYMBOL", pval = 0.05,
     return(go_results@result)
   }
 }
-
 
 #' @title enrich.kegg
 #' @description Perform KEGG Pathway Enrichment Analysis. This function performs KEGG pathway enrichment
@@ -92,9 +101,6 @@ enrich.GO <- function(gene_list, keyType = "SYMBOL", pval = 0.05,
 #' using enrichKEGG, and optionally filters significantly enriched pathways based on the specified p-value cutoff.
 #' The organism used is "hsa" (Homo sapiens).
 #'
-#' @importFrom clusterProfiler enrichKEGG
-#' @importFrom AnnotationDbi mapIds
-#' @import org.Hs.eg.db
 #'
 #' @return A data frame containing enriched KEGG pathways with associated statistics.
 #'
@@ -107,8 +113,21 @@ enrich.GO <- function(gene_list, keyType = "SYMBOL", pval = 0.05,
 #'
 #' @export
 enrich.kegg <- function(gene_list, keyType = "SYMBOL", pval = 0.05, signif = TRUE) {
+  # require namespace for clusterProfiler and org.Hs.eg.db
+  if (!requireNamespace("clusterProfiler", quietly = TRUE)) {
+    stop("clusterProfiler package is required for this function.")
+  }
+
+  if (!requireNamespace("org.Hs.eg.db", quietly = TRUE)) {
+    stop("org.Hs.eg.db package is required for this function.")
+  }
+
+  if (!requireNamespace("AnnotationDbi", quietly = TRUE)) {
+    stop("AnnotationDbi package is required for this function.")
+  }
+
   # Map gene SYMBOL into entrezID
-  entrez_genes <- as.character(AnnotationDbi::mapIds(org.Hs.eg.db, gene_list, "ENTREZID", keyType))
+  entrez_genes <- as.character(AnnotationDbi::mapIds(org.Hs.eg.db::org.Hs.eg.db, gene_list, "ENTREZID", keyType))
   kegg_results <- clusterProfiler::enrichKEGG(
     gene = entrez_genes,
     organism = "hsa",
@@ -126,7 +145,7 @@ enrich.kegg <- function(gene_list, keyType = "SYMBOL", pval = 0.05, signif = TRU
 
   # Convert KEGG IDs back to SYMBOL
   kegg_results_filtered$geneID <- sapply(strsplit(kegg_results_filtered$geneID, "/"), function(x) {
-    symbols <- suppressMessages(AnnotationDbi::mapIds(org.Hs.eg.db, x, "SYMBOL", "ENTREZID"))
+    symbols <- suppressMessages(AnnotationDbi::mapIds(org.Hs.eg.db::org.Hs.eg.db, x, "SYMBOL", "ENTREZID"))
     paste(symbols, collapse = "/")
   })
 

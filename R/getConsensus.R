@@ -51,17 +51,19 @@ create_binary_df <- function(b) {
 #' or the genes that are present in the algorithms specified in group1 and group2.
 #' The consensus genes can be computed using the 'intersect' or 'union' methods.
 #'
-#' @importFrom cli cli_alert_info cli_alert_success cli_alert_danger cli_abort cli_warn
 #'
 #' @examples
-#' /dontrun{
+#' \dontrun{
 #' # consensus genes are the genes that are present in at least 3 algorithms
 #' cons.1 <- getConsensus(runClassifiers.obj, n.min = 3)
 #' # consensus genes are the genes that are present in both alg1 and alg2
 #' cons.2 <- getConsensus(runClassifiers.obj, group1 = c("alg1", "alg2"), meth1 = "intersect")
 #' # consensus genes are the genes that are present in alg1 and alg2 and alg3 and alg4
-#' cons.3 <- getConsensus(runClassifiers.obj, group1 = c("alg1", "alg2"), group2 = c("alg3", "alg4"),
-#'                        meth1 = "intersect", meth2 = "intersect", meth.comb = "intersect")}
+#' cons.3 <- getConsensus(runClassifiers.obj,
+#'   group1 = c("alg1", "alg2"), group2 = c("alg3", "alg4"),
+#'   meth1 = "intersect", meth2 = "intersect", meth.comb = "intersect"
+#' )
+#' }
 #'
 #' @export
 getConsensus <- function(x, n.min = NULL,
@@ -80,7 +82,7 @@ getConsensus <- function(x, n.min = NULL,
   cli::cli_h1("Computing Consensus Genes")
 
   # Check class of input object. If binary data.frame simply assign it, else apply create_binary_df()
-  if (class(x) == "data.frame") {
+  if (inherits(x, "data.frame")) {
     # Assign x to df and print message
     df <- x
     cli::cli_alert_success("Informations successfully extracted from data frame provided.")
@@ -126,9 +128,8 @@ getConsensus <- function(x, n.min = NULL,
       cli::cli_alert_success("{length(selected_genes)} genes found in at least {n.min} algorithms.")
     }
     consensus.list <- list(consensusGenes = selected_genes)
-  }
-  # Generate consensus using group1 only
-  else if (!is.null(group1) & is.null(group2)) {
+  } else if (!is.null(group1) && is.null(group2)) {
+    # Generate consensus using group1 only
     subset1 <- df[group1, , drop = FALSE]
 
     if (meth1 == "intersect") {
@@ -138,9 +139,8 @@ getConsensus <- function(x, n.min = NULL,
       consensus.list <- list(colnames(subset1)[colSums(subset1) > 0])
       cli::cli_alert_success("Selecting genes using method 'union' for algorithms in group1.")
     }
-  }
-  # Generate consensus using both group1 and group2
-  else if (!is.null(group1) & !is.null(group2)) {
+  } else if (!is.null(group1) && !is.null(group2)) {
+    # Generate consensus using both group1 and group2
     subset1 <- df[group1, , drop = FALSE]
     subset2 <- df[group2, , drop = FALSE]
 
@@ -183,7 +183,7 @@ getConsensus <- function(x, n.min = NULL,
     inputParams = inputParams
   )
 
-  if (length(consensus$consensusGenes) == 0){
+  if (length(consensus$consensusGenes) == 0) {
     # If no consensus genes are found print alert
     cli::cli_alert_danger("No features overlapping. Please try with different set up.")
   } else {
@@ -192,13 +192,15 @@ getConsensus <- function(x, n.min = NULL,
     cli::cli_alert_success("Consensus successfully generated!")
   }
 
-  if (class(x) == "data.frame") {
+  if (inherits(x, "dataframe")) {
     cli::cli_alert_info("Can't run testConsensus on a binary df. Skipping..")
   } else {
     # Test consensus genes in the adjusted dataset contained in runClassifiers.obj@data
-    testConsensus(df.count = x@data$adjusted.data,
-                  gene.list = consensus.list[[1]],
-                  class = as.factor(x@data$metadata$class))
+    testConsensus(
+      df.count = x@data$adjusted.data,
+      gene.list = consensus.list[[1]],
+      class = as.factor(x@data$metadata$class)
+    )
   }
 
   cli::cli_alert_success("Consensus genes computed successfully!")

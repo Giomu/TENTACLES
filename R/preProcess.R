@@ -1,4 +1,3 @@
-
 #' class preProcess.obj
 #' @description
 #' Creates a class for data import that will be used to stock pre-processed data.
@@ -53,7 +52,6 @@ data.import <- function(
     case.label = NULL,
     data.type = "rnaseq",
     is.normalized = FALSE) {
-
   # Check if the input data is a data frame
   if (!is.data.frame(df.count) || !is.data.frame(df.clin)) {
     cli::cli_abort("Input data must be in data frame format.")
@@ -92,7 +90,6 @@ data.import <- function(
 
 # Helper function to normalize data in log2(CPM + 1) scale
 normalization <- function(df.count, mincpm = 1, minfraction = 0.1) {
-
   # Filter Low CPM function
   filter.low.cpm <- function(normalized.counts) {
     keep <- rowSums(edgeR::cpm(normalized.counts) > mincpm) >= ncol(normalized.counts) * minfraction
@@ -113,8 +110,10 @@ normalization <- function(df.count, mincpm = 1, minfraction = 0.1) {
   # Remove the class column and create a DGEList object
   data_noclass <- df.count[, -ncol(df.count)]
   data_noclass <- t(data_noclass)
-  data_noclass <- edgeR::DGEList(counts = data_noclass, gene = rownames(data_noclass),
-                                 group = df.count$class)
+  data_noclass <- edgeR::DGEList(
+    counts = data_noclass, gene = rownames(data_noclass),
+    group = df.count$class
+  )
 
   # Normalize and filter training data
   norm_data <- edgeR.normalize(data_noclass, filter = TRUE)
@@ -129,7 +128,6 @@ normalization <- function(df.count, mincpm = 1, minfraction = 0.1) {
 correct.batches <- function(data, metadata,
                             batch,
                             covar.mod) {
-
   # Check input parameters
   if (!is.null(batch)) {
     if (!batch %in% names(metadata)) {
@@ -145,15 +143,13 @@ correct.batches <- function(data, metadata,
     # Ensure covar.mod is either a single string or a character vector
     if (length(covar.mod) == 1) {
       # When covar.mod is a single string
-      covar_mod_matrix <- model.matrix(~ as.factor(metadata[[covar.mod]]), data = metadata)
-
+      covar_mod_matrix <- stats::model.matrix(~ as.factor(metadata[[covar.mod]]), data = metadata)
     } else {
       # When covar.mod is a character vector (multiple columns)
       # Combine the columns to create a single factor variable
       # Create a combined factor variable
       combined_factor <- do.call(paste, c(metadata[covar.mod], sep = "_"))
-      covar_mod_matrix <- model.matrix(~ as.factor(combined_factor), data = metadata)
-
+      covar_mod_matrix <- stats::model.matrix(~ as.factor(combined_factor), data = metadata)
     }
   } else {
     covar_mod_matrix <- covar.mod
@@ -201,21 +197,18 @@ correct.batches <- function(data, metadata,
 #' 3. Perform batch correction if the batch variable is provided.
 #' 4. Generate PCA and PVCA plots before and after batch correction.
 #'
-#' @import ggplot2
-#' @importFrom cli cli_h1 cli_alert_info cli_alert_success cli_alert_danger cli_abort
-#' @importFrom withr with_seed
-#' @importFrom rsample initial_split training testing
 #' @importFrom edgeR calcNormFactors cpm DGEList
 #' @importFrom sva ComBat
-#' @importFrom stats model.matrix
-#' @importFrom methods new
 #'
 #' @examples
-#' /dontrun{
-#' preProcess(df.count, df.clin, class = "class",
-#'            case.label = "case", mincpm = 1, minfraction = 0.1,
-#'            data.type = "rnaseq", is.normalized = FALSE,
-#'            batch = "batch", covar.mod = "covar", plot = TRUE)}
+#' \dontrun{
+#' preProcess(df.count, df.clin,
+#'   class = "class",
+#'   case.label = "case", mincpm = 1, minfraction = 0.1,
+#'   data.type = "rnaseq", is.normalized = FALSE,
+#'   batch = "batch", covar.mod = "covar", plot = TRUE
+#' )
+#' }
 #'
 #' @export
 preProcess <- function(
@@ -224,7 +217,6 @@ preProcess <- function(
     mincpm = 1, minfraction = 0.1,
     data.type = "rnaseq", is.normalized = FALSE,
     batch = NULL, covar.mod = NULL, plot = TRUE) {
-
   # Print starting Message
   cli::cli_h1("preProcess")
 
@@ -241,7 +233,6 @@ preProcess <- function(
     normalized_data <- normalization(data.obj@raw, mincpm = mincpm, minfraction = minfraction)
     data.obj@processed$normalized <- normalized_data
     cli::cli_alert_success("Data Normalized!")
-
   } else {
     data.obj@processed$normalized <- data.obj@raw
     normalized_data <- data.obj@raw
@@ -255,7 +246,6 @@ preProcess <- function(
     cli::cli_alert_success("Batch correction complete!")
 
     if (plot) {
-
       cli::cli_alert_info("Creating PCA plots...")
       p <- batch.pca.plot(normalized_data, corrected_data, batch = batch, metadata = data.obj@metadata)
       print(p)
@@ -268,9 +258,7 @@ preProcess <- function(
     }
 
     adjusted_data <- corrected_data
-
   } else {
-
     adjusted_data <- data.obj@processed$normalized
   }
 

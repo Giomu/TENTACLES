@@ -49,13 +49,16 @@ or the genes that are present in the algorithms specified in group1 and group2.
 The consensus genes can be computed using the 'intersect' or 'union' methods.
 }
 \examples{
-/dontrun{
+\dontrun{
 # consensus genes are the genes that are present in at least 3 algorithms
 cons.1 <- getConsensus(runClassifiers.obj, n.min = 3)
 # consensus genes are the genes that are present in both alg1 and alg2
 cons.2 <- getConsensus(runClassifiers.obj, group1 = c("alg1", "alg2"), meth1 = "intersect")
 # consensus genes are the genes that are present in alg1 and alg2 and alg3 and alg4
-cons.3 <- getConsensus(runClassifiers.obj, group1 = c("alg1", "alg2"), group2 = c("alg3", "alg4"),
-                       meth1 = "intersect", meth2 = "intersect", meth.comb = "intersect")}
+cons.3 <- getConsensus(runClassifiers.obj,
+  group1 = c("alg1", "alg2"), group2 = c("alg3", "alg4"),
+  meth1 = "intersect", meth2 = "intersect", meth.comb = "intersect"
+)
+}
 
 }

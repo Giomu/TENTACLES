@@ -27,8 +27,10 @@ AUROC is computed for each gene, Heatmap is created using the consensus genes,
 and a MLP model is tuned and fitted on the filtered dataset.
 }
 \examples{
-/dontrun{
+\dontrun{
 testConsensus(
-   df.count, cons_genes, class)}
+    df.count, cons_genes, class
+)
+}
 
 }

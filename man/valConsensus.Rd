@@ -31,10 +31,14 @@ The function implements the following clustering methods: K-Means, Gaussian Mixt
 Hierarchical Clustering, k-Means on PCA dimensions, k-Means on t-SNE dimensions, and k-Means on UMAP dimensions.
 }
 \examples{
-/dontrun{
+\dontrun{
 count_table <- matrix(rnorm(1000), nrow = 100, ncol = 10)
 gene_list <- c("Gene1", "Gene2", "Gene3")
 labels <- factor(sample(1:2, 100, replace = TRUE))
-vc <- valConsensus(df.count = count_table, gene.list = gene_list, class = labels, N = 10, metric = "FScore")}
+vc <- valConsensus(
+  df.count = count_table, gene.list = gene_list,
+  class = labels, N = 10, metric = "FScore"
+)
+}
 
 }

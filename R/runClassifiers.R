@@ -1,3 +1,5 @@
+utils::globalVariables("annotated.genes")
+
 #' Class for the runClassifiers object
 #' @description
 #' Create a class for the runClassifiers object.
@@ -16,15 +18,6 @@ methods::setClass("runClassifiers.obj",
   )
 )
 
-#' @importFrom magrittr %>%
-#' @import baguette
-#' @import bonsai
-#' @import plsmod
-#' @import rules
-#' @import themis
-#' @import nnet
-#' @import NeuralNetTools
-
 # Helper function to create model specifications
 create_model_specs <- function() {
   list(
@@ -33,23 +26,29 @@ create_model_specs <- function() {
       mtry = tune(), trees = tune(),
       min_n = tune(), tree_depth = tune(),
       learn_rate = tune(), loss_reduction = tune(),
-      sample_size = tune(), stop_iter = tune()),
+      sample_size = tune(), stop_iter = tune()
+    ),
     bag_tree = parsnip::bag_tree(
       mode = "classification", engine = "rpart",
-      tree_depth = tune(), min_n = tune()),
+      tree_depth = tune(), min_n = tune()
+    ),
     lightGBM = parsnip::boost_tree(
       mode = "classification", engine = "lightgbm",
       mtry = tune(), trees = tune(),
       min_n = tune(), tree_depth = tune(),
-      learn_rate = tune(), loss_reduction = tune()),
+      learn_rate = tune(), loss_reduction = tune()
+    ),
     pls = parsnip::pls(
       mode = "classification", num_comp = tune(),
-      predictor_prop = tune(), engine = "mixOmics"),
+      predictor_prop = tune(), engine = "mixOmics"
+    ),
     logistic = parsnip::logistic_reg(
-      mode = "classification", engine = "glm"),
+      mode = "classification", engine = "glm"
+    ),
     C5_rules = parsnip::C5_rules(
       mode = "classification", engine = "C5.0",
-      trees = tune(), min_n = tune()),
+      trees = tune(), min_n = tune()
+    ),
     mars = parsnip::mars(
       mode = "classification",
       num_terms = tune(), prod_degree = tune()
@@ -61,14 +60,17 @@ create_model_specs <- function() {
     mlp = parsnip::mlp(
       mode = "classification", engine = "nnet",
       hidden_units = tune(), penalty = tune(),
-      epochs = tune()),
+      epochs = tune()
+    ),
     bag_mlp = parsnip::bag_mlp(
       mode = "classification", engine = "nnet",
       hidden_units = tune(), penalty = tune(),
-      epochs = tune()),
+      epochs = tune()
+    ),
     decision_tree = parsnip::decision_tree(
       mode = "classification", tree_depth = tune(),
-      min_n = tune(), engine = "rpart"),
+      min_n = tune(), engine = "rpart"
+    ),
     rand_forest = parsnip::rand_forest(
       mode = "classification", mtry = tune(),
       trees = 300, min_n = tune()
@@ -76,15 +78,18 @@ create_model_specs <- function() {
       parsnip::set_engine("ranger", importance = "impurity"),
     svm_linear = parsnip::svm_linear(
       mode = "classification", engine = "kernlab",
-      cost = tune(), margin = tune()),
+      cost = tune(), margin = tune()
+    ),
     svm_poly = parsnip::svm_poly(
       mode = "classification", engine = "kernlab",
       cost = tune(), degree = tune(),
-      scale_factor = tune(), margin = tune()),
+      scale_factor = tune(), margin = tune()
+    ),
     svm_rbf = parsnip::svm_rbf(
       mode = "classification", engine = "kernlab",
       cost = tune(), rbf_sigma = tune(),
-      margin = tune())
+      margin = tune()
+    )
   )
 }
 
@@ -128,7 +133,6 @@ create_dynamic_workflow_sets <- function(models, selector.recipes, data, downsam
       recipes::step_nzv(recipes::all_predictors()) %>%
       recipes::step_normalize(recipes::all_numeric_predictors()) %>%
       recipes::step_corr(recipes::all_predictors(), threshold = 0.8)
-
   } else {
     # Recipe with Boruta Feature Selection
     recipe_boruta <- recipes::recipe(class ~ ., data = data) %>%
@@ -164,7 +168,7 @@ create_dynamic_workflow_sets <- function(models, selector.recipes, data, downsam
   # Filter to keep only models selected by User
   filtered_specs <- model_specs[models]
 
-  #Map recipes names to respective recipe objects
+  # Map recipes names to respective recipe objects
   recipes_map <- list(
     boruta = recipe_boruta,
     roc = recipe_ROC,
@@ -214,7 +218,8 @@ tune_and_fit <- function(
         resamples = train_resamples,
         grid = n,
         metrics = yardstick::metric_set(
-          yardstick::accuracy, yardstick::precision, yardstick::recall, yardstick::f_meas),
+          yardstick::accuracy, yardstick::precision, yardstick::recall, yardstick::f_meas
+        ),
         verbose = TRUE
       )
   } else if (tuning.method %in% c("tune_bayes", "tune_sim_anneal")) {
@@ -224,7 +229,8 @@ tune_and_fit <- function(
         resamples = train_resamples,
         iter = n,
         metrics = yardstick::metric_set(
-          yardstick::accuracy, yardstick::precision, yardstick::recall, yardstick::f_meas),
+          yardstick::accuracy, yardstick::precision, yardstick::recall, yardstick::f_meas
+        ),
         verbose = TRUE
       )
   } else {
@@ -237,7 +243,8 @@ tune_and_fit <- function(
   best_params <- purrr::map(
     tune_results$wflow_id,
     ~ tune::select_best(workflowsets::extract_workflow_set_result(tune_results, id = .x),
-                        metric = metric)
+      metric = metric
+    )
   )
   cli::cli_alert_success("Succesfully selected parameters!")
 
@@ -266,16 +273,20 @@ tune_and_fit <- function(
   cli::cli_alert_info("Computing metric performances ...")
   # Compute metrics on tuning set selecting the best model based on the metric provided
   tuning_metrics <- as.data.frame(workflowsets::rank_results(
-    tune_results, rank_metric = metric, select_best = TRUE))
+    tune_results,
+    rank_metric = metric, select_best = TRUE
+  ))
   # Define metrics to compute on test set
-  multi_met <- yardstick::metric_set(yardstick::accuracy, yardstick::f_meas,
-                                     yardstick::precision, yardstick::recall)
+  multi_met <- yardstick::metric_set(
+    yardstick::accuracy, yardstick::f_meas,
+    yardstick::precision, yardstick::recall
+  )
   # Combine metrics and predictions in a list
   results <- purrr::map(
     last_fit_results,
     ~ {
       # Prediction step
-      predictions <- predict(.x, new_data = data) %>%
+      predictions <- stats::predict(.x, new_data = data) %>%
         dplyr::bind_cols(class = data$class, ID = row.names(data)) %>%
         dplyr::mutate(model = dplyr::cur_group_id())
 
@@ -302,7 +313,9 @@ tune_and_fit <- function(
     models.info = final_workflows,
     model.features = list(),
     performances = list(
-      tuning_metrics = tuning_metrics, final_metrics = test_metrics))
+      tuning_metrics = tuning_metrics, final_metrics = test_metrics
+    )
+  )
 
   return(list(runClassifiers.obj, last_fit_results, predictions_df))
 }
@@ -314,13 +327,13 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
     if ("ksvm" %in% class(model) || "_ksvm" %in% class(model)) {
       return(kernlab::predict(model, newdata = new_data, type = "probabilities")[, 2])
     } else if ("xrf" %in% class(model)) {
-      pred <- predict(model, new_data, type = "response")
+      pred <- stats::predict(model, new_data, type = "response")
       return(as.numeric(if (is.matrix(pred)) pred[, 1] else pred))
     } else if ("rda" %in% class(model) || "_rda" %in% class(model)) {
-      pred <- predict(model, new_data)
+      pred <- stats::predict(model, new_data)
       return(as.numeric(pred$.pred_class))
     } else {
-      probs <- predict(model, new_data, type = "prob")
+      probs <- stats::predict(model, new_data, type = "prob")
       if (".pred_1" %in% colnames(probs)) {
         return(probs$.pred_1)
       } else {
@@ -384,6 +397,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 
 
 
+# TODO include example in documentation using tables instead of the preProcess.obj
 #' @title runClassifiers
 #' @description This function run classifiers specified on an object of class preProcess.obj or
 #' on the data provided in the arguments ...
@@ -421,29 +435,23 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #' Finally it computes the variable importances for each model using the permutation-based VIP,
 #' when the direct VIP computation fails.
 #'
-#' @import dplyr
-#' @importFrom baguette var_imp
-#' @importFrom cli cli_h1 cli_alert_info cli_alert_success cli_alert_danger cli_abort
-#' @importFrom future plan multisession sequential
-#' @importFrom parallel detectCores
-#' @importFrom recipes recipe step_nzv step_normalize
+#' @import baguette
+#' @import bonsai
+#' @import plsmod
+#' @import rules
+#' @import nnet
+#' @import NeuralNetTools
 #' @importFrom colino step_select_boruta step_select_roc step_select_infgain step_select_mrmr
 #' @importFrom purrr map2 map imap_dfr
-#' @importFrom rsample vfold_cv training testing
-#' @importFrom tidyr pivot_longer pivot_wider
-#' @importFrom workflows extract_fit_parsnip
-#' @importFrom vip vip
-#' @importFrom kernlab predict
-#' @importFrom withr with_seed
-#' @importFrom tune select_best finalize_workflow last_fit
-#' @importFrom workflowsets workflow_set extract_workflow collect_metrics rank_results workflow_map
-#' @importFrom parsnip boost_tree bag_tree pls logistic_reg C5_rules mars bag_mars mlp bag_mlp decision_tree rand_forest svm_linear svm_poly svm_rbf
 #'
 #' @examples
-#' /dontrun{
-#' rc <- runClassifiers(preProcess.obj, models = c("bag_mlp", "rand_forest", "svm_poly"),
-#'                    selector.recipes = "boruta", tuning.method = "tune_grid", n = 5,
-#'                    v = 3, metric = "accuracy", nsim = 2, seed = 123)}
+#' \dontrun{
+#' rc <- runClassifiers(preProcess.obj,
+#'   models = c("bag_mlp", "rand_forest", "svm_poly"),
+#'   selector.recipes = "boruta", tuning.method = "tune_grid", n = 5,
+#'   v = 3, metric = "accuracy", nsim = 2, seed = 123
+#' )
+#' }
 #'
 #' @export
 runClassifiers <- function(
@@ -451,7 +459,6 @@ runClassifiers <- function(
     selector.recipes = c("boruta", "roc", "boruta"),
     tuning.method = "tune_grid", n = 5, v = 3, metric = "accuracy",
     nsim = 2, filter = TRUE, seed = 123, downsample = FALSE) {
-
   future::plan(future::multisession, workers = parallel::detectCores() - 1)
   cli::cli_h1("runClassifiers")
 
@@ -465,8 +472,10 @@ runClassifiers <- function(
     if ("df.count" %in% names(dots) && "df.clin" %in% names(dots) && "class" %in% names(dots)) {
       cli::cli_alert_success("Found df.count, df.clin and class in ...")
       # Create a preProcess object
-      preProcess.obj <- preProcess(df.count = dots$df.count, df.clin = dots$df.clin, class = dots$class,
-                                   is.normalized = TRUE, plot = FALSE)
+      preProcess.obj <- preProcess(
+        df.count = dots$df.count, df.clin = dots$df.clin, class = dots$class,
+        is.normalized = TRUE, plot = FALSE
+      )
       # cli::cli_alert_success("Successfully created preProcess object from data provided!")
     } else {
       cli::cli_abort("df.count, df.clin and class not found in ... Please refer to the documentation for valid options.")
@@ -478,19 +487,19 @@ runClassifiers <- function(
     "xgboost", "bag_tree", "lightGBM", "pls", "logistic",
     "C5_rules", "mars", "bag_mars", "mlp", "bag_mlp",
     "decision_tree", "rand_forest", "svm_linear", "svm_poly",
-    "svm_rbf")
+    "svm_rbf"
+  )
   # Vector of available feature selectors
   available_selectors <- c("boruta", "roc", "infgain", "mrmr", "corr")
 
   withr::with_seed(
     seed = seed,
     code = {
-
-      if (filter == TRUE){
+      if (filter == TRUE) {
         ## Keep only genes annotated in GO and KEGG databases
         cli::cli_alert_info("Filtering genes non-annotated in GO and KEGG db ...")
         # Upload annotated genes database
-        data(annotated.genes)
+        data(annotated.genes, envir = environment())
         # Compute the number of columns before filtering. class col is excluded from computation
         ncol_pre <- ncol(preProcess.obj@processed$adjusted.data) - 1
         # Save class column to cbind it after filtering
@@ -498,7 +507,7 @@ runClassifiers <- function(
         # Filter genes that are not present in the DB
         preProcess.obj@processed$adjusted.data <-
           preProcess.obj@processed$adjusted.data[, colnames(preProcess.obj@processed$adjusted.data) %in%
-                                                   annotated.genes$genes_to_retrieve]
+            annotated.genes$genes_to_retrieve]
         # cbind class column that has been filtered out
         preProcess.obj@processed$adjusted.data <- cbind(preProcess.obj@processed$adjusted.data, class)
         # Compute the number of columns after filter. class col is excluded from computation
@@ -536,7 +545,8 @@ runClassifiers <- function(
         metric = metric,
         train_resamples = train_resamples,
         data = data,
-        downsample = downsample)
+        downsample = downsample
+      )
 
       cli::cli_h2("Variable Importances")
       vip_results <- calculate_vip(
