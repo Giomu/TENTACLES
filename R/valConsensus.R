@@ -181,7 +181,7 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
           )
 
           # t-SNE + KMeans
-          tsne_result <- Rtsne::Rtsne(count_subset, dims = 2, perplexity = 10)
+          tsne_result <- Rtsne::Rtsne(count_subset, dims = 2, perplexity = 10, check_duplicates = FALSE)
           tsne_data <- tsne_result$Y
           tsne_clusters <- stats::kmeans(tsne_data, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster
           clustering_results$tSNE <- list(
