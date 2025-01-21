@@ -22,7 +22,8 @@ Suggests:
     rmarkdown,
     S4Vectors,
     stringr,
-    STRINGdb
+    STRINGdb,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Imports: 
     baguette,
@@ -76,3 +77,4 @@ Imports:
     yardstick
 Remotes: 
     stevenpawley/colino
+Config/testthat/edition: 3

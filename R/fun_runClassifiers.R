@@ -1,5 +1,3 @@
-utils::globalVariables("annotated.genes")
-
 #' Class for the runClassifiers object
 #' @description
 #' Create a class for the runClassifiers object.

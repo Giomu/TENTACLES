@@ -57,6 +57,11 @@ data.import <- function(
     cli::cli_abort("Input data must be in data frame format.")
   }
 
+  # Check if the class column exists in the clinical data
+  if (!class %in% colnames(df.clin)) {
+    cli::cli_abort("Class column not found in clinical data.")
+  }
+
   # Get data information.
   data.info <- data.check(data.type, is.normalized)
 
@@ -65,18 +70,18 @@ data.import <- function(
 
   # Transform class labels to binary factors.
   if (!is.null(case.label)) {
-    df.clin$class <- as.factor(ifelse(df.clin$class == case.label, 1, 0))
-  } else if (all(df.clin$class %in% c(0, 1))) {
-    df.clin$class <- as.factor(df.clin$class)
-  } else if (is.null(case.label) || !case.label %in% unique(df.clin$class)) {
+    df.clin[, class] <- as.factor(ifelse(df.clin[, class] == case.label, 1, 0))
+  } else if (all(df.clin[, class] %in% c(0, 1))) {
+    df.clin[, class] <- as.factor(df.clin[, class])
+  } else if (is.null(case.label) || !case.label %in% unique(df.clin[, class])) {
     # Identify the class levels
-    levels <- unique(df.clin$class)
+    levels <- unique(df.clin[, class])
     cli::cli_alert_info("Case label not found or not provided. Using {levels[1]} as the case label.")
-    df.clin$class <- as.factor(ifelse(df.clin$class == levels[1], 1, 0))
+    df.clin[, class] <- as.factor(ifelse(df.clin[, class] == levels[1], 1, 0))
   }
 
   # Join the count and clinical data class column
-  df.count$class <- df.clin$class
+  df.count[, class] <- df.clin[, class]
 
   preProcess.obj <- methods::new("preProcess.obj",
     raw = df.count,
@@ -89,7 +94,7 @@ data.import <- function(
 }
 
 # Helper function to normalize data in log2(CPM + 1) scale
-normalization <- function(df.count, mincpm = 1, minfraction = 0.1) {
+normalization <- function(df.count, class, mincpm = 1, minfraction = 0.1) {
   # Filter Low CPM function
   filter.low.cpm <- function(normalized.counts) {
     keep <- rowSums(edgeR::cpm(normalized.counts) > mincpm) >= ncol(normalized.counts) * minfraction
@@ -108,24 +113,24 @@ normalization <- function(df.count, mincpm = 1, minfraction = 0.1) {
   }
 
   # Remove the class column and create a DGEList object
-  data_noclass <- df.count[, -ncol(df.count)]
+  data_noclass <- df.count[, -which(colnames(df.count) == class), drop = FALSE]
   data_noclass <- t(data_noclass)
   data_noclass <- edgeR::DGEList(
     counts = data_noclass, gene = rownames(data_noclass),
-    group = df.count$class
+    group = df.count[, class]
   )
 
   # Normalize and filter training data
   norm_data <- edgeR.normalize(data_noclass, filter = TRUE)
 
   # Add the class column back
-  norm_data$class <- df.count$class
+  norm_data[, class] <- df.count[, class]
 
   return(norm_data)
 }
 
 # Helper function to perform batch correction using ComBat
-correct.batches <- function(data, metadata,
+correct.batches <- function(data, class, metadata,
                             batch,
                             covar.mod) {
   # Check input parameters
@@ -157,7 +162,7 @@ correct.batches <- function(data, metadata,
   }
 
   # Format data for ComBat
-  data_noclass <- data[, -ncol(data)]
+  data_noclass <- data[, -which(colnames(data) == class), drop = FALSE]
   data_noclass <- t(data_noclass)
   batch_factor <- as.factor(metadata[, batch])
 
@@ -165,7 +170,7 @@ correct.batches <- function(data, metadata,
   corrected_data <- suppressMessages(sva::ComBat(dat = data_noclass, batch = batch_factor, mod = covar_mod_matrix))
 
   corrected_data <- as.data.frame(t(corrected_data))
-  corrected_data$class <- data$class
+  corrected_data[, class] <- data[, class]
 
   return(corrected_data)
 }
@@ -230,7 +235,7 @@ preProcess <- function(
   data.info <- data.obj@data.info
   if (data.info[["type"]] == "rnaseq" && data.info[["normalized"]] == FALSE) {
     cli::cli_alert_info("Normalizing and filtering data...")
-    normalized_data <- normalization(data.obj@raw, mincpm = mincpm, minfraction = minfraction)
+    normalized_data <- normalization(data.obj@raw, class = class, mincpm = mincpm, minfraction = minfraction)
     data.obj@processed$normalized <- normalized_data
     cli::cli_alert_success("Data Normalized!")
   } else {
@@ -241,7 +246,7 @@ preProcess <- function(
   # Perform batch correction if batch variable is provided.
   if (!is.null(batch)) {
     cli::cli_alert_info("Performing batch correction...")
-    corrected_data <- correct.batches(data.obj@processed$normalized, data.obj@metadata, batch = batch, covar.mod = covar.mod)
+    corrected_data <- correct.batches(data.obj@processed$normalized, data.obj@metadata, class = class, batch = batch, covar.mod = covar.mod)
     data.obj@processed$sbatched <- corrected_data
     cli::cli_alert_success("Batch correction complete!")
 

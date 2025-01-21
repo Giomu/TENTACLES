@@ -1,5 +1,3 @@
-utils::globalVariables("Mean_Metric")
-
 selectTopCombinations <- function(results, N, metric) {
   # Initialize an empty list to store the flattened results
   flattened_results <- list()
