@@ -16,7 +16,8 @@ runClassifiers(
   nsim = 2,
   filter = TRUE,
   seed = 123,
-  downsample = FALSE
+  downsample = FALSE,
+  plot = TRUE
 )
 }
 \arguments{

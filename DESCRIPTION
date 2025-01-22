@@ -51,7 +51,6 @@ Imports:
     parsnip,
     plsmod,
     pROC,
-    purrr,
     pvca,
     RColorBrewer,
     recipes,

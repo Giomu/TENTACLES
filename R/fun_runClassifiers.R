@@ -16,7 +16,8 @@ methods::setClass("runClassifiers.obj",
   )
 )
 
-# Helper function to create model specifications
+### ------------------------ Helper Functions ------------------------ ###
+# Create model specifications
 create_model_specs <- function() {
   list(
     xgboost = parsnip::boost_tree(
@@ -47,14 +48,20 @@ create_model_specs <- function() {
       mode = "classification", engine = "C5.0",
       trees = tune(), min_n = tune()
     ),
-    mars = parsnip::mars(
-      mode = "classification",
-      num_terms = tune(), prod_degree = tune()
-    ) %>% parsnip::set_engine("earth"),
-    bag_mars = parsnip::bag_mars(
-      mode = "classification", num_terms = tune(),
-      prod_degree = tune()
-    ) %>% parsnip::set_engine("earth"),
+    mars = parsnip::set_engine(
+      parsnip::mars(
+        mode = "classification",
+        num_terms = tune(), prod_degree = tune()
+      ),
+      "earth"
+    ),
+    bag_mars = parsnip::set_engine(
+      parsnip::bag_mars(
+        mode = "classification", num_terms = tune(),
+        prod_degree = tune()
+      ),
+      "earth"
+    ),
     mlp = parsnip::mlp(
       mode = "classification", engine = "nnet",
       hidden_units = tune(), penalty = tune(),
@@ -69,11 +76,14 @@ create_model_specs <- function() {
       mode = "classification", tree_depth = tune(),
       min_n = tune(), engine = "rpart"
     ),
-    rand_forest = parsnip::rand_forest(
-      mode = "classification", mtry = tune(),
-      trees = 300, min_n = tune()
-    ) %>%
-      parsnip::set_engine("ranger", importance = "impurity"),
+    rand_forest = parsnip::set_engine(
+      parsnip::rand_forest(
+        mode = "classification", mtry = tune(),
+        trees = 300, min_n = tune()
+      ),
+      "ranger",
+      importance = "impurity"
+    ),
     svm_linear = parsnip::svm_linear(
       mode = "classification", engine = "kernlab",
       cost = tune(), margin = tune()
@@ -91,77 +101,39 @@ create_model_specs <- function() {
   )
 }
 
-# Helper function to create dynamic workflow sets
+# Create dynamic workflow sets
 create_dynamic_workflow_sets <- function(models, selector.recipes, data, downsample) {
   model_specs <- create_model_specs()
 
+  recipes_base <- recipes::recipe(class ~ ., data = data) %>%
+    recipes::step_nzv(recipes::all_predictors()) %>%
+    recipes::step_normalize(recipes::all_numeric_predictors())
+
   if (downsample == TRUE) {
     cli::cli_alert_info("Majority class will be downsampled ...")
-    # Recipe with Boruta Feature Selection
-    recipe_boruta <- recipes::recipe(class ~ ., data = data) %>%
-      themis::step_downsample(class) %>%
-      recipes::step_nzv(recipes::all_predictors()) %>%
-      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-      colino::step_select_boruta(recipes::all_predictors(), outcome = "class")
-
-    # Recipe with ROC-based Feature Selection
-    recipe_ROC <- recipes::recipe(class ~ ., data = data) %>%
-      themis::step_downsample(class) %>%
-      recipes::step_nzv(recipes::all_predictors()) %>%
-      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-      colino::step_select_roc(recipes::all_predictors(), outcome = "class", threshold = 0.95)
-
-    # Recipe with Information Gain Feature Selection
-    recipe_INFGAIN <- recipes::recipe(class ~ ., data = data) %>%
-      themis::step_downsample(class) %>%
-      recipes::step_nzv(recipes::all_predictors()) %>%
-      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-      colino::step_select_infgain(recipes::all_predictors(), outcome = "class", threshold = 0.95)
-
-    # Recipe with Max Relevancy Min Redundancy Feature Selection
-    recipe_MRMR <- recipes::recipe(class ~ ., data = data) %>%
-      themis::step_downsample(class) %>%
-      recipes::step_nzv(recipes::all_predictors()) %>%
-      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-      colino::step_select_mrmr(recipes::all_predictors(), outcome = "class", threshold = 0.95)
-
-    # Recipe correlation-based Feature Selection
-    recipe_corr <- recipes::recipe(class ~ ., data = data) %>%
-      themis::step_downsample(class) %>%
-      recipes::step_nzv(recipes::all_predictors()) %>%
-      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-      recipes::step_corr(recipes::all_predictors(), threshold = 0.8)
-  } else {
-    # Recipe with Boruta Feature Selection
-    recipe_boruta <- recipes::recipe(class ~ ., data = data) %>%
-      recipes::step_nzv(recipes::all_predictors()) %>%
-      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-      colino::step_select_boruta(recipes::all_predictors(), outcome = "class")
-
-    # Recipe with ROC-based Feature Selection
-    recipe_ROC <- recipes::recipe(class ~ ., data = data) %>%
-      recipes::step_nzv(recipes::all_predictors()) %>%
-      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-      colino::step_select_roc(recipes::all_predictors(), outcome = "class", threshold = 0.95)
-
-    # Recipe with Information Gain Feature Selection
-    recipe_INFGAIN <- recipes::recipe(class ~ ., data = data) %>%
-      recipes::step_nzv(recipes::all_predictors()) %>%
-      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-      colino::step_select_infgain(recipes::all_predictors(), outcome = "class", threshold = 0.95)
-
-    # Recipe with Max Relevancy Min Redundancy Feature Selection
-    recipe_MRMR <- recipes::recipe(class ~ ., data = data) %>%
-      recipes::step_nzv(recipes::all_predictors()) %>%
-      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-      colino::step_select_mrmr(recipes::all_predictors(), outcome = "class", threshold = 0.95)
-
-    # Recipe correlation-based Feature Selection
-    recipe_corr <- recipes::recipe(class ~ ., data = data) %>%
-      recipes::step_nzv(recipes::all_predictors()) %>%
-      recipes::step_normalize(recipes::all_numeric_predictors()) %>%
-      recipes::step_corr(recipes::all_predictors(), threshold = 0.8)
+    recipes_base <- recipes_base %>%
+      themis::step_downsample(class)
   }
+
+  # Recipe with Boruta Feature Selection
+  recipe_boruta <- recipes_base %>%
+    colino::step_select_boruta(recipes::all_predictors(), outcome = "class")
+
+  # Recipe with ROC-based Feature Selection
+  recipe_ROC <- recipes_base %>%
+    colino::step_select_roc(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+
+  # Recipe with Information Gain Feature Selection
+  recipe_INFGAIN <- recipes_base %>%
+    colino::step_select_infgain(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+
+  # Recipe with Max Relevancy Min Redundancy Feature Selection
+  recipe_MRMR <- recipes_base %>%
+    colino::step_select_mrmr(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+
+  # Recipe correlation-based Feature Selection
+  recipe_corr <- recipes_base %>%
+    recipes::step_corr(recipes::all_predictors(), threshold = 0.8)
 
   # Filter to keep only models selected by User
   filtered_specs <- model_specs[models]
@@ -176,21 +148,21 @@ create_dynamic_workflow_sets <- function(models, selector.recipes, data, downsam
   )
 
   # Create workflow_set() for every model and recipe combination
-  workflow_sets <- purrr::map2(
-    names(filtered_specs), selector.recipes,
-    ~ {
-      # Seleziona la ricetta in base al nome
-      recipe_obj <- recipes_map[[.y]]
-      model_name <- .x
-      recipe_name <- .y
+  workflow_sets <- lapply(
+    seq_along(filtered_specs),
+    function(i) {
+      model_name <- names(filtered_specs)[i]
+      recipe_name <- selector.recipes[i]
+      recipe_obj <- recipes_map[[recipe_name]]
 
-      # Crea il workflow_set con un wflow_id personalizzato
-      workflowsets::workflow_set(
+      # Create the workflow_set with a custom wflow_id
+      workflow_set <- workflowsets::workflow_set(
         preproc = list(recipe_obj),
         models = list(filtered_specs[[model_name]]),
         cross = TRUE
-      ) %>%
-        dplyr::mutate(wflow_id = paste0(model_name, "_", recipe_name))
+      )
+      workflow_set$wflow_id <- paste0(model_name, "_", recipe_name)
+      workflow_set
     }
   )
 
@@ -238,23 +210,28 @@ tune_and_fit <- function(
   cli::cli_h3("Best Parameters Selection")
   cli::cli_alert_info("Selecting best parameters for each model ...")
   # Select the best parameters for each model
-  best_params <- purrr::map(
+  best_params <- lapply(
     tune_results$wflow_id,
-    ~ tune::select_best(workflowsets::extract_workflow_set_result(tune_results, id = .x),
-      metric = metric
-    )
+    function(id) {
+      tune::select_best(
+        workflowsets::extract_workflow_set_result(tune_results, id = id),
+        metric = metric
+      )
+    }
   )
   cli::cli_alert_success("Succesfully selected parameters!")
 
   cli::cli_h3("Workflows Finalization")
   cli::cli_alert_info("Updating workflows with best parameters ...")
   # Using the best parameters to finalize the workflows
-  final_workflows <- purrr::map2(
-    tune_results$wflow_id,
-    best_params,
-    ~ tune::finalize_workflow(
-      workflowsets::extract_workflow(tune_workflows, id = .x), .y
-    )
+  final_workflows <- lapply(
+    seq_along(tune_results$wflow_id),
+    function(i) {
+      tune::finalize_workflow(
+        workflowsets::extract_workflow(tune_workflows, id = tune_results$wflow_id[i]),
+        best_params[[i]]
+      )
+    }
   )
   names(final_workflows) <- tune_results$wflow_id
   cli::cli_alert_success("Succesfully finalized the workflows!")
@@ -262,9 +239,11 @@ tune_and_fit <- function(
   cli::cli_h2("Model Fitting")
   cli::cli_alert_info("Fitting models on the entire dataset ...")
   # Fit the finalized workflows on the entire dataset
-  last_fit_results <- purrr::map(
+  last_fit_results <- lapply(
     final_workflows,
-    ~ parsnip::fit(.x, data = data)
+    function(workflow) {
+      parsnip::fit(workflow, data = data)
+    }
   )
   cli::cli_alert_success("Models fitted succesfully.")
 
@@ -280,18 +259,20 @@ tune_and_fit <- function(
     yardstick::precision, yardstick::recall
   )
   # Combine metrics and predictions in a list
-  results <- purrr::map(
+  results <- lapply(
     last_fit_results,
-    ~ {
+    function(model) {
       # Prediction step
-      predictions <- stats::predict(.x, new_data = data) %>%
-        dplyr::bind_cols(class = data$class, ID = row.names(data)) %>%
-        dplyr::mutate(model = dplyr::cur_group_id())
+      predictions <- data.frame(
+        stats::predict(model, new_data = data),
+        class = data$class,
+        ID = row.names(data),
+        model = deparse(substitute(model))
+      )
 
-      # Calcolo delle metriche usando multi_met()
-      metrics <- predictions %>%
-        multi_met(truth = class, estimate = .pred_class) %>%
-        dplyr::mutate(model = dplyr::cur_group_id())
+      # Calculate metrics using multi_met()
+      metrics <- multi_met(predictions, truth = class, estimate = .pred_class)
+      metrics$model <- deparse(substitute(model))
 
       # Return a list with predictions and metrics
       list(predictions = predictions, metrics = metrics)
@@ -299,8 +280,12 @@ tune_and_fit <- function(
   )
 
   # Extract predictions and metrics from results list
-  predictions_df <- as.data.frame(purrr::map_dfr(results, ~ .x$predictions, .id = "model"))
-  test_metrics <- as.data.frame(purrr::map_dfr(results, ~ .x$metrics, .id = "model"))
+  predictions_df <- do.call(rbind, lapply(results, function(x) x$predictions))
+  predictions_df$model <- rep(names(results), sapply(results, function(x) nrow(x$predictions)))
+
+  test_metrics <- do.call(rbind, lapply(results, function(x) x$metrics))
+  test_metrics$model <- rep(names(results), sapply(results, function(x) nrow(x$metrics)))
+
   cli::cli_alert_success("Metrics computed succesfully.")
   cli::cli_alert_success("Succesfully accomplished model fitting!")
 
@@ -354,7 +339,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
       vip_data <- baguette::var_imp(model_fit)
       colnames(vip_data) <- c("Variable", "Importance", "std.error", "used")
       # Keep only non-zero importance values
-      vip_data <- dplyr::filter(vip_data, Importance != 0)
+      vip_data <- vip_data[vip_data$Importance != 0, ]
     } else {
       # Use VIP or permutation-based VIP
       num_features <- ncol(test_x)
@@ -440,7 +425,6 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #' @import nnet
 #' @import NeuralNetTools
 #' @importFrom colino step_select_boruta step_select_roc step_select_infgain step_select_mrmr
-#' @importFrom purrr map2 map imap_dfr
 #'
 #' @examples
 #' \dontrun{
@@ -456,7 +440,7 @@ runClassifiers <- function(
     preProcess.obj = NULL, ..., models = c("bag_mlp", "rand_forest", "svm_poly"),
     selector.recipes = c("boruta", "roc", "boruta"),
     tuning.method = "tune_grid", n = 5, v = 3, metric = "accuracy",
-    nsim = 2, filter = TRUE, seed = 123, downsample = FALSE) {
+    nsim = 2, filter = TRUE, seed = 123, downsample = FALSE, plot = TRUE) {
   future::plan(future::multisession, workers = parallel::detectCores() - 1)
   cli::cli_h1("runClassifiers")
 
@@ -560,21 +544,24 @@ runClassifiers <- function(
   obj@model.features <- vip_results
   future::plan(future::sequential)
 
-  cli::cli_h2("Plots")
-  cli::cli_alert_info("Generating UpSet plot ...")
-  up <- upset.plot(obj)
-  print(up)
-  cli::cli_alert_success("Successfully generated UpSet plot!")
+  if (plot == TRUE) {
+    cli::cli_h2("Plots")
+    cli::cli_alert_info("Generating UpSet plot ...")
+    up <- upset.plot(obj)
+    print(up)
+    cli::cli_alert_success("Successfully generated UpSet plot!")
 
-  cli::cli_alert_info("Generating performances plot ...")
-  perf <- performances.plot(obj)
-  print(perf)
-  cli::cli_alert_success("Successfully generated performances plot!")
+    cli::cli_alert_info("Generating performances plot ...")
+    perf <- performances.plot(obj)
+    print(perf)
+    cli::cli_alert_success("Successfully generated performances plot!")
 
-  cli::cli_alert_info("Generating predictions heatmap ...")
-  wp <- wrong.preds.plot(t_and_f_output[[3]])
-  print(wp)
-  cli::cli_alert_success("Successfully generated predictions heatmap plot!")
+    cli::cli_alert_info("Generating predictions heatmap ...")
+    wp <- wrong.preds.plot(t_and_f_output[[3]])
+    print(wp)
+    cli::cli_alert_success("Successfully generated predictions heatmap plot!")
+  }
+
   obj@data$adjusted.data <- preProcess.obj@processed$adjusted.data
   obj@data$metadata <- preProcess.obj@metadata
 

@@ -9,7 +9,11 @@ batch.pca.plot <- function(data.before, data.after, batch, metadata) {
         return(pca.data)
     }
 
-    metadata <- match.samples(data.before, metadata)
+    # Match samples in both data tables
+    samples_in_common <- match.samples(data.before, metadata)
+    data.before <- data.before[samples_in_common, ]
+    data.after <- data.after[samples_in_common, ]
+    metadata <- metadata[samples_in_common, ]
 
     pca_before <- perform.pca(data.before)
     pca_before$correction <- "Before"
@@ -27,7 +31,7 @@ batch.pca.plot <- function(data.before, data.after, batch, metadata) {
     # Plot PCA
     colors <- colorRampPalette(RColorBrewer::brewer.pal(RColorBrewer::brewer.pal.info["Set2", 1], name = "Set2"))(length(unique(pca_data$batch)))
     p <- ggplot(pca_data, aes(x = PC1, y = PC2, color = batch)) +
-        geom_point(
+        ggplot2::geom_point(
             size = 4,
             alpha = 0.75
         ) +
@@ -59,7 +63,10 @@ batch.pca.plot <- function(data.before, data.after, batch, metadata) {
 
 batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, covar) {
     # Match data with metadata
-    metadata <- match.samples(data.before, metadata)
+    samples_in_common <- match.samples(data.before, metadata)
+    data.before <- data.before[samples_in_common, ]
+    data.after <- data.after[samples_in_common, ]
+    metadata <- metadata[samples_in_common, ]
 
     # Run PVCA
     run_PVCA <- function(data, metadata) {
@@ -102,7 +109,7 @@ batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, cov
 
     # Plot PVCA
     p <- ggplot(pvca_data, aes(x = V1, y = Effects, color = correction)) +
-        geom_line(aes(group = Effects), size = 2.5, color = "lightgray", alpha = 0.75) +
+        geom_line(aes(group = Effects), linewidth = 2.5, color = "lightgray", alpha = 0.75) +
         geom_point(size = 12, alpha = 0.95) +
         scale_color_brewer(palette = "Paired") +
         labs(x = "Weighted average proportion variance", color = "Batch correction") +

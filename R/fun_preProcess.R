@@ -36,11 +36,14 @@ match.samples <- function(df.count, df.clin) {
   if (all(is.na(m))) {
     cli::cli_abort("No common samples found between count and clinical data.
       Count data should have samples as rows and genes as columns.")
+  } else if (any(is.na(m))) {
+    cli::cli_alert_warning("One or more samples are not present in both tables. These samples will be removed.")
+    m <- m[!is.na(m)]
   }
 
   # Filter out samples that are not in the clinical data
   df.clin <- df.clin[m, ]
-  return(df.clin)
+  return(rownames(df.clin))
 }
 
 # Helper function to import data
@@ -62,21 +65,33 @@ data.import <- function(
     cli::cli_abort("Class column not found in clinical data.")
   }
 
+  # Check if the class column has more or less than 2 unique values
+  if (length(unique(df.clin[, class])) != 2) {
+    cli::cli_abort("Class column must have exactly 2 unique values.")
+  }
+
   # Get data information.
   data.info <- data.check(data.type, is.normalized)
 
-  # Use the new function in the data.import function
-  df.clin <- match.samples(df.count, df.clin)
+  # Get matching samples in both data tables
+  samples_in_common <- match.samples(df.count, df.clin)
+  df.count <- df.count[samples_in_common, ]
+  df.clin <- df.clin[samples_in_common, ]
 
-  # Transform class labels to binary factors.
-  if (!is.null(case.label)) {
-    df.clin[, class] <- as.factor(ifelse(df.clin[, class] == case.label, 1, 0))
-  } else if (all(df.clin[, class] %in% c(0, 1))) {
+  # Transform class labels to binary factors
+  cli::cli_alert_info("Transforming class labels to binary factors...")
+  if (all(df.clin[, class] %in% c(0, 1))) {
+    cli::cli_alert_info("Binary (0 and 1) class labels found. Assuming '1' as the case label.")
     df.clin[, class] <- as.factor(df.clin[, class])
-  } else if (is.null(case.label) || !case.label %in% unique(df.clin[, class])) {
-    # Identify the class levels
+  } else if (!is.null(case.label) && case.label %in% unique(df.clin[, class])) {
+    not.case <- unique(df.clin[, class])[unique(df.clin[, class]) != case.label]
+    cli::cli_alert_info(paste("Transforming '{not.case}' to 0 and '{case.label}' to 1."))
+    df.clin[, class] <- as.factor(ifelse(df.clin[, class] == case.label, 1, 0))
+  } else {
     levels <- unique(df.clin[, class])
+    not.case <- levels[levels != levels[1]]
     cli::cli_alert_info("Case label not found or not provided. Using {levels[1]} as the case label.")
+    cli::cli_alert_info(paste("Transforming '{not.case}' to 0 and '{levels[1]}' to 1."))
     df.clin[, class] <- as.factor(ifelse(df.clin[, class] == levels[1], 1, 0))
   }
 
@@ -158,7 +173,6 @@ correct.batches <- function(data, class, metadata,
     }
   } else {
     covar_mod_matrix <- covar.mod
-    # covar_mod_matrix <- NULL
   }
 
   # Format data for ComBat
@@ -174,7 +188,6 @@ correct.batches <- function(data, class, metadata,
 
   return(corrected_data)
 }
-
 
 #' @title Pre-process data
 #' @description This function performs data pre-processing steps including
@@ -239,6 +252,9 @@ preProcess <- function(
     data.obj@processed$normalized <- normalized_data
     cli::cli_alert_success("Data Normalized!")
   } else {
+    if (data.info[["type"]] == "array") {
+      cli::cli_alert_warning("Array data is assumed to be already normalized.")
+    }
     data.obj@processed$normalized <- data.obj@raw
     normalized_data <- data.obj@raw
   }
