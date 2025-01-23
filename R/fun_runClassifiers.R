@@ -346,13 +346,13 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 
       vip_data <- tryCatch(
         {
-          vip::vip(model_fit, num_features = num_features)$data %>%
-            # Keep only non-zero importance values
-            dplyr::filter(Importance != 0)
+          vip_result <- vip::vip(model_fit, num_features = num_features)$data
+          # Keep only non-zero importance values using base R
+          vip_result[vip_result$Importance != 0, ]
         },
         error = function(e) {
           cli::cli_alert_info("Direct VIP is not supported for model {name}. Using permutation-based method...")
-          vip::vip(
+          vip_result <- vip::vip(
             object = model_fit,
             method = "permute",
             parallel = TRUE,
@@ -363,9 +363,9 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
             target = test_y,
             event_level = "second",
             num_features = num_features
-          )$data %>%
-            # Keep only positive importance values
-            dplyr::filter(Importance > 0)
+          )$data
+          # Keep only positive importance values using base R
+          vip_result[vip_result$Importance > 0, ]
         }
       )
     }
@@ -377,8 +377,6 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 
   return(vip_list)
 }
-
-
 
 # TODO include example in documentation using tables instead of the preProcess.obj
 #' @title runClassifiers
@@ -402,6 +400,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #' @param seed An integer specifying the seed for reproducibility.
 #' @param filter A logical specifying whether to filter genes not annotated in the GO and KEGG databases.
 #' @param downsample A logical specifying whether to downsample the majority class.
+#' @param plot A logical specifying whether to generate plots. Default is TRUE.
 #' @param ... Arguments passed to the function. If preProcess.obj is not provided, the function looks
 #' for df.count, df.clin and class in ... as specified in the documentation of preProcess function.
 #'
@@ -424,6 +423,9 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #' @import rules
 #' @import nnet
 #' @import NeuralNetTools
+#' @import Boruta
+#' @import praznik
+#' @import FSelectorRcpp
 #' @importFrom colino step_select_boruta step_select_roc step_select_infgain step_select_mrmr
 #'
 #' @examples

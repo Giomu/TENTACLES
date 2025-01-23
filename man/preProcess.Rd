@@ -39,7 +39,7 @@ preProcess(
 
 \item{covar.mod}{A character string or a character vector specifying the column name(s) in df.clin that contains the covariate(s) for batch correction. Default is NULL.}
 
-\item{plot}{A logical value specifying if PCA and PVCA plots should be generated. Default is TRUE.}
+\item{plot}{A logical specifying whether to generate plots. Default is TRUE.}
 }
 \value{
 An object of class preProcess.obj containing the pre-processed data.

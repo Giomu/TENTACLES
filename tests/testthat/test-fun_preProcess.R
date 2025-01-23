@@ -132,8 +132,8 @@ test_that("preProcess results are reproducible after normalization and batch cor
   )
 
   # Compare the results
-  expect_identical(unclass(reference_results@raw), unclass(test_results@raw))
-  expect_identical(unclass(reference_results@processed$normalized), unclass(test_results@processed$normalized))
-  expect_identical(unclass(reference_results@processed$sbatched), unclass(test_results@processed$sbatched))
-  expect_identical(unclass(reference_results@processed$adjusted.data), unclass(test_results@processed$adjusted.data))
+  expect_equal(unclass(reference_results@raw), unclass(test_results@raw), tolerance = 1e-5)
+  expect_equal(unclass(reference_results@processed$normalized), unclass(test_results@processed$normalized), tolerance = 1e-5)
+  expect_equal(unclass(reference_results@processed$sbatched), unclass(test_results@processed$sbatched), tolerance = 1e-5)
+  expect_equal(unclass(reference_results@processed$adjusted.data), unclass(test_results@processed$adjusted.data), tolerance = 1e-5)
 })

@@ -51,6 +51,8 @@ Possible values are 'tune_grid (default)', tune_race_anova', tune_race_win_loss'
 \item{seed}{An integer specifying the seed for reproducibility.}
 
 \item{downsample}{A logical specifying whether to downsample the majority class.}
+
+\item{plot}{A logical specifying whether to generate plots. Default is TRUE.}
 }
 \value{
 An object of class runClassifiers.obj containing:

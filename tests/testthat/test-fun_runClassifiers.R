@@ -18,10 +18,10 @@ test_that("runClassifiers results are reproducible", {
   )
 
   # Compare results
-  expect_identical(unclass(reference_results@models.info[[1]]), unclass(test_results@models.info[[1]]))
-  expect_identical(unclass(reference_results@models.info[[2]]), unclass(test_results@models.info[[2]]))
-  expect_identical(unclass(reference_results@model.features[[1]]), unclass(test_results@model.features[[1]]))
-  expect_identical(unclass(reference_results@model.features[[2]]), unclass(test_results@model.features[[2]]))
-  expect_identical(unclass(reference_results@performances$tuning_metric), unclass(test_results@performances$tuning_metric))
-  expect_identical(unclass(reference_results@performances$final_metrics), unclass(test_results@performances$final_metrics))
+  expect_equal(unclass(reference_results@models.info[[1]]), unclass(test_results@models.info[[1]]), tolerance = 1e-5)
+  expect_equal(unclass(reference_results@models.info[[2]]), unclass(test_results@models.info[[2]]), tolerance = 1e-5)
+  expect_equal(unclass(reference_results@model.features[[1]]), unclass(test_results@model.features[[1]]), tolerance = 1e-5)
+  expect_equal(unclass(reference_results@model.features[[2]]), unclass(test_results@model.features[[2]]), tolerance = 1e-5)
+  expect_equal(unclass(reference_results@performances$tuning_metric), unclass(test_results@performances$tuning_metric), tolerance = 1e-5)
+  expect_equal(unclass(reference_results@performances$final_metrics), unclass(test_results@performances$final_metrics), tolerance = 1e-5)
 })

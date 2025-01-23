@@ -204,7 +204,7 @@ correct.batches <- function(data, class, metadata,
 #' @param is.normalized A logical value specifying if the data is already normalized. Default is FALSE.
 #' @param batch A character string specifying the column name in df.clin that contains the batch variable. Default is NULL.
 #' @param covar.mod A character string or a character vector specifying the column name(s) in df.clin that contains the covariate(s) for batch correction. Default is NULL.
-#' @param plot A logical value specifying if PCA and PVCA plots should be generated. Default is TRUE.
+#' @param plot A logical specifying whether to generate plots. Default is TRUE.
 #'
 #' @return An object of class preProcess.obj containing the pre-processed data.
 #'
