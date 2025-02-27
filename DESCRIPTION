@@ -11,29 +11,23 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
 Suggests: 
-    clusterProfiler,
-    AnnotationDbi,
-    circlize,
-    ggraph,
-    grid,
-    igraph,
     knitr,
-    org.Hs.eg.db,
     rmarkdown,
-    S4Vectors,
     stringr,
-    STRINGdb
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Imports: 
     baguette,
     Biobase,
     bonsai,
+    Boruta,
     cli,
     colino (>= 0.0.1),
     ComplexUpset,
     dplyr,
     edgeR,
     forcats,
+    FSelectorRcpp,
     future,
     ggplot2,
     ggrepel,
@@ -49,8 +43,8 @@ Imports:
     nnet,
     parsnip,
     plsmod,
+    praznik,
     pROC,
-    purrr,
     pvca,
     RColorBrewer,
     recipes,
@@ -76,3 +70,4 @@ Imports:
     yardstick
 Remotes: 
     stevenpawley/colino
+Config/testthat/edition: 3

@@ -41,9 +41,11 @@ Main steps of the preProcess function include:
 
 ```{r preProcess, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
 # pre-Process data
-pp <- preProcess(df.count = acc.count, df.clin = acc.clin, 
-                 batch = "patient.gender", 
-                 covar.mod = "patient.primary_pathology.laterality")
+pp <- preProcess(
+  df.count = acc.count, df.clin = acc.clin,
+  batch = "patient.gender",
+  covar.mod = "patient.primary_pathology.laterality"
+)
 ```
 
 The `preProcess` function returns an object of class `preProcess.obj` that contains the pre-processed data and intermediate results. Specifically, it includes:
@@ -80,9 +82,11 @@ Main steps of `runClassifiers` function include:
 # Increase max size for parallel processing
 options(future.globals.maxSize = 2 * 1024^3)
 # Run classifiers
-rc <- runClassifiers(pp, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
-                    selector.recipes = c("boruta", "roc", "boruta", "boruta"), 
-                    filter = TRUE, downsample = TRUE)
+rc <- runClassifiers(pp,
+  models = c("bag_mlp", "rand_forest"),
+  selector.recipes = c("boruta", "roc"),
+  filter = TRUE, downsample = TRUE
+)
 ```
 
 The function returns an object of class `runClassifiers.obj`, which includes the following components:
@@ -153,8 +157,10 @@ gene_list <- gc$consensusGenes
 labels <- as.factor(rc@data$metadata$class)
 
 # Validation
-vc <- valConsensus(df.count = count_table, gene.list = gene_list, 
-                   class = labels, N = 10, metric = "FScore")
+vc <- valConsensus(
+  df.count = count_table, gene.list = gene_list,
+  class = labels, N = 10, metric = "FScore"
+)
 ```
 
 The function returns a list containing two elements:
