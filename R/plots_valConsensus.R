@@ -1,4 +1,23 @@
-# Plot the performance metrics for the top gene combinations.
+#' Generate Heatmaps of Top Model Metrics
+#'
+#' This function creates a heatmap using `ggplot2` to visualize the performance
+#' of different clustering and dimensionality reduction models across various metrics.
+#'
+#' @param top_results A data frame containing the results of multiple models with
+#'        different gene combinations.
+#'
+#' @return A `ggplot2` object representing the heatmap of model performances.
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage of plotTopMetrics
+#' vc <- valConsensus(df.count = count_table, gene.list = gene_list,
+#'                    class = labels, N = 10, metric = "FScore")
+#' p <- plotTopMetrics(vc$topCombinations)
+#' print(p)
+#' }
+#'
+#' @export
 plotTopMetrics <- function(top_results) {
     # Mappatura delle combinazioni di geni con etichette brevi
     gene_mapping <- data.frame(

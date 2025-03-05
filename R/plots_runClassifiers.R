@@ -1,3 +1,30 @@
+#' Generate an Upset Plot for Feature Overlaps Across Models
+#'
+#' This function creates an Upset plot using the `ComplexUpset` package to visualize the overlap
+#' of selected features across multiple models stored in a `runClassifiers.obj` object.
+#'
+#' @param data.obj An object of class `runClassifiers.obj`, which contains the selected features for each model
+#'        under the slot `@model.features`.
+#'
+#' @details
+#' The function extracts features from `data.obj@model.features` and constructs a membership matrix
+#' indicating the presence or absence of each feature across models. The resulting Upset plot
+#' displays the intersection sizes and set sizes, highlighting the most frequently selected features.
+#'
+#' @return A `ggplot2` object representing the Upset plot.
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage of upset.plot
+#' pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
+#'                 batch = "batch", covar.mod = "covar")
+#' rc <- runClassifiers(pp, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
+#'                      selector.recipes = c("boruta", "roc", "boruta", "boruta"),
+#'                      filter = TRUE, downsample = TRUE)
+#' upset.plot(rc)
+#' }
+#'
+#' @export
 upset.plot <- function(data.obj) {
     # Extract features
     model_features_list <- data.obj@model.features
@@ -57,6 +84,37 @@ upset.plot <- function(data.obj) {
     return(p)
 }
 
+#' Generate a Bar Plot of Model Performances
+#'
+#' This function creates a bar plot using `ggplot2` to visualize the performance metrics
+#' of different models during tuning and final fitting stages.
+#'
+#' @param data.obj An object of class `runClassifiers.obj`, which contains the performance metrics
+#'        under the slot `@performances`.
+#'
+#' @details
+#' The function extracts model performance metrics from `data.obj@performances`, separating
+#' tuning (`tuning_metrics`) and final fitting (`final_metrics`) performances. Metrics such as
+#' accuracy, F1-score, precision, and recall are visualized using grouped bar plots.
+#'
+#' The bars are colored differently for tuning and fitting phases.
+#' The models are displayed on the y-axis, while their performance scores are shown on the x-axis.
+#' The plot uses facets to display different metrics.
+#'
+#' @return A `ggplot2` object representing the bar plot of model performances.
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage of performances.plot
+#' pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
+#'                 batch = "batch", covar.mod = "covar")
+#' rc <- runClassifiers(pp, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
+#'                      selector.recipes = c("boruta", "roc", "boruta", "boruta"),
+#'                      filter = TRUE, downsample = TRUE)
+#' performances.plot(rc)
+#' }
+#'
+#' @export
 performances.plot <- function(data.obj) {
     performances <- data.obj@performances
     tuning_performances <- performances$tuning_metrics
@@ -108,6 +166,41 @@ performances.plot <- function(data.obj) {
     return(p)
 }
 
+#' @title Plot of Model Prediction Errors
+#' @description This function creates a scatter plot to visualize correct and incorrect predictions
+#' across multiple models. Wrong predictions are highlighted, and only misclassified sample IDs
+#' are displayed on the x-axis.
+#'
+#' @param predictions_df A data frame containing prediction results. It must include the following columns:
+#' - `ID`: Unique identifier for each sample.
+#' - `.pred_class`: The predicted class label.
+#' - `class`: The true class label.
+#' - `model`: The name of the model that made the prediction.
+#'
+#' @return A ggplot2 object displaying a scatter plot where:
+#' - Each point represents a prediction made by a model.
+#' - Correct predictions are shown in gray, and incorrect predictions in red.
+#' - The x-axis only labels misclassified samples.
+#'
+#' @details
+#' The function first compares the predicted class (`.pred_class`) with the true class (`class`)
+#' to determine whether each prediction is correct or wrong. It then highlights incorrect predictions
+#' with a larger point size and assigns unique IDs on the x-axis only for misclassified samples.
+#'
+#' @import ggplot2
+#' @importFrom dplyr if_else
+#'
+#' @examples
+#' \dontrun{
+#' pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
+#'                  batch = "batch", covar.mod = "covar")
+#' rc <- runClassifiers(pp, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
+#'                      selector.recipes = c("boruta", "roc", "boruta", "boruta"),
+#'                      filter = TRUE, downsample = TRUE)
+#' wrong.preds.plot(rc@predictions)
+#' }
+#'
+#' @export
 wrong.preds.plot <- function(predictions_df) {
     predictions_df$result <- ifelse(predictions_df$.pred_class == predictions_df$class, "Correct", "Wrong")
     wrong_ids <- unique(predictions_df[predictions_df$result == "Wrong", "ID"])

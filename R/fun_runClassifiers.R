@@ -6,13 +6,15 @@
 #' @slot models.info A list containing the finalized workflows for each model.
 #' @slot model.features A list containing the variable importances for each model.
 #' @slot performances A list containing the tuning and final metrics for each model.
+#' @slot predictions A data frame containing the predictions for each model.
 #' @export
 methods::setClass("runClassifiers.obj",
   slots = list(
     data = "list",
     models.info = "list",
     model.features = "list",
-    performances = "list"
+    performances = "list",
+    predictions = "data.frame"
   )
 )
 
@@ -296,8 +298,8 @@ tune_and_fit <- function(
     models.info = final_workflows,
     model.features = list(),
     performances = list(
-      tuning_metrics = tuning_metrics, final_metrics = test_metrics
-    )
+      tuning_metrics = tuning_metrics, final_metrics = test_metrics),
+    predictions = predictions_df
   )
 
   return(list(runClassifiers.obj, last_fit_results, predictions_df))
@@ -384,15 +386,37 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #' on the data provided in the arguments ...
 #'
 #' @param preProcess.obj An object of class preProcess.
-#' @param models A character vector specifying the models to be used.
-#' Possible values are 'xgboost', 'bag_tree', 'lightGBM', 'pls', 'logistic',
-#' 'C5_rules', 'mars', 'bag_mars', 'mlp', 'bag_mlp', 'decision_tree',
-#' 'rand_forest', 'svm_linear', 'svm_poly', 'svm_rbf'.
-#' @param selector.recipes A character vector specifying the selector recipes to be used.
-#' Possible values are 'boruta', 'roc', 'infgain', 'mrmr', 'corr'. Models and selector.recipes will be paired
-#' in the order they are provided. If the number of recipes doesn't match the number of models, the first recipe will be used for all models.
-#' @param tuning.method A character string specifying the tuning method to be used.
-#' Possible values are 'tune_grid (default)', tune_race_anova', tune_race_win_loss', 'tune_bayes', 'tune_sim_anneal'.
+#' @param models A character vector specifying the classifiers to be used. Supported models include:
+#'   - `"xgboost"`: Extreme Gradient Boosting, an ensemble method using boosted trees.
+#'   - `"bag_tree"`: Bagged decision trees, a bootstrapped ensemble of tree models.
+#'   - `"lightGBM"`: A fast gradient boosting method optimized for large datasets.
+#'   - `"pls"`: Partial Least Squares regression.
+#'   - `"logistic"`: Logistic regression, a simple linear classifier.
+#'   - `"C5_rules"`: Rule-based classifier using C5.0 decision trees.
+#'   - `"mars"`: Multivariate Adaptive Regression Splines, a flexible non-linear regression method.
+#'   - `"bag_mars"`: Bagged version of MARS for increased stability.
+#'   - `"mlp"`: Multi-Layer Perceptron, a basic feedforward neural network.
+#'   - `"bag_mlp"`: Bagged version of MLP to reduce variance.
+#'   - `"decision_tree"`: A single decision tree.
+#'   - `"rand_forest"`: Random forest, an ensemble of decision trees with randomized splits.
+#'   - `"svm_linear"`: Support Vector Machine with a linear kernel.
+#'   - `"svm_poly"`: Support Vector Machine with a polynomial kernel.
+#'   - `"svm_rbf"`: Support Vector Machine with a radial basis function (RBF) kernel.
+#' @param selector.recipes A character vector specifying the feature selection methods to be applied before classification.
+#' Supported selection strategies include:
+#'   - `"boruta"`: Wrapper method that iteratively removes unimportant features using random forest.
+#'   - `"roc"`: Selects features based on Receiver Operating Characteristic (ROC) AUC scores.
+#'   - `"infgain"`: Uses Information Gain to select the most informative features.
+#'   - `"mrmr"`: Minimum Redundancy Maximum Relevance (mRMR), selects features that maximize relevance and minimize redundancy.
+#'   - `"corr"`: Filters features based on correlation thresholds to reduce multicollinearity.
+#' `models` and `selector.recipes` will be paired in the order they are provided. If the number of recipes
+#' does not match the number of models, the first recipe will be used for all models.
+#' @param tuning.method A character string specifying the hyperparameter tuning strategy. Options include:
+#'   - `"tune_grid"` (default): Grid search across a pre-defined set of hyperparameters.
+#'   - `"tune_race_anova"`: Adaptive search using ANOVA-based pruning to speed up tuning.
+#'   - `"tune_race_win_loss"`: Win-loss-based adaptive search that discards weak candidates early.
+#'   - `"tune_bayes"`: Bayesian optimization to intelligently explore hyperparameter space.
+#'   - `"tune_sim_anneal"`: Simulated annealing, a probabilistic approach to global optimization.
 #' @param n An integer specifying the number of iterations for the tuning method.
 #' @param v An integer specifying the number of folds for the cross-validation during the hyperparameters tuning.
 #' @param metric A character string specifying the metric to be used for tuning.
@@ -404,11 +428,12 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #' @param ... Arguments passed to the function. If preProcess.obj is not provided, the function looks
 #' for df.count, df.clin and class in ... as specified in the documentation of preProcess function.
 #'
-#' @return An object of class runClassifiers.obj containing:
-#' data: A list containing the adjusted data and metadata.
-#' models.info: A list containing the finalized workflows for each model.
-#' model.features: A list containing the variable importances for each model.
-#' performances: A list containing the tuning and final metrics for each model.
+#' @return An object of class `runClassifiers.obj` containing:
+#'   - `data`: A list containing the adjusted data and metadata.
+#'   - `models.info`: A list containing the finalized workflows for each model.
+#'   - `model.features`: A list containing the variable importance for each model.
+#'   - `performances`: A list containing the tuning and final metrics for each model.
+#'   - `predictions`: A data frame containing the predictions for each model.
 #'
 #' @details
 #' The function runs specified classifiers paired with provided selector.recipes on pre-processed data.

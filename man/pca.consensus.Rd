@@ -20,7 +20,11 @@ A combined plot containing two ggplot objects: one showing the PCA scores for PC
 This function performs Principal Component Analysis (PCA) on a given dataframe of gene expression data, specifically focusing on a subset of consensus genes. It generates two plots: one for PCA scores (PC1 vs. PC2) and another showing the loadings of the top 15 genes for the first two principal components.
 }
 \details{
-The function first filters the gene expression data to include only the consensus genes provided. It then performs PCA on this subset of genes, extracting eigenvalues, scores, and loadings. The PCA scores are plotted to show how samples group based on their principal component values, colored by their class labels. The top 15 genes with the highest loadings on PC1 and PC2 are also plotted as vectors in a second plot. The function utilizes the `ggplot2`, `cli`, and `reshape2` packages to generate the plots.
+The function first filters the gene expression data to include only the consensus genes provided.
+It then performs PCA on this subset of genes, extracting eigenvalues, scores, and loadings.
+The PCA scores are plotted to show how samples group based on their principal component values, colored by their class labels.
+The top 15 genes with the highest loadings on PC1 and PC2 are also plotted as vectors in a second plot.
+The function utilizes the `ggplot2`, `cli`, and `reshape2` packages to generate the plots.
 }
 \examples{
 \dontrun{

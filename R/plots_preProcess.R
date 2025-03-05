@@ -1,3 +1,31 @@
+#' Generate PCA plots before and after batch correction
+#'
+#' This function performs Principal Component Analysis (PCA) on datasets before and after batch correction
+#' and visualizes the results with a scatter plot, coloring points by batch.
+#'
+#' @param data.before A data frame containing the dataset before batch correction. The last column should not be included in the PCA.
+#' @param data.after A data frame containing the dataset after batch correction. The last column should not be included in the PCA.
+#' @param batch A character string specifying the column name in `metadata` that contains batch information.
+#' @param metadata A data frame containing metadata for the samples, including batch information.
+#'
+#' @details
+#' The function applies PCA separately to `data.before` and `data.after`, retaining the first two principal components.
+#' The resulting PCA scores are plotted, with different colors representing batches. The plot includes density
+#' distributions of PC1 and PC2 along the margins for additional visualization of batch effects.
+#'
+#' @return A `ggplot2` object showing PCA plots before and after batch correction, with points colored by batch.
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage of batch.pca.plot
+#' pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
+#'                 batch = "batch", covar.mod = "covar")
+#' batch.pca.plot(data.before =  pp@processed$normalized,
+#'                data.after = pp@processed$adjusted.data,
+#'                metadata = pp@metadata, batch = "batch")
+#' }
+#'
+#' @export
 batch.pca.plot <- function(data.before, data.after, batch, metadata) {
     # Helpler function to perform PCA
     perform.pca <- function(data) {
@@ -61,6 +89,37 @@ batch.pca.plot <- function(data.before, data.after, batch, metadata) {
     return(p)
 }
 
+#' Generate PVCA plots before and after batch correction
+#'
+#' This function performs Principal Variance Component Analysis (PVCA) to assess the proportion
+#' of variance attributed to batch effects and other factors before and after batch correction.
+#'
+#' @param data.before A data frame containing the dataset before batch correction.
+#' @param data.after A data frame containing the dataset after batch correction.
+#' @param metadata A data frame containing metadata for the samples, including batch and class information.
+#' @param class A character string specifying the column name in `metadata` that contains class information (e.g., biological condition).
+#' @param batch A character string specifying the column name in `metadata` that contains batch information.
+#' @param covar A character string (or NULL) specifying an additional covariate to include in the PVCA model.
+#'
+#' @details
+#' The function applies PVCA separately to `data.before` and `data.after` to evaluate
+#' the variance explained by batch effects, class, and additional covariates. The results
+#' are visualized as a line plot showing the proportion of variance for each effect before and after correction.
+#'
+#' @return A `ggplot2` object displaying the PVCA results, comparing variance components before and after batch correction.
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage of batch_pvca_plot
+#' pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
+#'                 batch = "batch", covar.mod = "covar")
+#' batch_pvca_plot(data.before =  pp@processed$normalized,
+#'                 data.after = pp@processed$adjusted.data,
+#'                 metadata = pp@metadata,
+#'                 batch = "batch", class = "class", covar = "covar")
+#' }
+#'
+#' @export
 batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, covar) {
     # Match data with metadata
     samples_in_common <- match.samples(data.before, metadata)

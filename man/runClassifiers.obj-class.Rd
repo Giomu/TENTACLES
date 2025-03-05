@@ -17,5 +17,7 @@ Create a class for the runClassifiers object.
 \item{\code{model.features}}{A list containing the variable importances for each model.}
 
 \item{\code{performances}}{A list containing the tuning and final metrics for each model.}
+
+\item{\code{predictions}}{A data frame containing the predictions for each model.}
 }}
 

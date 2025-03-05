@@ -26,17 +26,39 @@ runClassifiers(
 \item{...}{Arguments passed to the function. If preProcess.obj is not provided, the function looks
 for df.count, df.clin and class in ... as specified in the documentation of preProcess function.}
 
-\item{models}{A character vector specifying the models to be used.
-Possible values are 'xgboost', 'bag_tree', 'lightGBM', 'pls', 'logistic',
-'C5_rules', 'mars', 'bag_mars', 'mlp', 'bag_mlp', 'decision_tree',
-'rand_forest', 'svm_linear', 'svm_poly', 'svm_rbf'.}
+\item{models}{A character vector specifying the classifiers to be used. Supported models include:
+- `"xgboost"`: Extreme Gradient Boosting, an ensemble method using boosted trees.
+- `"bag_tree"`: Bagged decision trees, a bootstrapped ensemble of tree models.
+- `"lightGBM"`: A fast gradient boosting method optimized for large datasets.
+- `"pls"`: Partial Least Squares regression.
+- `"logistic"`: Logistic regression, a simple linear classifier.
+- `"C5_rules"`: Rule-based classifier using C5.0 decision trees.
+- `"mars"`: Multivariate Adaptive Regression Splines, a flexible non-linear regression method.
+- `"bag_mars"`: Bagged version of MARS for increased stability.
+- `"mlp"`: Multi-Layer Perceptron, a basic feedforward neural network.
+- `"bag_mlp"`: Bagged version of MLP to reduce variance.
+- `"decision_tree"`: A single decision tree.
+- `"rand_forest"`: Random forest, an ensemble of decision trees with randomized splits.
+- `"svm_linear"`: Support Vector Machine with a linear kernel.
+- `"svm_poly"`: Support Vector Machine with a polynomial kernel.
+- `"svm_rbf"`: Support Vector Machine with a radial basis function (RBF) kernel.}
 
-\item{selector.recipes}{A character vector specifying the selector recipes to be used.
-Possible values are 'boruta', 'roc', 'infgain', 'mrmr', 'corr'. Models and selector.recipes will be paired
-in the order they are provided. If the number of recipes doesn't match the number of models, the first recipe will be used for all models.}
+\item{selector.recipes}{A character vector specifying the feature selection methods to be applied before classification.
+Supported selection strategies include:
+  - `"boruta"`: Wrapper method that iteratively removes unimportant features using random forest.
+  - `"roc"`: Selects features based on Receiver Operating Characteristic (ROC) AUC scores.
+  - `"infgain"`: Uses Information Gain to select the most informative features.
+  - `"mrmr"`: Minimum Redundancy Maximum Relevance (mRMR), selects features that maximize relevance and minimize redundancy.
+  - `"corr"`: Filters features based on correlation thresholds to reduce multicollinearity.
+`models` and `selector.recipes` will be paired in the order they are provided. If the number of recipes
+does not match the number of models, the first recipe will be used for all models.}
 
-\item{tuning.method}{A character string specifying the tuning method to be used.
-Possible values are 'tune_grid (default)', tune_race_anova', tune_race_win_loss', 'tune_bayes', 'tune_sim_anneal'.}
+\item{tuning.method}{A character string specifying the hyperparameter tuning strategy. Options include:
+- `"tune_grid"` (default): Grid search across a pre-defined set of hyperparameters.
+- `"tune_race_anova"`: Adaptive search using ANOVA-based pruning to speed up tuning.
+- `"tune_race_win_loss"`: Win-loss-based adaptive search that discards weak candidates early.
+- `"tune_bayes"`: Bayesian optimization to intelligently explore hyperparameter space.
+- `"tune_sim_anneal"`: Simulated annealing, a probabilistic approach to global optimization.}
 
 \item{n}{An integer specifying the number of iterations for the tuning method.}
 
@@ -55,11 +77,12 @@ Possible values are 'tune_grid (default)', tune_race_anova', tune_race_win_loss'
 \item{plot}{A logical specifying whether to generate plots. Default is TRUE.}
 }
 \value{
-An object of class runClassifiers.obj containing:
-data: A list containing the adjusted data and metadata.
-models.info: A list containing the finalized workflows for each model.
-model.features: A list containing the variable importances for each model.
-performances: A list containing the tuning and final metrics for each model.
+An object of class `runClassifiers.obj` containing:
+  - `data`: A list containing the adjusted data and metadata.
+  - `models.info`: A list containing the finalized workflows for each model.
+  - `model.features`: A list containing the variable importance for each model.
+  - `performances`: A list containing the tuning and final metrics for each model.
+  - `predictions`: A data frame containing the predictions for each model.
 }
 \description{
 This function run classifiers specified on an object of class preProcess.obj or

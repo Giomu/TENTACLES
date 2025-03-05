@@ -8,7 +8,11 @@
 #'
 #' @return A combined plot containing two ggplot objects: one showing the PCA scores for PC1 and PC2, and another displaying the top 15 genes with the highest loadings for both principal components.
 #'
-#' @details The function first filters the gene expression data to include only the consensus genes provided. It then performs PCA on this subset of genes, extracting eigenvalues, scores, and loadings. The PCA scores are plotted to show how samples group based on their principal component values, colored by their class labels. The top 15 genes with the highest loadings on PC1 and PC2 are also plotted as vectors in a second plot. The function utilizes the `ggplot2`, `cli`, and `reshape2` packages to generate the plots.
+#' @details The function first filters the gene expression data to include only the consensus genes provided.
+#' It then performs PCA on this subset of genes, extracting eigenvalues, scores, and loadings.
+#' The PCA scores are plotted to show how samples group based on their principal component values, colored by their class labels.
+#' The top 15 genes with the highest loadings on PC1 and PC2 are also plotted as vectors in a second plot.
+#' The function utilizes the `ggplot2`, `cli`, and `reshape2` packages to generate the plots.
 #'
 #'
 #' @examples
@@ -23,6 +27,8 @@
 #' )
 #' print(pca_plot)
 #' }
+#'
+#' @import patchwork
 #'
 #' @export
 pca.consensus <- function(df, cons_genes, class) {
