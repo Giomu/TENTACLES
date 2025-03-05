@@ -126,6 +126,29 @@ The function returns a list containing three objects:
 
 -   **inputParams**: A list of the input parameters provided to the function.Validate Consensus genes
 
+## Test Consensus genes
+
+The `testConsensus` function evaluates a list of consensus genes (`gene.list`) using a series of analyses to assess their performance and relevance in classifying samples in the provided (pre-processed) `df.count`. It provides visual outputs and summaries for Principal Component Analysis (PCA), AUROC analysis, heatmap visualization, and validation using a Multi-Layer Perceptron (MLP) model.
+
+```{r, message=FALSE, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
+# Import NEW data
+count_table <- as.data.frame((rc@data$adjusted.data))
+gene_list <- gc$consensusGenes
+labels <- as.factor(rc@data$metadata$class)
+# test consensus on an external dataset
+testConsensus(df.count = count_table, gene.list = gene_list, class = labels)
+```
+
+The function performs the following steps, generating visualizations for each:
+
+1.  **Principal Component Analysis (PCA)**: Examines how well the consensus genes separate the classes in a PCA plot.
+
+2.  **AUROC Analysis**: Evaluates the ability of the consensus genes to classify samples, producing an AUROC plot.
+
+3.  **Heatmap Analysis**: Creates a heatmap showing hierarchical clustering of samples based on consensus gene expression.
+
+4.  **Validation with MLP Model**: Fits and visualizes a Multi-Layer Perceptron model to validate the classification performance of the consensus genes.
+
 ## Validate Consensus genes
 
 Main steps of `valConsensus` include:
@@ -168,26 +191,3 @@ The function returns a list containing two elements:
 -   **allResults**: A list of results for each gene combination, with details provided for each of the six implemented clustering algorithms. For each algorithm, it includes the predicted clustering labels and the associated performance metrics.
 
 -   **topCombinations**: A data frame summarizing the performance metrics of the top `N` gene combinations, ranked based on their mean `metric` values.
-
-## Test Consensus genes
-
-The `testConsensus` function evaluates a list of consensus genes (`gene.list`) using a series of analyses to assess their performance and relevance in classifying samples in the provided (pre-processed) `df.count`. It provides visual outputs and summaries for Principal Component Analysis (PCA), AUROC analysis, heatmap visualization, and validation using a Multi-Layer Perceptron (MLP) model.
-
-```{r, message=FALSE, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
-# Import NEW data
-count_table <- as.data.frame((rc@data$adjusted.data))
-gene_list <- gc$consensusGenes
-labels <- as.factor(rc@data$metadata$class)
-# test consensus on an external dataset
-testConsensus(df.count = count_table, gene.list = gene_list, class = labels)
-```
-
-The function performs the following steps, generating visualizations for each:
-
-1.  **Principal Component Analysis (PCA)**: Examines how well the consensus genes separate the classes in a PCA plot.
-
-2.  **AUROC Analysis**: Evaluates the ability of the consensus genes to classify samples, producing an AUROC plot.
-
-3.  **Heatmap Analysis**: Creates a heatmap showing hierarchical clustering of samples based on consensus gene expression.
-
-4.  **Validation with MLP Model**: Fits and visualizes a Multi-Layer Perceptron model to validate the classification performance of the consensus genes.
