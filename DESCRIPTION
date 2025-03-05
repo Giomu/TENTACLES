@@ -42,6 +42,7 @@ Imports:
     NeuralNetTools,
     nnet,
     parsnip,
+    patchwork,
     plsmod,
     praznik,
     pROC,

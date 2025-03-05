@@ -27,14 +27,7 @@ The TENTACLES workflow is built around five key steps:
 
     -   Variable importance rankings from a Multi-Layer Perceptron (MLP) model.
 
-4.  **Validation (`valConsensus`)**\
-    Validate the consensus biomarkers by testing all possible combinations on external datasets. This step uses six different unsupervised clustering methods to ensure generalizability. Visualizations include:
-
-    -   Model performance plots for the top N combinations of genes.
-
-    -   A heatmap showing AUROC values for these combinations.
-
-5.  **Testing (`testConsensus`)**\
+4.  **Testing (`testConsensus`)**\
     Further assess the consensus biomarkers on external datasets. This step evaluates their effectiveness using:
 
     -   PCA.
@@ -44,6 +37,13 @@ The TENTACLES workflow is built around five key steps:
     -   Heatmaps combined with hierarchical clustering.
 
     -   Tuning and fitting an MLP model for deeper analysis.
+
+5.  **Validation (`valConsensus`)**\
+    Validate the consensus biomarkers by testing all possible combinations on external datasets. This step uses six different unsupervised clustering methods to ensure generalizability. Visualizations include:
+
+    -   Model performance plots for the top N combinations of genes.
+
+    -   A heatmap showing AUROC values for these combinations.
 
 The following flowchart illustrates the functionality of TENTACLES:\
 
