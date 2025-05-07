@@ -27,7 +27,7 @@
 #' @importFrom dplyr left_join select rename
 #' @importFrom tidyr pivot_longer
 
-plotTopMetrics2 <- function(top_results, title = "Top Model Metrics") {
+plotTopMetrics <- function(top_results, title = "Top Model Metrics") {
   # Extract unique gene combinations
   unique_combos <- unique(top_results$Gene_Combination)
 
