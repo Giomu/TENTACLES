@@ -77,7 +77,7 @@ evaluate_one_side <- function(pred, truth, metric = metric) {
 #' The function implements the following clustering methods: K-Means, Gaussian Mixture Model (GMM),
 #' Hierarchical Clustering, k-Means on PCA dimensions, k-Means on t-SNE dimensions, and k-Means on UMAP dimensions.
 #'
-#' @importFrom mclust Mclust
+#' @importFrom mclust Mclust mclustBIC
 #' @importFrom yardstick accuracy precision recall f_meas
 #'
 #' @examples
