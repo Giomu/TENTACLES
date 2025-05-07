@@ -2,27 +2,30 @@
 % Please edit documentation in R/plots_valConsensus.R
 \name{plotTopMetrics}
 \alias{plotTopMetrics}
-\title{Generate Heatmaps of Top Model Metrics}
+\title{Plot Heatmap of Model Performance Metrics}
 \usage{
-plotTopMetrics(top_results)
+plotTopMetrics(top_results, title = "Top Model Metrics")
 }
 \arguments{
-\item{top_results}{A data frame containing the results of multiple models with
-different gene combinations.}
+\item{top_results}{A data frame returned by `selectTopCombinations()`, containing
+performance metrics of multiple models for each gene combination.}
+
+\item{title}{A character string specifying the plot title. Default is "Top Model Metrics".}
 }
 \value{
-A `ggplot2` object representing the heatmap of model performances.
+A `ggplot2` object representing the heatmap.
 }
 \description{
-This function creates a heatmap using `ggplot2` to visualize the performance
-of different clustering and dimensionality reduction models across various metrics.
+Creates a heatmap using `ggplot2` to visualize the performance of different
+clustering and dimensionality reduction models across multiple evaluation metrics,
+for each gene combination. Each combination is labeled with a concise and readable
+gene summary on the y-axis.
 }
 \examples{
 \dontrun{
-# Example usage of plotTopMetrics
 vc <- valConsensus(df.count = count_table, gene.list = gene_list,
-                   class = labels, N = 10, metric = "FScore")
-p <- plotTopMetrics(vc$topCombinations)
+                   labels = labels, N = 10, metric = "FScore")
+p <- plotTopMetrics2(vc$topCombinations)
 print(p)
 }
 

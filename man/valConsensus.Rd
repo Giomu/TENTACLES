@@ -4,14 +4,14 @@
 \alias{valConsensus}
 \title{valConsensus}
 \usage{
-valConsensus(df.count, gene.list, class, N = 10, metric = "FScore")
+valConsensus(df.count, gene.list, labels, N = 10, metric = "FScore")
 }
 \arguments{
 \item{df.count}{A numeric matrix containing the gene expression data. Rows represent samples and columns represent genes.}
 
 \item{gene.list}{A character vector specifying the consensus genes to be evaluated.}
 
-\item{class}{A factor vector specifying the true class labels for the samples.}
+\item{labels}{A factor vector specifying the true class labels for the samples.}
 
 \item{N}{An integer specifying the number of top gene combinations to select based on the metric.}
 
@@ -37,7 +37,7 @@ gene_list <- c("Gene1", "Gene2", "Gene3")
 labels <- factor(sample(1:2, 100, replace = TRUE))
 vc <- valConsensus(
   df.count = count_table, gene.list = gene_list,
-  class = labels, N = 10, metric = "FScore"
+  labels = labels, N = 10, metric = "FScore"
 )
 }
 
