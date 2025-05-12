@@ -196,7 +196,7 @@ getConsensus <- function(x, n.min = NULL,
     cli::cli_alert_info("Can't run testConsensus on a binary df. Skipping..")
   } else {
     # Test consensus genes in the adjusted dataset contained in runClassifiers.obj@data
-    testConsensus(
+    consensus$test_consensus <- testConsensus(
       df.count = x@data$adjusted.data,
       gene.list = consensus.list[[1]],
       class = as.factor(x@data$metadata$class)
