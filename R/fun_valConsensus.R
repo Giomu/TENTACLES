@@ -84,20 +84,20 @@ evaluate_one_side <- function(pred, truth, metric = metric) {
 #' \dontrun{
 #' count_table <- matrix(rnorm(1000), nrow = 100, ncol = 10)
 #' gene_list <- c("Gene1", "Gene2", "Gene3")
-#' labels <- factor(sample(1:2, 100, replace = TRUE))
+#' class <- factor(sample(1:2, 100, replace = TRUE))
 #' vc <- valConsensus(
 #'   df.count = count_table, gene.list = gene_list,
-#'   labels = labels, N = 10, metric = "FScore"
+#'   class = class, N = 10, metric = "FScore"
 #' )
 #' }
 #'
 #' @export
-valConsensus <- function(df.count, gene.list, labels, N = 10, metric = "FScore") {
+valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") {
 
   cli::cli_h1("Validating Consensus Genes")
 
   gene_list <- gene.list
-  labels <- labels
+  labels <- class
 
   # Maximum number of genes to consider
   max_genes <- length(unique(gene_list))
