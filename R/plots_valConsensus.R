@@ -21,11 +21,7 @@
 #' }
 #'
 #' @export
-#' @importFrom ggplot2 ggplot aes geom_tile geom_text scale_fill_gradient2
-#' @importFrom ggplot2 facet_wrap theme_minimal labs theme element_text
-#' @importFrom ggplot2 coord_flip scale_x_discrete scale_x_continuous scale_y_discrete
-#' @importFrom dplyr left_join select rename
-#' @importFrom tidyr pivot_longer
+#' @import ggplot2
 
 plotTopMetrics <- function(top_results, title = "Top Model Metrics") {
   # Extract unique gene combinations
@@ -52,17 +48,29 @@ plotTopMetrics <- function(top_results, title = "Top Model Metrics") {
     stringsAsFactors = FALSE
   )
 
-  # Join short labels into top_results
-  top_results <- dplyr::left_join(top_results, gene_mapping, by = "Gene_Combination")
+  # Join short labels into top_results using base R
+  top_results <- merge(top_results, gene_mapping, by = "Gene_Combination", all.x = TRUE)
 
   # Convert data to long format for ggplot
-  long_results <- top_results %>%
-    tidyr::pivot_longer(
-      tidyselect::matches("^(KMeans|GMM|HC|PCA|tSNE|UMAP)_"),
-      names_to = c("Model", "Metric"),
-      names_sep = "_",
-      values_to = "Value"
-    )
+  ## Creating an ID column to maintain row order
+  top_results$id <- seq_len(nrow(top_results))
+
+  ## Extracting columns to reshape
+  reshape_cols <- grep("^(KMeans|GMM|HC|PCA|tSNE|UMAP)_", names(top_results), value = TRUE)
+
+  ## Creating long format using base R
+  long_results <- data.frame(
+    Gene_Combination = rep(top_results$Gene_Combination, each = length(reshape_cols)),
+    Mean_Metric = rep(top_results$Mean_Metric, each = length(reshape_cols)),
+    Short_Label = rep(top_results$Short_Label, each = length(reshape_cols)),
+    Pretty_Label = rep(top_results$Pretty_Label, each = length(reshape_cols)),
+    Model = sub("_.*", "", reshape_cols),
+    Metric = sub(".*_", "", reshape_cols),
+    Value = as.vector(t(top_results[reshape_cols]))
+  )
+
+  ## Removing the temporary ID column
+  top_results$id <- NULL
 
   # Create heatmap
   heatmap <- ggplot(long_results, aes(x = Pretty_Label, y = Model, fill = Value)) +
