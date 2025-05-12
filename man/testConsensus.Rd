@@ -2,35 +2,119 @@
 % Please edit documentation in R/fun_testConsensus.R
 \name{testConsensus}
 \alias{testConsensus}
-\title{Test Consensus}
+\title{Consensus Gene Analysis with PCA, AUROC, Heatmap, and MLP
+Test Consensus Genes with PCA, AUROC, and Other Analyses}
 \usage{
-testConsensus(df.count, gene.list, class)
+testConsensus(
+  df.count,
+  gene.list,
+  class,
+  top_loadings = 15,
+  display_plots = TRUE
+)
 }
 \arguments{
-\item{df.count}{A data frame containing the counts data. Gene names on columns and samples on rows.}
+\item{df.count}{A numeric data frame where rows represent samples and columns represent genes (gene expression counts).
+Each value should represent the expression level of a gene for a given sample.}
 
-\item{gene.list}{A vector list containing consensus genes to test.}
+\item{gene.list}{A character vector containing the names of consensus genes to be tested.
+These gene names must match the column names in `df.count`.}
 
-\item{class}{A vector containing the true class labels.}
+\item{class}{A binary vector (0 and 1) indicating the class labels for each sample.
+The length of this vector must match the number of rows in `df.count`.}
+
+\item{top_loadings}{An integer specifying the number of top genes to select based on absolute loadings in PCA.
+Default is 15. Must be greater than zero and less than or equal to the total number of genes in `gene.list`.}
+
+\item{display_plots}{A logical value indicating whether to display the generated plots (PCA, AUROC, Heatmap, and MLP).
+Default is `TRUE`. Set to `FALSE` to suppress the automatic display of plots.
+Regardless of this setting, all plots will still be saved in the returned S4 object.}
 }
 \value{
-The PCA plot, AUROC plot, Heatmap plot, and Validation MLP Model plot
+An S4 object of class `testConsensus.obj`, containing:
+
+- `data`: A list with the input data (`df.count`, `gene.list`, `class`).
+- `pca`: A list with the PCA results:
+  - `scores`: The PCA-transformed coordinates of each sample.
+  - `loadings`: The PCA loadings of each gene.
+  - `top_loadings`: The selected top genes by absolute loading values.
+  - `explained_variance`: The proportion of variance explained by each principal component.
+  - `plot`: A ggplot object showing the PCA plot.
+
+- `auroc_fc`: A list with the AUROC and Fold Change results:
+  - `data`: A data frame with AUROC and Fold Change values for each gene.
+  - `plot`: A ggplot object showing the AUROC and FC plot.
+
+- `heatmap`: A list with the Heatmap and Hierarchical Clustering (HC) results:
+  - `data`: A matrix of normalized gene expression values.
+  - `plot`: A heatmap plot object for gene expression.
+
+- `mlp`: A list with the Multi-Layer Perceptron (MLP) model results:
+  - `importances`: A data frame with the feature importances.
+  - `test_performance`: A summary of model performance on the test data.
+  - `plot`: A ggplot object showing the MLP model performance.
 }
 \description{
-This function tests a list of consensus genes on a df.count performing PCA,
-AUROC, Heatmap, and tuning and fitting a MLP Model.
+This function performs a comprehensive analysis of consensus genes in a gene expression dataset, including:
+- Principal Component Analysis (PCA) for dimensionality reduction and feature selection.
+- AUROC and Fold Change analysis to assess the predictive power of each gene.
+- Heatmap generation with hierarchical clustering to visualize gene expression patterns.
+- Multi-Layer Perceptron (MLP) model for further classification performance evaluation.
+
+The results are returned as an S4 object of class `testConsensus.obj` for easy access and further analysis.
 }
 \details{
-This function tests the consensus genes by performing PCA, AUROC, Heatmap,
-and Validation MLP Model on the provided dataset. PCA is performed on the consensus genes,
-AUROC is computed for each gene, Heatmap is created using the consensus genes,
-and a MLP model is tuned and fitted on the filtered dataset.
+The `testConsensus` function performs a comprehensive analysis of consensus genes in a gene expression dataset.
+It follows the steps below:
+
+1. **Principal Component Analysis (PCA):**
+   - Computes the PCA on the specified consensus genes.
+   - Selects the top `top_loadings` genes based on absolute loading values.
+   - Returns the PCA scores, loadings, explained variance, and a PCA plot.
+
+2. **AUROC and Fold Change Analysis:**
+   - Calculates the Area Under the Receiver Operating Characteristic Curve (AUROC) for each gene.
+   - Computes the Fold Change between the two classes (0 and 1).
+   - Provides a data frame with AUROC and FC values and a corresponding plot.
+
+3. **Heatmap with Hierarchical Clustering (HC):**
+   - Generates a heatmap of gene expression values for the consensus genes.
+   - Applies hierarchical clustering to visualize gene expression patterns.
+
+4. **Multi-Layer Perceptron (MLP) Model:**
+   - Trains an MLP model using the input data.
+   - Calculates feature importance scores and evaluates model performance.
+   - Provides a model performance summary and a plot.
+
+The function organizes all results in an S4 object of class `testConsensus.obj` for easy access and further analysis.
 }
 \examples{
 \dontrun{
-testConsensus(
-    df.count, cons_genes, class
+# Example usage:
+set.seed(123)
+expression_data <- matrix(rnorm(2000), nrow = 100, ncol = 20)
+colnames(expression_data) <- paste0("Gene", 1:20)
+rownames(expression_data) <- paste0("Sample", 1:100)
+gene_list <- paste0("Gene", 1:10)
+class <- sample(c(0, 1), 100, replace = TRUE)
+
+# Running the analysis
+test_obj <- testConsensus(
+    df.count = expression_data,
+    gene.list = gene_list,
+    class = class,
+    top_loadings = 5,
+    display_plots = TRUE
 )
+
+# Displaying the full results
+print(test_obj)
+
+# Accessing specific results
+test_obj@pca$scores       # PCA Scores
+test_obj@auroc_fc$data    # AUROC and Fold Change Data
+test_obj@heatmap$plot     # Heatmap Plot
+test_obj@mlp$plot         # MLP Performance Plot
 }
 
 }
