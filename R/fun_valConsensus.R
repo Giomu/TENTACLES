@@ -5,28 +5,38 @@ selectTopCombinations <- function(results, N, metric) {
   methods <- names(results[[1]])  # assume all combinations have same methods
   metric_names <- paste0(rep(methods, each = length(allowed_metrics)), "_", allowed_metrics)
 
-  purrr::map_dfr(names(results), function(combo_name) {
+  results_list <- list()
+  for (combo_name in names(results)) {
     combo_results <- results[[combo_name]]
 
     # Extract metric values from all clustering methods for this gene combination
     metric_values <- unlist(lapply(combo_results, `[[`, metric))
-
-    # Compute the average of the selected metric across methods
     mean_metric <- mean(metric_values)
 
+    # Extract all metrics for all methods
     row_data <- unlist(lapply(methods, function(m) {
       unlist(combo_results[[m]][allowed_metrics])
     }))
 
-    tibble::tibble(
-      Gene_Combination = combo_name,
-      Mean_Metric = mean_metric,
-      !!!setNames(as.list(row_data), metric_names)
-    )
-  }) %>%
-    dplyr::arrange(dplyr::desc(Mean_Metric)) %>%
-    dplyr::slice_head(n = N)
+    # Store as row
+    results_list[[combo_name]] <- c(combo_name, mean_metric, row_data)
+  }
+
+  # Convert list to data frame
+  results_df <- as.data.frame(do.call(rbind, results_list), stringsAsFactors = FALSE)
+  colnames(results_df) <- c("Gene_Combination", "Mean_Metric", metric_names)
+
+  # Sort and select top N
+  results_df$Mean_Metric <- as.numeric(results_df$Mean_Metric)
+  results_df[, -1] <- lapply(results_df[, -1], as.numeric)
+
+  # Sort and select top N
+  results_df <- results_df[order(-results_df$Mean_Metric), , drop = FALSE]
+  results_df <- results_df[seq_len(min(N, nrow(results_df))), , drop = FALSE]
+
+  return(results_df)
 }
+
 
 # Helper function for assessment based on a choose metric
 evaluate_one_side <- function(pred, truth, metric = metric) {

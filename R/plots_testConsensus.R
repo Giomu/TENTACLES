@@ -178,7 +178,7 @@ mlp_model_plot <- function(importances, test_performance){
     geom_point(
       stat = "identity",
       size = 4.5,
-      color = if_else(importances$Importance < 0, "#995caf", "#e8ab1b")
+      color = ifelse(importances$Importance < 0, "#995caf", "#e8ab1b")
     ) +
     geom_text(aes(label = Variable, y = type, hjust = type_hjust), color = "black", size = 3.5) +
     # geom_text(aes(label = round(Importance, 2), vjust = -2.1), color = "#7e7e7e", size = 3.5) +

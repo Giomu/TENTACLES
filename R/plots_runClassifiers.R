@@ -188,7 +188,6 @@ performances.plot <- function(data.obj) {
 #' with a larger point size and assigns unique IDs on the x-axis only for misclassified samples.
 #'
 #' @import ggplot2
-#' @importFrom dplyr if_else
 #'
 #' @examples
 #' \dontrun{
@@ -207,23 +206,23 @@ wrong.preds.plot <- function(predictions_df) {
     x_breaks <- ifelse(predictions_df$ID %in% wrong_ids, predictions_df$ID, "")
 
     p <- ggplot(predictions_df, aes(x = ID, y = model, color = result)) +
-        geom_point(size = if_else(predictions_df$result == "Wrong", 4, 1.5), alpha = 0.9) +
-        scale_color_manual(values = c("Correct" = "gray", "Wrong" = "indianred")) +
-        labs(
-            x = "",
-            y = "",
-            color = "Prediction"
-        ) +
-        # put breaks on the x-axis only on the Wrong samples
-        scale_x_discrete(breaks = x_breaks) +
-        theme_minimal() +
-        theme(
-            axis.text.x = element_text(angle = 45, hjust = 1, vjust = 2, margin = margin(t = 50), size = 9, color = "#7c7b7b"),
-            axis.text.y = element_text(size = 13),
-            panel.grid.y = element_blank(),
-            panel.grid.major.x = element_line(color = "lightgray", size = 0.5, linetype = "solid"),
-            legend.position = "right"
-        )
+      geom_point(size = ifelse(predictions_df$result == "Wrong", 4, 1.5), alpha = 0.9) +
+      scale_color_manual(values = c("Correct" = "gray", "Wrong" = "indianred")) +
+      labs(
+          x = "",
+          y = "",
+          color = "Prediction"
+      ) +
+      # put breaks on the x-axis only on the Wrong samples
+      scale_x_discrete(breaks = x_breaks) +
+      theme_minimal() +
+      theme(
+          axis.text.x = element_text(angle = 45, hjust = 1, vjust = 2, margin = margin(t = 50), size = 9, color = "#7c7b7b"),
+          axis.text.y = element_text(size = 13),
+          panel.grid.y = element_blank(),
+          panel.grid.major.x = element_line(color = "lightgray", size = 0.5, linetype = "solid"),
+          legend.position = "right"
+      )
 
     return(p)
 }
