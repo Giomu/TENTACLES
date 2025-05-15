@@ -4,7 +4,7 @@
 #' Creates a heatmap using `ggplot2` to visualize the performance of different
 #' clustering and dimensionality reduction models across multiple evaluation metrics,
 #' for each gene combination. Each combination is labeled with a concise and readable
-#' gene summary on the y-axis.
+#' gene summary on the y-axis, prefixed by a combination number (C1, C2, ...).
 #'
 #' @param top_results A data frame returned by `selectTopCombinations()`, containing
 #' performance metrics of multiple models for each gene combination.
@@ -16,7 +16,7 @@
 #' \dontrun{
 #' vc <- valConsensus(df.count = count_table, gene.list = gene_list,
 #'                    labels = labels, N = 10, metric = "FScore")
-#' p <- plotTopMetrics2(vc$topCombinations)
+#' p <- plotTopMetrics(vc$topCombinations)
 #' print(p)
 #' }
 #'
@@ -24,67 +24,69 @@
 #' @import ggplot2
 
 plotTopMetrics <- function(top_results, title = "Top Model Metrics") {
+
+  if(!"Gene_Combination" %in% names(top_results)) {
+    stop("Input data frame must contain 'Gene_Combination' column.")
+  }
+
   # Extract unique gene combinations
   unique_combos <- unique(top_results$Gene_Combination)
 
-  # Generate pretty gene labels (first 3 genes + ... + count)
+  # Generate pretty gene labels with combination number (C1, C2, ...)
   pretty_names <- vapply(
-    strsplit(unique_combos, "_"),
-    function(x) {
-      label <- if (length(x) <= 3) paste(x, collapse = ", ") else paste(c(x[1:3], "..."), collapse = ", ")
-      paste0(label, " (", length(x), " genes)")
+    seq_along(unique_combos),
+    function(i) {
+      genes <- strsplit(unique_combos[i], "_")[[1]]
+      if (length(genes) > 3) {
+        label <- paste(c(genes[1:3], "..."), collapse = ", ")
+      } else {
+        label <- paste(genes, collapse = ", ")
+      }
+
+      full_label <- paste0("C", i, ": ", label, " (", length(genes), " genes)")
+
+      # Adjust if the label exceeds 30 characters
+      if (nchar(full_label) > 30 && length(genes) > 2) {
+        label <- paste(c(genes[1:2], "..."), collapse = ", ")
+        full_label <- paste0("C", i, ": ", label, " (", length(genes), " genes)")
+      }
+
+      return(full_label)
     },
     character(1)
   )
 
-  # Create short labels with leading zeros using R base
-  padded_labels <- paste0("comb", sprintf("%0*d", nchar(length(unique_combos)), seq_along(unique_combos)))
-
-  # Map: short label <-> pretty gene name
+  # Create mapping table
   gene_mapping <- data.frame(
     Gene_Combination = unique_combos,
-    Short_Label = padded_labels,
     Pretty_Label = pretty_names,
     stringsAsFactors = FALSE
   )
 
-  # Join short labels into top_results using base R
+  # Join labels into top_results using base R
   top_results <- merge(top_results, gene_mapping, by = "Gene_Combination", all.x = TRUE)
 
-  # Convert data to long format for ggplot
-  ## Creating an ID column to maintain row order
-  top_results$id <- seq_len(nrow(top_results))
-
-  ## Extracting columns to reshape
+  # Convert data to long format
   reshape_cols <- grep("^(KMeans|GMM|HC|PCA|tSNE|UMAP)_", names(top_results), value = TRUE)
-
-  ## Creating long format using base R
   long_results <- data.frame(
     Gene_Combination = rep(top_results$Gene_Combination, each = length(reshape_cols)),
-    Mean_Metric = rep(top_results$Mean_Metric, each = length(reshape_cols)),
-    Short_Label = rep(top_results$Short_Label, each = length(reshape_cols)),
     Pretty_Label = rep(top_results$Pretty_Label, each = length(reshape_cols)),
     Model = sub("_.*", "", reshape_cols),
     Metric = sub(".*_", "", reshape_cols),
     Value = as.vector(t(top_results[reshape_cols]))
   )
 
-  ## Removing the temporary ID column
-  top_results$id <- NULL
+  # Define order of gene combinations for plotting
+  level_order <- rev(unique(gene_mapping$Pretty_Label))
 
-  # Create heatmap
-  heatmap <- ggplot(long_results, aes(x = Pretty_Label, y = Model, fill = Value)) +
+  # Create heatmap with ordered axis
+  heatmap <- ggplot(long_results, aes(x = factor(Pretty_Label, levels = level_order), y = Model, fill = Value)) +
     geom_tile(color = "white", size = 0.2) +
     scale_fill_gradient2(low = "white", high = "steelblue") +
     facet_wrap(~Metric) +
     geom_text(aes(label = round(Value, 2)), color = "black", size = 3) +
     theme_minimal() +
-    labs(
-      x = NULL,
-      y = NULL,
-      title = title,
-      fill = "Score"
-    ) +
+    labs(x = NULL, y = NULL, title = title, fill = "Score") +
     theme(
       axis.text.x = element_text(angle = 45, hjust = 1, size = 10, color = "#7c7b7b"),
       axis.text.y = element_text(size = 7, color = "black"),
@@ -94,5 +96,4 @@ plotTopMetrics <- function(top_results, title = "Top Model Metrics") {
     coord_flip()
 
   return(heatmap)
-
 }

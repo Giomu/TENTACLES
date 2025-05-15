@@ -19,13 +19,13 @@ A `ggplot2` object representing the heatmap.
 Creates a heatmap using `ggplot2` to visualize the performance of different
 clustering and dimensionality reduction models across multiple evaluation metrics,
 for each gene combination. Each combination is labeled with a concise and readable
-gene summary on the y-axis.
+gene summary on the y-axis, prefixed by a combination number (C1, C2, ...).
 }
 \examples{
 \dontrun{
 vc <- valConsensus(df.count = count_table, gene.list = gene_list,
                    labels = labels, N = 10, metric = "FScore")
-p <- plotTopMetrics2(vc$topCombinations)
+p <- plotTopMetrics(vc$topCombinations)
 print(p)
 }
 
