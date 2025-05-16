@@ -1,3 +1,44 @@
+#' @title Select Top Gene Combinations Based on Clustering Metrics
+#'
+#' @description
+#' Ranks and selects the top gene combinations based on the average value of a specified metric
+#' across multiple clustering methods. Returns a data frame with the top N combinations and all evaluated metrics.
+#'
+#' @param results A named list containing the clustering results for each gene combination. Each element should be
+#' a list of clustering results for the given gene combination, as produced by \code{valConsensus}.
+#' @param N An integer specifying the number of top combinations to return.
+#' @param metric A character string indicating the evaluation metric to use for ranking.
+#' Possible values are \code{"Accuracy"}, \code{"Precision"}, \code{"Recall"}, and \code{"FScore"}.
+#'
+#' @return A data frame containing the top N gene combinations, the average metric across all clustering methods
+#' (\code{Mean_Metric}), and the individual metrics for each method.
+#'
+#' @details
+#' This function aggregates the results from multiple clustering methods for all tested gene combinations.
+#' For each combination, it computes the mean of the specified metric across all methods and selects the top N combinations.
+#' The resulting data frame includes the gene combination identifier, the average metric, and the individual
+#' metrics for each method and metric type.
+#'
+#' @seealso \code{\link{valConsensus}}
+#'
+#' @examples
+#' \dontrun{
+#' # Example structure of 'results' (as produced by valConsensus)
+#' results <- list(
+#'   GeneA_GeneB = list(
+#'     KMeans = list(Accuracy = 0.85, Precision = 0.82, Recall = 0.80, FScore = 0.81),
+#'     GMM    = list(Accuracy = 0.86, Precision = 0.83, Recall = 0.82, FScore = 0.82)
+#'   ),
+#'   GeneC_GeneD = list(
+#'     KMeans = list(Accuracy = 0.78, Precision = 0.75, Recall = 0.74, FScore = 0.74),
+#'     GMM    = list(Accuracy = 0.80, Precision = 0.76, Recall = 0.76, FScore = 0.75)
+#'   )
+#' )
+#' top_df <- selectTopCombinations(results, N = 1, metric = "Accuracy")
+#' }
+#'
+#' @export
+
 selectTopCombinations <- function(results, N, metric) {
   allowed_metrics <- c("Accuracy", "Precision", "Recall", "FScore")
   if (!metric %in% allowed_metrics) stop("Invalid metric selected.")
@@ -5,32 +46,80 @@ selectTopCombinations <- function(results, N, metric) {
   methods <- names(results[[1]])  # assume all combinations have same methods
   metric_names <- paste0(rep(methods, each = length(allowed_metrics)), "_", allowed_metrics)
 
-  purrr::map_dfr(names(results), function(combo_name) {
+  results_list <- list()
+  for (combo_name in names(results)) {
     combo_results <- results[[combo_name]]
 
     # Extract metric values from all clustering methods for this gene combination
     metric_values <- unlist(lapply(combo_results, `[[`, metric))
-
-    # Compute the average of the selected metric across methods
     mean_metric <- mean(metric_values)
 
+    # Extract all metrics for all methods
     row_data <- unlist(lapply(methods, function(m) {
       unlist(combo_results[[m]][allowed_metrics])
     }))
 
-    tibble::tibble(
-      Gene_Combination = combo_name,
-      Mean_Metric = mean_metric,
-      !!!setNames(as.list(row_data), metric_names)
-    )
-  }) %>%
-    dplyr::arrange(dplyr::desc(Mean_Metric)) %>%
-    dplyr::slice_head(n = N)
+    # Store as row
+    results_list[[combo_name]] <- c(combo_name, mean_metric, row_data)
+  }
+
+  # Convert list to data frame
+  results_df <- as.data.frame(do.call(rbind, results_list), stringsAsFactors = FALSE)
+  colnames(results_df) <- c("Gene_Combination", "Mean_Metric", metric_names)
+
+  # Sort and select top N
+  results_df$Mean_Metric <- as.numeric(results_df$Mean_Metric)
+  results_df[, -1] <- lapply(results_df[, -1], as.numeric)
+
+  # Sort and select top N
+  results_df <- results_df[order(-results_df$Mean_Metric), , drop = FALSE]
+  results_df <- results_df[seq_len(min(N, nrow(results_df))), , drop = FALSE]
+
+  return(results_df)
 }
+
+#' @title Evaluate Clustering Results with Metric Orientation
+#'
+#' @description
+#' Evaluates clustering results against true class labels using standard metrics.
+#' Automatically checks both cluster label orientations (i.e., 0/1 or 1/0 assignment) and
+#' selects the orientation with the best metric value.
+#'
+#' @param pred A vector of predicted cluster assignments (typically 0 and 1).
+#' @param truth A vector of true class labels (must be coercible to factors with two levels).
+#' @param metric A character string specifying the primary evaluation metric to use for orientation selection.
+#' Must be one of \code{"Accuracy"}, \code{"Precision"}, \code{"Recall"}, or \code{"FScore"}.
+#'
+#' @return A named list containing:
+#' \describe{
+#'   \item{clusters}{A vector of predicted cluster assignments (after optimal orientation, as integers).}
+#'   \item{Accuracy}{The accuracy of the clustering result.}
+#'   \item{Precision}{The precision of the clustering result.}
+#'   \item{Recall}{The recall of the clustering result.}
+#'   \item{FScore}{The F1 score of the clustering result.}
+#' }
+#'
+#' @details
+#' Since unsupervised clustering labels (e.g., 0/1) may be assigned arbitrarily compared to
+#' ground truth, this function evaluates both the predicted and inverted cluster assignments.
+#' It then returns the set of metrics corresponding to the orientation that yields the
+#' highest value for the selected metric.
+#'
+#' @seealso \code{\link[yardstick]{accuracy}}, \code{\link[yardstick]{precision}},
+#'   \code{\link[yardstick]{recall}}, \code{\link[yardstick]{f_meas}}
+#'
+#' @examples
+#' \dontrun{
+#' true_labels <- factor(c(1, 0, 1, 0, 1))
+#' predicted_clusters <- c(1, 0, 1, 0, 0)
+#' evaluate_one_side(predicted_clusters, true_labels, metric = "Accuracy")
+#' }
+#'
+#' @export
 
 # Helper function for assessment based on a choose metric
 evaluate_one_side <- function(pred, truth, metric = metric) {
-  tib <- tibble::tibble(
+  df <- data.frame(
     labels = factor(truth),
     cluster = factor(pred),
     cluster_inv = factor(1 - as.numeric(as.character(pred)))
@@ -44,18 +133,18 @@ evaluate_one_side <- function(pred, truth, metric = metric) {
                        stop("Unsupported metric")
   )
 
-  val_cluster     <- metric_fun(tib, truth = labels, estimate = cluster, event_level = "second")[[".estimate"]]
-  val_cluster_inv <- metric_fun(tib, truth = labels, estimate = cluster_inv, event_level = "second")[[".estimate"]]
+  val_cluster     <- metric_fun(df, truth = labels, estimate = cluster, event_level = "second")[[".estimate"]]
+  val_cluster_inv <- metric_fun(df, truth = labels, estimate = cluster_inv, event_level = "second")[[".estimate"]]
 
   best_col <- if (val_cluster >= val_cluster_inv) "cluster" else "cluster_inv"
-  tib_pred <- tibble::tibble(labels = tib$labels, pred = tib[[best_col]])
+  df_pred <- data.frame(labels = df$labels, pred = df[[best_col]])
 
   return(list(
-    clusters  = as.integer(as.character(tib_pred$pred)),
-    Accuracy  = yardstick::accuracy(tib_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
-    Precision = yardstick::precision(tib_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
-    Recall    = yardstick::recall(tib_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
-    FScore    = yardstick::f_meas(tib_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]]
+    clusters  = as.integer(as.character(df_pred$pred)),
+    Accuracy  = yardstick::accuracy(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
+    Precision = yardstick::precision(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
+    Recall    = yardstick::recall(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
+    FScore    = yardstick::f_meas(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]]
   ))
 }
 
