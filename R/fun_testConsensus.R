@@ -58,9 +58,6 @@ methods::setClass(
 #' consensus_obj
 #' }
 #'
-#' @export
-
-
 # Custom 'show' method for the 'testConsensus.obj' class with enhanced display
 methods::setMethod(
   "show", "testConsensus.obj",
@@ -116,32 +113,30 @@ methods::setMethod(
 
 ### ------------------------ Helper Functions ------------------------ ###
 
-#' Principal Component Analysis (PCA) Calculation
-#'
-#' @description
-#' Computes the PCA on a given data frame containing gene expression counts, selecting the top N genes based on absolute loadings.
-#'
-#' @param df A data frame where rows represent samples and columns represent genes.
-#' @param cons_genes A character vector containing the names of the consensus genes to be used in the PCA.
-#' @param top_n An integer specifying the number of top genes to select based on the absolute loading values. Default is 15.
-#'
-#' @return A list with the following components:
-#'   - `scores`: A data frame with PCA scores for each sample.
-#'   - `loadings`: A data frame with PCA loadings for each gene.
-#'   - `explained_variance`: A data frame containing the variance explained by each principal component.
-#'   - `top_loadings`: A data frame with the top N genes with the highest absolute loadings.
-#'
-#' @details
-#' This function performs PCA using the prcomp function from the stats package. The input data frame is filtered to keep only the specified consensus genes.
-#' The output includes PCA scores, loadings, explained variance, and the top N genes with the highest loadings.
-#'
-#' @examples
-#' \dontrun{
-#' pca_results <- pca_calculation(df = expression_data, cons_genes = gene_list, top_n = 20)
-#' }
-#'
-#' @export
-
+# Principal Component Analysis (PCA) Calculation
+#
+# @description
+# Computes the PCA on a given data frame containing gene expression counts, selecting the top N genes based on absolute loadings.
+#
+# @param df A data frame where rows represent samples and columns represent genes.
+# @param cons_genes A character vector containing the names of the consensus genes to be used in the PCA.
+# @param top_n An integer specifying the number of top genes to select based on the absolute loading values. Default is 15.
+#
+# @return A list with the following components:
+#   - `scores`: A data frame with PCA scores for each sample.
+#   - `loadings`: A data frame with PCA loadings for each gene.
+#   - `explained_variance`: A data frame containing the variance explained by each principal component.
+#   - `top_loadings`: A data frame with the top N genes with the highest absolute loadings.
+#
+# @details
+# This function performs PCA using the prcomp function from the stats package. The input data frame is filtered to keep only the specified consensus genes.
+# The output includes PCA scores, loadings, explained variance, and the top N genes with the highest loadings.
+#
+# @examples
+# \dontrun{
+# pca_results <- pca_calculation(df = expression_data, cons_genes = gene_list, top_n = 20)
+# }
+#
 # --- PCA Calculation Function ---
 pca_calculation <- function(df, cons_genes, top_loadings = 15) {
 
@@ -194,33 +189,30 @@ pca_calculation <- function(df, cons_genes, top_loadings = 15) {
   return(results)
 }
 
-#' AUROC and Fold Change Calculation
-#'
-#' @description
-#' Computes the Area Under the Receiver Operating Characteristic (AUROC) curve and Fold Change for each gene in a given set of consensus genes.
-#'
-#' @param df A data frame where rows represent samples and columns represent genes.
-#' @param cons_genes A character vector containing the names of the consensus genes to be tested.
-#' @param class A vector of class labels for each sample (binary, typically 0 and 1).
-#'
-#' @return A data frame with the following columns:
-#'   - `gene`: The name of each consensus gene.
-#'   - `auroc`: The AUROC value for each gene.
-#'   - `auroc_upper`: The upper limit of the AUROC confidence interval.
-#'   - `auroc_lower`: The lower limit of the AUROC confidence interval.
-#'   - `FC`: The Fold Change for each gene, calculated as the difference in mean expression between the two classes.
-#'
-#' @details
-#' This function calculates the AUROC for each gene using the pROC package. The Fold Change is computed as the difference in mean expression between the two classes.
-#'
-#' @examples
-#' \dontrun{
-#' auroc_results <- auroc_fc_calculation(df = expression_data, cons_genes = gene_list, class = labels)
-#' }
-#'
-#' @export
-
-
+# AUROC and Fold Change Calculation
+#
+# @description
+# Computes the Area Under the Receiver Operating Characteristic (AUROC) curve and Fold Change for each gene in a given set of consensus genes.
+#
+# @param df A data frame where rows represent samples and columns represent genes.
+# @param cons_genes A character vector containing the names of the consensus genes to be tested.
+# @param class A vector of class labels for each sample (binary, typically 0 and 1).
+#
+# @return A data frame with the following columns:
+#   - `gene`: The name of each consensus gene.
+#   - `auroc`: The AUROC value for each gene.
+#   - `auroc_upper`: The upper limit of the AUROC confidence interval.
+#   - `auroc_lower`: The lower limit of the AUROC confidence interval.
+#   - `FC`: The Fold Change for each gene, calculated as the difference in mean expression between the two classes.
+#
+# @details
+# This function calculates the AUROC for each gene using the pROC package. The Fold Change is computed as the difference in mean expression between the two classes.
+#
+# @examples
+# \dontrun{
+# auroc_results <- auroc_fc_calculation(df = expression_data, cons_genes = gene_list, class = labels)
+# }
+#
 # --- AUROC and Fold Change Calculation Function ---
 auroc_fc_calculation <- function(df, cons_genes, class) {
   # Filter dataframe to keep only consensus genes
@@ -260,30 +252,27 @@ auroc_fc_calculation <- function(df, cons_genes, class) {
 
 }
 
-#' Heatmap Calculation with Hierarchical Clustering
-#'
-#' @description
-#' Computes a hierarchical clustering heatmap matrix for a set of consensus genes in a gene expression data frame.
-#'
-#' @param df A data frame where rows represent samples and columns represent genes.
-#' @param cons_genes A character vector containing the names of genes to be used in the heatmap.
-#' @param class A factor or numeric vector representing the class labels for the samples.
-#' @param hclust.method A character string specifying the hierarchical clustering method (default is "complete").
-#' @param distance.method A character string specifying the distance method for clustering (default is "euclidean").
-#'
-#' @return A list containing the following elements:
-#'   - `matrix`: The transposed data frame (genes x samples) filtered by consensus genes.
-#'   - `hc_rows`: The hierarchical cluster object for rows (genes).
-#'   - `hc_cols`: The hierarchical cluster object for columns (samples).
-#'   - `side_colors`: A data frame of class colors for the samples.
-#'
-#' @examples
-#' \dontrun{
-#' heatmap_data <- heatmap_calculation(df = expression_data, cons_genes = gene_list, class = labels)
-#' }
-#'
-#' @export
-
+# Heatmap Calculation with Hierarchical Clustering
+#
+# @description
+# Computes a hierarchical clustering heatmap matrix for a set of consensus genes in a gene expression data frame.
+#
+# @param df A data frame where rows represent samples and columns represent genes.
+# @param cons_genes A character vector containing the names of genes to be used in the heatmap.
+# @param class A factor or numeric vector representing the class labels for the samples.
+# @param hclust.method A character string specifying the hierarchical clustering method (default is "complete").
+# @param distance.method A character string specifying the distance method for clustering (default is "euclidean").
+#
+# @return A list containing the following elements:
+#   - `matrix`: The transposed data frame (genes x samples) filtered by consensus genes.
+#   - `hc_rows`: The hierarchical cluster object for rows (genes).
+#   - `hc_cols`: The hierarchical cluster object for columns (samples).
+#   - `side_colors`: A data frame of class colors for the samples.
+#
+# @examples
+# \dontrun{
+# heatmap_data <- heatmap_calculation(df = expression_data, cons_genes = gene_list, class = labels)
+# }
 heatmap_calculation <- function(df, cons_genes, class,
                                 hclust.method = "complete", distance.method = "euclidean") {
   # Filter the dataframe for the consensus genes
@@ -300,7 +289,7 @@ heatmap_calculation <- function(df, cons_genes, class,
 
   # Create side colors based on the class (matching columns)
   side_colors_df <- data.frame(class = as.factor(class))
-  rownames(side_colors_df) <- colnames(df_t) # Nomeando para facilitar o plot
+  rownames(side_colors_df) <- colnames(df_t)
 
   # Perform hierarchical clustering
   cli::cli_alert_info("Clustering rows and columns using {hclust.method} ...")
@@ -317,24 +306,26 @@ heatmap_calculation <- function(df, cons_genes, class,
   ))
 }
 
-#' Create a Plot for MLP Model Variable Importance
-#'
-#' This function tunes and evaluates a multilayer perceptron (MLP) model using a dataset of consensus genes and creates a plot to visualize the variable importance. The plot shows the scaled importance of each variable in the model, and includes key performance metrics (accuracy, AUROC, and Brier score).
-#'
-#' @param df A data frame containing the gene expression data. The dataframe must include a column for the class variable (`class`), which is used for stratified sampling.
-#' @param cons_genes A character vector containing the names of consensus genes to be used for model training.
-#' @param class A factor or numeric vector representing the class labels. This is the outcome variable used for classification.
-#'
-#' @return A `ggplot` object showing the scaled variable importance for the MLP model, with an annotation of model performance metrics.
-#'
-#' @examples
-#' \dontrun{
-#' # Example usage
-#' plot <- mlp.model.plot(df = gene_data, cons_genes = consensus_genes, class = class_labels)
-#' print(plot)
-#' }
-#'
-#' @export
+# MLP Model Training and Variable Importance Calculation
+#
+# This helper function tunes and evaluates a multilayer perceptron (MLP) model
+# using a dataset of consensus genes. It returns the variable importance
+# and key performance metrics (accuracy, AUROC, Brier score) on the test set.
+#
+# Args:
+#   df: Data frame with gene expression data (samples x genes).
+#   cons_genes: Character vector of consensus gene names.
+#   class: Factor or numeric vector of class labels (binary outcome).
+#
+# Returns:
+#   List with:
+#     - importances: Data frame with variable importances (scaled from -1 to 1).
+#     - test_performance: Data frame with performance metrics on the test set.
+#
+# Example:
+#   res <- mlp_model_calculation(df = gene_data, cons_genes = consensus_genes, class = class_labels)
+#   head(res$importances)
+#   res$test_performance
 mlp_model_calculation <- function(df, cons_genes, class) {
   # future::plan(future::multisession, workers = parallel::detectCores() - 1)
 
@@ -570,8 +561,6 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 #' }
 #'
 #' @export
-
-
 testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display_plots = TRUE) {
 
   cli::cli_h2("Consensus Genes Testing")
@@ -593,14 +582,14 @@ testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display
   cli::cli_alert_success("PCA analysis completed successfully!")
 
   # ----- PCA Plotting -----
-  pca.plot <- pca_plot(pca_results$scores, pca_results$top_loadings, class)
+  pca_plot <- pca.plot(pca_results$scores, pca_results$top_loadings, class)
 
   # Adding PCA Plot to Results
-  pca_results$plot <- pca.plot
+  pca_results$plot <- pca_plot
 
   cli::cli_alert_success("PCA plot created!")
 
-  if (display_plots) plot(pca.plot)
+  if (display_plots) plot(pca_plot)
 
   # -------- AUROC and FC Analysis --------
 
@@ -614,7 +603,7 @@ testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display
   cli::cli_alert_success("AUROC and FC analysis completed successfully!")
 
   # ----- AUROC and FC Plotting -----
-  auroc_fc.plot <- auroc_fc_plot(auroc_fc.calc)
+  auroc_fc.plot <- auroc.fc.plot(auroc_fc.calc)
 
   cli::cli_alert_success("AUROC and FC plot created!")
 
@@ -637,15 +626,15 @@ testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display
 
   # ----- Heatmap with HC Plotting -----
 
-  heatmap.plot <- heatmap_plot_heatmaply(heatmap_results)
+  heatmap_plot <- heatmap.plot(heatmap_results)
 
   # Adding PCA Plot to Results
-  heatmap_results$plot <- heatmap.plot
+  heatmap_results$plot <- heatmap_plot
 
   cli::cli_alert_success("Heatmap plot created!")
 
   #TODO: Fix the Print plot in this heatmap
-  if (display_plots) print(heatmap.plot)
+  if (display_plots) print(heatmap_plot)
 
   # -------- MLP Model Analysis --------
 
@@ -659,7 +648,7 @@ testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display
   cli::cli_alert_success("MLP Model completed successfully!")
 
   # ----- MLP Model Plotting -----
-  mlp.plot <- mlp_model_plot(mlp_results$importances, mlp_results$test_performance)
+  mlp.plot <- mlp.model.plot(mlp_results$importances, mlp_results$test_performance)
 
   # Adding PCA Plot to Results
   mlp_results$plot <- mlp.plot

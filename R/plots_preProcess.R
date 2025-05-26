@@ -110,17 +110,17 @@ batch.pca.plot <- function(data.before, data.after, batch, metadata) {
 #'
 #' @examples
 #' \dontrun{
-#' # Example usage of batch_pvca_plot
+#' # Example usage of batch.pvca.plot
 #' pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
 #'                 batch = "batch", covar.mod = "covar")
-#' batch_pvca_plot(data.before =  pp@processed$normalized,
+#' batch.pvca.plot(data.before =  pp@processed$normalized,
 #'                 data.after = pp@processed$adjusted.data,
 #'                 metadata = pp@metadata,
 #'                 batch = "batch", class = "class", covar = "covar")
 #' }
 #'
 #' @export
-batch_pvca_plot <- function(data.before, data.after, metadata, class, batch, covar) {
+batch.pvca.plot <- function(data.before, data.after, metadata, class, batch, covar) {
     # Match data with metadata
     samples_in_common <- match.samples(data.before, metadata)
     data.before <- data.before[samples_in_common, ]
