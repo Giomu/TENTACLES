@@ -36,9 +36,6 @@
 #' )
 #' top_df <- selectTopCombinations(results, N = 1, metric = "Accuracy")
 #' }
-#'
-#' @export
-
 selectTopCombinations <- function(results, N, metric) {
   allowed_metrics <- c("Accuracy", "Precision", "Recall", "FScore")
   if (!metric %in% allowed_metrics) stop("Invalid metric selected.")
@@ -115,8 +112,6 @@ selectTopCombinations <- function(results, N, metric) {
 #' evaluate_one_side(predicted_clusters, true_labels, metric = "Accuracy")
 #' }
 #'
-#' @export
-
 # Helper function for assessment based on a choose metric
 evaluate_one_side <- function(pred, truth, metric = metric) {
   df <- data.frame(

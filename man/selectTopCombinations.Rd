@@ -44,7 +44,6 @@ results <- list(
 )
 top_df <- selectTopCombinations(results, N = 1, metric = "Accuracy")
 }
-
 }
 \seealso{
 \code{\link{valConsensus}}

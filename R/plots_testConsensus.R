@@ -1,38 +1,29 @@
-#' Perform PCA on Consensus Genes and Generate Plots
+#' Plot PCA Scores and Top Loadings for Consensus Genes
 #'
-#' This function performs Principal Component Analysis (PCA) on a given dataframe of gene expression data, specifically focusing on a subset of consensus genes. It generates two plots: one for PCA scores (PC1 vs. PC2) and another showing the loadings of the top 15 genes for the first two principal components.
+#' This function generates two plots based on precomputed PCA results:
+#' (1) a scatterplot of sample scores on PC1 and PC2, colored by class labels,
+#' and (2) a biplot of the top gene loadings for PC1 and PC2.
 #'
-#' @param df A data frame containing gene expression data, where rows represent samples and columns represent genes. The column names must match the gene identifiers used in the `cons_genes` vector.
-#' @param cons_genes A character vector of gene names to be included in the PCA analysis. These are the consensus genes used for the PCA computation.
-#' @param class A factor or vector representing the class labels for the samples. This is used to color the points in the PCA plot and differentiate the sample groups.
+#' @param pca_scores Data frame with columns `PC1`, `PC2`, and optionally sample labels.
+#' @param pca_top_loadings Data frame with columns `PC1`, `PC2`, and `gene` for top loadings.
+#' @param labels Vector or factor indicating class/group of each sample (used for coloring).
 #'
-#' @return A combined plot containing two ggplot objects: one showing the PCA scores for PC1 and PC2, and another displaying the top 15 genes with the highest loadings for both principal components.
+#' @return A patchwork object combining the two ggplot2 plots: sample scores and top gene loadings.
 #'
-#' @details The function first filters the gene expression data to include only the consensus genes provided.
-#' It then performs PCA on this subset of genes, extracting eigenvalues, scores, and loadings.
-#' The PCA scores are plotted to show how samples group based on their principal component values, colored by their class labels.
-#' The top 15 genes with the highest loadings on PC1 and PC2 are also plotted as vectors in a second plot.
-#' The function utilizes the `ggplot2` and `cli` packages to generate the plots.
-#'
+#' @details
+#' Use this function after running PCA on your gene expression data and extracting the relevant
+#' scores and top gene loadings. This function does not perform PCA; it only visualizes the results.
 #'
 #' @examples
 #' \dontrun{
-#' # Example usage:
-#' # Assuming `df` is a data frame of gene expression,
-#' # `cons_genes` is a vector of consensus gene names,
-#' # and `class_labels` is a factor of class labels for each sample.
-#' pca_plot <- pca.consensus(
-#'     df = gene_expression_data,
-#'     cons_genes = consensus_gene_list, class = class_labels
-#' )
-#' print(pca_plot)
+#' # After running PCA and extracting scores/loadings:
+#' p <- pca.plot(pca_scores = my_scores, pca_top_loadings = my_top_loadings, labels = my_labels)
+#' print(p)
 #' }
 #'
 #' @import patchwork
-#'
 #' @export
-
-pca_plot <- function(pca_scores, pca_top_loadings, labels) {
+pca.plot <- function(pca_scores, pca_top_loadings, labels) {
 
   # create the plot
   pca_plot <- ggplot(pca_scores, aes(x = PC1, y = PC2, colour = factor(labels))) +
@@ -83,8 +74,41 @@ pca_plot <- function(pca_scores, pca_top_loadings, labels) {
   return(p)
 }
 
-# Function for creating AUROC Plot
-auroc_fc_plot <- function(results) {
+#' Plot AUROC and Fold Change for Genes
+#'
+#' Generates a ggplot2 plot displaying the AUROC (Area Under the ROC Curve) values for each gene,
+#' with confidence intervals and fold change (FC) as a color scale. Useful for visualizing
+#' the classification power and direction of regulation for consensus or selected genes.
+#'
+#' @param results A data frame with at least the following columns:
+#'   - `gene`: Character, gene name.
+#'   - `auroc`: Numeric, AUROC value for each gene.
+#'   - `auroc_lower`: Numeric, lower confidence interval for AUROC.
+#'   - `auroc_upper`: Numeric, upper confidence interval for AUROC.
+#'   - `FC`: Numeric, fold change value for each gene.
+#'
+#' @return A ggplot2 object visualizing the AUROC (with confidence interval bars) and fold change for each gene.
+#'
+#' @details
+#' Genes are ordered by AUROC. The color gradient represents the fold change, from blue (downregulated) through grey (neutral) to red (upregulated).
+#' The horizontal dashed line at 0.5 indicates random classification performance.
+#'
+#' @examples
+#' \dontrun{
+#' # Example results data frame (results)
+#' # results <- data.frame(
+#' #   gene = c("GeneA", "GeneB"),
+#' #   auroc = c(0.92, 0.85),
+#' #   auroc_lower = c(0.88, 0.82),
+#' #   auroc_upper = c(0.96, 0.88),
+#' #   FC = c(1.5, -1.2)
+#' # )
+#' p <- auroc.fc.plot(results)
+#' print(p)
+#' }
+#'
+#' @export
+auroc.fc.plot <- function(results) {
 
   p <- ggplot(results, aes(x = reorder(gene, auroc), y = auroc)) +
     geom_hline(yintercept = 0.5, linetype = "solid", color = "#7e7e7e", linewidth = 0.4) +
@@ -109,34 +133,71 @@ auroc_fc_plot <- function(results) {
 
 }
 
-#####################################################################################################################
-
-#' Heatmap Calculation with Hierarchical Clustering
+#' Plot Hierarchical Clustering Heatmap for Consensus Genes
 #'
-#' @description
-#' Computes a hierarchical clustering heatmap matrix for a set of consensus genes in a gene expression data frame.
-
-heatmap_plot_heatmaply <- function(heatmap_data,
-                                   colors = grDevices::colorRampPalette(c("#440154FF", "#3B528BFF", "#21908CFF", "#5DC863FF", "#FDE725FF"))(64),
-                                   dendrogram = "both",
-                                   show_dendrogram = c(FALSE, TRUE),
-                                   scale = "row",
-                                   custom_colors = c("1" = "#2e1457", "0" = "#66a182"),
-                                   margins = c(60, 100, 40, 20),
-                                   grid_color = "white",
-                                   grid_width = 0.00001,
-                                   branches_lwd = 0.4,
-                                   fontsize_row = 12,
-                                   fontsize_col = 5,
-                                   scale_fill_gradient_fun = NULL,
-                                   limits = NULL,
-                                   na.value = "grey50",
-                                   cellnote = NULL,
-                                   cellnote_size = NULL,
-                                   cellnote_textposition = "middle center",
-                                   key.title = "",
-                                   key.xlab = "Value",
-                                   key.ylab = "Frequency") {
+#' Generates an interactive or static heatmap with hierarchical clustering for a matrix of gene expression values,
+#' typically representing consensus genes across samples. This function wraps `heatmaply::heatmaply` with customization options.
+#'
+#' @param heatmap_data A list with:
+#'   - `matrix`: Numeric matrix of expression values (genes x samples or vice-versa).
+#'   - `hc_rows`: Hierarchical clustering object for rows (e.g., output of `hclust`).
+#'   - `hc_cols`: Hierarchical clustering object for columns (e.g., output of `hclust`).
+#'   - `side_colors` (optional): Vector or matrix for coloring sample columns.
+#' @param colors Color palette (vector of colors or function) for the heatmap.
+#' @param dendrogram Which dendrograms to display. One of `"both"`, `"row"`, `"column"`, `"none"`. Default: `"both"`.
+#' @param show_dendrogram Logical vector of length 2; whether to show row and column dendrograms (e.g., `c(FALSE, TRUE)`).
+#' @param scale How to scale the data: `"none"`, `"row"`, or `"column"`. Default: `"row"`.
+#' @param custom_colors Named vector for coloring groups in side bar (e.g., `c("1"="#2e1457", "0"="#66a182")`).
+#' @param margins Numeric vector of margins (top, right, bottom, left).
+#' @param grid_color Color of the heatmap grid lines.
+#' @param grid_width Width of the grid lines.
+#' @param branches_lwd Line width for dendrogram branches.
+#' @param fontsize_row Font size for row labels.
+#' @param fontsize_col Font size for column labels.
+#' @param scale_fill_gradient_fun Custom function for color scaling (advanced, optional).
+#' @param limits Numeric vector of length 2, setting min and max of color scale (optional).
+#' @param na.value Color for NA values.
+#' @param cellnote Optional matrix of text to display in each cell.
+#' @param cellnote_size Font size for cell notes (if provided).
+#' @param cellnote_textposition Position for cell note text (if provided).
+#' @param key.title Title for the heatmap color key.
+#' @param key.xlab X-axis label for the heatmap color key.
+#' @param key.ylab Y-axis label for the heatmap color key.
+#'
+#' @return An interactive heatmaply htmlwidget visualizing hierarchical clustering and expression values.
+#'
+#' @details
+#' This function returns an interactive heatmap, allowing zoom, tooltip and dynamic exploration of gene/sample clustering.
+#'
+#' @examples
+#' \dontrun{
+#' p <- heatmap.plot(heatmap_data)
+#' # In RStudio, p will display interactively in the Viewer pane.
+#' }
+#'
+#' @import heatmaply
+#' @export
+heatmap.plot <- function(heatmap_data,
+                         colors = grDevices::colorRampPalette(c("#440154FF", "#3B528BFF", "#21908CFF", "#5DC863FF", "#FDE725FF"))(64),
+                         dendrogram = "both",
+                         show_dendrogram = c(FALSE, TRUE),
+                         scale = "row",
+                         custom_colors = c("1" = "#2e1457", "0" = "#66a182"),
+                         margins = c(60, 100, 40, 20),
+                         grid_color = "white",
+                         grid_width = 0.00001,
+                         branches_lwd = 0.4,
+                         fontsize_row = 12,
+                         fontsize_col = 5,
+                         scale_fill_gradient_fun = NULL,
+                         limits = NULL,
+                         na.value = "grey50",
+                         cellnote = NULL,
+                         cellnote_size = NULL,
+                         cellnote_textposition = "middle center",
+                         key.title = "",
+                         key.xlab = "Value",
+                         key.ylab = "Frequency") {
 
   # Creating the heatmap with heatmaply
   p <- heatmaply::heatmaply(
@@ -166,7 +227,44 @@ heatmap_plot_heatmaply <- function(heatmap_data,
   return(p)
 }
 
-mlp_model_plot <- function(importances, test_performance){
+#' Plot Variable Importance for MLP Model with Performance Metrics
+#'
+#' Generates a bar plot visualizing the scaled importance of variables (genes) for a trained multilayer perceptron (MLP) model.
+#' The plot also annotates the key model performance metrics: Accuracy, AUROC, and Brier Score.
+#'
+#' @param importances A data frame with variable importance results, typically with columns:
+#'   - `Variable`: Character, gene/feature name.
+#'   - `Importance`: Numeric, scaled variable importance (typically from -1 to 1).
+#'   - `type`, `type_hjust`: Numeric, used internally for text positioning (optional, if precomputed).
+#' @param test_performance A data frame with at least three performance metrics for the MLP model, expected columns:
+#'   - `.estimate`: Numeric, containing values for Accuracy, AUROC, and Brier Score (in this order).
+#'
+#' @return A `ggplot2` object showing variable importance bars for the MLP model, with an annotation of the main performance metrics.
+#'
+#' @details
+#' The bar plot displays the scaled importance of each variable, colored by sign (negative/positive).
+#' The bottom annotation block displays MLP performance: Accuracy, AUROC, and Brier Score as calculated on the test set.
+#'
+#' @examples
+#' \dontrun{
+#' # Example importances data frame:
+#' # importances <- data.frame(
+#' #   Variable = c("Gene1", "Gene2"),
+#' #   Importance = c(0.8, -0.6),
+#' #   type = c(-0.026, 0.026),
+#' #   type_hjust = c(1, 0)
+#' # )
+#' # test_performance <- data.frame(
+#' #   .estimate = c(0.89, 0.95, 0.12),
+#' #   .metric = c("accuracy", "roc_auc", "brier")
+#' # )
+#' p <- mlp.model.plot(importances, test_performance)
+#' print(p)
+#' }
+#'
+#' @import ggplot2
+#' @export
+mlp.model.plot <- function(importances, test_performance){
 
   # Create the plot
   cli::cli_alert_info("Creating plot ...")

@@ -112,7 +112,7 @@ data.import <- function(
 normalization <- function(df.count, class, mincpm = 1, minfraction = 0.1) {
   # Filter Low CPM function
   filter.low.cpm <- function(normalized.counts) {
-    keep <- rowSums(edgeR::cpm(normalized.counts) > mincpm) >= ncol(normalized.counts) * minfraction
+    keep <- rowSums(normalized.counts > mincpm) >= ncol(normalized.counts) * minfraction
     return(normalized.counts[keep, ])
   }
 
@@ -273,7 +273,7 @@ preProcess <- function(
       cli::cli_alert_success("PCA plot generated")
 
       cli::cli_alert_info("Creating PVCA plots...")
-      pv <- batch_pvca_plot(normalized_data, corrected_data, class = class, batch = batch, covar = covar.mod, metadata = data.obj@metadata)
+      pv <- batch.pvca.plot(normalized_data, corrected_data, class = class, batch = batch, covar = covar.mod, metadata = data.obj@metadata)
       print(pv)
       cli::cli_alert_success("PVCA plots generated")
     }
