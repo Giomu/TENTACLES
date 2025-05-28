@@ -111,18 +111,18 @@ data.import <- function(
 # Helper function to normalize data in log2(CPM + 1) scale
 normalization <- function(df.count, class, mincpm = 1, minfraction = 0.1) {
   # Filter Low CPM function
-  filter.low.cpm <- function(normalized.counts) {
-    keep <- rowSums(normalized.counts > mincpm) >= ncol(normalized.counts) * minfraction
-    return(normalized.counts[keep, ])
+  filter.low.cpm <- function(filtered.counts) {
+    keep <- rowSums(edgeR::cpm(filtered.counts) > mincpm) >= ncol(filtered.counts) * minfraction
+    return(filtered.counts[keep, ])
   }
 
   # Normalize data using edgeR function
   edgeR.normalize <- function(data, filter = FALSE) {
+    if (filter) {
+      data <- filter.low.cpm(data)
+    }
     data <- edgeR::calcNormFactors(data)
     norm_data <- edgeR::cpm(data, normalized.lib.sizes = TRUE, log = FALSE)
-    if (filter) {
-      norm_data <- filter.low.cpm(norm_data)
-    }
     norm_data <- log2(norm_data + 1)
     norm_data <- as.data.frame(t(norm_data))
   }
