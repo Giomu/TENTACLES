@@ -12,6 +12,8 @@ runClassifiers(
   tuning.method = "tune_grid",
   n = 5,
   v = 3,
+  boruta.maxRuns = 100,
+  selector.threshold = 0.95,
   metric = "accuracy",
   nsim = 2,
   filter = TRUE,
@@ -63,6 +65,10 @@ does not match the number of models, the first recipe will be used for all model
 \item{n}{An integer specifying the number of iterations for the tuning method.}
 
 \item{v}{An integer specifying the number of folds for the cross-validation during the hyperparameters tuning.}
+
+\item{boruta.maxRuns}{maxRuns parameter to pass to boruta feature selector when it is selected.}
+
+\item{selector.threshold}{Threshold parameter used for feature selection (Applied on "roc", "infgain", "mrmr", "corr" selectors).}
 
 \item{metric}{A character string specifying the metric to be used for tuning.}
 

@@ -4,8 +4,8 @@
 \name{TENTACLES-package}
 \alias{TENTACLES}
 \alias{TENTACLES-package}
-\title{TENTACLES: What the Package Does (Title Case)}
+\title{TENTACLES: Framework for Biomarker Discovery and Validation in Transcriptomics}
 \description{
-More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
+Provides an integrated and user-friendly workflow for analyzing transcriptomic data, including RNA-Seq and microarray experiments. Implements automated data preprocessing with normalization and batch effect correction, multi-model classification with feature selection, consensus biomarker identification, and robust external validation. Offers extensive visualizations—such as PCA, PVCA, AUROC, UpSet plots, and heatmaps—to facilitate data exploration and model evaluation. Enables reproducible biomarker discovery by combining multiple machine learning classifiers and consensus approaches, helping researchers identify and validate robust gene signatures.
 }
 \keyword{internal}
