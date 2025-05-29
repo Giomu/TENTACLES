@@ -104,7 +104,7 @@ create_model_specs <- function() {
 }
 
 # Create dynamic workflow sets
-create_dynamic_workflow_sets <- function(models, selector.recipes, data, downsample) {
+create_dynamic_workflow_sets <- function(models, selector.recipes, data, downsample, boruta.maxRuns, selector.threshold) {
   model_specs <- create_model_specs()
 
   recipes_base <- recipes::recipe(class ~ ., data = data) %>%
@@ -119,23 +119,23 @@ create_dynamic_workflow_sets <- function(models, selector.recipes, data, downsam
 
   # Recipe with Boruta Feature Selection
   recipe_boruta <- recipes_base %>%
-    colino::step_select_boruta(recipes::all_predictors(), outcome = "class")
+    colino::step_select_boruta(recipes::all_predictors(), outcome = "class", options = list(maxRuns = boruta.maxRuns))
 
   # Recipe with ROC-based Feature Selection
   recipe_ROC <- recipes_base %>%
-    colino::step_select_roc(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+    colino::step_select_roc(recipes::all_predictors(), outcome = "class", threshold = selector.threshold)
 
   # Recipe with Information Gain Feature Selection
   recipe_INFGAIN <- recipes_base %>%
-    colino::step_select_infgain(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+    colino::step_select_infgain(recipes::all_predictors(), outcome = "class", threshold = selector.threshold)
 
   # Recipe with Max Relevancy Min Redundancy Feature Selection
   recipe_MRMR <- recipes_base %>%
-    colino::step_select_mrmr(recipes::all_predictors(), outcome = "class", threshold = 0.95)
+    colino::step_select_mrmr(recipes::all_predictors(), outcome = "class", threshold = selector.threshold)
 
   # Recipe correlation-based Feature Selection
   recipe_corr <- recipes_base %>%
-    recipes::step_corr(recipes::all_predictors(), threshold = 0.8)
+    recipes::step_corr(recipes::all_predictors(), threshold = selector.threshold)
 
   # Filter to keep only models selected by User
   filtered_specs <- model_specs[models]
@@ -177,9 +177,9 @@ create_dynamic_workflow_sets <- function(models, selector.recipes, data, downsam
 # Helper function to tune and fit models
 tune_and_fit <- function(
     models, selector.recipes,
-    tuning.method, n, metric, train_resamples, data, downsample) {
+    tuning.method, n, metric, train_resamples, data, downsample, boruta.maxRuns, selector.threshold) {
   # Create dynamic workflow sets
-  tune_workflows <- create_dynamic_workflow_sets(models, selector.recipes, data = data, downsample = downsample)
+  tune_workflows <- create_dynamic_workflow_sets(models, selector.recipes, data = data, downsample = downsample, boruta.maxRuns = boruta.maxRuns, selector.threshold = selector.threshold)
 
   cli::cli_h2("Tuning Model Parameters")
   # Tune the models
@@ -419,6 +419,8 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #'   - `"tune_sim_anneal"`: Simulated annealing, a probabilistic approach to global optimization.
 #' @param n An integer specifying the number of iterations for the tuning method.
 #' @param v An integer specifying the number of folds for the cross-validation during the hyperparameters tuning.
+#' @param boruta.maxRuns maxRuns parameter to pass to boruta feature selector when it is selected.
+#' @param selector.threshold Threshold parameter used for feature selection (Applied on "roc", "infgain", "mrmr", "corr" selectors).
 #' @param metric A character string specifying the metric to be used for tuning.
 #' @param nsim An integer specifying the number of simulations for the permutation-based VIP.
 #' @param seed An integer specifying the seed for reproducibility.
@@ -466,7 +468,9 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 runClassifiers <- function(
     preProcess.obj = NULL, ..., models = c("bag_mlp", "rand_forest", "svm_poly"),
     selector.recipes = c("boruta", "roc", "boruta"),
-    tuning.method = "tune_grid", n = 5, v = 3, metric = "accuracy",
+    tuning.method = "tune_grid", n = 5, v = 3,
+    boruta.maxRuns = 100, selector.threshold = 0.95,
+    metric = "accuracy",
     nsim = 2, filter = TRUE, seed = 123, downsample = FALSE, plot = TRUE) {
   future::plan(future::multisession, workers = parallel::detectCores() - 1)
   cli::cli_h1("runClassifiers")
@@ -554,7 +558,9 @@ runClassifiers <- function(
         metric = metric,
         train_resamples = train_resamples,
         data = data,
-        downsample = downsample
+        downsample = downsample,
+        boruta.maxRuns = boruta.maxRuns,
+        selector.threshold = selector.threshold
       )
 
       cli::cli_h2("Variable Importances")
