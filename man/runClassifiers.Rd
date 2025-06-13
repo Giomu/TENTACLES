@@ -29,29 +29,52 @@ runClassifiers(
 for df.count, df.clin and class in ... as specified in the documentation of preProcess function.}
 
 \item{models}{A character vector specifying the classifiers to be used. Supported models include:
-- `"xgboost"`: Extreme Gradient Boosting, an ensemble method using boosted trees.
-- `"bag_tree"`: Bagged decision trees, a bootstrapped ensemble of tree models.
-- `"lightGBM"`: A fast gradient boosting method optimized for large datasets.
-- `"pls"`: Partial Least Squares regression.
-- `"logistic"`: Logistic regression, a simple linear classifier.
-- `"C5_rules"`: Rule-based classifier using C5.0 decision trees.
-- `"mars"`: Multivariate Adaptive Regression Splines, a flexible non-linear regression method.
-- `"bag_mars"`: Bagged version of MARS for increased stability.
-- `"mlp"`: Multi-Layer Perceptron, a basic feedforward neural network.
-- `"bag_mlp"`: Bagged version of MLP to reduce variance.
-- `"decision_tree"`: A single decision tree.
-- `"rand_forest"`: Random forest, an ensemble of decision trees with randomized splits.
-- `"svm_linear"`: Support Vector Machine with a linear kernel.
-- `"svm_poly"`: Support Vector Machine with a polynomial kernel.
-- `"svm_rbf"`: Support Vector Machine with a radial basis function (RBF) kernel.}
+
+  - `"xgboost"`: Extreme Gradient Boosting, an ensemble method using boosted trees.
+
+  - `"bag_tree"`: Bagged decision trees, a bootstrapped ensemble of tree models.
+
+  - `"lightGBM"`: A fast gradient boosting method optimized for large datasets.
+
+  - `"pls"`: Partial Least Squares regression.
+
+  - `"logistic"`: Logistic regression, a simple linear classifier.
+
+  - `"C5_rules"`: Rule-based classifier using C5.0 decision trees.
+  - `"mars"`: Multivariate Adaptive Regression Splines, a flexible non-linear regression method.
+
+  - `"bag_mars"`: Bagged version of MARS for increased stability.
+
+  - `"mlp"`: Multi-Layer Perceptron, a basic feedforward neural network.
+
+  - `"bag_mlp"`: Bagged version of MLP to reduce variance.
+
+  - `"decision_tree"`: A single decision tree.
+
+  - `"rand_forest"`: Random forest, an ensemble of decision trees with randomized splits.
+
+  - `"svm_linear"`: Support Vector Machine with a linear kernel.
+
+  - `"svm_poly"`: Support Vector Machine with a polynomial kernel.
+
+  - `"svm_rbf"`: Support Vector Machine with a radial basis function (RBF) kernel.}
 
 \item{selector.recipes}{A character vector specifying the feature selection methods to be applied before classification.
+
 Supported selection strategies include:
+
+  - `"base"`: Uses only the default pre-processing steps (normalization, near-zero variance removal), with no feature selection.
+
   - `"boruta"`: Wrapper method that iteratively removes unimportant features using random forest.
+
   - `"roc"`: Selects features based on Receiver Operating Characteristic (ROC) AUC scores.
+
   - `"infgain"`: Uses Information Gain to select the most informative features.
+
   - `"mrmr"`: Minimum Redundancy Maximum Relevance (mRMR), selects features that maximize relevance and minimize redundancy.
+
   - `"corr"`: Filters features based on correlation thresholds to reduce multicollinearity.
+
 `models` and `selector.recipes` will be paired in the order they are provided. If the number of recipes
 does not match the number of models, the first recipe will be used for all models.}
 

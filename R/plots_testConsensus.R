@@ -27,7 +27,7 @@ pca.plot <- function(pca_scores, pca_top_loadings, labels) {
 
   # create the plot
   pca_plot <- ggplot(pca_scores, aes(x = PC1, y = PC2, colour = factor(labels))) +
-    scale_color_manual(values = c("skyblue3", "indianred")) +
+    scale_color_manual(values = c("#2e4057", "#BD2B48")) +
     geom_point(size = 3) +
     stat_ellipse(linewidth = 0.7, linetype = 2, type = "norm") +
     stat_ellipse(type = "t") +
@@ -178,11 +178,11 @@ auroc.fc.plot <- function(results) {
 #' @import heatmaply
 #' @export
 heatmap.plot <- function(heatmap_data,
-                         colors = grDevices::colorRampPalette(c("#440154FF", "#3B528BFF", "#21908CFF", "#5DC863FF", "#FDE725FF"))(64),
+                         colors = grDevices::colorRampPalette(c("#2E4057", "#66A182", "#EDAE49"))(64),
                          dendrogram = "both",
                          show_dendrogram = c(FALSE, TRUE),
                          scale = "row",
-                         custom_colors = c("1" = "#2e1457", "0" = "#66a182"),
+                         custom_colors = c("1" = "#9E363A", "0" = "#467599"),
                          margins = c(60, 100, 40, 20),
                          grid_color = "white",
                          grid_width = 0.00001,
@@ -274,9 +274,9 @@ mlp.model.plot <- function(importances, test_performance){
   ) +
     geom_segment(aes(y = 0, x = Variable, yend = Importance, xend = Variable), linewidth = 0.8, color = "gray") +
     geom_point(
+      aes(color = Importance),
       stat = "identity",
-      size = 4.5,
-      color = ifelse(importances$Importance < 0, "#995caf", "#e8ab1b")
+      size = 4.5
     ) +
     geom_text(aes(label = Variable, y = type, hjust = type_hjust), color = "black", size = 3.5) +
     # geom_text(aes(label = round(Importance, 2), vjust = -2.1), color = "#7e7e7e", size = 3.5) +
@@ -300,6 +300,7 @@ mlp.model.plot <- function(importances, test_performance){
       axis.title.x = element_text(size = 14, color = "#7e7e7e"),
       axis.text.x = element_text(size = 12, color = "#7e7e7e")
     ) +
+    scale_color_gradientn(colors = grDevices::colorRampPalette(c("#2E4057", "#66A182", "#EDAE49"))(64)) +
     coord_flip()
   cli::cli_alert_success("MLP Plot created successfully!")
 

@@ -6,12 +6,11 @@
 \usage{
 heatmap.plot(
   heatmap_data,
-  colors = (grDevices::colorRampPalette(c("#440154FF", "#3B528BFF", "#21908CFF",
-    "#5DC863FF", "#FDE725FF")))(64),
+  colors = (grDevices::colorRampPalette(c("#2E4057", "#66A182", "#EDAE49")))(64),
   dendrogram = "both",
   show_dendrogram = c(FALSE, TRUE),
   scale = "row",
-  custom_colors = c(`1` = "#2e1457", `0` = "#66a182"),
+  custom_colors = c(`1` = "#9E363A", `0` = "#467599"),
   margins = c(60, 100, 40, 20),
   grid_color = "white",
   grid_width = 1e-05,
