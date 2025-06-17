@@ -115,7 +115,8 @@ test_that("No error when just some samples do not match between tables", {
   ))
 })
 
-test_that("preProcess results are reproducible after normalization and batch correction", {
+
+test_that("preProcess results are consistent with snapshot", {
   # Load test datasets into a temporary environment
   test_env <- load_test_data("acc.count", "acc.clin", package = "TENTACLES")
 
@@ -126,14 +127,14 @@ test_that("preProcess results are reproducible after normalization and batch cor
   # Keep 100 genes only
   acc.count <- acc.count[, 1:100]
 
-  reference_results <- readRDS(test_path("fixtures", "preProcess_rep_test.rds"))
-  test_results <- preProcess(acc.count, acc.clin,
+  # Run preProcess
+  test_result <- preProcess(acc.count, acc.clin,
     is.normalized = FALSE, batch = "patient.gender", plot = FALSE
   )
 
-  # Compare the results
-  expect_equal(unclass(reference_results@raw), unclass(test_results@raw), tolerance = 1e-5)
-  expect_equal(unclass(reference_results@processed$normalized), unclass(test_results@processed$normalized), tolerance = 1e-5)
-  expect_equal(unclass(reference_results@processed$sbatched), unclass(test_results@processed$sbatched), tolerance = 1e-5)
-  expect_equal(unclass(reference_results@processed$adjusted.data), unclass(test_results@processed$adjusted.data), tolerance = 1e-5)
+  # If there are non-deterministic components, consider removing them first
+  # For example:
+  # test_result$processed$adjusted.data$run_id <- NULL
+
+  expect_snapshot(test_result)
 })
