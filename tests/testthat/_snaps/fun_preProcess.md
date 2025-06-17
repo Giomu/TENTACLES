@@ -1,7 +1,7 @@
 # preProcess results are consistent with snapshot
 
     Code
-      test_result
+      test_result_batch
     Output
       An object of class "preProcess.obj"
       Slot "raw":
@@ -4572,6 +4572,8778 @@
       TCGA.PK.A5H9  8.327099  9.830990 14.66572     1
       TCGA.PK.A5HA 15.131256 10.688954 15.26385     1
       TCGA.PK.A5HB 10.214250  8.500395 15.51756     1
+      
+      
+      Slot "metadata":
+                             ID patient.days_to_birth patient.gender
+      TCGA.OR.A5J1 TCGA.OR.A5J1                -21496           male
+      TCGA.OR.A5J2 TCGA.OR.A5J2                -16090         female
+      TCGA.OR.A5J3 TCGA.OR.A5J3                 -8624         female
+      TCGA.OR.A5J5 TCGA.OR.A5J5                -11171           male
+      TCGA.OR.A5J6 TCGA.OR.A5J6                -10839         female
+      TCGA.OR.A5J7 TCGA.OR.A5J7                -11279         female
+      TCGA.OR.A5J8 TCGA.OR.A5J8                -24266           male
+      TCGA.OR.A5J9 TCGA.OR.A5J9                 -8175         female
+      TCGA.OR.A5JA TCGA.OR.A5JA                -19436         female
+      TCGA.OR.A5JB TCGA.OR.A5JB                -19172           male
+      TCGA.OR.A5JC TCGA.OR.A5JC                -13862           male
+      TCGA.OR.A5JD TCGA.OR.A5JD                -20989         female
+      TCGA.OR.A5JE TCGA.OR.A5JE                 -6455         female
+      TCGA.OR.A5JF TCGA.OR.A5JF                -25502         female
+      TCGA.OR.A5JG TCGA.OR.A5JG                -22390           male
+      TCGA.OR.A5JI TCGA.OR.A5JI                 -8177           male
+      TCGA.OR.A5JJ TCGA.OR.A5JJ                -24082           male
+      TCGA.OR.A5JK TCGA.OR.A5JK                -18214           male
+      TCGA.OR.A5JL TCGA.OR.A5JL                -13155         female
+      TCGA.OR.A5JM TCGA.OR.A5JM                 -9359         female
+      TCGA.OR.A5JO TCGA.OR.A5JO                 -9547         female
+      TCGA.OR.A5JP TCGA.OR.A5JP                -14667           male
+      TCGA.OR.A5JQ TCGA.OR.A5JQ                 -9667         female
+      TCGA.OR.A5JR TCGA.OR.A5JR                -16604           male
+      TCGA.OR.A5JS TCGA.OR.A5JS                -24017         female
+      TCGA.OR.A5JT TCGA.OR.A5JT                -23794         female
+      TCGA.OR.A5JV TCGA.OR.A5JV                -20319           male
+      TCGA.OR.A5JW TCGA.OR.A5JW                -17513           male
+      TCGA.OR.A5JX TCGA.OR.A5JX                -18402           male
+      TCGA.OR.A5JY TCGA.OR.A5JY                -25190         female
+      TCGA.OR.A5JZ TCGA.OR.A5JZ                -22218           male
+      TCGA.OR.A5K0 TCGA.OR.A5K0                -25400         female
+      TCGA.OR.A5K1 TCGA.OR.A5K1                -17596           male
+      TCGA.OR.A5K2 TCGA.OR.A5K2                -11970         female
+      TCGA.OR.A5K3 TCGA.OR.A5K3                -19375           male
+      TCGA.OR.A5K4 TCGA.OR.A5K4                -23481         female
+      TCGA.OR.A5K5 TCGA.OR.A5K5                -21907         female
+      TCGA.OR.A5K6 TCGA.OR.A5K6                -20657         female
+      TCGA.OR.A5K8 TCGA.OR.A5K8                -14435           male
+      TCGA.OR.A5K9 TCGA.OR.A5K9                -22596         female
+      TCGA.OR.A5KO TCGA.OR.A5KO                -14606         female
+      TCGA.OR.A5KT TCGA.OR.A5KT                -16217         female
+      TCGA.OR.A5KU TCGA.OR.A5KU                -13559         female
+      TCGA.OR.A5KV TCGA.OR.A5KV                 -6250         female
+      TCGA.OR.A5KW TCGA.OR.A5KW                -20328         female
+      TCGA.OR.A5KX TCGA.OR.A5KX                 -9298         female
+      TCGA.OR.A5KY TCGA.OR.A5KY                 -8745         female
+      TCGA.OR.A5KZ TCGA.OR.A5KZ                -15594           male
+      TCGA.OR.A5L3 TCGA.OR.A5L3                -24763         female
+      TCGA.OR.A5L4 TCGA.OR.A5L4                -17819         female
+      TCGA.OR.A5L5 TCGA.OR.A5L5                -28270         female
+      TCGA.OR.A5L6 TCGA.OR.A5L6                -22057           male
+      TCGA.OR.A5L8 TCGA.OR.A5L8                -13472         female
+      TCGA.OR.A5L9 TCGA.OR.A5L9                -19526         female
+      TCGA.OR.A5LA TCGA.OR.A5LA                -19242         female
+      TCGA.OR.A5LB TCGA.OR.A5LB                -21565           male
+      TCGA.OR.A5LC TCGA.OR.A5LC                -26084         female
+      TCGA.OR.A5LD TCGA.OR.A5LD                -19111           male
+      TCGA.OR.A5LE TCGA.OR.A5LE                 -5383           male
+      TCGA.OR.A5LG TCGA.OR.A5LG                -16875           male
+      TCGA.OR.A5LH TCGA.OR.A5LH                -13182         female
+      TCGA.OR.A5LJ TCGA.OR.A5LJ                -20069         female
+      TCGA.OR.A5LK TCGA.OR.A5LK                -22919           male
+      TCGA.OR.A5LL TCGA.OR.A5LL                -27607         female
+      TCGA.OR.A5LM TCGA.OR.A5LM                 -8735           male
+      TCGA.OR.A5LN TCGA.OR.A5LN                -11414         female
+      TCGA.OR.A5LO TCGA.OR.A5LO                -22370         female
+      TCGA.OR.A5LP TCGA.OR.A5LP                -13574         female
+      TCGA.OR.A5LR TCGA.OR.A5LR                -11261         female
+      TCGA.OR.A5LS TCGA.OR.A5LS                -12663         female
+      TCGA.OR.A5LT TCGA.OR.A5LT                -21032           male
+      TCGA.OU.A5PI TCGA.OU.A5PI                -19492         female
+      TCGA.P6.A5OF TCGA.P6.A5OF                -20106         female
+      TCGA.P6.A5OG TCGA.P6.A5OG                -16659         female
+      TCGA.PA.A5YG TCGA.PA.A5YG                -18926           male
+      TCGA.PK.A5H8 TCGA.PK.A5H8                -15373           male
+      TCGA.PK.A5H9 TCGA.PK.A5H9                -10173         female
+      TCGA.PK.A5HA TCGA.PK.A5HA                -23345           male
+      TCGA.PK.A5HB TCGA.PK.A5HB                -23293           male
+                   patient.patient_id patient.person_neoplasm_cancer_status
+      TCGA.OR.A5J1               a5j1                            with tumor
+      TCGA.OR.A5J2               a5j2                            with tumor
+      TCGA.OR.A5J3               a5j3                            with tumor
+      TCGA.OR.A5J5               a5j5                            with tumor
+      TCGA.OR.A5J6               a5j6                            tumor free
+      TCGA.OR.A5J7               a5j7                            with tumor
+      TCGA.OR.A5J8               a5j8                            with tumor
+      TCGA.OR.A5J9               a5j9                            with tumor
+      TCGA.OR.A5JA               a5ja                            with tumor
+      TCGA.OR.A5JB               a5jb                                  <NA>
+      TCGA.OR.A5JC               a5jc                                  <NA>
+      TCGA.OR.A5JD               a5jd                            tumor free
+      TCGA.OR.A5JE               a5je                            with tumor
+      TCGA.OR.A5JF               a5jf                            tumor free
+      TCGA.OR.A5JG               a5jg                            with tumor
+      TCGA.OR.A5JI               a5ji                            tumor free
+      TCGA.OR.A5JJ               a5jj                            with tumor
+      TCGA.OR.A5JK               a5jk                            tumor free
+      TCGA.OR.A5JL               a5jl                            tumor free
+      TCGA.OR.A5JM               a5jm                            with tumor
+      TCGA.OR.A5JO               a5jo                            tumor free
+      TCGA.OR.A5JP               a5jp                            tumor free
+      TCGA.OR.A5JQ               a5jq                            tumor free
+      TCGA.OR.A5JR               a5jr                            tumor free
+      TCGA.OR.A5JS               a5js                            with tumor
+      TCGA.OR.A5JT               a5jt                            with tumor
+      TCGA.OR.A5JV               a5jv                            tumor free
+      TCGA.OR.A5JW               a5jw                            tumor free
+      TCGA.OR.A5JX               a5jx                            tumor free
+      TCGA.OR.A5JY               a5jy                            with tumor
+      TCGA.OR.A5JZ               a5jz                            tumor free
+      TCGA.OR.A5K0               a5k0                            with tumor
+      TCGA.OR.A5K1               a5k1                            tumor free
+      TCGA.OR.A5K2               a5k2                            with tumor
+      TCGA.OR.A5K3               a5k3                            tumor free
+      TCGA.OR.A5K4               a5k4                            tumor free
+      TCGA.OR.A5K5               a5k5                            with tumor
+      TCGA.OR.A5K6               a5k6                            with tumor
+      TCGA.OR.A5K8               a5k8                            tumor free
+      TCGA.OR.A5K9               a5k9                            with tumor
+      TCGA.OR.A5KO               a5ko                            with tumor
+      TCGA.OR.A5KT               a5kt                            tumor free
+      TCGA.OR.A5KU               a5ku                            tumor free
+      TCGA.OR.A5KV               a5kv                            tumor free
+      TCGA.OR.A5KW               a5kw                            tumor free
+      TCGA.OR.A5KX               a5kx                            with tumor
+      TCGA.OR.A5KY               a5ky                            with tumor
+      TCGA.OR.A5KZ               a5kz                            with tumor
+      TCGA.OR.A5L3               a5l3                            tumor free
+      TCGA.OR.A5L4               a5l4                            tumor free
+      TCGA.OR.A5L5               a5l5                            tumor free
+      TCGA.OR.A5L6               a5l6                            tumor free
+      TCGA.OR.A5L8               a5l8                            tumor free
+      TCGA.OR.A5L9               a5l9                            tumor free
+      TCGA.OR.A5LA               a5la                            tumor free
+      TCGA.OR.A5LB               a5lb                            with tumor
+      TCGA.OR.A5LC               a5lc                            with tumor
+      TCGA.OR.A5LD               a5ld                            with tumor
+      TCGA.OR.A5LE               a5le                            with tumor
+      TCGA.OR.A5LG               a5lg                            with tumor
+      TCGA.OR.A5LH               a5lh                            with tumor
+      TCGA.OR.A5LJ               a5lj                            with tumor
+      TCGA.OR.A5LK               a5lk                            tumor free
+      TCGA.OR.A5LL               a5ll                            with tumor
+      TCGA.OR.A5LM               a5lm                            tumor free
+      TCGA.OR.A5LN               a5ln                            tumor free
+      TCGA.OR.A5LO               a5lo                            with tumor
+      TCGA.OR.A5LP               a5lp                            tumor free
+      TCGA.OR.A5LR               a5lr                            tumor free
+      TCGA.OR.A5LS               a5ls                            tumor free
+      TCGA.OR.A5LT               a5lt                            tumor free
+      TCGA.OU.A5PI               a5pi                            with tumor
+      TCGA.P6.A5OF               a5of                            with tumor
+      TCGA.P6.A5OG               a5og                            with tumor
+      TCGA.PA.A5YG               a5yg                            tumor free
+      TCGA.PK.A5H8               a5h8                            tumor free
+      TCGA.PK.A5H9               a5h9                            tumor free
+      TCGA.PK.A5HA               a5ha                            tumor free
+      TCGA.PK.A5HB               a5hb                            with tumor
+                   patient.primary_pathology.laterality
+      TCGA.OR.A5J1                                 left
+      TCGA.OR.A5J2                                 left
+      TCGA.OR.A5J3                                 left
+      TCGA.OR.A5J5                                right
+      TCGA.OR.A5J6                                right
+      TCGA.OR.A5J7                                right
+      TCGA.OR.A5J8                                 left
+      TCGA.OR.A5J9                                right
+      TCGA.OR.A5JA                                right
+      TCGA.OR.A5JB                                right
+      TCGA.OR.A5JC                                 left
+      TCGA.OR.A5JD                                 left
+      TCGA.OR.A5JE                                 left
+      TCGA.OR.A5JF                                 left
+      TCGA.OR.A5JG                                 left
+      TCGA.OR.A5JI                                right
+      TCGA.OR.A5JJ                                 left
+      TCGA.OR.A5JK                                 left
+      TCGA.OR.A5JL                                right
+      TCGA.OR.A5JM                                 left
+      TCGA.OR.A5JO                                right
+      TCGA.OR.A5JP                                 left
+      TCGA.OR.A5JQ                                right
+      TCGA.OR.A5JR                                 left
+      TCGA.OR.A5JS                                right
+      TCGA.OR.A5JT                                 left
+      TCGA.OR.A5JV                                 left
+      TCGA.OR.A5JW                                right
+      TCGA.OR.A5JX                                 left
+      TCGA.OR.A5JY                                right
+      TCGA.OR.A5JZ                                 left
+      TCGA.OR.A5K0                                 left
+      TCGA.OR.A5K1                                 left
+      TCGA.OR.A5K2                                right
+      TCGA.OR.A5K3                                 left
+      TCGA.OR.A5K4                                right
+      TCGA.OR.A5K5                                 left
+      TCGA.OR.A5K6                                 left
+      TCGA.OR.A5K8                                right
+      TCGA.OR.A5K9                                right
+      TCGA.OR.A5KO                                right
+      TCGA.OR.A5KT                                 left
+      TCGA.OR.A5KU                                 left
+      TCGA.OR.A5KV                                 left
+      TCGA.OR.A5KW                                right
+      TCGA.OR.A5KX                                 left
+      TCGA.OR.A5KY                                 left
+      TCGA.OR.A5KZ                                 left
+      TCGA.OR.A5L3                                right
+      TCGA.OR.A5L4                                right
+      TCGA.OR.A5L5                                 left
+      TCGA.OR.A5L6                                 left
+      TCGA.OR.A5L8                                right
+      TCGA.OR.A5L9                                right
+      TCGA.OR.A5LA                                 left
+      TCGA.OR.A5LB                                right
+      TCGA.OR.A5LC                                 left
+      TCGA.OR.A5LD                                 left
+      TCGA.OR.A5LE                                 left
+      TCGA.OR.A5LG                                 left
+      TCGA.OR.A5LH                                 left
+      TCGA.OR.A5LJ                                 left
+      TCGA.OR.A5LK                                right
+      TCGA.OR.A5LL                                right
+      TCGA.OR.A5LM                                right
+      TCGA.OR.A5LN                                right
+      TCGA.OR.A5LO                                right
+      TCGA.OR.A5LP                                right
+      TCGA.OR.A5LR                                 left
+      TCGA.OR.A5LS                                right
+      TCGA.OR.A5LT                                 left
+      TCGA.OU.A5PI                                 left
+      TCGA.P6.A5OF                                right
+      TCGA.P6.A5OG                                 left
+      TCGA.PA.A5YG                                 left
+      TCGA.PK.A5H8                                right
+      TCGA.PK.A5H9                                right
+      TCGA.PK.A5HA                                 left
+      TCGA.PK.A5HB                                 left
+                   patient.primary_pathology.weiss_assessment_report.weiss_assessment_categories.necrosis
+      TCGA.OR.A5J1                                                                       necrosis present
+      TCGA.OR.A5J2                                                                       necrosis present
+      TCGA.OR.A5J3                                                                       necrosis present
+      TCGA.OR.A5J5                                                                       necrosis present
+      TCGA.OR.A5J6                                                                        necrosis absent
+      TCGA.OR.A5J7                                                                       necrosis present
+      TCGA.OR.A5J8                                                                       necrosis present
+      TCGA.OR.A5J9                                                                       necrosis present
+      TCGA.OR.A5JA                                                                       necrosis present
+      TCGA.OR.A5JB                                                                       necrosis present
+      TCGA.OR.A5JC                                                                       necrosis present
+      TCGA.OR.A5JD                                                                        necrosis absent
+      TCGA.OR.A5JE                                                                       necrosis present
+      TCGA.OR.A5JF                                                                        necrosis absent
+      TCGA.OR.A5JG                                                                       necrosis present
+      TCGA.OR.A5JI                                                                        necrosis absent
+      TCGA.OR.A5JJ                                                                       necrosis present
+      TCGA.OR.A5JK                                                                       necrosis present
+      TCGA.OR.A5JL                                                                        necrosis absent
+      TCGA.OR.A5JM                                                                       necrosis present
+      TCGA.OR.A5JO                                                                        necrosis absent
+      TCGA.OR.A5JP                                                                       necrosis present
+      TCGA.OR.A5JQ                                                                        necrosis absent
+      TCGA.OR.A5JR                                                                        necrosis absent
+      TCGA.OR.A5JS                                                                       necrosis present
+      TCGA.OR.A5JT                                                                       necrosis present
+      TCGA.OR.A5JV                                                                        necrosis absent
+      TCGA.OR.A5JW                                                                       necrosis present
+      TCGA.OR.A5JX                                                                       necrosis present
+      TCGA.OR.A5JY                                                                       necrosis present
+      TCGA.OR.A5JZ                                                                       necrosis present
+      TCGA.OR.A5K0                                                                       necrosis present
+      TCGA.OR.A5K1                                                                                   <NA>
+      TCGA.OR.A5K2                                                                       necrosis present
+      TCGA.OR.A5K3                                                                       necrosis present
+      TCGA.OR.A5K4                                                                       necrosis present
+      TCGA.OR.A5K5                                                                       necrosis present
+      TCGA.OR.A5K6                                                                       necrosis present
+      TCGA.OR.A5K8                                                                        necrosis absent
+      TCGA.OR.A5K9                                                                                   <NA>
+      TCGA.OR.A5KO                                                                       necrosis present
+      TCGA.OR.A5KT                                                                       necrosis present
+      TCGA.OR.A5KU                                                                       necrosis present
+      TCGA.OR.A5KV                                                                       necrosis present
+      TCGA.OR.A5KW                                                                                   <NA>
+      TCGA.OR.A5KX                                                                       necrosis present
+      TCGA.OR.A5KY                                                                        necrosis absent
+      TCGA.OR.A5KZ                                                                       necrosis present
+      TCGA.OR.A5L3                                                                       necrosis present
+      TCGA.OR.A5L4                                                                       necrosis present
+      TCGA.OR.A5L5                                                                       necrosis present
+      TCGA.OR.A5L6                                                                       necrosis present
+      TCGA.OR.A5L8                                                                        necrosis absent
+      TCGA.OR.A5L9                                                                       necrosis present
+      TCGA.OR.A5LA                                                                       necrosis present
+      TCGA.OR.A5LB                                                                        necrosis absent
+      TCGA.OR.A5LC                                                                       necrosis present
+      TCGA.OR.A5LD                                                                       necrosis present
+      TCGA.OR.A5LE                                                                       necrosis present
+      TCGA.OR.A5LG                                                                        necrosis absent
+      TCGA.OR.A5LH                                                                       necrosis present
+      TCGA.OR.A5LJ                                                                       necrosis present
+      TCGA.OR.A5LK                                                                       necrosis present
+      TCGA.OR.A5LL                                                                       necrosis present
+      TCGA.OR.A5LM                                                                       necrosis present
+      TCGA.OR.A5LN                                                                        necrosis absent
+      TCGA.OR.A5LO                                                                       necrosis present
+      TCGA.OR.A5LP                                                                        necrosis absent
+      TCGA.OR.A5LR                                                                       necrosis present
+      TCGA.OR.A5LS                                                                       necrosis present
+      TCGA.OR.A5LT                                                                       necrosis present
+      TCGA.OU.A5PI                                                                       necrosis present
+      TCGA.P6.A5OF                                                                       necrosis present
+      TCGA.P6.A5OG                                                                       necrosis present
+      TCGA.PA.A5YG                                                                                   <NA>
+      TCGA.PK.A5H8                                                                       necrosis present
+      TCGA.PK.A5H9                                                                        necrosis absent
+      TCGA.PK.A5HA                                                                       necrosis present
+      TCGA.PK.A5HB                                                                                   <NA>
+                   patient.stage_event.tnm_categories.clinical_categories.clinical_m
+      TCGA.OR.A5J1                                                                m0
+      TCGA.OR.A5J2                                                                m1
+      TCGA.OR.A5J3                                                                m0
+      TCGA.OR.A5J5                                                                m0
+      TCGA.OR.A5J6                                                                m0
+      TCGA.OR.A5J7                                                                m0
+      TCGA.OR.A5J8                                                                m0
+      TCGA.OR.A5J9                                                                m0
+      TCGA.OR.A5JA                                                                m1
+      TCGA.OR.A5JB                                                                m1
+      TCGA.OR.A5JC                                                              <NA>
+      TCGA.OR.A5JD                                                                m0
+      TCGA.OR.A5JE                                                                m0
+      TCGA.OR.A5JF                                                                m0
+      TCGA.OR.A5JG                                                                m1
+      TCGA.OR.A5JI                                                                m0
+      TCGA.OR.A5JJ                                                                m1
+      TCGA.OR.A5JK                                                                m1
+      TCGA.OR.A5JL                                                                m0
+      TCGA.OR.A5JM                                                                m1
+      TCGA.OR.A5JO                                                                m0
+      TCGA.OR.A5JP                                                                m0
+      TCGA.OR.A5JQ                                                                m0
+      TCGA.OR.A5JR                                                                m0
+      TCGA.OR.A5JS                                                                m0
+      TCGA.OR.A5JT                                                                m0
+      TCGA.OR.A5JV                                                                m0
+      TCGA.OR.A5JW                                                                m0
+      TCGA.OR.A5JX                                                                m0
+      TCGA.OR.A5JY                                                                m1
+      TCGA.OR.A5JZ                                                                m0
+      TCGA.OR.A5K0                                                                m0
+      TCGA.OR.A5K1                                                                m0
+      TCGA.OR.A5K2                                                                m0
+      TCGA.OR.A5K3                                                                m0
+      TCGA.OR.A5K4                                                                m0
+      TCGA.OR.A5K5                                                                m0
+      TCGA.OR.A5K6                                                                m0
+      TCGA.OR.A5K8                                                                m0
+      TCGA.OR.A5K9                                                                m0
+      TCGA.OR.A5KO                                                                m1
+      TCGA.OR.A5KT                                                                m0
+      TCGA.OR.A5KU                                                                m0
+      TCGA.OR.A5KV                                                                m0
+      TCGA.OR.A5KW                                                                m0
+      TCGA.OR.A5KX                                                                m0
+      TCGA.OR.A5KY                                                                m1
+      TCGA.OR.A5KZ                                                                m0
+      TCGA.OR.A5L3                                                                m0
+      TCGA.OR.A5L4                                                                m0
+      TCGA.OR.A5L5                                                                m0
+      TCGA.OR.A5L6                                                                m0
+      TCGA.OR.A5L8                                                                m0
+      TCGA.OR.A5L9                                                                m0
+      TCGA.OR.A5LA                                                                m0
+      TCGA.OR.A5LB                                                                m1
+      TCGA.OR.A5LC                                                                m1
+      TCGA.OR.A5LD                                                                m0
+      TCGA.OR.A5LE                                                                m0
+      TCGA.OR.A5LG                                                                m0
+      TCGA.OR.A5LH                                                                m0
+      TCGA.OR.A5LJ                                                                m1
+      TCGA.OR.A5LK                                                                m0
+      TCGA.OR.A5LL                                                                m0
+      TCGA.OR.A5LM                                                                m0
+      TCGA.OR.A5LN                                                                m0
+      TCGA.OR.A5LO                                                                m0
+      TCGA.OR.A5LP                                                                m0
+      TCGA.OR.A5LR                                                                m0
+      TCGA.OR.A5LS                                                                m0
+      TCGA.OR.A5LT                                                                m0
+      TCGA.OU.A5PI                                                                m1
+      TCGA.P6.A5OF                                                                m0
+      TCGA.P6.A5OG                                                                m1
+      TCGA.PA.A5YG                                                                m0
+      TCGA.PK.A5H8                                                                m0
+      TCGA.PK.A5H9                                                                m0
+      TCGA.PK.A5HA                                                                m0
+      TCGA.PK.A5HB                                                              <NA>
+                   class
+      TCGA.OR.A5J1     0
+      TCGA.OR.A5J2     0
+      TCGA.OR.A5J3     1
+      TCGA.OR.A5J5     0
+      TCGA.OR.A5J6     1
+      TCGA.OR.A5J7     0
+      TCGA.OR.A5J8     0
+      TCGA.OR.A5J9     1
+      TCGA.OR.A5JA     0
+      TCGA.OR.A5JB     0
+      TCGA.OR.A5JC     0
+      TCGA.OR.A5JD     1
+      TCGA.OR.A5JE     0
+      TCGA.OR.A5JF     1
+      TCGA.OR.A5JG     0
+      TCGA.OR.A5JI     1
+      TCGA.OR.A5JJ     1
+      TCGA.OR.A5JK     1
+      TCGA.OR.A5JL     1
+      TCGA.OR.A5JM     0
+      TCGA.OR.A5JO     1
+      TCGA.OR.A5JP     1
+      TCGA.OR.A5JQ     1
+      TCGA.OR.A5JR     1
+      TCGA.OR.A5JS     1
+      TCGA.OR.A5JT     1
+      TCGA.OR.A5JV     1
+      TCGA.OR.A5JW     1
+      TCGA.OR.A5JX     1
+      TCGA.OR.A5JY     0
+      TCGA.OR.A5JZ     1
+      TCGA.OR.A5K0     1
+      TCGA.OR.A5K1     1
+      TCGA.OR.A5K2     0
+      TCGA.OR.A5K3     1
+      TCGA.OR.A5K4     1
+      TCGA.OR.A5K5     1
+      TCGA.OR.A5K6     1
+      TCGA.OR.A5K8     1
+      TCGA.OR.A5K9     0
+      TCGA.OR.A5KO     1
+      TCGA.OR.A5KT     1
+      TCGA.OR.A5KU     1
+      TCGA.OR.A5KV     1
+      TCGA.OR.A5KW     1
+      TCGA.OR.A5KX     1
+      TCGA.OR.A5KY     0
+      TCGA.OR.A5KZ     0
+      TCGA.OR.A5L3     1
+      TCGA.OR.A5L4     1
+      TCGA.OR.A5L5     1
+      TCGA.OR.A5L6     1
+      TCGA.OR.A5L8     1
+      TCGA.OR.A5L9     1
+      TCGA.OR.A5LA     1
+      TCGA.OR.A5LB     0
+      TCGA.OR.A5LC     0
+      TCGA.OR.A5LD     0
+      TCGA.OR.A5LE     0
+      TCGA.OR.A5LG     1
+      TCGA.OR.A5LH     0
+      TCGA.OR.A5LJ     0
+      TCGA.OR.A5LK     1
+      TCGA.OR.A5LL     0
+      TCGA.OR.A5LM     1
+      TCGA.OR.A5LN     1
+      TCGA.OR.A5LO     1
+      TCGA.OR.A5LP     1
+      TCGA.OR.A5LR     1
+      TCGA.OR.A5LS     1
+      TCGA.OR.A5LT     1
+      TCGA.OU.A5PI     1
+      TCGA.P6.A5OF     0
+      TCGA.P6.A5OG     0
+      TCGA.PA.A5YG     1
+      TCGA.PK.A5H8     1
+      TCGA.PK.A5H9     1
+      TCGA.PK.A5HA     1
+      TCGA.PK.A5HB     1
+      
+      Slot "data.info":
+      $type
+      [1] "rnaseq"
+      
+      $normalized
+      [1] FALSE
+      
+      
+
+---
+
+    Code
+      test_result_covariate
+    Output
+      An object of class "preProcess.obj"
+      Slot "raw":
+                   A1BG A1CF A2BP1 A2LD1 A2ML1    A2M A4GALT A4GNT AAA1 AAAS AACSL
+      TCGA.OR.A5J1   34    0    36   380   114  21598    397     0    0 4633     0
+      TCGA.OR.A5J2   24    0    14   594     0  24451    494     0    0 3749     1
+      TCGA.OR.A5J3   35    1    15   234     3  12155    127     4    0 2126     0
+      TCGA.OR.A5J5 2190    2     8    83    64   3794    484     1    0 3865     4
+      TCGA.OR.A5J6 1074    0     8   425     2  17155   2785     1    0 2123     0
+      TCGA.OR.A5J7   27    0     8   223     7  26269    443     0    0 5631     0
+      TCGA.OR.A5J8  122    0     0   128    11  72755   3023     0    0 2951     0
+      TCGA.OR.A5J9   24    0    98   807    86  41629   1146     0    0 4535     0
+      TCGA.OR.A5JA   99    0    13   508    63  14120   1163     0    0 4746     8
+      TCGA.OR.A5JB  430    0     0   105     0   7438   7015     1    0 1651     0
+      TCGA.OR.A5JC  295    0    96   181     8  11494    460     1    0 3271     0
+      TCGA.OR.A5JD  192    0    71   317    97  15629    232     0    0 2426     0
+      TCGA.OR.A5JE  103    0     0   173     8  12232    338     0    0 2292     0
+      TCGA.OR.A5JF   78    0  1255   489   848  22463    447     0    0 3865     0
+      TCGA.OR.A5JG   76    0    50   211    16  14891    231     0    0 3380     0
+      TCGA.OR.A5JI  941    0     4    58     3  16369    665     0    0 2144     0
+      TCGA.OR.A5JJ   43    0    83   295   435  15059   1217     1    0 4194     1
+      TCGA.OR.A5JK   63    0   221   153   159  38237    302     6    0 2755    16
+      TCGA.OR.A5JL    9    0   194   728   167  15862    295     0    0 3710     0
+      TCGA.OR.A5JM   56    0     0   720     2   5536    626     0    0 2981     0
+      TCGA.OR.A5JO  425   26     0   376    10 242406   3306     0    2 2078     0
+      TCGA.OR.A5JP  371    0     2   138    10  16078    298     0    0 3766     0
+      TCGA.OR.A5JQ  558    0     1   306     8  32103    373     2    0 4063     0
+      TCGA.OR.A5JR  556    0    15   115    87  17616    164     0    0 3917     0
+      TCGA.OR.A5JS   27    3     0   162     2  16909   1962     4    0 4643     0
+      TCGA.OR.A5JT  160    0     2    73   646  16763    287     0    0 4311     0
+      TCGA.OR.A5JV   72    0   671    86   122  43497    162     1    0 2952     0
+      TCGA.OR.A5JW   19    0     0   248    10  16040    508     1    0 3688     0
+      TCGA.OR.A5JX  618    0    48   210   190  17483    408     0    0 3953     0
+      TCGA.OR.A5JY   13    0     3   853     0  13974    228     0    0 8481     6
+      TCGA.OR.A5JZ  224    0     0    72     7   6615   2103     0    0 2332     0
+      TCGA.OR.A5K0   36    0   222     4     3  17351    103     0    0 2132     0
+      TCGA.OR.A5K1   66    0    26   116    29  21680    313     0    0 2283     0
+      TCGA.OR.A5K2   60    0     0   105     1   6196    164     0    0 2050     0
+      TCGA.OR.A5K3   25    0     0   106    36   7487    235     0    0 1258     0
+      TCGA.OR.A5K4   10    0     2   153   174   5735    921     0    0 3313     0
+      TCGA.OR.A5K5  182    0     9   347     7   7771    344     1    0 3900     1
+      TCGA.OR.A5K6   31    0     0   368     7   8485    278     0    0 3175     0
+      TCGA.OR.A5K8   20    0   151   137     4   5098    178     0    0 1247     0
+      TCGA.OR.A5K9   22    0     1   238     2   7509    146     0    0 2276     0
+      TCGA.OR.A5KO   54    0   454   385     0   6662    833     4    0 1817     1
+      TCGA.OR.A5KT  116    0    51    84     0  15023   1072     0    0 2482     1
+      TCGA.OR.A5KU  396    0     3    90    68   4352    700     2    0 2082     1
+      TCGA.OR.A5KV  804    0     1   501     3   9231   1098     0    0 2477     1
+      TCGA.OR.A5KW   35    0     1   531   287   9710    161     0    0 2597     5
+      TCGA.OR.A5KX 2322    0     0   363     7  10131    613     0    0 3962     1
+      TCGA.OR.A5KY   93    0    21   131    78  21841    429     0    0 4068     0
+      TCGA.OR.A5KZ  680    0     0    82     1  15013    172     0    0 2344     1
+      TCGA.OR.A5L3   16    0     0    88     0   2125     66     0    0 3473     0
+      TCGA.OR.A5L4  139    0     2   199     8  22234    448     0    0 2027     0
+      TCGA.OR.A5L5  416    0     0   130    11  21099    388     2    0 4598     1
+      TCGA.OR.A5L6  268    0     4     7    10   6492    145     1    0 1810     1
+      TCGA.OR.A5L8  139    0    34   367    27   5648     84     0    0 3736     0
+      TCGA.OR.A5L9  203    0     3     3    14   1460    122     0    0  536     0
+      TCGA.OR.A5LA   64    0     2   104   102  18589    208     0    0 2570     0
+      TCGA.OR.A5LB   16    1     1   470    29  18108    327     0    0 5147    17
+      TCGA.OR.A5LC   48    0     5   129     9   8033    189     0    0 2074     0
+      TCGA.OR.A5LD   27    0     0    29     1   3863     77     0    0 2273     3
+      TCGA.OR.A5LE   12    0    35   302     0  18963    127     0    1 2238     0
+      TCGA.OR.A5LG  118    0     0   157     8  16426   2841     0    0 4130     0
+      TCGA.OR.A5LH   47    0   255   394   322  26743    651     1    0 3713     0
+      TCGA.OR.A5LJ  275    2     0   142     0   9484    922     0    0 3509     2
+      TCGA.OR.A5LK  795    0     0    26    37  11332    162     1    0  858     0
+      TCGA.OR.A5LL   18    0     4   113     2   2889    548     0    0 1197     0
+      TCGA.OR.A5LM   33    0     2   201  1065  14045    794     0    0 3833     0
+      TCGA.OR.A5LN   40    0     6    86     1   9451    113     0    0 1971     0
+      TCGA.OR.A5LO   62    0     0   176   176  11375    793     0    0 3025     0
+      TCGA.OR.A5LP   78    0     3   184    18  39428    775     1    0 3302     0
+      TCGA.OR.A5LR  197    0     4    92    34  10397    241     0    0 2095     0
+      TCGA.OR.A5LS   34    0   228   117    88   7050     85     0    1 2165     0
+      TCGA.OR.A5LT   38    0     3   119    27   3421    667     1    0 1812     2
+      TCGA.OU.A5PI   34    0    32    94   158   9767    421     1    0 2477     0
+      TCGA.P6.A5OF  118    0   229   817    73  18309    760     1    0 4109     1
+      TCGA.P6.A5OG  714    0     0   221     0  44466   1144     2    0 1863     0
+      TCGA.PA.A5YG   92    0     0   130   286  34815    395     1    2 3319     0
+      TCGA.PK.A5H8 2597    0     7   193    21  11056    288     1    0 3262     0
+      TCGA.PK.A5H9  266   34     0  1278    27 828602    959     1   52 3178    95
+      TCGA.PK.A5HA 1288    0    67   215     0  32449   1461     2    0 2577     0
+      TCGA.PK.A5HB  380    3    16   253     1  29428   7735     0    0 3315    20
+                    AACS AADACL2 AADACL3 AADACL4 AADAC AADAT AAGAB AAK1  AAMP AANAT
+      TCGA.OR.A5J1  2636       0       0       0     0   252  2763 1809  5489     3
+      TCGA.OR.A5J2  2438       0       0       0     3    77  3157 4041  4796     0
+      TCGA.OR.A5J3  8746       0       0       0   181    66  1841 1955  4065     0
+      TCGA.OR.A5J5  1249       0       0       0   193   127  1195  835  1744     2
+      TCGA.OR.A5J6  2647       3       0       0   568    35  1839 2217  6451     0
+      TCGA.OR.A5J7 13248       0       0       0     7    77  3685 3780 12260     0
+      TCGA.OR.A5J8  1296       0       0       0     0   351  2654 3291  6323     3
+      TCGA.OR.A5J9  7432       0       0       0     0   302  2543 3117  7250     0
+      TCGA.OR.A5JA  4455       1       0       0   462    58  4024 1914  4524     0
+      TCGA.OR.A5JB  2515       0       0       0     3    43  1913 1241  6561     0
+      TCGA.OR.A5JC   807       0       0       0    52   134  2326 1871  3659     0
+      TCGA.OR.A5JD  1230       0       0       0    59   216  1398 2074  3147     1
+      TCGA.OR.A5JE  6207       0       0       0    69    48  1814 2403  5580     0
+      TCGA.OR.A5JF  3123       0       0       2   106    54  3019 3125  5298     2
+      TCGA.OR.A5JG  2334       0       0       0  2623   111  2810 2340  5410     0
+      TCGA.OR.A5JI   433       0       0       0   439   105   648 1089  1766     0
+      TCGA.OR.A5JJ  4777       0       0       0     3    48  3058 1604  4146     0
+      TCGA.OR.A5JK   932       0       0       0     7    46  2367 1477  2310     1
+      TCGA.OR.A5JL  4628       0       0       0    24   117  6295 2494  5016     2
+      TCGA.OR.A5JM  9110       0       0       0   315    64  2436 4837  4635     0
+      TCGA.OR.A5JO   973       0       0     158    25   129  1491 1707  4269     0
+      TCGA.OR.A5JP  3302       0       0       0  1489   123  2004 1853  5551     0
+      TCGA.OR.A5JQ  1062       0       0       0   200   166  1559 2747  4895     0
+      TCGA.OR.A5JR  1410       0       0       0   157   197  1852 2794  4152     0
+      TCGA.OR.A5JS  9298       0       0       0     8    74  3664 5483  8301     1
+      TCGA.OR.A5JT  1445       0       0       0     7    81  1765 2922  4452     0
+      TCGA.OR.A5JV  1347       0       0       0     5    61  2115 2940  3831     3
+      TCGA.OR.A5JW  3297       0       0       0   179    36  4516 2631  3776     2
+      TCGA.OR.A5JX  1254       0       0       0    40    80  1651 1348  2996     0
+      TCGA.OR.A5JY  5290       0       0       0  4684    11  5265 1931  5190     0
+      TCGA.OR.A5JZ  1307       0       0       0    45    87  1201 1563  2411     0
+      TCGA.OR.A5K0  1314       0       0       0   472    12  1723 2300  4641     0
+      TCGA.OR.A5K1   875       0       0       0     7    27  1101  903  2554     0
+      TCGA.OR.A5K2  5242       0       0       0    22    15  2383 1379  2817     1
+      TCGA.OR.A5K3  1261       0       0       0     6    24   887 1012  1709     0
+      TCGA.OR.A5K4  1512       0       0       0     2   151  1524 1876  3131     0
+      TCGA.OR.A5K5  8944       0       0       0    15    44  3081 4526  6769     1
+      TCGA.OR.A5K6  1855       0       0       0  2512    42  2763 3866  6372     0
+      TCGA.OR.A5K8   676       0       0       0   316    14   572  661  1099     0
+      TCGA.OR.A5K9 15615       0       0       0  2106     4  1931 3948  6108     0
+      TCGA.OR.A5KO  2851       0       0       0    77    16  1800 1730  3213     0
+      TCGA.OR.A5KT  3265       0       0       0  2016     5  1325 1465  2879     0
+      TCGA.OR.A5KU  1460       0       0       0    49   138  2019 1678  3038     0
+      TCGA.OR.A5KV  4148       0       0       0  8673    56  2882 4242  7974     0
+      TCGA.OR.A5KW  5828       0       0       0   182   123  3812 1777  4650     1
+      TCGA.OR.A5KX  1277       0       0       0    49    67  1543 3594 10589     0
+      TCGA.OR.A5KY 12677       0       0       0   223    85  2622 2774  4586     5
+      TCGA.OR.A5KZ  2126       0       0       0    59   214  1734  939  4153     0
+      TCGA.OR.A5L3   709       0       0       0   659     5   937 1568  2642     0
+      TCGA.OR.A5L4  4478       0       0       0     7     5  1973 1903  3001     0
+      TCGA.OR.A5L5  1124       0       0       1  2843    79  1658 1900  3975     0
+      TCGA.OR.A5L6   317       0       0       0     5    24   205  433  1072     0
+      TCGA.OR.A5L8  1401       0       0       0     4    89  1806 3539  5963     0
+      TCGA.OR.A5L9    31       0       0       0     2     0   166  130   194     0
+      TCGA.OR.A5LA   719       0       0       0    51    30   859 1010  2783     0
+      TCGA.OR.A5LB  4362       0       0       0     2   139  4147 2383  5042     1
+      TCGA.OR.A5LC  2815       0       0       0   100    53  1752 2204  4476     1
+      TCGA.OR.A5LD   498       0       0       0     6    53   413 1118  1041     0
+      TCGA.OR.A5LE  5145       0       0       0     0     1  2330 2334  3977     0
+      TCGA.OR.A5LG  5216       0       0       0    32    32  2876 1650  5949     0
+      TCGA.OR.A5LH  4833       0       0       0    10   300  3363 2778  6272     0
+      TCGA.OR.A5LJ  2243       0       0       0   267    30  1452 2543  7083     0
+      TCGA.OR.A5LK   205       0       0       0     6    35   323  661  1129     1
+      TCGA.OR.A5LL   278       2       0       0  4524     9  1919 2419  3525     0
+      TCGA.OR.A5LM  3762       0       0       0     0   160  2837 2077  4326     0
+      TCGA.OR.A5LN   194       0       0       0   296    21   680  672  1113     0
+      TCGA.OR.A5LO  4564       0       0       0     5   355  2449 3000  4876     6
+      TCGA.OR.A5LP   834       0       0       0 13127   145  2248 3428  4415     1
+      TCGA.OR.A5LR  1019       0       0       0   983    82   996 1174  2328     0
+      TCGA.OR.A5LS  2503       0       0       0    31    73  1855 2659  3315     2
+      TCGA.OR.A5LT   408       0       0       0    84    89   944 1214  1791     0
+      TCGA.OU.A5PI  6412       0       0       0     8    52  1879 2810  4524     0
+      TCGA.P6.A5OF  6718       0       0       0    64   116  2637 2686  4062     1
+      TCGA.P6.A5OG   470       0       0       0     1   235  2029 2224  5768     4
+      TCGA.PA.A5YG  1011       0       0       0  1262    27  2097 2738  4970     1
+      TCGA.PK.A5H8  1707       0       0       0     3    19  2498 2094  3317     1
+      TCGA.PK.A5H9  1391       0       0     122  1338   373  2667 2664  4236     1
+      TCGA.PK.A5HA   753       0       0       0   152    51   944 2266  2624     1
+      TCGA.PK.A5HB  2690       0       0       0  1662    45  5002 3791  7720     0
+                   AARS2 AARSD1  AARS AASDHPPT AASDH AASS AATF AATK  ABAT ABCA10
+      TCGA.OR.A5J1   624   1883  7330     3055   211 1970 2616   58  3291    147
+      TCGA.OR.A5J2  1015    898 13588     2038   619  455 2622 2686  3670     24
+      TCGA.OR.A5J3   492    762  6823     1769   348  513 1512  157  1592     62
+      TCGA.OR.A5J5   689    567  3536      762   471  832  700  582   805     39
+      TCGA.OR.A5J6   741   1514  5362     1814   486  339 2017   79  1046     31
+      TCGA.OR.A5J7  1604    621 12055     2602   595 1054 5307  307   638     76
+      TCGA.OR.A5J8  2828   1333 14168     1065   330 1077 2602  276    98     78
+      TCGA.OR.A5J9  1008   1196 15164     2018   690 1007 3747 4621  3888    145
+      TCGA.OR.A5JA  1523    933  6049     1542   499  396 1697  249  6486     35
+      TCGA.OR.A5JB  1470   1913  8429     2322   163 1360 2479  136   118     11
+      TCGA.OR.A5JC   808   1031  5976     1457   367  498 1809   51  6869     64
+      TCGA.OR.A5JD   611    961 13754     1368   857  901 1639   90  2828     79
+      TCGA.OR.A5JE  1458   1830  6790      929   245  179 2502  282   137     35
+      TCGA.OR.A5JF  1078   1019 12960     2992   988  845 2199  761  1406    153
+      TCGA.OR.A5JG   930   1041 15247     1329   479  143 2112   91   787      8
+      TCGA.OR.A5JI   420    624  3882     1272   277  355  860   63  5418     18
+      TCGA.OR.A5JJ   854   1340 11080     2012  1063  896 2591  425  1060     38
+      TCGA.OR.A5JK   512    622  8315     1207   342  842 1478  103 13531     40
+      TCGA.OR.A5JL  1259   1387  5049     3276   856 1075 1490 1038 20321      6
+      TCGA.OR.A5JM  1114   2359 14427     3092   328  419 3071  603  1687     16
+      TCGA.OR.A5JO   637   1101  4811     1290   366  593 2050   51   530     46
+      TCGA.OR.A5JP   855   1274 15651     1335   425  557 1319 1586  1512    144
+      TCGA.OR.A5JQ   997   1551 15982     2053   792  747 2820  128 16805     25
+      TCGA.OR.A5JR  1053    809 16805     2434  1126  703 1689   32 31906      6
+      TCGA.OR.A5JS  1134   1616 20705     2366   620 1295 2762  786   590     71
+      TCGA.OR.A5JT   792    880 28782     2907  1076  973 2068   64 51323     13
+      TCGA.OR.A5JV   892    691 10659     1506  1005  902 1681   75 34473      6
+      TCGA.OR.A5JW  1611    699  6491     1620  1279 1436 1472  198   555    135
+      TCGA.OR.A5JX   746    966  4763     1497   214 1765 1884  302  1186    103
+      TCGA.OR.A5JY  1691   1357  8591     2709   814 2373 2448  557    35     36
+      TCGA.OR.A5JZ   604    695 10953     2248   458  130 1410   18 16943      5
+      TCGA.OR.A5K0   760    866  3903      796   535  663 3358  418   379    133
+      TCGA.OR.A5K1   520    732 11462     1278   239  426 1478   30 21290      5
+      TCGA.OR.A5K2   448    672  5283      970   137  393 1625  203   385     89
+      TCGA.OR.A5K3   364    341  7039      933    78  303  703   34  9336     13
+      TCGA.OR.A5K4   816    822 13432     2199  1070  333 1446    9 28153      3
+      TCGA.OR.A5K5  1082   1491 19447     1655   515  122 4157  746   203     17
+      TCGA.OR.A5K6  1149   1288  5588     1035   592  226 2705  677   489     21
+      TCGA.OR.A5K8   208    314  2221      526   114  221  519   47  2988     23
+      TCGA.OR.A5K9  1119    751 15338     1614   510   71 2268  636   164      2
+      TCGA.OR.A5KO   900    695  7459     2420   806  260 1487  102  8690     20
+      TCGA.OR.A5KT   491    538  6300      626   198  333 1673  139   124     13
+      TCGA.OR.A5KU   522    303  4125     1274   578  667 1245  281  7515    128
+      TCGA.OR.A5KV  1076   2379 15698     3376   622  243 3141 3569  3403     35
+      TCGA.OR.A5KW   556    864  8143     2291   728  369 2161  154  2732     14
+      TCGA.OR.A5KX  1022   1685  3800      957   434 1473 1289  200  2554     50
+      TCGA.OR.A5KY  1020    688 11381     2210   334  875 2236  769   975     76
+      TCGA.OR.A5KZ  1255    662  6237     1992   380  306 1698  133  2458    125
+      TCGA.OR.A5L3   331   1122  2740      643   176  609 1387  478   369     31
+      TCGA.OR.A5L4   771    658  8957     1879   266  314 1031  132 10593      8
+      TCGA.OR.A5L5   599   1478 13487     1956   346  891 1773   45 12079    128
+      TCGA.OR.A5L6   217    364  2673      414   117  270  455   98  2510     10
+      TCGA.OR.A5L8   896    877 10858     2755   651 1295 4322 3579  5576     37
+      TCGA.OR.A5L9    41    194  1094      105    40   80  215    6  1837      8
+      TCGA.OR.A5LA   346   1058  6628      803   272  410 1039   56 10054     12
+      TCGA.OR.A5LB   735    658  4720     1978   739 2977 1725 1235  3074     56
+      TCGA.OR.A5LC   286   1023  6024      760   314  446 2503  726  2126     52
+      TCGA.OR.A5LD   492    464  5401      770    80  338  633   74  3056      8
+      TCGA.OR.A5LE   427    649  6789     2202   308 1839 1344  227  2251     21
+      TCGA.OR.A5LG   911   1281 26120     1883   505 1069 1679   23  1637     26
+      TCGA.OR.A5LH   898   1295  7118     2323   919 1262 2296  179 12309     35
+      TCGA.OR.A5LJ   835   1021  4974     1428   106  372 2309  243   105     72
+      TCGA.OR.A5LK   398    303  1932      417   112  247  549   16  1258     11
+      TCGA.OR.A5LL   769    779  8167     2068   463 2400 1802  208   659     44
+      TCGA.OR.A5LM   673   1114  7390     2267   524 1512 1411   51 20876     28
+      TCGA.OR.A5LN   605    605  3456      787   207 1002  707   34  2737     24
+      TCGA.OR.A5LO   958    434 11186     2676   605 1958 1042  126  8545     16
+      TCGA.OR.A5LP   934    795 29626     2373   484  354 2238   37 15875     20
+      TCGA.OR.A5LR   430    636 11269     1541   381  398 1142   17 17092      8
+      TCGA.OR.A5LS   427    381  6274     1764   776 1259  927  657  2784     47
+      TCGA.OR.A5LT   379    618  4016     1716   565  860 1038  364  6727     30
+      TCGA.OU.A5PI   422    487  7122     1543   729 2477 1946  829  5758     29
+      TCGA.P6.A5OF   933    618  7397     2263   826  370 1944  239  1078     99
+      TCGA.P6.A5OG  1106   1426 14635     2245   491 2086 2945  413    84      3
+      TCGA.PA.A5YG   712    700 14676     2011   412 1138 1875  128 19853     19
+      TCGA.PK.A5H8  1270    646  5261     1751   282  886 1667   60 19334     38
+      TCGA.PK.A5H9  1018   1064  7063     3697   894  219 1763   81  1226    197
+      TCGA.PK.A5HA  1453    831 13658      893   424  201 1871  332  8018      5
+      TCGA.PK.A5HB  2412    825 12147     1649   505  417 1918  413   847     21
+                   ABCA11P ABCA12 ABCA13 ABCA17P ABCA1 ABCA2 ABCA3 ABCA4 ABCA5 ABCA6
+      TCGA.OR.A5J1      96      0      1      88   665  1675  1519     5  4241    30
+      TCGA.OR.A5J2     190      0      2      32  2662  2465  2727    17   667    71
+      TCGA.OR.A5J3      48      9    277      54  1513  5173  8127    12  1483    33
+      TCGA.OR.A5J5     214      1     15     181   401  4343  5187     0   929     2
+      TCGA.OR.A5J6      98      0      0     123  1432   720  1546     5  1625   189
+      TCGA.OR.A5J7     123      0     16      43   818  3234  2035     7  2392    17
+      TCGA.OR.A5J8     209      0     27       5  5360  2311   272   122   264   776
+      TCGA.OR.A5J9     591      3      3      70  2430  4245  1113     6  3380    18
+      TCGA.OR.A5JA     115      1    518      93   368  1018  4873     2   745     5
+      TCGA.OR.A5JB      35     36      1       7  5085  4014   426     4   465  1099
+      TCGA.OR.A5JC     214     67      4      94   889   350  1711     3  1167    29
+      TCGA.OR.A5JD     184      1      6     103  1650  5439  4693     7  1657    25
+      TCGA.OR.A5JE     116      0      2      12   693  4496   321     4  2032     3
+      TCGA.OR.A5JF     330      1   1643     111  3372 10432  9197     7  5250    81
+      TCGA.OR.A5JG     143      4     84      91   326  2640  1752     7   369    14
+      TCGA.OR.A5JI     164      1      4      42  4397  1656  5162     6   459    21
+      TCGA.OR.A5JJ     333      0     15     130  5895 11900  2249     3  1617    33
+      TCGA.OR.A5JK     169     40     13      48   456  1311  3358     3  1248    18
+      TCGA.OR.A5JL     234     15    500      37  1518  1545  3412    14  1059    23
+      TCGA.OR.A5JM     333      0      0      24   739  1890   764     8   592     9
+      TCGA.OR.A5JO     104      1      0      40  1712  1347   629     6  1535  3667
+      TCGA.OR.A5JP     445      1      2     130  3022   955  1850    16  4029    51
+      TCGA.OR.A5JQ     419      1      6      44  3250  5863 12947     8  1536    60
+      TCGA.OR.A5JR     289      3     18     103  1041  4983 30505     4   814     4
+      TCGA.OR.A5JS      63     29      1      34  2378  5344  1943     1  3519    42
+      TCGA.OR.A5JT     274      2      1     212  2469  3178 21609    15   875     2
+      TCGA.OR.A5JV     105      2     20     152   727  1179  9049    10   413     7
+      TCGA.OR.A5JW     307      1     53      98  4358  1827  4700     3  3075    39
+      TCGA.OR.A5JX     189      0      5      90   387  1649  1798     0  1693    22
+      TCGA.OR.A5JY     180     24      7       7   501  1024  1387   132  2649    38
+      TCGA.OR.A5JZ     129      3     13     135  4090  1965 13426     3   830     5
+      TCGA.OR.A5K0      46      2      1      75  1744  5743  1921    16  4821    26
+      TCGA.OR.A5K1     102      0     19     100   935   885 14312     4   434     3
+      TCGA.OR.A5K2      26      0      2      25   371   661   508     0  2380    16
+      TCGA.OR.A5K3     116      0     31     112   226   647  2725     4   495     5
+      TCGA.OR.A5K4     147      0      3     213   892  2389 36069    10  1024    34
+      TCGA.OR.A5K5      48      0      1      70   287  2034  1867    31   955    10
+      TCGA.OR.A5K6      95      1      0      50  2001  3112  1831     5   499     4
+      TCGA.OR.A5K8      87      0     36      36  1192  1653  2728     2   429    11
+      TCGA.OR.A5K9     106      1      2      79  2242  3020   163     4   244     4
+      TCGA.OR.A5KO     117      1      4     215  3655  3527  8102     2  1617     9
+      TCGA.OR.A5KT      15      0      4      20   201  1232  1575     8   308   110
+      TCGA.OR.A5KU     131      3     13      90   609   684  1028     4  3174    20
+      TCGA.OR.A5KV     247      0      1     251   989  5134  1492     1  2333    18
+      TCGA.OR.A5KW      67      4     90      83  1578  1919  3040     4   904    12
+      TCGA.OR.A5KX     155      0      0     113  2353   862  2372     3  1089     1
+      TCGA.OR.A5KY     164      4     72      46  3411  5832  2967     1  1665    80
+      TCGA.OR.A5KZ     148      1      0      48   833   621   564     1   328  1601
+      TCGA.OR.A5L3      66      0      0       7  1306  1691   514    19  1060     9
+      TCGA.OR.A5L4     126      0      4      58   225   445  5407     6   326    36
+      TCGA.OR.A5L5     200      1      3      77  5761  2509  9272    13  2243   284
+      TCGA.OR.A5L6      97      1      2      20   392   665  1629     5   863     9
+      TCGA.OR.A5L8     235      1      0      38  7397  2229  2725    10  1353    24
+      TCGA.OR.A5L9      40      0      0      17   565   128  1220     3   181    10
+      TCGA.OR.A5LA     100      4      2      74  2356  1988  4942     2   683    46
+      TCGA.OR.A5LB     294      0    427      66  4348  3037  5887     4  2427    28
+      TCGA.OR.A5LC      75      0      0      84   875  3107   727     0   748    26
+      TCGA.OR.A5LD      52      0      0       3   358   192   245     1   165     2
+      TCGA.OR.A5LE      94      0      0      13   410  1150   353     9   764     9
+      TCGA.OR.A5LG     172      4     10      33  1754  1303  1065     2   836    50
+      TCGA.OR.A5LH     266      6     54     174  1158  1668  5031    56  2031    65
+      TCGA.OR.A5LJ     156      0     10      13  3282  5440  2167    21  1052     8
+      TCGA.OR.A5LK     129      2      4      30   916   906  1131     4   303    15
+      TCGA.OR.A5LL     132      2     11      31  8081  1820   894     4  2101    75
+      TCGA.OR.A5LM     287      4    113     123   143   500  2540     2   909     4
+      TCGA.OR.A5LN     295      0      0       9  1022   908  2022     0   853     5
+      TCGA.OR.A5LO     103      3    340      72   950  2018  2772     0  1621    16
+      TCGA.OR.A5LP     165      8     11      95  2514  5452 11478     5  1195    49
+      TCGA.OR.A5LR      85      1      0     156  1089  1604  9508     6   674    28
+      TCGA.OR.A5LS     189      0    103      42  2231  3377  3451     4  2226    18
+      TCGA.OR.A5LT     212      5      0      29  2112  6206  2324    30  1828     7
+      TCGA.OU.A5PI     139      2     68      34  1128  4401  5606     5  1984    72
+      TCGA.P6.A5OF     235      1     25    1381  3669 12130  5576     2  2307   156
+      TCGA.P6.A5OG     107      0    352     356  1071  4243  2088    95   240   221
+      TCGA.PA.A5YG     132      3      4      51  4491  3573  3415     0  1224    20
+      TCGA.PK.A5H8     248      1    490     202   669   512  4548    13  1098    10
+      TCGA.PK.A5H9     311      1      3      25  8536  1769  2009     3  6364  6420
+      TCGA.PK.A5HA     211      0      7     618  7754  2534 10411     5   195   113
+      TCGA.PK.A5HB     322      6     31     122   115  1153  8254    10   355    14
+                   ABCA7 ABCA8 ABCA9 ABCB10 ABCB11 ABCB1 ABCB4 ABCB5 ABCB6 ABCB7
+      TCGA.OR.A5J1   898     9    75    860      1  2191   757    15  3792   415
+      TCGA.OR.A5J2   524   303   101    948      0  7047 13756     4  1129  1315
+      TCGA.OR.A5J3   707  2310    67    302      3 31934  9662     9  1644   836
+      TCGA.OR.A5J5  2632  1268    61    375      0   275   293     1  1223   240
+      TCGA.OR.A5J6   710  8948    52    494      0  6512   171     0  1506   505
+      TCGA.OR.A5J7  1531  2583    37    730      0 10535  1062     4  9537   699
+      TCGA.OR.A5J8   590   334   569    595      0   305    34   124  2508   509
+      TCGA.OR.A5J9   821  3987    75    218      0  8998  2404     1  3067   728
+      TCGA.OR.A5JA  1252  1802   215    452      0 11415   540  2049  1397   933
+      TCGA.OR.A5JB   385     8    42    945      0    52    15     0  1801   847
+      TCGA.OR.A5JC   736   937    63    237      0 13760   832     0   668   631
+      TCGA.OR.A5JD  1033  2936    72    408      0  1266    24   298  1200   835
+      TCGA.OR.A5JE   794   662    25    335      1  4374  1350     2  4204   354
+      TCGA.OR.A5JF  1260  4296   203    284      1 28395 20816     5  1639  1086
+      TCGA.OR.A5JG   624    44    20    405      1  8558   102   545  1427   644
+      TCGA.OR.A5JI   328  1183    43    172      0  6656   125     1   770   242
+      TCGA.OR.A5JJ  1460   933    59    350      0  8989  8263     4  2507   944
+      TCGA.OR.A5JK  1650   500    73    314      0  2552   771     0   738   357
+      TCGA.OR.A5JL   496  1792    52    425     10  4675  1043     9  2399  1870
+      TCGA.OR.A5JM  1714   393     7    966      0 12156  2495     0  3604   380
+      TCGA.OR.A5JO   606 11345   565    464      2   420    64     1  1093   749
+      TCGA.OR.A5JP    83  1451   156    723      5  4494    63     0  4721   528
+      TCGA.OR.A5JQ  1070  7282    64    411      0 14628   381    39  1533   827
+      TCGA.OR.A5JR   539  4802     3    365      1  5383    79    12   620  1337
+      TCGA.OR.A5JS  1755  1479    57    806      0 18518  1330     1  3048   939
+      TCGA.OR.A5JT   745  3347     9    296      0  1472    51     3   941   979
+      TCGA.OR.A5JV   843  1914     7    304      0  1542   117   708   543  1498
+      TCGA.OR.A5JW   542  3649   148    341      0 28982  2571     0   873  1301
+      TCGA.OR.A5JX   654  1003    73    144      0  9728  1453     0   956   483
+      TCGA.OR.A5JY   692  1580    33    544      1 11594  4992    10  2003  1002
+      TCGA.OR.A5JZ   334  2339    24    274      0  2191    17     1   451   808
+      TCGA.OR.A5K0  2981   282    58    628      0 13556   226     0   936   359
+      TCGA.OR.A5K1   448  1425    17    131      0   577     5     0   273   514
+      TCGA.OR.A5K2   165    98    82    189      3  3890  1677     3  2788   467
+      TCGA.OR.A5K3   508   168    25     80      0  1152    24  3753   545   358
+      TCGA.OR.A5K4   599  2191    11    353      2   626    51    20   617  1245
+      TCGA.OR.A5K5  1047  1310    17    319      0  5833  6140     2  3355   524
+      TCGA.OR.A5K6   507  1841     7    507      0 18267 11421     0  1198   771
+      TCGA.OR.A5K8   636   434    30     71      0  2880   729     7   538   201
+      TCGA.OR.A5K9  1949  5648    10    247      0 20986 11652     0  3925   646
+      TCGA.OR.A5KO   583  2693    25    701      0 15660  1039     2   789  1015
+      TCGA.OR.A5KT   294 11599    96    334      0  3782   356    17   827   333
+      TCGA.OR.A5KU  1137  1557   131    204      0 10480  1518     0  1246   547
+      TCGA.OR.A5KV  2840    10    18    258     46  7742   673     0  2810  1029
+      TCGA.OR.A5KW  1051   830    33    324     15 21130  1004    13  1863   747
+      TCGA.OR.A5KX  2237  5486     4    343      0  3248    31     0  2610   389
+      TCGA.OR.A5KY  1463   311   140    432     14 20686  6703    18  4187   593
+      TCGA.OR.A5KZ   268  2746  1253    505      0  4288   739     0  1553   723
+      TCGA.OR.A5L3   158   524    16    108      0  2256   374     1  1592   205
+      TCGA.OR.A5L4   277  1148    26    239      0  5820    91     0   250  1327
+      TCGA.OR.A5L5   808  2631   303    331      2  5134   300     6   942   843
+      TCGA.OR.A5L6   337   468    16     74      0   380    30     0   304   119
+      TCGA.OR.A5L8   254  5788    63    540      3 25311 13516     0   942  1260
+      TCGA.OR.A5L9   114   154     9     16      0    96     2     0   202    31
+      TCGA.OR.A5LA   125  1593    31    133      0  2197    76     0   745   283
+      TCGA.OR.A5LB   829  3140    38    363      0  2418  3642     1  2108  1464
+      TCGA.OR.A5LC  1014  1144    29    330      0   199    59     0  1359   513
+      TCGA.OR.A5LD   190   374    11     54      0  1799   819     0  1181    68
+      TCGA.OR.A5LE   376    12    12    421      0  5330  9975     2  2443   706
+      TCGA.OR.A5LG   594  1269   102    480      0  1624   680     0  2597   761
+      TCGA.OR.A5LH   502  2294    88    228      6  3814   471     8  1534  1500
+      TCGA.OR.A5LJ   339    53    34    579      7  9419 12843    60  1796  1132
+      TCGA.OR.A5LK   514   208    47     78      0   517    18  1025    99   275
+      TCGA.OR.A5LL   329  6808   152    605      0 29509  5475     0  3255   894
+      TCGA.OR.A5LM  1110   423    39    196      0  2130    56     1   990   608
+      TCGA.OR.A5LN   446  1156    10    272      0  1051    37     1   592   255
+      TCGA.OR.A5LO  1322  3639    24    354      0  7111  1181     0  2276  1977
+      TCGA.OR.A5LP   768  1868    55    358      0  8839   109    15   963  1177
+      TCGA.OR.A5LR   399   792    31    139      0  1815    12     0   349   593
+      TCGA.OR.A5LS   559    32    63    477      0  3425 12817     0   191   657
+      TCGA.OR.A5LT  2562  1532    23    244      0  1109    29   138  1495   288
+      TCGA.OU.A5PI   345  2137    69    222      0 23188 10793     7  1503   783
+      TCGA.P6.A5OF  2217  2137   198    621      2  9888  5584     7  2401  1002
+      TCGA.P6.A5OG   931   205   168    823      0   121    30     5  1244  1171
+      TCGA.PA.A5YG   743  3041    18    445      0  9681   113   163   834  1463
+      TCGA.PK.A5H8   783  1795    43    294      0  2807    77     0   342   867
+      TCGA.PK.A5H9   828 19002  1244   1477      0   620   316     5   543  1598
+      TCGA.PK.A5HA   407   849    27    396      0   715    30    14   135  1356
+      TCGA.PK.A5HB   471  2725    15   1445      4 11787    83    10  1741  1801
+                   ABCB8 ABCB9 ABCC10 ABCC11 ABCC12 ABCC13 ABCC1 ABCC2 ABCC3 ABCC4
+      TCGA.OR.A5J1  1910   387   1683      7      0      0  1937     8  1415   361
+      TCGA.OR.A5J2  3628   507   1948      5      0      0  5288    11  2751   519
+      TCGA.OR.A5J3  3869   521   1117      9      0      0  4137    30 11955   139
+      TCGA.OR.A5J5  3547   891   1135      9      0      0  3195   216 10963    28
+      TCGA.OR.A5J6  1707   432   3147     14      0      0  4248    15   481   136
+      TCGA.OR.A5J7  3971   542   2540      8      0      3  3598    83  9617   136
+      TCGA.OR.A5J8  2510  1448   1451      4      5      1  3584    88   370   521
+      TCGA.OR.A5J9  7661  1598   1776     12      0      0  6912    21   927   271
+      TCGA.OR.A5JA  3606  1047   2487      4      0      0  5587     6  5014   281
+      TCGA.OR.A5JB  2239   259    982      2      0      1  4726    18  3764   227
+      TCGA.OR.A5JC  1784   887   2166      4      0      0  3705   314  1333   180
+      TCGA.OR.A5JD  3359   491    627      7      0      0  2345    40  4195    81
+      TCGA.OR.A5JE  1563   723   1766      7      0      0  1119     6  5342    73
+      TCGA.OR.A5JF 13104  1296   1098     14      0      1  7470    93 14040   282
+      TCGA.OR.A5JG  6930   930    530     18      0      0  3690    16 19525   218
+      TCGA.OR.A5JI  1291   193    629      8      0      0  1186    36  2035    69
+      TCGA.OR.A5JJ  5338   980    819      7      0      1  3333    17   616   429
+      TCGA.OR.A5JK  2207   362    764      1      0      0  2265    16   286    33
+      TCGA.OR.A5JL  4483  1414   3026      6      3      0  2062    43  2643   361
+      TCGA.OR.A5JM  2715   504   3126     16      0      0  1997    38  3947   150
+      TCGA.OR.A5JO  1370   147    691      2      0      0  3005   136  2323   440
+      TCGA.OR.A5JP  4291  1082   1636      6      1      7  3367    25  8618    60
+      TCGA.OR.A5JQ  3321  2363   1312     12      0      0  3409    10  4147   194
+      TCGA.OR.A5JR  4035   699   1349     12      0      0  4358    12  1503   299
+      TCGA.OR.A5JS  3328   661   1741     17      0      1  5929    32  7132   137
+      TCGA.OR.A5JT  3127  1194   1170      9      0      0  4349     7   600   311
+      TCGA.OR.A5JV  3522   463    724      5      0      3  4063    21   344   771
+      TCGA.OR.A5JW  5157   419   2505      2      0      0  4012   189 15750   165
+      TCGA.OR.A5JX  1819   473   1274     10      0      0  2552    99  2649    73
+      TCGA.OR.A5JY  2590   683   2448     10      0      1  8081   391  8168     6
+      TCGA.OR.A5JZ   998   674    636      6      0      0  3197    15  2418   318
+      TCGA.OR.A5K0  2088   867   1270      1      4      0  3071     3  2994    66
+      TCGA.OR.A5K1  2436   630    676      2      0      0  2812     2   925   148
+      TCGA.OR.A5K2  2340   356   1404      2      0      0  2187     0  2703    48
+      TCGA.OR.A5K3  1951   248    449      2      0      0  1582     4    91    26
+      TCGA.OR.A5K4  1746   957    725     12      0      0  6626    66   660   311
+      TCGA.OR.A5K5  3459  1051   1694      5      0      2  4344     5  1401    33
+      TCGA.OR.A5K6  1145   286   1184      1      0      0  1242     7 19560   314
+      TCGA.OR.A5K8  1494   142    430      0      0      0  1153    18  1971    67
+      TCGA.OR.A5K9  2607   481   1939      1      0      0  3440    33 10197   664
+      TCGA.OR.A5KO  2328   189   2535      4      0      0  2918    47 15255    93
+      TCGA.OR.A5KT  1118   147    541      7      0      1  1436     2  7239   122
+      TCGA.OR.A5KU  1331   982    482      1      1      1  2992    46   399    38
+      TCGA.OR.A5KV  3073  1663   2097     14      0      1  3478     3  3753   106
+      TCGA.OR.A5KW  2886  1679    855      8      3      0  5790    12  3989   266
+      TCGA.OR.A5KX  1418   710   2295      1      1      0  5318    16  9746   375
+      TCGA.OR.A5KY  6688   895   1740      7      0      1  3530    10 15224   192
+      TCGA.OR.A5KZ  1785   593   1650      6      0      0  3465     4   279   603
+      TCGA.OR.A5L3  1602   123    745      2      0      0   687     6  7508     3
+      TCGA.OR.A5L4  2345   296   1294      2      0      0  3919     2  2791   216
+      TCGA.OR.A5L5  2073  1020    915      4      0      0  2239    27  4052   141
+      TCGA.OR.A5L6   861   174    523      0      0      0  1147   157  3622    27
+      TCGA.OR.A5L8  2902   890   1318      4      0      0  1557    25  8343   159
+      TCGA.OR.A5L9   236    76    117      0      0      0   728     1   139    12
+      TCGA.OR.A5LA  2910   582    355      1      0      0  1592     0  2130    97
+      TCGA.OR.A5LB  4168   501    848      2      0      0  4160    30  8656    86
+      TCGA.OR.A5LC  2881   562    679      2      0      0  1995    24  1704   636
+      TCGA.OR.A5LD   631   441    644      2      0      0  2382     1  1030     7
+      TCGA.OR.A5LE  2242   266   1071      6      1      0  2503    12    81   340
+      TCGA.OR.A5LG  2934   227   2632      0      0      0  1907    10 12249    23
+      TCGA.OR.A5LH  5345   838   1408      9      0      3  2525    19  3496   275
+      TCGA.OR.A5LJ  3172   161    941      5      0      1  2119    55  3875   764
+      TCGA.OR.A5LK   874   333    397      2      0      0   410    11   251    81
+      TCGA.OR.A5LL  2705   144    982      4      0      0  4664    51 11699    17
+      TCGA.OR.A5LM  2765  3192   1079      5      0      0  2693    18  2514   251
+      TCGA.OR.A5LN  1312    71    875      1      0      0   334    43  2285    49
+      TCGA.OR.A5LO  2528   342   1267     12      0      0  3561    46  3588   393
+      TCGA.OR.A5LP  5623   817   1279     12      0      0  4900    36  6439   382
+      TCGA.OR.A5LR   753   593    686      4      0      1  3737     6  2414   168
+      TCGA.OR.A5LS  2862   317    733     29      1      0  2112    63  4124    75
+      TCGA.OR.A5LT   969  1060    777      3      1      0  1308    56   264    89
+      TCGA.OU.A5PI  4049   414    633      5      0      2  2097    23  5902   149
+      TCGA.P6.A5OF  5542   701   2232      5      0      1  3818    76  9615   834
+      TCGA.P6.A5OG  1567   363   1559      0     43      3  1747    25   224   651
+      TCGA.PA.A5YG  4031   434    862      2      0      1  3524    18  5018   324
+      TCGA.PK.A5H8  2583   572   2066     10      0      0  4529    23   379   229
+      TCGA.PK.A5H9  1968   599   2361      9      0      0 15411  1851  4119   819
+      TCGA.PK.A5HA  2479   368   1401      4      0      0  2351    33  2891   154
+      TCGA.PK.A5HB  2946   559   2658     16      0      0 15465   159  6713   622
+                   ABCC5 ABCC6P1 ABCC6P2 ABCC6 ABCC8 ABCC9 ABCD1 ABCD2 ABCD3 ABCD4
+      TCGA.OR.A5J1  2525       3      90    25     0    37  4493   281  1497  1494
+      TCGA.OR.A5J2  3784       5      48    49     0   628  4315  1821  1858   829
+      TCGA.OR.A5J3  2222       4      12    20     1  2019  2741    51  1749  1744
+      TCGA.OR.A5J5  2314     106     178   154     4   112  4083    17   653  1744
+      TCGA.OR.A5J6  1322      38     161  1151     0   170  3441    58  2665   823
+      TCGA.OR.A5J7  6700      29     552   438     0   176  3642    28  1740  1458
+      TCGA.OR.A5J8  2130      65      78   167     1   279   893    54  1888  1929
+      TCGA.OR.A5J9  2835     113     136   202     1   236  4313   670  1791  1303
+      TCGA.OR.A5JA  1988       2       6    41     1   258  4715    22  1558  1981
+      TCGA.OR.A5JB  2419      40     111   280     1    74  1560    18  2171  1861
+      TCGA.OR.A5JC  1378       1      65   101     2   108  4522    28  1115   920
+      TCGA.OR.A5JD  1544      31      66   215    11   269  3039   203  1523   504
+      TCGA.OR.A5JE  1751       7     167    46     0    72  3769    23  1572  1210
+      TCGA.OR.A5JF  2741       2      65   112     0  5589  5529   690  1829   937
+      TCGA.OR.A5JG  1111       0       9    14     0   112  3430    69  2706  1404
+      TCGA.OR.A5JI   380     113     395   336     0   347  3507    65   512   538
+      TCGA.OR.A5JJ  2442      21     168   123     0   125  4088   465  1663  2407
+      TCGA.OR.A5JK  1141       0      88    30     0    91  3158   141   534   466
+      TCGA.OR.A5JL  2055       1      82   493     4   374  7022   427  1996  3069
+      TCGA.OR.A5JM  3103      41     117   205     0   788 10300   386  2967   664
+      TCGA.OR.A5JO  1185     262     156  1460     6   204  1472    30  1641  1909
+      TCGA.OR.A5JP   733      30     221   129     1   362  6533    41  5272  1146
+      TCGA.OR.A5JQ  1441      88     149   173     2   572  5686   269  1715   783
+      TCGA.OR.A5JR  1714      99      58   321     0   119 10914   218  2583   855
+      TCGA.OR.A5JS  4869     100     270   830     0   238  5081   154  1589  1307
+      TCGA.OR.A5JT   800      11      33   369     1   187 17490   517  2824   842
+      TCGA.OR.A5JV  3594       5      28    37     0   166  7061   199  1742   569
+      TCGA.OR.A5JW  2358       2       6    21     0   328  4003   632  2384  1477
+      TCGA.OR.A5JX  1951       6      24    15     0   156  1984    60  1035   871
+      TCGA.OR.A5JY  2736      13      18   134     0  2063 14639   888  7240  1031
+      TCGA.OR.A5JZ   436      29       8     7     0   279  7038    44  1610   623
+      TCGA.OR.A5K0  2045       7      72   246     0     6  5165   251  1047  1217
+      TCGA.OR.A5K1   720      26      69   451     0   138  3142    47   842   519
+      TCGA.OR.A5K2  1135       1     107    41     0    61  6103    12  1132   732
+      TCGA.OR.A5K3   389       3      36    28     0    38  1612    56   610   330
+      TCGA.OR.A5K4   730       3      28    36     0    97 15222   139  1614   650
+      TCGA.OR.A5K5  3803      82     243   294    15   560  3584    64  1293  1074
+      TCGA.OR.A5K6  1846      36      68   108     0   136  3458   100  1500  1484
+      TCGA.OR.A5K8   587       1       1     9     0    96  2006    25   504   292
+      TCGA.OR.A5K9  2245      32      89   270     0   202  4490   528  2541   829
+      TCGA.OR.A5KO  5972     114     212   463     1    61  7025    17  1650  1968
+      TCGA.OR.A5KT   604       0       4    37     1   227  3247     6  1050   932
+      TCGA.OR.A5KU  1271       9      47     3     1   114  2115   255   932   399
+      TCGA.OR.A5KV  2050      16      44    68    11   154  5684    49  2731   799
+      TCGA.OR.A5KW  2436       0       1    11     6   176  4980   102  1593   917
+      TCGA.OR.A5KX  1307       4      10    35     0   183  2409    47  1529  2297
+      TCGA.OR.A5KY  3095      10      11    21     2   255  4042   193  2257  1318
+      TCGA.OR.A5KZ  1025       2      66    87     0   580  1230   138  1279   945
+      TCGA.OR.A5L3  1170       7      21    58     0    33  3720   115   876   485
+      TCGA.OR.A5L4   860       1      27    49     0   806  5610     6   994   690
+      TCGA.OR.A5L5  1261     195      92   571    12   373  3532   368  1657   995
+      TCGA.OR.A5L6   561       7      42    60     0   204  1143    58   196   324
+      TCGA.OR.A5L8  4366      22      82   230     5   126  1577  1563  2516  1043
+      TCGA.OR.A5L9   160       2      13    63     0    52  2496     9   101    82
+      TCGA.OR.A5LA   720       0      13   164     0   150  3887   114   517   723
+      TCGA.OR.A5LB  2726      11      27    18    13   140  5328   215  1618  2093
+      TCGA.OR.A5LC  2477       0      56    19     0   151  3329   106   650   626
+      TCGA.OR.A5LD   313       0      35     6     1    27  1284    53   477   621
+      TCGA.OR.A5LE  1854       0      38    19     0   218  3570   516  2366   751
+      TCGA.OR.A5LG  2495       0       7    18     0    73  3415     4  1677  1914
+      TCGA.OR.A5LH  2374      29     100   440     0   119  8727   287  2464  1366
+      TCGA.OR.A5LJ  6342      61      91    83     5  1787  3875   104  1331   932
+      TCGA.OR.A5LK   805       9      59    70     0    50  3292    35   381   294
+      TCGA.OR.A5LL  2103       2      25   145     1   167  3039   117   647   639
+      TCGA.OR.A5LM  1420       7      45   248     1   346  3928   184   927   861
+      TCGA.OR.A5LN   499       8      60   108     0   365  2546    55   532   335
+      TCGA.OR.A5LO  4503       3      12    13    81   191  1951    13  1021  2184
+      TCGA.OR.A5LP  1157      17      45   188     2   771  6327   514  2152   736
+      TCGA.OR.A5LR   689      75      36   238     0    96  8237   149   981   677
+      TCGA.OR.A5LS  4080      47     181   140     1   112  2128   182  1741   801
+      TCGA.OR.A5LT   741      17     123    53     0   163  2072    38  1509   488
+      TCGA.OU.A5PI  3395       2      16    51    43   216  2102   405  1334   862
+      TCGA.P6.A5OF  4322       6      10    25     0   811  5898   450  1928  1425
+      TCGA.P6.A5OG  3321       4      14    14     1  1417   818    18  1609  1462
+      TCGA.PA.A5YG  2904       0      17   119     1  1319  2396  1243  1722   902
+      TCGA.PK.A5H8  1689      65     185  1299     0   202  8557    37  1275   825
+      TCGA.PK.A5H9  1833    4195    1541 16378     2   245  7093    11  8667  2317
+      TCGA.PK.A5HA  1546     120     134   356     0   355  5046    10   941   912
+      TCGA.PK.A5HB  1518       2       8    31     0  2010  9500    16  5052  1547
+                   ABCE1 ABCF1 ABCF2 ABCF3 ABCG1 ABCG2 ABCG4 ABCG5 ABCG8 ABHD10
+      TCGA.OR.A5J1  2864  2581  2038 18394   721   152     3     7     0   3351
+      TCGA.OR.A5J2  2986  4135  3951  8279  2107   601    14     2     5   3882
+      TCGA.OR.A5J3  1610  2013  4215  4099   166  1047    11     2     0   2137
+      TCGA.OR.A5J5  1174   821  2386  6881    96    37    11    18     7   2244
+      TCGA.OR.A5J6  1874  3981  1948  2958   246   227    79     4     7   1533
+      TCGA.OR.A5J7  2061  6538  3059  9454   307   386   102    16     3   2120
+      TCGA.OR.A5J8  2885  5509  4553  3390  2866   335    21     5     0   1228
+      TCGA.OR.A5J9  4506  4501  4995 15183  2764  2969     6     4     0   3453
+      TCGA.OR.A5JA  2404  4960  3260  8172   383    11     5    23     0   2354
+      TCGA.OR.A5JB  2512  3757  3853  4537  5550    26    14     2     1   1551
+      TCGA.OR.A5JC  1660  2413  1828 13171  2079   164     2     2     0   2746
+      TCGA.OR.A5JD  2368  1610  2653  6319   377   435    54     4     0   5388
+      TCGA.OR.A5JE  1601  4591  1388  8726  1665   132     8    11     0   2039
+      TCGA.OR.A5JF  4853  2895  4993  6950  1758   485    16     9     0   3512
+      TCGA.OR.A5JG  2920  2726  3952  6288   209   164     2    15     0   2762
+      TCGA.OR.A5JI  1395  1181  1213  5977  6321   574     4    13     0   2489
+      TCGA.OR.A5JJ  2252  2576  4390  4859  8331   189     2    10     0   2158
+      TCGA.OR.A5JK  1631  1398  2384  4434   776   139     0     1     0   2260
+      TCGA.OR.A5JL  3309  6388  4140  7037   766   589     6     7     0   3485
+      TCGA.OR.A5JM  2583  5307  2338  4832   274   158    44    22     0   2318
+      TCGA.OR.A5JO  1647  3173  1820  2706   609    84    19    11     0   1635
+      TCGA.OR.A5JP  4357  3422  3069  5916  7819   294    11    66     0   2806
+      TCGA.OR.A5JQ  3468  3205  3835 12143  1989   653    19     2     1   7060
+      TCGA.OR.A5JR  2982  2948  3777 11319   687   725     6     4     0   5775
+      TCGA.OR.A5JS  2498  4359  4016  6706   264    36    33    18     1   3405
+      TCGA.OR.A5JT  2824  3080  4143  5471  6578   445    13     2     0   4268
+      TCGA.OR.A5JV  3027  3376  3901  7073  1679   264    14     0     0   5699
+      TCGA.OR.A5JW  3223  4797  3719  5126  4306   424     2     3     0   1603
+      TCGA.OR.A5JX  1535  1772  2862 13947   284   123     6     0     2   3381
+      TCGA.OR.A5JY  2373  5638  4691  5439   244    84     5    17     0   2218
+      TCGA.OR.A5JZ  1109  1939  1613  7013  4826    91     7     1     0   2371
+      TCGA.OR.A5K0  1772  5068  3301  3046    50    35     5     1     0   1620
+      TCGA.OR.A5K1   898  1822  2340  4655  1724   504     7     2     0   2255
+      TCGA.OR.A5K2   879  1556  1181  7599   874    18     1     5     1   1463
+      TCGA.OR.A5K3   645   796  1240  3244   512    94     2     0     0   2737
+      TCGA.OR.A5K4  2240  2476  1701  6116  6213    63     9     5     0   4325
+      TCGA.OR.A5K5  1970  6677  3268  5953   378    14    30     6     2   3244
+      TCGA.OR.A5K6  2519  2786  1247  5979   739    22     5     3     0   2850
+      TCGA.OR.A5K8  1003   475  1061  1648   520    48     1     2     0    963
+      TCGA.OR.A5K9  4205  4464  3200  3392  1249    33    12    21     5   1950
+      TCGA.OR.A5KO  3370  3956  2538  7213   795   108     9     6     0   1870
+      TCGA.OR.A5KT   928  1138  1117  3728   649    66    15    15     1   1462
+      TCGA.OR.A5KU  2127  1820  1992  3702   782    11     5     6     0   1514
+      TCGA.OR.A5KV  3293  3877  4203 10933  2550   147   177    35    72   5934
+      TCGA.OR.A5KW  1812  2479  4731  5871  1823   152     2    11     0   2561
+      TCGA.OR.A5KX  1581  2543  1801  5788  3491    45    31     7     0   3639
+      TCGA.OR.A5KY  2843  2357  3219 10676  2773   348     7     8     1   3213
+      TCGA.OR.A5KZ  3845  4848  2425  4448   809   223    11     3     0   1519
+      TCGA.OR.A5L3   895  1062   949  3028  1018    27    19     6     0   2550
+      TCGA.OR.A5L4  1665  3135  2771  6389   283   128     4     1     1   2219
+      TCGA.OR.A5L5  1563  1979  2221  6961  3643   458     6     9     1   3444
+      TCGA.OR.A5L6   489   539   546  4202   482   171     2     1     0   1103
+      TCGA.OR.A5L8  3023  2692  4358 12600  6002  1812     5     2     1   4210
+      TCGA.OR.A5L9   117   148   126   951   322    12     2     7     0    528
+      TCGA.OR.A5LA  1139  1131  2183  3831  8158   358    18     1     0   2856
+      TCGA.OR.A5LB  3709  1809  3679  6085  1652   246    12     6     0   2188
+      TCGA.OR.A5LC  1398  1390  2131  4303   681    66     8     1     0   1715
+      TCGA.OR.A5LD   516   877   557  2319   166    88     3     9     1   2084
+      TCGA.OR.A5LE  3044  1693  2142  2437   368    71     3     5     0    855
+      TCGA.OR.A5LG  2838  3149  3217  8572   233  1319     6     0     0   3026
+      TCGA.OR.A5LH  3054  3143  4393  8916  1747   749    51     5     0   3332
+      TCGA.OR.A5LJ  2595  1595  3114  4371   277   216    29     1     0   3148
+      TCGA.OR.A5LK   620   738   957  2149   343   234    10     2     0   1761
+      TCGA.OR.A5LL  2968  3141  2057  2407  4249   340     4     1     0   1011
+      TCGA.OR.A5LM  2508  2439  3383 15696   456   359     6     7    20   3414
+      TCGA.OR.A5LN  1269  1151  1101  3128   246   216     1    12     0   1745
+      TCGA.OR.A5LO  2347  2090  1976 12320   961    53     9     3     1   2902
+      TCGA.OR.A5LP  2126  3101  5327  4980  1046   641    13     0     0   2630
+      TCGA.OR.A5LR   804  1360  1344  5629  2154   185     4    12     0   2158
+      TCGA.OR.A5LS  1138  1561  2358  4356  1085   118    22     4     0   3860
+      TCGA.OR.A5LT  1394   882   927  3174   508   212     4     8     0   3088
+      TCGA.OU.A5PI  2915  1861  3431  9175  2242  2064     6     0     0   3441
+      TCGA.P6.A5OF  2730  2029  3251  4410  2906   228     6     4     0   2676
+      TCGA.P6.A5OG  4961  5454  4698  2786  1160   238    69     1     0   1828
+      TCGA.PA.A5YG  1767  2173  3871  9138  5189  1330     6     0     0   2870
+      TCGA.PK.A5H8  1439  2233  2748  7253   329    51     5     1     0   2199
+      TCGA.PK.A5H9  2708  5507  2278  6457  2383  1198    15     8     1   5689
+      TCGA.PK.A5HA  1005  4418  2895  7920  1533   253    18     2     0   2528
+      TCGA.PK.A5HB  2561  3902  4701  8881   889   314    11    31     2   2274
+                   ABHD11 ABHD12B ABHD12 ABHD13 ABHD14A ABHD14B ABHD15 ABHD1 ABHD2
+      TCGA.OR.A5J1   1128       0   4004    738    1057    2253    516     7  4668
+      TCGA.OR.A5J2   1463      64   2301   1503    1878    3504    414    28 21475
+      TCGA.OR.A5J3   2172       4   1601    444    1828    5797    447    38  8223
+      TCGA.OR.A5J5   1341       0   1756    233    1861    1362    302    48  2226
+      TCGA.OR.A5J6    637       1   3276    484     834    4580    545    69  4855
+      TCGA.OR.A5J7   1718       0   3895    381    1901    2305    392    23  8209
+      TCGA.OR.A5J8    951       6   7177    870    1220    2382   1321     8 14086
+      TCGA.OR.A5J9   1564       0   3490   1588    2910    2456    248    10 15208
+      TCGA.OR.A5JA   2505       1   1930    837     819    3093    598    24 12087
+      TCGA.OR.A5JB   1133       4   2781    525    1095    3479    508    39  1977
+      TCGA.OR.A5JC   1050       0   2509    385    2010    3563    174    17  7420
+      TCGA.OR.A5JD   2485       1   5474    544    1149    7799    534    17  5589
+      TCGA.OR.A5JE    722       0   3592    410     938    1142    341     8  3921
+      TCGA.OR.A5JF   2788       0   5045    939    1839    5523    554     4 11378
+      TCGA.OR.A5JG   1289       0   2953    464    1637    5509    462     6  4734
+      TCGA.OR.A5JI    716       0   5042    250    3690    3106    433    28  1859
+      TCGA.OR.A5JJ   2889       1   4081    549    1456    2315    510    24 19574
+      TCGA.OR.A5JK    944       0   3609    325    2472    1996    311     4  7206
+      TCGA.OR.A5JL   2564       0   2581   1620     875    4565    489    42 25298
+      TCGA.OR.A5JM    903       0   6431   2146    1529    1404   1067     4  7247
+      TCGA.OR.A5JO    588       2   3219    867    1224    4398    850    71  8775
+      TCGA.OR.A5JP    634       0   3967    930    1183    1116    146    18  4724
+      TCGA.OR.A5JQ   1887       1   8006    576    2487    7541   1905     5  5405
+      TCGA.OR.A5JR   2656       0   8910    670    1805    4194    722    14 10746
+      TCGA.OR.A5JS   2141       4   2753    745    3305    3127    428    11 14148
+      TCGA.OR.A5JT   3077       1   7131    587     852    5016    671     4  9511
+      TCGA.OR.A5JV   1814       2   5273    588     825    2277    610     6 13251
+      TCGA.OR.A5JW   1485       0   2230    638    1001    5010    403     6 35015
+      TCGA.OR.A5JX    639       0   3589    517    5389    6765    258    35  6515
+      TCGA.OR.A5JY   1108       3   3017   2021     893    1782    560    32 14239
+      TCGA.OR.A5JZ    828       0   4329    413    1256    7281    570     0  7243
+      TCGA.OR.A5K0    949       3   3166    900    1114    2080    378    68  6768
+      TCGA.OR.A5K1   2013       1   2871    306     789    3402    461     0  2031
+      TCGA.OR.A5K2    467       0   1821    248    1588    1923     77     3  3822
+      TCGA.OR.A5K3   2528       0   3300    192    1002    2074    225     4  2678
+      TCGA.OR.A5K4    695       0   6946    523     674    3677   1128     4  9241
+      TCGA.OR.A5K5    748       0   2796    698    1189    1728    485    16 10193
+      TCGA.OR.A5K6   1248       2   2522   1040    2094    5805    344    52  9442
+      TCGA.OR.A5K8    721       0   1141    373     756    1462    124     1  1437
+      TCGA.OR.A5K9   1134       1   2208   1029    1617    2376    243    10  6652
+      TCGA.OR.A5KO   1351       0   1764    695    1546    4533    865    28  8181
+      TCGA.OR.A5KT    819       0   2428    239     717    1639    241     1  1493
+      TCGA.OR.A5KU    937     201   3045    261    1079    1797    358     4  6716
+      TCGA.OR.A5KV   1091       3   3306   1124    2488   10923    676    21 12929
+      TCGA.OR.A5KW   1191       0   1585    916    1979    3919    504     5 11092
+      TCGA.OR.A5KX    657       0   6003   1020    1326    3104    418    16  7387
+      TCGA.OR.A5KY   1416       0   4247   1172    2675    3138    323     8  6510
+      TCGA.OR.A5KZ    783       0   3669    262     494     886    265     9  5957
+      TCGA.OR.A5L3   1189       0   3000    242    1809    4041     98     3  1853
+      TCGA.OR.A5L4   1745       1   1783    462     586    3153    197     4  7149
+      TCGA.OR.A5L5   1002       1   9827    608    2207    5435    414     8  4858
+      TCGA.OR.A5L6    531       0   2159     78    1059    2177    144     8   430
+      TCGA.OR.A5L8   1386       0   1361    876    2135    2292    351    38 21874
+      TCGA.OR.A5L9    239       0    827     59     612    1526     30     0   181
+      TCGA.OR.A5LA   2780       0   3974    251    1721    8143    181    32  3642
+      TCGA.OR.A5LB   1278       0   3584    671    2054    3610    374    18 18012
+      TCGA.OR.A5LC   1195       0   2658    584    1531    4022    563     6  2325
+      TCGA.OR.A5LD   1591       1   1383     68     987    1060     49     1   713
+      TCGA.OR.A5LE    540       0   3066    931     899     519     89     4  9201
+      TCGA.OR.A5LG   1460       1   4823    765    4524    7329    444     1  7317
+      TCGA.OR.A5LH   5572       0   3159    675    1164    7836    758    10 12240
+      TCGA.OR.A5LJ   2344       5   5964    659    1130     703    206    14  4900
+      TCGA.OR.A5LK   1190       2   2782     89     800     829     95    29   826
+      TCGA.OR.A5LL    481       0   2335    487    1432    2492    433     0 12636
+      TCGA.OR.A5LM   2778       0   2541    821    1679    2909    290    18  8078
+      TCGA.OR.A5LN    670       0   4626    200    1270    2239    150     8  1629
+      TCGA.OR.A5LO   1484       0   1087    491     899    3555    314    55 17274
+      TCGA.OR.A5LP   2745       2   6800    660    1185    4587    614    12 13848
+      TCGA.OR.A5LR    461       3   2286    384     604    3665    422     1  4914
+      TCGA.OR.A5LS   1837       0   1711    242    1533    1827    327    12 10668
+      TCGA.OR.A5LT    700       0   5334    426    1165    1565    573     4  1694
+      TCGA.OU.A5PI   1285       0   2386    500    1518    2582    341     5 12395
+      TCGA.P6.A5OF   1775       0   3440   1551    1852    4603    525     1 11911
+      TCGA.P6.A5OG    984       3   2737    834     664    3438    391     6  3186
+      TCGA.PA.A5YG   2268       2   9006    774    1240    4027    532    29 10880
+      TCGA.PK.A5H8   1153       0   2646    679     974    3212    433     5  4355
+      TCGA.PK.A5H9   1167       0   4050   1644    1159    6191   2931    43 36445
+      TCGA.PK.A5HA   1513       0   4464    347    1013    4268    380    21  3959
+      TCGA.PK.A5HB   1403       0   2847    481     520    2115    315     7 10542
+                   ABHD3 ABHD4 ABHD5 ABHD6 ABHD8 ABI1 ABI2 ABI3BP ABI3  ABL1 class
+      TCGA.OR.A5J1   298  2603   914   496   971 1387 3881     24  501  4707     0
+      TCGA.OR.A5J2   417  2245  2289  4880  1791 2448 3924    128  253  5306     0
+      TCGA.OR.A5J3   172  5995   748  1037  1376  916 1067     82  133  5424     1
+      TCGA.OR.A5J5   420  3994   445  1230  1569  812 1193     57   97  4615     0
+      TCGA.OR.A5J6   564  2962  2965  1955  3094 1285 1609    109  170  4265     1
+      TCGA.OR.A5J7  1521  4588   756  1903  2160 4218 3723      9  406  7788     0
+      TCGA.OR.A5J8  1022  7022   855   819   386 1901 3730   6095 1144 12329     0
+      TCGA.OR.A5J9   304  7445   978  1222  3149 2304 5482     34  440  8455     1
+      TCGA.OR.A5JA   357  6452   858  1639  1111 1074 1625    255  185  7124     0
+      TCGA.OR.A5JB  1098  1542   537   313   647 2087 4261     10 1117  8377     0
+      TCGA.OR.A5JC   144  2010   617  1039  1224 1167 1448    567  312  2766     0
+      TCGA.OR.A5JD   566  1758   653  1591  1552 1413  962   8465  325  5401     1
+      TCGA.OR.A5JE   574  6148   437  1293  1658  593 1755    165  527  5247     0
+      TCGA.OR.A5JF   194  2224   697  1680  2298 1721 1912    164  286  9320     1
+      TCGA.OR.A5JG   229  5531   834  2090  2337 1274 1191    101  265  5649     0
+      TCGA.OR.A5JI   286  1668   521   668   904  888  849   3625  264  3900     1
+      TCGA.OR.A5JJ   496  4214   607  1915  3177  855 2186    134  262 10383     1
+      TCGA.OR.A5JK   367  1640   286   505   989 1037  894    153  578  2367     1
+      TCGA.OR.A5JL   401  9215  1294  3382  1114 1183 1339     62  257  4304     1
+      TCGA.OR.A5JM  4929  4301  1342  2273  1699 1761 3120     33   78  4855     0
+      TCGA.OR.A5JO   595  7743  2712   328  1070 1775 1529   2653  883  5962     1
+      TCGA.OR.A5JP   424  6886   912   545  1272 1745 2783    150  250  5809     1
+      TCGA.OR.A5JQ   360  1552  1023  1596  2684 1421 2278  20530  494 11479     1
+      TCGA.OR.A5JR   399  4301   913  1461  1248 1422 1458  12518  265  6874     1
+      TCGA.OR.A5JS   740  9624   928  2915  2910 1027 1759     26  208  8156     1
+      TCGA.OR.A5JT   231  3996   527  1516   989 1246 1905  10101  222  4817     1
+      TCGA.OR.A5JV   708  2709   553  3745   493 1864 1714   2560 1646  2862     1
+      TCGA.OR.A5JW   142  5729   991  1650  1637 2217 1136     18  301  6595     1
+      TCGA.OR.A5JX    69  3694   552   705  1567 1008  869    268  272  5373     1
+      TCGA.OR.A5JY   715  9710  1305  1831  1620  711 2603     17  296  3132     0
+      TCGA.OR.A5JZ   141  5712   451   607   352 1026 1585   3489  176  4623     1
+      TCGA.OR.A5K0  1608  4199  1996  1568  3006  801 3129    165   50  6176     1
+      TCGA.OR.A5K1   162  3180   348   277   512  710  907    718  220  2329     1
+      TCGA.OR.A5K2   244  5292   433   684   574 1133 1534     30  262  2956     0
+      TCGA.OR.A5K3    99  1662   170   478   591  492  543    450  147  1122     1
+      TCGA.OR.A5K4   354  5396   317  1803   489  983 1094    936   64  4824     1
+      TCGA.OR.A5K5   512  3192   948  1105  2911 1055 3084     40  204  4796     1
+      TCGA.OR.A5K6   407  4074   771  3109  2479 1035 1806     97  250  3468     1
+      TCGA.OR.A5K8    47  1919   166   494   874  463  465     14   83  2505     1
+      TCGA.OR.A5K9   789  4017   349   851  2355 1632 2612     44  178  7890     0
+      TCGA.OR.A5KO   668  4884  1088  1014  1857 2678 1510     21  135  9926     1
+      TCGA.OR.A5KT   166  2048   644  2150  2385  732  839    327  269  1842     1
+      TCGA.OR.A5KU   265  1901   438  2066  1107  494 1338     35   47  1946     1
+      TCGA.OR.A5KV   241  2360   482  2327  3956  939 3434     47   78  4921     1
+      TCGA.OR.A5KW   306 12511   628  1652  2210 1127 1493    341  115  3535     1
+      TCGA.OR.A5KX   731  6396   693  2392  1878 1579 5261    480  159  7350     1
+      TCGA.OR.A5KY   238  3022   862  2034  2518 2167 3429    146  688  9417     0
+      TCGA.OR.A5KZ   707   965   239   228   864 1137 2939     45  201  3615     0
+      TCGA.OR.A5L3   246  2255   261  1240  1282  368  498     32   76  1388     1
+      TCGA.OR.A5L4   130  3875   691   535   411  949 1020    563  235  3410     1
+      TCGA.OR.A5L5   322  2825   438   851  1198 1424 1383   1974  292  2488     1
+      TCGA.OR.A5L6   196   679   114   147   256  346  619    419   62  1254     1
+      TCGA.OR.A5L8    78  2328  1024  1358  3023 2089 3580     65  106  5573     1
+      TCGA.OR.A5L9    17   297    44   105   164  108   91     72   43   361     1
+      TCGA.OR.A5LA   113  2012   213   655  1354  645  565    660  311  1499     1
+      TCGA.OR.A5LB   166  4407   767  1907  2841 2680 1887     47  172  6881     0
+      TCGA.OR.A5LC   411  1314   291   566   935 1048 2461     59  318  2413     0
+      TCGA.OR.A5LD    76   729   161   381   651  360 1711     29   53  2059     0
+      TCGA.OR.A5LE   529  3411   468  1925   889  725 1690     14   81  3712     0
+      TCGA.OR.A5LG   950  4784   463   788  2301 1488 1827    120  826  4922     1
+      TCGA.OR.A5LH   434  4965  1283  2400  1398 1256 1701    488  326  5302     0
+      TCGA.OR.A5LJ   230  1745   306  3081  2835 1778 1963     25  204  4742     0
+      TCGA.OR.A5LK   146   652   359   390   598  400  346   1801  291  1211     1
+      TCGA.OR.A5LL   639  4436  1345  1669  1793 1403 1047    119   58  5027     0
+      TCGA.OR.A5LM   322  3577   668  1327   885  886 1794    147  157  1804     1
+      TCGA.OR.A5LN   185   682   383   388   722  686  308   3038  227  2638     1
+      TCGA.OR.A5LO   524  8732   748  3505   966 2635 2395     84   91  5619     1
+      TCGA.OR.A5LP   403  2609   767   851  1626 1415 1671   9034  577  5274     1
+      TCGA.OR.A5LR   320  5489   291   952   518  828 1065   2279  113  3046     1
+      TCGA.OR.A5LS   236  3451   382  1755  1129 1866 1072     26   65  3732     1
+      TCGA.OR.A5LT   291  1325   695   786  1175  943 1249   4824  105  2749     1
+      TCGA.OU.A5PI   240  3525   522  1234  1948 1946 1436    415  142  5952     1
+      TCGA.P6.A5OF   253  5067   672  1052  1762 3029 1925    425  277  8672     0
+      TCGA.P6.A5OG   953   883  1033   470   540 3431 3461    164 1444  5580     0
+      TCGA.PA.A5YG   468  3100   715   872  1768 1445 1244   6144  669  3981     1
+      TCGA.PK.A5H8   305  3183   603   721   808  928 1269    227  160  3407     1
+      TCGA.PK.A5H9  1038  8388  3457   669  2687 2582 2399     88  257  7797     1
+      TCGA.PK.A5HA   919  2796  1078  1914  1427 1843  840   9489  368  7966     1
+      TCGA.PK.A5HB   765  9701  1029  2653  1380 2970 3942    387  109 13221     1
+      
+      Slot "processed":
+      $normalized
+                        A1BG     A1CF     A2BP1     A2LD1     A2ML1      A2M
+      TCGA.OR.A5J1  7.560937 0.000000  7.642974 11.036356  9.300992 16.86444
+      TCGA.OR.A5J2  6.773795 0.000000  6.005574 11.390444  0.000000 16.75321
+      TCGA.OR.A5J3  7.615691 2.717043  6.403073 10.350504  4.147772 16.04832
+      TCGA.OR.A5J5 13.847984 3.854521  5.777711  9.128790  8.754515 14.64073
+      TCGA.OR.A5J6 12.531855 0.000000  5.495179 11.194768  3.588081 16.52919
+      TCGA.OR.A5J7  6.854414 0.000000  5.128837  9.889426  4.942071 16.76809
+      TCGA.OR.A5J8  9.045041 0.000000  0.000000  9.114176  5.601035 18.26233
+      TCGA.OR.A5J9  6.469174 0.000000  8.486572 11.524749  8.298688 17.21315
+      TCGA.OR.A5JA  8.969938 0.000000  6.059930 11.326948  8.319505 16.12317
+      TCGA.OR.A5JB 11.393284 0.000000  0.000000  9.360996  0.000000 15.50528
+      TCGA.OR.A5JC 10.973163 0.000000  9.355042 10.268890  5.794111 16.25649
+      TCGA.OR.A5JD 10.118468 0.000000  8.685463 10.841333  9.134689 16.46416
+      TCGA.OR.A5JE  9.292584 0.000000  0.000000 10.039781  5.633147 16.18217
+      TCGA.OR.A5JF  8.112546 0.000000 12.115718 10.756446 11.550323 16.27720
+      TCGA.OR.A5JG  8.786291 0.000000  8.183918 10.257370  6.550565 16.39726
+      TCGA.OR.A5JI 13.006602 0.000000  5.169043  8.989199  4.767311 17.12706
+      TCGA.OR.A5JJ  7.547856 0.000000  8.492910 10.319561 10.879498 15.99222
+      TCGA.OR.A5JK  9.057836 0.000000 10.866522 10.336351 10.391804 18.30053
+      TCGA.OR.A5JL  5.187265 0.000000  9.578991 11.485488  9.363087 15.93050
+      TCGA.OR.A5JM  8.017726 0.000000  0.000000 11.697081  3.353348 14.63948
+      TCGA.OR.A5JO 11.193074 7.171620  0.000000 11.016424  5.809031 20.34821
+      TCGA.OR.A5JP 10.790245 0.000000  3.397952  9.364869  5.606012 16.22697
+      TCGA.OR.A5JQ 11.306492 0.000000  2.469156 10.440228  5.221010 17.15223
+      TCGA.OR.A5JR 11.478423 0.000000  6.284494  9.206909  8.805148 16.46359
+      TCGA.OR.A5JS  6.722420 3.657851  0.000000  9.295952  3.128936 15.99933
+      TCGA.OR.A5JT  9.674795 0.000000  3.485976  8.544793 11.686928 16.38411
+      TCGA.OR.A5JV  8.603161 0.000000 11.820089  8.858896  9.362452 17.83816
+      TCGA.OR.A5JW  6.523925 0.000000  0.000000 10.215644  5.611966 16.22964
+      TCGA.OR.A5JX 12.065197 0.000000  8.382689 10.508634 10.364348 16.88707
+      TCGA.OR.A5JY  5.983740 0.000000  3.942321 11.997075  0.000000 16.03080
+      TCGA.OR.A5JZ 10.655100 0.000000  0.000000  9.019558  5.682572 15.53841
+      TCGA.OR.A5K0  7.715015 0.000000 10.333742  4.599001  4.203671 16.62095
+      TCGA.OR.A5K1  9.151462 0.000000  7.811406  9.963955  7.968282 17.50861
+      TCGA.OR.A5K2  9.235603 0.000000  0.000000 10.041932  3.463422 15.92346
+      TCGA.OR.A5K3  8.427819 0.000000  0.000000 10.508679  8.952608 16.64995
+      TCGA.OR.A5K4  5.963227 0.000000  3.730951  9.876911 10.062281 15.10361
+      TCGA.OR.A5K5  9.800926 0.000000  5.493815 10.731154  5.140364 15.21544
+      TCGA.OR.A5K6  7.425822 0.000000  0.000000 10.987483  5.307464 15.51394
+      TCGA.OR.A5K8  8.330981 0.000000 11.243566 11.103254  6.026864 16.32030
+      TCGA.OR.A5K9  6.931634 0.000000  2.701205 10.356255  3.585791 15.33478
+      TCGA.OR.A5KO  8.191954 0.000000 11.259262 11.021533  0.000000 15.13390
+      TCGA.OR.A5KT 10.153848 0.000000  8.969905  9.688667  0.000000 17.16950
+      TCGA.OR.A5KU 11.672598 0.000000  4.684968  9.536596  9.132834 15.13030
+      TCGA.OR.A5KV 11.700436 0.000000  2.361221 11.018314  3.745684 15.22126
+      TCGA.OR.A5KW  7.649836 0.000000  2.746194 11.566395 10.679138 15.75863
+      TCGA.OR.A5KX 13.672709 0.000000  0.000000 10.995978  5.334993 15.79796
+      TCGA.OR.A5KY  8.720773 0.000000  6.585608  9.214045  8.467674 16.59296
+      TCGA.OR.A5KZ 12.163779 0.000000  0.000000  9.114231  2.953487 16.62801
+      TCGA.OR.A5L3  7.555584 0.000000  0.000000 10.008728  0.000000 14.60120
+      TCGA.OR.A5L4 10.109189 0.000000  4.077057 10.626479  6.011480 17.42943
+      TCGA.OR.A5L5 11.185960 0.000000  0.000000  9.509249  5.967573 16.84980
+      TCGA.OR.A5L6 12.168058 0.000000  6.122512  6.920965  7.431962 16.76612
+      TCGA.OR.A5L8  9.393224 0.000000  7.368356 10.792585  7.038043 14.73571
+      TCGA.OR.A5L9 13.330441 0.000000  7.259374  7.259374  9.474349 16.17674
+      TCGA.OR.A5LA  9.303745 0.000000  4.372831 10.003306  9.975320 17.48363
+      TCGA.OR.A5LB  6.294337 2.546656  2.546656 11.152987  7.144054 16.42019
+      TCGA.OR.A5LC  8.446654 0.000000  5.218749  9.870320  6.049424 15.82930
+      TCGA.OR.A5LD  8.991801 0.000000  0.000000  9.094699  4.308773 16.14960
+      TCGA.OR.A5LE  6.501659 0.000000  8.035479 11.139731  0.000000 17.11160
+      TCGA.OR.A5LG  9.431379 0.000000  0.000000  9.842838  5.577185 16.55035
+      TCGA.OR.A5LH  7.683958 0.000000 10.117989 10.745229 10.454282 16.82922
+      TCGA.OR.A5LJ 10.708980 3.718789  0.000000  9.756246  0.000000 15.81614
+      TCGA.OR.A5LK 13.795443 0.000000  0.000000  8.864069  9.372162 17.62865
+      TCGA.OR.A5LL  6.858375 0.000000  4.731324  9.498138  3.784640 14.17239
+      TCGA.OR.A5LM  7.653368 0.000000  3.715979 10.254023 12.658651 16.37958
+      TCGA.OR.A5LN  9.045839 0.000000  6.324259 10.148714  3.826622 16.92744
+      TCGA.OR.A5LO  8.401906 0.000000  0.000000  9.904376  9.904376 15.91704
+      TCGA.OR.A5LP  8.399728 0.000000  3.802314  9.635425  6.298420 17.37699
+      TCGA.OR.A5LR 10.724793 0.000000  5.143298  9.627275  8.194285 16.44578
+      TCGA.OR.A5LS  7.860488 0.000000 10.600623  9.638979  9.228642 15.55024
+      TCGA.OR.A5LT  8.358499 0.000000  4.745926 10.002394  7.867249 14.84642
+      TCGA.OU.A5PI  7.650234 0.000000  7.563219  9.112768  9.860904 15.80930
+      TCGA.P6.A5OF  8.957537 0.000000  9.912690 11.746601  8.266506 16.23227
+      TCGA.P6.A5OG 11.709572 0.000000  0.000000 10.018655  0.000000 17.66978
+      TCGA.PA.A5YG  9.074969 0.000000  0.000000  9.572992 10.709462 17.63616
+      TCGA.PK.A5H8 14.115301 0.000000  5.609794 10.366140  7.174925 16.20515
+      TCGA.PK.A5H9  9.782479 6.825795  0.000000 12.045571  6.496513 21.38588
+      TCGA.PK.A5HA 12.681263 0.000000  8.420432 10.099635  0.000000 17.33602
+      TCGA.PK.A5HB 10.454410 3.593267  5.907759  9.868064  2.229513 16.72844
+                      A4GALT    A4GNT     AAAS    AACSL     AACS     AADAC     AADAT
+      TCGA.OR.A5J1 11.099466 0.000000 14.64360 0.000000 13.83005  0.000000 10.444129
+      TCGA.OR.A5J2 11.124601 0.000000 14.04796 2.464066 13.42720  3.863253  8.446515
+      TCGA.OR.A5J3  9.469754 4.542317 13.53308 0.000000 15.57347  9.980308  8.527343
+      TCGA.OR.A5J5 11.670477 2.950960 14.66748 4.803771 13.03790 10.344738  9.741542
+      TCGA.OR.A5J6 13.906388 2.703318 13.51484 0.000000 13.83307 11.613041  7.599573
+      TCGA.OR.A5J7 10.878933 0.000000 14.54624 0.000000 15.78052  4.942071  8.358194
+      TCGA.OR.A5J8 13.673446 0.000000 13.63867 0.000000 12.45168  0.000000 10.567848
+      TCGA.OR.A5J9 12.030571 0.000000 14.01481 0.000000 14.72742  0.000000 10.107547
+      TCGA.OR.A5JA 12.521583 0.000000 14.55026 5.372943 14.45898 11.190068  8.200595
+      TCGA.OR.A5JB 15.420815 2.858583 13.33382 0.000000 13.94099  4.304444  8.076175
+      TCGA.OR.A5JC 11.613825 2.965514 14.44346 0.000000 12.42456  8.472382  9.835543
+      TCGA.OR.A5JD 10.391263 0.000000 13.77667 0.000000 12.79685  8.419072 10.288249
+      TCGA.OR.A5JE 11.005363 0.000000 13.76628 0.000000 15.20350  8.715741  8.193680
+      TCGA.OR.A5JF 10.626965 0.000000 13.73828 0.000000 13.43077  8.553687  7.584346
+      TCGA.OR.A5JG 10.387918 0.000000 14.25797 0.000000 13.72379 13.892189  9.331749
+      TCGA.OR.A5JI 12.505835 0.000000 14.19454 0.000000 11.88698 11.906829  9.844192
+      TCGA.OR.A5JJ 12.363248 2.413724 14.14805 2.413724 14.33582  3.805854  7.705750
+      TCGA.OR.A5JK 11.316817 5.691009 14.50575 7.088487 12.94222  5.909407  8.605119
+      TCGA.OR.A5JL 10.183003 0.000000 13.83449 0.000000 14.15344  6.577340  8.850684
+      TCGA.OR.A5JM 11.495312 0.000000 13.74648 0.000000 15.35806 10.504995  8.209675
+      TCGA.OR.A5JO 14.152089 0.000000 13.48224 0.000000 12.38770  7.115437  9.474395
+      TCGA.OR.A5JP 10.474337 0.000000 14.13305 0.000000 13.94337 12.794485  9.199125
+      TCGA.OR.A5JQ 10.725685 3.332621 14.17021 0.000000 12.23467  9.827246  9.558755
+      TCGA.OR.A5JR  9.718242 0.000000 14.29458 0.000000 12.82065  9.655387  9.982455
+      TCGA.OR.A5JS 12.892104 4.044026 14.13473 0.000000 15.13655  4.999621  8.168282
+      TCGA.OR.A5JT 10.516992 0.000000 14.42497 0.000000 12.84815  5.198295  8.694437
+      TCGA.OR.A5JV  9.771023 2.675171 13.95709 0.000000 12.82525  4.804040  8.364642
+      TCGA.OR.A5JW 11.249511 2.533736 14.10894 0.000000 13.94726  9.745731  7.438500
+      TCGA.OR.A5JX 11.466333 0.000000 14.74218 0.000000 13.08589  8.120519  9.117925
+      TCGA.OR.A5JY 10.094531 0.000000 15.31037 4.894618 14.62943 14.453910  5.746871
+      TCGA.OR.A5JZ 13.885179 0.000000 14.03429 0.000000 13.19905  8.343153  9.292097
+      TCGA.OR.A5K0  9.227117 0.000000 13.59632 0.000000 12.89815 11.421376  6.143720
+      TCGA.OR.A5K1 11.395084 0.000000 14.26132 0.000000 12.87786  5.935649  7.865616
+      TCGA.OR.A5K2 10.684746 0.000000 14.32780 0.000000 15.68225  7.792272  7.242765
+      TCGA.OR.A5K3 11.656732 0.000000 14.07677 0.000000 14.08020  6.382131  8.369100
+      TCGA.OR.A5K4 12.465300 0.000000 14.31198 0.000000 13.18039  3.730951  9.857948
+      TCGA.OR.A5K5 10.718634 2.559662 14.22085 2.559662 15.41825  6.217917  7.757627
+      TCGA.OR.A5K6 10.583092 0.000000 14.09583 0.000000 13.32056 13.757935  7.861744
+      TCGA.OR.A5K8 11.480804 0.000000 14.28888 0.000000 13.40558 12.308631  7.818327
+      TCGA.OR.A5K9  9.651955 0.000000 13.61274 0.000000 16.39100 13.500750  4.524427
+      TCGA.OR.A5KO 12.134618 4.497453 13.25961 2.677367 13.90947  8.702378  6.448736
+      TCGA.OR.A5KT 13.360826 0.000000 14.57195 3.434609 14.96751 14.271953  5.645638
+      TCGA.OR.A5KU 12.494260 4.127779 14.06664 3.208031 13.55467  8.661077 10.152592
+      TCGA.OR.A5KV 12.149931 0.000000 13.32347 2.361221 14.06724 15.131307  7.862518
+      TCGA.OR.A5KW  9.845837 0.000000 13.85608 4.884952 15.02218 10.022534  9.457919
+      TCGA.OR.A5KX 11.751608 0.000000 14.44352 2.727575 12.81019  8.111382  8.561359
+      TCGA.OR.A5KY 10.923767 0.000000 14.16837 0.000000 15.80814  9.980519  8.591327
+      TCGA.OR.A5KZ 10.181581 0.000000 13.94892 2.953487 13.80810  8.640336 10.496539
+      TCGA.OR.A5L3  9.594157 0.000000 15.30990 0.000000 13.01771 12.912217  5.894285
+      TCGA.OR.A5L4 11.796702 0.000000 13.97416 0.000000 15.11762  5.822026  5.346764
+      TCGA.OR.A5L5 11.085477 3.608326 14.65175 2.722020 12.61956 13.958190  8.791940
+      TCGA.OR.A5L6 11.282143 4.183332 14.92348 4.183332 12.41026  6.440292  8.690114
+      TCGA.OR.A5L8  8.668004 0.000000 14.13949 0.000000 12.72459  4.344935  8.751221
+      TCGA.OR.A5L9 12.595935 0.000000 14.73111 0.000000 10.62008  6.679113  0.000000
+      TCGA.OR.A5LA 11.002603 0.000000 14.62907 0.000000 12.79151  8.976752  8.213220
+      TCGA.OR.A5LB 10.629894 0.000000 14.60541 6.380718 14.36668  3.417592  9.396919
+      TCGA.OR.A5LC 10.420845 0.000000 13.87585 0.000000 14.31654  9.503396  8.589221
+      TCGA.OR.A5LD 10.501858 0.000000 15.38449 5.844370 13.19423  6.831760  9.963443
+      TCGA.OR.A5LE  9.890892 0.000000 14.02877 0.000000 15.22968  0.000000  3.081990
+      TCGA.OR.A5LG 14.018915 0.000000 14.55863 0.000000 14.89542  7.554341  7.554341
+      TCGA.OR.A5LH 11.469359 2.420613 13.98080 0.000000 14.36111  5.477025 10.352260
+      TCGA.OR.A5LJ 12.453710 0.000000 14.38174 3.718789 13.73615 10.666414  7.519604
+      TCGA.OR.A5LK 11.500878 4.239029 13.90546 0.000000 11.84040  6.758876  9.292116
+      TCGA.OR.A5LL 11.774406 0.000000 12.90136 0.000000 10.79572 14.819395  5.870755
+      TCGA.OR.A5LM 12.235084 0.000000 14.50611 0.000000 14.47914  0.000000  9.925202
+      TCGA.OR.A5LN 10.542325 0.000000 14.66595 0.000000 11.32165 11.931001  8.118695
+      TCGA.OR.A5LO 12.074949 0.000000 14.00624 0.000000 14.59958  4.817460 10.915860
+      TCGA.OR.A5LP 11.708531 2.410628 13.79927 0.000000 11.81435 15.790323  9.292260
+      TCGA.OR.A5LR 11.015474 0.000000 14.13470 0.000000 13.09499 13.043107  9.461488
+      TCGA.OR.A5LS  9.178686 0.000000 13.84705 0.000000 14.05633  7.727822  8.959529
+      TCGA.OR.A5LT 12.487964 3.264676 13.92963 4.187599 11.77901  9.500480  9.583784
+      TCGA.OU.A5PI 11.273830 2.782199 13.83005 0.000000 15.20217  5.585924  8.260722
+      TCGA.P6.A5OF 11.642296 2.379804 14.07664 2.379804 14.78586  8.077340  8.932925
+      TCGA.P6.A5OG 12.389501 3.375529 13.09294 0.000000 11.10653  2.508241 10.107186
+      TCGA.PA.A5YG 11.175062 2.776354 14.24534 0.000000 12.53054 12.850421  7.312720
+      TCGA.PK.A5H8 10.943247 2.969626 14.44419 0.000000 13.50996  4.426264  7.031586
+      TCGA.PK.A5H9 11.631400 2.106710 13.35960 8.299998 12.16778 12.111746 10.269759
+      TCGA.PK.A5HA 12.863060 3.485089 13.68171 0.000000 11.90701  9.599914  8.028089
+      TCGA.PK.A5HB 14.800762 0.000000 13.57844 6.224872 13.27706 12.582466  7.384042
+                      AAGAB     AAK1     AAMP    AANAT    AARS2   AARSD1     AARS
+      TCGA.OR.A5J1 13.89793 13.28693 14.88819 4.135301 11.75163 13.34477 15.30545
+      TCGA.OR.A5J2 13.80003 14.15616 14.40327 0.000000 12.16317 11.98651 15.90566
+      TCGA.OR.A5J3 13.32545 13.41212 14.46814 0.000000 11.42207 12.05302 15.21526
+      TCGA.OR.A5J5 12.97414 12.45706 13.51948 3.854521 12.17984 11.89875 14.53913
+      TCGA.OR.A5J6 13.30768 13.57734 15.11818 0.000000 11.99652 13.02716 14.85144
+      TCGA.OR.A5J7 13.93455 13.97126 15.66870 0.000000 12.73467 11.36600 15.64438
+      TCGA.OR.A5J8 13.48565 13.79598 14.73802 3.803727 13.57725 12.49228 15.90194
+      TCGA.OR.A5J9 13.18031 13.47390 14.69165 0.000000 11.84551 12.09217 15.75622
+      TCGA.OR.A5JA 14.31219 13.24023 14.48115 0.000000 12.91059 12.20374 14.90023
+      TCGA.OR.A5JB 13.54630 12.92203 15.32429 0.000000 13.16631 13.54630 15.68573
+      TCGA.OR.A5JC 13.95160 13.63758 14.60517 0.000000 12.42635 12.77791 15.31287
+      TCGA.OR.A5JD 12.98153 13.55053 14.15205 2.762256 11.78764 12.44086 16.27979
+      TCGA.OR.A5JE 13.42887 13.83450 15.04987 0.000000 13.11372 13.44154 15.33301
+      TCGA.OR.A5JF 13.38191 13.43169 14.19323 3.012754 11.89644 11.81526 15.48373
+      TCGA.OR.A5JG 13.99154 13.72749 14.93655 0.000000 12.39645 12.55909 16.43135
+      TCGA.OR.A5JI 12.46848 13.21732 13.91474 0.000000 11.84301 12.41404 15.05100
+      TCGA.OR.A5JJ 13.69234 12.76153 14.13145 0.000000 11.85234 12.50213 15.54956
+      TCGA.OR.A5JK 14.28676 13.60642 14.25160 3.239327 12.07818 12.35889 16.09937
+      TCGA.OR.A5JL 14.59724 13.26158 14.26959 3.149668 12.27554 12.41521 14.27904
+      TCGA.OR.A5JM 13.45522 14.44476 14.38321 0.000000 12.32661 13.40889 16.02130
+      TCGA.OR.A5JO 13.00338 13.19854 14.52088 0.000000 11.77670 12.56597 14.69331
+      TCGA.OR.A5JP 13.22297 13.10996 14.69274 0.000000 11.99429 12.56954 16.18814
+      TCGA.OR.A5JQ 12.78841 13.60556 14.43896 0.000000 12.14357 12.78099 16.14598
+      TCGA.OR.A5JR 13.21400 13.80719 14.37863 0.000000 12.39953 12.01932 16.39560
+      TCGA.OR.A5JS 13.79311 14.37462 14.97292 2.285091 12.10134 12.61225 16.29151
+      TCGA.OR.A5JT 13.13671 13.86394 14.47140 0.000000 11.98081 12.13278 17.16399
+      TCGA.OR.A5JV 13.47609 13.95121 14.33310 4.101098 12.23072 11.86245 15.80933
+      TCGA.OR.A5JW 14.40113 13.62174 14.14296 3.403456 12.91416 11.70981 14.92451
+      TCGA.OR.A5JX 13.48265 13.19016 14.34229 0.000000 12.33671 12.70949 15.01110
+      TCGA.OR.A5JY 14.62260 13.17561 14.60190 0.000000 12.98416 12.66675 15.32897
+      TCGA.OR.A5JZ 13.07704 13.45708 14.08235 0.000000 12.08559 12.28801 16.26591
+      TCGA.OR.A5K0 13.28906 13.70573 14.71848 0.000000 12.10839 12.29672 14.46864
+      TCGA.OR.A5K1 13.20928 12.92330 14.42314 0.000000 12.12722 12.62046 16.58911
+      TCGA.OR.A5K2 14.54494 13.75583 14.78631 3.463422 12.13399 12.71885 15.69349
+      TCGA.OR.A5K3 13.57268 13.76287 14.51877 0.000000 12.28785 12.19370 16.56094
+      TCGA.OR.A5K4 13.19179 13.49156 14.23047 0.000000 12.29070 12.30127 16.33139
+      TCGA.OR.A5K5 13.88079 14.43560 15.01628 2.559662 12.37127 12.83378 16.53879
+      TCGA.OR.A5K6 13.89533 14.37990 15.10078 0.000000 12.62960 12.79433 14.91137
+      TCGA.OR.A5K8 13.16459 13.37321 14.10662 0.000000 11.70544 12.29947 15.12160
+      TCGA.OR.A5K9 13.37560 14.40731 15.03686 0.000000 12.58856 12.01335 16.36518
+      TCGA.OR.A5KO 13.24605 13.18884 14.08191 0.000000 12.24620 11.87338 15.29693
+      TCGA.OR.A5KT 13.66649 13.81139 14.78600 0.000000 12.23448 12.36634 15.91576
+      TCGA.OR.A5KU 14.02231 13.75543 14.61176 0.000000 12.07104 11.28655 15.05302
+      TCGA.OR.A5KV 13.54193 14.09956 15.01008 0.000000 12.12074 13.26524 15.98727
+      TCGA.OR.A5KW 14.40975 13.30872 14.69642 2.746194 11.63275 12.26853 15.50473
+      TCGA.OR.A5KX 13.08313 14.30289 15.86175 0.000000 12.48888 13.21013 14.38330
+      TCGA.OR.A5KY 13.53476 13.61606 14.34128 4.562504 12.17286 11.60492 15.65256
+      TCGA.OR.A5KZ 13.51408 12.62928 14.77406 0.000000 13.04772 12.12508 15.36074
+      TCGA.OR.A5L3 13.41993 14.16268 14.91536 0.000000 11.91896 13.67986 14.96790
+      TCGA.OR.A5L4 13.93521 13.88310 14.54023 0.000000 12.57976 12.35116 16.11776
+      TCGA.OR.A5L5 13.18028 13.37682 14.44170 0.000000 11.71174 13.01451 16.20420
+      TCGA.OR.A5L6 11.78154 12.86007 14.16782 0.000000 11.86359 12.60968 15.48593
+      TCGA.OR.A5L8 13.09088 14.06135 14.81401 0.000000 12.07982 12.04891 15.67863
+      TCGA.OR.A5L9 13.04018 12.68755 13.26502 0.000000 11.02321 13.26502 15.76039
+      TCGA.OR.A5LA 13.04815 13.28174 14.74394 0.000000 11.73651 13.34872 15.99584
+      TCGA.OR.A5LB 14.29376 13.49452 14.57568 2.546656 11.79784 11.63823 14.48047
+      TCGA.OR.A5LC 13.63245 13.96355 14.98559 3.044016 11.01812 12.85634 15.41409
+      TCGA.OR.A5LD 12.92426 14.36085 14.25790 0.000000 13.17675 13.09222 16.63310
+      TCGA.OR.A5LE 14.08688 14.08936 14.85820 0.000000 11.63923 12.24306 15.62970
+      TCGA.OR.A5LG 14.03658 13.23505 15.08512 0.000000 12.37822 12.86989 17.21952
+      TCGA.OR.A5LH 13.83797 13.56229 14.73710 0.000000 11.93328 12.46133 14.91964
+      TCGA.OR.A5LJ 13.10882 13.91724 15.39501 0.000000 12.31075 12.60083 14.88507
+      TCGA.OR.A5LK 12.49617 13.52916 14.30143 4.239029 12.79736 12.40397 15.07645
+      TCGA.OR.A5LL 13.58222 13.91625 14.45943 0.000000 12.26310 12.28173 15.67158
+      TCGA.OR.A5LM 14.07202 13.62219 14.68066 0.000000 11.99661 12.72354 15.45318
+      TCGA.OR.A5LN 13.13073 13.11366 13.84151 0.000000 12.96215 12.96215 15.47610
+      TCGA.OR.A5LO 13.70152 13.99427 14.69497 5.071942 12.34760 11.20560 15.89287
+      TCGA.OR.A5LP 13.24462 13.85330 14.21832 2.410628 11.97768 11.74528 16.96464
+      TCGA.OR.A5LR 13.06206 13.29925 14.28684 0.000000 11.85047 12.41504 16.56197
+      TCGA.OR.A5LS 13.62412 14.14355 14.46166 3.869079 11.50539 11.34101 15.38201
+      TCGA.OR.A5LT 12.98899 13.35186 13.91281 0.000000 11.67267 12.37790 15.07775
+      TCGA.OU.A5PI 13.43145 14.01201 14.69901 0.000000 11.27725 11.48385 15.35367
+      TCGA.P6.A5OF 13.43680 13.46336 14.06005 2.379804 11.93809 11.34401 14.92476
+      TCGA.P6.A5OG 13.21607 13.34844 14.72327 4.304295 12.34077 12.70733 16.06652
+      TCGA.PA.A5YG 13.58296 13.96773 14.82781 2.776354 12.02481 12.00029 16.38992
+      TCGA.PK.A5H8 14.05923 13.80474 14.46832 2.969626 13.08337 12.10831 15.13375
+      TCGA.PK.A5H9 13.10672 13.10510 13.77415 2.106710 11.71751 11.78125 14.51169
+      TCGA.PK.A5HA 12.23307 13.49618 13.70779 2.608499 12.85514 12.04917 16.08761
+      TCGA.PK.A5HB 14.17189 13.77199 14.79796 0.000000 13.11970 11.57225 15.45187
+                   AASDHPPT     AASDH      AASS     AATF      AATK      ABAT
+      TCGA.OR.A5J1 14.04286 10.188150 13.409926 13.81906  8.328290 14.150203
+      TCGA.OR.A5J2 13.16868 11.449899 11.006012 13.53216 13.566950 14.017239
+      TCGA.OR.A5J3 13.26790 10.922720 11.482353 13.04145  9.775302 13.115821
+      TCGA.OR.A5J5 12.32510 11.631209 12.451868 12.20269 11.936414 12.404282
+      TCGA.OR.A5J6 13.28794 11.388184 10.868746 13.44096  8.769922 12.493750
+      TCGA.OR.A5J7 13.43254 11.304321 12.128985 14.46075 10.350205 11.404949
+      TCGA.OR.A5J8 12.16852 10.478903 12.184682 13.45710 10.221303  8.729682
+      TCGA.OR.A5J9 12.84674 11.298860 11.844075 13.73946 14.041909 13.792749
+      TCGA.OR.A5JA 12.92847 11.301170 10.967779 13.06664 10.298849 15.000859
+      TCGA.OR.A5JB 13.82581  9.994697 13.054115 13.92019  9.733713  9.529151
+      TCGA.OR.A5JC 13.27680 11.288088 11.728301 13.58897  8.444447 15.513789
+      TCGA.OR.A5JD 12.95024 12.275650 12.347868 13.21096  9.026829 13.997862
+      TCGA.OR.A5JE 12.46357 10.541388 10.088922 13.89274 10.744174  9.703545
+      TCGA.OR.A5JF 13.36895 11.770702 11.545212 12.92474 11.394210 12.279593
+      TCGA.OR.A5JG 12.91140 11.439493  9.696703 13.57960  9.045619 12.155628
+      TCGA.OR.A5JI 13.44139 11.242714 11.600516 12.87676  9.108273 15.531951
+      TCGA.OR.A5JJ 13.08844 12.168100 11.921587 13.45328 10.845964 12.164024
+      TCGA.OR.A5JK 13.31520 11.496199 12.795726 13.60739  9.766005 16.801840
+      TCGA.OR.A5JL 13.65502 11.719085 12.047652 12.51853 11.997134 16.287892
+      TCGA.OR.A5JM 13.79922 10.563300 10.916347 13.78939 11.441327 12.925223
+      TCGA.OR.A5JO 12.79450 10.977554 11.673468 13.46267  8.138692 11.511481
+      TCGA.OR.A5JP 12.63700 10.986185 11.376231 12.61961 12.885522 12.816597
+      TCGA.OR.A5JQ 13.18547 11.811559 11.727191 13.64339  9.184283 16.218423
+      TCGA.OR.A5JR 13.60820 12.496217 11.816757 13.08110  7.367737 17.320525
+      TCGA.OR.A5JS 13.16220 11.230530 12.292829 13.38544 11.572664 11.159007
+      TCGA.OR.A5JT 13.85651 12.422826 12.277687 13.36526  8.355512 17.998424
+      TCGA.OR.A5JV 12.98620 12.402767 12.246802 13.14478  8.661906 17.502708
+      TCGA.OR.A5JW 12.92220 12.581270 12.748284 12.78400  9.891111 11.377120
+      TCGA.OR.A5JX 13.34140 10.535837 13.578968 13.67309 11.032491 13.005461
+      TCGA.OR.A5JY 13.66398 11.929575 13.472944 13.51783 11.382394  7.398182
+      TCGA.OR.A5JZ 13.98137 11.686492  9.870760 13.30847  7.027873 16.895264
+      TCGA.OR.A5K0 12.17514 11.602067 11.911447 14.25167 11.246161 11.104917
+      TCGA.OR.A5K1 13.42433 11.006098 11.839632 13.63407  8.017000 17.482425
+      TCGA.OR.A5K2 13.24831 10.425399 11.945069 13.99263 10.992362 11.915405
+      TCGA.OR.A5K3 13.64561 10.066516 12.023288 13.23730  8.870317 16.968368
+      TCGA.OR.A5K4 13.72073 12.681602 10.998071 13.11600  5.813791 17.398997
+      TCGA.OR.A5K5 12.98431 11.300514  9.224664 14.31291 11.834940  9.958300
+      TCGA.OR.A5K6 12.47888 11.673106 10.284547 13.86472 11.866609 11.397436
+      TCGA.OR.A5K8 13.04366 10.838244 11.792875 13.02433  9.561066 15.549560
+      TCGA.OR.A5K9 13.11692 11.455203  8.613770 13.60766 11.773631  9.819485
+      TCGA.OR.A5KO 13.67303 12.087092 10.455520 12.97049  9.107168 15.517296
+      TCGA.OR.A5KT 12.58485 10.924699 11.674420 14.00291 10.414599 10.249982
+      TCGA.OR.A5KU 13.35809 12.218028 12.424605 13.32487 11.177848 15.918380
+      TCGA.OR.A5KV 13.77015 11.330282  9.975198 13.66607 13.850353 13.781645
+      TCGA.OR.A5KW 13.67522 12.021493 11.041513 13.59095  9.781778 13.929186
+      TCGA.OR.A5KX 12.39409 11.253588 13.016162 12.82368 10.136584 13.810089
+      TCGA.OR.A5KY 13.28817 10.562849 11.951694 13.30504 11.765445 12.107776
+      TCGA.OR.A5KZ 13.71418 11.324491 11.012160 13.48382  9.810963 14.017429
+      TCGA.OR.A5L3 12.87676 11.008027 12.798396 13.98574 12.449020 12.075706
+      TCGA.OR.A5L4 13.86479 11.044907 11.284141 12.99895 10.034712 16.359782
+      TCGA.OR.A5L5 13.41872 10.920273 12.284471 13.27702  7.982469 16.045135
+      TCGA.OR.A5L6 12.79534 10.972738 12.178782 12.93156 10.717222 15.395160
+      TCGA.OR.A5L8 13.70008 11.619108 12.611102 14.34969 14.077560 14.717204
+      TCGA.OR.A5L9 12.37948 10.987604 11.987248 13.41329  8.254659 16.508116
+      TCGA.OR.A5LA 12.95090 11.389461 11.981297 13.32258  9.111426 16.596957
+      TCGA.OR.A5LB 13.22581 11.805670 13.815580 13.02839 12.546373 13.861835
+      TCGA.OR.A5LC 12.42767 11.152805 11.658896 14.14707 12.361650 13.911570
+      TCGA.OR.A5LD 13.82289 10.556963 12.635183 13.54026 10.444566 15.811530
+      TCGA.OR.A5LE 14.00537 11.168101 13.745498 13.29315 10.728086 14.037123
+      TCGA.OR.A5LG 13.42559 11.527274 12.608922 13.26018  7.080903 13.223635
+      TCGA.OR.A5LH 13.30425 11.966618 12.424096 13.28739  9.608003 15.709790
+      TCGA.OR.A5LJ 13.08478  9.334986 11.144626 13.77799 10.530618  9.321333
+      TCGA.OR.A5LK 12.86463 10.968605 12.109224 13.26134  8.165564 14.457511
+      TCGA.OR.A5LL 13.69009 11.531318 13.904875 13.49147 10.377487 12.040439
+      TCGA.OR.A5LM 13.74846 11.635666 13.164189 13.06446  8.278868 16.951359
+      TCGA.OR.A5LN 13.34154 11.415194 13.689954 13.18690  8.811855 15.139598
+      TCGA.OR.A5LO 13.82940 11.684668 13.378738 12.46883  9.422821 15.504334
+      TCGA.OR.A5LP 13.32268 11.029601 10.578597 13.23819  7.328505 16.064538
+      TCGA.OR.A5LR 13.69165 11.675976 11.738935 13.25938  7.199202 17.162931
+      TCGA.OR.A5LS 13.55156 12.366990 13.065035 12.62346 12.126876 14.209823
+      TCGA.OR.A5LT 13.85110 12.248573 12.854557 13.12592 11.614424 15.821942
+      TCGA.OU.A5PI 13.14725 12.065683 13.830048 13.48199 12.251095 15.046966
+      TCGA.P6.A5OF 13.21616 11.762402 10.604297 12.99698  9.974291 12.146449
+      TCGA.P6.A5OG 13.36200 11.169566 13.256032 13.75352 10.920103  8.625336
+      TCGA.PA.A5YG 13.52255 11.235828 12.701231 13.42154  9.550654 16.825811
+      TCGA.PK.A5H8 13.54667 10.912889 12.563990 13.47575  8.682994 17.011453
+      TCGA.PK.A5H9 13.57782 11.530177  9.502336 12.50962  8.070784 11.985657
+      TCGA.PK.A5HA 12.15296 11.078714 10.002585 13.21987 10.726018 15.319188
+      TCGA.PK.A5HB 12.57114 10.864439 10.588367 12.78912 10.574470 11.610205
+                      ABCA10   ABCA11P   ABCA12    ABCA13   ABCA17P     ABCA1
+      TCGA.OR.A5J1  9.667261  9.053494 0.000000  2.705842  8.928210 11.843417
+      TCGA.OR.A5J2  6.773795  9.747123 0.000000  3.327025  7.185532 13.554002
+      TCGA.OR.A5J3  8.437398  8.069377 5.677428 10.593710  8.238705 13.042401
+      TCGA.OR.A5J5  8.042057 10.493639 2.950960  6.672277 10.252200 11.399163
+      TCGA.OR.A5J6  7.425446  9.080211 0.000000  0.000000  9.407473 12.946831
+      TCGA.OR.A5J7  8.339393  9.032277 0.000000  6.108072  7.521144 11.763376
+      TCGA.OR.A5J8  8.401246  9.820526 0.000000  6.878769  4.498766 14.499650
+      TCGA.OR.A5J9  9.050467 11.075517 3.578882  3.578882  8.002753 13.114738
+      TCGA.OR.A5JA  7.475116  9.185671 2.598119 11.355061  8.879926 10.862039
+      TCGA.OR.A5JB  6.124809  7.780414 7.820874  2.858583  5.484498 14.956632
+      TCGA.OR.A5JC  8.771180 10.510331 8.837121  4.819880  9.324715 12.564152
+      TCGA.OR.A5JD  8.839142 10.057124 2.762256  5.158150  9.221127 13.220609
+      TCGA.OR.A5JE  7.739829  9.463807 0.000000  3.717820  6.208387 12.040835
+      TCGA.OR.A5JF  9.081974 10.189480 2.181267 12.504287  8.620009 13.541431
+      TCGA.OR.A5JG  5.565875  9.696703 4.596014  8.930370  9.045619 10.884583
+      TCGA.OR.A5JI  7.307438 10.486934 3.284588  5.169043  8.524616 15.230718
+      TCGA.OR.A5JJ  7.370533 10.494240 0.000000  6.042802  9.138790 14.639193
+      TCGA.OR.A5JK  8.404040 10.479737 8.404040  6.791371  8.666365 11.911112
+      TCGA.OR.A5JL  4.621966  9.849120 5.908305 10.943707  7.196513 12.545388
+      TCGA.OR.A5JM  6.224221 10.585112 0.000000  0.000000  6.802737 11.734648
+      TCGA.OR.A5JO  7.990385  9.164095 2.701884  0.000000  7.789602 13.202758
+      TCGA.OR.A5JP  9.426178 11.052495 2.528708  3.397952  9.278847 13.815542
+      TCGA.OR.A5JQ  6.838320 10.893366 2.469156  4.818809  7.648441 13.848123
+      TCGA.OR.A5JR  4.990064 10.534874 4.034760  6.544440  9.048204 12.383000
+      TCGA.OR.A5JS  8.108788  7.936984 6.824571  2.285091  7.052180 13.169494
+      TCGA.OR.A5JT  6.073129 10.450164 3.485976  2.609314 10.080354 13.620926
+      TCGA.OR.A5JV  5.058441  9.146315 3.557568  6.764778  9.679209 11.935701
+      TCGA.OR.A5JW  9.339278 10.523309 2.533736  7.993825  8.878013 14.349753
+      TCGA.OR.A5JX  9.481917 10.356741 0.000000  5.156357  9.287561 11.390125
+      TCGA.OR.A5JY  7.438586  9.753845 6.857776  5.110065  5.110065 11.229588
+      TCGA.OR.A5JZ  5.208338  9.859631 4.497155  6.562634  9.925151 14.844785
+      TCGA.OR.A5K0  9.595356  8.067159 3.657335  2.767373  8.770334 13.306534
+      TCGA.OR.A5K1  5.459620  9.778598 0.000000  7.361258  9.750062 12.973531
+      TCGA.OR.A5K2  9.803666  8.032278 0.000000  4.396498  7.975915 11.861980
+      TCGA.OR.A5K3  7.488265 10.638654 0.000000  8.737348 10.588060 11.600411
+      TCGA.OR.A5K4  4.279233  9.819258 0.000000  4.279233 10.353800 12.419151
+      TCGA.OR.A5K5  6.396207  7.882602 0.000000  2.559662  8.425000 10.457447
+      TCGA.OR.A5K6  6.867933  9.035817 2.703638  0.000000  8.112290 13.429847
+      TCGA.OR.A5K8  8.532031 10.448542 0.000000  9.176985  9.176985 14.223810
+      TCGA.OR.A5K9  3.585791  9.190727 2.701205  3.585791  8.767431 13.591023
+      TCGA.OR.A5KO  6.767357  9.304772 2.677367  4.497453 10.181560 14.267853
+      TCGA.OR.A5KT  7.006306  7.211259 0.000000  5.330897  7.623861 10.946383
+      TCGA.OR.A5KU 10.044166 10.077558 4.684968  6.756643  9.536596 12.293385
+      TCGA.OR.A5KV  7.188161  9.998729 0.000000  2.361221 10.021883 11.999130
+      TCGA.OR.A5KW  6.338643  8.583207 4.575179  9.008009  8.891432 13.137393
+      TCGA.OR.A5KX  8.140424  9.769225 0.000000  0.000000  9.313894 13.691841
+      TCGA.OR.A5KY  8.430306  9.537685 4.255759  8.352536  7.708666 13.914263
+      TCGA.OR.A5KZ  9.721567  9.964971 2.953487  0.000000  8.343484 12.456503
+      TCGA.OR.A5L3  8.506065  9.594157 0.000000  0.000000  6.372765 13.898929
+      TCGA.OR.A5L4  6.011480  9.967663 0.000000  5.033672  8.850052 10.803530
+      TCGA.OR.A5L5  9.486913 10.130045 2.722020  4.153309  8.755030 14.977049
+      TCGA.OR.A5L6  7.431962 10.702434 4.183332  5.143071  8.427778 12.716579
+      TCGA.OR.A5L8  7.489638 10.149923 2.543589  0.000000  7.527901 15.124900
+      TCGA.OR.A5L9  8.668515 10.987604 0.000000  0.000000  9.754099 14.807122
+      TCGA.OR.A5LA  6.898566  9.946779 5.337587  4.372831  9.512890 14.503646
+      TCGA.OR.A5LB  8.088502 10.476522 0.000000 11.014626  8.324738 14.362041
+      TCGA.OR.A5LC  8.561813  9.089020 0.000000  0.000000  9.252235 12.630917
+      TCGA.OR.A5LD  7.243628  9.935990 0.000000  0.000000  5.844370 12.718106
+      TCGA.OR.A5LE  7.302175  9.457330 0.000000  0.000000  6.615911 11.580638
+      TCGA.OR.A5LG  7.256551  9.974345 4.607091  5.893056  7.598502 13.323219
+      TCGA.OR.A5LH  7.261056 10.178864 4.761494  7.883347  9.567183 12.300042
+      TCGA.OR.A5LJ  8.778045  9.891752 0.000000  5.950281  6.323399 14.285262
+      TCGA.OR.A5LK  7.627277 11.172383 5.200313  6.180559  9.070107 13.999822
+      TCGA.OR.A5LL  8.140515  9.722066 3.784640  6.155772  7.637423 15.656308
+      TCGA.OR.A5LM  7.417608 10.767524 4.660014  9.424070  9.546235  9.763322
+      TCGA.OR.A5LN  8.310692 11.926120 0.000000  0.000000  6.903207 13.718465
+      TCGA.OR.A5LO  6.459920  9.132511 4.114208 10.853609  8.617042 12.335501
+      TCGA.OR.A5LP  6.448589  9.478394 5.151228  5.599544  8.683417 13.405950
+      TCGA.OR.A5LR  6.122742  9.513255 3.260841  0.000000 10.388367 13.190831
+      TCGA.OR.A5LS  8.325896 10.330167 0.000000  9.455361  8.164159 13.890374
+      TCGA.OR.A5LT  8.018634 10.834880 5.461223  0.000000  7.969916 14.150643
+      TCGA.OU.A5PI  7.421989  9.676277 3.673331  8.646638  7.650234 12.695340
+      TCGA.P6.A5OF  8.704807  9.949965 2.379804  6.729505 12.503735 13.913254
+      TCGA.P6.A5OG  3.913395  8.973700 0.000000 10.689666 10.705958 12.294391
+      TCGA.PA.A5YG  6.809576  9.594990 4.213624  4.609090  8.225981 14.681605
+      TCGA.PK.A5H8  8.026062 10.727636 2.969626 11.709658 10.431845 12.158767
+      TCGA.PK.A5H9  9.349822 10.007731 2.106710  3.449065  6.386759 14.784953
+      TCGA.PK.A5HA  4.727563 10.072566 0.000000  5.197347 11.622047 15.270888
+      TCGA.PK.A5HB  6.294343 10.215656 4.532226  6.850280  8.817464  8.732412
+                      ABCA2     ABCA3    ABCA4     ABCA5     ABCA6     ABCA7
+      TCGA.OR.A5J1 13.17591 13.034892 4.839048 14.516064  7.381383 12.276676
+      TCGA.OR.A5J2 13.44309 13.588803 6.281714 11.557609  8.329825 11.209620
+      TCGA.OR.A5J3 14.81587 15.467573 6.085401 13.013511  7.531248 11.944966
+      TCGA.OR.A5J5 14.83570 15.091897 0.000000 12.610936  3.854521 14.113196
+      TCGA.OR.A5J6 11.95505 13.057327 4.836172 13.129218 10.026459 11.934877
+      TCGA.OR.A5J7 13.74621 13.077984 4.942071 13.311148  6.194304 12.667485
+      TCGA.OR.A5J8 13.28602 10.200260 9.045041 10.157228 11.711913 11.316707
+      TCGA.OR.A5J9 13.91948 11.988427 4.517216 13.590759  6.059554 11.549554
+      TCGA.OR.A5JA 12.32950 14.588355 3.473778 11.879181  4.715610 12.627949
+      TCGA.OR.A5JB 14.61544 11.379805 4.701111 11.506137 12.746740 11.233868
+      TCGA.OR.A5JC 11.21969 13.508622 4.421769 12.956645  7.633141 12.291724
+      TCGA.OR.A5JD 14.94138 14.728555 5.374759 13.226716  7.186006 12.545074
+      TCGA.OR.A5JE 14.73826 10.930950 4.661927 13.592583  4.265762 12.237075
+      TCGA.OR.A5JF 15.17069 14.988914 4.686424 14.180101  8.166801 12.121453
+      TCGA.OR.A5JG 13.90151 13.310021 5.377574 11.063243  6.360117 11.820893
+      TCGA.OR.A5JI 13.82196 15.462123 5.740577 11.971086  7.528529 11.486431
+      TCGA.OR.A5JJ 15.65256 13.249077 3.805854 12.773171  7.168320 12.625842
+      TCGA.OR.A5JK 13.43443 14.791284 4.718669 13.363386  7.257233 13.766201
+      TCGA.OR.A5JL 12.57082 13.713700 5.810484 12.026023  6.516596 10.932125
+      TCGA.OR.A5JM 13.08913 11.782632 5.243391 11.414776  5.409078 12.948128
+      TCGA.OR.A5JO 12.85687 11.758471 5.089119 13.045332 14.301594 11.704745
+      TCGA.OR.A5JP 12.15383 13.107627 6.272933 14.230436  7.932497  8.632833
+      TCGA.OR.A5JQ 14.69928 15.842156 5.221010 12.766971  8.093982 12.245493
+      TCGA.OR.A5JR 14.64183 17.255743 4.427622 12.028206  4.427622 11.433639
+      TCGA.OR.A5JS 14.33758 12.878067 2.285091 13.734860  7.354962 12.731272
+      TCGA.OR.A5JT 13.98509 16.750458 6.276720 12.124563  3.485976 11.892577
+      TCGA.OR.A5JV 12.63310 15.573093 5.777984 11.120167  5.274635 12.149228
+      TCGA.OR.A5JW 13.09566 14.458743 3.942240 13.846702  7.553337 11.342938
+      TCGA.OR.A5JX 13.48090 13.605691 0.000000 13.518887  7.262258 12.146863
+      TCGA.OR.A5JY 12.26061 12.698290 9.306994 13.631666  7.516151 11.695384
+      TCGA.OR.A5JZ 13.78727 16.559607 4.497155 12.544060  5.208338 11.231155
+      TCGA.OR.A5K0 15.02584 13.445978 6.553647 14.773376  7.248168 14.079871
+      TCGA.OR.A5K1 12.89425 16.909478 5.145864 11.866467  4.744346 11.912258
+      TCGA.OR.A5K2 12.69504 12.315285 0.000000 14.543124  7.335279 10.693511
+      TCGA.OR.A5K3 13.11755 15.191847 5.805791 12.731265  6.122552 12.768659
+      TCGA.OR.A5K4 13.84028 17.756466 5.963227 12.618217  7.712346 11.844792
+      TCGA.OR.A5K5 13.28176 13.158177 7.255184 12.191179  5.642613 12.323840
+      TCGA.OR.A5K6 14.06692 13.301770 4.836537 11.426631  4.527177 11.449568
+      TCGA.OR.A5K8 14.69549 15.418227 5.048822 12.749609  7.472146 13.317590
+      TCGA.OR.A5K9 14.02076  9.810671 4.524427 10.392147  4.524427 13.388989
+      TCGA.OR.A5KO 14.21643 15.416220 3.559951 13.091394  5.631450 11.619935
+      TCGA.OR.A5KT 13.56151 13.915830 6.312863 11.561864 10.077296 11.494772
+      TCGA.OR.A5KU 12.46091 13.048594 5.085915 14.674941  7.373454 13.193970
+      TCGA.OR.A5KV 14.37489 12.592217 2.361221 13.237071  6.238116 13.520749
+      TCGA.OR.A5KW 13.41962 14.083290 4.575179 12.333810  6.119219 12.551139
+      TCGA.OR.A5KX 12.24329 13.703442 4.159487 12.580470  2.727575 13.618910
+      TCGA.OR.A5KY 14.68802 13.713087 2.466198 12.879689  8.504098 12.693123
+      TCGA.OR.A5KZ 12.03287 11.894004 2.953487 11.112277 13.398964 10.820960
+      TCGA.OR.A5L3 14.27163 12.553760 7.802300 13.597860  6.731461 10.852456
+      TCGA.OR.A5L4 11.78701 15.389588 5.603878 11.338227  8.163906 11.103340
+      TCGA.OR.A5L5 13.77790 15.663593 6.205030 13.616229 10.635555 12.143431
+      TCGA.OR.A5L6 13.47899 14.771477 6.440292 13.854969  7.280887 12.498509
+      TCGA.OR.A5L8 13.39445 13.684285 5.623626 12.674302  6.869489 10.261995
+      TCGA.OR.A5L9 12.66519 15.917653 7.259374 13.164968  8.989733 12.498104
+      TCGA.OR.A5LA 14.25864 15.572369 4.372831 12.717416  8.828200 10.268415
+      TCGA.OR.A5LB 13.84437 14.799204 4.348455 13.520918  7.093792 11.971424
+      TCGA.OR.A5LC 14.45892 12.363636 0.000000 12.404711  7.565626 12.843588
+      TCGA.OR.A5LD 11.81944 12.171027 4.308773 11.600863  5.271908 11.804336
+      TCGA.OR.A5LE 13.06827 11.364759 6.091919 12.478369  6.091919 11.455790
+      TCGA.OR.A5LG 12.89446 12.603515 3.665106 12.254300  8.195431 11.761380
+      TCGA.OR.A5LH 12.82644 14.419032 7.935597 13.110474  8.149793 11.094540
+      TCGA.OR.A5LJ 15.01426 13.686423 7.008397 12.643975  5.634175 11.010671
+      TCGA.OR.A5LK 13.98399 14.303985 6.180559 12.403970  8.072789 13.166312
+      TCGA.OR.A5LL 13.50581 12.480346 4.731324 13.712930  8.907788 11.038592
+      TCGA.OR.A5LM 11.56805 13.912496 3.715979 12.430188  4.660014 12.718348
+      TCGA.OR.A5LN 13.54785 14.702800 0.000000 13.457708  6.064821 12.522323
+      TCGA.OR.A5LO 13.42228 13.880245 0.000000 13.106270  6.459920 12.812145
+      TCGA.OR.A5LP 14.52268 15.596661 4.497311 12.333122  7.731562 11.695445
+      TCGA.OR.A5LR 13.74945 16.316832 5.714589 12.498742  7.915232 11.742554
+      TCGA.OR.A5LS 14.48839 14.519664 4.818847 13.887137  6.948457 11.893887
+      TCGA.OR.A5LT 15.70564 14.288636 8.018634 13.942311  5.937263 14.429290
+      TCGA.OU.A5PI 14.65924 15.008371 4.925762 13.509891  8.728900 10.986735
+      TCGA.P6.A5OF 15.63831 14.517065 3.234090 13.243940  9.359589 13.186537
+      TCGA.P6.A5OG 14.28030 13.257414 8.802451 10.137533 10.018655 12.092328
+      TCGA.PA.A5YG 14.35172 14.286471 0.000000 12.806319  6.882933 12.086279
+      TCGA.PK.A5H8 11.77300 14.923652 6.489179 12.873444  6.115477 12.385727
+      TCGA.PK.A5H9 12.51452 12.698037 3.449065 14.361345 14.373983 11.419572
+      TCGA.PK.A5HA 13.65744 15.695974 4.727563  9.958907  9.172807 11.019706
+      TCGA.PK.A5HB 12.05504 14.894451 5.244033 10.356302  5.718542 10.763939
+                       ABCA8     ABCA9    ABCB10   ABCB11     ABCB1     ABCB4
+      TCGA.OR.A5J1  5.664467  8.698110 12.214310 2.705842 13.563306 12.030308
+      TCGA.OR.A5J2 10.419815  8.836957 12.064667 0.000000 14.958426 15.923384
+      TCGA.OR.A5J3 13.652823  8.548980 10.718295 4.147772 17.441847 15.717167
+      TCGA.OR.A5J5 13.059679  8.685417 11.302489 0.000000 10.855238 10.946659
+      TCGA.OR.A5J6 15.590212  8.168296 11.411730 0.000000 15.131758  9.882215
+      TCGA.OR.A5J7 13.421968  7.305606 11.599222 0.000000 15.449939 12.139892
+      TCGA.OR.A5J8 10.496273 11.264441 11.328877 0.000000 10.365330  7.208818
+      TCGA.OR.A5J9 13.829022  8.101914  9.637831 0.000000 15.003267 13.099220
+      TCGA.OR.A5JA 13.153243 10.087221 11.158512 0.000000 15.816370 11.415046
+      TCGA.OR.A5JB  5.673110  8.042355 12.528969 0.000000  8.349424  6.566745
+      TCGA.OR.A5JC 12.640006  8.748512 10.657511 0.000000 16.516083 12.468569
+      TCGA.OR.A5JD 14.051929  8.705592 11.205244 0.000000 12.838466  7.127525
+      TCGA.OR.A5JE 11.974827  7.257100 10.992507 2.823500 14.698573 13.002701
+      TCGA.OR.A5JF 13.890795  9.489266  9.973105 2.181267 16.615285 16.167346
+      TCGA.OR.A5JG  8.000170  6.869412 11.197485 2.764715 15.598179  9.209956
+      TCGA.OR.A5JI 13.336750  8.558473 10.555600 0.000000 15.828841 10.095480
+      TCGA.OR.A5JJ 11.979951  8.002142 10.566024 0.000000 15.247843 15.126351
+      TCGA.OR.A5JK 12.043973  9.270010 11.373012 0.000000 14.395327 12.668656
+      TCGA.OR.A5JL 12.784750  7.684660 10.709371 5.335303 14.168019 12.004065
+      TCGA.OR.A5JM 10.823975  5.056176 12.120997 0.000000 15.774200 13.489743
+      TCGA.OR.A5JO 15.930930 11.603709 11.319684 3.586527 11.176007  8.465226
+      TCGA.OR.A5JP 12.757195  9.541494 11.752424 4.635332 14.388006  8.236227
+      TCGA.OR.A5JQ 15.011964  8.186761 10.865569 0.000000 16.018268 10.756283
+      TCGA.OR.A5JR 14.588454  4.034760 10.871499 2.615901 14.753223  8.666312
+      TCGA.OR.A5JS 12.484463  7.793214 11.608903 0.000000 16.130466 12.331295
+      TCGA.OR.A5JT 14.059838  5.552106 10.561509 0.000000 12.874854  8.029060
+      TCGA.OR.A5JV 13.332036  5.274635 10.678329 0.000000 13.020282  9.302173
+      TCGA.OR.A5JW 14.093602  9.471721 10.674745 0.000000 17.083114 13.588465
+      TCGA.OR.A5JX 12.763711  8.986070  9.964767 0.000000 16.041347 13.298360
+      TCGA.OR.A5JY 12.886220  7.313811 11.348337 2.533807 15.761437 14.545783
+      TCGA.OR.A5JZ 14.038612  7.440144 10.945614 0.000000 13.944316  6.946061
+      TCGA.OR.A5K0 10.678639  8.400464 11.833224 0.000000 16.264870 10.359485
+      TCGA.OR.A5K1 13.581393  7.201825 10.139232 0.000000 12.277247  5.459620
+      TCGA.OR.A5K2  9.942494  9.685622 10.889320 4.958444 15.251909 14.038070
+      TCGA.OR.A5K3 11.172710  8.427819 10.103008 0.000000 13.949784  8.369100
+      TCGA.OR.A5K4 13.715469  6.098627 11.082177 3.730951 11.908382  8.295014
+      TCGA.OR.A5K5 12.647089  6.396207 10.609849 0.000000 14.801586 14.875584
+      TCGA.OR.A5K6 13.309627  5.307464 11.449568 0.000000 16.620177 15.942635
+      TCGA.OR.A5K8 12.766324  8.914449 10.155578 0.000000 15.496450 13.514464
+      TCGA.OR.A5K9 14.923907  5.808243 10.409764 0.000000 16.817488 15.968648
+      TCGA.OR.A5KO 13.827222  7.086634 11.885776 0.000000 16.366938 12.453362
+      TCGA.OR.A5KT 16.796326  9.881093 11.678745 0.000000 15.179573 11.770746
+      TCGA.OR.A5KU 13.647465 10.077558 10.716082 0.000000 16.398167 13.610871
+      TCGA.OR.A5KV  5.405329  6.238116 10.061529 7.580072 14.967487 11.443932
+      TCGA.OR.A5KW 12.210623  7.565382 10.853981 6.436990 16.880368 12.485147
+      TCGA.OR.A5KX 14.913032  4.554199 10.914259 0.000000 14.156861  7.453895
+      TCGA.OR.A5KY 10.459986  9.309749 10.933816 6.008137 16.514573 14.888829
+      TCGA.OR.A5KZ 14.177267 13.045415 11.734636 0.000000 14.820212 12.283793
+      TCGA.OR.A5L3 12.581553  7.555584 10.303924 0.000000 14.687501 12.095119
+      TCGA.OR.A5L4 13.154007  7.696354 10.890569 0.000000 15.495776  9.498732
+      TCGA.OR.A5L5 13.846394 10.728925 10.856366 3.608326 14.810818 10.714578
+      TCGA.OR.A5L6 12.972199  8.106897 10.312243 0.000000 12.671732  9.011344
+      TCGA.OR.A5L8 14.771036  8.254148 11.349504 3.953370 16.899624 15.994538
+      TCGA.OR.A5L9 12.931936  8.838046  9.666741 0.000000 12.250223  6.679113
+      TCGA.OR.A5LA 13.939083  8.260369 10.357843 0.000000 14.402846  9.551312
+      TCGA.OR.A5LB 13.892480  7.531583 10.780483 0.000000 13.515558 14.106434
+      TCGA.OR.A5LC 13.017596  7.722379 11.224475 0.000000 10.495175  8.743563
+      TCGA.OR.A5LD 12.781176  7.700461  9.990383 0.000000 15.047099 13.911890
+      TCGA.OR.A5LE  6.501659  6.501659 11.618822 0.000000 15.280643 16.184807
+      TCGA.OR.A5LG 12.856316  9.221489 11.454050 0.000000 13.212133 11.956399
+      TCGA.OR.A5LH 13.286131  8.585529  9.956679 4.761494 14.019513 11.002623
+      TCGA.OR.A5LJ  8.337218  7.699251 11.782659 5.445673 15.806213 16.253543
+      TCGA.OR.A5LK 11.861358  9.716835 10.446966 0.000000 13.174707  8.334930
+      TCGA.OR.A5LL 15.409011  9.925374 11.917127 0.000000 17.524837 15.094647
+      TCGA.OR.A5LM 11.326865  7.893273 10.217712 0.000000 13.658539  8.413382
+      TCGA.OR.A5LN 13.896199  7.054004 11.809043 0.000000 13.758829  8.933585
+      TCGA.OR.A5LO 14.272837  7.039410 10.911792 0.000000 15.239312 12.649456
+      TCGA.OR.A5LP 12.977505  7.897471 10.594797 0.000000 15.219753  8.881295
+      TCGA.OR.A5LR 12.731457  8.061495 10.222038 0.000000 13.927734  6.700786
+      TCGA.OR.A5LS  7.773413  8.747444 11.665094 0.000000 14.508754 16.412591
+      TCGA.OR.A5LT 13.687479  7.636998 11.037593 0.000000 13.221364  7.969916
+      TCGA.OU.A5PI 13.617057  8.667648 10.351092 0.000000 17.056672 15.953402
+      TCGA.P6.A5OF 13.133521  9.703077 11.350991 3.234090 15.343487 14.519134
+      TCGA.P6.A5OG  9.910341  9.623508 11.914483 0.000000  9.150764  7.146470
+      TCGA.PA.A5YG 14.119140  6.732288 11.346945 0.000000 15.789695  9.371089
+      TCGA.PK.A5H8 13.582475  8.203755 10.972979 0.000000 14.227478  9.042115
+      TCGA.PK.A5H9 15.939444 12.006679 12.254307 0.000000 11.002386 10.030718
+      TCGA.PK.A5HA 12.080080  7.115456 10.980197 0.000000 11.832321  7.266418
+      TCGA.PK.A5HB 13.295710  5.816250 12.380650 3.978107 15.408468  8.263268
+                       ABCB5     ABCB6    ABCB7    ABCB8     ABCB9   ABCC10   ABCC11
+      TCGA.OR.A5J1  6.390010 14.354626 11.16341 13.36531 11.062678 13.18279 5.310001
+      TCGA.OR.A5J2  4.253292 12.316700 12.53668 14.00063 11.162059 13.10353 4.560011
+      TCGA.OR.A5J3  5.677428 13.162186 12.18670 14.39685 11.504670 12.60468 5.677428
+      TCGA.OR.A5J5  2.950960 13.007555 10.65895 14.54361 12.550693 12.89984 5.944711
+      TCGA.OR.A5J6  0.000000 13.019513 11.44349 13.20023 11.218326 14.08268 6.288760
+      TCGA.OR.A5J7  4.169492 15.306360 11.53664 14.04238 11.169780 13.39775 5.128837
+      TCGA.OR.A5J8  9.068456 13.404025 11.10375 13.40517 12.611646 12.61463 4.192703
+      TCGA.OR.A5J9  2.217182 13.450576 11.37617 14.77120 12.510134 12.66247 5.485366
+      TCGA.OR.A5JA 13.338545 12.786022 12.20374 14.15396 12.370020 13.61801 4.407344
+      TCGA.OR.A5JB  0.000000 13.459265 12.37104 13.77330 10.662253 12.58437 3.755534
+      TCGA.OR.A5JC  0.000000 12.151896 12.06971 13.56889 12.560903 13.84879 4.819880
+      TCGA.OR.A5JD 10.752213 12.761234 12.23814 14.24610 11.472295 11.82493 5.374759
+      TCGA.OR.A5JE  3.717820 14.641385 11.07206 13.21404 12.101961 13.39019 5.444649
+      TCGA.OR.A5JF  4.223236 12.500771 11.90711 15.49967 12.162086 11.92296 5.658133
+      TCGA.OR.A5JG 11.625661 13.014036 11.86640 15.29377 12.396447 11.58541 6.718779
+      TCGA.OR.A5JI  3.284588 12.717305 11.04792 13.46278 10.721688 12.42555 6.148853
+      TCGA.OR.A5JJ  4.194869 13.405740 11.99686 14.49601 12.050839 11.79199 4.968061
+      TCGA.OR.A5JK  0.000000 12.605555 11.55811 14.18580 11.578165 12.65550 3.239327
+      TCGA.OR.A5JL  5.187265 13.205561 12.84621 14.10752 12.443016 13.54051 4.621966
+      TCGA.OR.A5JM  0.000000 14.020264 10.77547 13.61165 11.182694 13.81500 6.224221
+      TCGA.OR.A5JO  2.701884 12.555456 12.01031 12.88129  9.662592 11.89406 3.586527
+      TCGA.OR.A5JP  0.000000 14.459095 11.29912 14.32132 12.333919 12.93030 4.888659
+      TCGA.OR.A5JQ  7.475334 12.764151 11.87393 13.87930 13.388340 12.53960 5.793021
+      TCGA.OR.A5JR  5.967185 11.635554 12.74397 14.33740 11.808527 12.75686 5.967185
+      TCGA.OR.A5JS  2.285091 13.527574 11.82918 13.65436 11.322875 12.71972 6.063009
+      TCGA.OR.A5JT  4.027366 12.229452 12.28655 13.96175 12.572924 12.54363 5.552106
+      TCGA.OR.A5JV 11.897505 11.514823 12.97852 14.21178 11.284968 11.92974 4.804040
+      TCGA.OR.A5JW  0.000000 12.030417 12.60587 14.59261 10.971759 13.55095 3.403456
+      TCGA.OR.A5JX  0.000000 12.694482 11.70971 13.62244 11.679534 13.10871 6.135987
+      TCGA.OR.A5JY  5.612051 13.228417 12.22929 13.59917 11.676503 13.51783 5.612051
+      TCGA.OR.A5JZ  3.034617 11.664279 12.50531 12.80995 12.243753 12.16005 5.464854
+      TCGA.OR.A5K0  0.000000 12.408837 11.02674 13.56623 12.298382 12.84902 2.767373
+      TCGA.OR.A5K1  0.000000 11.197901 12.11048 14.35490 12.404003 12.50566 4.186048
+      TCGA.OR.A5K2  4.958444 14.771384 12.19390 14.51867 11.802455 13.78175 4.396498
+      TCGA.OR.A5K3 15.653624 12.870073 12.26388 14.70982 11.734388 12.59057 4.831354
+      TCGA.OR.A5K4  6.951618 11.887495 12.90011 13.38796 12.520608 12.12015 6.222402
+      TCGA.OR.A5K5  3.431808 14.003698 11.32550 14.04774 12.329341 13.01791 4.671207
+      TCGA.OR.A5K6  0.000000 12.689841 12.05414 12.62457 10.623996 12.67288 2.703638
+      TCGA.OR.A5K8  6.824704 13.076195 11.65606 14.54959 11.154946 12.75297 0.000000
+      TCGA.OR.A5K9  0.000000 14.398879 11.79613 13.80861 11.370774 13.38157 2.701205
+      TCGA.OR.A5KO  3.559951 12.056345 12.41965 13.61711  9.995781 13.74000 4.497453
+      TCGA.OR.A5KT  7.390686 12.986521 11.67442 13.42144 10.495272 12.37436 6.122808
+      TCGA.OR.A5KU  0.000000 13.326028 12.13852 13.42123 12.982557 11.95605 3.208031
+      TCGA.OR.A5KV  0.000000 13.505430 12.05632 13.63450 12.748733 13.08323 5.880996
+      TCGA.OR.A5KW  6.233099 13.376899 12.05865 14.00829 13.226888 12.25343 5.544596
+      TCGA.OR.A5KX  0.000000 13.841378 11.09573 12.96127 11.963482 13.65584 2.727575
+      TCGA.OR.A5KY  6.365717 14.209968 11.39062 14.88560 11.984291 12.94325 5.030380
+      TCGA.OR.A5KZ  0.000000 13.355053 12.25222 13.55590 11.966322 13.44245 5.374245
+      TCGA.OR.A5L3  3.666258 14.184597 11.22798 14.19363 10.491412 13.08916 4.608290
+      TCGA.OR.A5L4  0.000000 10.955453 13.36303 14.18439 11.199009 13.32670 4.077057
+      TCGA.OR.A5L5  5.112189 12.364757 12.20460 13.50253 12.479507 12.32281 4.547933
+      TCGA.OR.A5L6  0.000000 12.349859 10.99718 13.85162 11.545081 13.13248 0.000000
+      TCGA.OR.A5L8  0.000000 12.152036 12.57158 13.77507 12.070132 12.63650 4.344935
+      TCGA.OR.A5L9  0.000000 13.323317 10.62008 13.54773 11.913266 12.53557 0.000000
+      TCGA.OR.A5LA  0.000000 12.842753 11.44664 14.80831 12.486587 11.77355 3.440837
+      TCGA.OR.A5LB  2.546656 13.317637 12.79174 14.30105 11.245098 12.00411 3.417592
+      TCGA.OR.A5LC  0.000000 13.266026 11.86075 14.34997 11.992331 12.26511 3.953793
+      TCGA.OR.A5LD  0.000000 14.439935 10.32267 13.53569 13.018885 13.56511 5.271908
+      TCGA.OR.A5LE  3.994185 14.155204 12.36448 14.03134 10.956695 12.96561 5.517493
+      TCGA.OR.A5LG  0.000000 13.889371 12.11872 14.06538 10.374281 13.90868 0.000000
+      TCGA.OR.A5LH  5.163172 12.705636 12.67330 14.50637 11.833539 12.58200 5.328617
+      TCGA.OR.A5LJ  8.515668 13.415534 12.74970 14.23608  9.937219 12.48313 4.973427
+      TCGA.OR.A5LK 14.162017 10.790701 12.26411 13.93211 12.540151 12.79373 5.200313
+      TCGA.OR.A5LL  0.000000 14.344473 12.48035 14.07746  9.847454 12.61577 4.731324
+      TCGA.OR.A5LM  2.821790 12.553314 11.85011 14.03494 14.242109 12.67749 4.970484
+      TCGA.OR.A5LN  3.826622 12.930816 11.71596 14.07881  9.872465 13.49444 3.826622
+      TCGA.OR.A5LO  0.000000 13.595839 13.39267 13.74732 10.862066 12.75085 6.050335
+      TCGA.OR.A5LP  6.039047 12.021787 12.31123 14.56723 11.784649 12.43111 5.722594
+      TCGA.OR.A5LR  0.000000 11.549453 12.31406 12.65862 12.314060 12.52420 5.143298
+      TCGA.OR.A5LS  0.000000 10.345342 12.12688 14.24969 11.075811 12.28476 7.632076
+      TCGA.OR.A5LT 10.215907 13.652211 11.27668 13.02670 13.156176 12.70816 4.745926
+      TCGA.OU.A5PI  5.397564 13.109364 12.16875 14.53898 11.249651 11.86202 4.925762
+      TCGA.P6.A5OF  4.927546 13.301551 12.04100 14.50824 11.525749 13.19626 4.460958
+      TCGA.P6.A5OG  4.611545 12.510379 12.42315 12.84335 10.734034 12.83596 0.000000
+      TCGA.PA.A5YG  9.898969 12.252928 13.06361 14.52571 11.310848 12.30056 3.667026
+      TCGA.PK.A5H8  0.000000 11.191059 12.53272 14.10750 11.932830 13.78532 6.115477
+      TCGA.PK.A5H9  4.132198 10.811169 12.36788 12.66829 10.952698 12.93092 4.943158
+      TCGA.PK.A5HA  6.177552  9.429036 12.75548 13.62578 10.874457 12.80257 4.419185
+      TCGA.PK.A5HB  5.244033 12.649451 12.69833 13.40820 11.010929 13.25980 5.907759
+                     ABCC12   ABCC13    ABCC1     ABCC2    ABCC3     ABCC4    ABCC5
+      TCGA.OR.A5J1 0.000000 0.000000 13.38556  5.498093 12.93258 10.962392 13.76798
+      TCGA.OR.A5J2 0.000000 0.000000 14.54415  5.663762 13.60144 11.195793 14.06137
+      TCGA.OR.A5J3 0.000000 0.000000 14.49347  7.394524 16.02438  9.599835 13.59679
+      TCGA.OR.A5J5 0.000000 0.000000 14.39284 10.507050 16.17155  7.566158 13.92744
+      TCGA.OR.A5J6 0.000000 0.000000 14.51546  6.387065 11.37327  9.552219 12.83154
+      TCGA.OR.A5J7 0.000000 3.780934 13.90008  8.466129 15.31841  9.176962 14.79700
+      TCGA.OR.A5J8 4.498766 2.411864 13.91902  8.574790 10.64385 11.137350 13.16836
+      TCGA.OR.A5J9 0.000000 0.000000 14.62278  6.278853 11.72469  9.951441 13.33711
+      TCGA.OR.A5JA 0.000000 0.000000 14.78561  4.969464 14.62950 10.473143 13.29495
+      TCGA.OR.A5JB 0.000000 2.858583 14.85101  6.827241 14.52267 10.472119 13.88484
+      TCGA.OR.A5JC 0.000000 0.000000 14.62319 11.063169 13.14849 10.260904 13.19639
+      TCGA.OR.A5JD 0.000000 0.000000 13.72769  7.860357 14.56672  8.875133 13.12483
+      TCGA.OR.A5JE 0.000000 0.000000 12.73199  5.227767 14.98699  8.796853 13.37788
+      TCGA.OR.A5JF 0.000000 2.181267 14.68887  8.365461 15.59921  9.962919 13.24256
+      TCGA.OR.A5JG 0.000000 0.000000 14.38456  6.550565 16.78814 10.304418 12.65296
+      TCGA.OR.A5JI 0.000000 0.000000 13.34040  8.302877 14.11927  9.239290 11.69867
+      TCGA.OR.A5JJ 0.000000 2.413724 13.81657  6.220797 11.38119 10.859471 13.36784
+      TCGA.OR.A5JK 0.000000 0.000000 14.22322  7.088487 11.23832  8.127409 13.23408
+      TCGA.OR.A5JL 3.679398 0.000000 12.98720  7.411951 13.34529 10.474060 12.98229
+      TCGA.OR.A5JM 0.000000 0.000000 13.16857  7.460933 14.15141  9.435697 13.80434
+      TCGA.OR.A5JO 0.000000 0.000000 14.01437  9.550526 13.64302 11.243093 12.67203
+      TCGA.OR.A5JP 2.528708 5.104078 13.97149  6.910057 15.32733  8.166076 11.77224
+      TCGA.OR.A5JQ 0.000000 0.000000 13.91703  5.535181 14.19973  9.783352 12.67488
+      TCGA.OR.A5JR 0.000000 0.000000 14.44849  5.967185 12.91279 10.583918 13.10229
+      TCGA.OR.A5JS 0.000000 2.285091 14.48744  6.965396 14.75395  9.054553 14.20329
+      TCGA.OR.A5JT 0.000000 0.000000 14.43763  5.198295 11.58039 10.632780 11.99531
+      TCGA.OR.A5JV 0.000000 4.101098 14.41792  6.834535 10.85656 12.020455 14.24097
+      TCGA.OR.A5JW 0.000000 0.000000 14.23041  9.824069 16.20332  9.628380 13.46371
+      TCGA.OR.A5JX 0.000000 0.000000 14.11089  9.424855 14.16471  8.986070 13.72350
+      TCGA.OR.A5JY 0.000000 2.533807 15.24068 10.872115 15.25612  4.894618 13.67828
+      TCGA.OR.A5JZ 0.000000 0.000000 14.48942  6.767048 14.08653 11.160364 11.61549
+      TCGA.OR.A5K0 4.599001 0.000000 14.12278  4.203671 14.08615  8.586360 13.53621
+      TCGA.OR.A5K1 0.000000 0.000000 14.56197  4.186048 12.95802 10.315115 12.59662
+      TCGA.OR.A5K2 0.000000 0.000000 14.42112  0.000000 14.72672  8.914273 13.47492
+      TCGA.OR.A5K3 0.000000 0.000000 14.40737  5.805791 10.28872  8.484242 12.38366
+      TCGA.OR.A5K4 0.000000 0.000000 15.31195  8.665938 11.98467 10.899514 12.13006
+      TCGA.OR.A5K5 0.000000 3.431808 14.37639  4.671207 12.74396  7.344810 14.18451
+      TCGA.OR.A5K6 0.000000 0.000000 12.74187  5.307464 16.71884 10.758664 13.31354
+      TCGA.OR.A5K8 0.000000 0.000000 14.17582  8.179476 14.94932 10.071996 13.20194
+      TCGA.OR.A5K9 0.000000 0.000000 14.20860  7.512652 15.77622 11.835770 13.59295
+      TCGA.OR.A5KO 0.000000 0.000000 13.94298  7.992390 16.32914  8.974155 14.97617
+      TCGA.OR.A5KT 0.000000 3.434609 13.78254  4.366303 16.11620 10.226542 12.53325
+      TCGA.OR.A5KU 3.208031 3.208031 14.58975  8.570162 11.68348  8.295326 13.35469
+      TCGA.OR.A5KV 0.000000 2.361221 13.81309  3.745684 13.92287  8.780157 13.05053
+      TCGA.OR.A5KW 4.180175 0.000000 15.01274  6.119219 14.47523 10.569583 13.76375
+      TCGA.OR.A5KX 2.727575 0.000000 14.86816  6.507392 15.74207 11.042877 12.84369
+      TCGA.OR.A5KY 0.000000 2.466198 13.96373  5.531648 16.07227  9.764812 13.77402
+      TCGA.OR.A5KZ 0.000000 0.000000 14.51277  4.806570 10.87896 11.990442 12.75569
+      TCGA.OR.A5L3 0.000000 0.000000 12.97224  6.153271 16.42212  5.173400 13.74029
+      TCGA.OR.A5L4 0.000000 0.000000 14.92526  4.077057 14.43557 10.744670 12.73735
+      TCGA.OR.A5L5 0.000000 0.000000 13.61365  7.249302 14.46938  9.626279 12.78546
+      TCGA.OR.A5L6 0.000000 0.000000 14.26538 11.396811 15.92425  8.859651 13.23366
+      TCGA.OR.A5L8 0.000000 0.000000 12.87688  6.927889 15.29852  9.586896 14.36430
+      TCGA.OR.A5L9 0.000000 0.000000 15.17280  5.693123 12.78411  9.252295 12.98707
+      TCGA.OR.A5LA 0.000000 0.000000 13.93818  0.000000 14.35817  9.902881 12.79352
+      TCGA.OR.A5LB 0.000000 0.000000 14.29828  7.192624 15.35536  8.705561 13.68852
+      TCGA.OR.A5LC 0.000000 0.000000 13.81982  7.450783 13.59238 12.170746 14.13201
+      TCGA.OR.A5LD 0.000000 0.000000 15.45207  4.308773 14.24258  7.052342 12.52434
+      TCGA.OR.A5LE 3.081990 0.000000 14.19021  6.501659  9.24292 11.310646 13.75722
+      TCGA.OR.A5LG 0.000000 0.000000 13.44386  5.893056 16.12704  7.080903 13.83157
+      TCGA.OR.A5LH 0.000000 3.813726 13.42454  6.387599 13.89392 10.226829 13.33558
+      TCGA.OR.A5LJ 0.000000 2.824401 13.65411  8.390495 14.52487 12.182569 15.23559
+      TCGA.OR.A5LK 0.000000 0.000000 12.84021  7.627277 12.13240 10.501376 13.81348
+      TCGA.OR.A5LL 0.000000 0.000000 14.86336  8.352807 16.19008  6.776644 13.71430
+      TCGA.OR.A5LM 0.000000 0.000000 13.99688  6.784858 13.89765 10.574280 13.07363
+      TCGA.OR.A5LN 0.000000 0.000000 12.10521  9.149985 14.87920  9.338119 12.68429
+      TCGA.OR.A5LO 0.000000 0.000000 14.24158  7.972754 14.25248 11.062498 14.58017
+      TCGA.OR.A5LP 0.000000 0.000000 14.36868  7.289226 14.76272 10.688351 12.28651
+      TCGA.OR.A5LR 0.000000 3.260841 14.96960  5.714589 14.33917 10.495205 12.53049
+      TCGA.OR.A5LS 2.964580 0.000000 13.81130  8.747444 14.77668  8.998446 14.76121
+      TCGA.OR.A5LT 3.264676 0.000000 13.45944  8.916513 11.15120  9.583784 12.63973
+      TCGA.OU.A5PI 0.000000 3.673331 13.58980  7.089763 15.08260  9.776386 14.28484
+      TCGA.P6.A5OF 0.000000 2.379804 13.97068  8.324424 15.30310 11.776304 14.14955
+      TCGA.P6.A5OG 7.662763 3.913395 13.00020  6.885471 10.03809 11.576347 13.92686
+      TCGA.PA.A5YG 0.000000 2.776354 14.33180  6.732288 14.84168 10.889340 14.05264
+      TCGA.PK.A5H8 0.000000 0.000000 14.91761  7.305301 11.33920 10.612715 13.49467
+      TCGA.PK.A5H9 0.000000 0.000000 15.63726 12.579883 13.73374 11.403810 12.56579
+      TCGA.PK.A5HA 0.000000 0.000000 13.54931  7.403069 13.84758  9.618749 12.94463
+      TCGA.PK.A5HB 0.000000 0.000000 15.80027  9.198866 14.59633 11.164925 12.45174
+                     ABCC6P1   ABCC6P2     ABCC6    ABCC8     ABCC9    ABCD1
+      TCGA.OR.A5J1  4.135301  8.960565  7.120078 0.000000  7.682308 14.59933
+      TCGA.OR.A5J2  4.560011  7.767187  7.796800 0.000000 11.470716 14.25081
+      TCGA.OR.A5J3  4.542317  6.085401  6.813842 2.717043 13.458587 13.89961
+      TCGA.OR.A5J5  9.481111 10.228108 10.019348 4.803771  9.560438 14.74664
+      TCGA.OR.A5J6  7.717631  9.795374 12.631732 0.000000  9.873762 14.21152
+      TCGA.OR.A5J7  6.956647 11.196144 10.862566 0.000000  9.548364 13.91761
+      TCGA.OR.A5J8  8.139065  8.401246  9.497272 2.411864 10.236887 11.91446
+      TCGA.OR.A5J9  8.691507  8.958201  9.528001 2.217182  9.752151 13.94240
+      TCGA.OR.A5JA  3.473778  4.969464  7.702198 2.598119 10.350035 14.54080
+      TCGA.OR.A5JB  7.972239  9.441047 10.774661 2.858583  8.857122 13.25203
+      TCGA.OR.A5JC  2.965514  8.793497  9.428181 3.870076  9.524722 14.91067
+      TCGA.OR.A5JD  7.494427  8.580376 10.281560 6.014136 10.604597 14.10167
+      TCGA.OR.A5JE  5.444649  9.988906  8.132494 0.000000  8.776999 14.48381
+      TCGA.OR.A5JF  3.012754  7.850554  8.632915 0.000000 14.270369 14.25480
+      TCGA.OR.A5JG  0.000000  5.732412  6.360117 0.000000  9.344668 14.27916
+      TCGA.OR.A5JI  9.950014 11.754503 11.521185 0.000000 11.567643 14.90444
+      TCGA.OR.A5JJ  6.521963  9.508161  9.059082 0.000000  9.082309 14.11112
+      TCGA.OR.A5JK  0.000000  9.539219  7.990422 0.000000  9.587518 14.70270
+      TCGA.OR.A5JL  2.303709  8.339204 10.923377 4.066005 10.525064 14.75491
+      TCGA.OR.A5JM  7.569958  9.077831  9.885800 0.000000 11.827243 15.53518
+      TCGA.OR.A5JO 10.495561  9.748219 12.973070 5.089119 10.134847 12.98488
+      TCGA.OR.A5JP  7.171090 10.043425  9.267724 2.528708 10.754835 14.92773
+      TCGA.OR.A5JQ  8.644842  9.403102  9.618266 3.332621 11.342228 14.65506
+      TCGA.OR.A5JR  8.991170  8.221797 10.686281 0.000000  9.256155 15.77289
+      TCGA.OR.A5JS  8.601380 10.031999 11.651221 0.000000  9.850187 14.26477
+      TCGA.OR.A5JT  5.836011  7.404038 10.879344 2.609314  9.899506 16.44536
+      TCGA.OR.A5JV  4.804040  7.246409  7.646194 0.000000  9.806173 15.21522
+      TCGA.OR.A5JW  3.403456  4.894534  6.666821 0.000000 10.618704 14.22717
+      TCGA.OR.A5JX  5.412634  7.387005  6.714096 0.000000 10.080133 13.74770
+      TCGA.OR.A5JY  5.983740  6.446878  9.328655 0.000000 13.270994 16.09787
+      TCGA.OR.A5JZ  7.711730  5.871702  5.682572 0.000000 10.971690 15.62783
+      TCGA.OR.A5K0  5.380614  8.711578 10.481731 0.000000  5.163982 14.87281
+      TCGA.OR.A5K1  7.811406  9.215482 11.921885 0.000000 10.214268 14.72205
+      TCGA.OR.A5K2  3.463422 10.069128  8.687373 0.000000  9.259411 15.90164
+      TCGA.OR.A5K3  5.399325  8.952608  8.590869 0.000000  9.030457 14.43447
+      TCGA.OR.A5K4  4.279233  7.433711  7.794426 0.000000  9.220321 16.51187
+      TCGA.OR.A5K5  8.652655 10.217538 10.492188 6.217917 11.421322 14.09895
+      TCGA.OR.A5K6  7.640385  8.554516  9.220518 0.000000  9.552596 14.21901
+      TCGA.OR.A5K8  4.091761  4.091761  7.184444 0.000000 10.590464 14.97472
+      TCGA.OR.A5K9  7.468505  8.939012 10.538122 0.000000 10.119844 14.59289
+      TCGA.OR.A5KO  9.267357 10.161305 11.287570 2.677367  8.367237 15.21044
+      TCGA.OR.A5KT  0.000000  5.330897  8.508022 3.434609 11.121796 14.95954
+      TCGA.OR.A5KU  6.232046  8.601108  4.684968 3.208031  9.877224 14.08932
+      TCGA.OR.A5KV  6.070578  7.516285  8.141532 5.539734  9.318000 14.52170
+      TCGA.OR.A5KW  0.000000  2.746194  5.995573 5.139825  9.974218 14.79533
+      TCGA.OR.A5KX  4.554199  5.838804  7.628040 0.000000 10.008547 13.72577
+      TCGA.OR.A5KY  5.531648  5.666314  6.585608 3.329369 10.173794 14.15912
+      TCGA.OR.A5KZ  3.857223  8.801704  9.199473 0.000000 11.934351 13.01869
+      TCGA.OR.A5L3  6.372765  7.946075  9.408001 0.000000  8.596022 15.40902
+      TCGA.OR.A5L4  3.160099  7.750544  8.607355 0.000000 12.643803 15.44276
+      TCGA.OR.A5L5 10.093552  9.011261 11.642699 6.091181 11.028623 14.27124
+      TCGA.OR.A5L6  6.920965  9.495972 10.009945 0.000000 11.774492 14.26034
+      TCGA.OR.A5L8  6.745079  8.633325 10.118923 4.652594  9.251784 12.89529
+      TCGA.OR.A5L9  6.679113  9.367590 11.642696 0.000000 11.365951 16.95038
+      TCGA.OR.A5LA  0.000000  7.013113 10.659904 0.000000 10.531254 15.22594
+      TCGA.OR.A5LB  5.762100  7.041716  6.462218 5.999012  9.407246 14.65527
+      TCGA.OR.A5LC  0.000000  8.668455  7.115916 0.000000 10.097273 14.55848
+      TCGA.OR.A5LD  0.000000  9.365548  6.831760 4.308773  8.991801 14.56057
+      TCGA.OR.A5LE  0.000000  8.153689  7.158747 0.000000 10.669757 14.70245
+      TCGA.OR.A5LG  0.000000  5.388850  6.730223 0.000000  8.739848 14.28439
+      TCGA.OR.A5LH  6.991699  8.769503 10.904449 0.000000  9.019936 15.21364
+      TCGA.OR.A5LJ  8.539450  9.115229  8.982724 4.973427 13.408287 14.52487
+      TCGA.OR.A5LK  7.339391 10.044540 10.290965 0.000000  9.805999 15.84530
+      TCGA.OR.A5LL  3.784640  7.328820  9.857427 2.885701 10.061018 14.24542
+      TCGA.OR.A5LM  5.442703  8.098914 10.556944 2.821790 11.037105 14.54143
+      TCGA.OR.A5LN  6.734788  9.629891 10.477078 0.000000 12.233231 15.03524
+      TCGA.OR.A5LO  4.114208  6.050335  6.164137 8.786559 10.022255 13.37357
+      TCGA.OR.A5LP  6.217036  7.609308  9.666413 3.268152 11.701068 14.73741
+      TCGA.OR.A5LR  9.332946  8.276473 10.997412 0.000000  9.688600 16.10981
+      TCGA.OR.A5LS  8.325896 10.267820  9.897600 2.964580  9.576050 13.82219
+      TCGA.OR.A5LT  7.203454 10.050045  8.837248 0.000000 10.455925 14.12306
+      TCGA.OU.A5PI  3.673331  6.570828  8.232800 7.987532 10.311594 13.59323
+      TCGA.P6.A5OF  4.713033  5.427827  6.729505 0.000000 11.735970 14.59806
+      TCGA.P6.A5OG  4.304295  6.058525  6.058525 2.508241 12.698202 11.90569
+      TCGA.PA.A5YG  0.000000  6.650623  9.445617 2.776354 12.914145 13.77524
+      TCGA.PK.A5H8  8.798201 10.305111 13.115937 0.000000 10.431845 15.83550
+      TCGA.PK.A5H9 13.760117 12.315492 15.725056 2.928685  9.663975 14.51780
+      TCGA.PK.A5HA  9.259373  9.418326 10.826654 0.000000 10.822598 14.65111
+      TCGA.PK.A5HB  3.066866  4.931591  6.850280 0.000000 12.856700 15.09728
+                       ABCD2    ABCD3    ABCD4    ABCE1    ABCF1    ABCF2    ABCF3
+      TCGA.OR.A5J1 10.601169 13.01385 13.01095 13.94972 13.79963 13.45888 16.63278
+      TCGA.OR.A5J2 13.006278 13.03529 11.87120 13.71969 14.18934 14.12367 15.19087
+      TCGA.OR.A5J3  8.156524 13.25150 13.24737 13.13204 13.45429 14.52041 14.48015
+      TCGA.OR.A5J5  6.851184 12.10244 13.51948 12.94857 12.43267 13.97164 15.49960
+      TCGA.OR.A5J6  8.325319 13.84285 12.14790 13.33488 14.42181 13.39075 13.99333
+      TCGA.OR.A5J7  6.906436 12.85207 12.59701 13.09630 14.76169 13.66596 15.29375
+      TCGA.OR.A5J8  7.872626 12.99439 13.02538 13.60604 14.53921 14.26425 13.83874
+      TCGA.OR.A5J9 11.256442 12.67460 12.21576 14.00555 14.00395 14.15418 15.75803
+      TCGA.OR.A5JA  6.810048 12.94336 13.28986 13.56904 14.61388 14.00845 15.33421
+      TCGA.OR.A5JB  6.827241 13.72880 13.50654 13.93927 14.51998 14.55638 14.79213
+      TCGA.OR.A5JC  7.582774 12.89089 12.61359 13.46497 14.00457 13.60404 16.45297
+      TCGA.OR.A5JD 10.198772 13.10507 11.50998 13.74177 13.18521 13.90571 15.15773
+      TCGA.OR.A5JE  7.137625 13.22232 12.84477 13.24869 14.76843 13.04274 15.69491
+      TCGA.OR.A5JF 11.252965 12.65898 11.69426 14.06667 13.32141 14.10769 14.58478
+      TCGA.OR.A5JG  8.647219 13.93713 12.99060 14.04693 13.94775 14.48352 15.15352
+      TCGA.OR.A5JI  9.153280 12.12870 12.20015 13.57454 13.33431 13.37288 15.67361
+      TCGA.OR.A5JJ 10.975664 12.81363 13.34702 13.25100 13.44491 14.21394 14.36037
+      TCGA.OR.A5JK 10.218610 12.13886 11.94240 13.74949 13.52712 14.29709 15.19228
+      TCGA.OR.A5JL 10.716141 12.94027 13.56086 13.66948 14.61840 13.99269 14.75799
+      TCGA.OR.A5JM 10.798061 13.73969 11.58030 13.53975 14.57853 13.39599 14.44326
+      TCGA.OR.A5JO  7.376736 13.14166 13.35988 13.14692 14.09285 13.29100 13.86318
+      TCGA.OR.A5JP  7.619064 14.61835 12.41681 14.34334 13.99487 13.83781 14.78461
+      TCGA.OR.A5JQ 10.254445 12.92598 11.79508 13.94178 13.82801 14.08689 15.74966
+      TCGA.OR.A5JR 10.128450 13.69392 12.09909 13.90113 13.88459 14.24208 15.82546
+      TCGA.OR.A5JS  9.223008 12.58794 12.30613 13.24051 14.04367 13.92544 14.66510
+      TCGA.OR.A5JT 11.365668 13.81472 12.06911 13.81472 13.93991 14.36763 14.76874
+      TCGA.OR.A5JV 10.067491 13.19620 11.58228 13.99328 14.15070 14.35922 15.21767
+      TCGA.OR.A5JW 11.564491 13.47953 12.78889 13.91452 14.48821 14.12101 14.58391
+      TCGA.OR.A5JX  8.703753 12.80901 12.56017 13.37756 13.58468 14.27628 16.56108
+      TCGA.OR.A5JY 12.055075 15.08214 12.27044 13.47294 14.72134 14.45606 14.66950
+      TCGA.OR.A5JZ  8.310833 13.49982 12.13026 12.96207 13.76805 13.50251 15.62270
+      TCGA.OR.A5K0 10.510740 12.57049 12.78752 13.32951 14.84546 14.22697 14.11099
+      TCGA.OR.A5K1  8.662682 12.82240 12.12444 12.91529 13.93593 14.29689 15.28913
+      TCGA.OR.A5K2  6.923216 13.47110 12.84221 13.10620 13.93004 13.53223 16.21793
+      TCGA.OR.A5K3  9.588997 13.03261 12.14641 13.11309 13.41652 14.05598 15.44336
+      TCGA.OR.A5K4  9.738618 13.27456 11.96264 13.74738 13.89188 13.35029 15.19640
+      TCGA.OR.A5K5  8.296110 12.62825 12.36057 13.23564 14.99654 13.96580 14.83096
+      TCGA.OR.A5K6  9.109681 13.01413 12.99866 13.76195 13.90728 12.74767 15.00894
+      TCGA.OR.A5K8  8.652013 12.98202 12.19470 13.97476 12.89654 14.05586 14.69112
+      TCGA.OR.A5K9 11.505226 13.77162 12.15588 14.49829 14.58452 14.10427 14.18833
+      TCGA.OR.A5KO  6.535227 13.12054 13.37477 14.15074 14.38202 13.74171 15.24855
+      TCGA.OR.A5KT  5.903862 13.33091 13.15894 13.15274 13.44701 13.42015 15.15883
+      TCGA.OR.A5KU 11.037839 12.90717 11.68348 14.09749 13.87262 14.00289 14.89694
+      TCGA.OR.A5KV  7.670759 13.46429 11.69144 13.73424 13.96977 14.08624 15.46538
+      TCGA.OR.A5KW  9.188252 13.15104 12.35440 13.33686 13.78900 14.72133 15.03278
+      TCGA.OR.A5KX  8.051483 13.06999 13.65709 13.11823 13.80386 13.30617 14.99034
+      TCGA.OR.A5KY  9.772298 13.31852 12.54257 13.65150 13.38106 13.83069 15.56030
+      TCGA.OR.A5KZ  9.864146 13.07504 12.63847 14.66290 14.99729 13.99793 14.87306
+      TCGA.OR.A5L3 10.394457 13.32282 12.46999 13.35378 13.60058 13.43829 15.11209
+      TCGA.OR.A5L4  5.603878 12.94623 12.41966 13.69036 14.60325 14.42520 15.63034
+      TCGA.OR.A5L5 11.009163 13.17941 12.44371 13.09517 13.43559 13.60201 15.25002
+      TCGA.OR.A5L6  9.961084 11.71679 12.44176 13.03552 13.17595 13.19457 16.13854
+      TCGA.OR.A5L8 12.882428 13.56917 12.29895 13.83400 13.66671 14.36165 15.89330
+      TCGA.OR.A5L9  8.838046 12.32346 12.02286 12.53557 12.87461 12.64247 15.55830
+      TCGA.OR.A5LA 10.135633 12.31576 12.79951 13.45514 13.44497 14.39362 15.20500
+      TCGA.OR.A5LB 10.025415 12.93602 13.30734 14.13273 13.09698 14.12102 14.84693
+      TCGA.OR.A5LC  9.587347 12.20215 12.14789 13.30684 13.29856 13.91496 14.92872
+      TCGA.OR.A5LD  9.963443 13.13208 13.51265 13.24545 14.01060 13.35575 15.41340
+      TCGA.OR.A5LE 11.912289 14.10900 12.45361 14.47250 13.62617 13.96552 14.15166
+      TCGA.OR.A5LG  4.607091 13.25846 13.44915 14.01739 14.16740 14.19822 15.61209
+      TCGA.OR.A5LH 10.288398 13.38926 12.53832 13.69893 13.74037 14.22340 15.24455
+      TCGA.OR.A5LJ  9.307548 12.98330 12.46927 13.94644 13.24432 14.20946 14.69863
+      TCGA.OR.A5LK  9.292116 12.73439 12.36048 13.43678 13.68812 14.06299 15.23002
+      TCGA.OR.A5LL  9.548255 12.01393 11.99599 14.21131 14.29304 13.68240 13.90908
+      TCGA.OR.A5LM 10.126643 12.45847 12.35194 13.89421 13.85396 14.32595 16.53991
+      TCGA.OR.A5LN  9.504526 12.77667 12.10952 14.03074 13.88995 13.82588 15.33224
+      TCGA.OR.A5LO  6.164137 12.43946 13.53632 13.64015 13.47285 13.39194 16.03217
+      TCGA.OR.A5LP 11.116322 13.18167 11.63406 13.16413 13.70867 14.48922 14.39204
+      TCGA.OR.A5LR 10.322184 13.04017 12.50515 12.75315 13.51140 13.49433 15.56058
+      TCGA.OR.A5LS 10.275763 13.53263 12.41273 12.91927 13.37519 13.97024 14.85564
+      TCGA.OR.A5LT  8.358499 13.66566 12.03725 13.55130 12.89099 12.96278 14.73831
+      TCGA.OU.A5PI 11.217955 12.93730 12.30740 14.06494 13.41757 14.30006 15.71909
+      TCGA.P6.A5OF 10.886532 12.98506 12.54898 13.48680 13.05871 13.73876 14.17863
+      TCGA.P6.A5OG  6.416277 12.88150 12.74330 14.50584 14.64252 14.42726 13.67345
+      TCGA.PA.A5YG 12.828538 13.29874 12.36599 13.33596 13.63432 14.46728 15.70642
+      TCGA.PK.A5H8  7.987737 13.08904 12.46110 13.26359 13.89745 14.19683 15.59698
+      TCGA.PK.A5H9  5.224113 14.80693 12.90379 13.12873 14.15269 12.87930 14.38227
+      TCGA.PK.A5HA  5.700076 12.22848 12.18333 12.32339 14.45937 13.84957 15.30145
+      TCGA.PK.A5HB  5.907759 14.18624 12.47904 13.20617 13.81362 14.08236 15.00008
+                       ABCG1     ABCG2    ABCG4    ABCG5    ABCG8   ABHD10   ABHD11
+      TCGA.OR.A5J1 11.960031  9.715458 4.135301 5.310001 0.000000 14.17627 12.60560
+      TCGA.OR.A5J2 13.216713 11.407340 6.005574 3.327025 4.560011 14.09825 12.69052
+      TCGA.OR.A5J3  9.855631 12.511326 5.961800 3.602941 0.000000 13.54053 13.56396
+      TCGA.OR.A5J5  9.338364  7.966404 6.229952 6.932952 5.588817 13.88312 13.14042
+      TCGA.OR.A5J6 10.406411 10.290534 8.769922 4.526816 5.307096 13.04515 11.77839
+      TCGA.OR.A5J7 10.350205 10.680341 8.762755 6.108072 3.780934 13.13701 12.83372
+      TCGA.OR.A5J8 13.596509 10.500583 6.519697 4.498766 0.000000 12.37394 12.00522
+      TCGA.OR.A5J9 13.300519 13.403729 4.517216 3.963416 0.000000 13.62158 12.47911
+      TCGA.OR.A5JA 10.919647  5.822848 4.715610 6.873619 0.000000 13.53872 13.62841
+      TCGA.OR.A5JB 15.082868  7.353841 6.468296 3.755534 2.858583 13.24369 12.79069
+      TCGA.OR.A5JC 13.789650 10.126717 3.870076 3.870076 0.000000 14.19107 12.80425
+      TCGA.OR.A5JD 11.091290 11.297652 8.291706 4.593249 0.000000 14.92779 13.81134
+      TCGA.OR.A5JE 13.305230  9.649972 5.633147 6.084629 0.000000 13.59754 12.09997
+      TCGA.OR.A5JF 12.601873 10.744604 5.847202 5.036488 0.000000 13.60011 13.26708
+      TCGA.OR.A5JG 10.243642  9.894161 3.654467 6.458482 0.000000 13.96668 12.86732
+      TCGA.OR.A5JI 15.754339 12.293571 5.169043 6.841451 0.000000 14.40979 12.61242
+      TCGA.OR.A5JJ 15.138175  9.677865 3.271569 5.468740 0.000000 13.18949 13.61033
+      TCGA.OR.A5JK 12.677980 10.198017 0.000000 3.239327 0.000000 14.22003 12.96067
+      TCGA.OR.A5JL 11.558869 11.179936 4.621966 4.835964 0.000000 13.74424 13.30151
+      TCGA.OR.A5JM 10.303968  9.510554 7.671320 6.678380 0.000000 13.38359 12.02372
+      TCGA.OR.A5JO 11.711867  8.856571 6.722790 5.944193 0.000000 13.13637 11.66126
+      TCGA.OR.A5JP 15.186961 10.454855 5.740820 8.303123 0.000000 13.70856 11.56297
+      TCGA.OR.A5JQ 13.139789 11.533227 6.446368 3.332621 2.469156 14.96730 13.06385
+      TCGA.OR.A5JR 11.783551 11.861201 4.990064 4.427622 0.000000 14.85463 13.73412
+      TCGA.OR.A5JS  9.999609  7.134038 7.009440 6.144272 2.285091 13.68735 13.01805
+      TCGA.OR.A5JT 15.034577 11.149397 6.073129 3.485976 0.000000 14.41051 13.93850
+      TCGA.OR.A5JV 13.143067 10.474929 6.255879 0.000000 0.000000 14.90606 13.25463
+      TCGA.OR.A5JW 14.332436 10.988864 3.403456 3.942240 0.000000 12.90698 12.79668
+      TCGA.OR.A5JX 10.943877  9.737603 5.412634 0.000000 3.893868 14.51669 12.11340
+      TCGA.OR.A5JY 10.192291  8.656218 4.641251 6.365389 0.000000 13.37550 12.37433
+      TCGA.OR.A5JZ 15.083504  9.356847 5.682572 3.034617 0.000000 14.05822 12.54058
+      TCGA.OR.A5K0  8.187022  7.674569 4.908973 2.767373 0.000000 13.20014 12.42873
+      TCGA.OR.A5K1 13.856170 12.082142 5.935649 4.186048 0.000000 14.24352 14.07974
+      TCGA.OR.A5K2 13.097971  7.504211 3.463422 5.676729 3.463422 13.84113 12.19390
+      TCGA.OR.A5K3 12.779973 10.335474 4.831354 0.000000 0.000000 15.19819 15.08359
+      TCGA.OR.A5K4 15.219100  8.598993 5.813791 4.986168 0.000000 14.69653 12.05919
+      TCGA.OR.A5K5 10.854535  6.119765 7.208193 4.924773 3.431808 13.95516 11.83880
+      TCGA.OR.A5K6 11.992995  6.934485 4.836537 4.132846 0.000000 13.94005 12.74882
+      TCGA.OR.A5K8 13.027107  9.591400 4.091761 5.048822 0.000000 13.91605 13.49855
+      TCGA.OR.A5K9 12.747103  7.512652 6.066980 6.865083 4.833762 13.38973 12.60777
+      TCGA.OR.A5KO 12.067272  9.189485 5.631450 5.060966 0.000000 13.30109 12.83213
+      TCGA.OR.A5KT 12.636901  9.341220 7.211259 7.211259 3.434609 13.80843 12.97250
+      TCGA.OR.A5KU 12.654048  6.518059 5.399322 5.656648 0.000000 13.60706 12.91489
+      TCGA.OR.A5KV 13.365369  9.250993 9.518525 7.188161 8.223710 14.58380 12.14071
+      TCGA.OR.A5KW 13.345589  9.762940 3.634465 5.995573 0.000000 13.83594 12.73152
+      TCGA.OR.A5KX 14.260944  7.988989 7.453895 5.334993 0.000000 14.32084 11.85159
+      TCGA.OR.A5KY 13.615537 10.622050 5.030380 5.217496 2.466198 13.82800 12.64602
+      TCGA.OR.A5KZ 12.414333 10.555932 6.232816 4.408615 0.000000 13.32312 12.36721
+      TCGA.OR.A5L3 13.539538  8.307344 7.802300 6.153271 0.000000 14.86422 13.76353
+      TCGA.OR.A5L4 11.134242  9.990361 5.033672 3.160099 3.160099 14.10472 13.75806
+      TCGA.OR.A5L5 14.315883 11.324667 5.112189 5.683180 2.722020 14.23484 12.45382
+      TCGA.OR.A5L6 13.014718 11.519999 5.143071 4.183332 0.000000 14.20895 13.15438
+      TCGA.OR.A5L8 14.823413 13.095667 4.652594 3.414237 2.543589 14.31181 12.70906
+      TCGA.OR.A5L9 13.995970  9.252295 6.679113 8.476376 0.000000 14.70941 13.56595
+      TCGA.OR.A5LA 16.295478 11.785685 7.479492 3.440837 0.000000 14.78129 14.74238
+      TCGA.OR.A5LB 12.966015 10.219562 5.885414 4.909615 0.000000 13.37137 12.59574
+      TCGA.OR.A5LC 12.269353  8.904957 5.882220 3.044016 0.000000 13.60166 13.08051
+      TCGA.OR.A5LD 11.609578 10.694379 5.844370 7.412495 4.308773 15.25925 14.86984
+      TCGA.OR.A5LE 11.424774  9.053152 4.548650 5.260744 0.000000 12.64069 11.97786
+      TCGA.OR.A5LG 10.411891 12.912061 5.172185 0.000000 0.000000 14.10992 13.05857
+      TCGA.OR.A5LH 12.893190 11.671601 7.801245 4.509058 0.000000 13.82461 14.56638
+      TCGA.OR.A5LJ 10.719428 10.360815 7.470966 2.824401 0.000000 14.22513 13.79969
+      TCGA.OR.A5LK 12.582830 12.031240 7.490503 5.200313 0.000000 14.94276 14.37734
+      TCGA.OR.A5LL 14.728923 11.086017 4.731324 2.885701 0.000000 12.65775 11.58632
+      TCGA.OR.A5LM 11.435201 11.090292 5.225828 5.442703 6.935552 14.33911 14.04171
+      TCGA.OR.A5LN 11.664137 11.476572 3.826622 7.315228 0.000000 14.49025 13.10936
+      TCGA.OR.A5LO 12.352106  8.176354 5.642536 4.114208 2.686918 13.94636 12.97889
+      TCGA.OR.A5LP 12.141034 11.434750 5.835968 0.000000 0.000000 13.47102 13.53276
+      TCGA.OR.A5LR 14.174769 10.634178 5.143298 6.700786 0.000000 14.17745 11.95088
+      TCGA.OR.A5LS 12.850478  9.651242 7.235839 4.818847 0.000000 14.68124 13.61006
+      TCGA.OR.A5LT 12.095184 10.834880 5.147459 6.126962 0.000000 14.69868 12.55762
+      TCGA.OU.A5PI 13.686251 13.566917 5.180864 0.000000 0.000000 14.30425 12.88331
+      TCGA.P6.A5OF 13.576926  9.906383 4.713033 4.155315 0.000000 13.45798 12.86579
+      TCGA.P6.A5OG 12.409535 10.125470 8.342337 2.508241 0.000000 13.06558 12.17219
+      TCGA.PA.A5YG 14.890018 12.926125 5.174211 0.000000 0.000000 14.03565 13.69604
+      TCGA.PK.A5H8 11.135174  8.449148 5.136136 2.969626 0.000000 13.87532 12.94395
+      TCGA.PK.A5H9 12.944304 11.952334 5.661242 4.779083 2.106710 14.19959 11.91452
+      TCGA.PK.A5HA 12.932453 10.334238 6.535686 3.485089 0.000000 13.65402 12.91351
+      TCGA.PK.A5HB 11.680005 10.179391 5.378072 6.850280 3.066866 13.03471 12.33810
+                     ABHD12B   ABHD12   ABHD13  ABHD14A  ABHD14B    ABHD15    ABHD1
+      TCGA.OR.A5J1  0.000000 14.43310 11.99364 12.51182 13.60356 11.477547 5.310001
+      TCGA.OR.A5J2  8.180568 13.34377 12.72943 13.05074 13.95047 10.869845 6.994302
+      TCGA.OR.A5J3  4.542317 13.12395 11.27403 13.31523 14.98017 11.283743 7.733755
+      TCGA.OR.A5J5  0.000000 13.52937 10.61628 13.61315 13.16284 10.990285 8.340591
+      TCGA.OR.A5J6  2.703318 14.14063 11.38224 12.16705 14.62402 11.553425 8.575145
+      TCGA.OR.A5J7  0.000000 14.01450 10.66154 12.97973 13.25770 10.702580 6.625255
+      TCGA.OR.A5J8  4.751125 14.92078 11.87683 12.36451 13.32967 12.479237 5.152707
+      TCGA.OR.A5J9  0.000000 13.63696 12.50108 13.37477 13.13009  9.823624 5.228758
+      TCGA.OR.A5JA  2.598119 13.25223 12.04713 12.01577 13.93259 11.562181 6.934507
+      TCGA.OR.A5JB  4.701111 14.08603 11.68117 12.74148 14.40908 11.633693 7.935860
+      TCGA.OR.A5JC  0.000000 14.06086 11.35714 13.74096 14.56681 10.212035 6.867743
+      TCGA.OR.A5JD  2.762256 14.95063 11.62013 12.69859 15.46131 11.593370 6.634267
+      TCGA.OR.A5JE  0.000000 14.41442 11.28384 12.47748 12.76134 11.018105 5.633147
+      TCGA.OR.A5JF  0.000000 14.12264 11.69734 12.66685 14.25323 10.936400 3.920491
+      TCGA.OR.A5JG  0.000000 14.06314 11.39361 13.21208 14.96271 11.387380 5.160954
+      TCGA.OR.A5JI  0.000000 15.42819 11.09482 14.97783 14.72927 11.886980 7.941611
+      TCGA.OR.A5JJ  2.413724 14.10865 11.21513 12.62188 13.29080 11.108867 6.712644
+      TCGA.OR.A5JK  0.000000 14.89528 11.42267 14.34938 14.04083 11.359167 5.119943
+      TCGA.OR.A5JL  0.000000 13.31105 12.63919 11.75075 14.13367 10.911630 7.378206
+      TCGA.OR.A5JM  0.000000 14.85567 13.27237 12.78337 12.66034 12.264431 4.280982
+      TCGA.OR.A5JO  3.586527 14.11362 12.22133 12.71874 14.56383 12.192766 8.614571
+      TCGA.OR.A5JP  0.000000 14.20806 12.11557 12.46264 12.37855  9.446049 6.440783
+      TCGA.OR.A5JQ  2.469156 15.14871 11.35228 13.46212 15.06238 13.077543 4.565962
+      TCGA.OR.A5JR  0.000000 15.48022 11.74741 13.17691 14.39315 11.855220 6.186280
+      TCGA.OR.A5JS  4.044026 13.38073 11.49540 13.64435 13.56449 10.696142 5.446701
+      TCGA.OR.A5JT  2.609314 15.15103 11.54880 12.08614 14.64348 11.741691 4.420114
+      TCGA.OR.A5JV  3.557568 14.79398 11.62965 12.11810 13.58256 11.682625 5.058441
+      TCGA.OR.A5JW  0.000000 13.38320 11.57812 12.22776 14.55089 10.915617 4.894534
+      TCGA.OR.A5JX  0.000000 14.60282 11.80782 15.18924 15.51730 10.805431 7.928614
+      TCGA.OR.A5JY  3.942321 13.81932 13.24132 12.06317 13.05977 11.390141 7.269700
+      TCGA.OR.A5JZ  0.000000 14.92671 11.53733 13.14163 15.67680 12.002020 0.000000
+      TCGA.OR.A5K0  4.203671 14.16673 12.35226 12.65996 13.56069 11.101107 8.629318
+      TCGA.OR.A5K1  3.263207 14.59193 11.36246 12.72862 14.83675 11.953516 0.000000
+      TCGA.OR.A5K2  0.000000 14.15691 11.28109 13.95940 14.23554  9.594971 4.958444
+      TCGA.OR.A5K3  0.000000 15.46805 11.36528 13.74854 14.79802 11.594016 5.805791
+      TCGA.OR.A5K4  0.000000 15.37999 11.64910 12.01494 14.46236 12.757747 4.675575
+      TCGA.OR.A5K5  0.000000 13.74077 11.73902 12.50729 13.04657 11.213962 6.309815
+      TCGA.OR.A5K6  3.588427 13.76367 12.48583 13.49538 14.96634 10.890236 8.168673
+      TCGA.OR.A5K8  0.000000 14.16073 12.54784 13.56693 14.51835 10.959487 4.091761
+      TCGA.OR.A5K9  2.701205 13.56898 12.46762 13.11960 13.67477 10.386227 5.808243
+      TCGA.OR.A5KO  0.000000 13.21691 11.87338 13.02662 14.57843 12.188990 7.248995
+      TCGA.OR.A5KT  0.000000 14.54021 11.19608 12.78063 13.97329 11.208099 3.434609
+      TCGA.OR.A5KU 10.694722 14.61508 11.07138 13.11844 13.85427 11.527104 5.085915
+      TCGA.OR.A5KV  3.745684 13.73993 12.18369 13.32986 15.46406 11.450346 6.457776
+      TCGA.OR.A5KW  0.000000 13.14378 12.35283 13.46403 14.44969 11.491133 4.884952
+      TCGA.OR.A5KX  0.000000 15.04296 12.48605 12.86450 14.09144 11.199419 6.507392
+      TCGA.OR.A5KY  0.000000 14.23049 12.37322 13.56363 13.79392 10.514568 5.217496
+      TCGA.OR.A5KZ  0.000000 14.59530 10.78831 11.70287 12.54548 10.804728 5.947566
+      TCGA.OR.A5L3  0.000000 15.09868 11.46727 14.36894 15.52842 10.163863 5.173400
+      TCGA.OR.A5L4  3.160099 13.78913 11.84108 12.18401 14.61151 10.611916 5.033672
+      TCGA.OR.A5L5  2.722020 15.74746 11.73325 13.59289 14.89301 11.179010 5.516761
+      TCGA.OR.A5L6  0.000000 15.17784 10.38813 14.15022 15.18982 11.272163 7.112121
+      TCGA.OR.A5L8  0.000000 12.68281 12.04726 13.33230 13.43466 10.728313 7.527901
+      TCGA.OR.A5L9  0.000000 15.35674 11.54809 14.92240 16.24052 10.572803 0.000000
+      TCGA.OR.A5LA  0.000000 15.25787 11.27359 14.05058 16.29282 10.802115 8.306026
+      TCGA.OR.A5LB  0.000000 14.08327 11.66645 13.28020 14.09370 10.823528 6.462218
+      TCGA.OR.A5LC  0.000000 14.23375 12.04772 13.43794 14.83130 11.994895 5.475312
+      TCGA.OR.A5LD  4.308773 14.66772 10.32267 14.18106 14.28400  9.850350 4.308773
+      TCGA.OR.A5LE  0.000000 14.48289 12.76353 12.71308 11.92065  9.378589 4.948193
+      TCGA.OR.A5LG  2.774574 14.78241 12.12628 14.69008 15.38608 11.341617 2.774574
+      TCGA.OR.A5LH  0.000000 13.74769 11.52157 12.30750 15.05828 11.688828 5.477025
+      TCGA.OR.A5LJ  4.973427 15.14693 11.96932 12.74715 12.06255 10.292481 6.429026
+      TCGA.OR.A5LK  5.200313 15.60247 10.63717 13.80449 13.85586 10.731235 9.021290
+      TCGA.OR.A5LL  0.000000 13.86527 11.60420 13.15994 13.95914 11.434707 0.000000
+      TCGA.OR.A5LM  0.000000 13.91306 12.28332 13.31532 14.10818 10.782518 6.784858
+      TCGA.OR.A5LN  0.000000 15.89675 11.36558 14.03188 14.84987 10.950726 6.734788
+      TCGA.OR.A5LO  0.000000 12.52982 11.38356 12.25591 14.23915 10.738903 8.229612
+      TCGA.OR.A5LP  3.268152 14.84142 11.47688 12.32100 14.27346 11.372687 5.722594
+      TCGA.OR.A5LR  4.741804 14.26057 11.68729 12.34057 14.94153 11.823385 3.260841
+      TCGA.OR.A5LS  0.000000 13.50755 10.68654 13.34908 13.60218 11.120599 6.369324
+      TCGA.OR.A5LT  0.000000 15.48720 11.84127 13.29243 13.71822 12.268853 5.147459
+      TCGA.OU.A5PI  0.000000 13.77605 11.52185 13.12369 13.88994 10.969918 4.925762
+      TCGA.P6.A5OF  0.000000 13.82028 12.67119 12.92704 14.24042 11.108816 2.379804
+      TCGA.P6.A5OG  3.913395 13.64785 11.93363 11.60486 13.97680 10.841172 4.864709
+      TCGA.PA.A5YG  3.667026 15.68543 12.14524 12.82505 14.52428 11.604475 7.415188
+      TCGA.PK.A5H8  0.000000 14.14227 12.18017 12.70058 14.42191 11.531300 5.136136
+      TCGA.PK.A5H9  0.000000 13.70937 12.40882 11.90460 14.32159 13.242884 7.161932
+      TCGA.PK.A5HA  0.000000 14.47431 10.78973 12.33482 14.40954 10.920726 6.755855
+      TCGA.PK.A5HB  0.000000 13.35889 10.79423 10.90665 12.93015 10.183974 4.745684
+                      ABHD2     ABHD3    ABHD4    ABHD5    ABHD6    ABHD8     ABI1
+      TCGA.OR.A5J1 14.65446 10.685858 13.81187 12.30215 11.42054 12.38941 12.90375
+      TCGA.OR.A5J2 16.56597 10.880256 13.30823 13.33623 14.42832 12.98232 13.43311
+      TCGA.OR.A5J3 15.48451  9.906802 15.02862 12.02627 12.49748 12.90549 12.31852
+      TCGA.OR.A5J5 13.87150 11.465926 14.71484 11.54931 13.01579 13.36694 12.41677
+      TCGA.OR.A5J6 14.70814 11.602848 13.99528 13.99674 13.39592 14.05817 12.79059
+      TCGA.OR.A5J7 15.09004 12.658032 14.25073 11.64970 12.98124 13.16398 14.12943
+      TCGA.OR.A5J8 15.89357 12.109076 14.88928 11.85174 11.78970 10.70489 13.00429
+      TCGA.OR.A5J9 15.76040 10.117062 14.72994 11.80193 12.12319 13.48864 13.03793
+      TCGA.OR.A5JA 15.89889 10.818281 14.99328 12.08287 13.01648 12.45560 12.40675
+      TCGA.OR.A5JB 13.59377 12.745427 13.23529 11.71376 10.93531 11.98253 13.67188
+      TCGA.OR.A5JC 15.62511  9.939269 13.74096 12.03734 12.78906 13.02544 12.95664
+      TCGA.OR.A5JD 14.98063 11.677306 13.31207 11.88353 13.16808 13.13228 12.99693
+      TCGA.OR.A5JE 14.54085 11.769102 15.18972 11.37581 12.94047 13.29915 11.81607
+      TCGA.OR.A5JF 15.29592  9.423936 12.94105 11.26752 12.53641 12.98826 12.57119
+      TCGA.OR.A5JG 14.74399 10.375382 14.96846 12.23929 13.56450 13.72564 12.85044
+      TCGA.OR.A5JI 13.98878 11.288824 13.83238 12.15383 12.51233 12.94874 12.92298
+      TCGA.OR.A5JJ 16.37053 11.068729 14.15491 11.35996 13.01716 13.74741 11.85403
+      TCGA.OR.A5JK 15.89285 11.597949 13.75743 11.23832 12.05832 13.02785 13.09621
+      TCGA.OR.A5JL 16.60394 10.625562 15.14700 12.31510 13.70096 12.09905 12.18573
+      TCGA.OR.A5JM 15.02801 14.471937 14.27532 12.59520 13.35531 12.93545 12.98715
+      TCGA.OR.A5JO 15.56035 11.678324 15.37985 13.86638 10.81949 12.52478 13.25489
+      TCGA.OR.A5JP 14.46001 10.982788 15.00365 12.08738 11.34482 12.56728 13.02334
+      TCGA.OR.A5JQ 14.58194 10.674537 12.78192 12.18070 12.82225 13.57209 12.65472
+      TCGA.OR.A5JR 15.75051 10.999925 14.42950 12.19375 12.87191 12.64460 12.83288
+      TCGA.OR.A5JS 15.74214 11.485689 15.18626 11.81219 13.46321 13.46074 11.95839
+      TCGA.OR.A5JT 15.56651 10.204073 14.31551 11.39330 12.91734 12.30121 12.63442
+      TCGA.OR.A5JV 16.12335 11.897505 13.83316 11.54114 14.30034 11.37551 13.29385
+      TCGA.OR.A5JW 17.35593  9.412100 14.74435 12.21328 12.94867 12.93726 13.37476
+      TCGA.OR.A5JX 15.46298  8.904935 14.64442 11.90230 12.25517 13.40732 12.77088
+      TCGA.OR.A5JY 16.05790 11.742541 15.50561 12.61039 13.09890 12.92228 11.73445
+      TCGA.OR.A5JZ 15.66925  9.987823 15.32667 11.66428 12.09273 11.30685 12.84986
+      TCGA.OR.A5K0 15.26276 13.189413 14.57410 13.50123 13.15308 14.09192 12.18418
+      TCGA.OR.A5K1 14.09259 10.445414 14.73939 11.54795 11.21888 12.10486 12.57644
+      TCGA.OR.A5K2 15.22647 11.257644 15.69594 12.08487 12.74438 12.49147 13.47238
+      TCGA.OR.A5K3 15.16675 10.410185 14.47854 11.18978 12.68085 12.98696 12.72250
+      TCGA.OR.A5K4 15.79185 11.086257 15.01571 10.92707 13.43430 11.55216 12.55927
+      TCGA.OR.A5K5 15.60683 11.292089 13.93185 12.18057 12.40161 13.79891 12.33482
+      TCGA.OR.A5K6 15.66812 11.132738 14.45551 12.05414 14.06553 13.73886 12.47888
+      TCGA.OR.A5K8 14.49347  9.561066 14.91075 11.38015 12.95312 13.77616 12.85963
+      TCGA.OR.A5K9 15.15995 12.084549 14.43230 10.90817 12.19366 13.66196 13.13292
+      TCGA.OR.A5KO 15.43022 11.816229 14.68603 12.51983 12.41823 13.29103 13.81916
+      TCGA.OR.A5KT 13.83870 10.670525 14.29467 12.62575 14.36479 14.51444 12.81050
+      TCGA.OR.A5KU 15.75621 11.093308 13.93543 11.81799 14.05551 13.15540 11.99152
+      TCGA.OR.A5KV 15.70730  9.963286 13.25367 10.96256 13.23336 13.99887 11.92430
+      TCGA.OR.A5KW 15.95061 10.771565 16.12428 11.80837 13.20350 13.62330 12.65185
+      TCGA.OR.A5KX 15.34225 12.005525 15.13444 11.92853 13.71555 13.36656 13.11640
+      TCGA.OR.A5KY 14.84668 10.074347 13.73958 11.93010 13.16845 13.47638 13.25982
+      TCGA.OR.A5KZ 15.29448 12.219942 12.66868 10.65583 10.58790 12.50921 12.90528
+      TCGA.OR.A5L3 14.40361 11.490911 14.68686 11.57627 13.82412 13.87217 12.07179
+      TCGA.OR.A5L4 15.79249 10.012707 14.90897 12.42175 12.05268 11.67238 12.87940
+      TCGA.OR.A5L5 14.73110 10.816618 13.94903 11.26028 12.21822 12.71153 12.96081
+      TCGA.OR.A5L6 12.85004 11.716793 13.50905 10.93528 11.30190 12.10198 12.53653
+      TCGA.OR.A5L8 16.68908  8.561362 13.45714 12.27243 12.67962 13.83400 13.30088
+      TCGA.OR.A5L9 13.16497  9.754099 13.87938 11.12504 12.37948 13.02269 12.42012
+      TCGA.OR.A5LA 15.13202 10.122934 14.27595 11.03686 12.65703 13.70458 12.63484
+      TCGA.OR.A5LB 16.41252  9.652670 14.38149 11.85931 13.17308 13.74812 13.66397
+      TCGA.OR.A5LC 14.04065 11.541029 13.21745 11.04311 12.00256 12.72659 12.89116
+      TCGA.OR.A5LD 13.71194 10.483012 13.74396 11.56547 12.80792 13.58071 12.72614
+      TCGA.OR.A5LE 16.06828 11.948176 14.63672 11.77146 13.81143 12.69694 12.40279
+      TCGA.OR.A5LG 15.38372 12.438689 14.77070 11.40205 12.16901 13.71480 13.08597
+      TCGA.OR.A5LH 15.70168 10.884651 14.39998 12.44790 13.35129 12.57172 12.41722
+      TCGA.OR.A5LJ 14.86344 10.451351 13.37398 10.86299 14.19409 14.07405 13.40100
+      TCGA.OR.A5LK 13.85063 11.350907 13.50938 12.64859 12.76807 13.38467 12.80459
+      TCGA.OR.A5LL 16.30123 11.995988 14.79106 13.06952 13.38087 13.48425 13.13042
+      TCGA.OR.A5LM 15.58160 10.933444 14.40639 11.98585 12.97592 12.39159 12.39322
+      TCGA.OR.A5LN 14.39102 11.253151 13.13497 12.30266 12.32137 13.21718 13.14340
+      TCGA.OR.A5LO 16.51977 11.477367 15.53556 11.99069 14.21871 12.35959 13.80713
+      TCGA.OR.A5LP 15.86746 10.765513 13.45946 11.69357 11.84346 12.77736 12.57687
+      TCGA.OR.A5LR 15.36460 11.424341 15.52425 11.28734 12.99688 12.11902 12.79558
+      TCGA.OR.A5LS 16.14783 10.650345 14.51966 11.34479 13.54418 12.90782 13.63265
+      TCGA.OR.A5LT 13.83249 11.291620 13.47807 12.54728 12.72477 13.30476 12.98746
+      TCGA.OU.A5PI 16.15306 10.463484 14.33905 11.58395 12.82490 13.48348 13.48199
+      TCGA.P6.A5OF 15.61202 10.056338 14.37897 11.46482 12.11123 12.85518 13.63673
+      TCGA.P6.A5OG 13.86699 12.126016 12.01598 12.24228 11.10653 11.30675 13.97386
+      TCGA.PA.A5YG 15.95814 11.419621 14.14686 12.03087 12.31720 13.33677 13.04575
+      TCGA.PK.A5H8 14.86109 11.025947 14.40883 12.00895 12.26674 12.43106 12.63080
+      TCGA.PK.A5H9 16.87900 11.745569 14.75972 13.48099 11.11207 13.11750 13.06000
+      TCGA.PK.A5HA 14.30112 12.194355 13.79938 12.42453 13.25265 12.82909 13.19812
+      TCGA.PK.A5HB 15.24742 11.463353 15.12748 11.89093 13.25708 12.31426 13.41990
+                       ABI2    ABI3BP      ABI3     ABL1 class
+      TCGA.OR.A5J1 14.38809  7.061616 11.435001 14.66646     0
+      TCGA.OR.A5J2 14.11378  9.178080 10.159842 14.54906     0
+      TCGA.OR.A5J3 12.53862  8.839738  9.536260 14.88422     1
+      TCGA.OR.A5J5 12.97173  8.587815  9.353291 14.92333     0
+      TCGA.OR.A5J6 13.11494  9.233416  9.873762 14.52122     1
+      TCGA.OR.A5J7 13.94935  5.294174 10.753176 15.01408     0
+      TCGA.OR.A5J8 13.97662 14.685035 12.271733 15.70137     0
+      TCGA.OR.A5J9 14.28839  6.966876 10.650092 14.91347     1
+      TCGA.OR.A5JA 13.00410 10.333174  9.870625 15.13621     0
+      TCGA.OR.A5JB 14.70158  5.989372 12.770174 15.67680     0
+      TCGA.OR.A5JC 13.26787 11.915453 11.053955 14.20154     0
+      TCGA.OR.A5JD 12.44236 15.579531 10.877271 14.93126     1
+      TCGA.OR.A5JE 13.38117  9.971541 11.645891 14.96110     0
+      TCGA.OR.A5JF 12.72300  9.181960  9.983219 15.00808     1
+      TCGA.OR.A5JG 12.75326  9.195766 10.585880 14.99892     0
+      TCGA.OR.A5JI 12.85819 14.952187 11.173395 15.05768     1
+      TCGA.OR.A5JJ 13.20809  9.182435 10.148555 15.45583     1
+      TCGA.OR.A5JK 12.88217 10.336351 12.253068 14.28676     1
+      TCGA.OR.A5JL 12.36440  7.937285  9.984240 14.04874     1
+      TCGA.OR.A5JM 13.81222  7.258640  8.494202 14.45011     0
+      TCGA.OR.A5JO 13.03968 13.834646 12.247705 15.00276     1
+      TCGA.OR.A5JP 13.69669  9.484988 10.221148 14.75828     1
+      TCGA.OR.A5JQ 13.33549 16.507263 11.130812 15.66854     1
+      TCGA.OR.A5JR 12.86894 15.970715 10.409885 15.10595     1
+      TCGA.OR.A5JS 12.73456  6.668497  9.656034 14.94750     1
+      TCGA.OR.A5JT 13.24682 15.653339 10.146789 14.58508     1
+      TCGA.OR.A5JV 13.17283 13.751554 13.114432 13.91242     1
+      TCGA.OR.A5JW 12.41025  6.446793 10.494854 14.94744     1
+      TCGA.OR.A5JX 12.55685 10.860263 10.881625 15.18495     1
+      TCGA.OR.A5JY 13.60640  6.365389 10.470791 13.87329     0
+      TCGA.OR.A5JZ 13.47724 14.615506 10.307421 15.02151     1
+      TCGA.OR.A5K0 14.14977  9.906034  8.187022 15.13070     1
+      TCGA.OR.A5K1 12.92967 12.592603 10.886651 14.29010     1
+      TCGA.OR.A5K2 13.90949  8.237994 11.360289 14.85580     0
+      TCGA.OR.A5K3 12.86477 12.593782 10.980154 13.91172     1
+      TCGA.OR.A5K4 12.71360 12.488603  8.621655 14.85405     1
+      TCGA.OR.A5K5 13.88220  7.620790  9.965382 14.51919     1
+      TCGA.OR.A5K6 13.28194  9.065818 10.430041 14.22317     1
+      TCGA.OR.A5K8 12.86585  7.818327 10.380688 15.29520     1
+      TCGA.OR.A5K9 13.81138  7.925713  9.937541 15.40618     0
+      TCGA.OR.A5KO 12.99263  6.837116  9.510919 15.70915     1
+      TCGA.OR.A5KT 13.00730 11.648196 11.366609 14.14174     1
+      TCGA.OR.A5KU 13.42879  8.177075  8.601108 13.96919     1
+      TCGA.OR.A5KV 13.79473  7.610939  8.338816 14.31376     1
+      TCGA.OR.A5KW 13.05752 10.927720  9.361037 14.30092     1
+      TCGA.OR.A5KX 14.85262 11.398871  9.805942 15.33501     1
+      TCGA.OR.A5KY 13.92186  9.370197 11.604919 15.37928     0
+      TCGA.OR.A5KZ 14.27526  8.250671 10.406188 14.57391     0
+      TCGA.OR.A5L3 12.50814  8.551745  9.797445 13.98678     1
+      TCGA.OR.A5L4 12.98347 12.126255 10.866232 14.72455     1
+      TCGA.OR.A5L5 12.91867 13.431937 10.675607 13.76577     1
+      TCGA.OR.A5L6 13.37559 12.812662 10.057206 14.39404     1
+      TCGA.OR.A5L8 14.07796  8.299091  9.002871 14.71643     1
+      TCGA.OR.A5L9 12.17307 11.835285 11.091891 14.16090     1
+      TCGA.OR.A5LA 12.44383 12.668004 11.582702 13.85134     1
+      TCGA.OR.A5LB 13.15787  7.836750  9.703832 15.02428     0
+      TCGA.OR.A5LC 14.12266  8.743563 11.171059 14.09424     0
+      TCGA.OR.A5LD 14.97475  9.094699  9.963443 15.24184     0
+      TCGA.OR.A5LE 13.62361  6.721775  9.242920 14.75872     0
+      TCGA.OR.A5LG 13.38204  9.455592 12.236942 14.81172     1
+      TCGA.OR.A5LH 12.85470 11.053753 10.472081 14.49472     0
+      TCGA.OR.A5LJ 13.54380  7.258142 10.278418 14.81616     0
+      TCGA.OR.A5LK 12.59539 14.975157 12.345683 14.40258     1
+      TCGA.OR.A5LL 12.70822  9.572676  8.537830 14.97149     0
+      TCGA.OR.A5LM 13.41089  9.803078  9.897923 13.41891     1
+      TCGA.OR.A5LN 11.98832 15.290120 11.548209 15.08645     1
+      TCGA.OR.A5LO 13.66936  8.838909  8.954144 14.89958     1
+      TCGA.OR.A5LP 12.81674 15.251234 11.283054 14.47479     1
+      TCGA.OR.A5LR 13.15868 14.256147  9.923553 14.67464     1
+      TCGA.OR.A5LS 12.83309  7.475373  8.792429 14.63259     1
+      TCGA.OR.A5LT 13.39286 15.342218  9.822010 14.53092     1
+      TCGA.OU.A5PI 13.04358 11.253130  9.707045 15.09477     1
+      TCGA.P6.A5OF 12.98281 10.804115 10.186969 15.15418     0
+      TCGA.P6.A5OG 13.98642  9.588787 12.725429 14.67547     0
+      TCGA.PA.A5YG 12.82970 15.133732 11.934960 14.50771     1
+      TCGA.PK.A5H8 13.08223 10.600067 10.095836 14.50694     1
+      TCGA.PK.A5H9 12.95396  8.189938  9.732879 14.65432     1
+      TCGA.PK.A5HA 12.06471 15.562196 10.874457 15.30980     1
+      TCGA.PK.A5HB 13.82834 10.480725  8.655293 15.57410     1
+      
+      $sbatched
+                        A1BG         A1CF         A2BP1     A2LD1      A2ML1      A2M
+      TCGA.OR.A5J1  7.395919  0.008979157  7.6011820112 11.283792  9.0887677 16.79046
+      TCGA.OR.A5J2  6.896316 -0.004654649  5.9897834101 11.256243  0.2326275 16.77847
+      TCGA.OR.A5J3  7.747785  2.544780917  6.3862096410 10.267500  4.3015637 16.11314
+      TCGA.OR.A5J5 13.339844  4.322977141  5.7618046458  9.165299  8.5357192 14.32287
+      TCGA.OR.A5J6 12.723681  0.024255332  5.4793061322 11.090664  3.7524825 16.56421
+      TCGA.OR.A5J7  6.981690  0.024255332  5.1139535321  9.849586  5.0807376 16.78970
+      TCGA.OR.A5J8  8.803154  0.008979157  0.1075954559  9.187098  5.3442012 18.34522
+      TCGA.OR.A5J9  6.592070  0.024255332  8.4626250571 11.404401  8.3735565 17.20979
+      TCGA.OR.A5JA  9.121267  0.024255332  6.0425329650 11.216338  8.3939775 16.18097
+      TCGA.OR.A5JB 11.012284 -0.054618928  0.0970238784  9.418587 -0.3243464 15.28443
+      TCGA.OR.A5JC 10.631410  0.008979157  9.2797853712 10.446648  5.5396053 16.11429
+      TCGA.OR.A5JD 10.279017 -0.004654649  8.6624391158 10.734166  9.1936957 16.50565
+      TCGA.OR.A5JE  9.443743 -0.004654649  0.0004196091  9.972075  5.7587066 16.23948
+      TCGA.OR.A5JF  8.250288 -0.004654649 12.0834354523 10.653458 11.5634161 16.32918
+      TCGA.OR.A5JG  8.557806  0.008979157  8.1315521461 10.434082  6.3051796 16.27086
+      TCGA.OR.A5JI 12.542041 -0.054618928  5.1650342493  9.013035  4.5004424 17.08820
+      TCGA.OR.A5JJ  7.383515  0.008979157  8.4345050430 10.501920 10.6863050 15.82037
+      TCGA.OR.A5JK  8.815287  0.008979157 10.7617232125 10.520234 10.1927310 18.38771
+      TCGA.OR.A5JL  5.295587  0.024255332  9.5520950384 11.367073  9.4177247 15.99911
+      TCGA.OR.A5JM  8.154391 -0.004654649  0.0004196091 11.547785  3.5222388 14.78335
+      TCGA.OR.A5JO 11.369678  6.753475554 -0.0010402765 10.921101  5.9312199 20.16894
+      TCGA.OR.A5JP 10.457965  0.008979157  3.4391322103  9.460551  5.3492376 16.08147
+      TCGA.OR.A5JQ 11.484386  0.024255332  2.4614507890 10.373271  5.3543750 17.15229
+      TCGA.OR.A5JR 11.110499  0.008979157  6.2692540647  9.288250  8.5869452 16.34463
+      TCGA.OR.A5JS  6.848196  3.456462532 -0.0010402765  9.285329  3.3020650 16.06408
+      TCGA.OR.A5JT  9.830299 -0.004654649  3.4769865178  8.550686 11.6974250 16.43009
+      TCGA.OR.A5JV  8.384161  0.008979157 11.6966516596  8.908642  9.1509681 17.87344
+      TCGA.OR.A5JW  6.395132 -0.054618928  0.0970238784 10.350829  5.3552819 16.09007
+      TCGA.OR.A5JX 11.666882  0.008979157  8.3264384602 10.708158 10.1649440 16.81564
+      TCGA.OR.A5JY  6.101117  0.024255332  3.9306395324 11.853474  0.2325998 16.09378
+      TCGA.OR.A5JZ 10.329821  0.008979157  0.1075954559  9.083890  5.4267214 15.31563
+      TCGA.OR.A5K0  7.848238 -0.004654649 10.3062685007  4.799148  4.3564005 16.65364
+      TCGA.OR.A5K1  8.904063  0.008979157  7.7663211159 10.114028  7.7399896 17.50692
+      TCGA.OR.A5K2  9.389952  0.024255332 -0.0010402765  9.994584  3.6301935 15.99247
+      TCGA.OR.A5K3  8.217901  0.008979157  0.1075954559 10.708207  8.7361824 16.55191
+      TCGA.OR.A5K4  6.080371  0.024255332  3.7198402240  9.837687 10.1036291 15.21861
+      TCGA.OR.A5K5  9.957865 -0.004654649  5.4794059808 10.629411  5.2752894 15.32699
+      TCGA.OR.A5K6  7.555757 -0.004654649  0.0004196091 10.873121  5.4392138 15.60874
+      TCGA.OR.A5K8  8.108593 -0.054618928 11.1208253373 11.319024  5.7751812 16.19090
+      TCGA.OR.A5K9  7.059789  0.024255332  2.6928734749 10.293432  3.7502367 15.43681
+      TCGA.OR.A5KO  8.334437  0.024255332 11.2278305402 10.925959  0.2325998 15.24721
+      TCGA.OR.A5KT 10.314799 -0.004654649  8.9461136640  9.638246  0.2326275 17.17140
+      TCGA.OR.A5KU 11.850816 -0.004654649  4.6727415757  9.493662  9.1918759 15.24663
+      TCGA.OR.A5KV 11.878971 -0.004654649  2.3552671447 10.902433  3.9071178 15.33248
+      TCGA.OR.A5KW  7.786156  0.024255332  2.7377414164 11.443997 10.7087621 15.83688
+      TCGA.OR.A5KX 13.873667 -0.004654649  0.0004196091 10.881198  5.4662197 15.87683
+      TCGA.OR.A5KY  8.865431 -0.004654649  6.5682520268  9.186990  8.5393581 16.62722
+      TCGA.OR.A5KZ 11.760357  0.008979157  0.1075954559  9.187158  2.6647324 16.52751
+      TCGA.OR.A5L3  7.690833  0.024255332 -0.0010402765  9.963014  0.2325998 14.74439
+      TCGA.OR.A5L4 10.273471  0.024255332  4.0650122521 10.550353  6.1298210 17.41393
+      TCGA.OR.A5L5 11.358645 -0.004654649  0.0004196091  9.467662  6.0867760 16.86965
+      TCGA.OR.A5L6 11.764415  0.008979157  6.1104378949  6.794766  7.1972028 16.68111
+      TCGA.OR.A5L8  9.549365  0.024255332  7.3474271960 10.708282  7.1368717 14.87136
+      TCGA.OR.A5L9 13.531346  0.024255332  7.2387398405  7.349014  9.5268721 16.23153
+      TCGA.OR.A5LA  9.455031 -0.004654649  4.3614475207  9.937396 10.0183483 17.46791
+      TCGA.OR.A5LB  6.177436  2.837629342  2.5939035153 11.373273  6.9058413 16.30201
+      TCGA.OR.A5LC  8.588195 -0.004654649  5.2050825457  9.810956  6.1670716 15.90641
+      TCGA.OR.A5LD  8.752671  0.008979157  0.1075954559  9.165852  4.0363584 15.99541
+      TCGA.OR.A5LE  6.391506  0.008979157  7.9860148562 11.396553 -0.3243640 17.06536
+      TCGA.OR.A5LG  9.169482  0.008979157  0.1075954559  9.981915  5.3200632 16.44113
+      TCGA.OR.A5LH  7.816828 -0.004654649 10.0910983762 10.642793 10.4882075 16.85022
+      TCGA.OR.A5LJ 10.876242  3.484731128  0.0004196091  9.702499  0.2326275 15.89398
+      TCGA.OR.A5LK 13.290024 -0.054618928  0.0970238784  8.876545  9.1608132 17.64607
+      TCGA.OR.A5LL  6.985696  0.024255332  4.7175130817  9.477561  3.9453056 14.33965
+      TCGA.OR.A5LM  7.466076 -0.054618928  3.7403715772 10.392692 12.4869256 16.25683
+      TCGA.OR.A5LN  9.198030  0.024255332  6.3061480433 10.096109  3.9864900 16.94011
+      TCGA.OR.A5LO  8.546776  0.024255332 -0.0010402765  9.863800  9.9487251 15.98640
+      TCGA.OR.A5LP  8.544574  0.024255332  3.7910105588  9.608089  6.4113072 17.36444
+      TCGA.OR.A5LR 10.892235 -0.004654649  5.1298349846  9.579877  8.2711653 16.48830
+      TCGA.OR.A5LS  7.999203  0.024255332 10.5709698817  9.611469  9.2858351 15.64019
+      TCGA.OR.A5LT  8.152171  0.008979157  4.7607581759 10.155957  7.6377380 14.54600
+      TCGA.OU.A5PI  7.782720 -0.004654649  7.5432245698  9.090699  9.9061075 15.88753
+      TCGA.P6.A5OF  9.108725  0.024255332  9.8848937932 11.615331  8.3419861 16.28395
+      TCGA.P6.A5OG 11.888210 -0.004654649  0.0004196091  9.951988  0.2326275 17.64362
+      TCGA.PA.A5YG  8.831532  0.008979157  0.1075954559  9.687570 10.5142192 17.64878
+      TCGA.PK.A5H8 13.593315 -0.054618928  5.5971700501 10.514988  6.9370848 16.06283
+      TCGA.PK.A5H9  9.943046  6.428983533 -0.0010402765 11.899582  6.6056347 21.14839
+      TCGA.PK.A5HA 12.251039  0.008979157  8.3634440066 10.262026 -0.3243640 17.31496
+      TCGA.PK.A5HB 10.139525  4.089867486  5.8998822035 10.009431  1.9320296 16.63920
+                      A4GALT       A4GNT     AAAS       AACSL     AACS      AADAC
+      TCGA.OR.A5J1 10.959849 -0.09282863 14.59321 -0.01057256 14.07591  0.8584307
+      TCGA.OR.A5J2 11.209708  0.06757345 14.08184  2.54367021 13.35375  3.5260016
+      TCGA.OR.A5J3  9.536012  4.63853689 13.58498  0.02471746 15.37101  9.6339820
+      TCGA.OR.A5J5 11.512923  2.74450491 14.61653  4.48580371 13.19295 10.8956084
+      TCGA.OR.A5J6 14.020693  2.78754197 13.56866  0.02475795 13.73179 11.2636694
+      TCGA.OR.A5J7 10.958753  0.06717516 14.56394  0.02475795 15.56217  4.6025959
+      TCGA.OR.A5J8 13.402857 -0.09282863 13.54338 -0.01057256 12.52721  0.8584307
+      TCGA.OR.A5J9 12.123509  0.06717516 14.05112  0.02475795 14.57237 -0.3321434
+      TCGA.OR.A5JA 12.620113  0.06717516 14.56782  5.51738253 14.32006 10.8413247
+      TCGA.OR.A5JB 15.072434  2.65576285 13.22329 -0.01068882 14.20763  5.0278967
+      TCGA.OR.A5JC 11.448035  2.75600151 14.38412 -0.01057256 12.49674  9.0887408
+      TCGA.OR.A5JD 10.468017  0.06757345 13.82005  0.02471746 12.76130  8.0750612
+      TCGA.OR.A5JE 11.089112  0.06757345 13.81001  0.02471746 15.02328  8.3712909
+      TCGA.OR.A5JF 10.706404  0.06757345 13.78300  0.02471746 13.35711  8.2094764
+      TCGA.OR.A5JG 10.284506 -0.09282863 14.19035 -0.01057256 13.95652 14.3536943
+      TCGA.OR.A5JI 12.305776 -0.09034366 14.12246 -0.01068882 11.89981 12.4130680
+      TCGA.OR.A5JJ 12.159326  2.22592295 14.07552  2.24875504 14.64418  4.5555443
+      TCGA.OR.A5JK 11.166140  5.37425713 14.44919  6.62449112 13.07837  6.5989949
+      TCGA.OR.A5JL 10.254896  0.06717516 13.87711  0.02475795 14.03290  6.2354394
+      TCGA.OR.A5JM 11.584642  0.06757345 13.79091  0.02471746 15.16855 10.1578901
+      TCGA.OR.A5JO 14.269192  0.06717516 13.53720  0.02475795 12.37330  6.7727374
+      TCGA.OR.A5JP 10.366528 -0.09282863 14.05985 -0.01057256 14.20323 13.2873542
+      TCGA.OR.A5JQ 10.803760  3.42081349 14.20107  0.02475795 12.22946  9.4805243
+      TCGA.OR.A5JR  9.648904 -0.09282863 14.22859 -0.01057256 12.94178 10.2379453
+      TCGA.OR.A5JS 12.994855  4.13670532 14.16683  0.02475795 14.95691  4.6600605
+      TCGA.OR.A5JT 10.595179  0.06757345 14.44565  0.02471746 12.80951  4.8590625
+      TCGA.OR.A5JV  9.699000  2.47708302 13.87603 -0.01057256 12.94695  5.5252100
+      TCGA.OR.A5JW 11.113377  2.34369726 14.03304 -0.01068882 14.21468 10.3137165
+      TCGA.OR.A5JX 11.308048 -0.09282863 14.69619 -0.01057256 13.23979  8.7469316
+      TCGA.OR.A5JY 10.165416  0.06717516 15.30132  5.02840249 14.48027 14.1003244
+      TCGA.OR.A5JZ 13.603817 -0.09282863 13.95667 -0.01057256 13.36693  8.9632045
+      TCGA.OR.A5K0  9.290611  0.06757345 13.64600  0.02471746 12.85650 11.0729122
+      TCGA.OR.A5K1 11.240424 -0.09282863 14.19385 -0.01057256 13.00606  6.6244873
+      TCGA.OR.A5K2 10.762354  0.06717516 14.35314  0.02475795 15.46980  7.4485687
+      TCGA.OR.A5K3 11.488759 -0.09282863 14.00105 -0.01057256 14.35697  7.0582128
+      TCGA.OR.A5K4 12.563190  0.06717516 14.33788  0.02475795 13.11833  3.3932728
+      TCGA.OR.A5K5 10.799118  2.64337757 14.24867  2.64139512 15.22512  5.8771721
+      TCGA.OR.A5K6 10.662032  0.06757345 14.12803  0.02471746 13.25352 13.4060049
+      TCGA.OR.A5K8 11.332901 -0.09034366 14.22102 -0.01068882 13.60606 12.8033897
+      TCGA.OR.A5K9  9.717799  0.06717516 13.66312  0.02475795 16.13595 13.1485783
+      TCGA.OR.A5KO 12.228741  4.59299131 13.32236  2.76176337 13.80359  8.3573252
+      TCGA.OR.A5KT 13.471406  0.06757345 14.58747  3.53583239 14.80148 13.9192599
+      TCGA.OR.A5KU 12.594969  4.22138465 14.09986  3.30420684 13.47356  8.3167080
+      TCGA.OR.A5KV 12.246717  0.06757345 13.38271  2.43853424 13.95531 14.7773387
+      TCGA.OR.A5KW  9.913889  0.06717516 13.89794  5.01852115 14.84941  9.6755220
+      TCGA.OR.A5KX 11.843857  0.06757345 14.46355  2.81304862 12.77383  7.7678282
+      TCGA.OR.A5KY 11.006587  0.06757345 14.19803  0.02471746 15.59157  9.6341925
+      TCGA.OR.A5KZ 10.088667 -0.09282863 13.86749  2.75399143 14.05125  9.2518967
+      TCGA.OR.A5L3  9.659343  0.06717516 15.30086  0.02475795 12.96544 12.5609183
+      TCGA.OR.A5L4 11.886976  0.06717516 14.01189  0.02475795 14.93912  5.4812460
+      TCGA.OR.A5L5 11.170139  3.69865560 14.66448  2.80736960 12.59466 13.6059620
+      TCGA.OR.A5L6 11.133230  3.92590237 14.88558  3.90516811 12.48067  7.1147122
+      TCGA.OR.A5L8  8.722640  0.06717516 14.17144  0.02475795 12.68994  4.0063461
+      TCGA.OR.A5L9 12.695313  0.06717516 14.74233  0.02475795 10.71193  6.3370607
+      TCGA.OR.A5LA 11.086321  0.06757345 14.64260  0.02471746 12.75628  8.6319144
+      TCGA.OR.A5LB 10.525288 -0.09034366 14.55169  5.96187936 14.68593  4.1663838
+      TCGA.OR.A5LC 10.497937  0.06757345 13.91575  0.02471746 14.18963  9.1577766
+      TCGA.OR.A5LD 10.392648 -0.09282863 15.36720  5.45995578 13.36152  7.4949948
+      TCGA.OR.A5LE  9.812770 -0.09282863 13.95091 -0.01057256 15.64849  0.8584307
+      TCGA.OR.A5LG 13.730749 -0.09282863 14.50444 -0.01057256 15.27293  8.1969302
+      TCGA.OR.A5LH 11.558394  2.50345250 14.01702  0.02471746 14.23152  5.1373792
+      TCGA.OR.A5LJ 12.553957  0.06757345 14.40393  3.82634169 13.64413 10.3190697
+      TCGA.OR.A5LK 11.351954  3.98189241 13.82046 -0.01068882 11.84748  7.4122014
+      TCGA.OR.A5LL 11.864426  0.06717516 12.97665  0.02475795 10.87701 14.4652675
+      TCGA.OR.A5LM 12.048802 -0.09034366 14.44795 -0.01068882 14.81228  0.8464390
+      TCGA.OR.A5LN 10.618311  0.06717516 14.67945  0.02475795 11.37133 11.5811582
+      TCGA.OR.A5LO 12.168393  0.06717516 14.04285  0.02475795 14.45222  4.4781704
+      TCGA.OR.A5LP 11.797801  2.49300548 13.84313  0.02475795 11.83441 15.4347547
+      TCGA.OR.A5LR 11.099339  0.06757345 14.16554  0.02471746 13.04151 12.6922365
+      TCGA.OR.A5LS  9.239140  0.06717516 13.88923  0.02475795 13.94162  7.3842142
+      TCGA.OR.A5LT 12.277696  3.04339287 13.84734  3.90916173 11.77142 10.0874645
+      TCGA.OU.A5PI 11.360637  2.86731858 13.87155  0.02471746 15.02203  5.2461168
+      TCGA.P6.A5OF 11.730811  2.46198716 14.11079  2.45757146 14.62730  7.7332141
+      TCGA.P6.A5OG 12.489016  3.46439043 13.16025  0.02471746 11.17258  2.1729996
+      TCGA.PA.A5YG 11.031598  2.57428434 14.17715 -0.01057256 12.61582 13.3416913
+      TCGA.PK.A5H8 10.822696  2.76243677 14.38327 -0.01068882 13.72334  5.1462368
+      TCGA.PK.A5H9 11.719791  2.18717125 13.41885  8.50963751 12.16659 11.7616352
+      TCGA.PK.A5HA 12.633707  3.25513290 13.58835 -0.01057256 11.91524 10.1840576
+      TCGA.PK.A5HB 14.472813 -0.09282863 13.48046  5.81611904 13.45459 13.0813920
+                        AADAT    AAGAB     AAK1     AAMP       AANAT    AARS2
+      TCGA.OR.A5J1 10.3919582 13.86452 13.39869 14.97202  3.97602658 11.69481
+      TCGA.OR.A5J2  8.5175541 13.80874 14.09796 14.37168  0.05218940 12.20818
+      TCGA.OR.A5J3  8.5951960 13.31297 13.35852 14.43483  0.05218940 11.46021
+      TCGA.OR.A5J5  9.6685131 13.03961 12.58760 13.57515  3.70968028 12.10568
+      TCGA.OR.A5J6  7.6896493 13.28922 13.52163 15.06258  0.05399495 12.03913
+      TCGA.OR.A5J7  8.4183668 13.94407 13.91311 15.59854  0.05399495 12.78414
+      TCGA.OR.A5J8 10.5232978 13.49143 13.89308 14.81825  3.65079660 13.42620
+      TCGA.OR.A5J9 10.0987653 13.15616 13.41883 14.64734  0.05399495 11.88672
+      TCGA.OR.A5JA  8.2669802 14.33857 13.18660 14.44241  0.05399495 12.96169
+      TCGA.OR.A5JB  7.9005608 13.55737 13.03919 15.42317 -0.07109404 13.04123
+      TCGA.OR.A5JC  9.7458838 13.91309 13.73924 14.68222 -0.08015577 12.33469
+      TCGA.OR.A5JD 10.2866917 12.95371 13.49607 14.12711  2.80391485 11.82917
+      TCGA.OR.A5JE  8.2746849 13.42101 13.77829 15.00118  0.05218940 13.16756
+      TCGA.OR.A5JF  7.6893695 13.37196 13.37797 14.16720  3.05345825 11.93898
+      TCGA.OR.A5JG  9.2110557 13.94923 13.82656 15.02154 -0.08015577 12.30634
+      TCGA.OR.A5JI  9.7774866 12.58201 13.32598 13.97988 -0.07109404 11.78624
+      TCGA.OR.A5JJ  7.4848972 13.67848 12.88840 14.19716 -0.08015577 11.79032
+      TCGA.OR.A5JK  8.4396659 14.21639 13.70897 14.32019  3.09719469 12.00450
+      TCGA.OR.A5JL  8.8914437 14.63635 13.20782 14.23644  3.19165565 12.32075
+      TCGA.OR.A5JM  8.2900498 13.44854 14.38477 14.35216  0.05218940 12.37314
+      TCGA.OR.A5JO  9.4905702 12.97133 13.14517 14.48109  0.05399495 11.81727
+      TCGA.OR.A5JP  9.0702631 13.25373 13.22681 14.77189 -0.08015577 11.92494
+      TCGA.OR.A5JQ  9.5716046 12.74677 13.54967 14.40133  0.05399495 12.18755
+      TCGA.OR.A5JR  9.9018446 13.24560 13.90397 14.45027 -0.08015577 12.30926
+      TCGA.OR.A5JS  8.2359408 13.79632 14.31398 14.92116  2.33037495 12.14492
+      TCGA.OR.A5JT  8.7557036 13.11581 13.80755 14.43801  0.05218940 12.02414
+      TCGA.OR.A5JV  8.1843761 13.48278 14.04384 14.40364  3.94247847 12.14917
+      TCGA.OR.A5JW  7.2236057 14.33095 13.71876 14.21356  3.26724560 12.80209
+      TCGA.OR.A5JX  8.9840605 13.48872 13.30470 14.41305 -0.08015577 12.24968
+      TCGA.OR.A5JY  5.9099755 14.66284 13.12238 14.55996  0.05399495 13.03594
+      TCGA.OR.A5JZ  9.1689618 13.12166 13.56394 14.14689 -0.08015577 12.01152
+      TCGA.OR.A5K0  6.3055295 13.27496 13.65032 14.67855  0.05218940 12.15290
+      TCGA.OR.A5K1  7.6546101 13.24134 13.04552 14.49584 -0.08015577 12.05101
+      TCGA.OR.A5K2  7.3469052 14.58172 13.69901 14.73950  3.50421423 12.17788
+      TCGA.OR.A5K3  8.1891090 13.57019 13.86092 14.59376 -0.08015577 12.20335
+      TCGA.OR.A5K4  9.8590041 13.16816 13.43637 14.19836  0.05399495 12.33604
+      TCGA.OR.A5K5  7.8558200 13.89311 14.37567 14.96848  2.60209317 12.41822
+      TCGA.OR.A5K6  7.9558329 13.90829 14.32032 15.05074  0.05218940 12.67895
+      TCGA.OR.A5K8  7.6268297 13.21195 13.47738 14.17635 -0.07109404 11.65576
+      TCGA.OR.A5K9  4.7357172 13.36018 14.34646 14.98342  0.05399495 12.63667
+      TCGA.OR.A5KO  6.5841749 13.22484 13.13552 14.05374  0.05399495 12.29113
+      TCGA.OR.A5KT  5.8270806 13.66924 13.75532 14.74429  0.05218940 12.28016
+      TCGA.OR.A5KU 10.1563813 14.04095 13.69971 14.57466  0.05218940 12.11520
+      TCGA.OR.A5KV  7.9565769 13.53912 14.04171 14.96244  0.05218940 12.16536
+      TCGA.OR.A5KW  9.4747433 14.44049 13.25467 14.65198  2.78972025 11.67198
+      TCGA.OR.A5KX  8.6278713 13.05984 14.24378 15.79157  0.05218940 12.53692
+      TCGA.OR.A5KY  8.6566577 13.53163 13.56120 14.31133  4.59730026 12.21796
+      TCGA.OR.A5KZ 10.4475964 13.51717 12.75997 14.85516 -0.08015577 12.92399
+      TCGA.OR.A5L3  6.0515793 13.40648 14.10335 14.86513  0.05399495 11.96085
+      TCGA.OR.A5L4  5.5256402 13.94476 13.82549 14.49993  0.05399495 12.62779
+      TCGA.OR.A5L5  8.8493631 13.16133 13.32344 14.40910  0.05218940 11.75257
+      TCGA.OR.A5L6  8.5298974 11.94932 12.98411 14.23441 -0.08015577 11.80099
+      TCGA.OR.A5L8  8.7959015 13.06275 14.00264 14.76646  0.05399495 12.12321
+      TCGA.OR.A5L9  0.3896319 13.00977 12.63734 13.25846  0.05399495 11.05679
+      TCGA.OR.A5LA  8.2934553 13.02329 13.22895 14.70334  0.05218940 11.77757
+      TCGA.OR.A5LB  9.3026623 14.23378 13.59521 14.65664  2.42683812 11.74339
+      TCGA.OR.A5LC  8.6546353 13.63368 13.90654 14.93859  3.08460075 11.05250
+      TCGA.OR.A5LD  9.8816617 12.98341 14.44169 14.32665 -0.08015577 13.04636
+      TCGA.OR.A5LE  2.5763176 14.03552 14.17801 14.94131 -0.08015577 11.58821
+      TCGA.OR.A5LG  7.3241612 13.98999 13.34829 15.17366 -0.08015577 12.28905
+      TCGA.OR.A5LH 10.3481788 13.84837 13.50776 14.69668  0.05218940 11.97616
+      TCGA.OR.A5LJ  7.6271799 13.08667 13.86052 15.33718  0.05218940 12.35713
+      TCGA.OR.A5LK  9.1914034 12.60707 13.62884 14.37583  4.08683152 12.69132
+      TCGA.OR.A5LL  6.0289766 13.57602 13.85844 14.42127  0.05399495 12.30818
+      TCGA.OR.A5LM  9.8634871 14.03312 13.71920 14.76413 -0.07109404 11.93190
+      TCGA.OR.A5LN  8.1883088 13.10437 13.06081 13.81970  0.05399495 13.01373
+      TCGA.OR.A5LO 10.8752161 13.70065 13.93598 14.65058  5.10660206 12.39347
+      TCGA.OR.A5LP  9.3156141 13.22335 13.79587 14.18654  2.45543294 12.02012
+      TCGA.OR.A5LR  9.4925191 13.03783 13.24635 14.25833  0.05218940 11.89258
+      TCGA.OR.A5LS  8.9959989 13.61979 14.08433 14.42344  3.90832407 11.54344
+      TCGA.OR.A5LT  9.4786165 13.04199 13.46174 13.97330 -0.08015577 11.61991
+      TCGA.OU.A5PI  8.3390847 13.42371 13.95470 14.65960  0.05218940 11.31404
+      TCGA.P6.A5OF  8.9704432 13.42411 13.40835 14.03245  2.42472652 11.98016
+      TCGA.P6.A5OG 10.1127656 13.19871 13.29524 14.68321  4.34007607 12.38744
+      TCGA.PA.A5YG  7.0676566 13.57949 14.05988 14.91020  2.64307957 11.95388
+      TCGA.PK.A5H8  6.7916262 14.02155 13.89649 14.54671  2.84171565 12.96257
+      TCGA.PK.A5H9 10.2545826 13.07929 13.05231 13.75412  2.15267394 11.75753
+      TCGA.PK.A5HA  7.8270919 12.35792 13.60191 13.76336  2.47843625 12.74135
+      TCGA.PK.A5HB  7.1433716 14.11244 13.86978 14.87963 -0.08015577 12.99226
+                     AARSD1     AARS AASDHPPT     AASDH      AASS     AATF      AATK
+      TCGA.OR.A5J1 13.44182 15.28509 13.97218 10.280407 13.297247 13.94452  8.558724
+      TCGA.OR.A5J2 11.99798 15.90023 13.17813 11.423305 11.103353 13.48811 13.301982
+      TCGA.OR.A5J3 12.06141 15.23122 13.27948 10.891713 11.565178 13.02114  9.646160
+      TCGA.OR.A5J5 11.88986 14.50207 12.37064 11.669849 12.297748 12.21724 12.352137
+      TCGA.OR.A5J6 12.98156 14.86699 13.29697 11.359942 10.978429 13.39072  8.665599
+      TCGA.OR.A5J7 11.39711 15.63537 13.44469 11.275376 12.200263 14.36116 10.189272
+      TCGA.OR.A5J8 12.51714 15.90720 12.21519 10.559241 12.030581 13.55384 10.541200
+      TCGA.OR.A5J9 12.08975 15.74375 12.84626 11.269870 11.924035 13.67478 13.748731
+      TCGA.OR.A5JA 12.19617 14.91427 12.92976 11.272199 11.074444 13.03452 10.139757
+      TCGA.OR.A5JB 13.67694 15.69788 13.77740 10.100425 12.920356 14.07106 10.045338
+      TCGA.OR.A5JC 12.82695 15.29284 13.25409 11.335253 11.558771 13.69617  8.680370
+      TCGA.OR.A5JD 12.43134 16.26278 12.95498 12.255970 12.404316 13.18245  8.924500
+      TCGA.OR.A5JE 13.38582 15.34532 12.45782 10.507187 10.214212 13.83124 10.580325
+      TCGA.OR.A5JF 11.83463 15.49137 13.38272 11.746794 11.626121 12.91008 11.207076
+      TCGA.OR.A5JG 12.58960 16.45933 12.91156 11.480452  9.458489 13.68606  9.309954
+      TCGA.OR.A5JI 12.44879 15.03591 13.41705 11.297280 11.417614 12.94482  9.390339
+      TCGA.OR.A5JJ 12.52782 15.53969 13.07752 12.179190 11.758591 13.54971 11.195381
+      TCGA.OR.A5JK 12.37245 16.11310 13.29008 11.534833 12.662282 13.71605 10.064385
+      TCGA.OR.A5JL 12.39787 14.31232 13.67196 11.693614 12.121408 12.51293 11.777204
+      TCGA.OR.A5JM 13.35467 16.01229 13.82226 10.529282 11.016421 13.73289 11.252504
+      TCGA.OR.A5JO 12.54167 14.71376 12.79289 10.945874 11.758627 13.41138  8.056981
+      TCGA.OR.A5JP 12.60094 16.20568 12.65434 11.045727 11.194797 12.64987 13.331328
+      TCGA.OR.A5JQ 12.74676 16.12144 13.19230 11.786862 11.810713 13.58336  9.065117
+      TCGA.OR.A5JR 12.00412 16.42204 13.56474 12.493856 11.650216 13.14798  7.552776
+      TCGA.OR.A5JS 12.58581 16.26247 13.16852 11.200968 12.359113 13.33788 11.367940
+      TCGA.OR.A5JT 12.13749 17.11960 13.88078 12.404378 12.336274 13.32928  8.277231
+      TCGA.OR.A5JV 11.83397 15.81061 12.98168 12.404237 12.094800 13.21673  8.908106
+      TCGA.OR.A5JW 11.68492 14.90398 12.93036 12.580963 12.604185 12.84469 10.210174
+      TCGA.OR.A5JX 12.75274 14.97811 13.31463 10.613841 13.472004 13.78697 11.390724
+      TCGA.OR.A5JY 12.63779 15.32973 13.68111 11.905866 13.503264 13.46387 11.184486
+      TCGA.OR.A5JZ 12.29557 16.28679 13.91454 11.717325  9.638430 13.39341  7.196850
+      TCGA.OR.A5K0 12.29386 14.50772 12.16318 11.576747 11.981195 14.17280 11.064329
+      TCGA.OR.A5K1 12.65617 16.62387 13.39238 11.064823 11.673865 13.74485  8.232722
+      TCGA.OR.A5K2 12.68749 15.68296 13.25648 10.389096 12.021951 13.91569 10.808425
+      TCGA.OR.A5K3 12.19327 16.59448 13.59981 10.163759 11.863730 13.31658  9.126366
+      TCGA.OR.A5K4 12.28919 16.30111 13.73908 12.664190 11.103813 13.08149  5.815364
+      TCGA.OR.A5K5 12.80612 16.51376 12.98978 11.272669  9.376292 14.23107 11.632017
+      TCGA.OR.A5K6 12.76849 14.93674 12.47346 11.648381 10.403875 13.80457 11.662552
+      TCGA.OR.A5K8 12.32452 15.10954 13.04422 10.909391 11.616477 13.10410  9.864532
+      TCGA.OR.A5K9 12.01457 16.33385 13.12227 11.427522  8.792173 13.54935 11.561708
+      TCGA.OR.A5KO 11.88106 15.29868 13.69035 12.064702 10.577796 12.94302  8.990764
+      TCGA.OR.A5KT 12.36026 15.91002 12.58172 10.893708 11.751392 13.93608 10.262556
+      TCGA.OR.A5KU 11.33034 15.07400 13.37162 12.197865 12.478714 13.29085 10.998464
+      TCGA.OR.A5KV 13.21766 15.97931 13.79256 11.302687 10.103953 13.61554 13.575233
+      TCGA.OR.A5KW 12.25797 15.50004 13.69260 11.998554 11.145931 13.53345  9.641208
+      TCGA.OR.A5KX 13.16509 14.42502 12.38684 11.225351 13.052244 12.81391  9.994501
+      TCGA.OR.A5KY 11.63400 15.65497 13.30019 10.528828 12.020216 13.27198 11.565012
+      TCGA.OR.A5KZ 12.11884 15.34277 13.66408 11.370165 10.818418 13.58267 10.111467
+      TCGA.OR.A5L3 13.60413 14.97984 12.87693 10.976602 12.849273 13.90913 12.212902
+      TCGA.OR.A5L4 12.33678 16.09409 13.88625 11.013791 11.381165 12.97010  9.885081
+      TCGA.OR.A5L5 12.97850 16.18953 13.43356 10.889245 12.342852 13.24532  7.917552
+      TCGA.OR.A5L6 12.64448 15.47333 12.80277 11.032831 12.024480 12.98658 11.060555
+      TCGA.OR.A5L8 12.04848 15.66857 13.71799 11.592799 12.667687 14.25547 13.783104
+      TCGA.OR.A5L9 13.20844 15.74779 12.36893 10.956008 12.062845 13.36439  8.168794
+      TCGA.OR.A5LA 13.29729 15.98762 12.95565 11.362361 12.048917 13.28867  9.006066
+      TCGA.OR.A5LB 11.60728 14.44089 13.21497 11.837158 13.707564 13.10848 12.990923
+      TCGA.OR.A5LC 12.82763 15.42389 12.42115 11.123724 11.736341 14.07326 12.139859
+      TCGA.OR.A5LD 13.16789 16.66975 13.76599 10.634100 12.496311 13.64359 10.775013
+      TCGA.OR.A5LE 12.24681 15.62327 13.93704 11.220185 13.644163 13.37687 11.071933
+      TCGA.OR.A5LG 12.92673 17.28134 13.39356 11.564634 12.469163 13.34128  7.252386
+      TCGA.OR.A5LH 12.45087 14.94475 13.31662 11.944351 12.478221 13.25518  9.484854
+      TCGA.OR.A5LJ 12.58393 14.91125 13.09242  9.290685 11.237743 13.72204 10.374420
+      TCGA.OR.A5LK 12.43787 15.06245 12.87640 11.034408 11.943521 13.35992  8.403079
+      TCGA.OR.A5LL 12.27056 15.66173 13.70779 11.504275 13.922032 13.43879 10.215577
+      TCGA.OR.A5LM 12.78450 15.45535 13.70490 11.674123 13.034151 13.14741  8.521737
+      TCGA.OR.A5LN 12.91956 15.47230 13.35172 11.387178 13.713661 13.14895  8.706030
+      TCGA.OR.A5LO 11.24412 15.87617 13.85010 11.658908 13.411930 12.46564  9.295110
+      TCGA.OR.A5LP 11.75888 16.91474 13.33246 10.998357 10.697122 13.19776  7.275817
+      TCGA.OR.A5LR 12.40671 16.53622 13.71237 11.651275 11.813940 13.22853  7.162343
+      TCGA.OR.A5LS 11.37327 15.38113 13.56627 12.346943 13.107786 12.61278 11.902298
+      TCGA.OR.A5LT 12.39307 15.04763 13.79243 12.256364 12.723102 13.19637 12.000159
+      TCGA.OU.A5PI 11.51853 15.36534 13.15624 12.044245 13.841328 13.44037 12.033265
+      TCGA.P6.A5OF 11.37613 14.93804 13.22364 11.737293 10.722039 12.96822  9.826824
+      TCGA.P6.A5OG 12.68551 16.05611 13.37561 11.140625 13.284804 13.69875 10.749952
+      TCGA.PA.A5YG 11.98348 16.41612 13.48445 11.285136 12.564592 13.51544  9.838856
+      TCGA.PK.A5H8 12.11716 15.12221 13.51574 10.980976 12.413661 13.59135  8.944963
+      TCGA.PK.A5H9 11.79319 14.53776 13.59309 11.503124  9.653660 12.50445  7.991506
+      TCGA.PK.A5HA 12.03650 16.10083 12.20060 11.134463  9.774712 13.29777 11.069767
+      TCGA.PK.A5HB 11.51919 15.43780 12.59260 10.928972 10.380297 12.83283 10.911057
+                        ABAT   ABCA10   ABCA11P      ABCA12     ABCA13   ABCA17P
+      TCGA.OR.A5J1 13.793582 9.706963  8.769898 -0.06244521  2.1038012  8.846414
+      TCGA.OR.A5J2 14.182673 6.767545  9.841982  0.07902961  3.5750281  7.224849
+      TCGA.OR.A5J3 13.301137 8.406055  8.247579  5.86263771 10.5393592  8.276828
+      TCGA.OR.A5J5 12.023728 8.072102 10.292217  2.73021675  6.2617905 10.134652
+      TCGA.OR.A5J6 12.693290 7.409908  9.219386  0.07254242  0.4281625  9.444077
+      TCGA.OR.A5J7 11.628504 8.310070  9.173833  0.07254242  6.2820892  7.559887
+      TCGA.OR.A5J8  8.299717 8.433588  9.588809 -0.06244521  6.5464527  4.522930
+      TCGA.OR.A5J9 13.963638 9.010419 11.115574  3.71835721  3.8581337  8.040950
+      TCGA.OR.A5JA 15.145102 7.458829  9.319608  2.71925208 11.3107601  8.917128
+      TCGA.OR.A5JB  9.109694 6.143708  7.395480  7.30409839  2.2015922  5.481001
+      TCGA.OR.A5JC 15.175619 8.805673 10.325270  8.23748464  4.3544839  9.233434
+      TCGA.OR.A5JD 14.163724 8.801740 10.136584  2.89294532  5.3299631  9.258136
+      TCGA.OR.A5JE  9.964122 7.719009  9.572740  0.07902961  3.9495624  6.248812
+      TCGA.OR.A5JF 12.483352 9.040910 10.262364  2.30109137 12.3704406  8.657699
+      TCGA.OR.A5JG 11.772019 5.581732  9.456611  4.25418592  8.7306619  8.961015
+      TCGA.OR.A5JI 15.193717 7.333212 10.285059  3.04356483  4.6613931  8.448395
+      TCGA.OR.A5JJ 11.780528 7.396882 10.308090 -0.06244521  5.6564516  9.051957
+      TCGA.OR.A5JK 16.481098 8.436398 10.292607  7.83072968  6.4534051  8.590833
+      TCGA.OR.A5JL 16.403749 4.648713  9.950099  6.09134511 10.9165222  7.235624
+      TCGA.OR.A5JM 13.114743 6.226260 10.638343  0.07902961  0.3864344  6.842488
+      TCGA.OR.A5JO 11.732686 7.966326  9.299103  2.82495748  0.4281625  7.828040
+      TCGA.OR.A5JP 12.441931 9.464478 10.904104  2.31254731  2.8406477  9.188663
+      TCGA.OR.A5JQ 16.335812 6.831638 10.942472  2.58787676  5.0464693  7.687040
+      TCGA.OR.A5JR 17.006801 5.002574 10.351473  3.72704946  6.1905143  8.963538
+      TCGA.OR.A5JS 11.387986 8.082943  8.132950  7.02474746  2.6181751  7.091454
+      TCGA.OR.A5JT 18.076049 6.077447 10.510099  3.63020112  2.8871792 10.116388
+      TCGA.OR.A5JV 17.191449 5.071349  8.868997  3.27886539  6.4250933  9.579448
+      TCGA.OR.A5JW 10.982668 9.376865 10.323894  2.33835488  7.6687594  8.793338
+      TCGA.OR.A5JX 12.633351 9.520542 10.161292 -0.06244521  4.7127101  9.197169
+      TCGA.OR.A5JY  7.710110 7.422850  9.859557  7.05857337  5.3256067  5.151542
+      TCGA.OR.A5JZ 16.575786 5.222117  9.630560  4.16133661  6.2098838  9.819506
+      TCGA.OR.A5K0 11.334585 9.546548  8.245471  3.80476510  3.0386616  8.807854
+      TCGA.OR.A5K1 17.170892 5.474860  9.544045 -0.06244521  7.0601280  9.648606
+      TCGA.OR.A5K2 12.127702 9.752257  8.223510  0.07254242  4.6417302  8.014142
+      TCGA.OR.A5K3 16.649879 7.515299 10.462272 -0.06244521  8.5251645 10.466558
+      TCGA.OR.A5K4 17.490347 4.311149  9.921720  0.07254242  4.5293445 10.389330
+      TCGA.OR.A5K5 10.213258 6.395652  8.070082  0.07902961  2.8395931  8.462911
+      TCGA.OR.A5K6 11.620653 6.860263  9.166011  2.83323146  0.3864344  8.150556
+      TCGA.OR.A5K8 15.211564 8.564924 10.244070 -0.04135979  8.9283953  9.085158
+      TCGA.OR.A5K9 10.078009 3.628167  9.324412  2.82426561  3.8647556  8.804761
+      TCGA.OR.A5KO 15.650148 6.761745  9.432792  2.79998243  4.7384846 10.217286
+      TCGA.OR.A5KT 10.498507 6.996549  7.432089  0.07902961  5.4955223  7.662681
+      TCGA.OR.A5KU 16.041882 9.988589 10.156002  4.85161621  6.8619458  9.573247
+      TCGA.OR.A5KV 13.952275 7.175661 10.081089  0.07902961  2.6494092 10.057983
+      TCGA.OR.A5KW 14.097066 6.339497  8.747071  4.73328701  9.0613651  8.928621
+      TCGA.OR.A5KX 13.980092 8.113561  9.862986  0.07902961  0.3864344  9.350797
+      TCGA.OR.A5KY 12.315325 8.399071  9.642948  4.41438085  8.3914368  7.747389
+      TCGA.OR.A5KZ 13.659012 9.761585  9.743024  2.71150507 -0.7769370  8.275676
+      TCGA.OR.A5L3 12.284467 8.474228  9.707801  0.07254242  0.4281625  6.412810
+      TCGA.OR.A5L4 16.474053 6.017269 10.062753  0.07254242  5.2523927  8.887288
+      TCGA.OR.A5L5 16.165842 9.439740 10.205882  2.85195681  4.3669315  8.792567
+      TCGA.OR.A5L6 15.055384 7.458668 10.530366  3.86659024  4.6985654  8.357954
+      TCGA.OR.A5L8 14.867703 7.473132 10.235959  2.66370186  0.4281625  7.566637
+      TCGA.OR.A5L9 16.619115 8.634227 11.032028  0.07254242  0.4281625  9.790310
+      TCGA.OR.A5LA 16.705493 6.890434 10.031720  5.51644105  4.5773199  9.549567
+      TCGA.OR.A5LB 13.501003 8.118817 10.273943 -0.04135979 10.8848153  8.253297
+      TCGA.OR.A5LC 14.079335 8.528594  9.216571  0.07902961  0.3864344  9.289209
+      TCGA.OR.A5LD 15.477388 7.269239  9.712083 -0.06244521 -0.7769370  5.836345
+      TCGA.OR.A5LE 13.678972 7.328127  9.201048 -0.06244521 -0.7769370  6.589430
+      TCGA.OR.A5LG 12.854476 7.282238  9.753032  4.26458988  5.4970270  7.548516
+      TCGA.OR.A5LH 15.837893 7.247457 10.252276  4.92957347  7.9417701  9.603799
+      TCGA.OR.A5LJ  9.590340 8.741565  9.979426  0.07902961  6.0891355  6.363693
+      TCGA.OR.A5LK 14.104738 7.654911 11.016869  4.84283648  5.7382897  8.980837
+      TCGA.OR.A5LL 12.249978 8.114192  9.829356  3.92796310  6.3278042  7.676034
+      TCGA.OR.A5LM 16.632330 7.444022 10.584627  4.33538095  9.1914508  9.445574
+      TCGA.OR.A5LN 15.280781 8.281801 11.923923  0.07254242  0.4281625  6.942651
+      TCGA.OR.A5LO 15.637472 6.458945  9.269088  4.26369504 10.8301724  8.654542
+      TCGA.OR.A5LP 16.185321 6.447785  9.597789  5.32010911  5.7947201  8.720842
+      TCGA.OR.A5LR 17.258984 6.126311  9.619731  3.40085547  0.3864344 10.424052
+      TCGA.OR.A5LS 14.371514 8.296776 10.407250  0.07254242  9.4901030  8.202173
+      TCGA.OR.A5LT 15.487941 8.048751 10.671770  5.06680036 -0.7769370  7.911044
+      TCGA.OU.A5PI 15.189688 7.405963  9.774655  3.82105942  8.6733018  7.689024
+      TCGA.P6.A5OF 12.353649 8.669972 10.045935  2.49685362  6.8776650 12.536827
+      TCGA.P6.A5OG  8.909694 3.950289  9.106979  0.07902961 10.6313229 10.741282
+      TCGA.PA.A5YG 16.505393 6.832664  9.348019  3.89504082  4.1300691  8.160984
+      TCGA.PK.A5H8 16.693237 8.056014 10.542042  2.74774839 11.6247712 10.309999
+      TCGA.PK.A5H9 12.196404 9.305259 10.100831  2.21865254  3.7337179  6.426789
+      TCGA.PK.A5HA 14.978384 4.738547  9.857896 -0.06244521  4.7563495 11.475810
+      TCGA.PK.A5HB 11.219216 6.314436 10.010665  4.19427542  6.5161224  8.738318
+                       ABCA1    ABCA2     ABCA3         ABCA4    ABCA5     ABCA6
+      TCGA.OR.A5J1 11.951542 13.34704 12.981116  4.9645981825 14.55795  7.463176
+      TCGA.OR.A5J2 13.562585 13.35166 13.625559  6.1959666036 11.47260  8.268746
+      TCGA.OR.A5J3 13.032417 14.75654 15.497991  6.0026570833 12.94161  7.480329
+      TCGA.OR.A5J5 11.577048 14.87294 14.998839  0.1021432678 12.75021  3.933808
+      TCGA.OR.A5J6 12.919248 11.83525 13.095960  4.7619136713 13.05583  9.949062
+      TCGA.OR.A5J7 11.692843 13.66829 13.116548  4.8661920619 13.23939  6.165660
+      TCGA.OR.A5J8 14.385501 13.44952 10.201285  9.1943452636 10.39326 11.796460
+      TCGA.OR.A5J9 13.093248 13.84560 12.030666  4.4478381073 13.52152  6.032624
+      TCGA.OR.A5JA 10.758795 12.21846 14.621824  3.4203650227 11.79453  4.705778
+      TCGA.OR.A5JB 14.836826 14.66793 11.358513  4.8298050571 11.69462 12.831682
+      TCGA.OR.A5JC 12.611967 11.52623 13.445688  4.5449622551 13.06799  7.715094
+      TCGA.OR.A5JD 13.217093 14.88498 14.761467  5.3028883904 13.15674  7.139479
+      TCGA.OR.A5JE 11.994503 14.67711 10.976670  4.6009630985 13.52590  4.256387
+      TCGA.OR.A5JF 13.549558 15.11965 15.020947  4.6250848258 14.11871  8.107796
+      TCGA.OR.A5JG 11.072945 14.02241 13.250926  5.5061650763 11.25892  6.441261
+      TCGA.OR.A5JI 15.087977 13.92938 15.361908  5.8751417710 12.13886  7.610152
+      TCGA.OR.A5JJ 14.513368 15.65226 13.191160  3.9255683796 12.89269  7.249977
+      TCGA.OR.A5JK 12.013573 13.58766 14.703553  4.8435384799 13.45662  7.338948
+      TCGA.OR.A5JL 12.503235 12.46542 13.750119  5.7213180026 11.94269  6.483852
+      TCGA.OR.A5JM 11.677203 12.98943 11.825480  5.1735302329 11.32848  5.385157
+      TCGA.OR.A5JO 13.184463 12.75815 11.801485  5.0109907518 12.97118 14.169808
+      TCGA.OR.A5JP 13.758640 12.39571 13.052445  6.4065806896 14.28505  8.014641
+      TCGA.OR.A5JQ 13.853249 14.64363 15.871396  5.1408633075 12.69032  8.041170
+      TCGA.OR.A5JR 12.445974 14.71149 17.120367  4.5508485729 12.18090  4.507537
+      TCGA.OR.A5JS 13.149992 14.27348 12.917304  2.2498649174 13.66692  7.311552
+      TCGA.OR.A5JT 13.631938 13.90634 16.776550  6.1910491248 12.04466  3.486521
+      TCGA.OR.A5JV 12.036104 12.84180 15.470247  5.9088366222 11.31331  5.355089
+      TCGA.OR.A5JW 14.280732 13.25335 14.377926  4.0666479827 13.93094  7.634977
+      TCGA.OR.A5JX 11.536182 13.63092 13.540880  0.0982199903 13.60519  7.343975
+      TCGA.OR.A5JY 11.139683 12.14796 12.738134  9.1643307202 13.56280  7.470690
+      TCGA.OR.A5JZ 14.701755 13.91608 16.437689  4.6207740663 12.67378  5.288749
+      TCGA.OR.A5K0 13.306136 14.97141 13.483216  6.4637397045 14.71732  7.200850
+      TCGA.OR.A5K1 12.987089 13.08488 16.780796  5.2731470435 12.02637  4.824463
+      TCGA.OR.A5K2 11.795025 12.59254 12.356421 -0.0002636101 14.48246  7.292119
+      TCGA.OR.A5K3 11.728872 13.29272 15.096371  5.9368010799 12.85265  6.203545
+      TCGA.OR.A5K4 12.372417 13.76455 17.779249  5.8717243165 12.54022  7.664389
+      TCGA.OR.A5K5 10.353650 13.18656 13.196385  7.1545429066 12.11187  5.615721
+      TCGA.OR.A5K6 13.433924 13.99008 13.339493  4.7729010650 11.34044  4.514476
+      TCGA.OR.A5K8 14.165327 14.74244 15.318861  5.1794796407 12.88271  7.553733
+      TCGA.OR.A5K9 13.586819 13.94925  9.860255  4.4549381568 10.29410  4.517027
+      TCGA.OR.A5KO 14.288212 14.14949 15.446897  3.5052188779 13.01766  5.609967
+      TCGA.OR.A5KT 10.860331 13.47285 13.951482  6.2266388450 11.47689  9.993985
+      TCGA.OR.A5KU 12.256218 12.34652 13.087172  5.0184637684 14.61800  7.324542
+      TCGA.OR.A5KV 11.951284 14.30524 12.632334  2.3354584448 13.16718  6.203648
+      TCGA.OR.A5KW 13.116725 13.33406 14.118463  4.5049136515 12.25325  6.091530
+      TCGA.OR.A5KX 13.705426 12.12381 13.739811  4.1062105657 12.50467  2.737769
+      TCGA.OR.A5KY 13.935921 14.62570 13.749424  2.4388293059 12.80658  8.440802
+      TCGA.OR.A5KZ 12.513325 12.28312 11.862284  3.0683876506 11.30577 13.484584
+      TCGA.OR.A5L3 13.905898 14.20599 12.594091  7.6826592287 13.52869  6.695983
+      TCGA.OR.A5L4 10.698162 11.66328 15.420354  5.5178733836 11.24870  8.110204
+      TCGA.OR.A5L5 15.037277 13.69430 15.693351  6.1204559658 13.54976 10.545142
+      TCGA.OR.A5L6 12.751638 13.62914 14.684128  6.5748856885 13.92630  7.362616
+      TCGA.OR.A5L8 15.176363 13.30830 13.720804  5.5373189274 12.59681  6.832255
+      TCGA.OR.A5L9 14.847052 12.56199 15.946639  7.1480403655 13.09190  8.925526
+      TCGA.OR.A5LA 14.546694 14.18628 15.602435  4.3162903106 12.64285  8.760781
+      TCGA.OR.A5LB 14.291992 13.95023 14.711806  4.4751568939 13.61967  7.175139
+      TCGA.OR.A5LC 12.605999 14.39124 12.404524  0.0103649021 12.32733  7.514269
+      TCGA.OR.A5LD 12.753038 12.08446 12.133952  4.4313277347 11.77259  5.352360
+      TCGA.OR.A5LE 11.710753 13.24685 11.343271  6.2245448980 12.61102  6.172893
+      TCGA.OR.A5LG 13.307515 13.08507 12.558079  3.7840259478 12.39693  8.277742
+      TCGA.OR.A5LH 12.263117 12.72060 14.452988  7.8245445827 13.03945  8.091005
+      TCGA.OR.A5LJ 14.320384 14.95957 13.722849  6.9115313321 12.56875  5.607390
+      TCGA.OR.A5LK 13.960083 14.08019 14.226160  6.3176084557 12.55247  8.154759
+      TCGA.OR.A5LL 15.727057 13.42226 12.520925  4.6586698360 13.64479  8.844622
+      TCGA.OR.A5LM 10.078094 11.83148 13.842240  3.8391096457 12.57752  4.739814
+      TCGA.OR.A5LN 13.718885 13.46528 14.735883 -0.0002636101 13.38727  6.037824
+      TCGA.OR.A5LO 12.285731 13.33678 13.916103 -0.0002636101 13.03267  6.427897
+      TCGA.OR.A5LP 13.395028 14.46291 15.626729  4.4282371036 12.25256  7.683360
+      TCGA.OR.A5LR 13.186233 13.66519 16.344386  5.6375189272 12.42221  7.859428
+      TCGA.OR.A5LS 13.897033 14.42782 14.553365  4.7448539122 13.82057  6.910219
+      TCGA.OR.A5LT 14.065700 15.70166 14.210622  8.1621413127 14.00976  6.018138
+      TCGA.OU.A5PI 12.672761 14.59625 15.040339  4.8607617361 13.44246  8.662744
+      TCGA.P6.A5OF 13.920743 15.60462 14.550775  3.1843441069 13.17158  9.290676
+      TCGA.P6.A5OG 12.257260 14.20845 13.295287  8.6781359707 10.03973  9.936090
+      TCGA.PA.A5YG 14.552231 14.44146 14.208499  0.0982199903 12.92436  6.964409
+      TCGA.PK.A5H8 12.273088 12.02225 14.833847  6.6279711697 13.00103  6.196202
+      TCGA.PK.A5H9 14.824079 12.40780 12.737882  3.3960294047 14.29905 14.241276
+      TCGA.PK.A5HA 15.092202 13.79524 15.590753  4.8524836087 10.20377  9.255739
+      TCGA.PK.A5HB  9.100867 12.30376 14.804724  5.3718703302 10.58346  5.799278
+                       ABCA7     ABCA8     ABCA9    ABCB10      ABCB11     ABCB1
+      TCGA.OR.A5J1 12.263594  6.185341  8.659807 12.220830  3.40366561 13.886722
+      TCGA.OR.A5J2 11.188689 10.265575  8.843618 12.044949 -0.07357536 14.787738
+      TCGA.OR.A5J3 11.940080 13.527830  8.557195 10.705248  3.77743101 17.243257
+      TCGA.OR.A5J5 13.987553 13.290032  8.653368 11.323147  0.33011750 11.203679
+      TCGA.OR.A5J6 11.929168 15.476196  8.180819 11.395327 -0.10359844 14.958191
+      TCGA.OR.A5J7 12.677760 13.288337  7.322786 11.581890 -0.10359844 15.272797
+      TCGA.OR.A5J8 11.363360 10.806731 11.188799 11.348884  0.26262749 10.719232
+      TCGA.OR.A5J9 11.535438 13.699074  8.114795  9.630218 -0.10359844 14.831143
+      TCGA.OR.A5JA 12.637362 13.017182 10.089385 11.143364 -0.10359844 15.635111
+      TCGA.OR.A5JB 11.287394  6.225134  8.019662 12.530945  0.33011750  8.721753
+      TCGA.OR.A5JC 12.277706 12.857107  8.709476 10.687745  0.26262749 16.811349
+      TCGA.OR.A5JD 12.553281 13.930547  8.712962 11.189784 -0.07357536 12.691596
+      TCGA.OR.A5JE 12.238563 11.834655  7.272289 10.978101  2.54790863 14.530804
+      TCGA.OR.A5JF 12.120418 13.767955  9.492406  9.963750  1.95162620 16.425982
+      TCGA.OR.A5JG 11.836173  8.419328  6.857716 11.219493  3.47200824 15.902196
+      TCGA.OR.A5JI 11.524241 13.555037  8.528271 10.587635  0.33011750 16.129868
+      TCGA.OR.A5JJ 12.591033 12.225797  7.973965 10.597651  0.26262749 15.555200
+      TCGA.OR.A5JK 13.660433 12.287031  9.223386 11.392347  0.26262749 14.710811
+      TCGA.OR.A5JL 10.904538 12.645355  7.699793 10.696449  4.84997321 14.005280
+      TCGA.OR.A5JM 12.965129 10.673392  5.083247 12.100999 -0.07357536 15.594347
+      TCGA.OR.A5JO 11.694015 15.819997 11.597686 11.303737  3.22631901 11.046884
+      TCGA.OR.A5JP  8.846492 12.969193  9.490920 11.765980  5.64348788 14.703560
+      TCGA.OR.A5JQ 12.246562 14.892717  8.199184 10.851873 -0.10359844 15.834740
+      TCGA.OR.A5JR 11.473016 14.720705  4.064307 10.898473  3.29925977 15.065295
+      TCGA.OR.A5JS 12.742940 12.342352  7.807761 11.591523 -0.10359844 15.945677
+      TCGA.OR.A5JT 11.886547 13.938527  5.576500 10.549238 -0.07357536 12.727576
+      TCGA.OR.A5JV 12.144077 13.519001  5.286142 10.708246  0.26262749 13.348874
+      TCGA.OR.A5JW 11.389677 14.278929  9.428231 10.704965  0.33011750 17.372184
+      TCGA.OR.A5JX 12.141859 12.975426  8.943577 10.005553  0.26262749 16.341139
+      TCGA.OR.A5JY 11.684450 12.747743  7.330946 11.332248  2.24891940 15.580795
+      TCGA.OR.A5JZ 11.283132 14.194807  7.420144 10.971460  0.26262749 14.264099
+      TCGA.OR.A5K0 14.121566 10.526741  8.409481 11.814652 -0.07357536 16.079503
+      TCGA.OR.A5K1 11.921853 13.757499  7.185292 10.177361  0.26262749 12.612923
+      TCGA.OR.A5K2 10.660717  9.777387  9.689954 10.875507  4.50007786 15.076991
+      TCGA.OR.A5K3 12.724964 11.453710  8.393449 10.141689  0.26262749 14.269515
+      TCGA.OR.A5K4 11.837118 13.584493  6.122323 11.067408  3.36040972 11.771030
+      TCGA.OR.A5K5 12.327221 12.512999  6.416044 10.597339 -0.07357536 14.632660
+      TCGA.OR.A5K6 11.433873 13.181529  5.333179 11.432898 -0.07357536 16.430818
+      TCGA.OR.A5K8 13.241455 13.009452  8.879068 10.193707  0.33011750 15.800646
+      TCGA.OR.A5K9 13.415007 14.803863  5.833506 10.398326 -0.10359844 16.624981
+      TCGA.OR.A5KO 11.607355 13.697258  7.104996 11.867025 -0.10359844 16.179493
+      TCGA.OR.A5KT 11.480064 16.699770  9.882117 11.660938 -0.07357536 15.006400
+      TCGA.OR.A5KU 13.216335 13.522424 10.077521 10.703046 -0.07357536 16.211303
+      TCGA.OR.A5KV 13.550244  5.205727  6.258807 10.051736  6.96415636 14.796697
+      TCGA.OR.A5KW 12.558876 12.066035  7.581160 10.840342  5.87283654 16.687155
+      TCGA.OR.A5KX 13.650547 14.799439  4.583980 10.900240 -0.07357536 13.995178
+      TCGA.OR.A5KY 12.704560 10.306110  9.313857 10.919701  5.50469007 16.326401
+      TCGA.OR.A5KZ 10.898461 14.327424 12.943859 11.748463  0.26262749 15.131646
+      TCGA.OR.A5L3 10.823131 12.440321  7.571414 10.293011 -0.10359844 14.518925
+      TCGA.OR.A5L4 11.079488 13.017953  7.711424 10.876748 -0.10359844 15.318119
+      TCGA.OR.A5L5 12.142875 13.723153 10.725372 10.842635  3.27658151 14.641789
+      TCGA.OR.A5L6 12.471624 13.174834  8.077196 10.347737  0.26262749 13.003647
+      TCGA.OR.A5L8 10.219787 14.649610  8.266207 11.333410  3.56691517 16.706194
+      TCGA.OR.A5L9 12.504684 12.793873  8.846953  9.658985 -0.10359844 12.109031
+      TCGA.OR.A5LA 10.226948 13.816680  8.270143 10.346581 -0.07357536 14.238400
+      TCGA.OR.A5LB 11.979055 14.086566  7.516322 10.809092  0.33011750 13.838639
+      TCGA.OR.A5LC 12.858309 12.886856  7.735057 11.208920 -0.07357536 10.374633
+      TCGA.OR.A5LD 11.820646 12.992130  7.676673 10.030779  0.26262749 15.356369
+      TCGA.OR.A5LE 11.493788  6.986075  6.495314 11.634413  0.26262749 15.587687
+      TCGA.OR.A5LG 11.780363 13.063998  9.175571 11.472151  0.26262749 13.538897
+      TCGA.OR.A5LH 11.071099 13.157821  8.593547  9.947406  4.34724190 13.859374
+      TCGA.OR.A5LJ 10.985400  8.164139  7.712054 11.764338  4.98246988 15.626000
+      TCGA.OR.A5LK 13.099590 12.143895  9.669779 10.480656  0.33011750 13.501036
+      TCGA.OR.A5LL 11.013328 15.293356  9.928411 11.898220 -0.10359844 17.324383
+      TCGA.OR.A5LM 12.679501 11.632679  7.872749 10.254893  0.33011750 13.980256
+      TCGA.OR.A5LN 12.529432 13.766858  7.072542 11.790672 -0.10359844 13.600687
+      TCGA.OR.A5LO 12.825577 14.146904  7.058026 10.897867 -0.10359844 15.064536
+      TCGA.OR.A5LP 11.684513 12.839854  7.911455 10.582442 -0.10359844 15.045197
+      TCGA.OR.A5LR 11.733251 12.598129  8.072342 10.211449 -0.07357536 13.768626
+      TCGA.OR.A5LS 11.887284  7.588684  8.756840 11.647436 -0.10359844 14.342186
+      TCGA.OR.A5LT 14.282260 13.858966  7.614133 11.062038  0.26262749 13.548040
+      TCGA.OU.A5PI 10.960941 13.491741  8.675222 10.339864 -0.07357536 16.862410
+      TCGA.P6.A5OF 13.208138 12.997281  9.707314 11.334889  2.89909843 15.167540
+      TCGA.P6.A5OG 12.090657  9.751492  9.625923 11.895509 -0.07357536  9.045327
+      TCGA.PA.A5YG 12.085045 14.271829  6.722587 11.366677  0.26262749 16.091886
+      TCGA.PK.A5H8 12.367578 13.790061  8.178715 10.998657  0.33011750 14.543771
+      TCGA.PK.A5H9 11.402620 15.828588 11.998480 12.233730 -0.10359844 10.875213
+      TCGA.PK.A5HA 11.084840 12.321566  7.100180 11.005516  0.26262749 12.172239
+      TCGA.PK.A5HB 10.844988 13.484257  5.819877 12.384637  4.88055647 15.714293
+                       ABCB4       ABCB5     ABCB6    ABCB7    ABCB8     ABCB9
+      TCGA.OR.A5J1 12.627901  5.93617605 14.422123 11.20973 13.30040 11.009391
+      TCGA.OR.A5J2 15.527988  4.41154939 12.241016 12.54019 14.01505 11.193805
+      TCGA.OR.A5J3 15.326332  5.90385860 13.091872 12.18508 14.39887 11.530552
+      TCGA.OR.A5J5 11.531400  2.81116045 13.121685 10.73834 14.52378 12.512473
+      TCGA.OR.A5J6  9.621870 -0.02967030 12.949360 11.42878 13.24254 11.245378
+      TCGA.OR.A5J7 11.829611  4.33941585 15.250734 11.52329 14.05834 11.197663
+      TCGA.OR.A5J8  7.752453  8.34429701 13.509117 11.15309 13.34192 12.572039
+      TCGA.OR.A5J9 12.767721  2.29364867 13.383161 11.36047 14.76438 12.515075
+      TCGA.OR.A5JA 11.120798 13.94739357 12.714386 12.20019 14.16644 12.377359
+      TCGA.OR.A5JB  7.102470  0.15802964 13.555531 12.36371 13.72152 10.607355
+      TCGA.OR.A5JC 13.071066  0.19108500 12.306508 12.07012 13.51243 12.520848
+      TCGA.OR.A5JD  6.926678 11.22157434 12.688374 12.23727 14.25284 11.498731
+      TCGA.OR.A5JE 12.671905  3.85044361 14.580468 11.05407 13.25305 12.117620
+      TCGA.OR.A5JF 15.766555  4.38005473 12.426256 11.90138 15.46721 12.176716
+      TCGA.OR.A5JG  9.775986 10.64341334 13.134552 11.87711 15.30883 12.354939
+      TCGA.OR.A5JI 10.670696  3.11111733 12.842915 11.10761 13.39812 10.667315
+      TCGA.OR.A5JJ 15.758592  3.96258204 13.510764 12.00096 14.47799 12.006279
+      TCGA.OR.A5JK 13.273392  0.19108500 12.742226 11.58444 14.15491 11.529431
+      TCGA.OR.A5JL 11.696789  5.40590997 13.136590 12.85209 14.12145 12.449106
+      TCGA.OR.A5JM 13.148175 -0.04534876 13.955402 10.75313 13.63823 11.214087
+      TCGA.OR.A5JO  8.236223  2.80155332 12.482355 12.00392 12.93357  9.716272
+      TCGA.OR.A5JP  8.791359  0.19108500 14.522461 11.33857 14.29606 12.291859
+      TCGA.OR.A5JQ 10.476605  7.80350880 12.692376 11.86553 13.90037 13.378249
+      TCGA.OR.A5JR  9.226258  5.55602559 11.810587 12.71023 14.31280 11.761827
+      TCGA.OR.A5JS 12.016781  2.36480849 13.460649 11.82013 13.68246 11.348137
+      TCGA.OR.A5JT  7.808273  4.17480825 12.153213 12.28640 13.97738 12.580522
+      TCGA.OR.A5JV  9.869235 10.88782096 11.694630 12.93290 14.18197 11.233644
+      TCGA.OR.A5JW 14.202771  0.15802964 12.183192 12.58664 14.57481 10.919594
+      TCGA.OR.A5JX 13.910144  0.19108500 12.827636 11.72836 13.56820 11.631695
+      TCGA.OR.A5JY 14.182288  5.85103089 13.159592 12.22611 13.62900 11.695713
+      TCGA.OR.A5JZ  7.486756  2.91943026 11.838176 12.48366 12.72201 12.200897
+      TCGA.OR.A5K0 10.087153 -0.04534876 12.333739 11.00808 13.59423 12.310678
+      TCGA.OR.A5K1  5.983679  0.19108500 11.390242 12.10883 14.33103 12.362563
+      TCGA.OR.A5K2 13.685805  5.16613539 14.712360 12.19021 14.51974 11.819509
+      TCGA.OR.A5K3  8.925720 14.26484990 12.996282 12.25446 14.70067 11.687033
+      TCGA.OR.A5K4  8.069775  7.25472330 11.810151 12.90678 13.42439 12.525370
+      TCGA.OR.A5K5 14.503364  3.55074093 13.938731 11.31123 14.06068 12.341107
+      TCGA.OR.A5K6 15.546813 -0.04534876 12.616527 12.05057 12.68202 10.664952
+      TCGA.OR.A5K8 14.127942  6.29394326 13.187611 11.68495 14.53000 11.104399
+      TCGA.OR.A5K9 15.573682 -0.02967030 14.337489 11.78659 13.83189 11.395217
+      TCGA.OR.A5KO 12.136148  3.70069593 11.980073 12.41927 13.64638 10.043758
+      TCGA.OR.A5KT 11.467200  7.69913051 12.915092 11.66527 13.45396 10.538431
+      TCGA.OR.A5KU 13.266624 -0.04534876 13.256756 12.13618 13.45376 12.983143
+      TCGA.OR.A5KV 11.147614 -0.04534876 13.437297 12.05278 13.66036 12.753321
+      TCGA.OR.A5KW 12.167230  6.50180791 13.309017 12.05297 14.02533 13.219561
+      TCGA.OR.A5KX  7.245829 -0.04534876 13.775380 11.07809 13.00819 11.981511
+      TCGA.OR.A5KY 14.516316  6.62509638 14.146311 11.37730 14.87234 12.001963
+      TCGA.OR.A5KZ 12.884223  0.19108500 13.462082 12.24339 13.49890 11.921016
+      TCGA.OR.A5L3 11.785829  3.81209175 14.121846 11.21010 14.20487 10.530906
+      TCGA.OR.A5L4  9.246869 -0.02967030 10.872188 13.37650 14.19592 11.226392
+      TCGA.OR.A5L5 10.434392  5.31156174 12.289379 12.20323 13.53252 12.488703
+      TCGA.OR.A5L6  9.575151  0.19108500 12.496642 11.05192 13.80688 11.496055
+      TCGA.OR.A5L8 15.598999 -0.02967030 12.076372 12.57343 13.79940 12.082605
+      TCGA.OR.A5L9  6.489615 -0.02967030 13.255094 10.59327 13.57916 11.928424
+      TCGA.OR.A5LA  9.296855 -0.04534876 12.770411 11.43414 14.79747 12.495662
+      TCGA.OR.A5LB 14.726537  2.44766157 13.419504 12.76310 14.27115 11.195347
+      TCGA.OR.A5LC  8.506972 -0.04534876 13.196373 11.85434 14.35346 12.009866
+      TCGA.OR.A5LD 14.530540  0.19108500 14.504058 10.41158 13.47785 12.982875
+      TCGA.OR.A5LE 16.828894  3.78215235 14.230588 12.34997 13.99406 10.902473
+      TCGA.OR.A5LG 12.553165  0.19108500 13.975268 12.11666 14.02951 10.314915
+      TCGA.OR.A5LH 10.716066  5.36498538 12.632422 12.67883 14.50497 11.853791
+      TCGA.OR.A5LJ 15.850845  8.87796574 13.346830 12.75634 14.24313  9.989930
+      TCGA.OR.A5LK  8.890444 12.89072946 10.992506 12.26219 13.88692 12.501838
+      TCGA.OR.A5LL 14.719012 -0.02967030 14.282738 12.48086 14.09233  9.897971
+      TCGA.OR.A5LM  8.969774  2.69502752 12.685410 11.86916 13.99401 14.218827
+      TCGA.OR.A5LN  8.694223  3.98013277 12.860100 11.70525 14.09364  9.922554
+      TCGA.OR.A5LO 12.327904 -0.02967030 13.529348 13.40658 13.77252 10.895216
+      TCGA.OR.A5LP  8.643089  6.29846705 11.945296 12.30926 14.56678 11.802008
+      TCGA.OR.A5LR  6.509378 -0.04534876 11.468895 12.31431 12.71500 12.326088
+      TCGA.OR.A5LS 16.007806 -0.02967030 10.258202 12.12220 14.25917 11.105303
+      TCGA.OR.A5LT  8.522069  9.37594068 13.747488 11.31726 12.94774 13.121378
+      TCGA.OU.A5PI 15.557342  5.61059728 13.038715 12.16687 14.53656 11.279898
+      TCGA.P6.A5OF 14.156228  5.13375860 13.233190 12.03506 14.50964 11.547539
+      TCGA.P6.A5OG  6.945205  4.78695122 12.435925 12.42500 12.89395 10.773106
+      TCGA.PA.A5YG  9.938922  9.09098982 12.403545 13.01368 14.50893 11.259753
+      TCGA.PK.A5H8  9.605543  0.15802964 11.377029 12.51720 14.06958 11.889153
+      TCGA.PK.A5H9  9.767089  4.30033713 10.726988 12.36674 12.72723 10.984297
+      TCGA.PK.A5HA  7.810698  5.74516066  9.691334 12.72116 13.57168 10.819508
+      TCGA.PK.A5HB  8.818704  4.90585843 12.784385 12.66690 13.34507 10.957186
+                     ABCC10     ABCC11      ABCC12      ABCC13    ABCC1      ABCC2
+      TCGA.OR.A5J1 13.16161  5.3292982  0.05185961  0.19064992 13.29041  5.1096642
+      TCGA.OR.A5J2 13.10781  4.5226003 -0.01564783 -0.08397367 14.55024  5.8368123
+      TCGA.OR.A5J3 12.61205  5.6576926 -0.01564783 -0.08397367 14.50140  7.5018981
+      TCGA.OR.A5J5 12.88553  5.9369428  0.09387314  0.18335219 14.34338 10.3185081
+      TCGA.OR.A5J6 14.08237  6.2767796 -0.03776783 -0.09264198 14.52875  6.5757813
+      TCGA.OR.A5J7 13.40169  5.0985098 -0.03776783  3.64969244 13.93579  8.5759520
+      TCGA.OR.A5J8 12.60092  4.2708725  4.97531012  2.58178385 13.85294  8.3451584
+      TCGA.OR.A5J9 12.67098  5.4606780 -0.03776783 -0.09264198 14.63216  6.4716755
+      TCGA.OR.A5JA 13.62058  4.3656038 -0.03776783 -0.09264198 14.78906  5.2119733
+      TCGA.OR.A5JB 12.57421  3.8631173  0.09387314  3.01736583 14.82651  6.4487728
+      TCGA.OR.A5JC 13.81887  4.8650021  0.05185961  0.19064992 14.59549 10.9619702
+      TCGA.OR.A5JD 11.83714  5.3502360 -0.01564783 -0.08397367 13.76353  7.9500545
+      TCGA.OR.A5JE 13.39268  5.4212315 -0.01564783 -0.08397367 12.80411  5.4173619
+      TCGA.OR.A5JF 11.93456  5.6380925 -0.01564783  2.07502485 14.68969  8.4359917
+      TCGA.OR.A5JG 11.58522  6.6638453  0.05185961  0.19064992 14.34386  6.2164573
+      TCGA.OR.A5JI 12.41748  6.1303285  0.09387314  0.18335219 13.23359  8.0005710
+      TCGA.OR.A5JJ 11.78908  5.0053756  0.05185961  2.58362832 13.74491  5.8696691
+      TCGA.OR.A5JK 12.64125  3.3677309  0.05185961  0.19064992 14.17372  6.7821423
+      TCGA.OR.A5JL 13.54356  4.5836207  3.45875821 -0.09264198 13.05617  7.5617769
+      TCGA.OR.A5JM 13.81486  6.2131351 -0.01564783 -0.08397367 13.22478  7.5657872
+      TCGA.OR.A5JO 11.90734  3.5318035 -0.03776783 -0.09264198 14.04592  9.6192001
+      TCGA.OR.A5JP 12.91244  4.9301573  2.81927816  5.25085834 13.90828  6.5945032
+      TCGA.OR.A5JQ 12.54887  5.7731991 -0.03776783 -0.09264198 13.95212  5.7562235
+      TCGA.OR.A5JR 12.74128  5.9518541  0.05185961  0.19064992 14.41127  5.6029674
+      TCGA.OR.A5JS 12.72787  6.0474583 -0.03776783  2.16912034 14.50175  7.1321666
+      TCGA.OR.A5JT 12.55139  5.5303888 -0.01564783 -0.08397367 14.44761  5.3890083
+      TCGA.OR.A5JV 11.92502  4.8499964  0.05185961  4.25649981 14.37903  6.5150835
+      TCGA.OR.A5JW 13.52809  3.5295911  0.09387314  0.18335219 14.17210  9.6002762
+      TCGA.OR.A5JX 13.08851  6.1117618  0.05185961  0.19064992 14.05527  9.2390974
+      TCGA.OR.A5JY 13.52103  5.5893670 -0.03776783  2.41529729 15.22754 10.8906392
+      TCGA.OR.A5JZ 12.15231  5.4759914  0.05185961  0.19064992 14.45442  6.4441137
+      TCGA.OR.A5K0 12.85487  2.7016068  4.35477564 -0.08397367 14.14423  4.4321272
+      TCGA.OR.A5K1 12.49338  4.2645682  0.05185961  0.19064992 14.53093  3.7299006
+      TCGA.OR.A5K2 13.78330  4.3545863 -0.03776783 -0.09264198 14.43785  0.4310837
+      TCGA.OR.A5K3 12.57718  4.8758715  0.05185961  0.19064992 14.36790  5.4332433
+      TCGA.OR.A5K4 12.13202  6.2093723 -0.03776783 -0.09264198 15.29621  8.7681789
+      TCGA.OR.A5K5 13.02271  4.6355552 -0.01564783  3.31279901 14.38859  4.8819212
+      TCGA.OR.A5K6 12.67984  2.6368641 -0.01564783 -0.08397367 12.81363  5.4940350
+      TCGA.OR.A5K8 12.74059  0.3054686  0.09387314  0.18335219 14.11454  7.8708009
+      TCGA.OR.A5K9 13.38561  2.6324775 -0.03776783 -0.09264198 14.23308  7.6586560
+      TCGA.OR.A5KO 13.74182  4.4571381 -0.03776783 -0.09264198 13.97713  8.1201895
+      TCGA.OR.A5KT 12.38316  6.1101173 -0.01564783  3.31557147 13.81638  4.5885872
+      TCGA.OR.A5KU 11.96745  3.1492354  3.03293921  3.09130609 14.59418  8.6329244
+      TCGA.OR.A5KV 13.08763  5.8644812 -0.01564783  2.25314125 13.84582  3.9915187
+      TCGA.OR.A5KW 12.26447  5.5208450  3.93464661 -0.09264198 15.00791  6.3180990
+      TCGA.OR.A5KX 13.65668  2.6611796  2.57636247 -0.08397367 14.86245  6.6484296
+      TCGA.OR.A5KY 12.94852  5.0004098 -0.01564783  2.35704657 13.99097  5.7097122
+      TCGA.OR.A5KZ 13.41787  5.3901565  0.05185961  0.19064992 14.47905  4.3824488
+      TCGA.OR.A5L3 13.09501  4.5697283 -0.03776783 -0.09264198 13.04176  6.3508594
+      TCGA.OR.A5L4 13.33109  4.0300928 -0.03776783 -0.09264198 14.92362  4.3534305
+      TCGA.OR.A5L5 12.33194  4.5103316 -0.01564783 -0.08397367 13.65365  7.3621864
+      TCGA.OR.A5L6 13.11197  0.2990896  0.05185961  0.19064992 14.21818 11.3128317
+      TCGA.OR.A5L8 12.64516  4.3022079 -0.03776783 -0.09264198 12.94988  7.0960831
+      TCGA.OR.A5L9 12.54487 -0.1114542 -0.03776783 -0.09264198 15.16214  5.9081720
+      TCGA.OR.A5LA 11.78608  3.3857236 -0.01564783 -0.08397367 13.96635  0.3879709
+      TCGA.OR.A5LB 12.00157  3.5429818  0.09387314  0.18335219 14.24366  6.8330143
+      TCGA.OR.A5LC 12.27459  3.9067941 -0.01564783 -0.08397367 13.85231  7.5560219
+      TCGA.OR.A5LD 13.53892  5.2932121  0.05185961  0.19064992 15.46953  3.8589592
+      TCGA.OR.A5LE 12.94729  5.5258572  3.42479085  0.19064992 14.13891  6.1650271
+      TCGA.OR.A5LG 13.87797  0.2990896  0.05185961  0.19064992 13.35190  5.5250125
+      TCGA.OR.A5LH 12.58952  5.3033639 -0.01564783  3.69081716 13.47142  6.5331826
+      TCGA.OR.A5LJ 12.49126  4.9425563 -0.01564783  2.71159268 13.69263  8.4600757
+      TCGA.OR.A5LK 12.78082  5.2317688  0.09387314  0.18335219 12.70614  7.2901017
+      TCGA.OR.A5LL 12.62457  4.6947086 -0.03776783 -0.09264198 14.86398  8.4669305
+      TCGA.OR.A5LM 12.66611  5.0140494  0.09387314  0.18335219 13.92584  6.4042028
+      TCGA.OR.A5LN 13.49778  3.7756962 -0.03776783 -0.09264198 12.20632  9.2338578
+      TCGA.OR.A5LO 12.75881  6.0345838 -0.03776783 -0.09264198 14.26485  8.1012991
+      TCGA.OR.A5LP 12.44105  5.7016579 -0.03776783 -0.09264198 14.38732  7.4437084
+      TCGA.OR.A5LR 12.53207  5.1151141 -0.01564783  3.14357707 14.96019  5.8857107
+      TCGA.OR.A5LS 12.29561  7.6413436  2.77946862 -0.09264198 13.85025  8.8465924
+      TCGA.OR.A5LT 12.69322  4.7949445  3.62472241  0.19064992 13.36833  8.7045186
+      TCGA.OU.A5PI 11.87401  4.8941375 -0.01564783  3.55185543 13.63066  7.2087019
+      TCGA.P6.A5OF 13.20146  4.4200665 -0.03776783  2.26286603 14.00382  8.4396243
+      TCGA.P6.A5OG 12.84190 -0.1095393  7.26626408  3.78946929 13.06255  7.0121618
+      TCGA.PA.A5YG 12.29097  3.7728941  0.05185961  2.94314130 14.28822  6.4075588
+      TCGA.PK.A5H8 13.75938  6.0987109  0.09387314  0.18335219 14.89675  6.9515078
+      TCGA.PK.A5H9 12.93776  4.9098933 -0.03776783 -0.09264198 15.60967 12.5336028
+      TCGA.PK.A5HA 12.78639  4.4854207  0.05185961  0.19064992 13.46308  7.1129616
+      TCGA.PK.A5HB 13.23761  5.8955586  0.05185961  0.19064992 15.83671  9.0014442
+                       ABCC3     ABCC4    ABCC5     ABCC6P1   ABCC6P2     ABCC6
+      TCGA.OR.A5J1 13.240045 10.997977 13.88836  4.29531917  8.887106  7.218820
+      TCGA.OR.A5J2 13.437708 11.157786 13.98866  4.47937574  7.795190  7.748703
+      TCGA.OR.A5J3 15.939524  9.604621 13.53648  4.46172091  6.120878  6.788335
+      TCGA.OR.A5J5 16.251775  7.500973 14.04824  9.55891664 10.141018 10.158497
+      TCGA.OR.A5J6 11.119734  9.550006 12.79545  7.63315901  9.816386 12.498346
+      TCGA.OR.A5J7 15.193308  9.184811 14.70851  6.87383419 11.210929 10.769837
+      TCGA.OR.A5J8 11.143314 11.178645 13.27224  8.21571708  8.337173  9.650109
+      TCGA.OR.A5J9 11.482591  9.938524 13.28754  8.60491283  8.982933  9.465941
+      TCGA.OR.A5JA 14.481975 10.446237 13.24651  3.39855724  5.011925  7.682096
+      TCGA.OR.A5JB 14.741219 10.501776 14.00448  8.08146173  9.367166 10.930998
+      TCGA.OR.A5JC 13.437843 10.273594 13.30104  3.14988926  8.722842  9.579446
+      TCGA.OR.A5JD 14.434410  8.899352 13.07709  7.40739575  8.604763 10.176361
+      TCGA.OR.A5JE 14.868360  8.823171 13.32340  5.36208565 10.007033  8.076682
+      TCGA.OR.A5JF 15.500506  9.957970 13.19169  2.93549162  7.878185  8.565604
+      TCGA.OR.A5JG 16.772162 10.318528 12.74266  0.24612277  5.713127  6.441566
+      TCGA.OR.A5JI 14.371663  9.228711 11.75817 10.01805630 11.641798 11.694509
+      TCGA.OR.A5JJ 11.818794 10.891697 13.47721  6.63228647  9.425512  9.201948
+      TCGA.OR.A5JK 11.687907  8.070468 13.33976  0.24612277  9.456049  8.108969
+      TCGA.OR.A5JL 13.155952 10.447129 12.94219  2.23103857  8.366688 10.829250
+      TCGA.OR.A5JM 14.005582  9.444885 13.73849  7.48276269  9.100007  9.789696
+      TCGA.OR.A5JO 13.463380 11.195541 12.64020 10.40503419  9.769440 12.831840
+      TCGA.OR.A5JP 15.433895  8.110397 11.83771  7.26789799  9.951793  9.415337
+      TCGA.OR.A5JQ 14.038209  9.774942 12.64297  8.55834891  9.425857  9.554132
+      TCGA.OR.A5JR 13.221913 10.607150 13.20435  9.05008047  8.160736 10.866175
+      TCGA.OR.A5JS 14.610469  9.065684 14.13063  8.51498239 10.051959 11.540368
+      TCGA.OR.A5JT 11.350859 10.609869 11.97770  5.75259531  7.433654 10.760408
+      TCGA.OR.A5JV 11.338180 12.090573 14.37435  4.95013339  7.201717  7.756908
+      TCGA.OR.A5JW 16.280881  9.630500 13.57176  3.60780945  4.896952  6.729680
+      TCGA.OR.A5JX 14.368807  8.957153 13.84265  5.54605551  7.339953  6.803599
+      TCGA.OR.A5JY 15.128994  5.017293 13.61962  5.90304758  6.482773  9.271176
+      TCGA.OR.A5JZ 14.297189 11.202410 11.67666  7.79728036  5.850080  5.748603
+      TCGA.OR.A5K0 13.938192  8.618321 13.47751  5.29819075  8.735382 10.371932
+      TCGA.OR.A5K1 13.263347 10.329575 12.68477  7.89488067  9.137745 12.129895
+      TCGA.OR.A5K2 14.582351  8.929166 13.42168  3.38822369 10.088922  8.644631
+      TCGA.OR.A5K3 10.817968  8.438947 12.46596  5.53302407  8.879282  8.723080
+      TCGA.OR.A5K4 11.751034 10.861175 12.11268  4.20225623  7.465220  7.772205
+      TCGA.OR.A5K5 12.552314  7.410062 14.10853  8.56309885 10.234649 10.382149
+      TCGA.OR.A5K6 16.656593 10.732378 13.26078  7.55303541  8.579018  9.139704
+      TCGA.OR.A5K8 15.132084 10.088594 13.30279  4.28178200  4.107651  7.259082
+      TCGA.OR.A5K9 15.666019 11.772326 13.53657  7.38457598  8.963829 10.452848
+      TCGA.OR.A5KO 16.236938  8.987442 14.88290  9.17950785 10.180690 11.185074
+      TCGA.OR.A5KT 16.034326 10.214524 12.50129 -0.07069528  5.369728  8.443580
+      TCGA.OR.A5KU 11.457308  8.335091 13.30082  6.14776650  8.625404  4.708383
+      TCGA.OR.A5KV 13.769600  8.806922 13.00478  5.98665073  7.545402  8.085513
+      TCGA.OR.A5KW 14.322674 10.540091 13.70281 -0.06764931  2.798537  6.014691
+      TCGA.OR.A5KX 15.648018 11.008970 12.80345  4.47357689  5.875377  7.583822
+      TCGA.OR.A5KY 15.988972  9.765175 13.70898  5.44889566  5.703654  6.565345
+      TCGA.OR.A5KZ 11.358698 12.059580 12.84822  4.02303115  8.730911  9.345533
+      TCGA.OR.A5L3 16.332953  5.288600 13.67998  6.29122495  7.975306  9.348699
+      TCGA.OR.A5L4 14.281730 10.710483 12.70377  3.08556201  7.780644  8.566452
+      TCGA.OR.A5L5 14.333902  9.630356 12.74677 10.00085548  9.033734 11.506220
+      TCGA.OR.A5L6 15.980742  8.826608 13.33934  7.02298044  9.413527 10.174448
+      TCGA.OR.A5L8 15.172771  9.583753 14.28735  6.66272773  8.659501 10.043283
+      TCGA.OR.A5L9 12.576504  9.258124 12.94684  6.59690458  9.390503 11.532038
+      TCGA.OR.A5LA 14.219066  9.899541 12.75462 -0.07069528  7.044466 10.546011
+      TCGA.OR.A5LB 15.504055  8.677563 13.80275  5.91734161  7.008100  6.520421
+      TCGA.OR.A5LC 13.428345 12.106596 14.05742 -0.07069528  8.692452  7.083467
+      TCGA.OR.A5LD 14.440146  6.960313 12.61050  0.24612277  9.285293  6.923941
+      TCGA.OR.A5LE  9.859903 11.357597 13.87729  0.24612277  8.093771  7.258368
+      TCGA.OR.A5LG 16.166523  6.989807 13.95369  0.24612277  5.375331  6.820094
+      TCGA.OR.A5LH 13.739706 10.214803 13.28223  6.90576339  8.793050 10.784936
+      TCGA.OR.A5LJ 14.391198 12.118103 15.13158  8.45014115  9.137239  8.907374
+      TCGA.OR.A5LK 12.551465 10.531988 13.93115  7.46179103  9.960531 10.436295
+      TCGA.OR.A5LL 16.093353  6.848855 13.65468  3.70874091  7.360795  9.787797
+      TCGA.OR.A5LM 14.168637 10.607271 13.17095  5.60459517  8.047557 10.708326
+      TCGA.OR.A5LN 14.739803  9.341647 12.65214  6.65245866  9.651638 10.393208
+      TCGA.OR.A5LO 14.092672 11.019789 14.49746  4.03759084  6.087993  6.179381
+      TCGA.OR.A5LP 14.619527 10.655674 12.26496  6.13583509  7.640036  9.601172
+      TCGA.OR.A5LR 14.199448 10.475983 12.49861  9.24190700  8.302212 10.875762
+      TCGA.OR.A5LS 14.633945  9.011082 14.67367  8.24009818 10.286732  9.827046
+      TCGA.OR.A5LT 11.608098  9.574375 12.72906  7.29958786  9.958303  8.975065
+      TCGA.OU.A5PI 14.967083  9.776438 14.20618  3.59462843  6.604147  8.174684
+      TCGA.P6.A5OF 15.177494 11.714455 14.07832  4.63511101  5.468251  6.731756
+      TCGA.P6.A5OG  9.758348 11.528135 13.85774  4.22421776  6.094122  6.050376
+      TCGA.PA.A5YG 14.988984 10.922541 14.18084  0.24612277  6.615930  9.597279
+      TCGA.PK.A5H8 11.824811 10.646961 13.60357  8.89022611 10.216730 13.325551
+      TCGA.PK.A5H9 13.557051 11.351949 12.53679 13.66247437 12.325302 15.520583
+      TCGA.PK.A5HA 14.078280  9.610481 13.04236  9.31269854  9.337184 11.009742
+      TCGA.PK.A5HB 14.764217 11.207120 12.53590  3.24913144  4.925746  6.942882
+                        ABCC8     ABCC9    ABCD1     ABCD2    ABCD3    ABCD4    ABCE1
+      TCGA.OR.A5J1  0.3037592  7.595200 14.61256 10.776205 13.03394 12.97007 13.91780
+      TCGA.OR.A5J2 -0.1003315 11.371243 14.25170 12.856370 13.02449 11.90722 13.72855
+      TCGA.OR.A5J3  2.4744354 13.272478 13.91136  8.095418 13.24290 13.25307 13.13231
+      TCGA.OR.A5J5  5.5455496  9.628959 14.75494  6.986966 12.16068 13.48531 12.96832
+      TCGA.OR.A5J6 -0.0921249  9.836416 14.22173  8.254769 13.84055 12.18070 13.33796
+      TCGA.OR.A5J7 -0.0921249  9.525199 13.93690  6.861867 12.83966 12.61992 13.09589
+      TCGA.OR.A5J8  2.9429591 10.343757 11.81281  8.016188 13.01532 12.98475 13.59167
+      TCGA.OR.A5J9  2.0089557  9.720105 13.96092 11.132221 12.66038 12.24706 14.01843
+      TCGA.OR.A5JA  2.3699453 10.291932 14.54084  6.767244 12.93188 13.29751 13.57554
+      TCGA.OR.A5JB  3.4170129  8.872239 13.19639  6.962746 13.71697 13.47215 13.90842
+      TCGA.OR.A5JC  4.5386187  9.577514 14.93721  7.722993 12.91628 12.56564 13.45780
+      TCGA.OR.A5JD  5.5988778 10.542870 14.10717 10.100271 13.09498 11.55396 13.75094
+      TCGA.OR.A5JE -0.1003315  8.794923 14.47751  7.095176 13.21342 12.85934 13.25066
+      TCGA.OR.A5JF -0.1003315 14.048881 14.25557 11.135162 12.64434 11.73418 14.08059
+      TCGA.OR.A5JG  0.3037592  9.383788 14.27868  8.799716 13.91744 12.94935 14.01004
+      TCGA.OR.A5JI  0.2889871 11.788579 14.91950  9.315616 12.18581 12.14252 13.56233
+      TCGA.OR.A5JJ  0.3037592  9.101508 14.10346 11.155020 12.84235 13.31211 13.25476
+      TCGA.OR.A5JK  0.3037592  9.645079 14.72035 10.389232 12.19665 11.88251 13.72780
+      TCGA.OR.A5JL  3.7609661 10.459333 14.74833 10.601814 12.92876 13.56254 13.67744
+      TCGA.OR.A5JM -0.1003315 11.712231 15.49640 10.688587 13.73607 11.62273 13.54597
+      TCGA.OR.A5JO  4.7305057 10.086122 13.03298  7.323555 13.13220 13.36598 13.14726
+      TCGA.OR.A5JP  3.0708167 10.901034 14.95501  7.759701 14.56931 12.36536 14.29132
+      TCGA.OR.A5JQ  3.0659854 11.240883 14.65156 10.148572 12.91432 11.83565 13.95372
+      TCGA.OR.A5JR  0.3037592  9.288554 15.83633 10.298032 13.68471 12.04198 13.87169
+      TCGA.OR.A5JS -0.0921249  9.813868 14.27334  9.136021 12.57284 12.33545 13.24221
+      TCGA.OR.A5JT  2.3723469  9.868509 16.37846 11.245801 13.81187 12.10077 13.82497
+      TCGA.OR.A5JV  0.3037592  9.880337 15.25479 10.236371 13.20844 11.51598 13.95913
+      TCGA.OR.A5JW  0.2889871 10.767583 14.21326 11.754641 13.47844 12.74173 13.88494
+      TCGA.OR.A5JX  0.3037592 10.175100 13.72449  8.856902 12.83793 12.51126 13.37485
+      TCGA.OR.A5JY -0.0921249 13.085590 16.04981 11.916232 15.09247 12.30054 13.47804
+      TCGA.OR.A5JZ  0.3037592 11.134356 15.68506  8.459449 13.49897 12.07371 12.98059
+      TCGA.OR.A5K0 -0.1003315  5.339368 14.85449 10.406527 12.55494 12.80336 13.33267
+      TCGA.OR.A5K1  0.3037592 10.319421 14.74053  8.815358 12.85074 12.06779 12.93620
+      TCGA.OR.A5K2 -0.0921249  9.248839 15.85964  6.878340 13.46501 12.85972 13.10594
+      TCGA.OR.A5K3  0.3037592  9.045718 14.44064  9.752357 13.05189 12.09015 13.12389
+      TCGA.OR.A5K4 -0.0921249  9.211453 16.45102  9.642190 13.26646 11.99953 13.75648
+      TCGA.OR.A5K5  5.7919880 11.324002 14.10453  8.232449 12.61329 12.38581 13.23743
+      TCGA.OR.A5K6 -0.1003315  9.536718 14.22088  9.031122 13.00311 13.00985 13.77142
+      TCGA.OR.A5K8  0.2889871 10.737199 14.99278  8.808567 13.00237 12.13697 13.94211
+      TCGA.OR.A5K9 -0.0921249 10.071773 14.59132 11.376451 13.76859 12.18850 14.51835
+      TCGA.OR.A5KO  2.4450437  8.395548 15.18980  6.497455 13.11086 13.38055 14.16573
+      TCGA.OR.A5KT  3.1544267 11.037529 14.93854  5.884003 13.32312 13.16660 13.15331
+      TCGA.OR.A5KU  2.9397128  9.847198 14.09521 10.923975 12.89506 11.72364 14.11186
+      TCGA.OR.A5KV  5.1493178  9.312346 14.51423  7.618547 13.45786 11.73142 13.74331
+      TCGA.OR.A5KW  4.7785563  9.932494 14.78751  9.101902 13.14168 12.38266 13.33997
+      TCGA.OR.A5KX -0.1003315  9.972798 13.74288  7.992301 13.05953 13.65377 13.11830
+      TCGA.OR.A5KY  3.0546973 10.130842 14.16285  9.681607 13.31061 12.56380 13.65936
+      TCGA.OR.A5KZ  0.3037592 12.170114 12.96429 10.030681 13.09249 12.59096 14.59455
+      TCGA.OR.A5L3 -0.0921249  8.614362 15.38223 10.286021 13.31521 12.49570 13.35713
+      TCGA.OR.A5L4 -0.0921249 12.485733 15.41493  5.583160 12.93478 12.44647 13.69863
+      TCGA.OR.A5L5  5.6718887 10.948417 14.27151 10.895823 13.17008 12.46712 13.09490
+      TCGA.OR.A5L6  0.3037592 11.998117 14.25906 10.128736 11.79276 12.39075 13.05028
+      TCGA.OR.A5L8  4.3168389  9.241544 12.94616 12.728435 13.56407 12.32842 13.84437
+      TCGA.OR.A5L9 -0.0921249 11.263572 16.87598  8.758108 12.30565 12.05842 12.52698
+      TCGA.OR.A5LA -0.1003315 10.472724 15.19671 10.038289 12.29762 12.81509 13.46013
+      TCGA.OR.A5LB  6.8534512  9.464135 14.65967 10.197811 12.95834 13.26940 14.09201
+      TCGA.OR.A5LC -0.1003315 10.057656 14.54987  9.500042 12.18285 12.17781 13.30967
+      TCGA.OR.A5LD  5.0186662  9.004127 14.57213 10.131122 13.14708 13.48069 13.24950
+      TCGA.OR.A5LE  0.3037592 10.809496 14.72009 12.102448 14.08191 12.40281 14.41388
+      TCGA.OR.A5LG  0.3037592  8.733043 14.28414  4.712985 13.26801 13.41606 13.98201
+      TCGA.OR.A5LH -0.1003315  9.027272 15.18479 10.188256 13.38206 12.55965 13.70748
+      TCGA.OR.A5LJ  4.6126652 13.224370 14.51730  9.225367 12.97197 12.49212 13.95860
+      TCGA.OR.A5LK  0.2889871  9.893167 15.90062  9.456054 12.76540 12.30570 13.43160
+      TCGA.OR.A5LL  2.6424679 10.015510 14.25458  9.455313 11.99297 12.03213 14.22719
+      TCGA.OR.A5LM  3.3767522 11.217754 14.54096 10.300207 12.50137 12.29701 13.86566
+      TCGA.OR.A5LN -0.0921249 12.093054 15.02000  9.412384 12.76349 12.14317 14.04398
+      TCGA.OR.A5LO  8.2343307  9.978437 13.40967  6.133160 12.42285 13.53853 13.64769
+      TCGA.OR.A5LP  3.0048919 11.584084 14.73137 10.994668 13.17262 11.67818 13.16472
+      TCGA.OR.A5LR -0.1003315  9.666794 16.05328 10.221424 13.02941 12.52720 12.74789
+      TCGA.OR.A5LS  2.7172171  9.551679 13.84442 10.169499 13.52716 12.43969 12.91628
+      TCGA.OR.A5LT  0.3037592 10.579427 14.11591  8.507666 13.65766 11.97905 13.53973
+      TCGA.OU.A5PI  7.4689376 10.262637 13.61444 11.100793 12.92549 12.33381 14.07883
+      TCGA.P6.A5OF -0.0921249 11.617465 14.59633 10.769085 12.97400 12.57294 13.49210
+      TCGA.P6.A5OG  2.2765672 12.545232 11.97903  6.387037 12.86913 12.76011 14.52617
+      TCGA.PA.A5YG  3.3418053 13.224307 13.75321 13.029267 13.30656 12.31363 13.33538
+      TCGA.PK.A5H8  0.2889871 10.566536 15.89040  8.136629 13.10477 12.40811 13.26725
+      TCGA.PK.A5H9  2.6832010  9.635772 14.51855  5.210348 14.81445 12.91994 13.12880
+      TCGA.PK.A5HA  0.3037592 10.973943 14.66655  5.818577 12.28240 12.12772 12.37453
+      TCGA.PK.A5HB  0.3037592 13.162500 15.13181  6.028656 14.15582 12.42869 13.21222
+                      ABCF1    ABCF2    ABCF3     ABCG1     ABCG2     ABCG4
+      TCGA.OR.A5J1 13.85600 13.38771 16.47051 11.890977  9.469289 4.5157039
+      TCGA.OR.A5J2 14.15618 14.13617 15.24449 13.242113 11.409781 5.8153124
+      TCGA.OR.A5J3 13.42826 14.51880 14.52920  9.921823 12.452739 5.7721971
+      TCGA.OR.A5J5 12.49995 13.92688 15.38830  9.273230  7.565785 6.5796895
+      TCGA.OR.A5J6 14.38656 13.42897 14.03926 10.465322 10.336368 8.5327829
+      TCGA.OR.A5J7 14.72314 13.69440 15.34806 10.409798 10.704626 8.5257231
+      TCGA.OR.A5J8 14.58975 14.23383 13.80253 13.524961 10.339979 6.8701976
+      TCGA.OR.A5J9 13.97275 14.16527 15.81533 13.324305 13.277464 4.3440773
+      TCGA.OR.A5JA 14.57677 14.02471 15.38878 10.972329  6.115660 4.5394851
+      TCGA.OR.A5JB 14.57081 14.54121 14.71275 15.008980  6.886463 6.8150438
+      TCGA.OR.A5JC 14.05933 13.54022 16.29882 13.717808  9.925368 4.2538050
+      TCGA.OR.A5JD 13.16179 13.92596 15.21113 11.142485 11.306157 8.0670400
+      TCGA.OR.A5JE 14.72965 13.09367 15.75178 13.329556  9.749562 5.4484904
+      TCGA.OR.A5JF 13.29667 14.12076 14.63449 12.634735 10.783682 5.6593243
+      TCGA.OR.A5JG 14.00296 14.46420 15.05799 10.177203  9.667467 4.0409003
+      TCGA.OR.A5JI 13.39448 13.29783 15.55446 15.679428 12.364534 5.5320852
+      TCGA.OR.A5JJ 13.50408 14.18098 14.30063 15.064277  9.427600 3.6628042
+      TCGA.OR.A5JK 13.58564 14.26833 15.09501 12.607832 10.004438 0.4322635
+      TCGA.OR.A5JL 14.58123 14.00952 14.80884 11.603793 11.176604 4.4472503
+      TCGA.OR.A5JM 14.54160 13.43435 14.49207 10.364718  9.617851 7.4559903
+      TCGA.OR.A5JO 14.06079 13.33278 13.90827 11.754934  8.981677 6.5164581
+      TCGA.OR.A5JP 14.04970 13.78581 14.70573 15.112989 10.289267 6.1010880
+      TCGA.OR.A5JQ 13.79851 14.10037 15.80691 13.165525 11.510365 6.2441961
+      TCGA.OR.A5JR 13.94030 14.21054 15.69962 11.714766 11.848879 5.3597471
+      TCGA.OR.A5JS 14.01208 13.94466 14.71535 10.063457  7.354366 6.7987947
+      TCGA.OR.A5JT 13.90917 14.37145 14.81964 15.037913 11.166098 5.8818507
+      TCGA.OR.A5JV 14.20431 14.33361 15.11925 13.072210 10.311529 6.6096880
+      TCGA.OR.A5JW 14.53929 14.08382 14.51392 14.259692 10.917639 3.7886402
+      TCGA.OR.A5JX 13.64275 14.24647 16.40205 10.876372  9.493848 5.7770177
+      TCGA.OR.A5JY 14.68318 14.45642 14.71979 10.253801  8.792399 4.4662451
+      TCGA.OR.A5JZ 13.82467 13.43355 15.50600 15.009690  9.071596 6.0435711
+      TCGA.OR.A5K0 14.80593 14.23579 14.15765  8.273466  7.883361 4.7352148
+      TCGA.OR.A5K1 13.99123 14.26813 15.18749 13.784226 12.093898 6.2934739
+      TCGA.OR.A5K2 13.89955 13.56543 16.27819 13.124216  7.704076 3.3061421
+      TCGA.OR.A5K3 13.47592 14.01502 15.33476 12.709669 10.156875 5.2030277
+      TCGA.OR.A5K4 13.86176 13.38996 15.25008 15.219600  8.738337 5.6211392
+      TCGA.OR.A5K5 14.95555 13.98390 14.88227 10.908604  6.414508 6.9998333
+      TCGA.OR.A5K6 13.87686 12.80908 15.06139 12.033246  7.184190 4.6638683
+      TCGA.OR.A5K8 12.96016 14.01537 14.61630 12.956351  9.367876 4.4683126
+      TCGA.OR.A5K9 14.54768 14.11713 14.23552 12.777606  7.712050 5.8705178
+      TCGA.OR.A5KO 14.34715 13.76745 15.30256 12.106025  9.296187 5.4415425
+      TCGA.OR.A5KT 13.42105 13.45765 15.21224 12.669338  9.457878 7.0028531
+      TCGA.OR.A5KU 13.84253 14.01968 14.94866 12.686276  6.790783 5.2181844
+      TCGA.OR.A5KV 13.93873 14.10007 15.52077 13.388965  9.372639 9.2753959
+      TCGA.OR.A5KW 13.75988 14.71226 15.08541 13.368828  9.837941 3.4746108
+      TCGA.OR.A5KX 13.77444 13.34773 15.04267 14.273670  8.180400 7.2418367
+      TCGA.OR.A5KY 13.35574 13.85360 15.61630 13.636097 10.667903 4.8547943
+      TCGA.OR.A5KZ 15.04423 13.95404 14.79019 12.344587 10.401359 6.5869143
+      TCGA.OR.A5L3 13.57329 13.47482 15.16522 13.560423  8.462811 7.5797228
+      TCGA.OR.A5L4 14.56623 14.42665 15.68682 11.184319 10.052789 4.8527606
+      TCGA.OR.A5L5 13.40974 13.63305 15.30402 14.327942 11.331679 4.9353724
+      TCGA.OR.A5L6 13.23724 13.11003 15.99857 12.944057 11.470492 5.5108360
+      TCGA.OR.A5L8 13.63878 14.36536 15.95146 14.828716 12.986432 4.4774177
+      TCGA.OR.A5L9 12.85436 12.70730 15.61431 14.011315  9.355524 6.4734383
+      TCGA.OR.A5LA 13.41903 14.39652 15.25872 16.283511 11.767211 7.2670491
+      TCGA.OR.A5LB 13.15902 14.08382 14.76507 12.895353 10.064496 6.2394715
+      TCGA.OR.A5LC 13.27404 13.93487 14.98066 12.306251  9.045732 5.6938144
+      TCGA.OR.A5LD 14.06531 13.27936 15.30615 11.541058 10.554895 6.2033395
+      TCGA.OR.A5LE 13.68391 13.91999 14.10133 11.356535  8.734804 4.9238689
+      TCGA.OR.A5LG 14.22088 14.16447 15.49588 10.345196 13.014264 5.5395846
+      TCGA.OR.A5LH 13.71156 14.23235 15.29852 12.922516 11.659434 7.5839594
+      TCGA.OR.A5LJ 13.22032 14.21891 14.74908 10.775136 10.421109 7.2586513
+      TCGA.OR.A5LK 13.74550 14.02286 15.13088 12.512752 12.073614 7.8244317
+      TCGA.OR.A5LL 14.25904 13.71025 13.95446 14.735373 11.087877 4.5549627
+      TCGA.OR.A5LM 13.91004 14.29912 16.38168 11.366872 11.030119 5.5881580
+      TCGA.OR.A5LN 13.85985 13.84863 15.38679 11.707784 11.456842 3.6638758
+      TCGA.OR.A5LO 13.44680 13.43012 16.09124 12.387403  8.339062 5.4524617
+      TCGA.OR.A5LP 13.68033 14.48839 14.44054 12.178893 11.417331 5.6429822
+      TCGA.OR.A5LR 13.48482 13.52920 15.61658 14.188540 10.679360 4.9660132
+      TCGA.OR.A5LS 13.35009 13.98786 14.90712 12.879726  9.732417 7.0217859
+      TCGA.OR.A5LT 12.95453 12.86651 14.66152 12.025924 10.710708 5.5151680
+      TCGA.OU.A5PI 13.39189 14.30628 15.77611 13.705952 13.449975 5.0030140
+      TCGA.P6.A5OF 13.03668 13.76461 14.22575 13.597357  9.973454 4.5369474
+      TCGA.P6.A5OG 14.60496 14.42896 13.71730 12.444731 10.198775 8.1169088
+      TCGA.PA.A5YG 13.69199 14.44714 15.58595 14.816498 13.029861 5.5415855
+      TCGA.PK.A5H8 13.95318 14.16347 15.48129 11.067303  8.101140 5.4995909
+      TCGA.PK.A5H9 14.12004 12.93571 14.43071 12.972413 11.906303 5.4708862
+      TCGA.PK.A5HA 14.51054 13.79817 15.19925 12.861917 10.155505 6.8859858
+      TCGA.PK.A5HB 13.86989 14.04274 14.91148 11.611378  9.983782 5.7428893
+                        ABCG5       ABCG8   ABHD10   ABHD11     ABHD12B   ABHD12
+      TCGA.OR.A5J1  5.3631959  0.07601630 14.15168 12.55020  0.23126156 14.30883
+      TCGA.OR.A5J2  3.2193821  4.44733884 14.10761 12.72473  7.78853755 13.44072
+      TCGA.OR.A5J3  3.5026741 -0.03146337 13.53541 13.59900  4.28916760 13.23005
+      TCGA.OR.A5J5  6.9217562  5.72283176 13.87027 13.06936  0.28056227 13.37303
+      TCGA.OR.A5J6  4.4322430  5.19115248 13.03036 11.81174  2.48704918 14.18849
+      TCGA.OR.A5J7  6.0557711  3.69217000 13.12461 12.86806 -0.11307660 14.06760
+      TCGA.OR.A5J8  4.6092301  0.07601630 12.47359 11.96754  5.25074330 14.82657
+      TCGA.OR.A5J9  3.8537824 -0.02143046 13.62176 12.51312 -0.11307660 13.70576
+      TCGA.OR.A5JA  6.8417832 -0.02143046 13.53675 13.66351  2.38586582 13.33704
+      TCGA.OR.A5JB  3.9686510  2.96108796 13.27492 12.72994  5.24720495 13.96400
+      TCGA.OR.A5JC  4.0249231  0.07601630 14.16546 12.74299  0.23126156 13.91363
+      TCGA.OR.A5JD  4.5194554 -0.03146337 14.95867 13.84661  2.57705539 14.98075
+      TCGA.OR.A5JE  6.0507041 -0.03146337 13.59391 12.13362 -0.07975788 14.46684
+      TCGA.OR.A5JF  4.9745440 -0.03146337 13.59654 13.30184 -0.07975788 14.18720
+      TCGA.OR.A5JG  6.4305983  0.07601630 13.95654 12.80420  0.23126156 13.91606
+      TCGA.OR.A5JI  6.8367155  0.06951455 14.36064 12.55694  0.28056227 15.38889
+      TCGA.OR.A5JJ  5.5107281  0.07601630 13.23293 13.52528  2.78131946 13.96437
+      TCGA.OR.A5JK  3.4387024  0.07601630 14.19243 12.89479  0.23126156 14.79949
+      TCGA.OR.A5JL  4.7496558 -0.02143046 13.74760 13.33630 -0.11307660 13.39341
+      TCGA.OR.A5JM  6.6603280 -0.03146337 13.37440 12.05731 -0.07975788 14.88974
+      TCGA.OR.A5JO  5.8875112 -0.02143046 13.12396 11.69449  3.33654364 14.16259
+      TCGA.OR.A5JP  8.1450159  0.07601630 13.71622 11.53834  0.23126156 14.06992
+      TCGA.OR.A5JQ  3.2061245  2.40375256 15.00239 13.09841  2.26182526 15.15463
+      TCGA.OR.A5JR  4.5431092  0.07601630 14.78328 13.64542  0.23126156 15.42049
+      TCGA.OR.A5JS  6.0929387  2.22296585 13.68923 13.05257  3.77657911 13.46019
+      TCGA.OR.A5JT  3.3825824 -0.03146337 14.42797 13.97389  2.42995162 15.17281
+      TCGA.OR.A5JV  0.4280585  0.07601630 14.83117 13.18008  3.98977109 14.69195
+      TCGA.OR.A5JW  4.1421763  0.06951455 12.96142 12.73576  0.28056227 13.21785
+      TCGA.OR.A5JX  0.4280585  4.01482301 14.46864 12.07252  0.23126156 14.48901
+      TCGA.OR.A5JY  6.3199662 -0.02143046 13.36929 12.40825  3.67875592 13.88054
+      TCGA.OR.A5JZ  3.2484445  0.07601630 14.04177 12.48710  0.23126156 14.83287
+      TCGA.OR.A5K0  2.6447685 -0.03146337 13.18619 12.46270  3.96344865 14.22945
+      TCGA.OR.A5K1  4.3185893  0.07601630 14.21429 13.98085  3.67878322 14.47744
+      TCGA.OR.A5K2  5.6128963  3.38031240 13.84700 12.22764 -0.11307660 14.20409
+      TCGA.OR.A5K3  0.4280585  0.07601630 15.10315 14.95507  0.23126156 15.40757
+      TCGA.OR.A5K4  4.9038749 -0.02143046 14.72459 12.09281 -0.11307660 15.37629
+      TCGA.OR.A5K5  4.8598417  3.33922861 13.96080 11.87221 -0.07975788 13.82121
+      TCGA.OR.A5K6  4.0467451 -0.03146337 13.94530 12.78309  3.37168974 13.84315
+      TCGA.OR.A5K8  5.1706381  0.06951455 13.90093 13.41691  0.28056227 14.04330
+      TCGA.OR.A5K9  6.8330181  4.72624839 13.38389 12.64190  2.48501639 13.64061
+      TCGA.OR.A5KO  4.9806730 -0.02143046 13.29295 12.86648 -0.11307660 13.30319
+      TCGA.OR.A5KT  7.2074523  3.34197978 13.81026 13.00698 -0.07975788 14.58740
+      TCGA.OR.A5KU  5.6112821 -0.03146337 13.60367 12.94932 10.20671918 14.65916
+      TCGA.OR.A5KV  7.1837364  8.04579228 14.60575 12.17440  3.52294362 13.82040
+      TCGA.OR.A5KW  5.9402647 -0.02143046 13.84168 12.76577 -0.11307660 13.23310
+      TCGA.OR.A5KX  5.2810287 -0.03146337 14.33597 11.88501 -0.07975788 15.06923
+      TCGA.OR.A5KY  5.1603906  2.39081451 13.83034 12.68019 -0.07975788 14.29056
+      TCGA.OR.A5KZ  4.5254436  0.07601630 13.35735 12.31885  0.23126156 14.48102
+      TCGA.OR.A5L3  6.1021783 -0.02143046 14.89664 13.79875 -0.11307660 15.10669
+      TCGA.OR.A5L4  3.0289910  3.08239138 14.11743 13.79327  2.92639390 13.85161
+      TCGA.OR.A5L5  5.6385237  2.64208022 14.24774 12.48781  2.53835529 15.74443
+      TCGA.OR.A5L6  4.3160648  0.07601630 14.18211 13.08279  0.23126156 15.09947
+      TCGA.OR.A5L8  3.2899225  2.47686004 14.32990 12.74329 -0.11307660 12.79130
+      TCGA.OR.A5L9  8.4873858 -0.02143046 14.73782 13.60099 -0.11307660 15.35401
+      TCGA.OR.A5LA  3.3362361 -0.03146337 14.80837 14.77853 -0.07975788 15.27521
+      TCGA.OR.A5LB  5.0412587  0.06951455 13.39380 12.54075  0.28056227 13.96108
+      TCGA.OR.A5LC  2.9288069 -0.03146337 13.59813 13.11509 -0.07975788 14.29368
+      TCGA.OR.A5LD  7.3172619  4.43451609 15.16001 14.74763  4.78340569 14.55790
+      TCGA.OR.A5LE  5.3174163  0.07601630 12.72196 11.94098  0.23126156 14.36169
+      TCGA.OR.A5LG  0.4280585  0.07601630 14.08991 12.98980  3.16255136 14.67967
+      TCGA.OR.A5LH  4.4330138 -0.03146337 13.82686 14.60236 -0.07975788 13.82785
+      TCGA.OR.A5LJ  2.7033215 -0.03146337 14.23777 13.83495  4.70382112 15.16888
+      TCGA.OR.A5LK  5.3114349  0.06951455 14.85686 14.26978  5.77460351 15.57391
+      TCGA.OR.A5LL  2.7472570 -0.02143046 12.63292 11.61949 -0.11307660 13.92457
+      TCGA.OR.A5LM  5.5367127  7.08510894 14.29482 13.94405  0.28056227 13.78037
+      TCGA.OR.A5LN  7.2951973 -0.02143046 14.51297 13.14396 -0.11307660 15.87156
+      TCGA.OR.A5LO  4.0086054  2.61763683 13.95496 13.01337 -0.11307660 12.64467
+      TCGA.OR.A5LP -0.2155864 -0.02143046 13.46729 13.56776  3.03032147 14.86012
+      TCGA.OR.A5LR  6.6833330 -0.03146337 14.18885 11.98439  4.48103942 14.31939
+      TCGA.OR.A5LS  4.7320815 -0.02143046 14.70892 13.64513 -0.11307660 13.58174
+      TCGA.OR.A5LT  6.1224822  0.07601630 14.63808 12.50364  0.23126156 15.42790
+      TCGA.OU.A5PI -0.1965832 -0.03146337 14.31895 12.91771 -0.07975788 13.85502
+      TCGA.P6.A5OF  4.0508113 -0.02143046 13.45391 12.90016 -0.11307660 13.88146
+      TCGA.P6.A5OG  2.3787100 -0.03146337 13.04814 12.20591  3.68425322 13.73216
+      TCGA.PA.A5YG  0.4280585  0.07601630 14.02076 13.60847  4.10541142 15.63835
+      TCGA.PK.A5H8  3.2382249  0.06951455 13.86301 12.87868  0.28056227 14.02370
+      TCGA.PK.A5H9  4.6912544  2.04776159 14.21477 11.94800 -0.11307660 13.77516
+      TCGA.PK.A5HA  3.6671147  0.07601630 13.66543 12.84903  0.23126156 14.35258
+      TCGA.PK.A5HB  6.7947373  3.17827703 13.08882 12.29060  0.23126156 13.16840
+                     ABHD13  ABHD14A  ABHD14B    ABHD15      ABHD1    ABHD2     ABHD3
+      TCGA.OR.A5J1 12.09783 12.47587 13.65456 11.510374 5.32240823 14.78993 10.713625
+      TCGA.OR.A5J2 12.66339 13.09896 13.92762 10.852504 6.97507618 16.54929 10.866039
+      TCGA.OR.A5J3 11.21562 13.37146 14.95282 11.263089 7.70943669 15.43274  9.911512
+      TCGA.OR.A5J5 10.75303 13.50196 13.22188 11.027540 8.32389793 14.08431 11.507867
+      TCGA.OR.A5J6 11.32329 12.18407 14.59843 11.530518 8.54815712 14.62560 11.571788
+      TCGA.OR.A5J7 10.60637 13.02137 13.23808 10.686484 6.61169384 15.01988 12.606456
+      TCGA.OR.A5J8 11.98376 12.34016 13.38519 12.502737 5.16689003 15.92870 12.158680
+      TCGA.OR.A5J9 12.43627 13.42839 13.11103  9.814563 5.22481362 15.71200 10.114890
+      TCGA.OR.A5JA 11.98469 12.02820 13.91002 11.539203 6.91881677 15.85498 10.802476
+      TCGA.OR.A5JB 11.79285 12.69894 14.44750 11.664957 7.92373806 13.82906 12.806999
+      TCGA.OR.A5JC 11.47631 13.60821 14.60187 10.256646 6.86255967 15.68198  9.955582
+      TCGA.OR.A5JD 11.55990 12.73614 15.43186 11.570238 6.61752011 14.91250 11.647592
+      TCGA.OR.A5JE 11.22538 12.50833 12.74369 10.999577 5.62329376 14.45846 11.737603
+      TCGA.OR.A5JF 11.63671 12.70344 14.22906 10.918526 3.92243069 15.23802  9.438035
+      TCGA.OR.A5JG 11.51193 13.12099 14.99122 11.421047 5.17504361 14.87221 10.398386
+      TCGA.OR.A5JI 11.22031 14.75916 14.76240 11.915885 7.92942410 14.19208 11.328047
+      TCGA.OR.A5JJ 11.33765 12.57727 13.34697 11.145128 6.70921196 16.36703 11.102370
+      TCGA.OR.A5JK 11.54030 14.16872 14.08459 11.393097 5.13449582 15.92804 11.639710
+      TCGA.OR.A5JL 12.57366 11.75515 14.11022 10.893860 7.35946005 16.58291 10.613504
+      TCGA.OR.A5JM 13.20349 12.82349 12.64314 12.235927 4.28043955 14.96142 14.387886
+      TCGA.OR.A5JO 12.15798 12.75248 14.53850 12.164740 8.58731144 15.50546 11.645797
+      TCGA.OR.A5JP 12.21688 12.43057 12.44981  9.497793 6.44042085 14.61123 11.015111
+      TCGA.OR.A5JQ 11.29349 13.51839 15.03487 13.042436 4.56658092 14.49530 10.661527
+      TCGA.OR.A5JR 11.85740 13.08859 14.43109 11.884531 6.18879123 15.79723 11.032512
+      TCGA.OR.A5JS 11.43586 13.70614 13.54353 10.680097 5.44125526 15.69315 11.456908
+      TCGA.OR.A5JT 11.48895 12.10513 14.61760 11.717371 4.41861349 15.51740 10.203003
+      TCGA.OR.A5JV 11.74241 12.11316 13.63390 11.713543 5.07368851 16.13988 11.943863
+      TCGA.OR.A5JW 11.69222 12.22568 14.58697 10.953567 4.91675548 17.28657  9.422528
+      TCGA.OR.A5JX 11.91638 14.94243 15.53664 10.844517 7.91145077 15.53298  8.905377
+      TCGA.OR.A5JY 13.17263 12.07704 13.04102 11.368541 7.25170147 16.01915 11.708765
+      TCGA.OR.A5JZ 11.65227 13.05608 15.69350 12.029964 0.07236951 15.72254 10.004881
+      TCGA.OR.A5K0 12.28820 12.69634 13.53955 11.081914 8.59883312 15.20379 13.130299
+      TCGA.OR.A5K1 11.48151 12.67560 14.86734 11.981911 0.07236951 14.27356 10.469492
+      TCGA.OR.A5K2 11.22268 14.03074 14.21164  9.587740 4.95636072 15.16074 11.233296
+      TCGA.OR.A5K3 11.48426 13.61520 14.82925 11.625758 5.81259958 15.26073 10.433723
+      TCGA.OR.A5K4 11.58876 12.02735 14.43748 12.725200 4.67543908 15.74446 11.065241
+      TCGA.OR.A5K5 11.67817 12.53905 13.02767 11.193866 6.29530172 15.55903 11.269864
+      TCGA.OR.A5K6 12.42107 13.55708 14.93905 10.872731 8.14135982 15.62230 11.113612
+      TCGA.OR.A5K8 12.63911 13.45938 14.55497 10.997028 4.12304733 14.65591  9.573780
+      TCGA.OR.A5K9 12.40298 13.16549 13.65332 10.372663 5.80030785 15.09206 12.044124
+      TCGA.OR.A5KO 11.81186 13.06969 14.55304 12.160995 7.23113900 15.37110 11.781020
+      TCGA.OR.A5KT 11.13808 12.82067 13.95034 11.188051 3.43989520 13.73352 10.660386
+      TCGA.OR.A5KU 11.01403 13.16871 13.83184 11.504502 5.07982970 15.71325 11.074949
+      TCGA.OR.A5KV 12.12051 13.38654 15.43460 11.428358 6.44224390 15.66276  9.966898
+      TCGA.OR.A5KW 12.28880 13.52036 14.42486 11.468724 4.88337427 15.90837 10.756668
+      TCGA.OR.A5KX 12.42129 12.90708 14.06798 11.179440 6.49151862 15.28586 11.969429
+      TCGA.OR.A5KY 12.30905 13.62740 13.77176 10.500070 5.21050505 14.77421 10.075799
+      TCGA.OR.A5KZ 10.92088 11.73064 12.61398 10.843821 5.95277331 15.37812 12.271247
+      TCGA.OR.A5L3 11.40788 14.45269 15.49888 10.152079 5.16983679 14.31118 11.462027
+      TCGA.OR.A5L4 11.77973 12.20154 14.58597 10.596545 5.03107064 15.74513 10.012564
+      TCGA.OR.A5L5 11.67244 13.65754 14.86604 11.159194 5.50770902 14.65488 10.803638
+      TCGA.OR.A5L6 10.53013 13.98524 15.21457 11.306903 7.10417755 13.13163 11.760378
+      TCGA.OR.A5L8 11.98483 13.38463 13.41426 10.712011 7.50812470 16.67081  8.589438
+      TCGA.OR.A5L9 11.48827 15.02292 16.20786 10.557745 0.03206037 13.03235  9.758985
+      TCGA.OR.A5LA 11.21518 14.12910 16.25974 10.785316 8.27776725 15.06881 10.123441
+      TCGA.OR.A5LB 11.77848 13.19523 14.13734 10.862335 6.46673651 16.41956  9.666789
+      TCGA.OR.A5LC 11.98525 13.49790 14.80460 11.968548 5.46654581 13.94203 11.513964
+      TCGA.OR.A5LD 10.46620 14.01365 14.32374  9.898329 4.33248596 13.92374 10.507667
+      TCGA.OR.A5LE 12.84959 12.66128 11.99949  9.430962 4.96468576 16.08926 11.995311
+      TCGA.OR.A5LG 12.22735 14.48259 15.40759 11.375710 2.81561215 15.46013 12.493350
+      TCGA.OR.A5LH 11.46186 12.33319 15.03059 11.664931 5.46824684 15.65695 10.870349
+      TCGA.OR.A5LJ 11.90727 12.78617 12.04795 10.279762 6.41369262 14.79152 10.445473
+      TCGA.OR.A5LK 10.77343 13.67823 13.90343 10.770902 8.99691095 14.06512 11.391083
+      TCGA.OR.A5LL 11.54409 13.20704 13.93646 11.412750 0.03206037 16.27038 11.957284
+      TCGA.OR.A5LM 12.38082 13.22758 14.15158 10.821707 6.78573325 15.65592 10.967215
+      TCGA.OR.A5LN 11.30672 14.10541 14.82329 10.932643 6.72047272 14.29818 11.228890
+      TCGA.OR.A5LO 11.32460 12.27562 14.21524 10.722516 8.20500339 16.49600 11.448747
+      TCGA.OR.A5LP 11.41743 12.34268 14.24940 11.351226 5.71524835 15.82253 10.750733
+      TCGA.OR.A5LR 11.62671 12.36727 14.91435 11.798411 3.26732334 15.30894 11.399545
+      TCGA.OR.A5LS 10.63124 13.40193 13.58106 11.101156 6.35752486 16.11199 10.637804
+      TCGA.OR.A5LT 11.94905 13.19500 13.76732 12.294312 5.16170086 14.03452 11.328682
+      TCGA.OU.A5PI 11.46214 13.17412 13.86736 10.951776 4.92078009 16.12298 10.457370
+      TCGA.P6.A5OF 12.60549 12.96709 14.21651 11.089468 2.39547679 15.55881 10.055347
+      TCGA.P6.A5OG 11.87177 11.60927 13.95384 10.824060 4.86014754 13.76273 12.087577
+      TCGA.PA.A5YG 12.24585 12.76444 14.56004 11.636120 7.40382176 15.98804 11.458646
+      TCGA.PK.A5H8 12.28010 12.66126 14.46012 11.563517 5.15562960 14.99376 11.061136
+      TCGA.PK.A5H9 12.34449 11.91366 14.29731 13.206453 7.14467579 16.86689 11.711734
+      TCGA.PK.A5HA 10.92227 12.31282 14.44720 10.958738 6.75193487 14.46520 12.245268
+      TCGA.PK.A5HB 10.92666 10.99711 12.99229 10.228847 4.76446290 15.33488 11.503049
+                      ABHD4    ABHD5    ABHD6    ABHD8     ABI1     ABI2    ABI3BP
+      TCGA.OR.A5J1 13.79699 12.43843 11.61401 12.51644 12.88596 14.38263  6.942065
+      TCGA.OR.A5J2 13.33552 13.21229 14.33380 12.92170 13.40566 14.10271  9.289510
+      TCGA.OR.A5J3 14.99081 11.98759 12.41199 12.84464 12.35662 12.52987  8.951846
+      TCGA.OR.A5J5 14.73225 11.53834 13.16485 13.45862 12.31943 12.99096  8.408779
+      TCGA.OR.A5J6 14.01071 13.84618 13.30545 14.00090 12.81001 13.10492  9.342678
+      TCGA.OR.A5J7 14.25650 11.65189 12.89272 13.10395 14.07012 13.93809  5.411326
+      TCGA.OR.A5J8 14.94015 11.92198 11.97385 10.89230 12.99896 13.98016 14.387891
+      TCGA.OR.A5J9 14.71758 11.79421 12.03867 13.42961 13.04281 14.27664  7.080678
+      TCGA.OR.A5JA 14.97095 12.05687 12.92778 12.39339 12.44874 12.99424 10.440233
+      TCGA.OR.A5JB 13.16241 11.72690 11.13689 12.12384 13.73017 14.68296  5.870868
+      TCGA.OR.A5JC 13.72175 12.13480 12.94799 13.12967 12.94541 13.28692 11.682828
+      TCGA.OR.A5JD 13.33921 11.85413 13.07945 13.07213 12.99513 12.43375 15.678139
+      TCGA.OR.A5JE 15.14582 11.37946 12.85290 13.23952 11.88372 13.37118 10.081382
+      TCGA.OR.A5JF 12.98223 11.27822 12.45073 12.92767 12.59443 12.71398  9.293382
+      TCGA.OR.A5JG 15.02416 12.36636 13.70386 13.80478 12.82603 12.78357  9.026498
+      TCGA.OR.A5JI 13.79593 12.23149 12.67410 13.05541 12.88841 12.87991 14.624888
+      TCGA.OR.A5JJ 14.16096 11.35810 13.17034 13.82577 11.70608 13.22845  9.013478
+      TCGA.OR.A5JK 13.73922 11.21861 12.23570 13.13199 13.10228 12.90966 10.140513
+      TCGA.OR.A5JL 15.11886 12.27398 13.60907 12.03575 12.24073 12.35549  8.049143
+      TCGA.OR.A5JM 14.26602 12.51948 13.26581 12.87469 12.98593 13.80160  7.373915
+      TCGA.OR.A5JO 15.34289 13.72430 10.74107 12.46278 13.24701 13.02977 13.934691
+      TCGA.OR.A5JP 15.06149 12.19217 11.54021 12.68793 13.02038 13.70635  9.308982
+      TCGA.OR.A5JQ 12.84327 12.14833 12.73446 13.51332 12.68213 13.32515 16.601954
+      TCGA.OR.A5JR 14.45230 12.31414 13.02875 12.76249 12.80630 12.89673 15.643620
+      TCGA.OR.A5JS 15.15664 11.80380 13.37243 13.40162 12.02675 12.72509  6.782897
+      TCGA.OR.A5JT 14.30469 11.39581 12.82988 12.23850 12.65394 13.23703 15.751799
+      TCGA.OR.A5JV 13.81958 11.56584 14.42113 11.53888 13.32443 13.19396 13.476156
+      TCGA.OR.A5JW 14.76356 12.29966 13.09942 13.04434 13.39621 12.44177  6.317633
+      TCGA.OR.A5JX 14.68034 11.97995 12.42758 13.49787 12.73662 12.59146 10.652220
+      TCGA.OR.A5JY 15.46389 12.55005 13.00982 12.86151 11.81598 13.59565  6.480395
+      TCGA.OR.A5JZ 15.40422 11.70703 12.26924 11.47268 12.82539 13.49171 14.319982
+      TCGA.OR.A5K0 14.55349 13.36655 13.06451 14.03472 12.23017 14.13865 10.016006
+      TCGA.OR.A5K1 14.78111 11.57365 11.41744 12.24208 12.51806 12.95613 12.344203
+      TCGA.OR.A5K2 15.64703 12.05874 12.65696 12.42938 13.45171 13.89830  8.349250
+      TCGA.OR.A5K3 14.50433 11.16296 12.84252 13.09257 12.68223 12.89264 12.345356
+      TCGA.OR.A5K4 14.99253 10.97629 13.34366 11.48717 12.59230 12.70417 12.591345
+      TCGA.OR.A5K5 13.93554 12.13184 12.31656 13.74082 12.37196 13.87147  7.735339
+      TCGA.OR.A5K6 14.43938 12.01364 13.97270 13.68058 12.50755 13.27209  9.177473
+      TCGA.OR.A5K8 14.94011 11.34437 13.10376 13.85317 12.81720 12.88740  7.657216
+      TCGA.OR.A5K9 14.43120 10.95862 12.10881 13.60347 13.13222 13.80033  8.037594
+      TCGA.OR.A5KO 14.67533 12.46539 12.33234 13.23139 13.77810 12.98279  6.951177
+      TCGA.OR.A5KT 14.28464 12.54804 14.27056 14.45854 12.81967 12.99786 11.754679
+      TCGA.OR.A5KU 13.93899 11.79286 13.96273 13.09532 12.04885 13.41873  8.290511
+      TCGA.OR.A5KV 13.28302 10.99311 13.14442 13.94138 11.98559 13.78413  7.725508
+      TCGA.OR.A5KW 16.05916 11.80024 13.11394 13.56468 12.67943 13.04758 11.033588
+      TCGA.OR.A5KX 15.09263 11.89620 13.62436 13.30713 13.10758 14.84046 11.505853
+      TCGA.OR.A5KY 13.75055 11.89768 13.07982 13.41729 13.24256 13.91107  9.481242
+      TCGA.OR.A5KZ 12.58403 10.55073 10.80239 12.63194 12.88768 14.27226  8.103419
+      TCGA.OR.A5L3 14.67613 11.58324 13.73165 13.81433 12.13349 12.49902  8.662372
+      TCGA.OR.A5L4 14.88983 12.37369 11.96849 11.60776 12.89360 12.97364 12.229723
+      TCGA.OR.A5L5 13.95207 11.27144 12.13403 12.65008 12.96114 12.90936 13.534847
+      TCGA.OR.A5L6 13.47568 10.87115 11.49837 12.23931 12.47320 13.39228 12.559136
+      TCGA.OR.A5L8 13.49294 12.23409 12.59251 13.77604 13.29029 14.06652  8.410224
+      TCGA.OR.A5L9 13.89920 11.16138 12.29377 12.96223 12.46133 12.16444 11.939335
+      TCGA.OR.A5LA 14.26662 11.06257 12.57079 13.64619 12.65434 12.43522 12.772444
+      TCGA.OR.A5LB 14.37855 11.89378 13.31818 13.82615 13.72127 13.17303  7.675210
+      TCGA.OR.A5LC 13.24818 11.06841 11.91938 12.66518 12.89559 14.11158  8.855864
+      TCGA.OR.A5LD 13.72493 11.59374 12.96638 13.66504 12.68633 14.95644  8.927785
+      TCGA.OR.A5LE 14.67217 11.82994 13.94455 12.81295 12.32288 13.63487  6.610141
+      TCGA.OR.A5LG 14.81433 11.40635 12.34359 13.79432 13.09077 13.39859  9.280271
+      TCGA.OR.A5LH 14.38596 12.38177 13.26180 12.50984 12.44952 12.84548 11.161426
+      TCGA.OR.A5LJ 13.39878 10.90002 14.10066 14.01680 13.37544 13.53357  7.373418
+      TCGA.OR.A5LK 13.45322 12.79880 12.92338 13.47572 12.75534 12.62286 14.647324
+      TCGA.OR.A5LL 14.77638 12.97931 13.29047 13.42521 13.12986 12.69880  9.681258
+      TCGA.OR.A5LM 14.40497 12.03888 13.12599 12.51823 12.29296 13.42051  9.595731
+      TCGA.OR.A5LN 13.18296 12.26236 12.23593 13.15732 13.14208 11.97996 15.387250
+      TCGA.OR.A5LO 15.49272 11.97069 14.12440 12.29709 13.76677 13.65852  8.948961
+      TCGA.OR.A5LP 13.49517 11.69290 11.76025 12.71615 12.60886 12.80716 15.348442
+      TCGA.OR.A5LR 15.46768 11.29675 12.90905 12.05575 12.80562 13.14902 14.357406
+      TCGA.OR.A5LS 14.51526 11.36682 13.45302 12.84701 13.60256 12.82348  7.588156
+      TCGA.OR.A5LT 13.44282 12.71950 12.88532 13.39898 12.98005 13.40918 15.029765
+      TCGA.OU.A5PI 14.32733 11.57405 12.73787 13.42441 13.45167 13.03409 11.360404
+      TCGA.P6.A5OF 14.37989 11.47904 12.02677 12.79420 13.60639 12.97298 10.910230
+      TCGA.P6.A5OG 12.09217 12.18954 11.02754 11.24097 13.91462 13.97554  9.699395
+      TCGA.PA.A5YG 14.15242 12.12738 12.48804 13.42985 13.04557 12.85834 14.826135
+      TCGA.PK.A5H8 14.40756 12.06537 12.43471 12.55629 12.56000 13.09905 10.374154
+      TCGA.PK.A5H9 14.74623 13.36399 11.03228 13.05733 13.06358 12.94417  8.301290
+      TCGA.PK.A5HA 13.78373 12.57876 13.39988 12.94036 13.21683 12.11009 15.244619
+      TCGA.PK.A5HB 15.19288 11.96692 13.40420 12.44398 13.46611 13.83512 10.281524
+                        ABI3     ABL1 class
+      TCGA.OR.A5J1 11.243769 14.63344     0
+      TCGA.OR.A5J2 10.254001 14.56644     0
+      TCGA.OR.A5J3  9.637229 14.90536     1
+      TCGA.OR.A5J5  9.188461 14.88435     0
+      TCGA.OR.A5J6  9.969764 14.53684     1
+      TCGA.OR.A5J7 10.839573 15.03522     0
+      TCGA.OR.A5J8 12.069255 15.61970     0
+      TCGA.OR.A5J9 10.737615 14.93348     1
+      TCGA.OR.A5JA  9.966661 15.15871     0
+      TCGA.OR.A5JB 12.559421 15.60240     0
+      TCGA.OR.A5JC 10.867844 14.19037     0
+      TCGA.OR.A5JD 10.963593 14.95293     1
+      TCGA.OR.A5JE 11.723819 14.98310     0
+      TCGA.OR.A5JF 10.079306 15.03060     1
+      TCGA.OR.A5JG 10.406060 14.95027     0
+      TCGA.OR.A5JI 10.984103 15.01238     1
+      TCGA.OR.A5JJ  9.974613 15.38571     1
+      TCGA.OR.A5JK 12.050841 14.27159     1
+      TCGA.OR.A5JL 10.079035 14.05906     1
+      TCGA.OR.A5JM  8.606552 14.46639     0
+      TCGA.OR.A5JO 12.317779 15.02377     1
+      TCGA.OR.A5JP 10.046230 14.72095     1
+      TCGA.OR.A5JQ 11.213085 15.69700     1
+      TCGA.OR.A5JR 10.232431 15.05228     1
+      TCGA.OR.A5JS  9.754414 14.96788     1
+      TCGA.OR.A5JT 10.241090 14.60286     1
+      TCGA.OR.A5JV 12.900629 13.91485     1
+      TCGA.OR.A5JW 10.314681 14.90732     1
+      TCGA.OR.A5JX 10.697831 15.12756     1
+      TCGA.OR.A5JY 10.560272 13.88164     0
+      TCGA.OR.A5JZ 10.131344 14.97180     1
+      TCGA.OR.A5K0  8.302727 15.15460     1
+      TCGA.OR.A5K1 10.702789 14.27477     1
+      TCGA.OR.A5K2 11.440055 14.87516     0
+      TCGA.OR.A5K3 10.795035 13.91418     1
+      TCGA.OR.A5K4  8.731332 14.87339     1
+      TCGA.OR.A5K5 10.061664 14.53624     1
+      TCGA.OR.A5K6 10.521248 14.23691     1
+      TCGA.OR.A5K8 10.202049 15.23874     1
+      TCGA.OR.A5K9 10.032846 15.43170     0
+      TCGA.OR.A5KO  9.610883 15.73806     1
+      TCGA.OR.A5KT 11.447587 14.15456     1
+      TCGA.OR.A5KU  8.712290 13.98007     1
+      TCGA.OR.A5KV  8.452863 14.32850     1
+      TCGA.OR.A5KW  9.462639 14.31406     1
+      TCGA.OR.A5KX  9.903965 15.36119     1
+      TCGA.OR.A5KY 11.683294 15.40595     0
+      TCGA.OR.A5KZ 10.228783 14.54524     0
+      TCGA.OR.A5L3  9.894280 13.99640     1
+      TCGA.OR.A5L4 10.951394 14.74244     1
+      TCGA.OR.A5L5 10.764133 13.77438     1
+      TCGA.OR.A5L6  9.884491 14.37383     1
+      TCGA.OR.A5L8  9.108384 14.73423     1
+      TCGA.OR.A5L9 11.174588 14.17248     1
+      TCGA.OR.A5LA 11.661320 13.86091     1
+      TCGA.OR.A5LB  9.534291 14.98056     0
+      TCGA.OR.A5LC 11.254173 14.10653     0
+      TCGA.OR.A5LD  9.791988 15.18178     0
+      TCGA.OR.A5LE  9.081149 14.72137     0
+      TCGA.OR.A5LG 12.034932 14.77188     1
+      TCGA.OR.A5LH 10.562829 14.51149     0
+      TCGA.OR.A5LJ 10.371281 14.83653     0
+      TCGA.OR.A5LK 12.140635 14.38808     1
+      TCGA.OR.A5LL  8.648423 14.99214     0
+      TCGA.OR.A5LM  9.725773 13.45064     1
+      TCGA.OR.A5LN 11.625923 15.10839     1
+      TCGA.OR.A5LO  9.060190 14.91943     1
+      TCGA.OR.A5LP 11.363664 14.48989     1
+      TCGA.OR.A5LR 10.020292 14.69343     1
+      TCGA.OR.A5LS  8.900241 14.64945     1
+      TCGA.OR.A5LT  9.652456 14.50427     1
+      TCGA.OU.A5PI  9.806149 15.11826     1
+      TCGA.P6.A5OF 10.279550 15.17688     0
+      TCGA.P6.A5OG 12.791566 14.69426     0
+      TCGA.PA.A5YG 11.737008 14.48215     1
+      TCGA.PK.A5H8  9.921026 14.48753     1
+      TCGA.PK.A5H9  9.830419 14.67142     1
+      TCGA.PK.A5HA 10.690758 15.24654     1
+      TCGA.PK.A5HB  8.501420 15.49842     1
+      
+      $adjusted.data
+                        A1BG         A1CF         A2BP1     A2LD1      A2ML1      A2M
+      TCGA.OR.A5J1  7.395919  0.008979157  7.6011820112 11.283792  9.0887677 16.79046
+      TCGA.OR.A5J2  6.896316 -0.004654649  5.9897834101 11.256243  0.2326275 16.77847
+      TCGA.OR.A5J3  7.747785  2.544780917  6.3862096410 10.267500  4.3015637 16.11314
+      TCGA.OR.A5J5 13.339844  4.322977141  5.7618046458  9.165299  8.5357192 14.32287
+      TCGA.OR.A5J6 12.723681  0.024255332  5.4793061322 11.090664  3.7524825 16.56421
+      TCGA.OR.A5J7  6.981690  0.024255332  5.1139535321  9.849586  5.0807376 16.78970
+      TCGA.OR.A5J8  8.803154  0.008979157  0.1075954559  9.187098  5.3442012 18.34522
+      TCGA.OR.A5J9  6.592070  0.024255332  8.4626250571 11.404401  8.3735565 17.20979
+      TCGA.OR.A5JA  9.121267  0.024255332  6.0425329650 11.216338  8.3939775 16.18097
+      TCGA.OR.A5JB 11.012284 -0.054618928  0.0970238784  9.418587 -0.3243464 15.28443
+      TCGA.OR.A5JC 10.631410  0.008979157  9.2797853712 10.446648  5.5396053 16.11429
+      TCGA.OR.A5JD 10.279017 -0.004654649  8.6624391158 10.734166  9.1936957 16.50565
+      TCGA.OR.A5JE  9.443743 -0.004654649  0.0004196091  9.972075  5.7587066 16.23948
+      TCGA.OR.A5JF  8.250288 -0.004654649 12.0834354523 10.653458 11.5634161 16.32918
+      TCGA.OR.A5JG  8.557806  0.008979157  8.1315521461 10.434082  6.3051796 16.27086
+      TCGA.OR.A5JI 12.542041 -0.054618928  5.1650342493  9.013035  4.5004424 17.08820
+      TCGA.OR.A5JJ  7.383515  0.008979157  8.4345050430 10.501920 10.6863050 15.82037
+      TCGA.OR.A5JK  8.815287  0.008979157 10.7617232125 10.520234 10.1927310 18.38771
+      TCGA.OR.A5JL  5.295587  0.024255332  9.5520950384 11.367073  9.4177247 15.99911
+      TCGA.OR.A5JM  8.154391 -0.004654649  0.0004196091 11.547785  3.5222388 14.78335
+      TCGA.OR.A5JO 11.369678  6.753475554 -0.0010402765 10.921101  5.9312199 20.16894
+      TCGA.OR.A5JP 10.457965  0.008979157  3.4391322103  9.460551  5.3492376 16.08147
+      TCGA.OR.A5JQ 11.484386  0.024255332  2.4614507890 10.373271  5.3543750 17.15229
+      TCGA.OR.A5JR 11.110499  0.008979157  6.2692540647  9.288250  8.5869452 16.34463
+      TCGA.OR.A5JS  6.848196  3.456462532 -0.0010402765  9.285329  3.3020650 16.06408
+      TCGA.OR.A5JT  9.830299 -0.004654649  3.4769865178  8.550686 11.6974250 16.43009
+      TCGA.OR.A5JV  8.384161  0.008979157 11.6966516596  8.908642  9.1509681 17.87344
+      TCGA.OR.A5JW  6.395132 -0.054618928  0.0970238784 10.350829  5.3552819 16.09007
+      TCGA.OR.A5JX 11.666882  0.008979157  8.3264384602 10.708158 10.1649440 16.81564
+      TCGA.OR.A5JY  6.101117  0.024255332  3.9306395324 11.853474  0.2325998 16.09378
+      TCGA.OR.A5JZ 10.329821  0.008979157  0.1075954559  9.083890  5.4267214 15.31563
+      TCGA.OR.A5K0  7.848238 -0.004654649 10.3062685007  4.799148  4.3564005 16.65364
+      TCGA.OR.A5K1  8.904063  0.008979157  7.7663211159 10.114028  7.7399896 17.50692
+      TCGA.OR.A5K2  9.389952  0.024255332 -0.0010402765  9.994584  3.6301935 15.99247
+      TCGA.OR.A5K3  8.217901  0.008979157  0.1075954559 10.708207  8.7361824 16.55191
+      TCGA.OR.A5K4  6.080371  0.024255332  3.7198402240  9.837687 10.1036291 15.21861
+      TCGA.OR.A5K5  9.957865 -0.004654649  5.4794059808 10.629411  5.2752894 15.32699
+      TCGA.OR.A5K6  7.555757 -0.004654649  0.0004196091 10.873121  5.4392138 15.60874
+      TCGA.OR.A5K8  8.108593 -0.054618928 11.1208253373 11.319024  5.7751812 16.19090
+      TCGA.OR.A5K9  7.059789  0.024255332  2.6928734749 10.293432  3.7502367 15.43681
+      TCGA.OR.A5KO  8.334437  0.024255332 11.2278305402 10.925959  0.2325998 15.24721
+      TCGA.OR.A5KT 10.314799 -0.004654649  8.9461136640  9.638246  0.2326275 17.17140
+      TCGA.OR.A5KU 11.850816 -0.004654649  4.6727415757  9.493662  9.1918759 15.24663
+      TCGA.OR.A5KV 11.878971 -0.004654649  2.3552671447 10.902433  3.9071178 15.33248
+      TCGA.OR.A5KW  7.786156  0.024255332  2.7377414164 11.443997 10.7087621 15.83688
+      TCGA.OR.A5KX 13.873667 -0.004654649  0.0004196091 10.881198  5.4662197 15.87683
+      TCGA.OR.A5KY  8.865431 -0.004654649  6.5682520268  9.186990  8.5393581 16.62722
+      TCGA.OR.A5KZ 11.760357  0.008979157  0.1075954559  9.187158  2.6647324 16.52751
+      TCGA.OR.A5L3  7.690833  0.024255332 -0.0010402765  9.963014  0.2325998 14.74439
+      TCGA.OR.A5L4 10.273471  0.024255332  4.0650122521 10.550353  6.1298210 17.41393
+      TCGA.OR.A5L5 11.358645 -0.004654649  0.0004196091  9.467662  6.0867760 16.86965
+      TCGA.OR.A5L6 11.764415  0.008979157  6.1104378949  6.794766  7.1972028 16.68111
+      TCGA.OR.A5L8  9.549365  0.024255332  7.3474271960 10.708282  7.1368717 14.87136
+      TCGA.OR.A5L9 13.531346  0.024255332  7.2387398405  7.349014  9.5268721 16.23153
+      TCGA.OR.A5LA  9.455031 -0.004654649  4.3614475207  9.937396 10.0183483 17.46791
+      TCGA.OR.A5LB  6.177436  2.837629342  2.5939035153 11.373273  6.9058413 16.30201
+      TCGA.OR.A5LC  8.588195 -0.004654649  5.2050825457  9.810956  6.1670716 15.90641
+      TCGA.OR.A5LD  8.752671  0.008979157  0.1075954559  9.165852  4.0363584 15.99541
+      TCGA.OR.A5LE  6.391506  0.008979157  7.9860148562 11.396553 -0.3243640 17.06536
+      TCGA.OR.A5LG  9.169482  0.008979157  0.1075954559  9.981915  5.3200632 16.44113
+      TCGA.OR.A5LH  7.816828 -0.004654649 10.0910983762 10.642793 10.4882075 16.85022
+      TCGA.OR.A5LJ 10.876242  3.484731128  0.0004196091  9.702499  0.2326275 15.89398
+      TCGA.OR.A5LK 13.290024 -0.054618928  0.0970238784  8.876545  9.1608132 17.64607
+      TCGA.OR.A5LL  6.985696  0.024255332  4.7175130817  9.477561  3.9453056 14.33965
+      TCGA.OR.A5LM  7.466076 -0.054618928  3.7403715772 10.392692 12.4869256 16.25683
+      TCGA.OR.A5LN  9.198030  0.024255332  6.3061480433 10.096109  3.9864900 16.94011
+      TCGA.OR.A5LO  8.546776  0.024255332 -0.0010402765  9.863800  9.9487251 15.98640
+      TCGA.OR.A5LP  8.544574  0.024255332  3.7910105588  9.608089  6.4113072 17.36444
+      TCGA.OR.A5LR 10.892235 -0.004654649  5.1298349846  9.579877  8.2711653 16.48830
+      TCGA.OR.A5LS  7.999203  0.024255332 10.5709698817  9.611469  9.2858351 15.64019
+      TCGA.OR.A5LT  8.152171  0.008979157  4.7607581759 10.155957  7.6377380 14.54600
+      TCGA.OU.A5PI  7.782720 -0.004654649  7.5432245698  9.090699  9.9061075 15.88753
+      TCGA.P6.A5OF  9.108725  0.024255332  9.8848937932 11.615331  8.3419861 16.28395
+      TCGA.P6.A5OG 11.888210 -0.004654649  0.0004196091  9.951988  0.2326275 17.64362
+      TCGA.PA.A5YG  8.831532  0.008979157  0.1075954559  9.687570 10.5142192 17.64878
+      TCGA.PK.A5H8 13.593315 -0.054618928  5.5971700501 10.514988  6.9370848 16.06283
+      TCGA.PK.A5H9  9.943046  6.428983533 -0.0010402765 11.899582  6.6056347 21.14839
+      TCGA.PK.A5HA 12.251039  0.008979157  8.3634440066 10.262026 -0.3243640 17.31496
+      TCGA.PK.A5HB 10.139525  4.089867486  5.8998822035 10.009431  1.9320296 16.63920
+                      A4GALT       A4GNT     AAAS       AACSL     AACS      AADAC
+      TCGA.OR.A5J1 10.959849 -0.09282863 14.59321 -0.01057256 14.07591  0.8584307
+      TCGA.OR.A5J2 11.209708  0.06757345 14.08184  2.54367021 13.35375  3.5260016
+      TCGA.OR.A5J3  9.536012  4.63853689 13.58498  0.02471746 15.37101  9.6339820
+      TCGA.OR.A5J5 11.512923  2.74450491 14.61653  4.48580371 13.19295 10.8956084
+      TCGA.OR.A5J6 14.020693  2.78754197 13.56866  0.02475795 13.73179 11.2636694
+      TCGA.OR.A5J7 10.958753  0.06717516 14.56394  0.02475795 15.56217  4.6025959
+      TCGA.OR.A5J8 13.402857 -0.09282863 13.54338 -0.01057256 12.52721  0.8584307
+      TCGA.OR.A5J9 12.123509  0.06717516 14.05112  0.02475795 14.57237 -0.3321434
+      TCGA.OR.A5JA 12.620113  0.06717516 14.56782  5.51738253 14.32006 10.8413247
+      TCGA.OR.A5JB 15.072434  2.65576285 13.22329 -0.01068882 14.20763  5.0278967
+      TCGA.OR.A5JC 11.448035  2.75600151 14.38412 -0.01057256 12.49674  9.0887408
+      TCGA.OR.A5JD 10.468017  0.06757345 13.82005  0.02471746 12.76130  8.0750612
+      TCGA.OR.A5JE 11.089112  0.06757345 13.81001  0.02471746 15.02328  8.3712909
+      TCGA.OR.A5JF 10.706404  0.06757345 13.78300  0.02471746 13.35711  8.2094764
+      TCGA.OR.A5JG 10.284506 -0.09282863 14.19035 -0.01057256 13.95652 14.3536943
+      TCGA.OR.A5JI 12.305776 -0.09034366 14.12246 -0.01068882 11.89981 12.4130680
+      TCGA.OR.A5JJ 12.159326  2.22592295 14.07552  2.24875504 14.64418  4.5555443
+      TCGA.OR.A5JK 11.166140  5.37425713 14.44919  6.62449112 13.07837  6.5989949
+      TCGA.OR.A5JL 10.254896  0.06717516 13.87711  0.02475795 14.03290  6.2354394
+      TCGA.OR.A5JM 11.584642  0.06757345 13.79091  0.02471746 15.16855 10.1578901
+      TCGA.OR.A5JO 14.269192  0.06717516 13.53720  0.02475795 12.37330  6.7727374
+      TCGA.OR.A5JP 10.366528 -0.09282863 14.05985 -0.01057256 14.20323 13.2873542
+      TCGA.OR.A5JQ 10.803760  3.42081349 14.20107  0.02475795 12.22946  9.4805243
+      TCGA.OR.A5JR  9.648904 -0.09282863 14.22859 -0.01057256 12.94178 10.2379453
+      TCGA.OR.A5JS 12.994855  4.13670532 14.16683  0.02475795 14.95691  4.6600605
+      TCGA.OR.A5JT 10.595179  0.06757345 14.44565  0.02471746 12.80951  4.8590625
+      TCGA.OR.A5JV  9.699000  2.47708302 13.87603 -0.01057256 12.94695  5.5252100
+      TCGA.OR.A5JW 11.113377  2.34369726 14.03304 -0.01068882 14.21468 10.3137165
+      TCGA.OR.A5JX 11.308048 -0.09282863 14.69619 -0.01057256 13.23979  8.7469316
+      TCGA.OR.A5JY 10.165416  0.06717516 15.30132  5.02840249 14.48027 14.1003244
+      TCGA.OR.A5JZ 13.603817 -0.09282863 13.95667 -0.01057256 13.36693  8.9632045
+      TCGA.OR.A5K0  9.290611  0.06757345 13.64600  0.02471746 12.85650 11.0729122
+      TCGA.OR.A5K1 11.240424 -0.09282863 14.19385 -0.01057256 13.00606  6.6244873
+      TCGA.OR.A5K2 10.762354  0.06717516 14.35314  0.02475795 15.46980  7.4485687
+      TCGA.OR.A5K3 11.488759 -0.09282863 14.00105 -0.01057256 14.35697  7.0582128
+      TCGA.OR.A5K4 12.563190  0.06717516 14.33788  0.02475795 13.11833  3.3932728
+      TCGA.OR.A5K5 10.799118  2.64337757 14.24867  2.64139512 15.22512  5.8771721
+      TCGA.OR.A5K6 10.662032  0.06757345 14.12803  0.02471746 13.25352 13.4060049
+      TCGA.OR.A5K8 11.332901 -0.09034366 14.22102 -0.01068882 13.60606 12.8033897
+      TCGA.OR.A5K9  9.717799  0.06717516 13.66312  0.02475795 16.13595 13.1485783
+      TCGA.OR.A5KO 12.228741  4.59299131 13.32236  2.76176337 13.80359  8.3573252
+      TCGA.OR.A5KT 13.471406  0.06757345 14.58747  3.53583239 14.80148 13.9192599
+      TCGA.OR.A5KU 12.594969  4.22138465 14.09986  3.30420684 13.47356  8.3167080
+      TCGA.OR.A5KV 12.246717  0.06757345 13.38271  2.43853424 13.95531 14.7773387
+      TCGA.OR.A5KW  9.913889  0.06717516 13.89794  5.01852115 14.84941  9.6755220
+      TCGA.OR.A5KX 11.843857  0.06757345 14.46355  2.81304862 12.77383  7.7678282
+      TCGA.OR.A5KY 11.006587  0.06757345 14.19803  0.02471746 15.59157  9.6341925
+      TCGA.OR.A5KZ 10.088667 -0.09282863 13.86749  2.75399143 14.05125  9.2518967
+      TCGA.OR.A5L3  9.659343  0.06717516 15.30086  0.02475795 12.96544 12.5609183
+      TCGA.OR.A5L4 11.886976  0.06717516 14.01189  0.02475795 14.93912  5.4812460
+      TCGA.OR.A5L5 11.170139  3.69865560 14.66448  2.80736960 12.59466 13.6059620
+      TCGA.OR.A5L6 11.133230  3.92590237 14.88558  3.90516811 12.48067  7.1147122
+      TCGA.OR.A5L8  8.722640  0.06717516 14.17144  0.02475795 12.68994  4.0063461
+      TCGA.OR.A5L9 12.695313  0.06717516 14.74233  0.02475795 10.71193  6.3370607
+      TCGA.OR.A5LA 11.086321  0.06757345 14.64260  0.02471746 12.75628  8.6319144
+      TCGA.OR.A5LB 10.525288 -0.09034366 14.55169  5.96187936 14.68593  4.1663838
+      TCGA.OR.A5LC 10.497937  0.06757345 13.91575  0.02471746 14.18963  9.1577766
+      TCGA.OR.A5LD 10.392648 -0.09282863 15.36720  5.45995578 13.36152  7.4949948
+      TCGA.OR.A5LE  9.812770 -0.09282863 13.95091 -0.01057256 15.64849  0.8584307
+      TCGA.OR.A5LG 13.730749 -0.09282863 14.50444 -0.01057256 15.27293  8.1969302
+      TCGA.OR.A5LH 11.558394  2.50345250 14.01702  0.02471746 14.23152  5.1373792
+      TCGA.OR.A5LJ 12.553957  0.06757345 14.40393  3.82634169 13.64413 10.3190697
+      TCGA.OR.A5LK 11.351954  3.98189241 13.82046 -0.01068882 11.84748  7.4122014
+      TCGA.OR.A5LL 11.864426  0.06717516 12.97665  0.02475795 10.87701 14.4652675
+      TCGA.OR.A5LM 12.048802 -0.09034366 14.44795 -0.01068882 14.81228  0.8464390
+      TCGA.OR.A5LN 10.618311  0.06717516 14.67945  0.02475795 11.37133 11.5811582
+      TCGA.OR.A5LO 12.168393  0.06717516 14.04285  0.02475795 14.45222  4.4781704
+      TCGA.OR.A5LP 11.797801  2.49300548 13.84313  0.02475795 11.83441 15.4347547
+      TCGA.OR.A5LR 11.099339  0.06757345 14.16554  0.02471746 13.04151 12.6922365
+      TCGA.OR.A5LS  9.239140  0.06717516 13.88923  0.02475795 13.94162  7.3842142
+      TCGA.OR.A5LT 12.277696  3.04339287 13.84734  3.90916173 11.77142 10.0874645
+      TCGA.OU.A5PI 11.360637  2.86731858 13.87155  0.02471746 15.02203  5.2461168
+      TCGA.P6.A5OF 11.730811  2.46198716 14.11079  2.45757146 14.62730  7.7332141
+      TCGA.P6.A5OG 12.489016  3.46439043 13.16025  0.02471746 11.17258  2.1729996
+      TCGA.PA.A5YG 11.031598  2.57428434 14.17715 -0.01057256 12.61582 13.3416913
+      TCGA.PK.A5H8 10.822696  2.76243677 14.38327 -0.01068882 13.72334  5.1462368
+      TCGA.PK.A5H9 11.719791  2.18717125 13.41885  8.50963751 12.16659 11.7616352
+      TCGA.PK.A5HA 12.633707  3.25513290 13.58835 -0.01057256 11.91524 10.1840576
+      TCGA.PK.A5HB 14.472813 -0.09282863 13.48046  5.81611904 13.45459 13.0813920
+                        AADAT    AAGAB     AAK1     AAMP       AANAT    AARS2
+      TCGA.OR.A5J1 10.3919582 13.86452 13.39869 14.97202  3.97602658 11.69481
+      TCGA.OR.A5J2  8.5175541 13.80874 14.09796 14.37168  0.05218940 12.20818
+      TCGA.OR.A5J3  8.5951960 13.31297 13.35852 14.43483  0.05218940 11.46021
+      TCGA.OR.A5J5  9.6685131 13.03961 12.58760 13.57515  3.70968028 12.10568
+      TCGA.OR.A5J6  7.6896493 13.28922 13.52163 15.06258  0.05399495 12.03913
+      TCGA.OR.A5J7  8.4183668 13.94407 13.91311 15.59854  0.05399495 12.78414
+      TCGA.OR.A5J8 10.5232978 13.49143 13.89308 14.81825  3.65079660 13.42620
+      TCGA.OR.A5J9 10.0987653 13.15616 13.41883 14.64734  0.05399495 11.88672
+      TCGA.OR.A5JA  8.2669802 14.33857 13.18660 14.44241  0.05399495 12.96169
+      TCGA.OR.A5JB  7.9005608 13.55737 13.03919 15.42317 -0.07109404 13.04123
+      TCGA.OR.A5JC  9.7458838 13.91309 13.73924 14.68222 -0.08015577 12.33469
+      TCGA.OR.A5JD 10.2866917 12.95371 13.49607 14.12711  2.80391485 11.82917
+      TCGA.OR.A5JE  8.2746849 13.42101 13.77829 15.00118  0.05218940 13.16756
+      TCGA.OR.A5JF  7.6893695 13.37196 13.37797 14.16720  3.05345825 11.93898
+      TCGA.OR.A5JG  9.2110557 13.94923 13.82656 15.02154 -0.08015577 12.30634
+      TCGA.OR.A5JI  9.7774866 12.58201 13.32598 13.97988 -0.07109404 11.78624
+      TCGA.OR.A5JJ  7.4848972 13.67848 12.88840 14.19716 -0.08015577 11.79032
+      TCGA.OR.A5JK  8.4396659 14.21639 13.70897 14.32019  3.09719469 12.00450
+      TCGA.OR.A5JL  8.8914437 14.63635 13.20782 14.23644  3.19165565 12.32075
+      TCGA.OR.A5JM  8.2900498 13.44854 14.38477 14.35216  0.05218940 12.37314
+      TCGA.OR.A5JO  9.4905702 12.97133 13.14517 14.48109  0.05399495 11.81727
+      TCGA.OR.A5JP  9.0702631 13.25373 13.22681 14.77189 -0.08015577 11.92494
+      TCGA.OR.A5JQ  9.5716046 12.74677 13.54967 14.40133  0.05399495 12.18755
+      TCGA.OR.A5JR  9.9018446 13.24560 13.90397 14.45027 -0.08015577 12.30926
+      TCGA.OR.A5JS  8.2359408 13.79632 14.31398 14.92116  2.33037495 12.14492
+      TCGA.OR.A5JT  8.7557036 13.11581 13.80755 14.43801  0.05218940 12.02414
+      TCGA.OR.A5JV  8.1843761 13.48278 14.04384 14.40364  3.94247847 12.14917
+      TCGA.OR.A5JW  7.2236057 14.33095 13.71876 14.21356  3.26724560 12.80209
+      TCGA.OR.A5JX  8.9840605 13.48872 13.30470 14.41305 -0.08015577 12.24968
+      TCGA.OR.A5JY  5.9099755 14.66284 13.12238 14.55996  0.05399495 13.03594
+      TCGA.OR.A5JZ  9.1689618 13.12166 13.56394 14.14689 -0.08015577 12.01152
+      TCGA.OR.A5K0  6.3055295 13.27496 13.65032 14.67855  0.05218940 12.15290
+      TCGA.OR.A5K1  7.6546101 13.24134 13.04552 14.49584 -0.08015577 12.05101
+      TCGA.OR.A5K2  7.3469052 14.58172 13.69901 14.73950  3.50421423 12.17788
+      TCGA.OR.A5K3  8.1891090 13.57019 13.86092 14.59376 -0.08015577 12.20335
+      TCGA.OR.A5K4  9.8590041 13.16816 13.43637 14.19836  0.05399495 12.33604
+      TCGA.OR.A5K5  7.8558200 13.89311 14.37567 14.96848  2.60209317 12.41822
+      TCGA.OR.A5K6  7.9558329 13.90829 14.32032 15.05074  0.05218940 12.67895
+      TCGA.OR.A5K8  7.6268297 13.21195 13.47738 14.17635 -0.07109404 11.65576
+      TCGA.OR.A5K9  4.7357172 13.36018 14.34646 14.98342  0.05399495 12.63667
+      TCGA.OR.A5KO  6.5841749 13.22484 13.13552 14.05374  0.05399495 12.29113
+      TCGA.OR.A5KT  5.8270806 13.66924 13.75532 14.74429  0.05218940 12.28016
+      TCGA.OR.A5KU 10.1563813 14.04095 13.69971 14.57466  0.05218940 12.11520
+      TCGA.OR.A5KV  7.9565769 13.53912 14.04171 14.96244  0.05218940 12.16536
+      TCGA.OR.A5KW  9.4747433 14.44049 13.25467 14.65198  2.78972025 11.67198
+      TCGA.OR.A5KX  8.6278713 13.05984 14.24378 15.79157  0.05218940 12.53692
+      TCGA.OR.A5KY  8.6566577 13.53163 13.56120 14.31133  4.59730026 12.21796
+      TCGA.OR.A5KZ 10.4475964 13.51717 12.75997 14.85516 -0.08015577 12.92399
+      TCGA.OR.A5L3  6.0515793 13.40648 14.10335 14.86513  0.05399495 11.96085
+      TCGA.OR.A5L4  5.5256402 13.94476 13.82549 14.49993  0.05399495 12.62779
+      TCGA.OR.A5L5  8.8493631 13.16133 13.32344 14.40910  0.05218940 11.75257
+      TCGA.OR.A5L6  8.5298974 11.94932 12.98411 14.23441 -0.08015577 11.80099
+      TCGA.OR.A5L8  8.7959015 13.06275 14.00264 14.76646  0.05399495 12.12321
+      TCGA.OR.A5L9  0.3896319 13.00977 12.63734 13.25846  0.05399495 11.05679
+      TCGA.OR.A5LA  8.2934553 13.02329 13.22895 14.70334  0.05218940 11.77757
+      TCGA.OR.A5LB  9.3026623 14.23378 13.59521 14.65664  2.42683812 11.74339
+      TCGA.OR.A5LC  8.6546353 13.63368 13.90654 14.93859  3.08460075 11.05250
+      TCGA.OR.A5LD  9.8816617 12.98341 14.44169 14.32665 -0.08015577 13.04636
+      TCGA.OR.A5LE  2.5763176 14.03552 14.17801 14.94131 -0.08015577 11.58821
+      TCGA.OR.A5LG  7.3241612 13.98999 13.34829 15.17366 -0.08015577 12.28905
+      TCGA.OR.A5LH 10.3481788 13.84837 13.50776 14.69668  0.05218940 11.97616
+      TCGA.OR.A5LJ  7.6271799 13.08667 13.86052 15.33718  0.05218940 12.35713
+      TCGA.OR.A5LK  9.1914034 12.60707 13.62884 14.37583  4.08683152 12.69132
+      TCGA.OR.A5LL  6.0289766 13.57602 13.85844 14.42127  0.05399495 12.30818
+      TCGA.OR.A5LM  9.8634871 14.03312 13.71920 14.76413 -0.07109404 11.93190
+      TCGA.OR.A5LN  8.1883088 13.10437 13.06081 13.81970  0.05399495 13.01373
+      TCGA.OR.A5LO 10.8752161 13.70065 13.93598 14.65058  5.10660206 12.39347
+      TCGA.OR.A5LP  9.3156141 13.22335 13.79587 14.18654  2.45543294 12.02012
+      TCGA.OR.A5LR  9.4925191 13.03783 13.24635 14.25833  0.05218940 11.89258
+      TCGA.OR.A5LS  8.9959989 13.61979 14.08433 14.42344  3.90832407 11.54344
+      TCGA.OR.A5LT  9.4786165 13.04199 13.46174 13.97330 -0.08015577 11.61991
+      TCGA.OU.A5PI  8.3390847 13.42371 13.95470 14.65960  0.05218940 11.31404
+      TCGA.P6.A5OF  8.9704432 13.42411 13.40835 14.03245  2.42472652 11.98016
+      TCGA.P6.A5OG 10.1127656 13.19871 13.29524 14.68321  4.34007607 12.38744
+      TCGA.PA.A5YG  7.0676566 13.57949 14.05988 14.91020  2.64307957 11.95388
+      TCGA.PK.A5H8  6.7916262 14.02155 13.89649 14.54671  2.84171565 12.96257
+      TCGA.PK.A5H9 10.2545826 13.07929 13.05231 13.75412  2.15267394 11.75753
+      TCGA.PK.A5HA  7.8270919 12.35792 13.60191 13.76336  2.47843625 12.74135
+      TCGA.PK.A5HB  7.1433716 14.11244 13.86978 14.87963 -0.08015577 12.99226
+                     AARSD1     AARS AASDHPPT     AASDH      AASS     AATF      AATK
+      TCGA.OR.A5J1 13.44182 15.28509 13.97218 10.280407 13.297247 13.94452  8.558724
+      TCGA.OR.A5J2 11.99798 15.90023 13.17813 11.423305 11.103353 13.48811 13.301982
+      TCGA.OR.A5J3 12.06141 15.23122 13.27948 10.891713 11.565178 13.02114  9.646160
+      TCGA.OR.A5J5 11.88986 14.50207 12.37064 11.669849 12.297748 12.21724 12.352137
+      TCGA.OR.A5J6 12.98156 14.86699 13.29697 11.359942 10.978429 13.39072  8.665599
+      TCGA.OR.A5J7 11.39711 15.63537 13.44469 11.275376 12.200263 14.36116 10.189272
+      TCGA.OR.A5J8 12.51714 15.90720 12.21519 10.559241 12.030581 13.55384 10.541200
+      TCGA.OR.A5J9 12.08975 15.74375 12.84626 11.269870 11.924035 13.67478 13.748731
+      TCGA.OR.A5JA 12.19617 14.91427 12.92976 11.272199 11.074444 13.03452 10.139757
+      TCGA.OR.A5JB 13.67694 15.69788 13.77740 10.100425 12.920356 14.07106 10.045338
+      TCGA.OR.A5JC 12.82695 15.29284 13.25409 11.335253 11.558771 13.69617  8.680370
+      TCGA.OR.A5JD 12.43134 16.26278 12.95498 12.255970 12.404316 13.18245  8.924500
+      TCGA.OR.A5JE 13.38582 15.34532 12.45782 10.507187 10.214212 13.83124 10.580325
+      TCGA.OR.A5JF 11.83463 15.49137 13.38272 11.746794 11.626121 12.91008 11.207076
+      TCGA.OR.A5JG 12.58960 16.45933 12.91156 11.480452  9.458489 13.68606  9.309954
+      TCGA.OR.A5JI 12.44879 15.03591 13.41705 11.297280 11.417614 12.94482  9.390339
+      TCGA.OR.A5JJ 12.52782 15.53969 13.07752 12.179190 11.758591 13.54971 11.195381
+      TCGA.OR.A5JK 12.37245 16.11310 13.29008 11.534833 12.662282 13.71605 10.064385
+      TCGA.OR.A5JL 12.39787 14.31232 13.67196 11.693614 12.121408 12.51293 11.777204
+      TCGA.OR.A5JM 13.35467 16.01229 13.82226 10.529282 11.016421 13.73289 11.252504
+      TCGA.OR.A5JO 12.54167 14.71376 12.79289 10.945874 11.758627 13.41138  8.056981
+      TCGA.OR.A5JP 12.60094 16.20568 12.65434 11.045727 11.194797 12.64987 13.331328
+      TCGA.OR.A5JQ 12.74676 16.12144 13.19230 11.786862 11.810713 13.58336  9.065117
+      TCGA.OR.A5JR 12.00412 16.42204 13.56474 12.493856 11.650216 13.14798  7.552776
+      TCGA.OR.A5JS 12.58581 16.26247 13.16852 11.200968 12.359113 13.33788 11.367940
+      TCGA.OR.A5JT 12.13749 17.11960 13.88078 12.404378 12.336274 13.32928  8.277231
+      TCGA.OR.A5JV 11.83397 15.81061 12.98168 12.404237 12.094800 13.21673  8.908106
+      TCGA.OR.A5JW 11.68492 14.90398 12.93036 12.580963 12.604185 12.84469 10.210174
+      TCGA.OR.A5JX 12.75274 14.97811 13.31463 10.613841 13.472004 13.78697 11.390724
+      TCGA.OR.A5JY 12.63779 15.32973 13.68111 11.905866 13.503264 13.46387 11.184486
+      TCGA.OR.A5JZ 12.29557 16.28679 13.91454 11.717325  9.638430 13.39341  7.196850
+      TCGA.OR.A5K0 12.29386 14.50772 12.16318 11.576747 11.981195 14.17280 11.064329
+      TCGA.OR.A5K1 12.65617 16.62387 13.39238 11.064823 11.673865 13.74485  8.232722
+      TCGA.OR.A5K2 12.68749 15.68296 13.25648 10.389096 12.021951 13.91569 10.808425
+      TCGA.OR.A5K3 12.19327 16.59448 13.59981 10.163759 11.863730 13.31658  9.126366
+      TCGA.OR.A5K4 12.28919 16.30111 13.73908 12.664190 11.103813 13.08149  5.815364
+      TCGA.OR.A5K5 12.80612 16.51376 12.98978 11.272669  9.376292 14.23107 11.632017
+      TCGA.OR.A5K6 12.76849 14.93674 12.47346 11.648381 10.403875 13.80457 11.662552
+      TCGA.OR.A5K8 12.32452 15.10954 13.04422 10.909391 11.616477 13.10410  9.864532
+      TCGA.OR.A5K9 12.01457 16.33385 13.12227 11.427522  8.792173 13.54935 11.561708
+      TCGA.OR.A5KO 11.88106 15.29868 13.69035 12.064702 10.577796 12.94302  8.990764
+      TCGA.OR.A5KT 12.36026 15.91002 12.58172 10.893708 11.751392 13.93608 10.262556
+      TCGA.OR.A5KU 11.33034 15.07400 13.37162 12.197865 12.478714 13.29085 10.998464
+      TCGA.OR.A5KV 13.21766 15.97931 13.79256 11.302687 10.103953 13.61554 13.575233
+      TCGA.OR.A5KW 12.25797 15.50004 13.69260 11.998554 11.145931 13.53345  9.641208
+      TCGA.OR.A5KX 13.16509 14.42502 12.38684 11.225351 13.052244 12.81391  9.994501
+      TCGA.OR.A5KY 11.63400 15.65497 13.30019 10.528828 12.020216 13.27198 11.565012
+      TCGA.OR.A5KZ 12.11884 15.34277 13.66408 11.370165 10.818418 13.58267 10.111467
+      TCGA.OR.A5L3 13.60413 14.97984 12.87693 10.976602 12.849273 13.90913 12.212902
+      TCGA.OR.A5L4 12.33678 16.09409 13.88625 11.013791 11.381165 12.97010  9.885081
+      TCGA.OR.A5L5 12.97850 16.18953 13.43356 10.889245 12.342852 13.24532  7.917552
+      TCGA.OR.A5L6 12.64448 15.47333 12.80277 11.032831 12.024480 12.98658 11.060555
+      TCGA.OR.A5L8 12.04848 15.66857 13.71799 11.592799 12.667687 14.25547 13.783104
+      TCGA.OR.A5L9 13.20844 15.74779 12.36893 10.956008 12.062845 13.36439  8.168794
+      TCGA.OR.A5LA 13.29729 15.98762 12.95565 11.362361 12.048917 13.28867  9.006066
+      TCGA.OR.A5LB 11.60728 14.44089 13.21497 11.837158 13.707564 13.10848 12.990923
+      TCGA.OR.A5LC 12.82763 15.42389 12.42115 11.123724 11.736341 14.07326 12.139859
+      TCGA.OR.A5LD 13.16789 16.66975 13.76599 10.634100 12.496311 13.64359 10.775013
+      TCGA.OR.A5LE 12.24681 15.62327 13.93704 11.220185 13.644163 13.37687 11.071933
+      TCGA.OR.A5LG 12.92673 17.28134 13.39356 11.564634 12.469163 13.34128  7.252386
+      TCGA.OR.A5LH 12.45087 14.94475 13.31662 11.944351 12.478221 13.25518  9.484854
+      TCGA.OR.A5LJ 12.58393 14.91125 13.09242  9.290685 11.237743 13.72204 10.374420
+      TCGA.OR.A5LK 12.43787 15.06245 12.87640 11.034408 11.943521 13.35992  8.403079
+      TCGA.OR.A5LL 12.27056 15.66173 13.70779 11.504275 13.922032 13.43879 10.215577
+      TCGA.OR.A5LM 12.78450 15.45535 13.70490 11.674123 13.034151 13.14741  8.521737
+      TCGA.OR.A5LN 12.91956 15.47230 13.35172 11.387178 13.713661 13.14895  8.706030
+      TCGA.OR.A5LO 11.24412 15.87617 13.85010 11.658908 13.411930 12.46564  9.295110
+      TCGA.OR.A5LP 11.75888 16.91474 13.33246 10.998357 10.697122 13.19776  7.275817
+      TCGA.OR.A5LR 12.40671 16.53622 13.71237 11.651275 11.813940 13.22853  7.162343
+      TCGA.OR.A5LS 11.37327 15.38113 13.56627 12.346943 13.107786 12.61278 11.902298
+      TCGA.OR.A5LT 12.39307 15.04763 13.79243 12.256364 12.723102 13.19637 12.000159
+      TCGA.OU.A5PI 11.51853 15.36534 13.15624 12.044245 13.841328 13.44037 12.033265
+      TCGA.P6.A5OF 11.37613 14.93804 13.22364 11.737293 10.722039 12.96822  9.826824
+      TCGA.P6.A5OG 12.68551 16.05611 13.37561 11.140625 13.284804 13.69875 10.749952
+      TCGA.PA.A5YG 11.98348 16.41612 13.48445 11.285136 12.564592 13.51544  9.838856
+      TCGA.PK.A5H8 12.11716 15.12221 13.51574 10.980976 12.413661 13.59135  8.944963
+      TCGA.PK.A5H9 11.79319 14.53776 13.59309 11.503124  9.653660 12.50445  7.991506
+      TCGA.PK.A5HA 12.03650 16.10083 12.20060 11.134463  9.774712 13.29777 11.069767
+      TCGA.PK.A5HB 11.51919 15.43780 12.59260 10.928972 10.380297 12.83283 10.911057
+                        ABAT   ABCA10   ABCA11P      ABCA12     ABCA13   ABCA17P
+      TCGA.OR.A5J1 13.793582 9.706963  8.769898 -0.06244521  2.1038012  8.846414
+      TCGA.OR.A5J2 14.182673 6.767545  9.841982  0.07902961  3.5750281  7.224849
+      TCGA.OR.A5J3 13.301137 8.406055  8.247579  5.86263771 10.5393592  8.276828
+      TCGA.OR.A5J5 12.023728 8.072102 10.292217  2.73021675  6.2617905 10.134652
+      TCGA.OR.A5J6 12.693290 7.409908  9.219386  0.07254242  0.4281625  9.444077
+      TCGA.OR.A5J7 11.628504 8.310070  9.173833  0.07254242  6.2820892  7.559887
+      TCGA.OR.A5J8  8.299717 8.433588  9.588809 -0.06244521  6.5464527  4.522930
+      TCGA.OR.A5J9 13.963638 9.010419 11.115574  3.71835721  3.8581337  8.040950
+      TCGA.OR.A5JA 15.145102 7.458829  9.319608  2.71925208 11.3107601  8.917128
+      TCGA.OR.A5JB  9.109694 6.143708  7.395480  7.30409839  2.2015922  5.481001
+      TCGA.OR.A5JC 15.175619 8.805673 10.325270  8.23748464  4.3544839  9.233434
+      TCGA.OR.A5JD 14.163724 8.801740 10.136584  2.89294532  5.3299631  9.258136
+      TCGA.OR.A5JE  9.964122 7.719009  9.572740  0.07902961  3.9495624  6.248812
+      TCGA.OR.A5JF 12.483352 9.040910 10.262364  2.30109137 12.3704406  8.657699
+      TCGA.OR.A5JG 11.772019 5.581732  9.456611  4.25418592  8.7306619  8.961015
+      TCGA.OR.A5JI 15.193717 7.333212 10.285059  3.04356483  4.6613931  8.448395
+      TCGA.OR.A5JJ 11.780528 7.396882 10.308090 -0.06244521  5.6564516  9.051957
+      TCGA.OR.A5JK 16.481098 8.436398 10.292607  7.83072968  6.4534051  8.590833
+      TCGA.OR.A5JL 16.403749 4.648713  9.950099  6.09134511 10.9165222  7.235624
+      TCGA.OR.A5JM 13.114743 6.226260 10.638343  0.07902961  0.3864344  6.842488
+      TCGA.OR.A5JO 11.732686 7.966326  9.299103  2.82495748  0.4281625  7.828040
+      TCGA.OR.A5JP 12.441931 9.464478 10.904104  2.31254731  2.8406477  9.188663
+      TCGA.OR.A5JQ 16.335812 6.831638 10.942472  2.58787676  5.0464693  7.687040
+      TCGA.OR.A5JR 17.006801 5.002574 10.351473  3.72704946  6.1905143  8.963538
+      TCGA.OR.A5JS 11.387986 8.082943  8.132950  7.02474746  2.6181751  7.091454
+      TCGA.OR.A5JT 18.076049 6.077447 10.510099  3.63020112  2.8871792 10.116388
+      TCGA.OR.A5JV 17.191449 5.071349  8.868997  3.27886539  6.4250933  9.579448
+      TCGA.OR.A5JW 10.982668 9.376865 10.323894  2.33835488  7.6687594  8.793338
+      TCGA.OR.A5JX 12.633351 9.520542 10.161292 -0.06244521  4.7127101  9.197169
+      TCGA.OR.A5JY  7.710110 7.422850  9.859557  7.05857337  5.3256067  5.151542
+      TCGA.OR.A5JZ 16.575786 5.222117  9.630560  4.16133661  6.2098838  9.819506
+      TCGA.OR.A5K0 11.334585 9.546548  8.245471  3.80476510  3.0386616  8.807854
+      TCGA.OR.A5K1 17.170892 5.474860  9.544045 -0.06244521  7.0601280  9.648606
+      TCGA.OR.A5K2 12.127702 9.752257  8.223510  0.07254242  4.6417302  8.014142
+      TCGA.OR.A5K3 16.649879 7.515299 10.462272 -0.06244521  8.5251645 10.466558
+      TCGA.OR.A5K4 17.490347 4.311149  9.921720  0.07254242  4.5293445 10.389330
+      TCGA.OR.A5K5 10.213258 6.395652  8.070082  0.07902961  2.8395931  8.462911
+      TCGA.OR.A5K6 11.620653 6.860263  9.166011  2.83323146  0.3864344  8.150556
+      TCGA.OR.A5K8 15.211564 8.564924 10.244070 -0.04135979  8.9283953  9.085158
+      TCGA.OR.A5K9 10.078009 3.628167  9.324412  2.82426561  3.8647556  8.804761
+      TCGA.OR.A5KO 15.650148 6.761745  9.432792  2.79998243  4.7384846 10.217286
+      TCGA.OR.A5KT 10.498507 6.996549  7.432089  0.07902961  5.4955223  7.662681
+      TCGA.OR.A5KU 16.041882 9.988589 10.156002  4.85161621  6.8619458  9.573247
+      TCGA.OR.A5KV 13.952275 7.175661 10.081089  0.07902961  2.6494092 10.057983
+      TCGA.OR.A5KW 14.097066 6.339497  8.747071  4.73328701  9.0613651  8.928621
+      TCGA.OR.A5KX 13.980092 8.113561  9.862986  0.07902961  0.3864344  9.350797
+      TCGA.OR.A5KY 12.315325 8.399071  9.642948  4.41438085  8.3914368  7.747389
+      TCGA.OR.A5KZ 13.659012 9.761585  9.743024  2.71150507 -0.7769370  8.275676
+      TCGA.OR.A5L3 12.284467 8.474228  9.707801  0.07254242  0.4281625  6.412810
+      TCGA.OR.A5L4 16.474053 6.017269 10.062753  0.07254242  5.2523927  8.887288
+      TCGA.OR.A5L5 16.165842 9.439740 10.205882  2.85195681  4.3669315  8.792567
+      TCGA.OR.A5L6 15.055384 7.458668 10.530366  3.86659024  4.6985654  8.357954
+      TCGA.OR.A5L8 14.867703 7.473132 10.235959  2.66370186  0.4281625  7.566637
+      TCGA.OR.A5L9 16.619115 8.634227 11.032028  0.07254242  0.4281625  9.790310
+      TCGA.OR.A5LA 16.705493 6.890434 10.031720  5.51644105  4.5773199  9.549567
+      TCGA.OR.A5LB 13.501003 8.118817 10.273943 -0.04135979 10.8848153  8.253297
+      TCGA.OR.A5LC 14.079335 8.528594  9.216571  0.07902961  0.3864344  9.289209
+      TCGA.OR.A5LD 15.477388 7.269239  9.712083 -0.06244521 -0.7769370  5.836345
+      TCGA.OR.A5LE 13.678972 7.328127  9.201048 -0.06244521 -0.7769370  6.589430
+      TCGA.OR.A5LG 12.854476 7.282238  9.753032  4.26458988  5.4970270  7.548516
+      TCGA.OR.A5LH 15.837893 7.247457 10.252276  4.92957347  7.9417701  9.603799
+      TCGA.OR.A5LJ  9.590340 8.741565  9.979426  0.07902961  6.0891355  6.363693
+      TCGA.OR.A5LK 14.104738 7.654911 11.016869  4.84283648  5.7382897  8.980837
+      TCGA.OR.A5LL 12.249978 8.114192  9.829356  3.92796310  6.3278042  7.676034
+      TCGA.OR.A5LM 16.632330 7.444022 10.584627  4.33538095  9.1914508  9.445574
+      TCGA.OR.A5LN 15.280781 8.281801 11.923923  0.07254242  0.4281625  6.942651
+      TCGA.OR.A5LO 15.637472 6.458945  9.269088  4.26369504 10.8301724  8.654542
+      TCGA.OR.A5LP 16.185321 6.447785  9.597789  5.32010911  5.7947201  8.720842
+      TCGA.OR.A5LR 17.258984 6.126311  9.619731  3.40085547  0.3864344 10.424052
+      TCGA.OR.A5LS 14.371514 8.296776 10.407250  0.07254242  9.4901030  8.202173
+      TCGA.OR.A5LT 15.487941 8.048751 10.671770  5.06680036 -0.7769370  7.911044
+      TCGA.OU.A5PI 15.189688 7.405963  9.774655  3.82105942  8.6733018  7.689024
+      TCGA.P6.A5OF 12.353649 8.669972 10.045935  2.49685362  6.8776650 12.536827
+      TCGA.P6.A5OG  8.909694 3.950289  9.106979  0.07902961 10.6313229 10.741282
+      TCGA.PA.A5YG 16.505393 6.832664  9.348019  3.89504082  4.1300691  8.160984
+      TCGA.PK.A5H8 16.693237 8.056014 10.542042  2.74774839 11.6247712 10.309999
+      TCGA.PK.A5H9 12.196404 9.305259 10.100831  2.21865254  3.7337179  6.426789
+      TCGA.PK.A5HA 14.978384 4.738547  9.857896 -0.06244521  4.7563495 11.475810
+      TCGA.PK.A5HB 11.219216 6.314436 10.010665  4.19427542  6.5161224  8.738318
+                       ABCA1    ABCA2     ABCA3         ABCA4    ABCA5     ABCA6
+      TCGA.OR.A5J1 11.951542 13.34704 12.981116  4.9645981825 14.55795  7.463176
+      TCGA.OR.A5J2 13.562585 13.35166 13.625559  6.1959666036 11.47260  8.268746
+      TCGA.OR.A5J3 13.032417 14.75654 15.497991  6.0026570833 12.94161  7.480329
+      TCGA.OR.A5J5 11.577048 14.87294 14.998839  0.1021432678 12.75021  3.933808
+      TCGA.OR.A5J6 12.919248 11.83525 13.095960  4.7619136713 13.05583  9.949062
+      TCGA.OR.A5J7 11.692843 13.66829 13.116548  4.8661920619 13.23939  6.165660
+      TCGA.OR.A5J8 14.385501 13.44952 10.201285  9.1943452636 10.39326 11.796460
+      TCGA.OR.A5J9 13.093248 13.84560 12.030666  4.4478381073 13.52152  6.032624
+      TCGA.OR.A5JA 10.758795 12.21846 14.621824  3.4203650227 11.79453  4.705778
+      TCGA.OR.A5JB 14.836826 14.66793 11.358513  4.8298050571 11.69462 12.831682
+      TCGA.OR.A5JC 12.611967 11.52623 13.445688  4.5449622551 13.06799  7.715094
+      TCGA.OR.A5JD 13.217093 14.88498 14.761467  5.3028883904 13.15674  7.139479
+      TCGA.OR.A5JE 11.994503 14.67711 10.976670  4.6009630985 13.52590  4.256387
+      TCGA.OR.A5JF 13.549558 15.11965 15.020947  4.6250848258 14.11871  8.107796
+      TCGA.OR.A5JG 11.072945 14.02241 13.250926  5.5061650763 11.25892  6.441261
+      TCGA.OR.A5JI 15.087977 13.92938 15.361908  5.8751417710 12.13886  7.610152
+      TCGA.OR.A5JJ 14.513368 15.65226 13.191160  3.9255683796 12.89269  7.249977
+      TCGA.OR.A5JK 12.013573 13.58766 14.703553  4.8435384799 13.45662  7.338948
+      TCGA.OR.A5JL 12.503235 12.46542 13.750119  5.7213180026 11.94269  6.483852
+      TCGA.OR.A5JM 11.677203 12.98943 11.825480  5.1735302329 11.32848  5.385157
+      TCGA.OR.A5JO 13.184463 12.75815 11.801485  5.0109907518 12.97118 14.169808
+      TCGA.OR.A5JP 13.758640 12.39571 13.052445  6.4065806896 14.28505  8.014641
+      TCGA.OR.A5JQ 13.853249 14.64363 15.871396  5.1408633075 12.69032  8.041170
+      TCGA.OR.A5JR 12.445974 14.71149 17.120367  4.5508485729 12.18090  4.507537
+      TCGA.OR.A5JS 13.149992 14.27348 12.917304  2.2498649174 13.66692  7.311552
+      TCGA.OR.A5JT 13.631938 13.90634 16.776550  6.1910491248 12.04466  3.486521
+      TCGA.OR.A5JV 12.036104 12.84180 15.470247  5.9088366222 11.31331  5.355089
+      TCGA.OR.A5JW 14.280732 13.25335 14.377926  4.0666479827 13.93094  7.634977
+      TCGA.OR.A5JX 11.536182 13.63092 13.540880  0.0982199903 13.60519  7.343975
+      TCGA.OR.A5JY 11.139683 12.14796 12.738134  9.1643307202 13.56280  7.470690
+      TCGA.OR.A5JZ 14.701755 13.91608 16.437689  4.6207740663 12.67378  5.288749
+      TCGA.OR.A5K0 13.306136 14.97141 13.483216  6.4637397045 14.71732  7.200850
+      TCGA.OR.A5K1 12.987089 13.08488 16.780796  5.2731470435 12.02637  4.824463
+      TCGA.OR.A5K2 11.795025 12.59254 12.356421 -0.0002636101 14.48246  7.292119
+      TCGA.OR.A5K3 11.728872 13.29272 15.096371  5.9368010799 12.85265  6.203545
+      TCGA.OR.A5K4 12.372417 13.76455 17.779249  5.8717243165 12.54022  7.664389
+      TCGA.OR.A5K5 10.353650 13.18656 13.196385  7.1545429066 12.11187  5.615721
+      TCGA.OR.A5K6 13.433924 13.99008 13.339493  4.7729010650 11.34044  4.514476
+      TCGA.OR.A5K8 14.165327 14.74244 15.318861  5.1794796407 12.88271  7.553733
+      TCGA.OR.A5K9 13.586819 13.94925  9.860255  4.4549381568 10.29410  4.517027
+      TCGA.OR.A5KO 14.288212 14.14949 15.446897  3.5052188779 13.01766  5.609967
+      TCGA.OR.A5KT 10.860331 13.47285 13.951482  6.2266388450 11.47689  9.993985
+      TCGA.OR.A5KU 12.256218 12.34652 13.087172  5.0184637684 14.61800  7.324542
+      TCGA.OR.A5KV 11.951284 14.30524 12.632334  2.3354584448 13.16718  6.203648
+      TCGA.OR.A5KW 13.116725 13.33406 14.118463  4.5049136515 12.25325  6.091530
+      TCGA.OR.A5KX 13.705426 12.12381 13.739811  4.1062105657 12.50467  2.737769
+      TCGA.OR.A5KY 13.935921 14.62570 13.749424  2.4388293059 12.80658  8.440802
+      TCGA.OR.A5KZ 12.513325 12.28312 11.862284  3.0683876506 11.30577 13.484584
+      TCGA.OR.A5L3 13.905898 14.20599 12.594091  7.6826592287 13.52869  6.695983
+      TCGA.OR.A5L4 10.698162 11.66328 15.420354  5.5178733836 11.24870  8.110204
+      TCGA.OR.A5L5 15.037277 13.69430 15.693351  6.1204559658 13.54976 10.545142
+      TCGA.OR.A5L6 12.751638 13.62914 14.684128  6.5748856885 13.92630  7.362616
+      TCGA.OR.A5L8 15.176363 13.30830 13.720804  5.5373189274 12.59681  6.832255
+      TCGA.OR.A5L9 14.847052 12.56199 15.946639  7.1480403655 13.09190  8.925526
+      TCGA.OR.A5LA 14.546694 14.18628 15.602435  4.3162903106 12.64285  8.760781
+      TCGA.OR.A5LB 14.291992 13.95023 14.711806  4.4751568939 13.61967  7.175139
+      TCGA.OR.A5LC 12.605999 14.39124 12.404524  0.0103649021 12.32733  7.514269
+      TCGA.OR.A5LD 12.753038 12.08446 12.133952  4.4313277347 11.77259  5.352360
+      TCGA.OR.A5LE 11.710753 13.24685 11.343271  6.2245448980 12.61102  6.172893
+      TCGA.OR.A5LG 13.307515 13.08507 12.558079  3.7840259478 12.39693  8.277742
+      TCGA.OR.A5LH 12.263117 12.72060 14.452988  7.8245445827 13.03945  8.091005
+      TCGA.OR.A5LJ 14.320384 14.95957 13.722849  6.9115313321 12.56875  5.607390
+      TCGA.OR.A5LK 13.960083 14.08019 14.226160  6.3176084557 12.55247  8.154759
+      TCGA.OR.A5LL 15.727057 13.42226 12.520925  4.6586698360 13.64479  8.844622
+      TCGA.OR.A5LM 10.078094 11.83148 13.842240  3.8391096457 12.57752  4.739814
+      TCGA.OR.A5LN 13.718885 13.46528 14.735883 -0.0002636101 13.38727  6.037824
+      TCGA.OR.A5LO 12.285731 13.33678 13.916103 -0.0002636101 13.03267  6.427897
+      TCGA.OR.A5LP 13.395028 14.46291 15.626729  4.4282371036 12.25256  7.683360
+      TCGA.OR.A5LR 13.186233 13.66519 16.344386  5.6375189272 12.42221  7.859428
+      TCGA.OR.A5LS 13.897033 14.42782 14.553365  4.7448539122 13.82057  6.910219
+      TCGA.OR.A5LT 14.065700 15.70166 14.210622  8.1621413127 14.00976  6.018138
+      TCGA.OU.A5PI 12.672761 14.59625 15.040339  4.8607617361 13.44246  8.662744
+      TCGA.P6.A5OF 13.920743 15.60462 14.550775  3.1843441069 13.17158  9.290676
+      TCGA.P6.A5OG 12.257260 14.20845 13.295287  8.6781359707 10.03973  9.936090
+      TCGA.PA.A5YG 14.552231 14.44146 14.208499  0.0982199903 12.92436  6.964409
+      TCGA.PK.A5H8 12.273088 12.02225 14.833847  6.6279711697 13.00103  6.196202
+      TCGA.PK.A5H9 14.824079 12.40780 12.737882  3.3960294047 14.29905 14.241276
+      TCGA.PK.A5HA 15.092202 13.79524 15.590753  4.8524836087 10.20377  9.255739
+      TCGA.PK.A5HB  9.100867 12.30376 14.804724  5.3718703302 10.58346  5.799278
+                       ABCA7     ABCA8     ABCA9    ABCB10      ABCB11     ABCB1
+      TCGA.OR.A5J1 12.263594  6.185341  8.659807 12.220830  3.40366561 13.886722
+      TCGA.OR.A5J2 11.188689 10.265575  8.843618 12.044949 -0.07357536 14.787738
+      TCGA.OR.A5J3 11.940080 13.527830  8.557195 10.705248  3.77743101 17.243257
+      TCGA.OR.A5J5 13.987553 13.290032  8.653368 11.323147  0.33011750 11.203679
+      TCGA.OR.A5J6 11.929168 15.476196  8.180819 11.395327 -0.10359844 14.958191
+      TCGA.OR.A5J7 12.677760 13.288337  7.322786 11.581890 -0.10359844 15.272797
+      TCGA.OR.A5J8 11.363360 10.806731 11.188799 11.348884  0.26262749 10.719232
+      TCGA.OR.A5J9 11.535438 13.699074  8.114795  9.630218 -0.10359844 14.831143
+      TCGA.OR.A5JA 12.637362 13.017182 10.089385 11.143364 -0.10359844 15.635111
+      TCGA.OR.A5JB 11.287394  6.225134  8.019662 12.530945  0.33011750  8.721753
+      TCGA.OR.A5JC 12.277706 12.857107  8.709476 10.687745  0.26262749 16.811349
+      TCGA.OR.A5JD 12.553281 13.930547  8.712962 11.189784 -0.07357536 12.691596
+      TCGA.OR.A5JE 12.238563 11.834655  7.272289 10.978101  2.54790863 14.530804
+      TCGA.OR.A5JF 12.120418 13.767955  9.492406  9.963750  1.95162620 16.425982
+      TCGA.OR.A5JG 11.836173  8.419328  6.857716 11.219493  3.47200824 15.902196
+      TCGA.OR.A5JI 11.524241 13.555037  8.528271 10.587635  0.33011750 16.129868
+      TCGA.OR.A5JJ 12.591033 12.225797  7.973965 10.597651  0.26262749 15.555200
+      TCGA.OR.A5JK 13.660433 12.287031  9.223386 11.392347  0.26262749 14.710811
+      TCGA.OR.A5JL 10.904538 12.645355  7.699793 10.696449  4.84997321 14.005280
+      TCGA.OR.A5JM 12.965129 10.673392  5.083247 12.100999 -0.07357536 15.594347
+      TCGA.OR.A5JO 11.694015 15.819997 11.597686 11.303737  3.22631901 11.046884
+      TCGA.OR.A5JP  8.846492 12.969193  9.490920 11.765980  5.64348788 14.703560
+      TCGA.OR.A5JQ 12.246562 14.892717  8.199184 10.851873 -0.10359844 15.834740
+      TCGA.OR.A5JR 11.473016 14.720705  4.064307 10.898473  3.29925977 15.065295
+      TCGA.OR.A5JS 12.742940 12.342352  7.807761 11.591523 -0.10359844 15.945677
+      TCGA.OR.A5JT 11.886547 13.938527  5.576500 10.549238 -0.07357536 12.727576
+      TCGA.OR.A5JV 12.144077 13.519001  5.286142 10.708246  0.26262749 13.348874
+      TCGA.OR.A5JW 11.389677 14.278929  9.428231 10.704965  0.33011750 17.372184
+      TCGA.OR.A5JX 12.141859 12.975426  8.943577 10.005553  0.26262749 16.341139
+      TCGA.OR.A5JY 11.684450 12.747743  7.330946 11.332248  2.24891940 15.580795
+      TCGA.OR.A5JZ 11.283132 14.194807  7.420144 10.971460  0.26262749 14.264099
+      TCGA.OR.A5K0 14.121566 10.526741  8.409481 11.814652 -0.07357536 16.079503
+      TCGA.OR.A5K1 11.921853 13.757499  7.185292 10.177361  0.26262749 12.612923
+      TCGA.OR.A5K2 10.660717  9.777387  9.689954 10.875507  4.50007786 15.076991
+      TCGA.OR.A5K3 12.724964 11.453710  8.393449 10.141689  0.26262749 14.269515
+      TCGA.OR.A5K4 11.837118 13.584493  6.122323 11.067408  3.36040972 11.771030
+      TCGA.OR.A5K5 12.327221 12.512999  6.416044 10.597339 -0.07357536 14.632660
+      TCGA.OR.A5K6 11.433873 13.181529  5.333179 11.432898 -0.07357536 16.430818
+      TCGA.OR.A5K8 13.241455 13.009452  8.879068 10.193707  0.33011750 15.800646
+      TCGA.OR.A5K9 13.415007 14.803863  5.833506 10.398326 -0.10359844 16.624981
+      TCGA.OR.A5KO 11.607355 13.697258  7.104996 11.867025 -0.10359844 16.179493
+      TCGA.OR.A5KT 11.480064 16.699770  9.882117 11.660938 -0.07357536 15.006400
+      TCGA.OR.A5KU 13.216335 13.522424 10.077521 10.703046 -0.07357536 16.211303
+      TCGA.OR.A5KV 13.550244  5.205727  6.258807 10.051736  6.96415636 14.796697
+      TCGA.OR.A5KW 12.558876 12.066035  7.581160 10.840342  5.87283654 16.687155
+      TCGA.OR.A5KX 13.650547 14.799439  4.583980 10.900240 -0.07357536 13.995178
+      TCGA.OR.A5KY 12.704560 10.306110  9.313857 10.919701  5.50469007 16.326401
+      TCGA.OR.A5KZ 10.898461 14.327424 12.943859 11.748463  0.26262749 15.131646
+      TCGA.OR.A5L3 10.823131 12.440321  7.571414 10.293011 -0.10359844 14.518925
+      TCGA.OR.A5L4 11.079488 13.017953  7.711424 10.876748 -0.10359844 15.318119
+      TCGA.OR.A5L5 12.142875 13.723153 10.725372 10.842635  3.27658151 14.641789
+      TCGA.OR.A5L6 12.471624 13.174834  8.077196 10.347737  0.26262749 13.003647
+      TCGA.OR.A5L8 10.219787 14.649610  8.266207 11.333410  3.56691517 16.706194
+      TCGA.OR.A5L9 12.504684 12.793873  8.846953  9.658985 -0.10359844 12.109031
+      TCGA.OR.A5LA 10.226948 13.816680  8.270143 10.346581 -0.07357536 14.238400
+      TCGA.OR.A5LB 11.979055 14.086566  7.516322 10.809092  0.33011750 13.838639
+      TCGA.OR.A5LC 12.858309 12.886856  7.735057 11.208920 -0.07357536 10.374633
+      TCGA.OR.A5LD 11.820646 12.992130  7.676673 10.030779  0.26262749 15.356369
+      TCGA.OR.A5LE 11.493788  6.986075  6.495314 11.634413  0.26262749 15.587687
+      TCGA.OR.A5LG 11.780363 13.063998  9.175571 11.472151  0.26262749 13.538897
+      TCGA.OR.A5LH 11.071099 13.157821  8.593547  9.947406  4.34724190 13.859374
+      TCGA.OR.A5LJ 10.985400  8.164139  7.712054 11.764338  4.98246988 15.626000
+      TCGA.OR.A5LK 13.099590 12.143895  9.669779 10.480656  0.33011750 13.501036
+      TCGA.OR.A5LL 11.013328 15.293356  9.928411 11.898220 -0.10359844 17.324383
+      TCGA.OR.A5LM 12.679501 11.632679  7.872749 10.254893  0.33011750 13.980256
+      TCGA.OR.A5LN 12.529432 13.766858  7.072542 11.790672 -0.10359844 13.600687
+      TCGA.OR.A5LO 12.825577 14.146904  7.058026 10.897867 -0.10359844 15.064536
+      TCGA.OR.A5LP 11.684513 12.839854  7.911455 10.582442 -0.10359844 15.045197
+      TCGA.OR.A5LR 11.733251 12.598129  8.072342 10.211449 -0.07357536 13.768626
+      TCGA.OR.A5LS 11.887284  7.588684  8.756840 11.647436 -0.10359844 14.342186
+      TCGA.OR.A5LT 14.282260 13.858966  7.614133 11.062038  0.26262749 13.548040
+      TCGA.OU.A5PI 10.960941 13.491741  8.675222 10.339864 -0.07357536 16.862410
+      TCGA.P6.A5OF 13.208138 12.997281  9.707314 11.334889  2.89909843 15.167540
+      TCGA.P6.A5OG 12.090657  9.751492  9.625923 11.895509 -0.07357536  9.045327
+      TCGA.PA.A5YG 12.085045 14.271829  6.722587 11.366677  0.26262749 16.091886
+      TCGA.PK.A5H8 12.367578 13.790061  8.178715 10.998657  0.33011750 14.543771
+      TCGA.PK.A5H9 11.402620 15.828588 11.998480 12.233730 -0.10359844 10.875213
+      TCGA.PK.A5HA 11.084840 12.321566  7.100180 11.005516  0.26262749 12.172239
+      TCGA.PK.A5HB 10.844988 13.484257  5.819877 12.384637  4.88055647 15.714293
+                       ABCB4       ABCB5     ABCB6    ABCB7    ABCB8     ABCB9
+      TCGA.OR.A5J1 12.627901  5.93617605 14.422123 11.20973 13.30040 11.009391
+      TCGA.OR.A5J2 15.527988  4.41154939 12.241016 12.54019 14.01505 11.193805
+      TCGA.OR.A5J3 15.326332  5.90385860 13.091872 12.18508 14.39887 11.530552
+      TCGA.OR.A5J5 11.531400  2.81116045 13.121685 10.73834 14.52378 12.512473
+      TCGA.OR.A5J6  9.621870 -0.02967030 12.949360 11.42878 13.24254 11.245378
+      TCGA.OR.A5J7 11.829611  4.33941585 15.250734 11.52329 14.05834 11.197663
+      TCGA.OR.A5J8  7.752453  8.34429701 13.509117 11.15309 13.34192 12.572039
+      TCGA.OR.A5J9 12.767721  2.29364867 13.383161 11.36047 14.76438 12.515075
+      TCGA.OR.A5JA 11.120798 13.94739357 12.714386 12.20019 14.16644 12.377359
+      TCGA.OR.A5JB  7.102470  0.15802964 13.555531 12.36371 13.72152 10.607355
+      TCGA.OR.A5JC 13.071066  0.19108500 12.306508 12.07012 13.51243 12.520848
+      TCGA.OR.A5JD  6.926678 11.22157434 12.688374 12.23727 14.25284 11.498731
+      TCGA.OR.A5JE 12.671905  3.85044361 14.580468 11.05407 13.25305 12.117620
+      TCGA.OR.A5JF 15.766555  4.38005473 12.426256 11.90138 15.46721 12.176716
+      TCGA.OR.A5JG  9.775986 10.64341334 13.134552 11.87711 15.30883 12.354939
+      TCGA.OR.A5JI 10.670696  3.11111733 12.842915 11.10761 13.39812 10.667315
+      TCGA.OR.A5JJ 15.758592  3.96258204 13.510764 12.00096 14.47799 12.006279
+      TCGA.OR.A5JK 13.273392  0.19108500 12.742226 11.58444 14.15491 11.529431
+      TCGA.OR.A5JL 11.696789  5.40590997 13.136590 12.85209 14.12145 12.449106
+      TCGA.OR.A5JM 13.148175 -0.04534876 13.955402 10.75313 13.63823 11.214087
+      TCGA.OR.A5JO  8.236223  2.80155332 12.482355 12.00392 12.93357  9.716272
+      TCGA.OR.A5JP  8.791359  0.19108500 14.522461 11.33857 14.29606 12.291859
+      TCGA.OR.A5JQ 10.476605  7.80350880 12.692376 11.86553 13.90037 13.378249
+      TCGA.OR.A5JR  9.226258  5.55602559 11.810587 12.71023 14.31280 11.761827
+      TCGA.OR.A5JS 12.016781  2.36480849 13.460649 11.82013 13.68246 11.348137
+      TCGA.OR.A5JT  7.808273  4.17480825 12.153213 12.28640 13.97738 12.580522
+      TCGA.OR.A5JV  9.869235 10.88782096 11.694630 12.93290 14.18197 11.233644
+      TCGA.OR.A5JW 14.202771  0.15802964 12.183192 12.58664 14.57481 10.919594
+      TCGA.OR.A5JX 13.910144  0.19108500 12.827636 11.72836 13.56820 11.631695
+      TCGA.OR.A5JY 14.182288  5.85103089 13.159592 12.22611 13.62900 11.695713
+      TCGA.OR.A5JZ  7.486756  2.91943026 11.838176 12.48366 12.72201 12.200897
+      TCGA.OR.A5K0 10.087153 -0.04534876 12.333739 11.00808 13.59423 12.310678
+      TCGA.OR.A5K1  5.983679  0.19108500 11.390242 12.10883 14.33103 12.362563
+      TCGA.OR.A5K2 13.685805  5.16613539 14.712360 12.19021 14.51974 11.819509
+      TCGA.OR.A5K3  8.925720 14.26484990 12.996282 12.25446 14.70067 11.687033
+      TCGA.OR.A5K4  8.069775  7.25472330 11.810151 12.90678 13.42439 12.525370
+      TCGA.OR.A5K5 14.503364  3.55074093 13.938731 11.31123 14.06068 12.341107
+      TCGA.OR.A5K6 15.546813 -0.04534876 12.616527 12.05057 12.68202 10.664952
+      TCGA.OR.A5K8 14.127942  6.29394326 13.187611 11.68495 14.53000 11.104399
+      TCGA.OR.A5K9 15.573682 -0.02967030 14.337489 11.78659 13.83189 11.395217
+      TCGA.OR.A5KO 12.136148  3.70069593 11.980073 12.41927 13.64638 10.043758
+      TCGA.OR.A5KT 11.467200  7.69913051 12.915092 11.66527 13.45396 10.538431
+      TCGA.OR.A5KU 13.266624 -0.04534876 13.256756 12.13618 13.45376 12.983143
+      TCGA.OR.A5KV 11.147614 -0.04534876 13.437297 12.05278 13.66036 12.753321
+      TCGA.OR.A5KW 12.167230  6.50180791 13.309017 12.05297 14.02533 13.219561
+      TCGA.OR.A5KX  7.245829 -0.04534876 13.775380 11.07809 13.00819 11.981511
+      TCGA.OR.A5KY 14.516316  6.62509638 14.146311 11.37730 14.87234 12.001963
+      TCGA.OR.A5KZ 12.884223  0.19108500 13.462082 12.24339 13.49890 11.921016
+      TCGA.OR.A5L3 11.785829  3.81209175 14.121846 11.21010 14.20487 10.530906
+      TCGA.OR.A5L4  9.246869 -0.02967030 10.872188 13.37650 14.19592 11.226392
+      TCGA.OR.A5L5 10.434392  5.31156174 12.289379 12.20323 13.53252 12.488703
+      TCGA.OR.A5L6  9.575151  0.19108500 12.496642 11.05192 13.80688 11.496055
+      TCGA.OR.A5L8 15.598999 -0.02967030 12.076372 12.57343 13.79940 12.082605
+      TCGA.OR.A5L9  6.489615 -0.02967030 13.255094 10.59327 13.57916 11.928424
+      TCGA.OR.A5LA  9.296855 -0.04534876 12.770411 11.43414 14.79747 12.495662
+      TCGA.OR.A5LB 14.726537  2.44766157 13.419504 12.76310 14.27115 11.195347
+      TCGA.OR.A5LC  8.506972 -0.04534876 13.196373 11.85434 14.35346 12.009866
+      TCGA.OR.A5LD 14.530540  0.19108500 14.504058 10.41158 13.47785 12.982875
+      TCGA.OR.A5LE 16.828894  3.78215235 14.230588 12.34997 13.99406 10.902473
+      TCGA.OR.A5LG 12.553165  0.19108500 13.975268 12.11666 14.02951 10.314915
+      TCGA.OR.A5LH 10.716066  5.36498538 12.632422 12.67883 14.50497 11.853791
+      TCGA.OR.A5LJ 15.850845  8.87796574 13.346830 12.75634 14.24313  9.989930
+      TCGA.OR.A5LK  8.890444 12.89072946 10.992506 12.26219 13.88692 12.501838
+      TCGA.OR.A5LL 14.719012 -0.02967030 14.282738 12.48086 14.09233  9.897971
+      TCGA.OR.A5LM  8.969774  2.69502752 12.685410 11.86916 13.99401 14.218827
+      TCGA.OR.A5LN  8.694223  3.98013277 12.860100 11.70525 14.09364  9.922554
+      TCGA.OR.A5LO 12.327904 -0.02967030 13.529348 13.40658 13.77252 10.895216
+      TCGA.OR.A5LP  8.643089  6.29846705 11.945296 12.30926 14.56678 11.802008
+      TCGA.OR.A5LR  6.509378 -0.04534876 11.468895 12.31431 12.71500 12.326088
+      TCGA.OR.A5LS 16.007806 -0.02967030 10.258202 12.12220 14.25917 11.105303
+      TCGA.OR.A5LT  8.522069  9.37594068 13.747488 11.31726 12.94774 13.121378
+      TCGA.OU.A5PI 15.557342  5.61059728 13.038715 12.16687 14.53656 11.279898
+      TCGA.P6.A5OF 14.156228  5.13375860 13.233190 12.03506 14.50964 11.547539
+      TCGA.P6.A5OG  6.945205  4.78695122 12.435925 12.42500 12.89395 10.773106
+      TCGA.PA.A5YG  9.938922  9.09098982 12.403545 13.01368 14.50893 11.259753
+      TCGA.PK.A5H8  9.605543  0.15802964 11.377029 12.51720 14.06958 11.889153
+      TCGA.PK.A5H9  9.767089  4.30033713 10.726988 12.36674 12.72723 10.984297
+      TCGA.PK.A5HA  7.810698  5.74516066  9.691334 12.72116 13.57168 10.819508
+      TCGA.PK.A5HB  8.818704  4.90585843 12.784385 12.66690 13.34507 10.957186
+                     ABCC10     ABCC11      ABCC12      ABCC13    ABCC1      ABCC2
+      TCGA.OR.A5J1 13.16161  5.3292982  0.05185961  0.19064992 13.29041  5.1096642
+      TCGA.OR.A5J2 13.10781  4.5226003 -0.01564783 -0.08397367 14.55024  5.8368123
+      TCGA.OR.A5J3 12.61205  5.6576926 -0.01564783 -0.08397367 14.50140  7.5018981
+      TCGA.OR.A5J5 12.88553  5.9369428  0.09387314  0.18335219 14.34338 10.3185081
+      TCGA.OR.A5J6 14.08237  6.2767796 -0.03776783 -0.09264198 14.52875  6.5757813
+      TCGA.OR.A5J7 13.40169  5.0985098 -0.03776783  3.64969244 13.93579  8.5759520
+      TCGA.OR.A5J8 12.60092  4.2708725  4.97531012  2.58178385 13.85294  8.3451584
+      TCGA.OR.A5J9 12.67098  5.4606780 -0.03776783 -0.09264198 14.63216  6.4716755
+      TCGA.OR.A5JA 13.62058  4.3656038 -0.03776783 -0.09264198 14.78906  5.2119733
+      TCGA.OR.A5JB 12.57421  3.8631173  0.09387314  3.01736583 14.82651  6.4487728
+      TCGA.OR.A5JC 13.81887  4.8650021  0.05185961  0.19064992 14.59549 10.9619702
+      TCGA.OR.A5JD 11.83714  5.3502360 -0.01564783 -0.08397367 13.76353  7.9500545
+      TCGA.OR.A5JE 13.39268  5.4212315 -0.01564783 -0.08397367 12.80411  5.4173619
+      TCGA.OR.A5JF 11.93456  5.6380925 -0.01564783  2.07502485 14.68969  8.4359917
+      TCGA.OR.A5JG 11.58522  6.6638453  0.05185961  0.19064992 14.34386  6.2164573
+      TCGA.OR.A5JI 12.41748  6.1303285  0.09387314  0.18335219 13.23359  8.0005710
+      TCGA.OR.A5JJ 11.78908  5.0053756  0.05185961  2.58362832 13.74491  5.8696691
+      TCGA.OR.A5JK 12.64125  3.3677309  0.05185961  0.19064992 14.17372  6.7821423
+      TCGA.OR.A5JL 13.54356  4.5836207  3.45875821 -0.09264198 13.05617  7.5617769
+      TCGA.OR.A5JM 13.81486  6.2131351 -0.01564783 -0.08397367 13.22478  7.5657872
+      TCGA.OR.A5JO 11.90734  3.5318035 -0.03776783 -0.09264198 14.04592  9.6192001
+      TCGA.OR.A5JP 12.91244  4.9301573  2.81927816  5.25085834 13.90828  6.5945032
+      TCGA.OR.A5JQ 12.54887  5.7731991 -0.03776783 -0.09264198 13.95212  5.7562235
+      TCGA.OR.A5JR 12.74128  5.9518541  0.05185961  0.19064992 14.41127  5.6029674
+      TCGA.OR.A5JS 12.72787  6.0474583 -0.03776783  2.16912034 14.50175  7.1321666
+      TCGA.OR.A5JT 12.55139  5.5303888 -0.01564783 -0.08397367 14.44761  5.3890083
+      TCGA.OR.A5JV 11.92502  4.8499964  0.05185961  4.25649981 14.37903  6.5150835
+      TCGA.OR.A5JW 13.52809  3.5295911  0.09387314  0.18335219 14.17210  9.6002762
+      TCGA.OR.A5JX 13.08851  6.1117618  0.05185961  0.19064992 14.05527  9.2390974
+      TCGA.OR.A5JY 13.52103  5.5893670 -0.03776783  2.41529729 15.22754 10.8906392
+      TCGA.OR.A5JZ 12.15231  5.4759914  0.05185961  0.19064992 14.45442  6.4441137
+      TCGA.OR.A5K0 12.85487  2.7016068  4.35477564 -0.08397367 14.14423  4.4321272
+      TCGA.OR.A5K1 12.49338  4.2645682  0.05185961  0.19064992 14.53093  3.7299006
+      TCGA.OR.A5K2 13.78330  4.3545863 -0.03776783 -0.09264198 14.43785  0.4310837
+      TCGA.OR.A5K3 12.57718  4.8758715  0.05185961  0.19064992 14.36790  5.4332433
+      TCGA.OR.A5K4 12.13202  6.2093723 -0.03776783 -0.09264198 15.29621  8.7681789
+      TCGA.OR.A5K5 13.02271  4.6355552 -0.01564783  3.31279901 14.38859  4.8819212
+      TCGA.OR.A5K6 12.67984  2.6368641 -0.01564783 -0.08397367 12.81363  5.4940350
+      TCGA.OR.A5K8 12.74059  0.3054686  0.09387314  0.18335219 14.11454  7.8708009
+      TCGA.OR.A5K9 13.38561  2.6324775 -0.03776783 -0.09264198 14.23308  7.6586560
+      TCGA.OR.A5KO 13.74182  4.4571381 -0.03776783 -0.09264198 13.97713  8.1201895
+      TCGA.OR.A5KT 12.38316  6.1101173 -0.01564783  3.31557147 13.81638  4.5885872
+      TCGA.OR.A5KU 11.96745  3.1492354  3.03293921  3.09130609 14.59418  8.6329244
+      TCGA.OR.A5KV 13.08763  5.8644812 -0.01564783  2.25314125 13.84582  3.9915187
+      TCGA.OR.A5KW 12.26447  5.5208450  3.93464661 -0.09264198 15.00791  6.3180990
+      TCGA.OR.A5KX 13.65668  2.6611796  2.57636247 -0.08397367 14.86245  6.6484296
+      TCGA.OR.A5KY 12.94852  5.0004098 -0.01564783  2.35704657 13.99097  5.7097122
+      TCGA.OR.A5KZ 13.41787  5.3901565  0.05185961  0.19064992 14.47905  4.3824488
+      TCGA.OR.A5L3 13.09501  4.5697283 -0.03776783 -0.09264198 13.04176  6.3508594
+      TCGA.OR.A5L4 13.33109  4.0300928 -0.03776783 -0.09264198 14.92362  4.3534305
+      TCGA.OR.A5L5 12.33194  4.5103316 -0.01564783 -0.08397367 13.65365  7.3621864
+      TCGA.OR.A5L6 13.11197  0.2990896  0.05185961  0.19064992 14.21818 11.3128317
+      TCGA.OR.A5L8 12.64516  4.3022079 -0.03776783 -0.09264198 12.94988  7.0960831
+      TCGA.OR.A5L9 12.54487 -0.1114542 -0.03776783 -0.09264198 15.16214  5.9081720
+      TCGA.OR.A5LA 11.78608  3.3857236 -0.01564783 -0.08397367 13.96635  0.3879709
+      TCGA.OR.A5LB 12.00157  3.5429818  0.09387314  0.18335219 14.24366  6.8330143
+      TCGA.OR.A5LC 12.27459  3.9067941 -0.01564783 -0.08397367 13.85231  7.5560219
+      TCGA.OR.A5LD 13.53892  5.2932121  0.05185961  0.19064992 15.46953  3.8589592
+      TCGA.OR.A5LE 12.94729  5.5258572  3.42479085  0.19064992 14.13891  6.1650271
+      TCGA.OR.A5LG 13.87797  0.2990896  0.05185961  0.19064992 13.35190  5.5250125
+      TCGA.OR.A5LH 12.58952  5.3033639 -0.01564783  3.69081716 13.47142  6.5331826
+      TCGA.OR.A5LJ 12.49126  4.9425563 -0.01564783  2.71159268 13.69263  8.4600757
+      TCGA.OR.A5LK 12.78082  5.2317688  0.09387314  0.18335219 12.70614  7.2901017
+      TCGA.OR.A5LL 12.62457  4.6947086 -0.03776783 -0.09264198 14.86398  8.4669305
+      TCGA.OR.A5LM 12.66611  5.0140494  0.09387314  0.18335219 13.92584  6.4042028
+      TCGA.OR.A5LN 13.49778  3.7756962 -0.03776783 -0.09264198 12.20632  9.2338578
+      TCGA.OR.A5LO 12.75881  6.0345838 -0.03776783 -0.09264198 14.26485  8.1012991
+      TCGA.OR.A5LP 12.44105  5.7016579 -0.03776783 -0.09264198 14.38732  7.4437084
+      TCGA.OR.A5LR 12.53207  5.1151141 -0.01564783  3.14357707 14.96019  5.8857107
+      TCGA.OR.A5LS 12.29561  7.6413436  2.77946862 -0.09264198 13.85025  8.8465924
+      TCGA.OR.A5LT 12.69322  4.7949445  3.62472241  0.19064992 13.36833  8.7045186
+      TCGA.OU.A5PI 11.87401  4.8941375 -0.01564783  3.55185543 13.63066  7.2087019
+      TCGA.P6.A5OF 13.20146  4.4200665 -0.03776783  2.26286603 14.00382  8.4396243
+      TCGA.P6.A5OG 12.84190 -0.1095393  7.26626408  3.78946929 13.06255  7.0121618
+      TCGA.PA.A5YG 12.29097  3.7728941  0.05185961  2.94314130 14.28822  6.4075588
+      TCGA.PK.A5H8 13.75938  6.0987109  0.09387314  0.18335219 14.89675  6.9515078
+      TCGA.PK.A5H9 12.93776  4.9098933 -0.03776783 -0.09264198 15.60967 12.5336028
+      TCGA.PK.A5HA 12.78639  4.4854207  0.05185961  0.19064992 13.46308  7.1129616
+      TCGA.PK.A5HB 13.23761  5.8955586  0.05185961  0.19064992 15.83671  9.0014442
+                       ABCC3     ABCC4    ABCC5     ABCC6P1   ABCC6P2     ABCC6
+      TCGA.OR.A5J1 13.240045 10.997977 13.88836  4.29531917  8.887106  7.218820
+      TCGA.OR.A5J2 13.437708 11.157786 13.98866  4.47937574  7.795190  7.748703
+      TCGA.OR.A5J3 15.939524  9.604621 13.53648  4.46172091  6.120878  6.788335
+      TCGA.OR.A5J5 16.251775  7.500973 14.04824  9.55891664 10.141018 10.158497
+      TCGA.OR.A5J6 11.119734  9.550006 12.79545  7.63315901  9.816386 12.498346
+      TCGA.OR.A5J7 15.193308  9.184811 14.70851  6.87383419 11.210929 10.769837
+      TCGA.OR.A5J8 11.143314 11.178645 13.27224  8.21571708  8.337173  9.650109
+      TCGA.OR.A5J9 11.482591  9.938524 13.28754  8.60491283  8.982933  9.465941
+      TCGA.OR.A5JA 14.481975 10.446237 13.24651  3.39855724  5.011925  7.682096
+      TCGA.OR.A5JB 14.741219 10.501776 14.00448  8.08146173  9.367166 10.930998
+      TCGA.OR.A5JC 13.437843 10.273594 13.30104  3.14988926  8.722842  9.579446
+      TCGA.OR.A5JD 14.434410  8.899352 13.07709  7.40739575  8.604763 10.176361
+      TCGA.OR.A5JE 14.868360  8.823171 13.32340  5.36208565 10.007033  8.076682
+      TCGA.OR.A5JF 15.500506  9.957970 13.19169  2.93549162  7.878185  8.565604
+      TCGA.OR.A5JG 16.772162 10.318528 12.74266  0.24612277  5.713127  6.441566
+      TCGA.OR.A5JI 14.371663  9.228711 11.75817 10.01805630 11.641798 11.694509
+      TCGA.OR.A5JJ 11.818794 10.891697 13.47721  6.63228647  9.425512  9.201948
+      TCGA.OR.A5JK 11.687907  8.070468 13.33976  0.24612277  9.456049  8.108969
+      TCGA.OR.A5JL 13.155952 10.447129 12.94219  2.23103857  8.366688 10.829250
+      TCGA.OR.A5JM 14.005582  9.444885 13.73849  7.48276269  9.100007  9.789696
+      TCGA.OR.A5JO 13.463380 11.195541 12.64020 10.40503419  9.769440 12.831840
+      TCGA.OR.A5JP 15.433895  8.110397 11.83771  7.26789799  9.951793  9.415337
+      TCGA.OR.A5JQ 14.038209  9.774942 12.64297  8.55834891  9.425857  9.554132
+      TCGA.OR.A5JR 13.221913 10.607150 13.20435  9.05008047  8.160736 10.866175
+      TCGA.OR.A5JS 14.610469  9.065684 14.13063  8.51498239 10.051959 11.540368
+      TCGA.OR.A5JT 11.350859 10.609869 11.97770  5.75259531  7.433654 10.760408
+      TCGA.OR.A5JV 11.338180 12.090573 14.37435  4.95013339  7.201717  7.756908
+      TCGA.OR.A5JW 16.280881  9.630500 13.57176  3.60780945  4.896952  6.729680
+      TCGA.OR.A5JX 14.368807  8.957153 13.84265  5.54605551  7.339953  6.803599
+      TCGA.OR.A5JY 15.128994  5.017293 13.61962  5.90304758  6.482773  9.271176
+      TCGA.OR.A5JZ 14.297189 11.202410 11.67666  7.79728036  5.850080  5.748603
+      TCGA.OR.A5K0 13.938192  8.618321 13.47751  5.29819075  8.735382 10.371932
+      TCGA.OR.A5K1 13.263347 10.329575 12.68477  7.89488067  9.137745 12.129895
+      TCGA.OR.A5K2 14.582351  8.929166 13.42168  3.38822369 10.088922  8.644631
+      TCGA.OR.A5K3 10.817968  8.438947 12.46596  5.53302407  8.879282  8.723080
+      TCGA.OR.A5K4 11.751034 10.861175 12.11268  4.20225623  7.465220  7.772205
+      TCGA.OR.A5K5 12.552314  7.410062 14.10853  8.56309885 10.234649 10.382149
+      TCGA.OR.A5K6 16.656593 10.732378 13.26078  7.55303541  8.579018  9.139704
+      TCGA.OR.A5K8 15.132084 10.088594 13.30279  4.28178200  4.107651  7.259082
+      TCGA.OR.A5K9 15.666019 11.772326 13.53657  7.38457598  8.963829 10.452848
+      TCGA.OR.A5KO 16.236938  8.987442 14.88290  9.17950785 10.180690 11.185074
+      TCGA.OR.A5KT 16.034326 10.214524 12.50129 -0.07069528  5.369728  8.443580
+      TCGA.OR.A5KU 11.457308  8.335091 13.30082  6.14776650  8.625404  4.708383
+      TCGA.OR.A5KV 13.769600  8.806922 13.00478  5.98665073  7.545402  8.085513
+      TCGA.OR.A5KW 14.322674 10.540091 13.70281 -0.06764931  2.798537  6.014691
+      TCGA.OR.A5KX 15.648018 11.008970 12.80345  4.47357689  5.875377  7.583822
+      TCGA.OR.A5KY 15.988972  9.765175 13.70898  5.44889566  5.703654  6.565345
+      TCGA.OR.A5KZ 11.358698 12.059580 12.84822  4.02303115  8.730911  9.345533
+      TCGA.OR.A5L3 16.332953  5.288600 13.67998  6.29122495  7.975306  9.348699
+      TCGA.OR.A5L4 14.281730 10.710483 12.70377  3.08556201  7.780644  8.566452
+      TCGA.OR.A5L5 14.333902  9.630356 12.74677 10.00085548  9.033734 11.506220
+      TCGA.OR.A5L6 15.980742  8.826608 13.33934  7.02298044  9.413527 10.174448
+      TCGA.OR.A5L8 15.172771  9.583753 14.28735  6.66272773  8.659501 10.043283
+      TCGA.OR.A5L9 12.576504  9.258124 12.94684  6.59690458  9.390503 11.532038
+      TCGA.OR.A5LA 14.219066  9.899541 12.75462 -0.07069528  7.044466 10.546011
+      TCGA.OR.A5LB 15.504055  8.677563 13.80275  5.91734161  7.008100  6.520421
+      TCGA.OR.A5LC 13.428345 12.106596 14.05742 -0.07069528  8.692452  7.083467
+      TCGA.OR.A5LD 14.440146  6.960313 12.61050  0.24612277  9.285293  6.923941
+      TCGA.OR.A5LE  9.859903 11.357597 13.87729  0.24612277  8.093771  7.258368
+      TCGA.OR.A5LG 16.166523  6.989807 13.95369  0.24612277  5.375331  6.820094
+      TCGA.OR.A5LH 13.739706 10.214803 13.28223  6.90576339  8.793050 10.784936
+      TCGA.OR.A5LJ 14.391198 12.118103 15.13158  8.45014115  9.137239  8.907374
+      TCGA.OR.A5LK 12.551465 10.531988 13.93115  7.46179103  9.960531 10.436295
+      TCGA.OR.A5LL 16.093353  6.848855 13.65468  3.70874091  7.360795  9.787797
+      TCGA.OR.A5LM 14.168637 10.607271 13.17095  5.60459517  8.047557 10.708326
+      TCGA.OR.A5LN 14.739803  9.341647 12.65214  6.65245866  9.651638 10.393208
+      TCGA.OR.A5LO 14.092672 11.019789 14.49746  4.03759084  6.087993  6.179381
+      TCGA.OR.A5LP 14.619527 10.655674 12.26496  6.13583509  7.640036  9.601172
+      TCGA.OR.A5LR 14.199448 10.475983 12.49861  9.24190700  8.302212 10.875762
+      TCGA.OR.A5LS 14.633945  9.011082 14.67367  8.24009818 10.286732  9.827046
+      TCGA.OR.A5LT 11.608098  9.574375 12.72906  7.29958786  9.958303  8.975065
+      TCGA.OU.A5PI 14.967083  9.776438 14.20618  3.59462843  6.604147  8.174684
+      TCGA.P6.A5OF 15.177494 11.714455 14.07832  4.63511101  5.468251  6.731756
+      TCGA.P6.A5OG  9.758348 11.528135 13.85774  4.22421776  6.094122  6.050376
+      TCGA.PA.A5YG 14.988984 10.922541 14.18084  0.24612277  6.615930  9.597279
+      TCGA.PK.A5H8 11.824811 10.646961 13.60357  8.89022611 10.216730 13.325551
+      TCGA.PK.A5H9 13.557051 11.351949 12.53679 13.66247437 12.325302 15.520583
+      TCGA.PK.A5HA 14.078280  9.610481 13.04236  9.31269854  9.337184 11.009742
+      TCGA.PK.A5HB 14.764217 11.207120 12.53590  3.24913144  4.925746  6.942882
+                        ABCC8     ABCC9    ABCD1     ABCD2    ABCD3    ABCD4    ABCE1
+      TCGA.OR.A5J1  0.3037592  7.595200 14.61256 10.776205 13.03394 12.97007 13.91780
+      TCGA.OR.A5J2 -0.1003315 11.371243 14.25170 12.856370 13.02449 11.90722 13.72855
+      TCGA.OR.A5J3  2.4744354 13.272478 13.91136  8.095418 13.24290 13.25307 13.13231
+      TCGA.OR.A5J5  5.5455496  9.628959 14.75494  6.986966 12.16068 13.48531 12.96832
+      TCGA.OR.A5J6 -0.0921249  9.836416 14.22173  8.254769 13.84055 12.18070 13.33796
+      TCGA.OR.A5J7 -0.0921249  9.525199 13.93690  6.861867 12.83966 12.61992 13.09589
+      TCGA.OR.A5J8  2.9429591 10.343757 11.81281  8.016188 13.01532 12.98475 13.59167
+      TCGA.OR.A5J9  2.0089557  9.720105 13.96092 11.132221 12.66038 12.24706 14.01843
+      TCGA.OR.A5JA  2.3699453 10.291932 14.54084  6.767244 12.93188 13.29751 13.57554
+      TCGA.OR.A5JB  3.4170129  8.872239 13.19639  6.962746 13.71697 13.47215 13.90842
+      TCGA.OR.A5JC  4.5386187  9.577514 14.93721  7.722993 12.91628 12.56564 13.45780
+      TCGA.OR.A5JD  5.5988778 10.542870 14.10717 10.100271 13.09498 11.55396 13.75094
+      TCGA.OR.A5JE -0.1003315  8.794923 14.47751  7.095176 13.21342 12.85934 13.25066
+      TCGA.OR.A5JF -0.1003315 14.048881 14.25557 11.135162 12.64434 11.73418 14.08059
+      TCGA.OR.A5JG  0.3037592  9.383788 14.27868  8.799716 13.91744 12.94935 14.01004
+      TCGA.OR.A5JI  0.2889871 11.788579 14.91950  9.315616 12.18581 12.14252 13.56233
+      TCGA.OR.A5JJ  0.3037592  9.101508 14.10346 11.155020 12.84235 13.31211 13.25476
+      TCGA.OR.A5JK  0.3037592  9.645079 14.72035 10.389232 12.19665 11.88251 13.72780
+      TCGA.OR.A5JL  3.7609661 10.459333 14.74833 10.601814 12.92876 13.56254 13.67744
+      TCGA.OR.A5JM -0.1003315 11.712231 15.49640 10.688587 13.73607 11.62273 13.54597
+      TCGA.OR.A5JO  4.7305057 10.086122 13.03298  7.323555 13.13220 13.36598 13.14726
+      TCGA.OR.A5JP  3.0708167 10.901034 14.95501  7.759701 14.56931 12.36536 14.29132
+      TCGA.OR.A5JQ  3.0659854 11.240883 14.65156 10.148572 12.91432 11.83565 13.95372
+      TCGA.OR.A5JR  0.3037592  9.288554 15.83633 10.298032 13.68471 12.04198 13.87169
+      TCGA.OR.A5JS -0.0921249  9.813868 14.27334  9.136021 12.57284 12.33545 13.24221
+      TCGA.OR.A5JT  2.3723469  9.868509 16.37846 11.245801 13.81187 12.10077 13.82497
+      TCGA.OR.A5JV  0.3037592  9.880337 15.25479 10.236371 13.20844 11.51598 13.95913
+      TCGA.OR.A5JW  0.2889871 10.767583 14.21326 11.754641 13.47844 12.74173 13.88494
+      TCGA.OR.A5JX  0.3037592 10.175100 13.72449  8.856902 12.83793 12.51126 13.37485
+      TCGA.OR.A5JY -0.0921249 13.085590 16.04981 11.916232 15.09247 12.30054 13.47804
+      TCGA.OR.A5JZ  0.3037592 11.134356 15.68506  8.459449 13.49897 12.07371 12.98059
+      TCGA.OR.A5K0 -0.1003315  5.339368 14.85449 10.406527 12.55494 12.80336 13.33267
+      TCGA.OR.A5K1  0.3037592 10.319421 14.74053  8.815358 12.85074 12.06779 12.93620
+      TCGA.OR.A5K2 -0.0921249  9.248839 15.85964  6.878340 13.46501 12.85972 13.10594
+      TCGA.OR.A5K3  0.3037592  9.045718 14.44064  9.752357 13.05189 12.09015 13.12389
+      TCGA.OR.A5K4 -0.0921249  9.211453 16.45102  9.642190 13.26646 11.99953 13.75648
+      TCGA.OR.A5K5  5.7919880 11.324002 14.10453  8.232449 12.61329 12.38581 13.23743
+      TCGA.OR.A5K6 -0.1003315  9.536718 14.22088  9.031122 13.00311 13.00985 13.77142
+      TCGA.OR.A5K8  0.2889871 10.737199 14.99278  8.808567 13.00237 12.13697 13.94211
+      TCGA.OR.A5K9 -0.0921249 10.071773 14.59132 11.376451 13.76859 12.18850 14.51835
+      TCGA.OR.A5KO  2.4450437  8.395548 15.18980  6.497455 13.11086 13.38055 14.16573
+      TCGA.OR.A5KT  3.1544267 11.037529 14.93854  5.884003 13.32312 13.16660 13.15331
+      TCGA.OR.A5KU  2.9397128  9.847198 14.09521 10.923975 12.89506 11.72364 14.11186
+      TCGA.OR.A5KV  5.1493178  9.312346 14.51423  7.618547 13.45786 11.73142 13.74331
+      TCGA.OR.A5KW  4.7785563  9.932494 14.78751  9.101902 13.14168 12.38266 13.33997
+      TCGA.OR.A5KX -0.1003315  9.972798 13.74288  7.992301 13.05953 13.65377 13.11830
+      TCGA.OR.A5KY  3.0546973 10.130842 14.16285  9.681607 13.31061 12.56380 13.65936
+      TCGA.OR.A5KZ  0.3037592 12.170114 12.96429 10.030681 13.09249 12.59096 14.59455
+      TCGA.OR.A5L3 -0.0921249  8.614362 15.38223 10.286021 13.31521 12.49570 13.35713
+      TCGA.OR.A5L4 -0.0921249 12.485733 15.41493  5.583160 12.93478 12.44647 13.69863
+      TCGA.OR.A5L5  5.6718887 10.948417 14.27151 10.895823 13.17008 12.46712 13.09490
+      TCGA.OR.A5L6  0.3037592 11.998117 14.25906 10.128736 11.79276 12.39075 13.05028
+      TCGA.OR.A5L8  4.3168389  9.241544 12.94616 12.728435 13.56407 12.32842 13.84437
+      TCGA.OR.A5L9 -0.0921249 11.263572 16.87598  8.758108 12.30565 12.05842 12.52698
+      TCGA.OR.A5LA -0.1003315 10.472724 15.19671 10.038289 12.29762 12.81509 13.46013
+      TCGA.OR.A5LB  6.8534512  9.464135 14.65967 10.197811 12.95834 13.26940 14.09201
+      TCGA.OR.A5LC -0.1003315 10.057656 14.54987  9.500042 12.18285 12.17781 13.30967
+      TCGA.OR.A5LD  5.0186662  9.004127 14.57213 10.131122 13.14708 13.48069 13.24950
+      TCGA.OR.A5LE  0.3037592 10.809496 14.72009 12.102448 14.08191 12.40281 14.41388
+      TCGA.OR.A5LG  0.3037592  8.733043 14.28414  4.712985 13.26801 13.41606 13.98201
+      TCGA.OR.A5LH -0.1003315  9.027272 15.18479 10.188256 13.38206 12.55965 13.70748
+      TCGA.OR.A5LJ  4.6126652 13.224370 14.51730  9.225367 12.97197 12.49212 13.95860
+      TCGA.OR.A5LK  0.2889871  9.893167 15.90062  9.456054 12.76540 12.30570 13.43160
+      TCGA.OR.A5LL  2.6424679 10.015510 14.25458  9.455313 11.99297 12.03213 14.22719
+      TCGA.OR.A5LM  3.3767522 11.217754 14.54096 10.300207 12.50137 12.29701 13.86566
+      TCGA.OR.A5LN -0.0921249 12.093054 15.02000  9.412384 12.76349 12.14317 14.04398
+      TCGA.OR.A5LO  8.2343307  9.978437 13.40967  6.133160 12.42285 13.53853 13.64769
+      TCGA.OR.A5LP  3.0048919 11.584084 14.73137 10.994668 13.17262 11.67818 13.16472
+      TCGA.OR.A5LR -0.1003315  9.666794 16.05328 10.221424 13.02941 12.52720 12.74789
+      TCGA.OR.A5LS  2.7172171  9.551679 13.84442 10.169499 13.52716 12.43969 12.91628
+      TCGA.OR.A5LT  0.3037592 10.579427 14.11591  8.507666 13.65766 11.97905 13.53973
+      TCGA.OU.A5PI  7.4689376 10.262637 13.61444 11.100793 12.92549 12.33381 14.07883
+      TCGA.P6.A5OF -0.0921249 11.617465 14.59633 10.769085 12.97400 12.57294 13.49210
+      TCGA.P6.A5OG  2.2765672 12.545232 11.97903  6.387037 12.86913 12.76011 14.52617
+      TCGA.PA.A5YG  3.3418053 13.224307 13.75321 13.029267 13.30656 12.31363 13.33538
+      TCGA.PK.A5H8  0.2889871 10.566536 15.89040  8.136629 13.10477 12.40811 13.26725
+      TCGA.PK.A5H9  2.6832010  9.635772 14.51855  5.210348 14.81445 12.91994 13.12880
+      TCGA.PK.A5HA  0.3037592 10.973943 14.66655  5.818577 12.28240 12.12772 12.37453
+      TCGA.PK.A5HB  0.3037592 13.162500 15.13181  6.028656 14.15582 12.42869 13.21222
+                      ABCF1    ABCF2    ABCF3     ABCG1     ABCG2     ABCG4
+      TCGA.OR.A5J1 13.85600 13.38771 16.47051 11.890977  9.469289 4.5157039
+      TCGA.OR.A5J2 14.15618 14.13617 15.24449 13.242113 11.409781 5.8153124
+      TCGA.OR.A5J3 13.42826 14.51880 14.52920  9.921823 12.452739 5.7721971
+      TCGA.OR.A5J5 12.49995 13.92688 15.38830  9.273230  7.565785 6.5796895
+      TCGA.OR.A5J6 14.38656 13.42897 14.03926 10.465322 10.336368 8.5327829
+      TCGA.OR.A5J7 14.72314 13.69440 15.34806 10.409798 10.704626 8.5257231
+      TCGA.OR.A5J8 14.58975 14.23383 13.80253 13.524961 10.339979 6.8701976
+      TCGA.OR.A5J9 13.97275 14.16527 15.81533 13.324305 13.277464 4.3440773
+      TCGA.OR.A5JA 14.57677 14.02471 15.38878 10.972329  6.115660 4.5394851
+      TCGA.OR.A5JB 14.57081 14.54121 14.71275 15.008980  6.886463 6.8150438
+      TCGA.OR.A5JC 14.05933 13.54022 16.29882 13.717808  9.925368 4.2538050
+      TCGA.OR.A5JD 13.16179 13.92596 15.21113 11.142485 11.306157 8.0670400
+      TCGA.OR.A5JE 14.72965 13.09367 15.75178 13.329556  9.749562 5.4484904
+      TCGA.OR.A5JF 13.29667 14.12076 14.63449 12.634735 10.783682 5.6593243
+      TCGA.OR.A5JG 14.00296 14.46420 15.05799 10.177203  9.667467 4.0409003
+      TCGA.OR.A5JI 13.39448 13.29783 15.55446 15.679428 12.364534 5.5320852
+      TCGA.OR.A5JJ 13.50408 14.18098 14.30063 15.064277  9.427600 3.6628042
+      TCGA.OR.A5JK 13.58564 14.26833 15.09501 12.607832 10.004438 0.4322635
+      TCGA.OR.A5JL 14.58123 14.00952 14.80884 11.603793 11.176604 4.4472503
+      TCGA.OR.A5JM 14.54160 13.43435 14.49207 10.364718  9.617851 7.4559903
+      TCGA.OR.A5JO 14.06079 13.33278 13.90827 11.754934  8.981677 6.5164581
+      TCGA.OR.A5JP 14.04970 13.78581 14.70573 15.112989 10.289267 6.1010880
+      TCGA.OR.A5JQ 13.79851 14.10037 15.80691 13.165525 11.510365 6.2441961
+      TCGA.OR.A5JR 13.94030 14.21054 15.69962 11.714766 11.848879 5.3597471
+      TCGA.OR.A5JS 14.01208 13.94466 14.71535 10.063457  7.354366 6.7987947
+      TCGA.OR.A5JT 13.90917 14.37145 14.81964 15.037913 11.166098 5.8818507
+      TCGA.OR.A5JV 14.20431 14.33361 15.11925 13.072210 10.311529 6.6096880
+      TCGA.OR.A5JW 14.53929 14.08382 14.51392 14.259692 10.917639 3.7886402
+      TCGA.OR.A5JX 13.64275 14.24647 16.40205 10.876372  9.493848 5.7770177
+      TCGA.OR.A5JY 14.68318 14.45642 14.71979 10.253801  8.792399 4.4662451
+      TCGA.OR.A5JZ 13.82467 13.43355 15.50600 15.009690  9.071596 6.0435711
+      TCGA.OR.A5K0 14.80593 14.23579 14.15765  8.273466  7.883361 4.7352148
+      TCGA.OR.A5K1 13.99123 14.26813 15.18749 13.784226 12.093898 6.2934739
+      TCGA.OR.A5K2 13.89955 13.56543 16.27819 13.124216  7.704076 3.3061421
+      TCGA.OR.A5K3 13.47592 14.01502 15.33476 12.709669 10.156875 5.2030277
+      TCGA.OR.A5K4 13.86176 13.38996 15.25008 15.219600  8.738337 5.6211392
+      TCGA.OR.A5K5 14.95555 13.98390 14.88227 10.908604  6.414508 6.9998333
+      TCGA.OR.A5K6 13.87686 12.80908 15.06139 12.033246  7.184190 4.6638683
+      TCGA.OR.A5K8 12.96016 14.01537 14.61630 12.956351  9.367876 4.4683126
+      TCGA.OR.A5K9 14.54768 14.11713 14.23552 12.777606  7.712050 5.8705178
+      TCGA.OR.A5KO 14.34715 13.76745 15.30256 12.106025  9.296187 5.4415425
+      TCGA.OR.A5KT 13.42105 13.45765 15.21224 12.669338  9.457878 7.0028531
+      TCGA.OR.A5KU 13.84253 14.01968 14.94866 12.686276  6.790783 5.2181844
+      TCGA.OR.A5KV 13.93873 14.10007 15.52077 13.388965  9.372639 9.2753959
+      TCGA.OR.A5KW 13.75988 14.71226 15.08541 13.368828  9.837941 3.4746108
+      TCGA.OR.A5KX 13.77444 13.34773 15.04267 14.273670  8.180400 7.2418367
+      TCGA.OR.A5KY 13.35574 13.85360 15.61630 13.636097 10.667903 4.8547943
+      TCGA.OR.A5KZ 15.04423 13.95404 14.79019 12.344587 10.401359 6.5869143
+      TCGA.OR.A5L3 13.57329 13.47482 15.16522 13.560423  8.462811 7.5797228
+      TCGA.OR.A5L4 14.56623 14.42665 15.68682 11.184319 10.052789 4.8527606
+      TCGA.OR.A5L5 13.40974 13.63305 15.30402 14.327942 11.331679 4.9353724
+      TCGA.OR.A5L6 13.23724 13.11003 15.99857 12.944057 11.470492 5.5108360
+      TCGA.OR.A5L8 13.63878 14.36536 15.95146 14.828716 12.986432 4.4774177
+      TCGA.OR.A5L9 12.85436 12.70730 15.61431 14.011315  9.355524 6.4734383
+      TCGA.OR.A5LA 13.41903 14.39652 15.25872 16.283511 11.767211 7.2670491
+      TCGA.OR.A5LB 13.15902 14.08382 14.76507 12.895353 10.064496 6.2394715
+      TCGA.OR.A5LC 13.27404 13.93487 14.98066 12.306251  9.045732 5.6938144
+      TCGA.OR.A5LD 14.06531 13.27936 15.30615 11.541058 10.554895 6.2033395
+      TCGA.OR.A5LE 13.68391 13.91999 14.10133 11.356535  8.734804 4.9238689
+      TCGA.OR.A5LG 14.22088 14.16447 15.49588 10.345196 13.014264 5.5395846
+      TCGA.OR.A5LH 13.71156 14.23235 15.29852 12.922516 11.659434 7.5839594
+      TCGA.OR.A5LJ 13.22032 14.21891 14.74908 10.775136 10.421109 7.2586513
+      TCGA.OR.A5LK 13.74550 14.02286 15.13088 12.512752 12.073614 7.8244317
+      TCGA.OR.A5LL 14.25904 13.71025 13.95446 14.735373 11.087877 4.5549627
+      TCGA.OR.A5LM 13.91004 14.29912 16.38168 11.366872 11.030119 5.5881580
+      TCGA.OR.A5LN 13.85985 13.84863 15.38679 11.707784 11.456842 3.6638758
+      TCGA.OR.A5LO 13.44680 13.43012 16.09124 12.387403  8.339062 5.4524617
+      TCGA.OR.A5LP 13.68033 14.48839 14.44054 12.178893 11.417331 5.6429822
+      TCGA.OR.A5LR 13.48482 13.52920 15.61658 14.188540 10.679360 4.9660132
+      TCGA.OR.A5LS 13.35009 13.98786 14.90712 12.879726  9.732417 7.0217859
+      TCGA.OR.A5LT 12.95453 12.86651 14.66152 12.025924 10.710708 5.5151680
+      TCGA.OU.A5PI 13.39189 14.30628 15.77611 13.705952 13.449975 5.0030140
+      TCGA.P6.A5OF 13.03668 13.76461 14.22575 13.597357  9.973454 4.5369474
+      TCGA.P6.A5OG 14.60496 14.42896 13.71730 12.444731 10.198775 8.1169088
+      TCGA.PA.A5YG 13.69199 14.44714 15.58595 14.816498 13.029861 5.5415855
+      TCGA.PK.A5H8 13.95318 14.16347 15.48129 11.067303  8.101140 5.4995909
+      TCGA.PK.A5H9 14.12004 12.93571 14.43071 12.972413 11.906303 5.4708862
+      TCGA.PK.A5HA 14.51054 13.79817 15.19925 12.861917 10.155505 6.8859858
+      TCGA.PK.A5HB 13.86989 14.04274 14.91148 11.611378  9.983782 5.7428893
+                        ABCG5       ABCG8   ABHD10   ABHD11     ABHD12B   ABHD12
+      TCGA.OR.A5J1  5.3631959  0.07601630 14.15168 12.55020  0.23126156 14.30883
+      TCGA.OR.A5J2  3.2193821  4.44733884 14.10761 12.72473  7.78853755 13.44072
+      TCGA.OR.A5J3  3.5026741 -0.03146337 13.53541 13.59900  4.28916760 13.23005
+      TCGA.OR.A5J5  6.9217562  5.72283176 13.87027 13.06936  0.28056227 13.37303
+      TCGA.OR.A5J6  4.4322430  5.19115248 13.03036 11.81174  2.48704918 14.18849
+      TCGA.OR.A5J7  6.0557711  3.69217000 13.12461 12.86806 -0.11307660 14.06760
+      TCGA.OR.A5J8  4.6092301  0.07601630 12.47359 11.96754  5.25074330 14.82657
+      TCGA.OR.A5J9  3.8537824 -0.02143046 13.62176 12.51312 -0.11307660 13.70576
+      TCGA.OR.A5JA  6.8417832 -0.02143046 13.53675 13.66351  2.38586582 13.33704
+      TCGA.OR.A5JB  3.9686510  2.96108796 13.27492 12.72994  5.24720495 13.96400
+      TCGA.OR.A5JC  4.0249231  0.07601630 14.16546 12.74299  0.23126156 13.91363
+      TCGA.OR.A5JD  4.5194554 -0.03146337 14.95867 13.84661  2.57705539 14.98075
+      TCGA.OR.A5JE  6.0507041 -0.03146337 13.59391 12.13362 -0.07975788 14.46684
+      TCGA.OR.A5JF  4.9745440 -0.03146337 13.59654 13.30184 -0.07975788 14.18720
+      TCGA.OR.A5JG  6.4305983  0.07601630 13.95654 12.80420  0.23126156 13.91606
+      TCGA.OR.A5JI  6.8367155  0.06951455 14.36064 12.55694  0.28056227 15.38889
+      TCGA.OR.A5JJ  5.5107281  0.07601630 13.23293 13.52528  2.78131946 13.96437
+      TCGA.OR.A5JK  3.4387024  0.07601630 14.19243 12.89479  0.23126156 14.79949
+      TCGA.OR.A5JL  4.7496558 -0.02143046 13.74760 13.33630 -0.11307660 13.39341
+      TCGA.OR.A5JM  6.6603280 -0.03146337 13.37440 12.05731 -0.07975788 14.88974
+      TCGA.OR.A5JO  5.8875112 -0.02143046 13.12396 11.69449  3.33654364 14.16259
+      TCGA.OR.A5JP  8.1450159  0.07601630 13.71622 11.53834  0.23126156 14.06992
+      TCGA.OR.A5JQ  3.2061245  2.40375256 15.00239 13.09841  2.26182526 15.15463
+      TCGA.OR.A5JR  4.5431092  0.07601630 14.78328 13.64542  0.23126156 15.42049
+      TCGA.OR.A5JS  6.0929387  2.22296585 13.68923 13.05257  3.77657911 13.46019
+      TCGA.OR.A5JT  3.3825824 -0.03146337 14.42797 13.97389  2.42995162 15.17281
+      TCGA.OR.A5JV  0.4280585  0.07601630 14.83117 13.18008  3.98977109 14.69195
+      TCGA.OR.A5JW  4.1421763  0.06951455 12.96142 12.73576  0.28056227 13.21785
+      TCGA.OR.A5JX  0.4280585  4.01482301 14.46864 12.07252  0.23126156 14.48901
+      TCGA.OR.A5JY  6.3199662 -0.02143046 13.36929 12.40825  3.67875592 13.88054
+      TCGA.OR.A5JZ  3.2484445  0.07601630 14.04177 12.48710  0.23126156 14.83287
+      TCGA.OR.A5K0  2.6447685 -0.03146337 13.18619 12.46270  3.96344865 14.22945
+      TCGA.OR.A5K1  4.3185893  0.07601630 14.21429 13.98085  3.67878322 14.47744
+      TCGA.OR.A5K2  5.6128963  3.38031240 13.84700 12.22764 -0.11307660 14.20409
+      TCGA.OR.A5K3  0.4280585  0.07601630 15.10315 14.95507  0.23126156 15.40757
+      TCGA.OR.A5K4  4.9038749 -0.02143046 14.72459 12.09281 -0.11307660 15.37629
+      TCGA.OR.A5K5  4.8598417  3.33922861 13.96080 11.87221 -0.07975788 13.82121
+      TCGA.OR.A5K6  4.0467451 -0.03146337 13.94530 12.78309  3.37168974 13.84315
+      TCGA.OR.A5K8  5.1706381  0.06951455 13.90093 13.41691  0.28056227 14.04330
+      TCGA.OR.A5K9  6.8330181  4.72624839 13.38389 12.64190  2.48501639 13.64061
+      TCGA.OR.A5KO  4.9806730 -0.02143046 13.29295 12.86648 -0.11307660 13.30319
+      TCGA.OR.A5KT  7.2074523  3.34197978 13.81026 13.00698 -0.07975788 14.58740
+      TCGA.OR.A5KU  5.6112821 -0.03146337 13.60367 12.94932 10.20671918 14.65916
+      TCGA.OR.A5KV  7.1837364  8.04579228 14.60575 12.17440  3.52294362 13.82040
+      TCGA.OR.A5KW  5.9402647 -0.02143046 13.84168 12.76577 -0.11307660 13.23310
+      TCGA.OR.A5KX  5.2810287 -0.03146337 14.33597 11.88501 -0.07975788 15.06923
+      TCGA.OR.A5KY  5.1603906  2.39081451 13.83034 12.68019 -0.07975788 14.29056
+      TCGA.OR.A5KZ  4.5254436  0.07601630 13.35735 12.31885  0.23126156 14.48102
+      TCGA.OR.A5L3  6.1021783 -0.02143046 14.89664 13.79875 -0.11307660 15.10669
+      TCGA.OR.A5L4  3.0289910  3.08239138 14.11743 13.79327  2.92639390 13.85161
+      TCGA.OR.A5L5  5.6385237  2.64208022 14.24774 12.48781  2.53835529 15.74443
+      TCGA.OR.A5L6  4.3160648  0.07601630 14.18211 13.08279  0.23126156 15.09947
+      TCGA.OR.A5L8  3.2899225  2.47686004 14.32990 12.74329 -0.11307660 12.79130
+      TCGA.OR.A5L9  8.4873858 -0.02143046 14.73782 13.60099 -0.11307660 15.35401
+      TCGA.OR.A5LA  3.3362361 -0.03146337 14.80837 14.77853 -0.07975788 15.27521
+      TCGA.OR.A5LB  5.0412587  0.06951455 13.39380 12.54075  0.28056227 13.96108
+      TCGA.OR.A5LC  2.9288069 -0.03146337 13.59813 13.11509 -0.07975788 14.29368
+      TCGA.OR.A5LD  7.3172619  4.43451609 15.16001 14.74763  4.78340569 14.55790
+      TCGA.OR.A5LE  5.3174163  0.07601630 12.72196 11.94098  0.23126156 14.36169
+      TCGA.OR.A5LG  0.4280585  0.07601630 14.08991 12.98980  3.16255136 14.67967
+      TCGA.OR.A5LH  4.4330138 -0.03146337 13.82686 14.60236 -0.07975788 13.82785
+      TCGA.OR.A5LJ  2.7033215 -0.03146337 14.23777 13.83495  4.70382112 15.16888
+      TCGA.OR.A5LK  5.3114349  0.06951455 14.85686 14.26978  5.77460351 15.57391
+      TCGA.OR.A5LL  2.7472570 -0.02143046 12.63292 11.61949 -0.11307660 13.92457
+      TCGA.OR.A5LM  5.5367127  7.08510894 14.29482 13.94405  0.28056227 13.78037
+      TCGA.OR.A5LN  7.2951973 -0.02143046 14.51297 13.14396 -0.11307660 15.87156
+      TCGA.OR.A5LO  4.0086054  2.61763683 13.95496 13.01337 -0.11307660 12.64467
+      TCGA.OR.A5LP -0.2155864 -0.02143046 13.46729 13.56776  3.03032147 14.86012
+      TCGA.OR.A5LR  6.6833330 -0.03146337 14.18885 11.98439  4.48103942 14.31939
+      TCGA.OR.A5LS  4.7320815 -0.02143046 14.70892 13.64513 -0.11307660 13.58174
+      TCGA.OR.A5LT  6.1224822  0.07601630 14.63808 12.50364  0.23126156 15.42790
+      TCGA.OU.A5PI -0.1965832 -0.03146337 14.31895 12.91771 -0.07975788 13.85502
+      TCGA.P6.A5OF  4.0508113 -0.02143046 13.45391 12.90016 -0.11307660 13.88146
+      TCGA.P6.A5OG  2.3787100 -0.03146337 13.04814 12.20591  3.68425322 13.73216
+      TCGA.PA.A5YG  0.4280585  0.07601630 14.02076 13.60847  4.10541142 15.63835
+      TCGA.PK.A5H8  3.2382249  0.06951455 13.86301 12.87868  0.28056227 14.02370
+      TCGA.PK.A5H9  4.6912544  2.04776159 14.21477 11.94800 -0.11307660 13.77516
+      TCGA.PK.A5HA  3.6671147  0.07601630 13.66543 12.84903  0.23126156 14.35258
+      TCGA.PK.A5HB  6.7947373  3.17827703 13.08882 12.29060  0.23126156 13.16840
+                     ABHD13  ABHD14A  ABHD14B    ABHD15      ABHD1    ABHD2     ABHD3
+      TCGA.OR.A5J1 12.09783 12.47587 13.65456 11.510374 5.32240823 14.78993 10.713625
+      TCGA.OR.A5J2 12.66339 13.09896 13.92762 10.852504 6.97507618 16.54929 10.866039
+      TCGA.OR.A5J3 11.21562 13.37146 14.95282 11.263089 7.70943669 15.43274  9.911512
+      TCGA.OR.A5J5 10.75303 13.50196 13.22188 11.027540 8.32389793 14.08431 11.507867
+      TCGA.OR.A5J6 11.32329 12.18407 14.59843 11.530518 8.54815712 14.62560 11.571788
+      TCGA.OR.A5J7 10.60637 13.02137 13.23808 10.686484 6.61169384 15.01988 12.606456
+      TCGA.OR.A5J8 11.98376 12.34016 13.38519 12.502737 5.16689003 15.92870 12.158680
+      TCGA.OR.A5J9 12.43627 13.42839 13.11103  9.814563 5.22481362 15.71200 10.114890
+      TCGA.OR.A5JA 11.98469 12.02820 13.91002 11.539203 6.91881677 15.85498 10.802476
+      TCGA.OR.A5JB 11.79285 12.69894 14.44750 11.664957 7.92373806 13.82906 12.806999
+      TCGA.OR.A5JC 11.47631 13.60821 14.60187 10.256646 6.86255967 15.68198  9.955582
+      TCGA.OR.A5JD 11.55990 12.73614 15.43186 11.570238 6.61752011 14.91250 11.647592
+      TCGA.OR.A5JE 11.22538 12.50833 12.74369 10.999577 5.62329376 14.45846 11.737603
+      TCGA.OR.A5JF 11.63671 12.70344 14.22906 10.918526 3.92243069 15.23802  9.438035
+      TCGA.OR.A5JG 11.51193 13.12099 14.99122 11.421047 5.17504361 14.87221 10.398386
+      TCGA.OR.A5JI 11.22031 14.75916 14.76240 11.915885 7.92942410 14.19208 11.328047
+      TCGA.OR.A5JJ 11.33765 12.57727 13.34697 11.145128 6.70921196 16.36703 11.102370
+      TCGA.OR.A5JK 11.54030 14.16872 14.08459 11.393097 5.13449582 15.92804 11.639710
+      TCGA.OR.A5JL 12.57366 11.75515 14.11022 10.893860 7.35946005 16.58291 10.613504
+      TCGA.OR.A5JM 13.20349 12.82349 12.64314 12.235927 4.28043955 14.96142 14.387886
+      TCGA.OR.A5JO 12.15798 12.75248 14.53850 12.164740 8.58731144 15.50546 11.645797
+      TCGA.OR.A5JP 12.21688 12.43057 12.44981  9.497793 6.44042085 14.61123 11.015111
+      TCGA.OR.A5JQ 11.29349 13.51839 15.03487 13.042436 4.56658092 14.49530 10.661527
+      TCGA.OR.A5JR 11.85740 13.08859 14.43109 11.884531 6.18879123 15.79723 11.032512
+      TCGA.OR.A5JS 11.43586 13.70614 13.54353 10.680097 5.44125526 15.69315 11.456908
+      TCGA.OR.A5JT 11.48895 12.10513 14.61760 11.717371 4.41861349 15.51740 10.203003
+      TCGA.OR.A5JV 11.74241 12.11316 13.63390 11.713543 5.07368851 16.13988 11.943863
+      TCGA.OR.A5JW 11.69222 12.22568 14.58697 10.953567 4.91675548 17.28657  9.422528
+      TCGA.OR.A5JX 11.91638 14.94243 15.53664 10.844517 7.91145077 15.53298  8.905377
+      TCGA.OR.A5JY 13.17263 12.07704 13.04102 11.368541 7.25170147 16.01915 11.708765
+      TCGA.OR.A5JZ 11.65227 13.05608 15.69350 12.029964 0.07236951 15.72254 10.004881
+      TCGA.OR.A5K0 12.28820 12.69634 13.53955 11.081914 8.59883312 15.20379 13.130299
+      TCGA.OR.A5K1 11.48151 12.67560 14.86734 11.981911 0.07236951 14.27356 10.469492
+      TCGA.OR.A5K2 11.22268 14.03074 14.21164  9.587740 4.95636072 15.16074 11.233296
+      TCGA.OR.A5K3 11.48426 13.61520 14.82925 11.625758 5.81259958 15.26073 10.433723
+      TCGA.OR.A5K4 11.58876 12.02735 14.43748 12.725200 4.67543908 15.74446 11.065241
+      TCGA.OR.A5K5 11.67817 12.53905 13.02767 11.193866 6.29530172 15.55903 11.269864
+      TCGA.OR.A5K6 12.42107 13.55708 14.93905 10.872731 8.14135982 15.62230 11.113612
+      TCGA.OR.A5K8 12.63911 13.45938 14.55497 10.997028 4.12304733 14.65591  9.573780
+      TCGA.OR.A5K9 12.40298 13.16549 13.65332 10.372663 5.80030785 15.09206 12.044124
+      TCGA.OR.A5KO 11.81186 13.06969 14.55304 12.160995 7.23113900 15.37110 11.781020
+      TCGA.OR.A5KT 11.13808 12.82067 13.95034 11.188051 3.43989520 13.73352 10.660386
+      TCGA.OR.A5KU 11.01403 13.16871 13.83184 11.504502 5.07982970 15.71325 11.074949
+      TCGA.OR.A5KV 12.12051 13.38654 15.43460 11.428358 6.44224390 15.66276  9.966898
+      TCGA.OR.A5KW 12.28880 13.52036 14.42486 11.468724 4.88337427 15.90837 10.756668
+      TCGA.OR.A5KX 12.42129 12.90708 14.06798 11.179440 6.49151862 15.28586 11.969429
+      TCGA.OR.A5KY 12.30905 13.62740 13.77176 10.500070 5.21050505 14.77421 10.075799
+      TCGA.OR.A5KZ 10.92088 11.73064 12.61398 10.843821 5.95277331 15.37812 12.271247
+      TCGA.OR.A5L3 11.40788 14.45269 15.49888 10.152079 5.16983679 14.31118 11.462027
+      TCGA.OR.A5L4 11.77973 12.20154 14.58597 10.596545 5.03107064 15.74513 10.012564
+      TCGA.OR.A5L5 11.67244 13.65754 14.86604 11.159194 5.50770902 14.65488 10.803638
+      TCGA.OR.A5L6 10.53013 13.98524 15.21457 11.306903 7.10417755 13.13163 11.760378
+      TCGA.OR.A5L8 11.98483 13.38463 13.41426 10.712011 7.50812470 16.67081  8.589438
+      TCGA.OR.A5L9 11.48827 15.02292 16.20786 10.557745 0.03206037 13.03235  9.758985
+      TCGA.OR.A5LA 11.21518 14.12910 16.25974 10.785316 8.27776725 15.06881 10.123441
+      TCGA.OR.A5LB 11.77848 13.19523 14.13734 10.862335 6.46673651 16.41956  9.666789
+      TCGA.OR.A5LC 11.98525 13.49790 14.80460 11.968548 5.46654581 13.94203 11.513964
+      TCGA.OR.A5LD 10.46620 14.01365 14.32374  9.898329 4.33248596 13.92374 10.507667
+      TCGA.OR.A5LE 12.84959 12.66128 11.99949  9.430962 4.96468576 16.08926 11.995311
+      TCGA.OR.A5LG 12.22735 14.48259 15.40759 11.375710 2.81561215 15.46013 12.493350
+      TCGA.OR.A5LH 11.46186 12.33319 15.03059 11.664931 5.46824684 15.65695 10.870349
+      TCGA.OR.A5LJ 11.90727 12.78617 12.04795 10.279762 6.41369262 14.79152 10.445473
+      TCGA.OR.A5LK 10.77343 13.67823 13.90343 10.770902 8.99691095 14.06512 11.391083
+      TCGA.OR.A5LL 11.54409 13.20704 13.93646 11.412750 0.03206037 16.27038 11.957284
+      TCGA.OR.A5LM 12.38082 13.22758 14.15158 10.821707 6.78573325 15.65592 10.967215
+      TCGA.OR.A5LN 11.30672 14.10541 14.82329 10.932643 6.72047272 14.29818 11.228890
+      TCGA.OR.A5LO 11.32460 12.27562 14.21524 10.722516 8.20500339 16.49600 11.448747
+      TCGA.OR.A5LP 11.41743 12.34268 14.24940 11.351226 5.71524835 15.82253 10.750733
+      TCGA.OR.A5LR 11.62671 12.36727 14.91435 11.798411 3.26732334 15.30894 11.399545
+      TCGA.OR.A5LS 10.63124 13.40193 13.58106 11.101156 6.35752486 16.11199 10.637804
+      TCGA.OR.A5LT 11.94905 13.19500 13.76732 12.294312 5.16170086 14.03452 11.328682
+      TCGA.OU.A5PI 11.46214 13.17412 13.86736 10.951776 4.92078009 16.12298 10.457370
+      TCGA.P6.A5OF 12.60549 12.96709 14.21651 11.089468 2.39547679 15.55881 10.055347
+      TCGA.P6.A5OG 11.87177 11.60927 13.95384 10.824060 4.86014754 13.76273 12.087577
+      TCGA.PA.A5YG 12.24585 12.76444 14.56004 11.636120 7.40382176 15.98804 11.458646
+      TCGA.PK.A5H8 12.28010 12.66126 14.46012 11.563517 5.15562960 14.99376 11.061136
+      TCGA.PK.A5H9 12.34449 11.91366 14.29731 13.206453 7.14467579 16.86689 11.711734
+      TCGA.PK.A5HA 10.92227 12.31282 14.44720 10.958738 6.75193487 14.46520 12.245268
+      TCGA.PK.A5HB 10.92666 10.99711 12.99229 10.228847 4.76446290 15.33488 11.503049
+                      ABHD4    ABHD5    ABHD6    ABHD8     ABI1     ABI2    ABI3BP
+      TCGA.OR.A5J1 13.79699 12.43843 11.61401 12.51644 12.88596 14.38263  6.942065
+      TCGA.OR.A5J2 13.33552 13.21229 14.33380 12.92170 13.40566 14.10271  9.289510
+      TCGA.OR.A5J3 14.99081 11.98759 12.41199 12.84464 12.35662 12.52987  8.951846
+      TCGA.OR.A5J5 14.73225 11.53834 13.16485 13.45862 12.31943 12.99096  8.408779
+      TCGA.OR.A5J6 14.01071 13.84618 13.30545 14.00090 12.81001 13.10492  9.342678
+      TCGA.OR.A5J7 14.25650 11.65189 12.89272 13.10395 14.07012 13.93809  5.411326
+      TCGA.OR.A5J8 14.94015 11.92198 11.97385 10.89230 12.99896 13.98016 14.387891
+      TCGA.OR.A5J9 14.71758 11.79421 12.03867 13.42961 13.04281 14.27664  7.080678
+      TCGA.OR.A5JA 14.97095 12.05687 12.92778 12.39339 12.44874 12.99424 10.440233
+      TCGA.OR.A5JB 13.16241 11.72690 11.13689 12.12384 13.73017 14.68296  5.870868
+      TCGA.OR.A5JC 13.72175 12.13480 12.94799 13.12967 12.94541 13.28692 11.682828
+      TCGA.OR.A5JD 13.33921 11.85413 13.07945 13.07213 12.99513 12.43375 15.678139
+      TCGA.OR.A5JE 15.14582 11.37946 12.85290 13.23952 11.88372 13.37118 10.081382
+      TCGA.OR.A5JF 12.98223 11.27822 12.45073 12.92767 12.59443 12.71398  9.293382
+      TCGA.OR.A5JG 15.02416 12.36636 13.70386 13.80478 12.82603 12.78357  9.026498
+      TCGA.OR.A5JI 13.79593 12.23149 12.67410 13.05541 12.88841 12.87991 14.624888
+      TCGA.OR.A5JJ 14.16096 11.35810 13.17034 13.82577 11.70608 13.22845  9.013478
+      TCGA.OR.A5JK 13.73922 11.21861 12.23570 13.13199 13.10228 12.90966 10.140513
+      TCGA.OR.A5JL 15.11886 12.27398 13.60907 12.03575 12.24073 12.35549  8.049143
+      TCGA.OR.A5JM 14.26602 12.51948 13.26581 12.87469 12.98593 13.80160  7.373915
+      TCGA.OR.A5JO 15.34289 13.72430 10.74107 12.46278 13.24701 13.02977 13.934691
+      TCGA.OR.A5JP 15.06149 12.19217 11.54021 12.68793 13.02038 13.70635  9.308982
+      TCGA.OR.A5JQ 12.84327 12.14833 12.73446 13.51332 12.68213 13.32515 16.601954
+      TCGA.OR.A5JR 14.45230 12.31414 13.02875 12.76249 12.80630 12.89673 15.643620
+      TCGA.OR.A5JS 15.15664 11.80380 13.37243 13.40162 12.02675 12.72509  6.782897
+      TCGA.OR.A5JT 14.30469 11.39581 12.82988 12.23850 12.65394 13.23703 15.751799
+      TCGA.OR.A5JV 13.81958 11.56584 14.42113 11.53888 13.32443 13.19396 13.476156
+      TCGA.OR.A5JW 14.76356 12.29966 13.09942 13.04434 13.39621 12.44177  6.317633
+      TCGA.OR.A5JX 14.68034 11.97995 12.42758 13.49787 12.73662 12.59146 10.652220
+      TCGA.OR.A5JY 15.46389 12.55005 13.00982 12.86151 11.81598 13.59565  6.480395
+      TCGA.OR.A5JZ 15.40422 11.70703 12.26924 11.47268 12.82539 13.49171 14.319982
+      TCGA.OR.A5K0 14.55349 13.36655 13.06451 14.03472 12.23017 14.13865 10.016006
+      TCGA.OR.A5K1 14.78111 11.57365 11.41744 12.24208 12.51806 12.95613 12.344203
+      TCGA.OR.A5K2 15.64703 12.05874 12.65696 12.42938 13.45171 13.89830  8.349250
+      TCGA.OR.A5K3 14.50433 11.16296 12.84252 13.09257 12.68223 12.89264 12.345356
+      TCGA.OR.A5K4 14.99253 10.97629 13.34366 11.48717 12.59230 12.70417 12.591345
+      TCGA.OR.A5K5 13.93554 12.13184 12.31656 13.74082 12.37196 13.87147  7.735339
+      TCGA.OR.A5K6 14.43938 12.01364 13.97270 13.68058 12.50755 13.27209  9.177473
+      TCGA.OR.A5K8 14.94011 11.34437 13.10376 13.85317 12.81720 12.88740  7.657216
+      TCGA.OR.A5K9 14.43120 10.95862 12.10881 13.60347 13.13222 13.80033  8.037594
+      TCGA.OR.A5KO 14.67533 12.46539 12.33234 13.23139 13.77810 12.98279  6.951177
+      TCGA.OR.A5KT 14.28464 12.54804 14.27056 14.45854 12.81967 12.99786 11.754679
+      TCGA.OR.A5KU 13.93899 11.79286 13.96273 13.09532 12.04885 13.41873  8.290511
+      TCGA.OR.A5KV 13.28302 10.99311 13.14442 13.94138 11.98559 13.78413  7.725508
+      TCGA.OR.A5KW 16.05916 11.80024 13.11394 13.56468 12.67943 13.04758 11.033588
+      TCGA.OR.A5KX 15.09263 11.89620 13.62436 13.30713 13.10758 14.84046 11.505853
+      TCGA.OR.A5KY 13.75055 11.89768 13.07982 13.41729 13.24256 13.91107  9.481242
+      TCGA.OR.A5KZ 12.58403 10.55073 10.80239 12.63194 12.88768 14.27226  8.103419
+      TCGA.OR.A5L3 14.67613 11.58324 13.73165 13.81433 12.13349 12.49902  8.662372
+      TCGA.OR.A5L4 14.88983 12.37369 11.96849 11.60776 12.89360 12.97364 12.229723
+      TCGA.OR.A5L5 13.95207 11.27144 12.13403 12.65008 12.96114 12.90936 13.534847
+      TCGA.OR.A5L6 13.47568 10.87115 11.49837 12.23931 12.47320 13.39228 12.559136
+      TCGA.OR.A5L8 13.49294 12.23409 12.59251 13.77604 13.29029 14.06652  8.410224
+      TCGA.OR.A5L9 13.89920 11.16138 12.29377 12.96223 12.46133 12.16444 11.939335
+      TCGA.OR.A5LA 14.26662 11.06257 12.57079 13.64619 12.65434 12.43522 12.772444
+      TCGA.OR.A5LB 14.37855 11.89378 13.31818 13.82615 13.72127 13.17303  7.675210
+      TCGA.OR.A5LC 13.24818 11.06841 11.91938 12.66518 12.89559 14.11158  8.855864
+      TCGA.OR.A5LD 13.72493 11.59374 12.96638 13.66504 12.68633 14.95644  8.927785
+      TCGA.OR.A5LE 14.67217 11.82994 13.94455 12.81295 12.32288 13.63487  6.610141
+      TCGA.OR.A5LG 14.81433 11.40635 12.34359 13.79432 13.09077 13.39859  9.280271
+      TCGA.OR.A5LH 14.38596 12.38177 13.26180 12.50984 12.44952 12.84548 11.161426
+      TCGA.OR.A5LJ 13.39878 10.90002 14.10066 14.01680 13.37544 13.53357  7.373418
+      TCGA.OR.A5LK 13.45322 12.79880 12.92338 13.47572 12.75534 12.62286 14.647324
+      TCGA.OR.A5LL 14.77638 12.97931 13.29047 13.42521 13.12986 12.69880  9.681258
+      TCGA.OR.A5LM 14.40497 12.03888 13.12599 12.51823 12.29296 13.42051  9.595731
+      TCGA.OR.A5LN 13.18296 12.26236 12.23593 13.15732 13.14208 11.97996 15.387250
+      TCGA.OR.A5LO 15.49272 11.97069 14.12440 12.29709 13.76677 13.65852  8.948961
+      TCGA.OR.A5LP 13.49517 11.69290 11.76025 12.71615 12.60886 12.80716 15.348442
+      TCGA.OR.A5LR 15.46768 11.29675 12.90905 12.05575 12.80562 13.14902 14.357406
+      TCGA.OR.A5LS 14.51526 11.36682 13.45302 12.84701 13.60256 12.82348  7.588156
+      TCGA.OR.A5LT 13.44282 12.71950 12.88532 13.39898 12.98005 13.40918 15.029765
+      TCGA.OU.A5PI 14.32733 11.57405 12.73787 13.42441 13.45167 13.03409 11.360404
+      TCGA.P6.A5OF 14.37989 11.47904 12.02677 12.79420 13.60639 12.97298 10.910230
+      TCGA.P6.A5OG 12.09217 12.18954 11.02754 11.24097 13.91462 13.97554  9.699395
+      TCGA.PA.A5YG 14.15242 12.12738 12.48804 13.42985 13.04557 12.85834 14.826135
+      TCGA.PK.A5H8 14.40756 12.06537 12.43471 12.55629 12.56000 13.09905 10.374154
+      TCGA.PK.A5H9 14.74623 13.36399 11.03228 13.05733 13.06358 12.94417  8.301290
+      TCGA.PK.A5HA 13.78373 12.57876 13.39988 12.94036 13.21683 12.11009 15.244619
+      TCGA.PK.A5HB 15.19288 11.96692 13.40420 12.44398 13.46611 13.83512 10.281524
+                        ABI3     ABL1 class
+      TCGA.OR.A5J1 11.243769 14.63344     0
+      TCGA.OR.A5J2 10.254001 14.56644     0
+      TCGA.OR.A5J3  9.637229 14.90536     1
+      TCGA.OR.A5J5  9.188461 14.88435     0
+      TCGA.OR.A5J6  9.969764 14.53684     1
+      TCGA.OR.A5J7 10.839573 15.03522     0
+      TCGA.OR.A5J8 12.069255 15.61970     0
+      TCGA.OR.A5J9 10.737615 14.93348     1
+      TCGA.OR.A5JA  9.966661 15.15871     0
+      TCGA.OR.A5JB 12.559421 15.60240     0
+      TCGA.OR.A5JC 10.867844 14.19037     0
+      TCGA.OR.A5JD 10.963593 14.95293     1
+      TCGA.OR.A5JE 11.723819 14.98310     0
+      TCGA.OR.A5JF 10.079306 15.03060     1
+      TCGA.OR.A5JG 10.406060 14.95027     0
+      TCGA.OR.A5JI 10.984103 15.01238     1
+      TCGA.OR.A5JJ  9.974613 15.38571     1
+      TCGA.OR.A5JK 12.050841 14.27159     1
+      TCGA.OR.A5JL 10.079035 14.05906     1
+      TCGA.OR.A5JM  8.606552 14.46639     0
+      TCGA.OR.A5JO 12.317779 15.02377     1
+      TCGA.OR.A5JP 10.046230 14.72095     1
+      TCGA.OR.A5JQ 11.213085 15.69700     1
+      TCGA.OR.A5JR 10.232431 15.05228     1
+      TCGA.OR.A5JS  9.754414 14.96788     1
+      TCGA.OR.A5JT 10.241090 14.60286     1
+      TCGA.OR.A5JV 12.900629 13.91485     1
+      TCGA.OR.A5JW 10.314681 14.90732     1
+      TCGA.OR.A5JX 10.697831 15.12756     1
+      TCGA.OR.A5JY 10.560272 13.88164     0
+      TCGA.OR.A5JZ 10.131344 14.97180     1
+      TCGA.OR.A5K0  8.302727 15.15460     1
+      TCGA.OR.A5K1 10.702789 14.27477     1
+      TCGA.OR.A5K2 11.440055 14.87516     0
+      TCGA.OR.A5K3 10.795035 13.91418     1
+      TCGA.OR.A5K4  8.731332 14.87339     1
+      TCGA.OR.A5K5 10.061664 14.53624     1
+      TCGA.OR.A5K6 10.521248 14.23691     1
+      TCGA.OR.A5K8 10.202049 15.23874     1
+      TCGA.OR.A5K9 10.032846 15.43170     0
+      TCGA.OR.A5KO  9.610883 15.73806     1
+      TCGA.OR.A5KT 11.447587 14.15456     1
+      TCGA.OR.A5KU  8.712290 13.98007     1
+      TCGA.OR.A5KV  8.452863 14.32850     1
+      TCGA.OR.A5KW  9.462639 14.31406     1
+      TCGA.OR.A5KX  9.903965 15.36119     1
+      TCGA.OR.A5KY 11.683294 15.40595     0
+      TCGA.OR.A5KZ 10.228783 14.54524     0
+      TCGA.OR.A5L3  9.894280 13.99640     1
+      TCGA.OR.A5L4 10.951394 14.74244     1
+      TCGA.OR.A5L5 10.764133 13.77438     1
+      TCGA.OR.A5L6  9.884491 14.37383     1
+      TCGA.OR.A5L8  9.108384 14.73423     1
+      TCGA.OR.A5L9 11.174588 14.17248     1
+      TCGA.OR.A5LA 11.661320 13.86091     1
+      TCGA.OR.A5LB  9.534291 14.98056     0
+      TCGA.OR.A5LC 11.254173 14.10653     0
+      TCGA.OR.A5LD  9.791988 15.18178     0
+      TCGA.OR.A5LE  9.081149 14.72137     0
+      TCGA.OR.A5LG 12.034932 14.77188     1
+      TCGA.OR.A5LH 10.562829 14.51149     0
+      TCGA.OR.A5LJ 10.371281 14.83653     0
+      TCGA.OR.A5LK 12.140635 14.38808     1
+      TCGA.OR.A5LL  8.648423 14.99214     0
+      TCGA.OR.A5LM  9.725773 13.45064     1
+      TCGA.OR.A5LN 11.625923 15.10839     1
+      TCGA.OR.A5LO  9.060190 14.91943     1
+      TCGA.OR.A5LP 11.363664 14.48989     1
+      TCGA.OR.A5LR 10.020292 14.69343     1
+      TCGA.OR.A5LS  8.900241 14.64945     1
+      TCGA.OR.A5LT  9.652456 14.50427     1
+      TCGA.OU.A5PI  9.806149 15.11826     1
+      TCGA.P6.A5OF 10.279550 15.17688     0
+      TCGA.P6.A5OG 12.791566 14.69426     0
+      TCGA.PA.A5YG 11.737008 14.48215     1
+      TCGA.PK.A5H8  9.921026 14.48753     1
+      TCGA.PK.A5H9  9.830419 14.67142     1
+      TCGA.PK.A5HA 10.690758 15.24654     1
+      TCGA.PK.A5HB  8.501420 15.49842     1
+      
+      
+      Slot "metadata":
+                             ID patient.days_to_birth patient.gender
+      TCGA.OR.A5J1 TCGA.OR.A5J1                -21496           male
+      TCGA.OR.A5J2 TCGA.OR.A5J2                -16090         female
+      TCGA.OR.A5J3 TCGA.OR.A5J3                 -8624         female
+      TCGA.OR.A5J5 TCGA.OR.A5J5                -11171           male
+      TCGA.OR.A5J6 TCGA.OR.A5J6                -10839         female
+      TCGA.OR.A5J7 TCGA.OR.A5J7                -11279         female
+      TCGA.OR.A5J8 TCGA.OR.A5J8                -24266           male
+      TCGA.OR.A5J9 TCGA.OR.A5J9                 -8175         female
+      TCGA.OR.A5JA TCGA.OR.A5JA                -19436         female
+      TCGA.OR.A5JB TCGA.OR.A5JB                -19172           male
+      TCGA.OR.A5JC TCGA.OR.A5JC                -13862           male
+      TCGA.OR.A5JD TCGA.OR.A5JD                -20989         female
+      TCGA.OR.A5JE TCGA.OR.A5JE                 -6455         female
+      TCGA.OR.A5JF TCGA.OR.A5JF                -25502         female
+      TCGA.OR.A5JG TCGA.OR.A5JG                -22390           male
+      TCGA.OR.A5JI TCGA.OR.A5JI                 -8177           male
+      TCGA.OR.A5JJ TCGA.OR.A5JJ                -24082           male
+      TCGA.OR.A5JK TCGA.OR.A5JK                -18214           male
+      TCGA.OR.A5JL TCGA.OR.A5JL                -13155         female
+      TCGA.OR.A5JM TCGA.OR.A5JM                 -9359         female
+      TCGA.OR.A5JO TCGA.OR.A5JO                 -9547         female
+      TCGA.OR.A5JP TCGA.OR.A5JP                -14667           male
+      TCGA.OR.A5JQ TCGA.OR.A5JQ                 -9667         female
+      TCGA.OR.A5JR TCGA.OR.A5JR                -16604           male
+      TCGA.OR.A5JS TCGA.OR.A5JS                -24017         female
+      TCGA.OR.A5JT TCGA.OR.A5JT                -23794         female
+      TCGA.OR.A5JV TCGA.OR.A5JV                -20319           male
+      TCGA.OR.A5JW TCGA.OR.A5JW                -17513           male
+      TCGA.OR.A5JX TCGA.OR.A5JX                -18402           male
+      TCGA.OR.A5JY TCGA.OR.A5JY                -25190         female
+      TCGA.OR.A5JZ TCGA.OR.A5JZ                -22218           male
+      TCGA.OR.A5K0 TCGA.OR.A5K0                -25400         female
+      TCGA.OR.A5K1 TCGA.OR.A5K1                -17596           male
+      TCGA.OR.A5K2 TCGA.OR.A5K2                -11970         female
+      TCGA.OR.A5K3 TCGA.OR.A5K3                -19375           male
+      TCGA.OR.A5K4 TCGA.OR.A5K4                -23481         female
+      TCGA.OR.A5K5 TCGA.OR.A5K5                -21907         female
+      TCGA.OR.A5K6 TCGA.OR.A5K6                -20657         female
+      TCGA.OR.A5K8 TCGA.OR.A5K8                -14435           male
+      TCGA.OR.A5K9 TCGA.OR.A5K9                -22596         female
+      TCGA.OR.A5KO TCGA.OR.A5KO                -14606         female
+      TCGA.OR.A5KT TCGA.OR.A5KT                -16217         female
+      TCGA.OR.A5KU TCGA.OR.A5KU                -13559         female
+      TCGA.OR.A5KV TCGA.OR.A5KV                 -6250         female
+      TCGA.OR.A5KW TCGA.OR.A5KW                -20328         female
+      TCGA.OR.A5KX TCGA.OR.A5KX                 -9298         female
+      TCGA.OR.A5KY TCGA.OR.A5KY                 -8745         female
+      TCGA.OR.A5KZ TCGA.OR.A5KZ                -15594           male
+      TCGA.OR.A5L3 TCGA.OR.A5L3                -24763         female
+      TCGA.OR.A5L4 TCGA.OR.A5L4                -17819         female
+      TCGA.OR.A5L5 TCGA.OR.A5L5                -28270         female
+      TCGA.OR.A5L6 TCGA.OR.A5L6                -22057           male
+      TCGA.OR.A5L8 TCGA.OR.A5L8                -13472         female
+      TCGA.OR.A5L9 TCGA.OR.A5L9                -19526         female
+      TCGA.OR.A5LA TCGA.OR.A5LA                -19242         female
+      TCGA.OR.A5LB TCGA.OR.A5LB                -21565           male
+      TCGA.OR.A5LC TCGA.OR.A5LC                -26084         female
+      TCGA.OR.A5LD TCGA.OR.A5LD                -19111           male
+      TCGA.OR.A5LE TCGA.OR.A5LE                 -5383           male
+      TCGA.OR.A5LG TCGA.OR.A5LG                -16875           male
+      TCGA.OR.A5LH TCGA.OR.A5LH                -13182         female
+      TCGA.OR.A5LJ TCGA.OR.A5LJ                -20069         female
+      TCGA.OR.A5LK TCGA.OR.A5LK                -22919           male
+      TCGA.OR.A5LL TCGA.OR.A5LL                -27607         female
+      TCGA.OR.A5LM TCGA.OR.A5LM                 -8735           male
+      TCGA.OR.A5LN TCGA.OR.A5LN                -11414         female
+      TCGA.OR.A5LO TCGA.OR.A5LO                -22370         female
+      TCGA.OR.A5LP TCGA.OR.A5LP                -13574         female
+      TCGA.OR.A5LR TCGA.OR.A5LR                -11261         female
+      TCGA.OR.A5LS TCGA.OR.A5LS                -12663         female
+      TCGA.OR.A5LT TCGA.OR.A5LT                -21032           male
+      TCGA.OU.A5PI TCGA.OU.A5PI                -19492         female
+      TCGA.P6.A5OF TCGA.P6.A5OF                -20106         female
+      TCGA.P6.A5OG TCGA.P6.A5OG                -16659         female
+      TCGA.PA.A5YG TCGA.PA.A5YG                -18926           male
+      TCGA.PK.A5H8 TCGA.PK.A5H8                -15373           male
+      TCGA.PK.A5H9 TCGA.PK.A5H9                -10173         female
+      TCGA.PK.A5HA TCGA.PK.A5HA                -23345           male
+      TCGA.PK.A5HB TCGA.PK.A5HB                -23293           male
+                   patient.patient_id patient.person_neoplasm_cancer_status
+      TCGA.OR.A5J1               a5j1                            with tumor
+      TCGA.OR.A5J2               a5j2                            with tumor
+      TCGA.OR.A5J3               a5j3                            with tumor
+      TCGA.OR.A5J5               a5j5                            with tumor
+      TCGA.OR.A5J6               a5j6                            tumor free
+      TCGA.OR.A5J7               a5j7                            with tumor
+      TCGA.OR.A5J8               a5j8                            with tumor
+      TCGA.OR.A5J9               a5j9                            with tumor
+      TCGA.OR.A5JA               a5ja                            with tumor
+      TCGA.OR.A5JB               a5jb                                  <NA>
+      TCGA.OR.A5JC               a5jc                                  <NA>
+      TCGA.OR.A5JD               a5jd                            tumor free
+      TCGA.OR.A5JE               a5je                            with tumor
+      TCGA.OR.A5JF               a5jf                            tumor free
+      TCGA.OR.A5JG               a5jg                            with tumor
+      TCGA.OR.A5JI               a5ji                            tumor free
+      TCGA.OR.A5JJ               a5jj                            with tumor
+      TCGA.OR.A5JK               a5jk                            tumor free
+      TCGA.OR.A5JL               a5jl                            tumor free
+      TCGA.OR.A5JM               a5jm                            with tumor
+      TCGA.OR.A5JO               a5jo                            tumor free
+      TCGA.OR.A5JP               a5jp                            tumor free
+      TCGA.OR.A5JQ               a5jq                            tumor free
+      TCGA.OR.A5JR               a5jr                            tumor free
+      TCGA.OR.A5JS               a5js                            with tumor
+      TCGA.OR.A5JT               a5jt                            with tumor
+      TCGA.OR.A5JV               a5jv                            tumor free
+      TCGA.OR.A5JW               a5jw                            tumor free
+      TCGA.OR.A5JX               a5jx                            tumor free
+      TCGA.OR.A5JY               a5jy                            with tumor
+      TCGA.OR.A5JZ               a5jz                            tumor free
+      TCGA.OR.A5K0               a5k0                            with tumor
+      TCGA.OR.A5K1               a5k1                            tumor free
+      TCGA.OR.A5K2               a5k2                            with tumor
+      TCGA.OR.A5K3               a5k3                            tumor free
+      TCGA.OR.A5K4               a5k4                            tumor free
+      TCGA.OR.A5K5               a5k5                            with tumor
+      TCGA.OR.A5K6               a5k6                            with tumor
+      TCGA.OR.A5K8               a5k8                            tumor free
+      TCGA.OR.A5K9               a5k9                            with tumor
+      TCGA.OR.A5KO               a5ko                            with tumor
+      TCGA.OR.A5KT               a5kt                            tumor free
+      TCGA.OR.A5KU               a5ku                            tumor free
+      TCGA.OR.A5KV               a5kv                            tumor free
+      TCGA.OR.A5KW               a5kw                            tumor free
+      TCGA.OR.A5KX               a5kx                            with tumor
+      TCGA.OR.A5KY               a5ky                            with tumor
+      TCGA.OR.A5KZ               a5kz                            with tumor
+      TCGA.OR.A5L3               a5l3                            tumor free
+      TCGA.OR.A5L4               a5l4                            tumor free
+      TCGA.OR.A5L5               a5l5                            tumor free
+      TCGA.OR.A5L6               a5l6                            tumor free
+      TCGA.OR.A5L8               a5l8                            tumor free
+      TCGA.OR.A5L9               a5l9                            tumor free
+      TCGA.OR.A5LA               a5la                            tumor free
+      TCGA.OR.A5LB               a5lb                            with tumor
+      TCGA.OR.A5LC               a5lc                            with tumor
+      TCGA.OR.A5LD               a5ld                            with tumor
+      TCGA.OR.A5LE               a5le                            with tumor
+      TCGA.OR.A5LG               a5lg                            with tumor
+      TCGA.OR.A5LH               a5lh                            with tumor
+      TCGA.OR.A5LJ               a5lj                            with tumor
+      TCGA.OR.A5LK               a5lk                            tumor free
+      TCGA.OR.A5LL               a5ll                            with tumor
+      TCGA.OR.A5LM               a5lm                            tumor free
+      TCGA.OR.A5LN               a5ln                            tumor free
+      TCGA.OR.A5LO               a5lo                            with tumor
+      TCGA.OR.A5LP               a5lp                            tumor free
+      TCGA.OR.A5LR               a5lr                            tumor free
+      TCGA.OR.A5LS               a5ls                            tumor free
+      TCGA.OR.A5LT               a5lt                            tumor free
+      TCGA.OU.A5PI               a5pi                            with tumor
+      TCGA.P6.A5OF               a5of                            with tumor
+      TCGA.P6.A5OG               a5og                            with tumor
+      TCGA.PA.A5YG               a5yg                            tumor free
+      TCGA.PK.A5H8               a5h8                            tumor free
+      TCGA.PK.A5H9               a5h9                            tumor free
+      TCGA.PK.A5HA               a5ha                            tumor free
+      TCGA.PK.A5HB               a5hb                            with tumor
+                   patient.primary_pathology.laterality
+      TCGA.OR.A5J1                                 left
+      TCGA.OR.A5J2                                 left
+      TCGA.OR.A5J3                                 left
+      TCGA.OR.A5J5                                right
+      TCGA.OR.A5J6                                right
+      TCGA.OR.A5J7                                right
+      TCGA.OR.A5J8                                 left
+      TCGA.OR.A5J9                                right
+      TCGA.OR.A5JA                                right
+      TCGA.OR.A5JB                                right
+      TCGA.OR.A5JC                                 left
+      TCGA.OR.A5JD                                 left
+      TCGA.OR.A5JE                                 left
+      TCGA.OR.A5JF                                 left
+      TCGA.OR.A5JG                                 left
+      TCGA.OR.A5JI                                right
+      TCGA.OR.A5JJ                                 left
+      TCGA.OR.A5JK                                 left
+      TCGA.OR.A5JL                                right
+      TCGA.OR.A5JM                                 left
+      TCGA.OR.A5JO                                right
+      TCGA.OR.A5JP                                 left
+      TCGA.OR.A5JQ                                right
+      TCGA.OR.A5JR                                 left
+      TCGA.OR.A5JS                                right
+      TCGA.OR.A5JT                                 left
+      TCGA.OR.A5JV                                 left
+      TCGA.OR.A5JW                                right
+      TCGA.OR.A5JX                                 left
+      TCGA.OR.A5JY                                right
+      TCGA.OR.A5JZ                                 left
+      TCGA.OR.A5K0                                 left
+      TCGA.OR.A5K1                                 left
+      TCGA.OR.A5K2                                right
+      TCGA.OR.A5K3                                 left
+      TCGA.OR.A5K4                                right
+      TCGA.OR.A5K5                                 left
+      TCGA.OR.A5K6                                 left
+      TCGA.OR.A5K8                                right
+      TCGA.OR.A5K9                                right
+      TCGA.OR.A5KO                                right
+      TCGA.OR.A5KT                                 left
+      TCGA.OR.A5KU                                 left
+      TCGA.OR.A5KV                                 left
+      TCGA.OR.A5KW                                right
+      TCGA.OR.A5KX                                 left
+      TCGA.OR.A5KY                                 left
+      TCGA.OR.A5KZ                                 left
+      TCGA.OR.A5L3                                right
+      TCGA.OR.A5L4                                right
+      TCGA.OR.A5L5                                 left
+      TCGA.OR.A5L6                                 left
+      TCGA.OR.A5L8                                right
+      TCGA.OR.A5L9                                right
+      TCGA.OR.A5LA                                 left
+      TCGA.OR.A5LB                                right
+      TCGA.OR.A5LC                                 left
+      TCGA.OR.A5LD                                 left
+      TCGA.OR.A5LE                                 left
+      TCGA.OR.A5LG                                 left
+      TCGA.OR.A5LH                                 left
+      TCGA.OR.A5LJ                                 left
+      TCGA.OR.A5LK                                right
+      TCGA.OR.A5LL                                right
+      TCGA.OR.A5LM                                right
+      TCGA.OR.A5LN                                right
+      TCGA.OR.A5LO                                right
+      TCGA.OR.A5LP                                right
+      TCGA.OR.A5LR                                 left
+      TCGA.OR.A5LS                                right
+      TCGA.OR.A5LT                                 left
+      TCGA.OU.A5PI                                 left
+      TCGA.P6.A5OF                                right
+      TCGA.P6.A5OG                                 left
+      TCGA.PA.A5YG                                 left
+      TCGA.PK.A5H8                                right
+      TCGA.PK.A5H9                                right
+      TCGA.PK.A5HA                                 left
+      TCGA.PK.A5HB                                 left
+                   patient.primary_pathology.weiss_assessment_report.weiss_assessment_categories.necrosis
+      TCGA.OR.A5J1                                                                       necrosis present
+      TCGA.OR.A5J2                                                                       necrosis present
+      TCGA.OR.A5J3                                                                       necrosis present
+      TCGA.OR.A5J5                                                                       necrosis present
+      TCGA.OR.A5J6                                                                        necrosis absent
+      TCGA.OR.A5J7                                                                       necrosis present
+      TCGA.OR.A5J8                                                                       necrosis present
+      TCGA.OR.A5J9                                                                       necrosis present
+      TCGA.OR.A5JA                                                                       necrosis present
+      TCGA.OR.A5JB                                                                       necrosis present
+      TCGA.OR.A5JC                                                                       necrosis present
+      TCGA.OR.A5JD                                                                        necrosis absent
+      TCGA.OR.A5JE                                                                       necrosis present
+      TCGA.OR.A5JF                                                                        necrosis absent
+      TCGA.OR.A5JG                                                                       necrosis present
+      TCGA.OR.A5JI                                                                        necrosis absent
+      TCGA.OR.A5JJ                                                                       necrosis present
+      TCGA.OR.A5JK                                                                       necrosis present
+      TCGA.OR.A5JL                                                                        necrosis absent
+      TCGA.OR.A5JM                                                                       necrosis present
+      TCGA.OR.A5JO                                                                        necrosis absent
+      TCGA.OR.A5JP                                                                       necrosis present
+      TCGA.OR.A5JQ                                                                        necrosis absent
+      TCGA.OR.A5JR                                                                        necrosis absent
+      TCGA.OR.A5JS                                                                       necrosis present
+      TCGA.OR.A5JT                                                                       necrosis present
+      TCGA.OR.A5JV                                                                        necrosis absent
+      TCGA.OR.A5JW                                                                       necrosis present
+      TCGA.OR.A5JX                                                                       necrosis present
+      TCGA.OR.A5JY                                                                       necrosis present
+      TCGA.OR.A5JZ                                                                       necrosis present
+      TCGA.OR.A5K0                                                                       necrosis present
+      TCGA.OR.A5K1                                                                                   <NA>
+      TCGA.OR.A5K2                                                                       necrosis present
+      TCGA.OR.A5K3                                                                       necrosis present
+      TCGA.OR.A5K4                                                                       necrosis present
+      TCGA.OR.A5K5                                                                       necrosis present
+      TCGA.OR.A5K6                                                                       necrosis present
+      TCGA.OR.A5K8                                                                        necrosis absent
+      TCGA.OR.A5K9                                                                                   <NA>
+      TCGA.OR.A5KO                                                                       necrosis present
+      TCGA.OR.A5KT                                                                       necrosis present
+      TCGA.OR.A5KU                                                                       necrosis present
+      TCGA.OR.A5KV                                                                       necrosis present
+      TCGA.OR.A5KW                                                                                   <NA>
+      TCGA.OR.A5KX                                                                       necrosis present
+      TCGA.OR.A5KY                                                                        necrosis absent
+      TCGA.OR.A5KZ                                                                       necrosis present
+      TCGA.OR.A5L3                                                                       necrosis present
+      TCGA.OR.A5L4                                                                       necrosis present
+      TCGA.OR.A5L5                                                                       necrosis present
+      TCGA.OR.A5L6                                                                       necrosis present
+      TCGA.OR.A5L8                                                                        necrosis absent
+      TCGA.OR.A5L9                                                                       necrosis present
+      TCGA.OR.A5LA                                                                       necrosis present
+      TCGA.OR.A5LB                                                                        necrosis absent
+      TCGA.OR.A5LC                                                                       necrosis present
+      TCGA.OR.A5LD                                                                       necrosis present
+      TCGA.OR.A5LE                                                                       necrosis present
+      TCGA.OR.A5LG                                                                        necrosis absent
+      TCGA.OR.A5LH                                                                       necrosis present
+      TCGA.OR.A5LJ                                                                       necrosis present
+      TCGA.OR.A5LK                                                                       necrosis present
+      TCGA.OR.A5LL                                                                       necrosis present
+      TCGA.OR.A5LM                                                                       necrosis present
+      TCGA.OR.A5LN                                                                        necrosis absent
+      TCGA.OR.A5LO                                                                       necrosis present
+      TCGA.OR.A5LP                                                                        necrosis absent
+      TCGA.OR.A5LR                                                                       necrosis present
+      TCGA.OR.A5LS                                                                       necrosis present
+      TCGA.OR.A5LT                                                                       necrosis present
+      TCGA.OU.A5PI                                                                       necrosis present
+      TCGA.P6.A5OF                                                                       necrosis present
+      TCGA.P6.A5OG                                                                       necrosis present
+      TCGA.PA.A5YG                                                                                   <NA>
+      TCGA.PK.A5H8                                                                       necrosis present
+      TCGA.PK.A5H9                                                                        necrosis absent
+      TCGA.PK.A5HA                                                                       necrosis present
+      TCGA.PK.A5HB                                                                                   <NA>
+                   patient.stage_event.tnm_categories.clinical_categories.clinical_m
+      TCGA.OR.A5J1                                                                m0
+      TCGA.OR.A5J2                                                                m1
+      TCGA.OR.A5J3                                                                m0
+      TCGA.OR.A5J5                                                                m0
+      TCGA.OR.A5J6                                                                m0
+      TCGA.OR.A5J7                                                                m0
+      TCGA.OR.A5J8                                                                m0
+      TCGA.OR.A5J9                                                                m0
+      TCGA.OR.A5JA                                                                m1
+      TCGA.OR.A5JB                                                                m1
+      TCGA.OR.A5JC                                                              <NA>
+      TCGA.OR.A5JD                                                                m0
+      TCGA.OR.A5JE                                                                m0
+      TCGA.OR.A5JF                                                                m0
+      TCGA.OR.A5JG                                                                m1
+      TCGA.OR.A5JI                                                                m0
+      TCGA.OR.A5JJ                                                                m1
+      TCGA.OR.A5JK                                                                m1
+      TCGA.OR.A5JL                                                                m0
+      TCGA.OR.A5JM                                                                m1
+      TCGA.OR.A5JO                                                                m0
+      TCGA.OR.A5JP                                                                m0
+      TCGA.OR.A5JQ                                                                m0
+      TCGA.OR.A5JR                                                                m0
+      TCGA.OR.A5JS                                                                m0
+      TCGA.OR.A5JT                                                                m0
+      TCGA.OR.A5JV                                                                m0
+      TCGA.OR.A5JW                                                                m0
+      TCGA.OR.A5JX                                                                m0
+      TCGA.OR.A5JY                                                                m1
+      TCGA.OR.A5JZ                                                                m0
+      TCGA.OR.A5K0                                                                m0
+      TCGA.OR.A5K1                                                                m0
+      TCGA.OR.A5K2                                                                m0
+      TCGA.OR.A5K3                                                                m0
+      TCGA.OR.A5K4                                                                m0
+      TCGA.OR.A5K5                                                                m0
+      TCGA.OR.A5K6                                                                m0
+      TCGA.OR.A5K8                                                                m0
+      TCGA.OR.A5K9                                                                m0
+      TCGA.OR.A5KO                                                                m1
+      TCGA.OR.A5KT                                                                m0
+      TCGA.OR.A5KU                                                                m0
+      TCGA.OR.A5KV                                                                m0
+      TCGA.OR.A5KW                                                                m0
+      TCGA.OR.A5KX                                                                m0
+      TCGA.OR.A5KY                                                                m1
+      TCGA.OR.A5KZ                                                                m0
+      TCGA.OR.A5L3                                                                m0
+      TCGA.OR.A5L4                                                                m0
+      TCGA.OR.A5L5                                                                m0
+      TCGA.OR.A5L6                                                                m0
+      TCGA.OR.A5L8                                                                m0
+      TCGA.OR.A5L9                                                                m0
+      TCGA.OR.A5LA                                                                m0
+      TCGA.OR.A5LB                                                                m1
+      TCGA.OR.A5LC                                                                m1
+      TCGA.OR.A5LD                                                                m0
+      TCGA.OR.A5LE                                                                m0
+      TCGA.OR.A5LG                                                                m0
+      TCGA.OR.A5LH                                                                m0
+      TCGA.OR.A5LJ                                                                m1
+      TCGA.OR.A5LK                                                                m0
+      TCGA.OR.A5LL                                                                m0
+      TCGA.OR.A5LM                                                                m0
+      TCGA.OR.A5LN                                                                m0
+      TCGA.OR.A5LO                                                                m0
+      TCGA.OR.A5LP                                                                m0
+      TCGA.OR.A5LR                                                                m0
+      TCGA.OR.A5LS                                                                m0
+      TCGA.OR.A5LT                                                                m0
+      TCGA.OU.A5PI                                                                m1
+      TCGA.P6.A5OF                                                                m0
+      TCGA.P6.A5OG                                                                m1
+      TCGA.PA.A5YG                                                                m0
+      TCGA.PK.A5H8                                                                m0
+      TCGA.PK.A5H9                                                                m0
+      TCGA.PK.A5HA                                                                m0
+      TCGA.PK.A5HB                                                              <NA>
+                   class
+      TCGA.OR.A5J1     0
+      TCGA.OR.A5J2     0
+      TCGA.OR.A5J3     1
+      TCGA.OR.A5J5     0
+      TCGA.OR.A5J6     1
+      TCGA.OR.A5J7     0
+      TCGA.OR.A5J8     0
+      TCGA.OR.A5J9     1
+      TCGA.OR.A5JA     0
+      TCGA.OR.A5JB     0
+      TCGA.OR.A5JC     0
+      TCGA.OR.A5JD     1
+      TCGA.OR.A5JE     0
+      TCGA.OR.A5JF     1
+      TCGA.OR.A5JG     0
+      TCGA.OR.A5JI     1
+      TCGA.OR.A5JJ     1
+      TCGA.OR.A5JK     1
+      TCGA.OR.A5JL     1
+      TCGA.OR.A5JM     0
+      TCGA.OR.A5JO     1
+      TCGA.OR.A5JP     1
+      TCGA.OR.A5JQ     1
+      TCGA.OR.A5JR     1
+      TCGA.OR.A5JS     1
+      TCGA.OR.A5JT     1
+      TCGA.OR.A5JV     1
+      TCGA.OR.A5JW     1
+      TCGA.OR.A5JX     1
+      TCGA.OR.A5JY     0
+      TCGA.OR.A5JZ     1
+      TCGA.OR.A5K0     1
+      TCGA.OR.A5K1     1
+      TCGA.OR.A5K2     0
+      TCGA.OR.A5K3     1
+      TCGA.OR.A5K4     1
+      TCGA.OR.A5K5     1
+      TCGA.OR.A5K6     1
+      TCGA.OR.A5K8     1
+      TCGA.OR.A5K9     0
+      TCGA.OR.A5KO     1
+      TCGA.OR.A5KT     1
+      TCGA.OR.A5KU     1
+      TCGA.OR.A5KV     1
+      TCGA.OR.A5KW     1
+      TCGA.OR.A5KX     1
+      TCGA.OR.A5KY     0
+      TCGA.OR.A5KZ     0
+      TCGA.OR.A5L3     1
+      TCGA.OR.A5L4     1
+      TCGA.OR.A5L5     1
+      TCGA.OR.A5L6     1
+      TCGA.OR.A5L8     1
+      TCGA.OR.A5L9     1
+      TCGA.OR.A5LA     1
+      TCGA.OR.A5LB     0
+      TCGA.OR.A5LC     0
+      TCGA.OR.A5LD     0
+      TCGA.OR.A5LE     0
+      TCGA.OR.A5LG     1
+      TCGA.OR.A5LH     0
+      TCGA.OR.A5LJ     0
+      TCGA.OR.A5LK     1
+      TCGA.OR.A5LL     0
+      TCGA.OR.A5LM     1
+      TCGA.OR.A5LN     1
+      TCGA.OR.A5LO     1
+      TCGA.OR.A5LP     1
+      TCGA.OR.A5LR     1
+      TCGA.OR.A5LS     1
+      TCGA.OR.A5LT     1
+      TCGA.OU.A5PI     1
+      TCGA.P6.A5OF     0
+      TCGA.P6.A5OG     0
+      TCGA.PA.A5YG     1
+      TCGA.PK.A5H8     1
+      TCGA.PK.A5H9     1
+      TCGA.PK.A5HA     1
+      TCGA.PK.A5HB     1
+      
+      Slot "data.info":
+      $type
+      [1] "rnaseq"
+      
+      $normalized
+      [1] FALSE
+      
+      
+
+---
+
+    Code
+      test_result_no_batch
+    Output
+      An object of class "preProcess.obj"
+      Slot "raw":
+                   A1BG A1CF A2BP1 A2LD1 A2ML1    A2M A4GALT A4GNT AAA1 AAAS AACSL
+      TCGA.OR.A5J1   34    0    36   380   114  21598    397     0    0 4633     0
+      TCGA.OR.A5J2   24    0    14   594     0  24451    494     0    0 3749     1
+      TCGA.OR.A5J3   35    1    15   234     3  12155    127     4    0 2126     0
+      TCGA.OR.A5J5 2190    2     8    83    64   3794    484     1    0 3865     4
+      TCGA.OR.A5J6 1074    0     8   425     2  17155   2785     1    0 2123     0
+      TCGA.OR.A5J7   27    0     8   223     7  26269    443     0    0 5631     0
+      TCGA.OR.A5J8  122    0     0   128    11  72755   3023     0    0 2951     0
+      TCGA.OR.A5J9   24    0    98   807    86  41629   1146     0    0 4535     0
+      TCGA.OR.A5JA   99    0    13   508    63  14120   1163     0    0 4746     8
+      TCGA.OR.A5JB  430    0     0   105     0   7438   7015     1    0 1651     0
+      TCGA.OR.A5JC  295    0    96   181     8  11494    460     1    0 3271     0
+      TCGA.OR.A5JD  192    0    71   317    97  15629    232     0    0 2426     0
+      TCGA.OR.A5JE  103    0     0   173     8  12232    338     0    0 2292     0
+      TCGA.OR.A5JF   78    0  1255   489   848  22463    447     0    0 3865     0
+      TCGA.OR.A5JG   76    0    50   211    16  14891    231     0    0 3380     0
+      TCGA.OR.A5JI  941    0     4    58     3  16369    665     0    0 2144     0
+      TCGA.OR.A5JJ   43    0    83   295   435  15059   1217     1    0 4194     1
+      TCGA.OR.A5JK   63    0   221   153   159  38237    302     6    0 2755    16
+      TCGA.OR.A5JL    9    0   194   728   167  15862    295     0    0 3710     0
+      TCGA.OR.A5JM   56    0     0   720     2   5536    626     0    0 2981     0
+      TCGA.OR.A5JO  425   26     0   376    10 242406   3306     0    2 2078     0
+      TCGA.OR.A5JP  371    0     2   138    10  16078    298     0    0 3766     0
+      TCGA.OR.A5JQ  558    0     1   306     8  32103    373     2    0 4063     0
+      TCGA.OR.A5JR  556    0    15   115    87  17616    164     0    0 3917     0
+      TCGA.OR.A5JS   27    3     0   162     2  16909   1962     4    0 4643     0
+      TCGA.OR.A5JT  160    0     2    73   646  16763    287     0    0 4311     0
+      TCGA.OR.A5JV   72    0   671    86   122  43497    162     1    0 2952     0
+      TCGA.OR.A5JW   19    0     0   248    10  16040    508     1    0 3688     0
+      TCGA.OR.A5JX  618    0    48   210   190  17483    408     0    0 3953     0
+      TCGA.OR.A5JY   13    0     3   853     0  13974    228     0    0 8481     6
+      TCGA.OR.A5JZ  224    0     0    72     7   6615   2103     0    0 2332     0
+      TCGA.OR.A5K0   36    0   222     4     3  17351    103     0    0 2132     0
+      TCGA.OR.A5K1   66    0    26   116    29  21680    313     0    0 2283     0
+      TCGA.OR.A5K2   60    0     0   105     1   6196    164     0    0 2050     0
+      TCGA.OR.A5K3   25    0     0   106    36   7487    235     0    0 1258     0
+      TCGA.OR.A5K4   10    0     2   153   174   5735    921     0    0 3313     0
+      TCGA.OR.A5K5  182    0     9   347     7   7771    344     1    0 3900     1
+      TCGA.OR.A5K6   31    0     0   368     7   8485    278     0    0 3175     0
+      TCGA.OR.A5K8   20    0   151   137     4   5098    178     0    0 1247     0
+      TCGA.OR.A5K9   22    0     1   238     2   7509    146     0    0 2276     0
+      TCGA.OR.A5KO   54    0   454   385     0   6662    833     4    0 1817     1
+      TCGA.OR.A5KT  116    0    51    84     0  15023   1072     0    0 2482     1
+      TCGA.OR.A5KU  396    0     3    90    68   4352    700     2    0 2082     1
+      TCGA.OR.A5KV  804    0     1   501     3   9231   1098     0    0 2477     1
+      TCGA.OR.A5KW   35    0     1   531   287   9710    161     0    0 2597     5
+      TCGA.OR.A5KX 2322    0     0   363     7  10131    613     0    0 3962     1
+      TCGA.OR.A5KY   93    0    21   131    78  21841    429     0    0 4068     0
+      TCGA.OR.A5KZ  680    0     0    82     1  15013    172     0    0 2344     1
+      TCGA.OR.A5L3   16    0     0    88     0   2125     66     0    0 3473     0
+      TCGA.OR.A5L4  139    0     2   199     8  22234    448     0    0 2027     0
+      TCGA.OR.A5L5  416    0     0   130    11  21099    388     2    0 4598     1
+      TCGA.OR.A5L6  268    0     4     7    10   6492    145     1    0 1810     1
+      TCGA.OR.A5L8  139    0    34   367    27   5648     84     0    0 3736     0
+      TCGA.OR.A5L9  203    0     3     3    14   1460    122     0    0  536     0
+      TCGA.OR.A5LA   64    0     2   104   102  18589    208     0    0 2570     0
+      TCGA.OR.A5LB   16    1     1   470    29  18108    327     0    0 5147    17
+      TCGA.OR.A5LC   48    0     5   129     9   8033    189     0    0 2074     0
+      TCGA.OR.A5LD   27    0     0    29     1   3863     77     0    0 2273     3
+      TCGA.OR.A5LE   12    0    35   302     0  18963    127     0    1 2238     0
+      TCGA.OR.A5LG  118    0     0   157     8  16426   2841     0    0 4130     0
+      TCGA.OR.A5LH   47    0   255   394   322  26743    651     1    0 3713     0
+      TCGA.OR.A5LJ  275    2     0   142     0   9484    922     0    0 3509     2
+      TCGA.OR.A5LK  795    0     0    26    37  11332    162     1    0  858     0
+      TCGA.OR.A5LL   18    0     4   113     2   2889    548     0    0 1197     0
+      TCGA.OR.A5LM   33    0     2   201  1065  14045    794     0    0 3833     0
+      TCGA.OR.A5LN   40    0     6    86     1   9451    113     0    0 1971     0
+      TCGA.OR.A5LO   62    0     0   176   176  11375    793     0    0 3025     0
+      TCGA.OR.A5LP   78    0     3   184    18  39428    775     1    0 3302     0
+      TCGA.OR.A5LR  197    0     4    92    34  10397    241     0    0 2095     0
+      TCGA.OR.A5LS   34    0   228   117    88   7050     85     0    1 2165     0
+      TCGA.OR.A5LT   38    0     3   119    27   3421    667     1    0 1812     2
+      TCGA.OU.A5PI   34    0    32    94   158   9767    421     1    0 2477     0
+      TCGA.P6.A5OF  118    0   229   817    73  18309    760     1    0 4109     1
+      TCGA.P6.A5OG  714    0     0   221     0  44466   1144     2    0 1863     0
+      TCGA.PA.A5YG   92    0     0   130   286  34815    395     1    2 3319     0
+      TCGA.PK.A5H8 2597    0     7   193    21  11056    288     1    0 3262     0
+      TCGA.PK.A5H9  266   34     0  1278    27 828602    959     1   52 3178    95
+      TCGA.PK.A5HA 1288    0    67   215     0  32449   1461     2    0 2577     0
+      TCGA.PK.A5HB  380    3    16   253     1  29428   7735     0    0 3315    20
+                    AACS AADACL2 AADACL3 AADACL4 AADAC AADAT AAGAB AAK1  AAMP AANAT
+      TCGA.OR.A5J1  2636       0       0       0     0   252  2763 1809  5489     3
+      TCGA.OR.A5J2  2438       0       0       0     3    77  3157 4041  4796     0
+      TCGA.OR.A5J3  8746       0       0       0   181    66  1841 1955  4065     0
+      TCGA.OR.A5J5  1249       0       0       0   193   127  1195  835  1744     2
+      TCGA.OR.A5J6  2647       3       0       0   568    35  1839 2217  6451     0
+      TCGA.OR.A5J7 13248       0       0       0     7    77  3685 3780 12260     0
+      TCGA.OR.A5J8  1296       0       0       0     0   351  2654 3291  6323     3
+      TCGA.OR.A5J9  7432       0       0       0     0   302  2543 3117  7250     0
+      TCGA.OR.A5JA  4455       1       0       0   462    58  4024 1914  4524     0
+      TCGA.OR.A5JB  2515       0       0       0     3    43  1913 1241  6561     0
+      TCGA.OR.A5JC   807       0       0       0    52   134  2326 1871  3659     0
+      TCGA.OR.A5JD  1230       0       0       0    59   216  1398 2074  3147     1
+      TCGA.OR.A5JE  6207       0       0       0    69    48  1814 2403  5580     0
+      TCGA.OR.A5JF  3123       0       0       2   106    54  3019 3125  5298     2
+      TCGA.OR.A5JG  2334       0       0       0  2623   111  2810 2340  5410     0
+      TCGA.OR.A5JI   433       0       0       0   439   105   648 1089  1766     0
+      TCGA.OR.A5JJ  4777       0       0       0     3    48  3058 1604  4146     0
+      TCGA.OR.A5JK   932       0       0       0     7    46  2367 1477  2310     1
+      TCGA.OR.A5JL  4628       0       0       0    24   117  6295 2494  5016     2
+      TCGA.OR.A5JM  9110       0       0       0   315    64  2436 4837  4635     0
+      TCGA.OR.A5JO   973       0       0     158    25   129  1491 1707  4269     0
+      TCGA.OR.A5JP  3302       0       0       0  1489   123  2004 1853  5551     0
+      TCGA.OR.A5JQ  1062       0       0       0   200   166  1559 2747  4895     0
+      TCGA.OR.A5JR  1410       0       0       0   157   197  1852 2794  4152     0
+      TCGA.OR.A5JS  9298       0       0       0     8    74  3664 5483  8301     1
+      TCGA.OR.A5JT  1445       0       0       0     7    81  1765 2922  4452     0
+      TCGA.OR.A5JV  1347       0       0       0     5    61  2115 2940  3831     3
+      TCGA.OR.A5JW  3297       0       0       0   179    36  4516 2631  3776     2
+      TCGA.OR.A5JX  1254       0       0       0    40    80  1651 1348  2996     0
+      TCGA.OR.A5JY  5290       0       0       0  4684    11  5265 1931  5190     0
+      TCGA.OR.A5JZ  1307       0       0       0    45    87  1201 1563  2411     0
+      TCGA.OR.A5K0  1314       0       0       0   472    12  1723 2300  4641     0
+      TCGA.OR.A5K1   875       0       0       0     7    27  1101  903  2554     0
+      TCGA.OR.A5K2  5242       0       0       0    22    15  2383 1379  2817     1
+      TCGA.OR.A5K3  1261       0       0       0     6    24   887 1012  1709     0
+      TCGA.OR.A5K4  1512       0       0       0     2   151  1524 1876  3131     0
+      TCGA.OR.A5K5  8944       0       0       0    15    44  3081 4526  6769     1
+      TCGA.OR.A5K6  1855       0       0       0  2512    42  2763 3866  6372     0
+      TCGA.OR.A5K8   676       0       0       0   316    14   572  661  1099     0
+      TCGA.OR.A5K9 15615       0       0       0  2106     4  1931 3948  6108     0
+      TCGA.OR.A5KO  2851       0       0       0    77    16  1800 1730  3213     0
+      TCGA.OR.A5KT  3265       0       0       0  2016     5  1325 1465  2879     0
+      TCGA.OR.A5KU  1460       0       0       0    49   138  2019 1678  3038     0
+      TCGA.OR.A5KV  4148       0       0       0  8673    56  2882 4242  7974     0
+      TCGA.OR.A5KW  5828       0       0       0   182   123  3812 1777  4650     1
+      TCGA.OR.A5KX  1277       0       0       0    49    67  1543 3594 10589     0
+      TCGA.OR.A5KY 12677       0       0       0   223    85  2622 2774  4586     5
+      TCGA.OR.A5KZ  2126       0       0       0    59   214  1734  939  4153     0
+      TCGA.OR.A5L3   709       0       0       0   659     5   937 1568  2642     0
+      TCGA.OR.A5L4  4478       0       0       0     7     5  1973 1903  3001     0
+      TCGA.OR.A5L5  1124       0       0       1  2843    79  1658 1900  3975     0
+      TCGA.OR.A5L6   317       0       0       0     5    24   205  433  1072     0
+      TCGA.OR.A5L8  1401       0       0       0     4    89  1806 3539  5963     0
+      TCGA.OR.A5L9    31       0       0       0     2     0   166  130   194     0
+      TCGA.OR.A5LA   719       0       0       0    51    30   859 1010  2783     0
+      TCGA.OR.A5LB  4362       0       0       0     2   139  4147 2383  5042     1
+      TCGA.OR.A5LC  2815       0       0       0   100    53  1752 2204  4476     1
+      TCGA.OR.A5LD   498       0       0       0     6    53   413 1118  1041     0
+      TCGA.OR.A5LE  5145       0       0       0     0     1  2330 2334  3977     0
+      TCGA.OR.A5LG  5216       0       0       0    32    32  2876 1650  5949     0
+      TCGA.OR.A5LH  4833       0       0       0    10   300  3363 2778  6272     0
+      TCGA.OR.A5LJ  2243       0       0       0   267    30  1452 2543  7083     0
+      TCGA.OR.A5LK   205       0       0       0     6    35   323  661  1129     1
+      TCGA.OR.A5LL   278       2       0       0  4524     9  1919 2419  3525     0
+      TCGA.OR.A5LM  3762       0       0       0     0   160  2837 2077  4326     0
+      TCGA.OR.A5LN   194       0       0       0   296    21   680  672  1113     0
+      TCGA.OR.A5LO  4564       0       0       0     5   355  2449 3000  4876     6
+      TCGA.OR.A5LP   834       0       0       0 13127   145  2248 3428  4415     1
+      TCGA.OR.A5LR  1019       0       0       0   983    82   996 1174  2328     0
+      TCGA.OR.A5LS  2503       0       0       0    31    73  1855 2659  3315     2
+      TCGA.OR.A5LT   408       0       0       0    84    89   944 1214  1791     0
+      TCGA.OU.A5PI  6412       0       0       0     8    52  1879 2810  4524     0
+      TCGA.P6.A5OF  6718       0       0       0    64   116  2637 2686  4062     1
+      TCGA.P6.A5OG   470       0       0       0     1   235  2029 2224  5768     4
+      TCGA.PA.A5YG  1011       0       0       0  1262    27  2097 2738  4970     1
+      TCGA.PK.A5H8  1707       0       0       0     3    19  2498 2094  3317     1
+      TCGA.PK.A5H9  1391       0       0     122  1338   373  2667 2664  4236     1
+      TCGA.PK.A5HA   753       0       0       0   152    51   944 2266  2624     1
+      TCGA.PK.A5HB  2690       0       0       0  1662    45  5002 3791  7720     0
+                   AARS2 AARSD1  AARS AASDHPPT AASDH AASS AATF AATK  ABAT ABCA10
+      TCGA.OR.A5J1   624   1883  7330     3055   211 1970 2616   58  3291    147
+      TCGA.OR.A5J2  1015    898 13588     2038   619  455 2622 2686  3670     24
+      TCGA.OR.A5J3   492    762  6823     1769   348  513 1512  157  1592     62
+      TCGA.OR.A5J5   689    567  3536      762   471  832  700  582   805     39
+      TCGA.OR.A5J6   741   1514  5362     1814   486  339 2017   79  1046     31
+      TCGA.OR.A5J7  1604    621 12055     2602   595 1054 5307  307   638     76
+      TCGA.OR.A5J8  2828   1333 14168     1065   330 1077 2602  276    98     78
+      TCGA.OR.A5J9  1008   1196 15164     2018   690 1007 3747 4621  3888    145
+      TCGA.OR.A5JA  1523    933  6049     1542   499  396 1697  249  6486     35
+      TCGA.OR.A5JB  1470   1913  8429     2322   163 1360 2479  136   118     11
+      TCGA.OR.A5JC   808   1031  5976     1457   367  498 1809   51  6869     64
+      TCGA.OR.A5JD   611    961 13754     1368   857  901 1639   90  2828     79
+      TCGA.OR.A5JE  1458   1830  6790      929   245  179 2502  282   137     35
+      TCGA.OR.A5JF  1078   1019 12960     2992   988  845 2199  761  1406    153
+      TCGA.OR.A5JG   930   1041 15247     1329   479  143 2112   91   787      8
+      TCGA.OR.A5JI   420    624  3882     1272   277  355  860   63  5418     18
+      TCGA.OR.A5JJ   854   1340 11080     2012  1063  896 2591  425  1060     38
+      TCGA.OR.A5JK   512    622  8315     1207   342  842 1478  103 13531     40
+      TCGA.OR.A5JL  1259   1387  5049     3276   856 1075 1490 1038 20321      6
+      TCGA.OR.A5JM  1114   2359 14427     3092   328  419 3071  603  1687     16
+      TCGA.OR.A5JO   637   1101  4811     1290   366  593 2050   51   530     46
+      TCGA.OR.A5JP   855   1274 15651     1335   425  557 1319 1586  1512    144
+      TCGA.OR.A5JQ   997   1551 15982     2053   792  747 2820  128 16805     25
+      TCGA.OR.A5JR  1053    809 16805     2434  1126  703 1689   32 31906      6
+      TCGA.OR.A5JS  1134   1616 20705     2366   620 1295 2762  786   590     71
+      TCGA.OR.A5JT   792    880 28782     2907  1076  973 2068   64 51323     13
+      TCGA.OR.A5JV   892    691 10659     1506  1005  902 1681   75 34473      6
+      TCGA.OR.A5JW  1611    699  6491     1620  1279 1436 1472  198   555    135
+      TCGA.OR.A5JX   746    966  4763     1497   214 1765 1884  302  1186    103
+      TCGA.OR.A5JY  1691   1357  8591     2709   814 2373 2448  557    35     36
+      TCGA.OR.A5JZ   604    695 10953     2248   458  130 1410   18 16943      5
+      TCGA.OR.A5K0   760    866  3903      796   535  663 3358  418   379    133
+      TCGA.OR.A5K1   520    732 11462     1278   239  426 1478   30 21290      5
+      TCGA.OR.A5K2   448    672  5283      970   137  393 1625  203   385     89
+      TCGA.OR.A5K3   364    341  7039      933    78  303  703   34  9336     13
+      TCGA.OR.A5K4   816    822 13432     2199  1070  333 1446    9 28153      3
+      TCGA.OR.A5K5  1082   1491 19447     1655   515  122 4157  746   203     17
+      TCGA.OR.A5K6  1149   1288  5588     1035   592  226 2705  677   489     21
+      TCGA.OR.A5K8   208    314  2221      526   114  221  519   47  2988     23
+      TCGA.OR.A5K9  1119    751 15338     1614   510   71 2268  636   164      2
+      TCGA.OR.A5KO   900    695  7459     2420   806  260 1487  102  8690     20
+      TCGA.OR.A5KT   491    538  6300      626   198  333 1673  139   124     13
+      TCGA.OR.A5KU   522    303  4125     1274   578  667 1245  281  7515    128
+      TCGA.OR.A5KV  1076   2379 15698     3376   622  243 3141 3569  3403     35
+      TCGA.OR.A5KW   556    864  8143     2291   728  369 2161  154  2732     14
+      TCGA.OR.A5KX  1022   1685  3800      957   434 1473 1289  200  2554     50
+      TCGA.OR.A5KY  1020    688 11381     2210   334  875 2236  769   975     76
+      TCGA.OR.A5KZ  1255    662  6237     1992   380  306 1698  133  2458    125
+      TCGA.OR.A5L3   331   1122  2740      643   176  609 1387  478   369     31
+      TCGA.OR.A5L4   771    658  8957     1879   266  314 1031  132 10593      8
+      TCGA.OR.A5L5   599   1478 13487     1956   346  891 1773   45 12079    128
+      TCGA.OR.A5L6   217    364  2673      414   117  270  455   98  2510     10
+      TCGA.OR.A5L8   896    877 10858     2755   651 1295 4322 3579  5576     37
+      TCGA.OR.A5L9    41    194  1094      105    40   80  215    6  1837      8
+      TCGA.OR.A5LA   346   1058  6628      803   272  410 1039   56 10054     12
+      TCGA.OR.A5LB   735    658  4720     1978   739 2977 1725 1235  3074     56
+      TCGA.OR.A5LC   286   1023  6024      760   314  446 2503  726  2126     52
+      TCGA.OR.A5LD   492    464  5401      770    80  338  633   74  3056      8
+      TCGA.OR.A5LE   427    649  6789     2202   308 1839 1344  227  2251     21
+      TCGA.OR.A5LG   911   1281 26120     1883   505 1069 1679   23  1637     26
+      TCGA.OR.A5LH   898   1295  7118     2323   919 1262 2296  179 12309     35
+      TCGA.OR.A5LJ   835   1021  4974     1428   106  372 2309  243   105     72
+      TCGA.OR.A5LK   398    303  1932      417   112  247  549   16  1258     11
+      TCGA.OR.A5LL   769    779  8167     2068   463 2400 1802  208   659     44
+      TCGA.OR.A5LM   673   1114  7390     2267   524 1512 1411   51 20876     28
+      TCGA.OR.A5LN   605    605  3456      787   207 1002  707   34  2737     24
+      TCGA.OR.A5LO   958    434 11186     2676   605 1958 1042  126  8545     16
+      TCGA.OR.A5LP   934    795 29626     2373   484  354 2238   37 15875     20
+      TCGA.OR.A5LR   430    636 11269     1541   381  398 1142   17 17092      8
+      TCGA.OR.A5LS   427    381  6274     1764   776 1259  927  657  2784     47
+      TCGA.OR.A5LT   379    618  4016     1716   565  860 1038  364  6727     30
+      TCGA.OU.A5PI   422    487  7122     1543   729 2477 1946  829  5758     29
+      TCGA.P6.A5OF   933    618  7397     2263   826  370 1944  239  1078     99
+      TCGA.P6.A5OG  1106   1426 14635     2245   491 2086 2945  413    84      3
+      TCGA.PA.A5YG   712    700 14676     2011   412 1138 1875  128 19853     19
+      TCGA.PK.A5H8  1270    646  5261     1751   282  886 1667   60 19334     38
+      TCGA.PK.A5H9  1018   1064  7063     3697   894  219 1763   81  1226    197
+      TCGA.PK.A5HA  1453    831 13658      893   424  201 1871  332  8018      5
+      TCGA.PK.A5HB  2412    825 12147     1649   505  417 1918  413   847     21
+                   ABCA11P ABCA12 ABCA13 ABCA17P ABCA1 ABCA2 ABCA3 ABCA4 ABCA5 ABCA6
+      TCGA.OR.A5J1      96      0      1      88   665  1675  1519     5  4241    30
+      TCGA.OR.A5J2     190      0      2      32  2662  2465  2727    17   667    71
+      TCGA.OR.A5J3      48      9    277      54  1513  5173  8127    12  1483    33
+      TCGA.OR.A5J5     214      1     15     181   401  4343  5187     0   929     2
+      TCGA.OR.A5J6      98      0      0     123  1432   720  1546     5  1625   189
+      TCGA.OR.A5J7     123      0     16      43   818  3234  2035     7  2392    17
+      TCGA.OR.A5J8     209      0     27       5  5360  2311   272   122   264   776
+      TCGA.OR.A5J9     591      3      3      70  2430  4245  1113     6  3380    18
+      TCGA.OR.A5JA     115      1    518      93   368  1018  4873     2   745     5
+      TCGA.OR.A5JB      35     36      1       7  5085  4014   426     4   465  1099
+      TCGA.OR.A5JC     214     67      4      94   889   350  1711     3  1167    29
+      TCGA.OR.A5JD     184      1      6     103  1650  5439  4693     7  1657    25
+      TCGA.OR.A5JE     116      0      2      12   693  4496   321     4  2032     3
+      TCGA.OR.A5JF     330      1   1643     111  3372 10432  9197     7  5250    81
+      TCGA.OR.A5JG     143      4     84      91   326  2640  1752     7   369    14
+      TCGA.OR.A5JI     164      1      4      42  4397  1656  5162     6   459    21
+      TCGA.OR.A5JJ     333      0     15     130  5895 11900  2249     3  1617    33
+      TCGA.OR.A5JK     169     40     13      48   456  1311  3358     3  1248    18
+      TCGA.OR.A5JL     234     15    500      37  1518  1545  3412    14  1059    23
+      TCGA.OR.A5JM     333      0      0      24   739  1890   764     8   592     9
+      TCGA.OR.A5JO     104      1      0      40  1712  1347   629     6  1535  3667
+      TCGA.OR.A5JP     445      1      2     130  3022   955  1850    16  4029    51
+      TCGA.OR.A5JQ     419      1      6      44  3250  5863 12947     8  1536    60
+      TCGA.OR.A5JR     289      3     18     103  1041  4983 30505     4   814     4
+      TCGA.OR.A5JS      63     29      1      34  2378  5344  1943     1  3519    42
+      TCGA.OR.A5JT     274      2      1     212  2469  3178 21609    15   875     2
+      TCGA.OR.A5JV     105      2     20     152   727  1179  9049    10   413     7
+      TCGA.OR.A5JW     307      1     53      98  4358  1827  4700     3  3075    39
+      TCGA.OR.A5JX     189      0      5      90   387  1649  1798     0  1693    22
+      TCGA.OR.A5JY     180     24      7       7   501  1024  1387   132  2649    38
+      TCGA.OR.A5JZ     129      3     13     135  4090  1965 13426     3   830     5
+      TCGA.OR.A5K0      46      2      1      75  1744  5743  1921    16  4821    26
+      TCGA.OR.A5K1     102      0     19     100   935   885 14312     4   434     3
+      TCGA.OR.A5K2      26      0      2      25   371   661   508     0  2380    16
+      TCGA.OR.A5K3     116      0     31     112   226   647  2725     4   495     5
+      TCGA.OR.A5K4     147      0      3     213   892  2389 36069    10  1024    34
+      TCGA.OR.A5K5      48      0      1      70   287  2034  1867    31   955    10
+      TCGA.OR.A5K6      95      1      0      50  2001  3112  1831     5   499     4
+      TCGA.OR.A5K8      87      0     36      36  1192  1653  2728     2   429    11
+      TCGA.OR.A5K9     106      1      2      79  2242  3020   163     4   244     4
+      TCGA.OR.A5KO     117      1      4     215  3655  3527  8102     2  1617     9
+      TCGA.OR.A5KT      15      0      4      20   201  1232  1575     8   308   110
+      TCGA.OR.A5KU     131      3     13      90   609   684  1028     4  3174    20
+      TCGA.OR.A5KV     247      0      1     251   989  5134  1492     1  2333    18
+      TCGA.OR.A5KW      67      4     90      83  1578  1919  3040     4   904    12
+      TCGA.OR.A5KX     155      0      0     113  2353   862  2372     3  1089     1
+      TCGA.OR.A5KY     164      4     72      46  3411  5832  2967     1  1665    80
+      TCGA.OR.A5KZ     148      1      0      48   833   621   564     1   328  1601
+      TCGA.OR.A5L3      66      0      0       7  1306  1691   514    19  1060     9
+      TCGA.OR.A5L4     126      0      4      58   225   445  5407     6   326    36
+      TCGA.OR.A5L5     200      1      3      77  5761  2509  9272    13  2243   284
+      TCGA.OR.A5L6      97      1      2      20   392   665  1629     5   863     9
+      TCGA.OR.A5L8     235      1      0      38  7397  2229  2725    10  1353    24
+      TCGA.OR.A5L9      40      0      0      17   565   128  1220     3   181    10
+      TCGA.OR.A5LA     100      4      2      74  2356  1988  4942     2   683    46
+      TCGA.OR.A5LB     294      0    427      66  4348  3037  5887     4  2427    28
+      TCGA.OR.A5LC      75      0      0      84   875  3107   727     0   748    26
+      TCGA.OR.A5LD      52      0      0       3   358   192   245     1   165     2
+      TCGA.OR.A5LE      94      0      0      13   410  1150   353     9   764     9
+      TCGA.OR.A5LG     172      4     10      33  1754  1303  1065     2   836    50
+      TCGA.OR.A5LH     266      6     54     174  1158  1668  5031    56  2031    65
+      TCGA.OR.A5LJ     156      0     10      13  3282  5440  2167    21  1052     8
+      TCGA.OR.A5LK     129      2      4      30   916   906  1131     4   303    15
+      TCGA.OR.A5LL     132      2     11      31  8081  1820   894     4  2101    75
+      TCGA.OR.A5LM     287      4    113     123   143   500  2540     2   909     4
+      TCGA.OR.A5LN     295      0      0       9  1022   908  2022     0   853     5
+      TCGA.OR.A5LO     103      3    340      72   950  2018  2772     0  1621    16
+      TCGA.OR.A5LP     165      8     11      95  2514  5452 11478     5  1195    49
+      TCGA.OR.A5LR      85      1      0     156  1089  1604  9508     6   674    28
+      TCGA.OR.A5LS     189      0    103      42  2231  3377  3451     4  2226    18
+      TCGA.OR.A5LT     212      5      0      29  2112  6206  2324    30  1828     7
+      TCGA.OU.A5PI     139      2     68      34  1128  4401  5606     5  1984    72
+      TCGA.P6.A5OF     235      1     25    1381  3669 12130  5576     2  2307   156
+      TCGA.P6.A5OG     107      0    352     356  1071  4243  2088    95   240   221
+      TCGA.PA.A5YG     132      3      4      51  4491  3573  3415     0  1224    20
+      TCGA.PK.A5H8     248      1    490     202   669   512  4548    13  1098    10
+      TCGA.PK.A5H9     311      1      3      25  8536  1769  2009     3  6364  6420
+      TCGA.PK.A5HA     211      0      7     618  7754  2534 10411     5   195   113
+      TCGA.PK.A5HB     322      6     31     122   115  1153  8254    10   355    14
+                   ABCA7 ABCA8 ABCA9 ABCB10 ABCB11 ABCB1 ABCB4 ABCB5 ABCB6 ABCB7
+      TCGA.OR.A5J1   898     9    75    860      1  2191   757    15  3792   415
+      TCGA.OR.A5J2   524   303   101    948      0  7047 13756     4  1129  1315
+      TCGA.OR.A5J3   707  2310    67    302      3 31934  9662     9  1644   836
+      TCGA.OR.A5J5  2632  1268    61    375      0   275   293     1  1223   240
+      TCGA.OR.A5J6   710  8948    52    494      0  6512   171     0  1506   505
+      TCGA.OR.A5J7  1531  2583    37    730      0 10535  1062     4  9537   699
+      TCGA.OR.A5J8   590   334   569    595      0   305    34   124  2508   509
+      TCGA.OR.A5J9   821  3987    75    218      0  8998  2404     1  3067   728
+      TCGA.OR.A5JA  1252  1802   215    452      0 11415   540  2049  1397   933
+      TCGA.OR.A5JB   385     8    42    945      0    52    15     0  1801   847
+      TCGA.OR.A5JC   736   937    63    237      0 13760   832     0   668   631
+      TCGA.OR.A5JD  1033  2936    72    408      0  1266    24   298  1200   835
+      TCGA.OR.A5JE   794   662    25    335      1  4374  1350     2  4204   354
+      TCGA.OR.A5JF  1260  4296   203    284      1 28395 20816     5  1639  1086
+      TCGA.OR.A5JG   624    44    20    405      1  8558   102   545  1427   644
+      TCGA.OR.A5JI   328  1183    43    172      0  6656   125     1   770   242
+      TCGA.OR.A5JJ  1460   933    59    350      0  8989  8263     4  2507   944
+      TCGA.OR.A5JK  1650   500    73    314      0  2552   771     0   738   357
+      TCGA.OR.A5JL   496  1792    52    425     10  4675  1043     9  2399  1870
+      TCGA.OR.A5JM  1714   393     7    966      0 12156  2495     0  3604   380
+      TCGA.OR.A5JO   606 11345   565    464      2   420    64     1  1093   749
+      TCGA.OR.A5JP    83  1451   156    723      5  4494    63     0  4721   528
+      TCGA.OR.A5JQ  1070  7282    64    411      0 14628   381    39  1533   827
+      TCGA.OR.A5JR   539  4802     3    365      1  5383    79    12   620  1337
+      TCGA.OR.A5JS  1755  1479    57    806      0 18518  1330     1  3048   939
+      TCGA.OR.A5JT   745  3347     9    296      0  1472    51     3   941   979
+      TCGA.OR.A5JV   843  1914     7    304      0  1542   117   708   543  1498
+      TCGA.OR.A5JW   542  3649   148    341      0 28982  2571     0   873  1301
+      TCGA.OR.A5JX   654  1003    73    144      0  9728  1453     0   956   483
+      TCGA.OR.A5JY   692  1580    33    544      1 11594  4992    10  2003  1002
+      TCGA.OR.A5JZ   334  2339    24    274      0  2191    17     1   451   808
+      TCGA.OR.A5K0  2981   282    58    628      0 13556   226     0   936   359
+      TCGA.OR.A5K1   448  1425    17    131      0   577     5     0   273   514
+      TCGA.OR.A5K2   165    98    82    189      3  3890  1677     3  2788   467
+      TCGA.OR.A5K3   508   168    25     80      0  1152    24  3753   545   358
+      TCGA.OR.A5K4   599  2191    11    353      2   626    51    20   617  1245
+      TCGA.OR.A5K5  1047  1310    17    319      0  5833  6140     2  3355   524
+      TCGA.OR.A5K6   507  1841     7    507      0 18267 11421     0  1198   771
+      TCGA.OR.A5K8   636   434    30     71      0  2880   729     7   538   201
+      TCGA.OR.A5K9  1949  5648    10    247      0 20986 11652     0  3925   646
+      TCGA.OR.A5KO   583  2693    25    701      0 15660  1039     2   789  1015
+      TCGA.OR.A5KT   294 11599    96    334      0  3782   356    17   827   333
+      TCGA.OR.A5KU  1137  1557   131    204      0 10480  1518     0  1246   547
+      TCGA.OR.A5KV  2840    10    18    258     46  7742   673     0  2810  1029
+      TCGA.OR.A5KW  1051   830    33    324     15 21130  1004    13  1863   747
+      TCGA.OR.A5KX  2237  5486     4    343      0  3248    31     0  2610   389
+      TCGA.OR.A5KY  1463   311   140    432     14 20686  6703    18  4187   593
+      TCGA.OR.A5KZ   268  2746  1253    505      0  4288   739     0  1553   723
+      TCGA.OR.A5L3   158   524    16    108      0  2256   374     1  1592   205
+      TCGA.OR.A5L4   277  1148    26    239      0  5820    91     0   250  1327
+      TCGA.OR.A5L5   808  2631   303    331      2  5134   300     6   942   843
+      TCGA.OR.A5L6   337   468    16     74      0   380    30     0   304   119
+      TCGA.OR.A5L8   254  5788    63    540      3 25311 13516     0   942  1260
+      TCGA.OR.A5L9   114   154     9     16      0    96     2     0   202    31
+      TCGA.OR.A5LA   125  1593    31    133      0  2197    76     0   745   283
+      TCGA.OR.A5LB   829  3140    38    363      0  2418  3642     1  2108  1464
+      TCGA.OR.A5LC  1014  1144    29    330      0   199    59     0  1359   513
+      TCGA.OR.A5LD   190   374    11     54      0  1799   819     0  1181    68
+      TCGA.OR.A5LE   376    12    12    421      0  5330  9975     2  2443   706
+      TCGA.OR.A5LG   594  1269   102    480      0  1624   680     0  2597   761
+      TCGA.OR.A5LH   502  2294    88    228      6  3814   471     8  1534  1500
+      TCGA.OR.A5LJ   339    53    34    579      7  9419 12843    60  1796  1132
+      TCGA.OR.A5LK   514   208    47     78      0   517    18  1025    99   275
+      TCGA.OR.A5LL   329  6808   152    605      0 29509  5475     0  3255   894
+      TCGA.OR.A5LM  1110   423    39    196      0  2130    56     1   990   608
+      TCGA.OR.A5LN   446  1156    10    272      0  1051    37     1   592   255
+      TCGA.OR.A5LO  1322  3639    24    354      0  7111  1181     0  2276  1977
+      TCGA.OR.A5LP   768  1868    55    358      0  8839   109    15   963  1177
+      TCGA.OR.A5LR   399   792    31    139      0  1815    12     0   349   593
+      TCGA.OR.A5LS   559    32    63    477      0  3425 12817     0   191   657
+      TCGA.OR.A5LT  2562  1532    23    244      0  1109    29   138  1495   288
+      TCGA.OU.A5PI   345  2137    69    222      0 23188 10793     7  1503   783
+      TCGA.P6.A5OF  2217  2137   198    621      2  9888  5584     7  2401  1002
+      TCGA.P6.A5OG   931   205   168    823      0   121    30     5  1244  1171
+      TCGA.PA.A5YG   743  3041    18    445      0  9681   113   163   834  1463
+      TCGA.PK.A5H8   783  1795    43    294      0  2807    77     0   342   867
+      TCGA.PK.A5H9   828 19002  1244   1477      0   620   316     5   543  1598
+      TCGA.PK.A5HA   407   849    27    396      0   715    30    14   135  1356
+      TCGA.PK.A5HB   471  2725    15   1445      4 11787    83    10  1741  1801
+                   ABCB8 ABCB9 ABCC10 ABCC11 ABCC12 ABCC13 ABCC1 ABCC2 ABCC3 ABCC4
+      TCGA.OR.A5J1  1910   387   1683      7      0      0  1937     8  1415   361
+      TCGA.OR.A5J2  3628   507   1948      5      0      0  5288    11  2751   519
+      TCGA.OR.A5J3  3869   521   1117      9      0      0  4137    30 11955   139
+      TCGA.OR.A5J5  3547   891   1135      9      0      0  3195   216 10963    28
+      TCGA.OR.A5J6  1707   432   3147     14      0      0  4248    15   481   136
+      TCGA.OR.A5J7  3971   542   2540      8      0      3  3598    83  9617   136
+      TCGA.OR.A5J8  2510  1448   1451      4      5      1  3584    88   370   521
+      TCGA.OR.A5J9  7661  1598   1776     12      0      0  6912    21   927   271
+      TCGA.OR.A5JA  3606  1047   2487      4      0      0  5587     6  5014   281
+      TCGA.OR.A5JB  2239   259    982      2      0      1  4726    18  3764   227
+      TCGA.OR.A5JC  1784   887   2166      4      0      0  3705   314  1333   180
+      TCGA.OR.A5JD  3359   491    627      7      0      0  2345    40  4195    81
+      TCGA.OR.A5JE  1563   723   1766      7      0      0  1119     6  5342    73
+      TCGA.OR.A5JF 13104  1296   1098     14      0      1  7470    93 14040   282
+      TCGA.OR.A5JG  6930   930    530     18      0      0  3690    16 19525   218
+      TCGA.OR.A5JI  1291   193    629      8      0      0  1186    36  2035    69
+      TCGA.OR.A5JJ  5338   980    819      7      0      1  3333    17   616   429
+      TCGA.OR.A5JK  2207   362    764      1      0      0  2265    16   286    33
+      TCGA.OR.A5JL  4483  1414   3026      6      3      0  2062    43  2643   361
+      TCGA.OR.A5JM  2715   504   3126     16      0      0  1997    38  3947   150
+      TCGA.OR.A5JO  1370   147    691      2      0      0  3005   136  2323   440
+      TCGA.OR.A5JP  4291  1082   1636      6      1      7  3367    25  8618    60
+      TCGA.OR.A5JQ  3321  2363   1312     12      0      0  3409    10  4147   194
+      TCGA.OR.A5JR  4035   699   1349     12      0      0  4358    12  1503   299
+      TCGA.OR.A5JS  3328   661   1741     17      0      1  5929    32  7132   137
+      TCGA.OR.A5JT  3127  1194   1170      9      0      0  4349     7   600   311
+      TCGA.OR.A5JV  3522   463    724      5      0      3  4063    21   344   771
+      TCGA.OR.A5JW  5157   419   2505      2      0      0  4012   189 15750   165
+      TCGA.OR.A5JX  1819   473   1274     10      0      0  2552    99  2649    73
+      TCGA.OR.A5JY  2590   683   2448     10      0      1  8081   391  8168     6
+      TCGA.OR.A5JZ   998   674    636      6      0      0  3197    15  2418   318
+      TCGA.OR.A5K0  2088   867   1270      1      4      0  3071     3  2994    66
+      TCGA.OR.A5K1  2436   630    676      2      0      0  2812     2   925   148
+      TCGA.OR.A5K2  2340   356   1404      2      0      0  2187     0  2703    48
+      TCGA.OR.A5K3  1951   248    449      2      0      0  1582     4    91    26
+      TCGA.OR.A5K4  1746   957    725     12      0      0  6626    66   660   311
+      TCGA.OR.A5K5  3459  1051   1694      5      0      2  4344     5  1401    33
+      TCGA.OR.A5K6  1145   286   1184      1      0      0  1242     7 19560   314
+      TCGA.OR.A5K8  1494   142    430      0      0      0  1153    18  1971    67
+      TCGA.OR.A5K9  2607   481   1939      1      0      0  3440    33 10197   664
+      TCGA.OR.A5KO  2328   189   2535      4      0      0  2918    47 15255    93
+      TCGA.OR.A5KT  1118   147    541      7      0      1  1436     2  7239   122
+      TCGA.OR.A5KU  1331   982    482      1      1      1  2992    46   399    38
+      TCGA.OR.A5KV  3073  1663   2097     14      0      1  3478     3  3753   106
+      TCGA.OR.A5KW  2886  1679    855      8      3      0  5790    12  3989   266
+      TCGA.OR.A5KX  1418   710   2295      1      1      0  5318    16  9746   375
+      TCGA.OR.A5KY  6688   895   1740      7      0      1  3530    10 15224   192
+      TCGA.OR.A5KZ  1785   593   1650      6      0      0  3465     4   279   603
+      TCGA.OR.A5L3  1602   123    745      2      0      0   687     6  7508     3
+      TCGA.OR.A5L4  2345   296   1294      2      0      0  3919     2  2791   216
+      TCGA.OR.A5L5  2073  1020    915      4      0      0  2239    27  4052   141
+      TCGA.OR.A5L6   861   174    523      0      0      0  1147   157  3622    27
+      TCGA.OR.A5L8  2902   890   1318      4      0      0  1557    25  8343   159
+      TCGA.OR.A5L9   236    76    117      0      0      0   728     1   139    12
+      TCGA.OR.A5LA  2910   582    355      1      0      0  1592     0  2130    97
+      TCGA.OR.A5LB  4168   501    848      2      0      0  4160    30  8656    86
+      TCGA.OR.A5LC  2881   562    679      2      0      0  1995    24  1704   636
+      TCGA.OR.A5LD   631   441    644      2      0      0  2382     1  1030     7
+      TCGA.OR.A5LE  2242   266   1071      6      1      0  2503    12    81   340
+      TCGA.OR.A5LG  2934   227   2632      0      0      0  1907    10 12249    23
+      TCGA.OR.A5LH  5345   838   1408      9      0      3  2525    19  3496   275
+      TCGA.OR.A5LJ  3172   161    941      5      0      1  2119    55  3875   764
+      TCGA.OR.A5LK   874   333    397      2      0      0   410    11   251    81
+      TCGA.OR.A5LL  2705   144    982      4      0      0  4664    51 11699    17
+      TCGA.OR.A5LM  2765  3192   1079      5      0      0  2693    18  2514   251
+      TCGA.OR.A5LN  1312    71    875      1      0      0   334    43  2285    49
+      TCGA.OR.A5LO  2528   342   1267     12      0      0  3561    46  3588   393
+      TCGA.OR.A5LP  5623   817   1279     12      0      0  4900    36  6439   382
+      TCGA.OR.A5LR   753   593    686      4      0      1  3737     6  2414   168
+      TCGA.OR.A5LS  2862   317    733     29      1      0  2112    63  4124    75
+      TCGA.OR.A5LT   969  1060    777      3      1      0  1308    56   264    89
+      TCGA.OU.A5PI  4049   414    633      5      0      2  2097    23  5902   149
+      TCGA.P6.A5OF  5542   701   2232      5      0      1  3818    76  9615   834
+      TCGA.P6.A5OG  1567   363   1559      0     43      3  1747    25   224   651
+      TCGA.PA.A5YG  4031   434    862      2      0      1  3524    18  5018   324
+      TCGA.PK.A5H8  2583   572   2066     10      0      0  4529    23   379   229
+      TCGA.PK.A5H9  1968   599   2361      9      0      0 15411  1851  4119   819
+      TCGA.PK.A5HA  2479   368   1401      4      0      0  2351    33  2891   154
+      TCGA.PK.A5HB  2946   559   2658     16      0      0 15465   159  6713   622
+                   ABCC5 ABCC6P1 ABCC6P2 ABCC6 ABCC8 ABCC9 ABCD1 ABCD2 ABCD3 ABCD4
+      TCGA.OR.A5J1  2525       3      90    25     0    37  4493   281  1497  1494
+      TCGA.OR.A5J2  3784       5      48    49     0   628  4315  1821  1858   829
+      TCGA.OR.A5J3  2222       4      12    20     1  2019  2741    51  1749  1744
+      TCGA.OR.A5J5  2314     106     178   154     4   112  4083    17   653  1744
+      TCGA.OR.A5J6  1322      38     161  1151     0   170  3441    58  2665   823
+      TCGA.OR.A5J7  6700      29     552   438     0   176  3642    28  1740  1458
+      TCGA.OR.A5J8  2130      65      78   167     1   279   893    54  1888  1929
+      TCGA.OR.A5J9  2835     113     136   202     1   236  4313   670  1791  1303
+      TCGA.OR.A5JA  1988       2       6    41     1   258  4715    22  1558  1981
+      TCGA.OR.A5JB  2419      40     111   280     1    74  1560    18  2171  1861
+      TCGA.OR.A5JC  1378       1      65   101     2   108  4522    28  1115   920
+      TCGA.OR.A5JD  1544      31      66   215    11   269  3039   203  1523   504
+      TCGA.OR.A5JE  1751       7     167    46     0    72  3769    23  1572  1210
+      TCGA.OR.A5JF  2741       2      65   112     0  5589  5529   690  1829   937
+      TCGA.OR.A5JG  1111       0       9    14     0   112  3430    69  2706  1404
+      TCGA.OR.A5JI   380     113     395   336     0   347  3507    65   512   538
+      TCGA.OR.A5JJ  2442      21     168   123     0   125  4088   465  1663  2407
+      TCGA.OR.A5JK  1141       0      88    30     0    91  3158   141   534   466
+      TCGA.OR.A5JL  2055       1      82   493     4   374  7022   427  1996  3069
+      TCGA.OR.A5JM  3103      41     117   205     0   788 10300   386  2967   664
+      TCGA.OR.A5JO  1185     262     156  1460     6   204  1472    30  1641  1909
+      TCGA.OR.A5JP   733      30     221   129     1   362  6533    41  5272  1146
+      TCGA.OR.A5JQ  1441      88     149   173     2   572  5686   269  1715   783
+      TCGA.OR.A5JR  1714      99      58   321     0   119 10914   218  2583   855
+      TCGA.OR.A5JS  4869     100     270   830     0   238  5081   154  1589  1307
+      TCGA.OR.A5JT   800      11      33   369     1   187 17490   517  2824   842
+      TCGA.OR.A5JV  3594       5      28    37     0   166  7061   199  1742   569
+      TCGA.OR.A5JW  2358       2       6    21     0   328  4003   632  2384  1477
+      TCGA.OR.A5JX  1951       6      24    15     0   156  1984    60  1035   871
+      TCGA.OR.A5JY  2736      13      18   134     0  2063 14639   888  7240  1031
+      TCGA.OR.A5JZ   436      29       8     7     0   279  7038    44  1610   623
+      TCGA.OR.A5K0  2045       7      72   246     0     6  5165   251  1047  1217
+      TCGA.OR.A5K1   720      26      69   451     0   138  3142    47   842   519
+      TCGA.OR.A5K2  1135       1     107    41     0    61  6103    12  1132   732
+      TCGA.OR.A5K3   389       3      36    28     0    38  1612    56   610   330
+      TCGA.OR.A5K4   730       3      28    36     0    97 15222   139  1614   650
+      TCGA.OR.A5K5  3803      82     243   294    15   560  3584    64  1293  1074
+      TCGA.OR.A5K6  1846      36      68   108     0   136  3458   100  1500  1484
+      TCGA.OR.A5K8   587       1       1     9     0    96  2006    25   504   292
+      TCGA.OR.A5K9  2245      32      89   270     0   202  4490   528  2541   829
+      TCGA.OR.A5KO  5972     114     212   463     1    61  7025    17  1650  1968
+      TCGA.OR.A5KT   604       0       4    37     1   227  3247     6  1050   932
+      TCGA.OR.A5KU  1271       9      47     3     1   114  2115   255   932   399
+      TCGA.OR.A5KV  2050      16      44    68    11   154  5684    49  2731   799
+      TCGA.OR.A5KW  2436       0       1    11     6   176  4980   102  1593   917
+      TCGA.OR.A5KX  1307       4      10    35     0   183  2409    47  1529  2297
+      TCGA.OR.A5KY  3095      10      11    21     2   255  4042   193  2257  1318
+      TCGA.OR.A5KZ  1025       2      66    87     0   580  1230   138  1279   945
+      TCGA.OR.A5L3  1170       7      21    58     0    33  3720   115   876   485
+      TCGA.OR.A5L4   860       1      27    49     0   806  5610     6   994   690
+      TCGA.OR.A5L5  1261     195      92   571    12   373  3532   368  1657   995
+      TCGA.OR.A5L6   561       7      42    60     0   204  1143    58   196   324
+      TCGA.OR.A5L8  4366      22      82   230     5   126  1577  1563  2516  1043
+      TCGA.OR.A5L9   160       2      13    63     0    52  2496     9   101    82
+      TCGA.OR.A5LA   720       0      13   164     0   150  3887   114   517   723
+      TCGA.OR.A5LB  2726      11      27    18    13   140  5328   215  1618  2093
+      TCGA.OR.A5LC  2477       0      56    19     0   151  3329   106   650   626
+      TCGA.OR.A5LD   313       0      35     6     1    27  1284    53   477   621
+      TCGA.OR.A5LE  1854       0      38    19     0   218  3570   516  2366   751
+      TCGA.OR.A5LG  2495       0       7    18     0    73  3415     4  1677  1914
+      TCGA.OR.A5LH  2374      29     100   440     0   119  8727   287  2464  1366
+      TCGA.OR.A5LJ  6342      61      91    83     5  1787  3875   104  1331   932
+      TCGA.OR.A5LK   805       9      59    70     0    50  3292    35   381   294
+      TCGA.OR.A5LL  2103       2      25   145     1   167  3039   117   647   639
+      TCGA.OR.A5LM  1420       7      45   248     1   346  3928   184   927   861
+      TCGA.OR.A5LN   499       8      60   108     0   365  2546    55   532   335
+      TCGA.OR.A5LO  4503       3      12    13    81   191  1951    13  1021  2184
+      TCGA.OR.A5LP  1157      17      45   188     2   771  6327   514  2152   736
+      TCGA.OR.A5LR   689      75      36   238     0    96  8237   149   981   677
+      TCGA.OR.A5LS  4080      47     181   140     1   112  2128   182  1741   801
+      TCGA.OR.A5LT   741      17     123    53     0   163  2072    38  1509   488
+      TCGA.OU.A5PI  3395       2      16    51    43   216  2102   405  1334   862
+      TCGA.P6.A5OF  4322       6      10    25     0   811  5898   450  1928  1425
+      TCGA.P6.A5OG  3321       4      14    14     1  1417   818    18  1609  1462
+      TCGA.PA.A5YG  2904       0      17   119     1  1319  2396  1243  1722   902
+      TCGA.PK.A5H8  1689      65     185  1299     0   202  8557    37  1275   825
+      TCGA.PK.A5H9  1833    4195    1541 16378     2   245  7093    11  8667  2317
+      TCGA.PK.A5HA  1546     120     134   356     0   355  5046    10   941   912
+      TCGA.PK.A5HB  1518       2       8    31     0  2010  9500    16  5052  1547
+                   ABCE1 ABCF1 ABCF2 ABCF3 ABCG1 ABCG2 ABCG4 ABCG5 ABCG8 ABHD10
+      TCGA.OR.A5J1  2864  2581  2038 18394   721   152     3     7     0   3351
+      TCGA.OR.A5J2  2986  4135  3951  8279  2107   601    14     2     5   3882
+      TCGA.OR.A5J3  1610  2013  4215  4099   166  1047    11     2     0   2137
+      TCGA.OR.A5J5  1174   821  2386  6881    96    37    11    18     7   2244
+      TCGA.OR.A5J6  1874  3981  1948  2958   246   227    79     4     7   1533
+      TCGA.OR.A5J7  2061  6538  3059  9454   307   386   102    16     3   2120
+      TCGA.OR.A5J8  2885  5509  4553  3390  2866   335    21     5     0   1228
+      TCGA.OR.A5J9  4506  4501  4995 15183  2764  2969     6     4     0   3453
+      TCGA.OR.A5JA  2404  4960  3260  8172   383    11     5    23     0   2354
+      TCGA.OR.A5JB  2512  3757  3853  4537  5550    26    14     2     1   1551
+      TCGA.OR.A5JC  1660  2413  1828 13171  2079   164     2     2     0   2746
+      TCGA.OR.A5JD  2368  1610  2653  6319   377   435    54     4     0   5388
+      TCGA.OR.A5JE  1601  4591  1388  8726  1665   132     8    11     0   2039
+      TCGA.OR.A5JF  4853  2895  4993  6950  1758   485    16     9     0   3512
+      TCGA.OR.A5JG  2920  2726  3952  6288   209   164     2    15     0   2762
+      TCGA.OR.A5JI  1395  1181  1213  5977  6321   574     4    13     0   2489
+      TCGA.OR.A5JJ  2252  2576  4390  4859  8331   189     2    10     0   2158
+      TCGA.OR.A5JK  1631  1398  2384  4434   776   139     0     1     0   2260
+      TCGA.OR.A5JL  3309  6388  4140  7037   766   589     6     7     0   3485
+      TCGA.OR.A5JM  2583  5307  2338  4832   274   158    44    22     0   2318
+      TCGA.OR.A5JO  1647  3173  1820  2706   609    84    19    11     0   1635
+      TCGA.OR.A5JP  4357  3422  3069  5916  7819   294    11    66     0   2806
+      TCGA.OR.A5JQ  3468  3205  3835 12143  1989   653    19     2     1   7060
+      TCGA.OR.A5JR  2982  2948  3777 11319   687   725     6     4     0   5775
+      TCGA.OR.A5JS  2498  4359  4016  6706   264    36    33    18     1   3405
+      TCGA.OR.A5JT  2824  3080  4143  5471  6578   445    13     2     0   4268
+      TCGA.OR.A5JV  3027  3376  3901  7073  1679   264    14     0     0   5699
+      TCGA.OR.A5JW  3223  4797  3719  5126  4306   424     2     3     0   1603
+      TCGA.OR.A5JX  1535  1772  2862 13947   284   123     6     0     2   3381
+      TCGA.OR.A5JY  2373  5638  4691  5439   244    84     5    17     0   2218
+      TCGA.OR.A5JZ  1109  1939  1613  7013  4826    91     7     1     0   2371
+      TCGA.OR.A5K0  1772  5068  3301  3046    50    35     5     1     0   1620
+      TCGA.OR.A5K1   898  1822  2340  4655  1724   504     7     2     0   2255
+      TCGA.OR.A5K2   879  1556  1181  7599   874    18     1     5     1   1463
+      TCGA.OR.A5K3   645   796  1240  3244   512    94     2     0     0   2737
+      TCGA.OR.A5K4  2240  2476  1701  6116  6213    63     9     5     0   4325
+      TCGA.OR.A5K5  1970  6677  3268  5953   378    14    30     6     2   3244
+      TCGA.OR.A5K6  2519  2786  1247  5979   739    22     5     3     0   2850
+      TCGA.OR.A5K8  1003   475  1061  1648   520    48     1     2     0    963
+      TCGA.OR.A5K9  4205  4464  3200  3392  1249    33    12    21     5   1950
+      TCGA.OR.A5KO  3370  3956  2538  7213   795   108     9     6     0   1870
+      TCGA.OR.A5KT   928  1138  1117  3728   649    66    15    15     1   1462
+      TCGA.OR.A5KU  2127  1820  1992  3702   782    11     5     6     0   1514
+      TCGA.OR.A5KV  3293  3877  4203 10933  2550   147   177    35    72   5934
+      TCGA.OR.A5KW  1812  2479  4731  5871  1823   152     2    11     0   2561
+      TCGA.OR.A5KX  1581  2543  1801  5788  3491    45    31     7     0   3639
+      TCGA.OR.A5KY  2843  2357  3219 10676  2773   348     7     8     1   3213
+      TCGA.OR.A5KZ  3845  4848  2425  4448   809   223    11     3     0   1519
+      TCGA.OR.A5L3   895  1062   949  3028  1018    27    19     6     0   2550
+      TCGA.OR.A5L4  1665  3135  2771  6389   283   128     4     1     1   2219
+      TCGA.OR.A5L5  1563  1979  2221  6961  3643   458     6     9     1   3444
+      TCGA.OR.A5L6   489   539   546  4202   482   171     2     1     0   1103
+      TCGA.OR.A5L8  3023  2692  4358 12600  6002  1812     5     2     1   4210
+      TCGA.OR.A5L9   117   148   126   951   322    12     2     7     0    528
+      TCGA.OR.A5LA  1139  1131  2183  3831  8158   358    18     1     0   2856
+      TCGA.OR.A5LB  3709  1809  3679  6085  1652   246    12     6     0   2188
+      TCGA.OR.A5LC  1398  1390  2131  4303   681    66     8     1     0   1715
+      TCGA.OR.A5LD   516   877   557  2319   166    88     3     9     1   2084
+      TCGA.OR.A5LE  3044  1693  2142  2437   368    71     3     5     0    855
+      TCGA.OR.A5LG  2838  3149  3217  8572   233  1319     6     0     0   3026
+      TCGA.OR.A5LH  3054  3143  4393  8916  1747   749    51     5     0   3332
+      TCGA.OR.A5LJ  2595  1595  3114  4371   277   216    29     1     0   3148
+      TCGA.OR.A5LK   620   738   957  2149   343   234    10     2     0   1761
+      TCGA.OR.A5LL  2968  3141  2057  2407  4249   340     4     1     0   1011
+      TCGA.OR.A5LM  2508  2439  3383 15696   456   359     6     7    20   3414
+      TCGA.OR.A5LN  1269  1151  1101  3128   246   216     1    12     0   1745
+      TCGA.OR.A5LO  2347  2090  1976 12320   961    53     9     3     1   2902
+      TCGA.OR.A5LP  2126  3101  5327  4980  1046   641    13     0     0   2630
+      TCGA.OR.A5LR   804  1360  1344  5629  2154   185     4    12     0   2158
+      TCGA.OR.A5LS  1138  1561  2358  4356  1085   118    22     4     0   3860
+      TCGA.OR.A5LT  1394   882   927  3174   508   212     4     8     0   3088
+      TCGA.OU.A5PI  2915  1861  3431  9175  2242  2064     6     0     0   3441
+      TCGA.P6.A5OF  2730  2029  3251  4410  2906   228     6     4     0   2676
+      TCGA.P6.A5OG  4961  5454  4698  2786  1160   238    69     1     0   1828
+      TCGA.PA.A5YG  1767  2173  3871  9138  5189  1330     6     0     0   2870
+      TCGA.PK.A5H8  1439  2233  2748  7253   329    51     5     1     0   2199
+      TCGA.PK.A5H9  2708  5507  2278  6457  2383  1198    15     8     1   5689
+      TCGA.PK.A5HA  1005  4418  2895  7920  1533   253    18     2     0   2528
+      TCGA.PK.A5HB  2561  3902  4701  8881   889   314    11    31     2   2274
+                   ABHD11 ABHD12B ABHD12 ABHD13 ABHD14A ABHD14B ABHD15 ABHD1 ABHD2
+      TCGA.OR.A5J1   1128       0   4004    738    1057    2253    516     7  4668
+      TCGA.OR.A5J2   1463      64   2301   1503    1878    3504    414    28 21475
+      TCGA.OR.A5J3   2172       4   1601    444    1828    5797    447    38  8223
+      TCGA.OR.A5J5   1341       0   1756    233    1861    1362    302    48  2226
+      TCGA.OR.A5J6    637       1   3276    484     834    4580    545    69  4855
+      TCGA.OR.A5J7   1718       0   3895    381    1901    2305    392    23  8209
+      TCGA.OR.A5J8    951       6   7177    870    1220    2382   1321     8 14086
+      TCGA.OR.A5J9   1564       0   3490   1588    2910    2456    248    10 15208
+      TCGA.OR.A5JA   2505       1   1930    837     819    3093    598    24 12087
+      TCGA.OR.A5JB   1133       4   2781    525    1095    3479    508    39  1977
+      TCGA.OR.A5JC   1050       0   2509    385    2010    3563    174    17  7420
+      TCGA.OR.A5JD   2485       1   5474    544    1149    7799    534    17  5589
+      TCGA.OR.A5JE    722       0   3592    410     938    1142    341     8  3921
+      TCGA.OR.A5JF   2788       0   5045    939    1839    5523    554     4 11378
+      TCGA.OR.A5JG   1289       0   2953    464    1637    5509    462     6  4734
+      TCGA.OR.A5JI    716       0   5042    250    3690    3106    433    28  1859
+      TCGA.OR.A5JJ   2889       1   4081    549    1456    2315    510    24 19574
+      TCGA.OR.A5JK    944       0   3609    325    2472    1996    311     4  7206
+      TCGA.OR.A5JL   2564       0   2581   1620     875    4565    489    42 25298
+      TCGA.OR.A5JM    903       0   6431   2146    1529    1404   1067     4  7247
+      TCGA.OR.A5JO    588       2   3219    867    1224    4398    850    71  8775
+      TCGA.OR.A5JP    634       0   3967    930    1183    1116    146    18  4724
+      TCGA.OR.A5JQ   1887       1   8006    576    2487    7541   1905     5  5405
+      TCGA.OR.A5JR   2656       0   8910    670    1805    4194    722    14 10746
+      TCGA.OR.A5JS   2141       4   2753    745    3305    3127    428    11 14148
+      TCGA.OR.A5JT   3077       1   7131    587     852    5016    671     4  9511
+      TCGA.OR.A5JV   1814       2   5273    588     825    2277    610     6 13251
+      TCGA.OR.A5JW   1485       0   2230    638    1001    5010    403     6 35015
+      TCGA.OR.A5JX    639       0   3589    517    5389    6765    258    35  6515
+      TCGA.OR.A5JY   1108       3   3017   2021     893    1782    560    32 14239
+      TCGA.OR.A5JZ    828       0   4329    413    1256    7281    570     0  7243
+      TCGA.OR.A5K0    949       3   3166    900    1114    2080    378    68  6768
+      TCGA.OR.A5K1   2013       1   2871    306     789    3402    461     0  2031
+      TCGA.OR.A5K2    467       0   1821    248    1588    1923     77     3  3822
+      TCGA.OR.A5K3   2528       0   3300    192    1002    2074    225     4  2678
+      TCGA.OR.A5K4    695       0   6946    523     674    3677   1128     4  9241
+      TCGA.OR.A5K5    748       0   2796    698    1189    1728    485    16 10193
+      TCGA.OR.A5K6   1248       2   2522   1040    2094    5805    344    52  9442
+      TCGA.OR.A5K8    721       0   1141    373     756    1462    124     1  1437
+      TCGA.OR.A5K9   1134       1   2208   1029    1617    2376    243    10  6652
+      TCGA.OR.A5KO   1351       0   1764    695    1546    4533    865    28  8181
+      TCGA.OR.A5KT    819       0   2428    239     717    1639    241     1  1493
+      TCGA.OR.A5KU    937     201   3045    261    1079    1797    358     4  6716
+      TCGA.OR.A5KV   1091       3   3306   1124    2488   10923    676    21 12929
+      TCGA.OR.A5KW   1191       0   1585    916    1979    3919    504     5 11092
+      TCGA.OR.A5KX    657       0   6003   1020    1326    3104    418    16  7387
+      TCGA.OR.A5KY   1416       0   4247   1172    2675    3138    323     8  6510
+      TCGA.OR.A5KZ    783       0   3669    262     494     886    265     9  5957
+      TCGA.OR.A5L3   1189       0   3000    242    1809    4041     98     3  1853
+      TCGA.OR.A5L4   1745       1   1783    462     586    3153    197     4  7149
+      TCGA.OR.A5L5   1002       1   9827    608    2207    5435    414     8  4858
+      TCGA.OR.A5L6    531       0   2159     78    1059    2177    144     8   430
+      TCGA.OR.A5L8   1386       0   1361    876    2135    2292    351    38 21874
+      TCGA.OR.A5L9    239       0    827     59     612    1526     30     0   181
+      TCGA.OR.A5LA   2780       0   3974    251    1721    8143    181    32  3642
+      TCGA.OR.A5LB   1278       0   3584    671    2054    3610    374    18 18012
+      TCGA.OR.A5LC   1195       0   2658    584    1531    4022    563     6  2325
+      TCGA.OR.A5LD   1591       1   1383     68     987    1060     49     1   713
+      TCGA.OR.A5LE    540       0   3066    931     899     519     89     4  9201
+      TCGA.OR.A5LG   1460       1   4823    765    4524    7329    444     1  7317
+      TCGA.OR.A5LH   5572       0   3159    675    1164    7836    758    10 12240
+      TCGA.OR.A5LJ   2344       5   5964    659    1130     703    206    14  4900
+      TCGA.OR.A5LK   1190       2   2782     89     800     829     95    29   826
+      TCGA.OR.A5LL    481       0   2335    487    1432    2492    433     0 12636
+      TCGA.OR.A5LM   2778       0   2541    821    1679    2909    290    18  8078
+      TCGA.OR.A5LN    670       0   4626    200    1270    2239    150     8  1629
+      TCGA.OR.A5LO   1484       0   1087    491     899    3555    314    55 17274
+      TCGA.OR.A5LP   2745       2   6800    660    1185    4587    614    12 13848
+      TCGA.OR.A5LR    461       3   2286    384     604    3665    422     1  4914
+      TCGA.OR.A5LS   1837       0   1711    242    1533    1827    327    12 10668
+      TCGA.OR.A5LT    700       0   5334    426    1165    1565    573     4  1694
+      TCGA.OU.A5PI   1285       0   2386    500    1518    2582    341     5 12395
+      TCGA.P6.A5OF   1775       0   3440   1551    1852    4603    525     1 11911
+      TCGA.P6.A5OG    984       3   2737    834     664    3438    391     6  3186
+      TCGA.PA.A5YG   2268       2   9006    774    1240    4027    532    29 10880
+      TCGA.PK.A5H8   1153       0   2646    679     974    3212    433     5  4355
+      TCGA.PK.A5H9   1167       0   4050   1644    1159    6191   2931    43 36445
+      TCGA.PK.A5HA   1513       0   4464    347    1013    4268    380    21  3959
+      TCGA.PK.A5HB   1403       0   2847    481     520    2115    315     7 10542
+                   ABHD3 ABHD4 ABHD5 ABHD6 ABHD8 ABI1 ABI2 ABI3BP ABI3  ABL1 class
+      TCGA.OR.A5J1   298  2603   914   496   971 1387 3881     24  501  4707     0
+      TCGA.OR.A5J2   417  2245  2289  4880  1791 2448 3924    128  253  5306     0
+      TCGA.OR.A5J3   172  5995   748  1037  1376  916 1067     82  133  5424     1
+      TCGA.OR.A5J5   420  3994   445  1230  1569  812 1193     57   97  4615     0
+      TCGA.OR.A5J6   564  2962  2965  1955  3094 1285 1609    109  170  4265     1
+      TCGA.OR.A5J7  1521  4588   756  1903  2160 4218 3723      9  406  7788     0
+      TCGA.OR.A5J8  1022  7022   855   819   386 1901 3730   6095 1144 12329     0
+      TCGA.OR.A5J9   304  7445   978  1222  3149 2304 5482     34  440  8455     1
+      TCGA.OR.A5JA   357  6452   858  1639  1111 1074 1625    255  185  7124     0
+      TCGA.OR.A5JB  1098  1542   537   313   647 2087 4261     10 1117  8377     0
+      TCGA.OR.A5JC   144  2010   617  1039  1224 1167 1448    567  312  2766     0
+      TCGA.OR.A5JD   566  1758   653  1591  1552 1413  962   8465  325  5401     1
+      TCGA.OR.A5JE   574  6148   437  1293  1658  593 1755    165  527  5247     0
+      TCGA.OR.A5JF   194  2224   697  1680  2298 1721 1912    164  286  9320     1
+      TCGA.OR.A5JG   229  5531   834  2090  2337 1274 1191    101  265  5649     0
+      TCGA.OR.A5JI   286  1668   521   668   904  888  849   3625  264  3900     1
+      TCGA.OR.A5JJ   496  4214   607  1915  3177  855 2186    134  262 10383     1
+      TCGA.OR.A5JK   367  1640   286   505   989 1037  894    153  578  2367     1
+      TCGA.OR.A5JL   401  9215  1294  3382  1114 1183 1339     62  257  4304     1
+      TCGA.OR.A5JM  4929  4301  1342  2273  1699 1761 3120     33   78  4855     0
+      TCGA.OR.A5JO   595  7743  2712   328  1070 1775 1529   2653  883  5962     1
+      TCGA.OR.A5JP   424  6886   912   545  1272 1745 2783    150  250  5809     1
+      TCGA.OR.A5JQ   360  1552  1023  1596  2684 1421 2278  20530  494 11479     1
+      TCGA.OR.A5JR   399  4301   913  1461  1248 1422 1458  12518  265  6874     1
+      TCGA.OR.A5JS   740  9624   928  2915  2910 1027 1759     26  208  8156     1
+      TCGA.OR.A5JT   231  3996   527  1516   989 1246 1905  10101  222  4817     1
+      TCGA.OR.A5JV   708  2709   553  3745   493 1864 1714   2560 1646  2862     1
+      TCGA.OR.A5JW   142  5729   991  1650  1637 2217 1136     18  301  6595     1
+      TCGA.OR.A5JX    69  3694   552   705  1567 1008  869    268  272  5373     1
+      TCGA.OR.A5JY   715  9710  1305  1831  1620  711 2603     17  296  3132     0
+      TCGA.OR.A5JZ   141  5712   451   607   352 1026 1585   3489  176  4623     1
+      TCGA.OR.A5K0  1608  4199  1996  1568  3006  801 3129    165   50  6176     1
+      TCGA.OR.A5K1   162  3180   348   277   512  710  907    718  220  2329     1
+      TCGA.OR.A5K2   244  5292   433   684   574 1133 1534     30  262  2956     0
+      TCGA.OR.A5K3    99  1662   170   478   591  492  543    450  147  1122     1
+      TCGA.OR.A5K4   354  5396   317  1803   489  983 1094    936   64  4824     1
+      TCGA.OR.A5K5   512  3192   948  1105  2911 1055 3084     40  204  4796     1
+      TCGA.OR.A5K6   407  4074   771  3109  2479 1035 1806     97  250  3468     1
+      TCGA.OR.A5K8    47  1919   166   494   874  463  465     14   83  2505     1
+      TCGA.OR.A5K9   789  4017   349   851  2355 1632 2612     44  178  7890     0
+      TCGA.OR.A5KO   668  4884  1088  1014  1857 2678 1510     21  135  9926     1
+      TCGA.OR.A5KT   166  2048   644  2150  2385  732  839    327  269  1842     1
+      TCGA.OR.A5KU   265  1901   438  2066  1107  494 1338     35   47  1946     1
+      TCGA.OR.A5KV   241  2360   482  2327  3956  939 3434     47   78  4921     1
+      TCGA.OR.A5KW   306 12511   628  1652  2210 1127 1493    341  115  3535     1
+      TCGA.OR.A5KX   731  6396   693  2392  1878 1579 5261    480  159  7350     1
+      TCGA.OR.A5KY   238  3022   862  2034  2518 2167 3429    146  688  9417     0
+      TCGA.OR.A5KZ   707   965   239   228   864 1137 2939     45  201  3615     0
+      TCGA.OR.A5L3   246  2255   261  1240  1282  368  498     32   76  1388     1
+      TCGA.OR.A5L4   130  3875   691   535   411  949 1020    563  235  3410     1
+      TCGA.OR.A5L5   322  2825   438   851  1198 1424 1383   1974  292  2488     1
+      TCGA.OR.A5L6   196   679   114   147   256  346  619    419   62  1254     1
+      TCGA.OR.A5L8    78  2328  1024  1358  3023 2089 3580     65  106  5573     1
+      TCGA.OR.A5L9    17   297    44   105   164  108   91     72   43   361     1
+      TCGA.OR.A5LA   113  2012   213   655  1354  645  565    660  311  1499     1
+      TCGA.OR.A5LB   166  4407   767  1907  2841 2680 1887     47  172  6881     0
+      TCGA.OR.A5LC   411  1314   291   566   935 1048 2461     59  318  2413     0
+      TCGA.OR.A5LD    76   729   161   381   651  360 1711     29   53  2059     0
+      TCGA.OR.A5LE   529  3411   468  1925   889  725 1690     14   81  3712     0
+      TCGA.OR.A5LG   950  4784   463   788  2301 1488 1827    120  826  4922     1
+      TCGA.OR.A5LH   434  4965  1283  2400  1398 1256 1701    488  326  5302     0
+      TCGA.OR.A5LJ   230  1745   306  3081  2835 1778 1963     25  204  4742     0
+      TCGA.OR.A5LK   146   652   359   390   598  400  346   1801  291  1211     1
+      TCGA.OR.A5LL   639  4436  1345  1669  1793 1403 1047    119   58  5027     0
+      TCGA.OR.A5LM   322  3577   668  1327   885  886 1794    147  157  1804     1
+      TCGA.OR.A5LN   185   682   383   388   722  686  308   3038  227  2638     1
+      TCGA.OR.A5LO   524  8732   748  3505   966 2635 2395     84   91  5619     1
+      TCGA.OR.A5LP   403  2609   767   851  1626 1415 1671   9034  577  5274     1
+      TCGA.OR.A5LR   320  5489   291   952   518  828 1065   2279  113  3046     1
+      TCGA.OR.A5LS   236  3451   382  1755  1129 1866 1072     26   65  3732     1
+      TCGA.OR.A5LT   291  1325   695   786  1175  943 1249   4824  105  2749     1
+      TCGA.OU.A5PI   240  3525   522  1234  1948 1946 1436    415  142  5952     1
+      TCGA.P6.A5OF   253  5067   672  1052  1762 3029 1925    425  277  8672     0
+      TCGA.P6.A5OG   953   883  1033   470   540 3431 3461    164 1444  5580     0
+      TCGA.PA.A5YG   468  3100   715   872  1768 1445 1244   6144  669  3981     1
+      TCGA.PK.A5H8   305  3183   603   721   808  928 1269    227  160  3407     1
+      TCGA.PK.A5H9  1038  8388  3457   669  2687 2582 2399     88  257  7797     1
+      TCGA.PK.A5HA   919  2796  1078  1914  1427 1843  840   9489  368  7966     1
+      TCGA.PK.A5HB   765  9701  1029  2653  1380 2970 3942    387  109 13221     1
+      
+      Slot "processed":
+      $normalized
+                        A1BG     A1CF     A2BP1     A2LD1     A2ML1      A2M
+      TCGA.OR.A5J1  7.560937 0.000000  7.642974 11.036356  9.300992 16.86444
+      TCGA.OR.A5J2  6.773795 0.000000  6.005574 11.390444  0.000000 16.75321
+      TCGA.OR.A5J3  7.615691 2.717043  6.403073 10.350504  4.147772 16.04832
+      TCGA.OR.A5J5 13.847984 3.854521  5.777711  9.128790  8.754515 14.64073
+      TCGA.OR.A5J6 12.531855 0.000000  5.495179 11.194768  3.588081 16.52919
+      TCGA.OR.A5J7  6.854414 0.000000  5.128837  9.889426  4.942071 16.76809
+      TCGA.OR.A5J8  9.045041 0.000000  0.000000  9.114176  5.601035 18.26233
+      TCGA.OR.A5J9  6.469174 0.000000  8.486572 11.524749  8.298688 17.21315
+      TCGA.OR.A5JA  8.969938 0.000000  6.059930 11.326948  8.319505 16.12317
+      TCGA.OR.A5JB 11.393284 0.000000  0.000000  9.360996  0.000000 15.50528
+      TCGA.OR.A5JC 10.973163 0.000000  9.355042 10.268890  5.794111 16.25649
+      TCGA.OR.A5JD 10.118468 0.000000  8.685463 10.841333  9.134689 16.46416
+      TCGA.OR.A5JE  9.292584 0.000000  0.000000 10.039781  5.633147 16.18217
+      TCGA.OR.A5JF  8.112546 0.000000 12.115718 10.756446 11.550323 16.27720
+      TCGA.OR.A5JG  8.786291 0.000000  8.183918 10.257370  6.550565 16.39726
+      TCGA.OR.A5JI 13.006602 0.000000  5.169043  8.989199  4.767311 17.12706
+      TCGA.OR.A5JJ  7.547856 0.000000  8.492910 10.319561 10.879498 15.99222
+      TCGA.OR.A5JK  9.057836 0.000000 10.866522 10.336351 10.391804 18.30053
+      TCGA.OR.A5JL  5.187265 0.000000  9.578991 11.485488  9.363087 15.93050
+      TCGA.OR.A5JM  8.017726 0.000000  0.000000 11.697081  3.353348 14.63948
+      TCGA.OR.A5JO 11.193074 7.171620  0.000000 11.016424  5.809031 20.34821
+      TCGA.OR.A5JP 10.790245 0.000000  3.397952  9.364869  5.606012 16.22697
+      TCGA.OR.A5JQ 11.306492 0.000000  2.469156 10.440228  5.221010 17.15223
+      TCGA.OR.A5JR 11.478423 0.000000  6.284494  9.206909  8.805148 16.46359
+      TCGA.OR.A5JS  6.722420 3.657851  0.000000  9.295952  3.128936 15.99933
+      TCGA.OR.A5JT  9.674795 0.000000  3.485976  8.544793 11.686928 16.38411
+      TCGA.OR.A5JV  8.603161 0.000000 11.820089  8.858896  9.362452 17.83816
+      TCGA.OR.A5JW  6.523925 0.000000  0.000000 10.215644  5.611966 16.22964
+      TCGA.OR.A5JX 12.065197 0.000000  8.382689 10.508634 10.364348 16.88707
+      TCGA.OR.A5JY  5.983740 0.000000  3.942321 11.997075  0.000000 16.03080
+      TCGA.OR.A5JZ 10.655100 0.000000  0.000000  9.019558  5.682572 15.53841
+      TCGA.OR.A5K0  7.715015 0.000000 10.333742  4.599001  4.203671 16.62095
+      TCGA.OR.A5K1  9.151462 0.000000  7.811406  9.963955  7.968282 17.50861
+      TCGA.OR.A5K2  9.235603 0.000000  0.000000 10.041932  3.463422 15.92346
+      TCGA.OR.A5K3  8.427819 0.000000  0.000000 10.508679  8.952608 16.64995
+      TCGA.OR.A5K4  5.963227 0.000000  3.730951  9.876911 10.062281 15.10361
+      TCGA.OR.A5K5  9.800926 0.000000  5.493815 10.731154  5.140364 15.21544
+      TCGA.OR.A5K6  7.425822 0.000000  0.000000 10.987483  5.307464 15.51394
+      TCGA.OR.A5K8  8.330981 0.000000 11.243566 11.103254  6.026864 16.32030
+      TCGA.OR.A5K9  6.931634 0.000000  2.701205 10.356255  3.585791 15.33478
+      TCGA.OR.A5KO  8.191954 0.000000 11.259262 11.021533  0.000000 15.13390
+      TCGA.OR.A5KT 10.153848 0.000000  8.969905  9.688667  0.000000 17.16950
+      TCGA.OR.A5KU 11.672598 0.000000  4.684968  9.536596  9.132834 15.13030
+      TCGA.OR.A5KV 11.700436 0.000000  2.361221 11.018314  3.745684 15.22126
+      TCGA.OR.A5KW  7.649836 0.000000  2.746194 11.566395 10.679138 15.75863
+      TCGA.OR.A5KX 13.672709 0.000000  0.000000 10.995978  5.334993 15.79796
+      TCGA.OR.A5KY  8.720773 0.000000  6.585608  9.214045  8.467674 16.59296
+      TCGA.OR.A5KZ 12.163779 0.000000  0.000000  9.114231  2.953487 16.62801
+      TCGA.OR.A5L3  7.555584 0.000000  0.000000 10.008728  0.000000 14.60120
+      TCGA.OR.A5L4 10.109189 0.000000  4.077057 10.626479  6.011480 17.42943
+      TCGA.OR.A5L5 11.185960 0.000000  0.000000  9.509249  5.967573 16.84980
+      TCGA.OR.A5L6 12.168058 0.000000  6.122512  6.920965  7.431962 16.76612
+      TCGA.OR.A5L8  9.393224 0.000000  7.368356 10.792585  7.038043 14.73571
+      TCGA.OR.A5L9 13.330441 0.000000  7.259374  7.259374  9.474349 16.17674
+      TCGA.OR.A5LA  9.303745 0.000000  4.372831 10.003306  9.975320 17.48363
+      TCGA.OR.A5LB  6.294337 2.546656  2.546656 11.152987  7.144054 16.42019
+      TCGA.OR.A5LC  8.446654 0.000000  5.218749  9.870320  6.049424 15.82930
+      TCGA.OR.A5LD  8.991801 0.000000  0.000000  9.094699  4.308773 16.14960
+      TCGA.OR.A5LE  6.501659 0.000000  8.035479 11.139731  0.000000 17.11160
+      TCGA.OR.A5LG  9.431379 0.000000  0.000000  9.842838  5.577185 16.55035
+      TCGA.OR.A5LH  7.683958 0.000000 10.117989 10.745229 10.454282 16.82922
+      TCGA.OR.A5LJ 10.708980 3.718789  0.000000  9.756246  0.000000 15.81614
+      TCGA.OR.A5LK 13.795443 0.000000  0.000000  8.864069  9.372162 17.62865
+      TCGA.OR.A5LL  6.858375 0.000000  4.731324  9.498138  3.784640 14.17239
+      TCGA.OR.A5LM  7.653368 0.000000  3.715979 10.254023 12.658651 16.37958
+      TCGA.OR.A5LN  9.045839 0.000000  6.324259 10.148714  3.826622 16.92744
+      TCGA.OR.A5LO  8.401906 0.000000  0.000000  9.904376  9.904376 15.91704
+      TCGA.OR.A5LP  8.399728 0.000000  3.802314  9.635425  6.298420 17.37699
+      TCGA.OR.A5LR 10.724793 0.000000  5.143298  9.627275  8.194285 16.44578
+      TCGA.OR.A5LS  7.860488 0.000000 10.600623  9.638979  9.228642 15.55024
+      TCGA.OR.A5LT  8.358499 0.000000  4.745926 10.002394  7.867249 14.84642
+      TCGA.OU.A5PI  7.650234 0.000000  7.563219  9.112768  9.860904 15.80930
+      TCGA.P6.A5OF  8.957537 0.000000  9.912690 11.746601  8.266506 16.23227
+      TCGA.P6.A5OG 11.709572 0.000000  0.000000 10.018655  0.000000 17.66978
+      TCGA.PA.A5YG  9.074969 0.000000  0.000000  9.572992 10.709462 17.63616
+      TCGA.PK.A5H8 14.115301 0.000000  5.609794 10.366140  7.174925 16.20515
+      TCGA.PK.A5H9  9.782479 6.825795  0.000000 12.045571  6.496513 21.38588
+      TCGA.PK.A5HA 12.681263 0.000000  8.420432 10.099635  0.000000 17.33602
+      TCGA.PK.A5HB 10.454410 3.593267  5.907759  9.868064  2.229513 16.72844
+                      A4GALT    A4GNT     AAAS    AACSL     AACS     AADAC     AADAT
+      TCGA.OR.A5J1 11.099466 0.000000 14.64360 0.000000 13.83005  0.000000 10.444129
+      TCGA.OR.A5J2 11.124601 0.000000 14.04796 2.464066 13.42720  3.863253  8.446515
+      TCGA.OR.A5J3  9.469754 4.542317 13.53308 0.000000 15.57347  9.980308  8.527343
+      TCGA.OR.A5J5 11.670477 2.950960 14.66748 4.803771 13.03790 10.344738  9.741542
+      TCGA.OR.A5J6 13.906388 2.703318 13.51484 0.000000 13.83307 11.613041  7.599573
+      TCGA.OR.A5J7 10.878933 0.000000 14.54624 0.000000 15.78052  4.942071  8.358194
+      TCGA.OR.A5J8 13.673446 0.000000 13.63867 0.000000 12.45168  0.000000 10.567848
+      TCGA.OR.A5J9 12.030571 0.000000 14.01481 0.000000 14.72742  0.000000 10.107547
+      TCGA.OR.A5JA 12.521583 0.000000 14.55026 5.372943 14.45898 11.190068  8.200595
+      TCGA.OR.A5JB 15.420815 2.858583 13.33382 0.000000 13.94099  4.304444  8.076175
+      TCGA.OR.A5JC 11.613825 2.965514 14.44346 0.000000 12.42456  8.472382  9.835543
+      TCGA.OR.A5JD 10.391263 0.000000 13.77667 0.000000 12.79685  8.419072 10.288249
+      TCGA.OR.A5JE 11.005363 0.000000 13.76628 0.000000 15.20350  8.715741  8.193680
+      TCGA.OR.A5JF 10.626965 0.000000 13.73828 0.000000 13.43077  8.553687  7.584346
+      TCGA.OR.A5JG 10.387918 0.000000 14.25797 0.000000 13.72379 13.892189  9.331749
+      TCGA.OR.A5JI 12.505835 0.000000 14.19454 0.000000 11.88698 11.906829  9.844192
+      TCGA.OR.A5JJ 12.363248 2.413724 14.14805 2.413724 14.33582  3.805854  7.705750
+      TCGA.OR.A5JK 11.316817 5.691009 14.50575 7.088487 12.94222  5.909407  8.605119
+      TCGA.OR.A5JL 10.183003 0.000000 13.83449 0.000000 14.15344  6.577340  8.850684
+      TCGA.OR.A5JM 11.495312 0.000000 13.74648 0.000000 15.35806 10.504995  8.209675
+      TCGA.OR.A5JO 14.152089 0.000000 13.48224 0.000000 12.38770  7.115437  9.474395
+      TCGA.OR.A5JP 10.474337 0.000000 14.13305 0.000000 13.94337 12.794485  9.199125
+      TCGA.OR.A5JQ 10.725685 3.332621 14.17021 0.000000 12.23467  9.827246  9.558755
+      TCGA.OR.A5JR  9.718242 0.000000 14.29458 0.000000 12.82065  9.655387  9.982455
+      TCGA.OR.A5JS 12.892104 4.044026 14.13473 0.000000 15.13655  4.999621  8.168282
+      TCGA.OR.A5JT 10.516992 0.000000 14.42497 0.000000 12.84815  5.198295  8.694437
+      TCGA.OR.A5JV  9.771023 2.675171 13.95709 0.000000 12.82525  4.804040  8.364642
+      TCGA.OR.A5JW 11.249511 2.533736 14.10894 0.000000 13.94726  9.745731  7.438500
+      TCGA.OR.A5JX 11.466333 0.000000 14.74218 0.000000 13.08589  8.120519  9.117925
+      TCGA.OR.A5JY 10.094531 0.000000 15.31037 4.894618 14.62943 14.453910  5.746871
+      TCGA.OR.A5JZ 13.885179 0.000000 14.03429 0.000000 13.19905  8.343153  9.292097
+      TCGA.OR.A5K0  9.227117 0.000000 13.59632 0.000000 12.89815 11.421376  6.143720
+      TCGA.OR.A5K1 11.395084 0.000000 14.26132 0.000000 12.87786  5.935649  7.865616
+      TCGA.OR.A5K2 10.684746 0.000000 14.32780 0.000000 15.68225  7.792272  7.242765
+      TCGA.OR.A5K3 11.656732 0.000000 14.07677 0.000000 14.08020  6.382131  8.369100
+      TCGA.OR.A5K4 12.465300 0.000000 14.31198 0.000000 13.18039  3.730951  9.857948
+      TCGA.OR.A5K5 10.718634 2.559662 14.22085 2.559662 15.41825  6.217917  7.757627
+      TCGA.OR.A5K6 10.583092 0.000000 14.09583 0.000000 13.32056 13.757935  7.861744
+      TCGA.OR.A5K8 11.480804 0.000000 14.28888 0.000000 13.40558 12.308631  7.818327
+      TCGA.OR.A5K9  9.651955 0.000000 13.61274 0.000000 16.39100 13.500750  4.524427
+      TCGA.OR.A5KO 12.134618 4.497453 13.25961 2.677367 13.90947  8.702378  6.448736
+      TCGA.OR.A5KT 13.360826 0.000000 14.57195 3.434609 14.96751 14.271953  5.645638
+      TCGA.OR.A5KU 12.494260 4.127779 14.06664 3.208031 13.55467  8.661077 10.152592
+      TCGA.OR.A5KV 12.149931 0.000000 13.32347 2.361221 14.06724 15.131307  7.862518
+      TCGA.OR.A5KW  9.845837 0.000000 13.85608 4.884952 15.02218 10.022534  9.457919
+      TCGA.OR.A5KX 11.751608 0.000000 14.44352 2.727575 12.81019  8.111382  8.561359
+      TCGA.OR.A5KY 10.923767 0.000000 14.16837 0.000000 15.80814  9.980519  8.591327
+      TCGA.OR.A5KZ 10.181581 0.000000 13.94892 2.953487 13.80810  8.640336 10.496539
+      TCGA.OR.A5L3  9.594157 0.000000 15.30990 0.000000 13.01771 12.912217  5.894285
+      TCGA.OR.A5L4 11.796702 0.000000 13.97416 0.000000 15.11762  5.822026  5.346764
+      TCGA.OR.A5L5 11.085477 3.608326 14.65175 2.722020 12.61956 13.958190  8.791940
+      TCGA.OR.A5L6 11.282143 4.183332 14.92348 4.183332 12.41026  6.440292  8.690114
+      TCGA.OR.A5L8  8.668004 0.000000 14.13949 0.000000 12.72459  4.344935  8.751221
+      TCGA.OR.A5L9 12.595935 0.000000 14.73111 0.000000 10.62008  6.679113  0.000000
+      TCGA.OR.A5LA 11.002603 0.000000 14.62907 0.000000 12.79151  8.976752  8.213220
+      TCGA.OR.A5LB 10.629894 0.000000 14.60541 6.380718 14.36668  3.417592  9.396919
+      TCGA.OR.A5LC 10.420845 0.000000 13.87585 0.000000 14.31654  9.503396  8.589221
+      TCGA.OR.A5LD 10.501858 0.000000 15.38449 5.844370 13.19423  6.831760  9.963443
+      TCGA.OR.A5LE  9.890892 0.000000 14.02877 0.000000 15.22968  0.000000  3.081990
+      TCGA.OR.A5LG 14.018915 0.000000 14.55863 0.000000 14.89542  7.554341  7.554341
+      TCGA.OR.A5LH 11.469359 2.420613 13.98080 0.000000 14.36111  5.477025 10.352260
+      TCGA.OR.A5LJ 12.453710 0.000000 14.38174 3.718789 13.73615 10.666414  7.519604
+      TCGA.OR.A5LK 11.500878 4.239029 13.90546 0.000000 11.84040  6.758876  9.292116
+      TCGA.OR.A5LL 11.774406 0.000000 12.90136 0.000000 10.79572 14.819395  5.870755
+      TCGA.OR.A5LM 12.235084 0.000000 14.50611 0.000000 14.47914  0.000000  9.925202
+      TCGA.OR.A5LN 10.542325 0.000000 14.66595 0.000000 11.32165 11.931001  8.118695
+      TCGA.OR.A5LO 12.074949 0.000000 14.00624 0.000000 14.59958  4.817460 10.915860
+      TCGA.OR.A5LP 11.708531 2.410628 13.79927 0.000000 11.81435 15.790323  9.292260
+      TCGA.OR.A5LR 11.015474 0.000000 14.13470 0.000000 13.09499 13.043107  9.461488
+      TCGA.OR.A5LS  9.178686 0.000000 13.84705 0.000000 14.05633  7.727822  8.959529
+      TCGA.OR.A5LT 12.487964 3.264676 13.92963 4.187599 11.77901  9.500480  9.583784
+      TCGA.OU.A5PI 11.273830 2.782199 13.83005 0.000000 15.20217  5.585924  8.260722
+      TCGA.P6.A5OF 11.642296 2.379804 14.07664 2.379804 14.78586  8.077340  8.932925
+      TCGA.P6.A5OG 12.389501 3.375529 13.09294 0.000000 11.10653  2.508241 10.107186
+      TCGA.PA.A5YG 11.175062 2.776354 14.24534 0.000000 12.53054 12.850421  7.312720
+      TCGA.PK.A5H8 10.943247 2.969626 14.44419 0.000000 13.50996  4.426264  7.031586
+      TCGA.PK.A5H9 11.631400 2.106710 13.35960 8.299998 12.16778 12.111746 10.269759
+      TCGA.PK.A5HA 12.863060 3.485089 13.68171 0.000000 11.90701  9.599914  8.028089
+      TCGA.PK.A5HB 14.800762 0.000000 13.57844 6.224872 13.27706 12.582466  7.384042
+                      AAGAB     AAK1     AAMP    AANAT    AARS2   AARSD1     AARS
+      TCGA.OR.A5J1 13.89793 13.28693 14.88819 4.135301 11.75163 13.34477 15.30545
+      TCGA.OR.A5J2 13.80003 14.15616 14.40327 0.000000 12.16317 11.98651 15.90566
+      TCGA.OR.A5J3 13.32545 13.41212 14.46814 0.000000 11.42207 12.05302 15.21526
+      TCGA.OR.A5J5 12.97414 12.45706 13.51948 3.854521 12.17984 11.89875 14.53913
+      TCGA.OR.A5J6 13.30768 13.57734 15.11818 0.000000 11.99652 13.02716 14.85144
+      TCGA.OR.A5J7 13.93455 13.97126 15.66870 0.000000 12.73467 11.36600 15.64438
+      TCGA.OR.A5J8 13.48565 13.79598 14.73802 3.803727 13.57725 12.49228 15.90194
+      TCGA.OR.A5J9 13.18031 13.47390 14.69165 0.000000 11.84551 12.09217 15.75622
+      TCGA.OR.A5JA 14.31219 13.24023 14.48115 0.000000 12.91059 12.20374 14.90023
+      TCGA.OR.A5JB 13.54630 12.92203 15.32429 0.000000 13.16631 13.54630 15.68573
+      TCGA.OR.A5JC 13.95160 13.63758 14.60517 0.000000 12.42635 12.77791 15.31287
+      TCGA.OR.A5JD 12.98153 13.55053 14.15205 2.762256 11.78764 12.44086 16.27979
+      TCGA.OR.A5JE 13.42887 13.83450 15.04987 0.000000 13.11372 13.44154 15.33301
+      TCGA.OR.A5JF 13.38191 13.43169 14.19323 3.012754 11.89644 11.81526 15.48373
+      TCGA.OR.A5JG 13.99154 13.72749 14.93655 0.000000 12.39645 12.55909 16.43135
+      TCGA.OR.A5JI 12.46848 13.21732 13.91474 0.000000 11.84301 12.41404 15.05100
+      TCGA.OR.A5JJ 13.69234 12.76153 14.13145 0.000000 11.85234 12.50213 15.54956
+      TCGA.OR.A5JK 14.28676 13.60642 14.25160 3.239327 12.07818 12.35889 16.09937
+      TCGA.OR.A5JL 14.59724 13.26158 14.26959 3.149668 12.27554 12.41521 14.27904
+      TCGA.OR.A5JM 13.45522 14.44476 14.38321 0.000000 12.32661 13.40889 16.02130
+      TCGA.OR.A5JO 13.00338 13.19854 14.52088 0.000000 11.77670 12.56597 14.69331
+      TCGA.OR.A5JP 13.22297 13.10996 14.69274 0.000000 11.99429 12.56954 16.18814
+      TCGA.OR.A5JQ 12.78841 13.60556 14.43896 0.000000 12.14357 12.78099 16.14598
+      TCGA.OR.A5JR 13.21400 13.80719 14.37863 0.000000 12.39953 12.01932 16.39560
+      TCGA.OR.A5JS 13.79311 14.37462 14.97292 2.285091 12.10134 12.61225 16.29151
+      TCGA.OR.A5JT 13.13671 13.86394 14.47140 0.000000 11.98081 12.13278 17.16399
+      TCGA.OR.A5JV 13.47609 13.95121 14.33310 4.101098 12.23072 11.86245 15.80933
+      TCGA.OR.A5JW 14.40113 13.62174 14.14296 3.403456 12.91416 11.70981 14.92451
+      TCGA.OR.A5JX 13.48265 13.19016 14.34229 0.000000 12.33671 12.70949 15.01110
+      TCGA.OR.A5JY 14.62260 13.17561 14.60190 0.000000 12.98416 12.66675 15.32897
+      TCGA.OR.A5JZ 13.07704 13.45708 14.08235 0.000000 12.08559 12.28801 16.26591
+      TCGA.OR.A5K0 13.28906 13.70573 14.71848 0.000000 12.10839 12.29672 14.46864
+      TCGA.OR.A5K1 13.20928 12.92330 14.42314 0.000000 12.12722 12.62046 16.58911
+      TCGA.OR.A5K2 14.54494 13.75583 14.78631 3.463422 12.13399 12.71885 15.69349
+      TCGA.OR.A5K3 13.57268 13.76287 14.51877 0.000000 12.28785 12.19370 16.56094
+      TCGA.OR.A5K4 13.19179 13.49156 14.23047 0.000000 12.29070 12.30127 16.33139
+      TCGA.OR.A5K5 13.88079 14.43560 15.01628 2.559662 12.37127 12.83378 16.53879
+      TCGA.OR.A5K6 13.89533 14.37990 15.10078 0.000000 12.62960 12.79433 14.91137
+      TCGA.OR.A5K8 13.16459 13.37321 14.10662 0.000000 11.70544 12.29947 15.12160
+      TCGA.OR.A5K9 13.37560 14.40731 15.03686 0.000000 12.58856 12.01335 16.36518
+      TCGA.OR.A5KO 13.24605 13.18884 14.08191 0.000000 12.24620 11.87338 15.29693
+      TCGA.OR.A5KT 13.66649 13.81139 14.78600 0.000000 12.23448 12.36634 15.91576
+      TCGA.OR.A5KU 14.02231 13.75543 14.61176 0.000000 12.07104 11.28655 15.05302
+      TCGA.OR.A5KV 13.54193 14.09956 15.01008 0.000000 12.12074 13.26524 15.98727
+      TCGA.OR.A5KW 14.40975 13.30872 14.69642 2.746194 11.63275 12.26853 15.50473
+      TCGA.OR.A5KX 13.08313 14.30289 15.86175 0.000000 12.48888 13.21013 14.38330
+      TCGA.OR.A5KY 13.53476 13.61606 14.34128 4.562504 12.17286 11.60492 15.65256
+      TCGA.OR.A5KZ 13.51408 12.62928 14.77406 0.000000 13.04772 12.12508 15.36074
+      TCGA.OR.A5L3 13.41993 14.16268 14.91536 0.000000 11.91896 13.67986 14.96790
+      TCGA.OR.A5L4 13.93521 13.88310 14.54023 0.000000 12.57976 12.35116 16.11776
+      TCGA.OR.A5L5 13.18028 13.37682 14.44170 0.000000 11.71174 13.01451 16.20420
+      TCGA.OR.A5L6 11.78154 12.86007 14.16782 0.000000 11.86359 12.60968 15.48593
+      TCGA.OR.A5L8 13.09088 14.06135 14.81401 0.000000 12.07982 12.04891 15.67863
+      TCGA.OR.A5L9 13.04018 12.68755 13.26502 0.000000 11.02321 13.26502 15.76039
+      TCGA.OR.A5LA 13.04815 13.28174 14.74394 0.000000 11.73651 13.34872 15.99584
+      TCGA.OR.A5LB 14.29376 13.49452 14.57568 2.546656 11.79784 11.63823 14.48047
+      TCGA.OR.A5LC 13.63245 13.96355 14.98559 3.044016 11.01812 12.85634 15.41409
+      TCGA.OR.A5LD 12.92426 14.36085 14.25790 0.000000 13.17675 13.09222 16.63310
+      TCGA.OR.A5LE 14.08688 14.08936 14.85820 0.000000 11.63923 12.24306 15.62970
+      TCGA.OR.A5LG 14.03658 13.23505 15.08512 0.000000 12.37822 12.86989 17.21952
+      TCGA.OR.A5LH 13.83797 13.56229 14.73710 0.000000 11.93328 12.46133 14.91964
+      TCGA.OR.A5LJ 13.10882 13.91724 15.39501 0.000000 12.31075 12.60083 14.88507
+      TCGA.OR.A5LK 12.49617 13.52916 14.30143 4.239029 12.79736 12.40397 15.07645
+      TCGA.OR.A5LL 13.58222 13.91625 14.45943 0.000000 12.26310 12.28173 15.67158
+      TCGA.OR.A5LM 14.07202 13.62219 14.68066 0.000000 11.99661 12.72354 15.45318
+      TCGA.OR.A5LN 13.13073 13.11366 13.84151 0.000000 12.96215 12.96215 15.47610
+      TCGA.OR.A5LO 13.70152 13.99427 14.69497 5.071942 12.34760 11.20560 15.89287
+      TCGA.OR.A5LP 13.24462 13.85330 14.21832 2.410628 11.97768 11.74528 16.96464
+      TCGA.OR.A5LR 13.06206 13.29925 14.28684 0.000000 11.85047 12.41504 16.56197
+      TCGA.OR.A5LS 13.62412 14.14355 14.46166 3.869079 11.50539 11.34101 15.38201
+      TCGA.OR.A5LT 12.98899 13.35186 13.91281 0.000000 11.67267 12.37790 15.07775
+      TCGA.OU.A5PI 13.43145 14.01201 14.69901 0.000000 11.27725 11.48385 15.35367
+      TCGA.P6.A5OF 13.43680 13.46336 14.06005 2.379804 11.93809 11.34401 14.92476
+      TCGA.P6.A5OG 13.21607 13.34844 14.72327 4.304295 12.34077 12.70733 16.06652
+      TCGA.PA.A5YG 13.58296 13.96773 14.82781 2.776354 12.02481 12.00029 16.38992
+      TCGA.PK.A5H8 14.05923 13.80474 14.46832 2.969626 13.08337 12.10831 15.13375
+      TCGA.PK.A5H9 13.10672 13.10510 13.77415 2.106710 11.71751 11.78125 14.51169
+      TCGA.PK.A5HA 12.23307 13.49618 13.70779 2.608499 12.85514 12.04917 16.08761
+      TCGA.PK.A5HB 14.17189 13.77199 14.79796 0.000000 13.11970 11.57225 15.45187
+                   AASDHPPT     AASDH      AASS     AATF      AATK      ABAT
+      TCGA.OR.A5J1 14.04286 10.188150 13.409926 13.81906  8.328290 14.150203
+      TCGA.OR.A5J2 13.16868 11.449899 11.006012 13.53216 13.566950 14.017239
+      TCGA.OR.A5J3 13.26790 10.922720 11.482353 13.04145  9.775302 13.115821
+      TCGA.OR.A5J5 12.32510 11.631209 12.451868 12.20269 11.936414 12.404282
+      TCGA.OR.A5J6 13.28794 11.388184 10.868746 13.44096  8.769922 12.493750
+      TCGA.OR.A5J7 13.43254 11.304321 12.128985 14.46075 10.350205 11.404949
+      TCGA.OR.A5J8 12.16852 10.478903 12.184682 13.45710 10.221303  8.729682
+      TCGA.OR.A5J9 12.84674 11.298860 11.844075 13.73946 14.041909 13.792749
+      TCGA.OR.A5JA 12.92847 11.301170 10.967779 13.06664 10.298849 15.000859
+      TCGA.OR.A5JB 13.82581  9.994697 13.054115 13.92019  9.733713  9.529151
+      TCGA.OR.A5JC 13.27680 11.288088 11.728301 13.58897  8.444447 15.513789
+      TCGA.OR.A5JD 12.95024 12.275650 12.347868 13.21096  9.026829 13.997862
+      TCGA.OR.A5JE 12.46357 10.541388 10.088922 13.89274 10.744174  9.703545
+      TCGA.OR.A5JF 13.36895 11.770702 11.545212 12.92474 11.394210 12.279593
+      TCGA.OR.A5JG 12.91140 11.439493  9.696703 13.57960  9.045619 12.155628
+      TCGA.OR.A5JI 13.44139 11.242714 11.600516 12.87676  9.108273 15.531951
+      TCGA.OR.A5JJ 13.08844 12.168100 11.921587 13.45328 10.845964 12.164024
+      TCGA.OR.A5JK 13.31520 11.496199 12.795726 13.60739  9.766005 16.801840
+      TCGA.OR.A5JL 13.65502 11.719085 12.047652 12.51853 11.997134 16.287892
+      TCGA.OR.A5JM 13.79922 10.563300 10.916347 13.78939 11.441327 12.925223
+      TCGA.OR.A5JO 12.79450 10.977554 11.673468 13.46267  8.138692 11.511481
+      TCGA.OR.A5JP 12.63700 10.986185 11.376231 12.61961 12.885522 12.816597
+      TCGA.OR.A5JQ 13.18547 11.811559 11.727191 13.64339  9.184283 16.218423
+      TCGA.OR.A5JR 13.60820 12.496217 11.816757 13.08110  7.367737 17.320525
+      TCGA.OR.A5JS 13.16220 11.230530 12.292829 13.38544 11.572664 11.159007
+      TCGA.OR.A5JT 13.85651 12.422826 12.277687 13.36526  8.355512 17.998424
+      TCGA.OR.A5JV 12.98620 12.402767 12.246802 13.14478  8.661906 17.502708
+      TCGA.OR.A5JW 12.92220 12.581270 12.748284 12.78400  9.891111 11.377120
+      TCGA.OR.A5JX 13.34140 10.535837 13.578968 13.67309 11.032491 13.005461
+      TCGA.OR.A5JY 13.66398 11.929575 13.472944 13.51783 11.382394  7.398182
+      TCGA.OR.A5JZ 13.98137 11.686492  9.870760 13.30847  7.027873 16.895264
+      TCGA.OR.A5K0 12.17514 11.602067 11.911447 14.25167 11.246161 11.104917
+      TCGA.OR.A5K1 13.42433 11.006098 11.839632 13.63407  8.017000 17.482425
+      TCGA.OR.A5K2 13.24831 10.425399 11.945069 13.99263 10.992362 11.915405
+      TCGA.OR.A5K3 13.64561 10.066516 12.023288 13.23730  8.870317 16.968368
+      TCGA.OR.A5K4 13.72073 12.681602 10.998071 13.11600  5.813791 17.398997
+      TCGA.OR.A5K5 12.98431 11.300514  9.224664 14.31291 11.834940  9.958300
+      TCGA.OR.A5K6 12.47888 11.673106 10.284547 13.86472 11.866609 11.397436
+      TCGA.OR.A5K8 13.04366 10.838244 11.792875 13.02433  9.561066 15.549560
+      TCGA.OR.A5K9 13.11692 11.455203  8.613770 13.60766 11.773631  9.819485
+      TCGA.OR.A5KO 13.67303 12.087092 10.455520 12.97049  9.107168 15.517296
+      TCGA.OR.A5KT 12.58485 10.924699 11.674420 14.00291 10.414599 10.249982
+      TCGA.OR.A5KU 13.35809 12.218028 12.424605 13.32487 11.177848 15.918380
+      TCGA.OR.A5KV 13.77015 11.330282  9.975198 13.66607 13.850353 13.781645
+      TCGA.OR.A5KW 13.67522 12.021493 11.041513 13.59095  9.781778 13.929186
+      TCGA.OR.A5KX 12.39409 11.253588 13.016162 12.82368 10.136584 13.810089
+      TCGA.OR.A5KY 13.28817 10.562849 11.951694 13.30504 11.765445 12.107776
+      TCGA.OR.A5KZ 13.71418 11.324491 11.012160 13.48382  9.810963 14.017429
+      TCGA.OR.A5L3 12.87676 11.008027 12.798396 13.98574 12.449020 12.075706
+      TCGA.OR.A5L4 13.86479 11.044907 11.284141 12.99895 10.034712 16.359782
+      TCGA.OR.A5L5 13.41872 10.920273 12.284471 13.27702  7.982469 16.045135
+      TCGA.OR.A5L6 12.79534 10.972738 12.178782 12.93156 10.717222 15.395160
+      TCGA.OR.A5L8 13.70008 11.619108 12.611102 14.34969 14.077560 14.717204
+      TCGA.OR.A5L9 12.37948 10.987604 11.987248 13.41329  8.254659 16.508116
+      TCGA.OR.A5LA 12.95090 11.389461 11.981297 13.32258  9.111426 16.596957
+      TCGA.OR.A5LB 13.22581 11.805670 13.815580 13.02839 12.546373 13.861835
+      TCGA.OR.A5LC 12.42767 11.152805 11.658896 14.14707 12.361650 13.911570
+      TCGA.OR.A5LD 13.82289 10.556963 12.635183 13.54026 10.444566 15.811530
+      TCGA.OR.A5LE 14.00537 11.168101 13.745498 13.29315 10.728086 14.037123
+      TCGA.OR.A5LG 13.42559 11.527274 12.608922 13.26018  7.080903 13.223635
+      TCGA.OR.A5LH 13.30425 11.966618 12.424096 13.28739  9.608003 15.709790
+      TCGA.OR.A5LJ 13.08478  9.334986 11.144626 13.77799 10.530618  9.321333
+      TCGA.OR.A5LK 12.86463 10.968605 12.109224 13.26134  8.165564 14.457511
+      TCGA.OR.A5LL 13.69009 11.531318 13.904875 13.49147 10.377487 12.040439
+      TCGA.OR.A5LM 13.74846 11.635666 13.164189 13.06446  8.278868 16.951359
+      TCGA.OR.A5LN 13.34154 11.415194 13.689954 13.18690  8.811855 15.139598
+      TCGA.OR.A5LO 13.82940 11.684668 13.378738 12.46883  9.422821 15.504334
+      TCGA.OR.A5LP 13.32268 11.029601 10.578597 13.23819  7.328505 16.064538
+      TCGA.OR.A5LR 13.69165 11.675976 11.738935 13.25938  7.199202 17.162931
+      TCGA.OR.A5LS 13.55156 12.366990 13.065035 12.62346 12.126876 14.209823
+      TCGA.OR.A5LT 13.85110 12.248573 12.854557 13.12592 11.614424 15.821942
+      TCGA.OU.A5PI 13.14725 12.065683 13.830048 13.48199 12.251095 15.046966
+      TCGA.P6.A5OF 13.21616 11.762402 10.604297 12.99698  9.974291 12.146449
+      TCGA.P6.A5OG 13.36200 11.169566 13.256032 13.75352 10.920103  8.625336
+      TCGA.PA.A5YG 13.52255 11.235828 12.701231 13.42154  9.550654 16.825811
+      TCGA.PK.A5H8 13.54667 10.912889 12.563990 13.47575  8.682994 17.011453
+      TCGA.PK.A5H9 13.57782 11.530177  9.502336 12.50962  8.070784 11.985657
+      TCGA.PK.A5HA 12.15296 11.078714 10.002585 13.21987 10.726018 15.319188
+      TCGA.PK.A5HB 12.57114 10.864439 10.588367 12.78912 10.574470 11.610205
+                      ABCA10   ABCA11P   ABCA12    ABCA13   ABCA17P     ABCA1
+      TCGA.OR.A5J1  9.667261  9.053494 0.000000  2.705842  8.928210 11.843417
+      TCGA.OR.A5J2  6.773795  9.747123 0.000000  3.327025  7.185532 13.554002
+      TCGA.OR.A5J3  8.437398  8.069377 5.677428 10.593710  8.238705 13.042401
+      TCGA.OR.A5J5  8.042057 10.493639 2.950960  6.672277 10.252200 11.399163
+      TCGA.OR.A5J6  7.425446  9.080211 0.000000  0.000000  9.407473 12.946831
+      TCGA.OR.A5J7  8.339393  9.032277 0.000000  6.108072  7.521144 11.763376
+      TCGA.OR.A5J8  8.401246  9.820526 0.000000  6.878769  4.498766 14.499650
+      TCGA.OR.A5J9  9.050467 11.075517 3.578882  3.578882  8.002753 13.114738
+      TCGA.OR.A5JA  7.475116  9.185671 2.598119 11.355061  8.879926 10.862039
+      TCGA.OR.A5JB  6.124809  7.780414 7.820874  2.858583  5.484498 14.956632
+      TCGA.OR.A5JC  8.771180 10.510331 8.837121  4.819880  9.324715 12.564152
+      TCGA.OR.A5JD  8.839142 10.057124 2.762256  5.158150  9.221127 13.220609
+      TCGA.OR.A5JE  7.739829  9.463807 0.000000  3.717820  6.208387 12.040835
+      TCGA.OR.A5JF  9.081974 10.189480 2.181267 12.504287  8.620009 13.541431
+      TCGA.OR.A5JG  5.565875  9.696703 4.596014  8.930370  9.045619 10.884583
+      TCGA.OR.A5JI  7.307438 10.486934 3.284588  5.169043  8.524616 15.230718
+      TCGA.OR.A5JJ  7.370533 10.494240 0.000000  6.042802  9.138790 14.639193
+      TCGA.OR.A5JK  8.404040 10.479737 8.404040  6.791371  8.666365 11.911112
+      TCGA.OR.A5JL  4.621966  9.849120 5.908305 10.943707  7.196513 12.545388
+      TCGA.OR.A5JM  6.224221 10.585112 0.000000  0.000000  6.802737 11.734648
+      TCGA.OR.A5JO  7.990385  9.164095 2.701884  0.000000  7.789602 13.202758
+      TCGA.OR.A5JP  9.426178 11.052495 2.528708  3.397952  9.278847 13.815542
+      TCGA.OR.A5JQ  6.838320 10.893366 2.469156  4.818809  7.648441 13.848123
+      TCGA.OR.A5JR  4.990064 10.534874 4.034760  6.544440  9.048204 12.383000
+      TCGA.OR.A5JS  8.108788  7.936984 6.824571  2.285091  7.052180 13.169494
+      TCGA.OR.A5JT  6.073129 10.450164 3.485976  2.609314 10.080354 13.620926
+      TCGA.OR.A5JV  5.058441  9.146315 3.557568  6.764778  9.679209 11.935701
+      TCGA.OR.A5JW  9.339278 10.523309 2.533736  7.993825  8.878013 14.349753
+      TCGA.OR.A5JX  9.481917 10.356741 0.000000  5.156357  9.287561 11.390125
+      TCGA.OR.A5JY  7.438586  9.753845 6.857776  5.110065  5.110065 11.229588
+      TCGA.OR.A5JZ  5.208338  9.859631 4.497155  6.562634  9.925151 14.844785
+      TCGA.OR.A5K0  9.595356  8.067159 3.657335  2.767373  8.770334 13.306534
+      TCGA.OR.A5K1  5.459620  9.778598 0.000000  7.361258  9.750062 12.973531
+      TCGA.OR.A5K2  9.803666  8.032278 0.000000  4.396498  7.975915 11.861980
+      TCGA.OR.A5K3  7.488265 10.638654 0.000000  8.737348 10.588060 11.600411
+      TCGA.OR.A5K4  4.279233  9.819258 0.000000  4.279233 10.353800 12.419151
+      TCGA.OR.A5K5  6.396207  7.882602 0.000000  2.559662  8.425000 10.457447
+      TCGA.OR.A5K6  6.867933  9.035817 2.703638  0.000000  8.112290 13.429847
+      TCGA.OR.A5K8  8.532031 10.448542 0.000000  9.176985  9.176985 14.223810
+      TCGA.OR.A5K9  3.585791  9.190727 2.701205  3.585791  8.767431 13.591023
+      TCGA.OR.A5KO  6.767357  9.304772 2.677367  4.497453 10.181560 14.267853
+      TCGA.OR.A5KT  7.006306  7.211259 0.000000  5.330897  7.623861 10.946383
+      TCGA.OR.A5KU 10.044166 10.077558 4.684968  6.756643  9.536596 12.293385
+      TCGA.OR.A5KV  7.188161  9.998729 0.000000  2.361221 10.021883 11.999130
+      TCGA.OR.A5KW  6.338643  8.583207 4.575179  9.008009  8.891432 13.137393
+      TCGA.OR.A5KX  8.140424  9.769225 0.000000  0.000000  9.313894 13.691841
+      TCGA.OR.A5KY  8.430306  9.537685 4.255759  8.352536  7.708666 13.914263
+      TCGA.OR.A5KZ  9.721567  9.964971 2.953487  0.000000  8.343484 12.456503
+      TCGA.OR.A5L3  8.506065  9.594157 0.000000  0.000000  6.372765 13.898929
+      TCGA.OR.A5L4  6.011480  9.967663 0.000000  5.033672  8.850052 10.803530
+      TCGA.OR.A5L5  9.486913 10.130045 2.722020  4.153309  8.755030 14.977049
+      TCGA.OR.A5L6  7.431962 10.702434 4.183332  5.143071  8.427778 12.716579
+      TCGA.OR.A5L8  7.489638 10.149923 2.543589  0.000000  7.527901 15.124900
+      TCGA.OR.A5L9  8.668515 10.987604 0.000000  0.000000  9.754099 14.807122
+      TCGA.OR.A5LA  6.898566  9.946779 5.337587  4.372831  9.512890 14.503646
+      TCGA.OR.A5LB  8.088502 10.476522 0.000000 11.014626  8.324738 14.362041
+      TCGA.OR.A5LC  8.561813  9.089020 0.000000  0.000000  9.252235 12.630917
+      TCGA.OR.A5LD  7.243628  9.935990 0.000000  0.000000  5.844370 12.718106
+      TCGA.OR.A5LE  7.302175  9.457330 0.000000  0.000000  6.615911 11.580638
+      TCGA.OR.A5LG  7.256551  9.974345 4.607091  5.893056  7.598502 13.323219
+      TCGA.OR.A5LH  7.261056 10.178864 4.761494  7.883347  9.567183 12.300042
+      TCGA.OR.A5LJ  8.778045  9.891752 0.000000  5.950281  6.323399 14.285262
+      TCGA.OR.A5LK  7.627277 11.172383 5.200313  6.180559  9.070107 13.999822
+      TCGA.OR.A5LL  8.140515  9.722066 3.784640  6.155772  7.637423 15.656308
+      TCGA.OR.A5LM  7.417608 10.767524 4.660014  9.424070  9.546235  9.763322
+      TCGA.OR.A5LN  8.310692 11.926120 0.000000  0.000000  6.903207 13.718465
+      TCGA.OR.A5LO  6.459920  9.132511 4.114208 10.853609  8.617042 12.335501
+      TCGA.OR.A5LP  6.448589  9.478394 5.151228  5.599544  8.683417 13.405950
+      TCGA.OR.A5LR  6.122742  9.513255 3.260841  0.000000 10.388367 13.190831
+      TCGA.OR.A5LS  8.325896 10.330167 0.000000  9.455361  8.164159 13.890374
+      TCGA.OR.A5LT  8.018634 10.834880 5.461223  0.000000  7.969916 14.150643
+      TCGA.OU.A5PI  7.421989  9.676277 3.673331  8.646638  7.650234 12.695340
+      TCGA.P6.A5OF  8.704807  9.949965 2.379804  6.729505 12.503735 13.913254
+      TCGA.P6.A5OG  3.913395  8.973700 0.000000 10.689666 10.705958 12.294391
+      TCGA.PA.A5YG  6.809576  9.594990 4.213624  4.609090  8.225981 14.681605
+      TCGA.PK.A5H8  8.026062 10.727636 2.969626 11.709658 10.431845 12.158767
+      TCGA.PK.A5H9  9.349822 10.007731 2.106710  3.449065  6.386759 14.784953
+      TCGA.PK.A5HA  4.727563 10.072566 0.000000  5.197347 11.622047 15.270888
+      TCGA.PK.A5HB  6.294343 10.215656 4.532226  6.850280  8.817464  8.732412
+                      ABCA2     ABCA3    ABCA4     ABCA5     ABCA6     ABCA7
+      TCGA.OR.A5J1 13.17591 13.034892 4.839048 14.516064  7.381383 12.276676
+      TCGA.OR.A5J2 13.44309 13.588803 6.281714 11.557609  8.329825 11.209620
+      TCGA.OR.A5J3 14.81587 15.467573 6.085401 13.013511  7.531248 11.944966
+      TCGA.OR.A5J5 14.83570 15.091897 0.000000 12.610936  3.854521 14.113196
+      TCGA.OR.A5J6 11.95505 13.057327 4.836172 13.129218 10.026459 11.934877
+      TCGA.OR.A5J7 13.74621 13.077984 4.942071 13.311148  6.194304 12.667485
+      TCGA.OR.A5J8 13.28602 10.200260 9.045041 10.157228 11.711913 11.316707
+      TCGA.OR.A5J9 13.91948 11.988427 4.517216 13.590759  6.059554 11.549554
+      TCGA.OR.A5JA 12.32950 14.588355 3.473778 11.879181  4.715610 12.627949
+      TCGA.OR.A5JB 14.61544 11.379805 4.701111 11.506137 12.746740 11.233868
+      TCGA.OR.A5JC 11.21969 13.508622 4.421769 12.956645  7.633141 12.291724
+      TCGA.OR.A5JD 14.94138 14.728555 5.374759 13.226716  7.186006 12.545074
+      TCGA.OR.A5JE 14.73826 10.930950 4.661927 13.592583  4.265762 12.237075
+      TCGA.OR.A5JF 15.17069 14.988914 4.686424 14.180101  8.166801 12.121453
+      TCGA.OR.A5JG 13.90151 13.310021 5.377574 11.063243  6.360117 11.820893
+      TCGA.OR.A5JI 13.82196 15.462123 5.740577 11.971086  7.528529 11.486431
+      TCGA.OR.A5JJ 15.65256 13.249077 3.805854 12.773171  7.168320 12.625842
+      TCGA.OR.A5JK 13.43443 14.791284 4.718669 13.363386  7.257233 13.766201
+      TCGA.OR.A5JL 12.57082 13.713700 5.810484 12.026023  6.516596 10.932125
+      TCGA.OR.A5JM 13.08913 11.782632 5.243391 11.414776  5.409078 12.948128
+      TCGA.OR.A5JO 12.85687 11.758471 5.089119 13.045332 14.301594 11.704745
+      TCGA.OR.A5JP 12.15383 13.107627 6.272933 14.230436  7.932497  8.632833
+      TCGA.OR.A5JQ 14.69928 15.842156 5.221010 12.766971  8.093982 12.245493
+      TCGA.OR.A5JR 14.64183 17.255743 4.427622 12.028206  4.427622 11.433639
+      TCGA.OR.A5JS 14.33758 12.878067 2.285091 13.734860  7.354962 12.731272
+      TCGA.OR.A5JT 13.98509 16.750458 6.276720 12.124563  3.485976 11.892577
+      TCGA.OR.A5JV 12.63310 15.573093 5.777984 11.120167  5.274635 12.149228
+      TCGA.OR.A5JW 13.09566 14.458743 3.942240 13.846702  7.553337 11.342938
+      TCGA.OR.A5JX 13.48090 13.605691 0.000000 13.518887  7.262258 12.146863
+      TCGA.OR.A5JY 12.26061 12.698290 9.306994 13.631666  7.516151 11.695384
+      TCGA.OR.A5JZ 13.78727 16.559607 4.497155 12.544060  5.208338 11.231155
+      TCGA.OR.A5K0 15.02584 13.445978 6.553647 14.773376  7.248168 14.079871
+      TCGA.OR.A5K1 12.89425 16.909478 5.145864 11.866467  4.744346 11.912258
+      TCGA.OR.A5K2 12.69504 12.315285 0.000000 14.543124  7.335279 10.693511
+      TCGA.OR.A5K3 13.11755 15.191847 5.805791 12.731265  6.122552 12.768659
+      TCGA.OR.A5K4 13.84028 17.756466 5.963227 12.618217  7.712346 11.844792
+      TCGA.OR.A5K5 13.28176 13.158177 7.255184 12.191179  5.642613 12.323840
+      TCGA.OR.A5K6 14.06692 13.301770 4.836537 11.426631  4.527177 11.449568
+      TCGA.OR.A5K8 14.69549 15.418227 5.048822 12.749609  7.472146 13.317590
+      TCGA.OR.A5K9 14.02076  9.810671 4.524427 10.392147  4.524427 13.388989
+      TCGA.OR.A5KO 14.21643 15.416220 3.559951 13.091394  5.631450 11.619935
+      TCGA.OR.A5KT 13.56151 13.915830 6.312863 11.561864 10.077296 11.494772
+      TCGA.OR.A5KU 12.46091 13.048594 5.085915 14.674941  7.373454 13.193970
+      TCGA.OR.A5KV 14.37489 12.592217 2.361221 13.237071  6.238116 13.520749
+      TCGA.OR.A5KW 13.41962 14.083290 4.575179 12.333810  6.119219 12.551139
+      TCGA.OR.A5KX 12.24329 13.703442 4.159487 12.580470  2.727575 13.618910
+      TCGA.OR.A5KY 14.68802 13.713087 2.466198 12.879689  8.504098 12.693123
+      TCGA.OR.A5KZ 12.03287 11.894004 2.953487 11.112277 13.398964 10.820960
+      TCGA.OR.A5L3 14.27163 12.553760 7.802300 13.597860  6.731461 10.852456
+      TCGA.OR.A5L4 11.78701 15.389588 5.603878 11.338227  8.163906 11.103340
+      TCGA.OR.A5L5 13.77790 15.663593 6.205030 13.616229 10.635555 12.143431
+      TCGA.OR.A5L6 13.47899 14.771477 6.440292 13.854969  7.280887 12.498509
+      TCGA.OR.A5L8 13.39445 13.684285 5.623626 12.674302  6.869489 10.261995
+      TCGA.OR.A5L9 12.66519 15.917653 7.259374 13.164968  8.989733 12.498104
+      TCGA.OR.A5LA 14.25864 15.572369 4.372831 12.717416  8.828200 10.268415
+      TCGA.OR.A5LB 13.84437 14.799204 4.348455 13.520918  7.093792 11.971424
+      TCGA.OR.A5LC 14.45892 12.363636 0.000000 12.404711  7.565626 12.843588
+      TCGA.OR.A5LD 11.81944 12.171027 4.308773 11.600863  5.271908 11.804336
+      TCGA.OR.A5LE 13.06827 11.364759 6.091919 12.478369  6.091919 11.455790
+      TCGA.OR.A5LG 12.89446 12.603515 3.665106 12.254300  8.195431 11.761380
+      TCGA.OR.A5LH 12.82644 14.419032 7.935597 13.110474  8.149793 11.094540
+      TCGA.OR.A5LJ 15.01426 13.686423 7.008397 12.643975  5.634175 11.010671
+      TCGA.OR.A5LK 13.98399 14.303985 6.180559 12.403970  8.072789 13.166312
+      TCGA.OR.A5LL 13.50581 12.480346 4.731324 13.712930  8.907788 11.038592
+      TCGA.OR.A5LM 11.56805 13.912496 3.715979 12.430188  4.660014 12.718348
+      TCGA.OR.A5LN 13.54785 14.702800 0.000000 13.457708  6.064821 12.522323
+      TCGA.OR.A5LO 13.42228 13.880245 0.000000 13.106270  6.459920 12.812145
+      TCGA.OR.A5LP 14.52268 15.596661 4.497311 12.333122  7.731562 11.695445
+      TCGA.OR.A5LR 13.74945 16.316832 5.714589 12.498742  7.915232 11.742554
+      TCGA.OR.A5LS 14.48839 14.519664 4.818847 13.887137  6.948457 11.893887
+      TCGA.OR.A5LT 15.70564 14.288636 8.018634 13.942311  5.937263 14.429290
+      TCGA.OU.A5PI 14.65924 15.008371 4.925762 13.509891  8.728900 10.986735
+      TCGA.P6.A5OF 15.63831 14.517065 3.234090 13.243940  9.359589 13.186537
+      TCGA.P6.A5OG 14.28030 13.257414 8.802451 10.137533 10.018655 12.092328
+      TCGA.PA.A5YG 14.35172 14.286471 0.000000 12.806319  6.882933 12.086279
+      TCGA.PK.A5H8 11.77300 14.923652 6.489179 12.873444  6.115477 12.385727
+      TCGA.PK.A5H9 12.51452 12.698037 3.449065 14.361345 14.373983 11.419572
+      TCGA.PK.A5HA 13.65744 15.695974 4.727563  9.958907  9.172807 11.019706
+      TCGA.PK.A5HB 12.05504 14.894451 5.244033 10.356302  5.718542 10.763939
+                       ABCA8     ABCA9    ABCB10   ABCB11     ABCB1     ABCB4
+      TCGA.OR.A5J1  5.664467  8.698110 12.214310 2.705842 13.563306 12.030308
+      TCGA.OR.A5J2 10.419815  8.836957 12.064667 0.000000 14.958426 15.923384
+      TCGA.OR.A5J3 13.652823  8.548980 10.718295 4.147772 17.441847 15.717167
+      TCGA.OR.A5J5 13.059679  8.685417 11.302489 0.000000 10.855238 10.946659
+      TCGA.OR.A5J6 15.590212  8.168296 11.411730 0.000000 15.131758  9.882215
+      TCGA.OR.A5J7 13.421968  7.305606 11.599222 0.000000 15.449939 12.139892
+      TCGA.OR.A5J8 10.496273 11.264441 11.328877 0.000000 10.365330  7.208818
+      TCGA.OR.A5J9 13.829022  8.101914  9.637831 0.000000 15.003267 13.099220
+      TCGA.OR.A5JA 13.153243 10.087221 11.158512 0.000000 15.816370 11.415046
+      TCGA.OR.A5JB  5.673110  8.042355 12.528969 0.000000  8.349424  6.566745
+      TCGA.OR.A5JC 12.640006  8.748512 10.657511 0.000000 16.516083 12.468569
+      TCGA.OR.A5JD 14.051929  8.705592 11.205244 0.000000 12.838466  7.127525
+      TCGA.OR.A5JE 11.974827  7.257100 10.992507 2.823500 14.698573 13.002701
+      TCGA.OR.A5JF 13.890795  9.489266  9.973105 2.181267 16.615285 16.167346
+      TCGA.OR.A5JG  8.000170  6.869412 11.197485 2.764715 15.598179  9.209956
+      TCGA.OR.A5JI 13.336750  8.558473 10.555600 0.000000 15.828841 10.095480
+      TCGA.OR.A5JJ 11.979951  8.002142 10.566024 0.000000 15.247843 15.126351
+      TCGA.OR.A5JK 12.043973  9.270010 11.373012 0.000000 14.395327 12.668656
+      TCGA.OR.A5JL 12.784750  7.684660 10.709371 5.335303 14.168019 12.004065
+      TCGA.OR.A5JM 10.823975  5.056176 12.120997 0.000000 15.774200 13.489743
+      TCGA.OR.A5JO 15.930930 11.603709 11.319684 3.586527 11.176007  8.465226
+      TCGA.OR.A5JP 12.757195  9.541494 11.752424 4.635332 14.388006  8.236227
+      TCGA.OR.A5JQ 15.011964  8.186761 10.865569 0.000000 16.018268 10.756283
+      TCGA.OR.A5JR 14.588454  4.034760 10.871499 2.615901 14.753223  8.666312
+      TCGA.OR.A5JS 12.484463  7.793214 11.608903 0.000000 16.130466 12.331295
+      TCGA.OR.A5JT 14.059838  5.552106 10.561509 0.000000 12.874854  8.029060
+      TCGA.OR.A5JV 13.332036  5.274635 10.678329 0.000000 13.020282  9.302173
+      TCGA.OR.A5JW 14.093602  9.471721 10.674745 0.000000 17.083114 13.588465
+      TCGA.OR.A5JX 12.763711  8.986070  9.964767 0.000000 16.041347 13.298360
+      TCGA.OR.A5JY 12.886220  7.313811 11.348337 2.533807 15.761437 14.545783
+      TCGA.OR.A5JZ 14.038612  7.440144 10.945614 0.000000 13.944316  6.946061
+      TCGA.OR.A5K0 10.678639  8.400464 11.833224 0.000000 16.264870 10.359485
+      TCGA.OR.A5K1 13.581393  7.201825 10.139232 0.000000 12.277247  5.459620
+      TCGA.OR.A5K2  9.942494  9.685622 10.889320 4.958444 15.251909 14.038070
+      TCGA.OR.A5K3 11.172710  8.427819 10.103008 0.000000 13.949784  8.369100
+      TCGA.OR.A5K4 13.715469  6.098627 11.082177 3.730951 11.908382  8.295014
+      TCGA.OR.A5K5 12.647089  6.396207 10.609849 0.000000 14.801586 14.875584
+      TCGA.OR.A5K6 13.309627  5.307464 11.449568 0.000000 16.620177 15.942635
+      TCGA.OR.A5K8 12.766324  8.914449 10.155578 0.000000 15.496450 13.514464
+      TCGA.OR.A5K9 14.923907  5.808243 10.409764 0.000000 16.817488 15.968648
+      TCGA.OR.A5KO 13.827222  7.086634 11.885776 0.000000 16.366938 12.453362
+      TCGA.OR.A5KT 16.796326  9.881093 11.678745 0.000000 15.179573 11.770746
+      TCGA.OR.A5KU 13.647465 10.077558 10.716082 0.000000 16.398167 13.610871
+      TCGA.OR.A5KV  5.405329  6.238116 10.061529 7.580072 14.967487 11.443932
+      TCGA.OR.A5KW 12.210623  7.565382 10.853981 6.436990 16.880368 12.485147
+      TCGA.OR.A5KX 14.913032  4.554199 10.914259 0.000000 14.156861  7.453895
+      TCGA.OR.A5KY 10.459986  9.309749 10.933816 6.008137 16.514573 14.888829
+      TCGA.OR.A5KZ 14.177267 13.045415 11.734636 0.000000 14.820212 12.283793
+      TCGA.OR.A5L3 12.581553  7.555584 10.303924 0.000000 14.687501 12.095119
+      TCGA.OR.A5L4 13.154007  7.696354 10.890569 0.000000 15.495776  9.498732
+      TCGA.OR.A5L5 13.846394 10.728925 10.856366 3.608326 14.810818 10.714578
+      TCGA.OR.A5L6 12.972199  8.106897 10.312243 0.000000 12.671732  9.011344
+      TCGA.OR.A5L8 14.771036  8.254148 11.349504 3.953370 16.899624 15.994538
+      TCGA.OR.A5L9 12.931936  8.838046  9.666741 0.000000 12.250223  6.679113
+      TCGA.OR.A5LA 13.939083  8.260369 10.357843 0.000000 14.402846  9.551312
+      TCGA.OR.A5LB 13.892480  7.531583 10.780483 0.000000 13.515558 14.106434
+      TCGA.OR.A5LC 13.017596  7.722379 11.224475 0.000000 10.495175  8.743563
+      TCGA.OR.A5LD 12.781176  7.700461  9.990383 0.000000 15.047099 13.911890
+      TCGA.OR.A5LE  6.501659  6.501659 11.618822 0.000000 15.280643 16.184807
+      TCGA.OR.A5LG 12.856316  9.221489 11.454050 0.000000 13.212133 11.956399
+      TCGA.OR.A5LH 13.286131  8.585529  9.956679 4.761494 14.019513 11.002623
+      TCGA.OR.A5LJ  8.337218  7.699251 11.782659 5.445673 15.806213 16.253543
+      TCGA.OR.A5LK 11.861358  9.716835 10.446966 0.000000 13.174707  8.334930
+      TCGA.OR.A5LL 15.409011  9.925374 11.917127 0.000000 17.524837 15.094647
+      TCGA.OR.A5LM 11.326865  7.893273 10.217712 0.000000 13.658539  8.413382
+      TCGA.OR.A5LN 13.896199  7.054004 11.809043 0.000000 13.758829  8.933585
+      TCGA.OR.A5LO 14.272837  7.039410 10.911792 0.000000 15.239312 12.649456
+      TCGA.OR.A5LP 12.977505  7.897471 10.594797 0.000000 15.219753  8.881295
+      TCGA.OR.A5LR 12.731457  8.061495 10.222038 0.000000 13.927734  6.700786
+      TCGA.OR.A5LS  7.773413  8.747444 11.665094 0.000000 14.508754 16.412591
+      TCGA.OR.A5LT 13.687479  7.636998 11.037593 0.000000 13.221364  7.969916
+      TCGA.OU.A5PI 13.617057  8.667648 10.351092 0.000000 17.056672 15.953402
+      TCGA.P6.A5OF 13.133521  9.703077 11.350991 3.234090 15.343487 14.519134
+      TCGA.P6.A5OG  9.910341  9.623508 11.914483 0.000000  9.150764  7.146470
+      TCGA.PA.A5YG 14.119140  6.732288 11.346945 0.000000 15.789695  9.371089
+      TCGA.PK.A5H8 13.582475  8.203755 10.972979 0.000000 14.227478  9.042115
+      TCGA.PK.A5H9 15.939444 12.006679 12.254307 0.000000 11.002386 10.030718
+      TCGA.PK.A5HA 12.080080  7.115456 10.980197 0.000000 11.832321  7.266418
+      TCGA.PK.A5HB 13.295710  5.816250 12.380650 3.978107 15.408468  8.263268
+                       ABCB5     ABCB6    ABCB7    ABCB8     ABCB9   ABCC10   ABCC11
+      TCGA.OR.A5J1  6.390010 14.354626 11.16341 13.36531 11.062678 13.18279 5.310001
+      TCGA.OR.A5J2  4.253292 12.316700 12.53668 14.00063 11.162059 13.10353 4.560011
+      TCGA.OR.A5J3  5.677428 13.162186 12.18670 14.39685 11.504670 12.60468 5.677428
+      TCGA.OR.A5J5  2.950960 13.007555 10.65895 14.54361 12.550693 12.89984 5.944711
+      TCGA.OR.A5J6  0.000000 13.019513 11.44349 13.20023 11.218326 14.08268 6.288760
+      TCGA.OR.A5J7  4.169492 15.306360 11.53664 14.04238 11.169780 13.39775 5.128837
+      TCGA.OR.A5J8  9.068456 13.404025 11.10375 13.40517 12.611646 12.61463 4.192703
+      TCGA.OR.A5J9  2.217182 13.450576 11.37617 14.77120 12.510134 12.66247 5.485366
+      TCGA.OR.A5JA 13.338545 12.786022 12.20374 14.15396 12.370020 13.61801 4.407344
+      TCGA.OR.A5JB  0.000000 13.459265 12.37104 13.77330 10.662253 12.58437 3.755534
+      TCGA.OR.A5JC  0.000000 12.151896 12.06971 13.56889 12.560903 13.84879 4.819880
+      TCGA.OR.A5JD 10.752213 12.761234 12.23814 14.24610 11.472295 11.82493 5.374759
+      TCGA.OR.A5JE  3.717820 14.641385 11.07206 13.21404 12.101961 13.39019 5.444649
+      TCGA.OR.A5JF  4.223236 12.500771 11.90711 15.49967 12.162086 11.92296 5.658133
+      TCGA.OR.A5JG 11.625661 13.014036 11.86640 15.29377 12.396447 11.58541 6.718779
+      TCGA.OR.A5JI  3.284588 12.717305 11.04792 13.46278 10.721688 12.42555 6.148853
+      TCGA.OR.A5JJ  4.194869 13.405740 11.99686 14.49601 12.050839 11.79199 4.968061
+      TCGA.OR.A5JK  0.000000 12.605555 11.55811 14.18580 11.578165 12.65550 3.239327
+      TCGA.OR.A5JL  5.187265 13.205561 12.84621 14.10752 12.443016 13.54051 4.621966
+      TCGA.OR.A5JM  0.000000 14.020264 10.77547 13.61165 11.182694 13.81500 6.224221
+      TCGA.OR.A5JO  2.701884 12.555456 12.01031 12.88129  9.662592 11.89406 3.586527
+      TCGA.OR.A5JP  0.000000 14.459095 11.29912 14.32132 12.333919 12.93030 4.888659
+      TCGA.OR.A5JQ  7.475334 12.764151 11.87393 13.87930 13.388340 12.53960 5.793021
+      TCGA.OR.A5JR  5.967185 11.635554 12.74397 14.33740 11.808527 12.75686 5.967185
+      TCGA.OR.A5JS  2.285091 13.527574 11.82918 13.65436 11.322875 12.71972 6.063009
+      TCGA.OR.A5JT  4.027366 12.229452 12.28655 13.96175 12.572924 12.54363 5.552106
+      TCGA.OR.A5JV 11.897505 11.514823 12.97852 14.21178 11.284968 11.92974 4.804040
+      TCGA.OR.A5JW  0.000000 12.030417 12.60587 14.59261 10.971759 13.55095 3.403456
+      TCGA.OR.A5JX  0.000000 12.694482 11.70971 13.62244 11.679534 13.10871 6.135987
+      TCGA.OR.A5JY  5.612051 13.228417 12.22929 13.59917 11.676503 13.51783 5.612051
+      TCGA.OR.A5JZ  3.034617 11.664279 12.50531 12.80995 12.243753 12.16005 5.464854
+      TCGA.OR.A5K0  0.000000 12.408837 11.02674 13.56623 12.298382 12.84902 2.767373
+      TCGA.OR.A5K1  0.000000 11.197901 12.11048 14.35490 12.404003 12.50566 4.186048
+      TCGA.OR.A5K2  4.958444 14.771384 12.19390 14.51867 11.802455 13.78175 4.396498
+      TCGA.OR.A5K3 15.653624 12.870073 12.26388 14.70982 11.734388 12.59057 4.831354
+      TCGA.OR.A5K4  6.951618 11.887495 12.90011 13.38796 12.520608 12.12015 6.222402
+      TCGA.OR.A5K5  3.431808 14.003698 11.32550 14.04774 12.329341 13.01791 4.671207
+      TCGA.OR.A5K6  0.000000 12.689841 12.05414 12.62457 10.623996 12.67288 2.703638
+      TCGA.OR.A5K8  6.824704 13.076195 11.65606 14.54959 11.154946 12.75297 0.000000
+      TCGA.OR.A5K9  0.000000 14.398879 11.79613 13.80861 11.370774 13.38157 2.701205
+      TCGA.OR.A5KO  3.559951 12.056345 12.41965 13.61711  9.995781 13.74000 4.497453
+      TCGA.OR.A5KT  7.390686 12.986521 11.67442 13.42144 10.495272 12.37436 6.122808
+      TCGA.OR.A5KU  0.000000 13.326028 12.13852 13.42123 12.982557 11.95605 3.208031
+      TCGA.OR.A5KV  0.000000 13.505430 12.05632 13.63450 12.748733 13.08323 5.880996
+      TCGA.OR.A5KW  6.233099 13.376899 12.05865 14.00829 13.226888 12.25343 5.544596
+      TCGA.OR.A5KX  0.000000 13.841378 11.09573 12.96127 11.963482 13.65584 2.727575
+      TCGA.OR.A5KY  6.365717 14.209968 11.39062 14.88560 11.984291 12.94325 5.030380
+      TCGA.OR.A5KZ  0.000000 13.355053 12.25222 13.55590 11.966322 13.44245 5.374245
+      TCGA.OR.A5L3  3.666258 14.184597 11.22798 14.19363 10.491412 13.08916 4.608290
+      TCGA.OR.A5L4  0.000000 10.955453 13.36303 14.18439 11.199009 13.32670 4.077057
+      TCGA.OR.A5L5  5.112189 12.364757 12.20460 13.50253 12.479507 12.32281 4.547933
+      TCGA.OR.A5L6  0.000000 12.349859 10.99718 13.85162 11.545081 13.13248 0.000000
+      TCGA.OR.A5L8  0.000000 12.152036 12.57158 13.77507 12.070132 12.63650 4.344935
+      TCGA.OR.A5L9  0.000000 13.323317 10.62008 13.54773 11.913266 12.53557 0.000000
+      TCGA.OR.A5LA  0.000000 12.842753 11.44664 14.80831 12.486587 11.77355 3.440837
+      TCGA.OR.A5LB  2.546656 13.317637 12.79174 14.30105 11.245098 12.00411 3.417592
+      TCGA.OR.A5LC  0.000000 13.266026 11.86075 14.34997 11.992331 12.26511 3.953793
+      TCGA.OR.A5LD  0.000000 14.439935 10.32267 13.53569 13.018885 13.56511 5.271908
+      TCGA.OR.A5LE  3.994185 14.155204 12.36448 14.03134 10.956695 12.96561 5.517493
+      TCGA.OR.A5LG  0.000000 13.889371 12.11872 14.06538 10.374281 13.90868 0.000000
+      TCGA.OR.A5LH  5.163172 12.705636 12.67330 14.50637 11.833539 12.58200 5.328617
+      TCGA.OR.A5LJ  8.515668 13.415534 12.74970 14.23608  9.937219 12.48313 4.973427
+      TCGA.OR.A5LK 14.162017 10.790701 12.26411 13.93211 12.540151 12.79373 5.200313
+      TCGA.OR.A5LL  0.000000 14.344473 12.48035 14.07746  9.847454 12.61577 4.731324
+      TCGA.OR.A5LM  2.821790 12.553314 11.85011 14.03494 14.242109 12.67749 4.970484
+      TCGA.OR.A5LN  3.826622 12.930816 11.71596 14.07881  9.872465 13.49444 3.826622
+      TCGA.OR.A5LO  0.000000 13.595839 13.39267 13.74732 10.862066 12.75085 6.050335
+      TCGA.OR.A5LP  6.039047 12.021787 12.31123 14.56723 11.784649 12.43111 5.722594
+      TCGA.OR.A5LR  0.000000 11.549453 12.31406 12.65862 12.314060 12.52420 5.143298
+      TCGA.OR.A5LS  0.000000 10.345342 12.12688 14.24969 11.075811 12.28476 7.632076
+      TCGA.OR.A5LT 10.215907 13.652211 11.27668 13.02670 13.156176 12.70816 4.745926
+      TCGA.OU.A5PI  5.397564 13.109364 12.16875 14.53898 11.249651 11.86202 4.925762
+      TCGA.P6.A5OF  4.927546 13.301551 12.04100 14.50824 11.525749 13.19626 4.460958
+      TCGA.P6.A5OG  4.611545 12.510379 12.42315 12.84335 10.734034 12.83596 0.000000
+      TCGA.PA.A5YG  9.898969 12.252928 13.06361 14.52571 11.310848 12.30056 3.667026
+      TCGA.PK.A5H8  0.000000 11.191059 12.53272 14.10750 11.932830 13.78532 6.115477
+      TCGA.PK.A5H9  4.132198 10.811169 12.36788 12.66829 10.952698 12.93092 4.943158
+      TCGA.PK.A5HA  6.177552  9.429036 12.75548 13.62578 10.874457 12.80257 4.419185
+      TCGA.PK.A5HB  5.244033 12.649451 12.69833 13.40820 11.010929 13.25980 5.907759
+                     ABCC12   ABCC13    ABCC1     ABCC2    ABCC3     ABCC4    ABCC5
+      TCGA.OR.A5J1 0.000000 0.000000 13.38556  5.498093 12.93258 10.962392 13.76798
+      TCGA.OR.A5J2 0.000000 0.000000 14.54415  5.663762 13.60144 11.195793 14.06137
+      TCGA.OR.A5J3 0.000000 0.000000 14.49347  7.394524 16.02438  9.599835 13.59679
+      TCGA.OR.A5J5 0.000000 0.000000 14.39284 10.507050 16.17155  7.566158 13.92744
+      TCGA.OR.A5J6 0.000000 0.000000 14.51546  6.387065 11.37327  9.552219 12.83154
+      TCGA.OR.A5J7 0.000000 3.780934 13.90008  8.466129 15.31841  9.176962 14.79700
+      TCGA.OR.A5J8 4.498766 2.411864 13.91902  8.574790 10.64385 11.137350 13.16836
+      TCGA.OR.A5J9 0.000000 0.000000 14.62278  6.278853 11.72469  9.951441 13.33711
+      TCGA.OR.A5JA 0.000000 0.000000 14.78561  4.969464 14.62950 10.473143 13.29495
+      TCGA.OR.A5JB 0.000000 2.858583 14.85101  6.827241 14.52267 10.472119 13.88484
+      TCGA.OR.A5JC 0.000000 0.000000 14.62319 11.063169 13.14849 10.260904 13.19639
+      TCGA.OR.A5JD 0.000000 0.000000 13.72769  7.860357 14.56672  8.875133 13.12483
+      TCGA.OR.A5JE 0.000000 0.000000 12.73199  5.227767 14.98699  8.796853 13.37788
+      TCGA.OR.A5JF 0.000000 2.181267 14.68887  8.365461 15.59921  9.962919 13.24256
+      TCGA.OR.A5JG 0.000000 0.000000 14.38456  6.550565 16.78814 10.304418 12.65296
+      TCGA.OR.A5JI 0.000000 0.000000 13.34040  8.302877 14.11927  9.239290 11.69867
+      TCGA.OR.A5JJ 0.000000 2.413724 13.81657  6.220797 11.38119 10.859471 13.36784
+      TCGA.OR.A5JK 0.000000 0.000000 14.22322  7.088487 11.23832  8.127409 13.23408
+      TCGA.OR.A5JL 3.679398 0.000000 12.98720  7.411951 13.34529 10.474060 12.98229
+      TCGA.OR.A5JM 0.000000 0.000000 13.16857  7.460933 14.15141  9.435697 13.80434
+      TCGA.OR.A5JO 0.000000 0.000000 14.01437  9.550526 13.64302 11.243093 12.67203
+      TCGA.OR.A5JP 2.528708 5.104078 13.97149  6.910057 15.32733  8.166076 11.77224
+      TCGA.OR.A5JQ 0.000000 0.000000 13.91703  5.535181 14.19973  9.783352 12.67488
+      TCGA.OR.A5JR 0.000000 0.000000 14.44849  5.967185 12.91279 10.583918 13.10229
+      TCGA.OR.A5JS 0.000000 2.285091 14.48744  6.965396 14.75395  9.054553 14.20329
+      TCGA.OR.A5JT 0.000000 0.000000 14.43763  5.198295 11.58039 10.632780 11.99531
+      TCGA.OR.A5JV 0.000000 4.101098 14.41792  6.834535 10.85656 12.020455 14.24097
+      TCGA.OR.A5JW 0.000000 0.000000 14.23041  9.824069 16.20332  9.628380 13.46371
+      TCGA.OR.A5JX 0.000000 0.000000 14.11089  9.424855 14.16471  8.986070 13.72350
+      TCGA.OR.A5JY 0.000000 2.533807 15.24068 10.872115 15.25612  4.894618 13.67828
+      TCGA.OR.A5JZ 0.000000 0.000000 14.48942  6.767048 14.08653 11.160364 11.61549
+      TCGA.OR.A5K0 4.599001 0.000000 14.12278  4.203671 14.08615  8.586360 13.53621
+      TCGA.OR.A5K1 0.000000 0.000000 14.56197  4.186048 12.95802 10.315115 12.59662
+      TCGA.OR.A5K2 0.000000 0.000000 14.42112  0.000000 14.72672  8.914273 13.47492
+      TCGA.OR.A5K3 0.000000 0.000000 14.40737  5.805791 10.28872  8.484242 12.38366
+      TCGA.OR.A5K4 0.000000 0.000000 15.31195  8.665938 11.98467 10.899514 12.13006
+      TCGA.OR.A5K5 0.000000 3.431808 14.37639  4.671207 12.74396  7.344810 14.18451
+      TCGA.OR.A5K6 0.000000 0.000000 12.74187  5.307464 16.71884 10.758664 13.31354
+      TCGA.OR.A5K8 0.000000 0.000000 14.17582  8.179476 14.94932 10.071996 13.20194
+      TCGA.OR.A5K9 0.000000 0.000000 14.20860  7.512652 15.77622 11.835770 13.59295
+      TCGA.OR.A5KO 0.000000 0.000000 13.94298  7.992390 16.32914  8.974155 14.97617
+      TCGA.OR.A5KT 0.000000 3.434609 13.78254  4.366303 16.11620 10.226542 12.53325
+      TCGA.OR.A5KU 3.208031 3.208031 14.58975  8.570162 11.68348  8.295326 13.35469
+      TCGA.OR.A5KV 0.000000 2.361221 13.81309  3.745684 13.92287  8.780157 13.05053
+      TCGA.OR.A5KW 4.180175 0.000000 15.01274  6.119219 14.47523 10.569583 13.76375
+      TCGA.OR.A5KX 2.727575 0.000000 14.86816  6.507392 15.74207 11.042877 12.84369
+      TCGA.OR.A5KY 0.000000 2.466198 13.96373  5.531648 16.07227  9.764812 13.77402
+      TCGA.OR.A5KZ 0.000000 0.000000 14.51277  4.806570 10.87896 11.990442 12.75569
+      TCGA.OR.A5L3 0.000000 0.000000 12.97224  6.153271 16.42212  5.173400 13.74029
+      TCGA.OR.A5L4 0.000000 0.000000 14.92526  4.077057 14.43557 10.744670 12.73735
+      TCGA.OR.A5L5 0.000000 0.000000 13.61365  7.249302 14.46938  9.626279 12.78546
+      TCGA.OR.A5L6 0.000000 0.000000 14.26538 11.396811 15.92425  8.859651 13.23366
+      TCGA.OR.A5L8 0.000000 0.000000 12.87688  6.927889 15.29852  9.586896 14.36430
+      TCGA.OR.A5L9 0.000000 0.000000 15.17280  5.693123 12.78411  9.252295 12.98707
+      TCGA.OR.A5LA 0.000000 0.000000 13.93818  0.000000 14.35817  9.902881 12.79352
+      TCGA.OR.A5LB 0.000000 0.000000 14.29828  7.192624 15.35536  8.705561 13.68852
+      TCGA.OR.A5LC 0.000000 0.000000 13.81982  7.450783 13.59238 12.170746 14.13201
+      TCGA.OR.A5LD 0.000000 0.000000 15.45207  4.308773 14.24258  7.052342 12.52434
+      TCGA.OR.A5LE 3.081990 0.000000 14.19021  6.501659  9.24292 11.310646 13.75722
+      TCGA.OR.A5LG 0.000000 0.000000 13.44386  5.893056 16.12704  7.080903 13.83157
+      TCGA.OR.A5LH 0.000000 3.813726 13.42454  6.387599 13.89392 10.226829 13.33558
+      TCGA.OR.A5LJ 0.000000 2.824401 13.65411  8.390495 14.52487 12.182569 15.23559
+      TCGA.OR.A5LK 0.000000 0.000000 12.84021  7.627277 12.13240 10.501376 13.81348
+      TCGA.OR.A5LL 0.000000 0.000000 14.86336  8.352807 16.19008  6.776644 13.71430
+      TCGA.OR.A5LM 0.000000 0.000000 13.99688  6.784858 13.89765 10.574280 13.07363
+      TCGA.OR.A5LN 0.000000 0.000000 12.10521  9.149985 14.87920  9.338119 12.68429
+      TCGA.OR.A5LO 0.000000 0.000000 14.24158  7.972754 14.25248 11.062498 14.58017
+      TCGA.OR.A5LP 0.000000 0.000000 14.36868  7.289226 14.76272 10.688351 12.28651
+      TCGA.OR.A5LR 0.000000 3.260841 14.96960  5.714589 14.33917 10.495205 12.53049
+      TCGA.OR.A5LS 2.964580 0.000000 13.81130  8.747444 14.77668  8.998446 14.76121
+      TCGA.OR.A5LT 3.264676 0.000000 13.45944  8.916513 11.15120  9.583784 12.63973
+      TCGA.OU.A5PI 0.000000 3.673331 13.58980  7.089763 15.08260  9.776386 14.28484
+      TCGA.P6.A5OF 0.000000 2.379804 13.97068  8.324424 15.30310 11.776304 14.14955
+      TCGA.P6.A5OG 7.662763 3.913395 13.00020  6.885471 10.03809 11.576347 13.92686
+      TCGA.PA.A5YG 0.000000 2.776354 14.33180  6.732288 14.84168 10.889340 14.05264
+      TCGA.PK.A5H8 0.000000 0.000000 14.91761  7.305301 11.33920 10.612715 13.49467
+      TCGA.PK.A5H9 0.000000 0.000000 15.63726 12.579883 13.73374 11.403810 12.56579
+      TCGA.PK.A5HA 0.000000 0.000000 13.54931  7.403069 13.84758  9.618749 12.94463
+      TCGA.PK.A5HB 0.000000 0.000000 15.80027  9.198866 14.59633 11.164925 12.45174
+                     ABCC6P1   ABCC6P2     ABCC6    ABCC8     ABCC9    ABCD1
+      TCGA.OR.A5J1  4.135301  8.960565  7.120078 0.000000  7.682308 14.59933
+      TCGA.OR.A5J2  4.560011  7.767187  7.796800 0.000000 11.470716 14.25081
+      TCGA.OR.A5J3  4.542317  6.085401  6.813842 2.717043 13.458587 13.89961
+      TCGA.OR.A5J5  9.481111 10.228108 10.019348 4.803771  9.560438 14.74664
+      TCGA.OR.A5J6  7.717631  9.795374 12.631732 0.000000  9.873762 14.21152
+      TCGA.OR.A5J7  6.956647 11.196144 10.862566 0.000000  9.548364 13.91761
+      TCGA.OR.A5J8  8.139065  8.401246  9.497272 2.411864 10.236887 11.91446
+      TCGA.OR.A5J9  8.691507  8.958201  9.528001 2.217182  9.752151 13.94240
+      TCGA.OR.A5JA  3.473778  4.969464  7.702198 2.598119 10.350035 14.54080
+      TCGA.OR.A5JB  7.972239  9.441047 10.774661 2.858583  8.857122 13.25203
+      TCGA.OR.A5JC  2.965514  8.793497  9.428181 3.870076  9.524722 14.91067
+      TCGA.OR.A5JD  7.494427  8.580376 10.281560 6.014136 10.604597 14.10167
+      TCGA.OR.A5JE  5.444649  9.988906  8.132494 0.000000  8.776999 14.48381
+      TCGA.OR.A5JF  3.012754  7.850554  8.632915 0.000000 14.270369 14.25480
+      TCGA.OR.A5JG  0.000000  5.732412  6.360117 0.000000  9.344668 14.27916
+      TCGA.OR.A5JI  9.950014 11.754503 11.521185 0.000000 11.567643 14.90444
+      TCGA.OR.A5JJ  6.521963  9.508161  9.059082 0.000000  9.082309 14.11112
+      TCGA.OR.A5JK  0.000000  9.539219  7.990422 0.000000  9.587518 14.70270
+      TCGA.OR.A5JL  2.303709  8.339204 10.923377 4.066005 10.525064 14.75491
+      TCGA.OR.A5JM  7.569958  9.077831  9.885800 0.000000 11.827243 15.53518
+      TCGA.OR.A5JO 10.495561  9.748219 12.973070 5.089119 10.134847 12.98488
+      TCGA.OR.A5JP  7.171090 10.043425  9.267724 2.528708 10.754835 14.92773
+      TCGA.OR.A5JQ  8.644842  9.403102  9.618266 3.332621 11.342228 14.65506
+      TCGA.OR.A5JR  8.991170  8.221797 10.686281 0.000000  9.256155 15.77289
+      TCGA.OR.A5JS  8.601380 10.031999 11.651221 0.000000  9.850187 14.26477
+      TCGA.OR.A5JT  5.836011  7.404038 10.879344 2.609314  9.899506 16.44536
+      TCGA.OR.A5JV  4.804040  7.246409  7.646194 0.000000  9.806173 15.21522
+      TCGA.OR.A5JW  3.403456  4.894534  6.666821 0.000000 10.618704 14.22717
+      TCGA.OR.A5JX  5.412634  7.387005  6.714096 0.000000 10.080133 13.74770
+      TCGA.OR.A5JY  5.983740  6.446878  9.328655 0.000000 13.270994 16.09787
+      TCGA.OR.A5JZ  7.711730  5.871702  5.682572 0.000000 10.971690 15.62783
+      TCGA.OR.A5K0  5.380614  8.711578 10.481731 0.000000  5.163982 14.87281
+      TCGA.OR.A5K1  7.811406  9.215482 11.921885 0.000000 10.214268 14.72205
+      TCGA.OR.A5K2  3.463422 10.069128  8.687373 0.000000  9.259411 15.90164
+      TCGA.OR.A5K3  5.399325  8.952608  8.590869 0.000000  9.030457 14.43447
+      TCGA.OR.A5K4  4.279233  7.433711  7.794426 0.000000  9.220321 16.51187
+      TCGA.OR.A5K5  8.652655 10.217538 10.492188 6.217917 11.421322 14.09895
+      TCGA.OR.A5K6  7.640385  8.554516  9.220518 0.000000  9.552596 14.21901
+      TCGA.OR.A5K8  4.091761  4.091761  7.184444 0.000000 10.590464 14.97472
+      TCGA.OR.A5K9  7.468505  8.939012 10.538122 0.000000 10.119844 14.59289
+      TCGA.OR.A5KO  9.267357 10.161305 11.287570 2.677367  8.367237 15.21044
+      TCGA.OR.A5KT  0.000000  5.330897  8.508022 3.434609 11.121796 14.95954
+      TCGA.OR.A5KU  6.232046  8.601108  4.684968 3.208031  9.877224 14.08932
+      TCGA.OR.A5KV  6.070578  7.516285  8.141532 5.539734  9.318000 14.52170
+      TCGA.OR.A5KW  0.000000  2.746194  5.995573 5.139825  9.974218 14.79533
+      TCGA.OR.A5KX  4.554199  5.838804  7.628040 0.000000 10.008547 13.72577
+      TCGA.OR.A5KY  5.531648  5.666314  6.585608 3.329369 10.173794 14.15912
+      TCGA.OR.A5KZ  3.857223  8.801704  9.199473 0.000000 11.934351 13.01869
+      TCGA.OR.A5L3  6.372765  7.946075  9.408001 0.000000  8.596022 15.40902
+      TCGA.OR.A5L4  3.160099  7.750544  8.607355 0.000000 12.643803 15.44276
+      TCGA.OR.A5L5 10.093552  9.011261 11.642699 6.091181 11.028623 14.27124
+      TCGA.OR.A5L6  6.920965  9.495972 10.009945 0.000000 11.774492 14.26034
+      TCGA.OR.A5L8  6.745079  8.633325 10.118923 4.652594  9.251784 12.89529
+      TCGA.OR.A5L9  6.679113  9.367590 11.642696 0.000000 11.365951 16.95038
+      TCGA.OR.A5LA  0.000000  7.013113 10.659904 0.000000 10.531254 15.22594
+      TCGA.OR.A5LB  5.762100  7.041716  6.462218 5.999012  9.407246 14.65527
+      TCGA.OR.A5LC  0.000000  8.668455  7.115916 0.000000 10.097273 14.55848
+      TCGA.OR.A5LD  0.000000  9.365548  6.831760 4.308773  8.991801 14.56057
+      TCGA.OR.A5LE  0.000000  8.153689  7.158747 0.000000 10.669757 14.70245
+      TCGA.OR.A5LG  0.000000  5.388850  6.730223 0.000000  8.739848 14.28439
+      TCGA.OR.A5LH  6.991699  8.769503 10.904449 0.000000  9.019936 15.21364
+      TCGA.OR.A5LJ  8.539450  9.115229  8.982724 4.973427 13.408287 14.52487
+      TCGA.OR.A5LK  7.339391 10.044540 10.290965 0.000000  9.805999 15.84530
+      TCGA.OR.A5LL  3.784640  7.328820  9.857427 2.885701 10.061018 14.24542
+      TCGA.OR.A5LM  5.442703  8.098914 10.556944 2.821790 11.037105 14.54143
+      TCGA.OR.A5LN  6.734788  9.629891 10.477078 0.000000 12.233231 15.03524
+      TCGA.OR.A5LO  4.114208  6.050335  6.164137 8.786559 10.022255 13.37357
+      TCGA.OR.A5LP  6.217036  7.609308  9.666413 3.268152 11.701068 14.73741
+      TCGA.OR.A5LR  9.332946  8.276473 10.997412 0.000000  9.688600 16.10981
+      TCGA.OR.A5LS  8.325896 10.267820  9.897600 2.964580  9.576050 13.82219
+      TCGA.OR.A5LT  7.203454 10.050045  8.837248 0.000000 10.455925 14.12306
+      TCGA.OU.A5PI  3.673331  6.570828  8.232800 7.987532 10.311594 13.59323
+      TCGA.P6.A5OF  4.713033  5.427827  6.729505 0.000000 11.735970 14.59806
+      TCGA.P6.A5OG  4.304295  6.058525  6.058525 2.508241 12.698202 11.90569
+      TCGA.PA.A5YG  0.000000  6.650623  9.445617 2.776354 12.914145 13.77524
+      TCGA.PK.A5H8  8.798201 10.305111 13.115937 0.000000 10.431845 15.83550
+      TCGA.PK.A5H9 13.760117 12.315492 15.725056 2.928685  9.663975 14.51780
+      TCGA.PK.A5HA  9.259373  9.418326 10.826654 0.000000 10.822598 14.65111
+      TCGA.PK.A5HB  3.066866  4.931591  6.850280 0.000000 12.856700 15.09728
+                       ABCD2    ABCD3    ABCD4    ABCE1    ABCF1    ABCF2    ABCF3
+      TCGA.OR.A5J1 10.601169 13.01385 13.01095 13.94972 13.79963 13.45888 16.63278
+      TCGA.OR.A5J2 13.006278 13.03529 11.87120 13.71969 14.18934 14.12367 15.19087
+      TCGA.OR.A5J3  8.156524 13.25150 13.24737 13.13204 13.45429 14.52041 14.48015
+      TCGA.OR.A5J5  6.851184 12.10244 13.51948 12.94857 12.43267 13.97164 15.49960
+      TCGA.OR.A5J6  8.325319 13.84285 12.14790 13.33488 14.42181 13.39075 13.99333
+      TCGA.OR.A5J7  6.906436 12.85207 12.59701 13.09630 14.76169 13.66596 15.29375
+      TCGA.OR.A5J8  7.872626 12.99439 13.02538 13.60604 14.53921 14.26425 13.83874
+      TCGA.OR.A5J9 11.256442 12.67460 12.21576 14.00555 14.00395 14.15418 15.75803
+      TCGA.OR.A5JA  6.810048 12.94336 13.28986 13.56904 14.61388 14.00845 15.33421
+      TCGA.OR.A5JB  6.827241 13.72880 13.50654 13.93927 14.51998 14.55638 14.79213
+      TCGA.OR.A5JC  7.582774 12.89089 12.61359 13.46497 14.00457 13.60404 16.45297
+      TCGA.OR.A5JD 10.198772 13.10507 11.50998 13.74177 13.18521 13.90571 15.15773
+      TCGA.OR.A5JE  7.137625 13.22232 12.84477 13.24869 14.76843 13.04274 15.69491
+      TCGA.OR.A5JF 11.252965 12.65898 11.69426 14.06667 13.32141 14.10769 14.58478
+      TCGA.OR.A5JG  8.647219 13.93713 12.99060 14.04693 13.94775 14.48352 15.15352
+      TCGA.OR.A5JI  9.153280 12.12870 12.20015 13.57454 13.33431 13.37288 15.67361
+      TCGA.OR.A5JJ 10.975664 12.81363 13.34702 13.25100 13.44491 14.21394 14.36037
+      TCGA.OR.A5JK 10.218610 12.13886 11.94240 13.74949 13.52712 14.29709 15.19228
+      TCGA.OR.A5JL 10.716141 12.94027 13.56086 13.66948 14.61840 13.99269 14.75799
+      TCGA.OR.A5JM 10.798061 13.73969 11.58030 13.53975 14.57853 13.39599 14.44326
+      TCGA.OR.A5JO  7.376736 13.14166 13.35988 13.14692 14.09285 13.29100 13.86318
+      TCGA.OR.A5JP  7.619064 14.61835 12.41681 14.34334 13.99487 13.83781 14.78461
+      TCGA.OR.A5JQ 10.254445 12.92598 11.79508 13.94178 13.82801 14.08689 15.74966
+      TCGA.OR.A5JR 10.128450 13.69392 12.09909 13.90113 13.88459 14.24208 15.82546
+      TCGA.OR.A5JS  9.223008 12.58794 12.30613 13.24051 14.04367 13.92544 14.66510
+      TCGA.OR.A5JT 11.365668 13.81472 12.06911 13.81472 13.93991 14.36763 14.76874
+      TCGA.OR.A5JV 10.067491 13.19620 11.58228 13.99328 14.15070 14.35922 15.21767
+      TCGA.OR.A5JW 11.564491 13.47953 12.78889 13.91452 14.48821 14.12101 14.58391
+      TCGA.OR.A5JX  8.703753 12.80901 12.56017 13.37756 13.58468 14.27628 16.56108
+      TCGA.OR.A5JY 12.055075 15.08214 12.27044 13.47294 14.72134 14.45606 14.66950
+      TCGA.OR.A5JZ  8.310833 13.49982 12.13026 12.96207 13.76805 13.50251 15.62270
+      TCGA.OR.A5K0 10.510740 12.57049 12.78752 13.32951 14.84546 14.22697 14.11099
+      TCGA.OR.A5K1  8.662682 12.82240 12.12444 12.91529 13.93593 14.29689 15.28913
+      TCGA.OR.A5K2  6.923216 13.47110 12.84221 13.10620 13.93004 13.53223 16.21793
+      TCGA.OR.A5K3  9.588997 13.03261 12.14641 13.11309 13.41652 14.05598 15.44336
+      TCGA.OR.A5K4  9.738618 13.27456 11.96264 13.74738 13.89188 13.35029 15.19640
+      TCGA.OR.A5K5  8.296110 12.62825 12.36057 13.23564 14.99654 13.96580 14.83096
+      TCGA.OR.A5K6  9.109681 13.01413 12.99866 13.76195 13.90728 12.74767 15.00894
+      TCGA.OR.A5K8  8.652013 12.98202 12.19470 13.97476 12.89654 14.05586 14.69112
+      TCGA.OR.A5K9 11.505226 13.77162 12.15588 14.49829 14.58452 14.10427 14.18833
+      TCGA.OR.A5KO  6.535227 13.12054 13.37477 14.15074 14.38202 13.74171 15.24855
+      TCGA.OR.A5KT  5.903862 13.33091 13.15894 13.15274 13.44701 13.42015 15.15883
+      TCGA.OR.A5KU 11.037839 12.90717 11.68348 14.09749 13.87262 14.00289 14.89694
+      TCGA.OR.A5KV  7.670759 13.46429 11.69144 13.73424 13.96977 14.08624 15.46538
+      TCGA.OR.A5KW  9.188252 13.15104 12.35440 13.33686 13.78900 14.72133 15.03278
+      TCGA.OR.A5KX  8.051483 13.06999 13.65709 13.11823 13.80386 13.30617 14.99034
+      TCGA.OR.A5KY  9.772298 13.31852 12.54257 13.65150 13.38106 13.83069 15.56030
+      TCGA.OR.A5KZ  9.864146 13.07504 12.63847 14.66290 14.99729 13.99793 14.87306
+      TCGA.OR.A5L3 10.394457 13.32282 12.46999 13.35378 13.60058 13.43829 15.11209
+      TCGA.OR.A5L4  5.603878 12.94623 12.41966 13.69036 14.60325 14.42520 15.63034
+      TCGA.OR.A5L5 11.009163 13.17941 12.44371 13.09517 13.43559 13.60201 15.25002
+      TCGA.OR.A5L6  9.961084 11.71679 12.44176 13.03552 13.17595 13.19457 16.13854
+      TCGA.OR.A5L8 12.882428 13.56917 12.29895 13.83400 13.66671 14.36165 15.89330
+      TCGA.OR.A5L9  8.838046 12.32346 12.02286 12.53557 12.87461 12.64247 15.55830
+      TCGA.OR.A5LA 10.135633 12.31576 12.79951 13.45514 13.44497 14.39362 15.20500
+      TCGA.OR.A5LB 10.025415 12.93602 13.30734 14.13273 13.09698 14.12102 14.84693
+      TCGA.OR.A5LC  9.587347 12.20215 12.14789 13.30684 13.29856 13.91496 14.92872
+      TCGA.OR.A5LD  9.963443 13.13208 13.51265 13.24545 14.01060 13.35575 15.41340
+      TCGA.OR.A5LE 11.912289 14.10900 12.45361 14.47250 13.62617 13.96552 14.15166
+      TCGA.OR.A5LG  4.607091 13.25846 13.44915 14.01739 14.16740 14.19822 15.61209
+      TCGA.OR.A5LH 10.288398 13.38926 12.53832 13.69893 13.74037 14.22340 15.24455
+      TCGA.OR.A5LJ  9.307548 12.98330 12.46927 13.94644 13.24432 14.20946 14.69863
+      TCGA.OR.A5LK  9.292116 12.73439 12.36048 13.43678 13.68812 14.06299 15.23002
+      TCGA.OR.A5LL  9.548255 12.01393 11.99599 14.21131 14.29304 13.68240 13.90908
+      TCGA.OR.A5LM 10.126643 12.45847 12.35194 13.89421 13.85396 14.32595 16.53991
+      TCGA.OR.A5LN  9.504526 12.77667 12.10952 14.03074 13.88995 13.82588 15.33224
+      TCGA.OR.A5LO  6.164137 12.43946 13.53632 13.64015 13.47285 13.39194 16.03217
+      TCGA.OR.A5LP 11.116322 13.18167 11.63406 13.16413 13.70867 14.48922 14.39204
+      TCGA.OR.A5LR 10.322184 13.04017 12.50515 12.75315 13.51140 13.49433 15.56058
+      TCGA.OR.A5LS 10.275763 13.53263 12.41273 12.91927 13.37519 13.97024 14.85564
+      TCGA.OR.A5LT  8.358499 13.66566 12.03725 13.55130 12.89099 12.96278 14.73831
+      TCGA.OU.A5PI 11.217955 12.93730 12.30740 14.06494 13.41757 14.30006 15.71909
+      TCGA.P6.A5OF 10.886532 12.98506 12.54898 13.48680 13.05871 13.73876 14.17863
+      TCGA.P6.A5OG  6.416277 12.88150 12.74330 14.50584 14.64252 14.42726 13.67345
+      TCGA.PA.A5YG 12.828538 13.29874 12.36599 13.33596 13.63432 14.46728 15.70642
+      TCGA.PK.A5H8  7.987737 13.08904 12.46110 13.26359 13.89745 14.19683 15.59698
+      TCGA.PK.A5H9  5.224113 14.80693 12.90379 13.12873 14.15269 12.87930 14.38227
+      TCGA.PK.A5HA  5.700076 12.22848 12.18333 12.32339 14.45937 13.84957 15.30145
+      TCGA.PK.A5HB  5.907759 14.18624 12.47904 13.20617 13.81362 14.08236 15.00008
+                       ABCG1     ABCG2    ABCG4    ABCG5    ABCG8   ABHD10   ABHD11
+      TCGA.OR.A5J1 11.960031  9.715458 4.135301 5.310001 0.000000 14.17627 12.60560
+      TCGA.OR.A5J2 13.216713 11.407340 6.005574 3.327025 4.560011 14.09825 12.69052
+      TCGA.OR.A5J3  9.855631 12.511326 5.961800 3.602941 0.000000 13.54053 13.56396
+      TCGA.OR.A5J5  9.338364  7.966404 6.229952 6.932952 5.588817 13.88312 13.14042
+      TCGA.OR.A5J6 10.406411 10.290534 8.769922 4.526816 5.307096 13.04515 11.77839
+      TCGA.OR.A5J7 10.350205 10.680341 8.762755 6.108072 3.780934 13.13701 12.83372
+      TCGA.OR.A5J8 13.596509 10.500583 6.519697 4.498766 0.000000 12.37394 12.00522
+      TCGA.OR.A5J9 13.300519 13.403729 4.517216 3.963416 0.000000 13.62158 12.47911
+      TCGA.OR.A5JA 10.919647  5.822848 4.715610 6.873619 0.000000 13.53872 13.62841
+      TCGA.OR.A5JB 15.082868  7.353841 6.468296 3.755534 2.858583 13.24369 12.79069
+      TCGA.OR.A5JC 13.789650 10.126717 3.870076 3.870076 0.000000 14.19107 12.80425
+      TCGA.OR.A5JD 11.091290 11.297652 8.291706 4.593249 0.000000 14.92779 13.81134
+      TCGA.OR.A5JE 13.305230  9.649972 5.633147 6.084629 0.000000 13.59754 12.09997
+      TCGA.OR.A5JF 12.601873 10.744604 5.847202 5.036488 0.000000 13.60011 13.26708
+      TCGA.OR.A5JG 10.243642  9.894161 3.654467 6.458482 0.000000 13.96668 12.86732
+      TCGA.OR.A5JI 15.754339 12.293571 5.169043 6.841451 0.000000 14.40979 12.61242
+      TCGA.OR.A5JJ 15.138175  9.677865 3.271569 5.468740 0.000000 13.18949 13.61033
+      TCGA.OR.A5JK 12.677980 10.198017 0.000000 3.239327 0.000000 14.22003 12.96067
+      TCGA.OR.A5JL 11.558869 11.179936 4.621966 4.835964 0.000000 13.74424 13.30151
+      TCGA.OR.A5JM 10.303968  9.510554 7.671320 6.678380 0.000000 13.38359 12.02372
+      TCGA.OR.A5JO 11.711867  8.856571 6.722790 5.944193 0.000000 13.13637 11.66126
+      TCGA.OR.A5JP 15.186961 10.454855 5.740820 8.303123 0.000000 13.70856 11.56297
+      TCGA.OR.A5JQ 13.139789 11.533227 6.446368 3.332621 2.469156 14.96730 13.06385
+      TCGA.OR.A5JR 11.783551 11.861201 4.990064 4.427622 0.000000 14.85463 13.73412
+      TCGA.OR.A5JS  9.999609  7.134038 7.009440 6.144272 2.285091 13.68735 13.01805
+      TCGA.OR.A5JT 15.034577 11.149397 6.073129 3.485976 0.000000 14.41051 13.93850
+      TCGA.OR.A5JV 13.143067 10.474929 6.255879 0.000000 0.000000 14.90606 13.25463
+      TCGA.OR.A5JW 14.332436 10.988864 3.403456 3.942240 0.000000 12.90698 12.79668
+      TCGA.OR.A5JX 10.943877  9.737603 5.412634 0.000000 3.893868 14.51669 12.11340
+      TCGA.OR.A5JY 10.192291  8.656218 4.641251 6.365389 0.000000 13.37550 12.37433
+      TCGA.OR.A5JZ 15.083504  9.356847 5.682572 3.034617 0.000000 14.05822 12.54058
+      TCGA.OR.A5K0  8.187022  7.674569 4.908973 2.767373 0.000000 13.20014 12.42873
+      TCGA.OR.A5K1 13.856170 12.082142 5.935649 4.186048 0.000000 14.24352 14.07974
+      TCGA.OR.A5K2 13.097971  7.504211 3.463422 5.676729 3.463422 13.84113 12.19390
+      TCGA.OR.A5K3 12.779973 10.335474 4.831354 0.000000 0.000000 15.19819 15.08359
+      TCGA.OR.A5K4 15.219100  8.598993 5.813791 4.986168 0.000000 14.69653 12.05919
+      TCGA.OR.A5K5 10.854535  6.119765 7.208193 4.924773 3.431808 13.95516 11.83880
+      TCGA.OR.A5K6 11.992995  6.934485 4.836537 4.132846 0.000000 13.94005 12.74882
+      TCGA.OR.A5K8 13.027107  9.591400 4.091761 5.048822 0.000000 13.91605 13.49855
+      TCGA.OR.A5K9 12.747103  7.512652 6.066980 6.865083 4.833762 13.38973 12.60777
+      TCGA.OR.A5KO 12.067272  9.189485 5.631450 5.060966 0.000000 13.30109 12.83213
+      TCGA.OR.A5KT 12.636901  9.341220 7.211259 7.211259 3.434609 13.80843 12.97250
+      TCGA.OR.A5KU 12.654048  6.518059 5.399322 5.656648 0.000000 13.60706 12.91489
+      TCGA.OR.A5KV 13.365369  9.250993 9.518525 7.188161 8.223710 14.58380 12.14071
+      TCGA.OR.A5KW 13.345589  9.762940 3.634465 5.995573 0.000000 13.83594 12.73152
+      TCGA.OR.A5KX 14.260944  7.988989 7.453895 5.334993 0.000000 14.32084 11.85159
+      TCGA.OR.A5KY 13.615537 10.622050 5.030380 5.217496 2.466198 13.82800 12.64602
+      TCGA.OR.A5KZ 12.414333 10.555932 6.232816 4.408615 0.000000 13.32312 12.36721
+      TCGA.OR.A5L3 13.539538  8.307344 7.802300 6.153271 0.000000 14.86422 13.76353
+      TCGA.OR.A5L4 11.134242  9.990361 5.033672 3.160099 3.160099 14.10472 13.75806
+      TCGA.OR.A5L5 14.315883 11.324667 5.112189 5.683180 2.722020 14.23484 12.45382
+      TCGA.OR.A5L6 13.014718 11.519999 5.143071 4.183332 0.000000 14.20895 13.15438
+      TCGA.OR.A5L8 14.823413 13.095667 4.652594 3.414237 2.543589 14.31181 12.70906
+      TCGA.OR.A5L9 13.995970  9.252295 6.679113 8.476376 0.000000 14.70941 13.56595
+      TCGA.OR.A5LA 16.295478 11.785685 7.479492 3.440837 0.000000 14.78129 14.74238
+      TCGA.OR.A5LB 12.966015 10.219562 5.885414 4.909615 0.000000 13.37137 12.59574
+      TCGA.OR.A5LC 12.269353  8.904957 5.882220 3.044016 0.000000 13.60166 13.08051
+      TCGA.OR.A5LD 11.609578 10.694379 5.844370 7.412495 4.308773 15.25925 14.86984
+      TCGA.OR.A5LE 11.424774  9.053152 4.548650 5.260744 0.000000 12.64069 11.97786
+      TCGA.OR.A5LG 10.411891 12.912061 5.172185 0.000000 0.000000 14.10992 13.05857
+      TCGA.OR.A5LH 12.893190 11.671601 7.801245 4.509058 0.000000 13.82461 14.56638
+      TCGA.OR.A5LJ 10.719428 10.360815 7.470966 2.824401 0.000000 14.22513 13.79969
+      TCGA.OR.A5LK 12.582830 12.031240 7.490503 5.200313 0.000000 14.94276 14.37734
+      TCGA.OR.A5LL 14.728923 11.086017 4.731324 2.885701 0.000000 12.65775 11.58632
+      TCGA.OR.A5LM 11.435201 11.090292 5.225828 5.442703 6.935552 14.33911 14.04171
+      TCGA.OR.A5LN 11.664137 11.476572 3.826622 7.315228 0.000000 14.49025 13.10936
+      TCGA.OR.A5LO 12.352106  8.176354 5.642536 4.114208 2.686918 13.94636 12.97889
+      TCGA.OR.A5LP 12.141034 11.434750 5.835968 0.000000 0.000000 13.47102 13.53276
+      TCGA.OR.A5LR 14.174769 10.634178 5.143298 6.700786 0.000000 14.17745 11.95088
+      TCGA.OR.A5LS 12.850478  9.651242 7.235839 4.818847 0.000000 14.68124 13.61006
+      TCGA.OR.A5LT 12.095184 10.834880 5.147459 6.126962 0.000000 14.69868 12.55762
+      TCGA.OU.A5PI 13.686251 13.566917 5.180864 0.000000 0.000000 14.30425 12.88331
+      TCGA.P6.A5OF 13.576926  9.906383 4.713033 4.155315 0.000000 13.45798 12.86579
+      TCGA.P6.A5OG 12.409535 10.125470 8.342337 2.508241 0.000000 13.06558 12.17219
+      TCGA.PA.A5YG 14.890018 12.926125 5.174211 0.000000 0.000000 14.03565 13.69604
+      TCGA.PK.A5H8 11.135174  8.449148 5.136136 2.969626 0.000000 13.87532 12.94395
+      TCGA.PK.A5H9 12.944304 11.952334 5.661242 4.779083 2.106710 14.19959 11.91452
+      TCGA.PK.A5HA 12.932453 10.334238 6.535686 3.485089 0.000000 13.65402 12.91351
+      TCGA.PK.A5HB 11.680005 10.179391 5.378072 6.850280 3.066866 13.03471 12.33810
+                     ABHD12B   ABHD12   ABHD13  ABHD14A  ABHD14B    ABHD15    ABHD1
+      TCGA.OR.A5J1  0.000000 14.43310 11.99364 12.51182 13.60356 11.477547 5.310001
+      TCGA.OR.A5J2  8.180568 13.34377 12.72943 13.05074 13.95047 10.869845 6.994302
+      TCGA.OR.A5J3  4.542317 13.12395 11.27403 13.31523 14.98017 11.283743 7.733755
+      TCGA.OR.A5J5  0.000000 13.52937 10.61628 13.61315 13.16284 10.990285 8.340591
+      TCGA.OR.A5J6  2.703318 14.14063 11.38224 12.16705 14.62402 11.553425 8.575145
+      TCGA.OR.A5J7  0.000000 14.01450 10.66154 12.97973 13.25770 10.702580 6.625255
+      TCGA.OR.A5J8  4.751125 14.92078 11.87683 12.36451 13.32967 12.479237 5.152707
+      TCGA.OR.A5J9  0.000000 13.63696 12.50108 13.37477 13.13009  9.823624 5.228758
+      TCGA.OR.A5JA  2.598119 13.25223 12.04713 12.01577 13.93259 11.562181 6.934507
+      TCGA.OR.A5JB  4.701111 14.08603 11.68117 12.74148 14.40908 11.633693 7.935860
+      TCGA.OR.A5JC  0.000000 14.06086 11.35714 13.74096 14.56681 10.212035 6.867743
+      TCGA.OR.A5JD  2.762256 14.95063 11.62013 12.69859 15.46131 11.593370 6.634267
+      TCGA.OR.A5JE  0.000000 14.41442 11.28384 12.47748 12.76134 11.018105 5.633147
+      TCGA.OR.A5JF  0.000000 14.12264 11.69734 12.66685 14.25323 10.936400 3.920491
+      TCGA.OR.A5JG  0.000000 14.06314 11.39361 13.21208 14.96271 11.387380 5.160954
+      TCGA.OR.A5JI  0.000000 15.42819 11.09482 14.97783 14.72927 11.886980 7.941611
+      TCGA.OR.A5JJ  2.413724 14.10865 11.21513 12.62188 13.29080 11.108867 6.712644
+      TCGA.OR.A5JK  0.000000 14.89528 11.42267 14.34938 14.04083 11.359167 5.119943
+      TCGA.OR.A5JL  0.000000 13.31105 12.63919 11.75075 14.13367 10.911630 7.378206
+      TCGA.OR.A5JM  0.000000 14.85567 13.27237 12.78337 12.66034 12.264431 4.280982
+      TCGA.OR.A5JO  3.586527 14.11362 12.22133 12.71874 14.56383 12.192766 8.614571
+      TCGA.OR.A5JP  0.000000 14.20806 12.11557 12.46264 12.37855  9.446049 6.440783
+      TCGA.OR.A5JQ  2.469156 15.14871 11.35228 13.46212 15.06238 13.077543 4.565962
+      TCGA.OR.A5JR  0.000000 15.48022 11.74741 13.17691 14.39315 11.855220 6.186280
+      TCGA.OR.A5JS  4.044026 13.38073 11.49540 13.64435 13.56449 10.696142 5.446701
+      TCGA.OR.A5JT  2.609314 15.15103 11.54880 12.08614 14.64348 11.741691 4.420114
+      TCGA.OR.A5JV  3.557568 14.79398 11.62965 12.11810 13.58256 11.682625 5.058441
+      TCGA.OR.A5JW  0.000000 13.38320 11.57812 12.22776 14.55089 10.915617 4.894534
+      TCGA.OR.A5JX  0.000000 14.60282 11.80782 15.18924 15.51730 10.805431 7.928614
+      TCGA.OR.A5JY  3.942321 13.81932 13.24132 12.06317 13.05977 11.390141 7.269700
+      TCGA.OR.A5JZ  0.000000 14.92671 11.53733 13.14163 15.67680 12.002020 0.000000
+      TCGA.OR.A5K0  4.203671 14.16673 12.35226 12.65996 13.56069 11.101107 8.629318
+      TCGA.OR.A5K1  3.263207 14.59193 11.36246 12.72862 14.83675 11.953516 0.000000
+      TCGA.OR.A5K2  0.000000 14.15691 11.28109 13.95940 14.23554  9.594971 4.958444
+      TCGA.OR.A5K3  0.000000 15.46805 11.36528 13.74854 14.79802 11.594016 5.805791
+      TCGA.OR.A5K4  0.000000 15.37999 11.64910 12.01494 14.46236 12.757747 4.675575
+      TCGA.OR.A5K5  0.000000 13.74077 11.73902 12.50729 13.04657 11.213962 6.309815
+      TCGA.OR.A5K6  3.588427 13.76367 12.48583 13.49538 14.96634 10.890236 8.168673
+      TCGA.OR.A5K8  0.000000 14.16073 12.54784 13.56693 14.51835 10.959487 4.091761
+      TCGA.OR.A5K9  2.701205 13.56898 12.46762 13.11960 13.67477 10.386227 5.808243
+      TCGA.OR.A5KO  0.000000 13.21691 11.87338 13.02662 14.57843 12.188990 7.248995
+      TCGA.OR.A5KT  0.000000 14.54021 11.19608 12.78063 13.97329 11.208099 3.434609
+      TCGA.OR.A5KU 10.694722 14.61508 11.07138 13.11844 13.85427 11.527104 5.085915
+      TCGA.OR.A5KV  3.745684 13.73993 12.18369 13.32986 15.46406 11.450346 6.457776
+      TCGA.OR.A5KW  0.000000 13.14378 12.35283 13.46403 14.44969 11.491133 4.884952
+      TCGA.OR.A5KX  0.000000 15.04296 12.48605 12.86450 14.09144 11.199419 6.507392
+      TCGA.OR.A5KY  0.000000 14.23049 12.37322 13.56363 13.79392 10.514568 5.217496
+      TCGA.OR.A5KZ  0.000000 14.59530 10.78831 11.70287 12.54548 10.804728 5.947566
+      TCGA.OR.A5L3  0.000000 15.09868 11.46727 14.36894 15.52842 10.163863 5.173400
+      TCGA.OR.A5L4  3.160099 13.78913 11.84108 12.18401 14.61151 10.611916 5.033672
+      TCGA.OR.A5L5  2.722020 15.74746 11.73325 13.59289 14.89301 11.179010 5.516761
+      TCGA.OR.A5L6  0.000000 15.17784 10.38813 14.15022 15.18982 11.272163 7.112121
+      TCGA.OR.A5L8  0.000000 12.68281 12.04726 13.33230 13.43466 10.728313 7.527901
+      TCGA.OR.A5L9  0.000000 15.35674 11.54809 14.92240 16.24052 10.572803 0.000000
+      TCGA.OR.A5LA  0.000000 15.25787 11.27359 14.05058 16.29282 10.802115 8.306026
+      TCGA.OR.A5LB  0.000000 14.08327 11.66645 13.28020 14.09370 10.823528 6.462218
+      TCGA.OR.A5LC  0.000000 14.23375 12.04772 13.43794 14.83130 11.994895 5.475312
+      TCGA.OR.A5LD  4.308773 14.66772 10.32267 14.18106 14.28400  9.850350 4.308773
+      TCGA.OR.A5LE  0.000000 14.48289 12.76353 12.71308 11.92065  9.378589 4.948193
+      TCGA.OR.A5LG  2.774574 14.78241 12.12628 14.69008 15.38608 11.341617 2.774574
+      TCGA.OR.A5LH  0.000000 13.74769 11.52157 12.30750 15.05828 11.688828 5.477025
+      TCGA.OR.A5LJ  4.973427 15.14693 11.96932 12.74715 12.06255 10.292481 6.429026
+      TCGA.OR.A5LK  5.200313 15.60247 10.63717 13.80449 13.85586 10.731235 9.021290
+      TCGA.OR.A5LL  0.000000 13.86527 11.60420 13.15994 13.95914 11.434707 0.000000
+      TCGA.OR.A5LM  0.000000 13.91306 12.28332 13.31532 14.10818 10.782518 6.784858
+      TCGA.OR.A5LN  0.000000 15.89675 11.36558 14.03188 14.84987 10.950726 6.734788
+      TCGA.OR.A5LO  0.000000 12.52982 11.38356 12.25591 14.23915 10.738903 8.229612
+      TCGA.OR.A5LP  3.268152 14.84142 11.47688 12.32100 14.27346 11.372687 5.722594
+      TCGA.OR.A5LR  4.741804 14.26057 11.68729 12.34057 14.94153 11.823385 3.260841
+      TCGA.OR.A5LS  0.000000 13.50755 10.68654 13.34908 13.60218 11.120599 6.369324
+      TCGA.OR.A5LT  0.000000 15.48720 11.84127 13.29243 13.71822 12.268853 5.147459
+      TCGA.OU.A5PI  0.000000 13.77605 11.52185 13.12369 13.88994 10.969918 4.925762
+      TCGA.P6.A5OF  0.000000 13.82028 12.67119 12.92704 14.24042 11.108816 2.379804
+      TCGA.P6.A5OG  3.913395 13.64785 11.93363 11.60486 13.97680 10.841172 4.864709
+      TCGA.PA.A5YG  3.667026 15.68543 12.14524 12.82505 14.52428 11.604475 7.415188
+      TCGA.PK.A5H8  0.000000 14.14227 12.18017 12.70058 14.42191 11.531300 5.136136
+      TCGA.PK.A5H9  0.000000 13.70937 12.40882 11.90460 14.32159 13.242884 7.161932
+      TCGA.PK.A5HA  0.000000 14.47431 10.78973 12.33482 14.40954 10.920726 6.755855
+      TCGA.PK.A5HB  0.000000 13.35889 10.79423 10.90665 12.93015 10.183974 4.745684
+                      ABHD2     ABHD3    ABHD4    ABHD5    ABHD6    ABHD8     ABI1
+      TCGA.OR.A5J1 14.65446 10.685858 13.81187 12.30215 11.42054 12.38941 12.90375
+      TCGA.OR.A5J2 16.56597 10.880256 13.30823 13.33623 14.42832 12.98232 13.43311
+      TCGA.OR.A5J3 15.48451  9.906802 15.02862 12.02627 12.49748 12.90549 12.31852
+      TCGA.OR.A5J5 13.87150 11.465926 14.71484 11.54931 13.01579 13.36694 12.41677
+      TCGA.OR.A5J6 14.70814 11.602848 13.99528 13.99674 13.39592 14.05817 12.79059
+      TCGA.OR.A5J7 15.09004 12.658032 14.25073 11.64970 12.98124 13.16398 14.12943
+      TCGA.OR.A5J8 15.89357 12.109076 14.88928 11.85174 11.78970 10.70489 13.00429
+      TCGA.OR.A5J9 15.76040 10.117062 14.72994 11.80193 12.12319 13.48864 13.03793
+      TCGA.OR.A5JA 15.89889 10.818281 14.99328 12.08287 13.01648 12.45560 12.40675
+      TCGA.OR.A5JB 13.59377 12.745427 13.23529 11.71376 10.93531 11.98253 13.67188
+      TCGA.OR.A5JC 15.62511  9.939269 13.74096 12.03734 12.78906 13.02544 12.95664
+      TCGA.OR.A5JD 14.98063 11.677306 13.31207 11.88353 13.16808 13.13228 12.99693
+      TCGA.OR.A5JE 14.54085 11.769102 15.18972 11.37581 12.94047 13.29915 11.81607
+      TCGA.OR.A5JF 15.29592  9.423936 12.94105 11.26752 12.53641 12.98826 12.57119
+      TCGA.OR.A5JG 14.74399 10.375382 14.96846 12.23929 13.56450 13.72564 12.85044
+      TCGA.OR.A5JI 13.98878 11.288824 13.83238 12.15383 12.51233 12.94874 12.92298
+      TCGA.OR.A5JJ 16.37053 11.068729 14.15491 11.35996 13.01716 13.74741 11.85403
+      TCGA.OR.A5JK 15.89285 11.597949 13.75743 11.23832 12.05832 13.02785 13.09621
+      TCGA.OR.A5JL 16.60394 10.625562 15.14700 12.31510 13.70096 12.09905 12.18573
+      TCGA.OR.A5JM 15.02801 14.471937 14.27532 12.59520 13.35531 12.93545 12.98715
+      TCGA.OR.A5JO 15.56035 11.678324 15.37985 13.86638 10.81949 12.52478 13.25489
+      TCGA.OR.A5JP 14.46001 10.982788 15.00365 12.08738 11.34482 12.56728 13.02334
+      TCGA.OR.A5JQ 14.58194 10.674537 12.78192 12.18070 12.82225 13.57209 12.65472
+      TCGA.OR.A5JR 15.75051 10.999925 14.42950 12.19375 12.87191 12.64460 12.83288
+      TCGA.OR.A5JS 15.74214 11.485689 15.18626 11.81219 13.46321 13.46074 11.95839
+      TCGA.OR.A5JT 15.56651 10.204073 14.31551 11.39330 12.91734 12.30121 12.63442
+      TCGA.OR.A5JV 16.12335 11.897505 13.83316 11.54114 14.30034 11.37551 13.29385
+      TCGA.OR.A5JW 17.35593  9.412100 14.74435 12.21328 12.94867 12.93726 13.37476
+      TCGA.OR.A5JX 15.46298  8.904935 14.64442 11.90230 12.25517 13.40732 12.77088
+      TCGA.OR.A5JY 16.05790 11.742541 15.50561 12.61039 13.09890 12.92228 11.73445
+      TCGA.OR.A5JZ 15.66925  9.987823 15.32667 11.66428 12.09273 11.30685 12.84986
+      TCGA.OR.A5K0 15.26276 13.189413 14.57410 13.50123 13.15308 14.09192 12.18418
+      TCGA.OR.A5K1 14.09259 10.445414 14.73939 11.54795 11.21888 12.10486 12.57644
+      TCGA.OR.A5K2 15.22647 11.257644 15.69594 12.08487 12.74438 12.49147 13.47238
+      TCGA.OR.A5K3 15.16675 10.410185 14.47854 11.18978 12.68085 12.98696 12.72250
+      TCGA.OR.A5K4 15.79185 11.086257 15.01571 10.92707 13.43430 11.55216 12.55927
+      TCGA.OR.A5K5 15.60683 11.292089 13.93185 12.18057 12.40161 13.79891 12.33482
+      TCGA.OR.A5K6 15.66812 11.132738 14.45551 12.05414 14.06553 13.73886 12.47888
+      TCGA.OR.A5K8 14.49347  9.561066 14.91075 11.38015 12.95312 13.77616 12.85963
+      TCGA.OR.A5K9 15.15995 12.084549 14.43230 10.90817 12.19366 13.66196 13.13292
+      TCGA.OR.A5KO 15.43022 11.816229 14.68603 12.51983 12.41823 13.29103 13.81916
+      TCGA.OR.A5KT 13.83870 10.670525 14.29467 12.62575 14.36479 14.51444 12.81050
+      TCGA.OR.A5KU 15.75621 11.093308 13.93543 11.81799 14.05551 13.15540 11.99152
+      TCGA.OR.A5KV 15.70730  9.963286 13.25367 10.96256 13.23336 13.99887 11.92430
+      TCGA.OR.A5KW 15.95061 10.771565 16.12428 11.80837 13.20350 13.62330 12.65185
+      TCGA.OR.A5KX 15.34225 12.005525 15.13444 11.92853 13.71555 13.36656 13.11640
+      TCGA.OR.A5KY 14.84668 10.074347 13.73958 11.93010 13.16845 13.47638 13.25982
+      TCGA.OR.A5KZ 15.29448 12.219942 12.66868 10.65583 10.58790 12.50921 12.90528
+      TCGA.OR.A5L3 14.40361 11.490911 14.68686 11.57627 13.82412 13.87217 12.07179
+      TCGA.OR.A5L4 15.79249 10.012707 14.90897 12.42175 12.05268 11.67238 12.87940
+      TCGA.OR.A5L5 14.73110 10.816618 13.94903 11.26028 12.21822 12.71153 12.96081
+      TCGA.OR.A5L6 12.85004 11.716793 13.50905 10.93528 11.30190 12.10198 12.53653
+      TCGA.OR.A5L8 16.68908  8.561362 13.45714 12.27243 12.67962 13.83400 13.30088
+      TCGA.OR.A5L9 13.16497  9.754099 13.87938 11.12504 12.37948 13.02269 12.42012
+      TCGA.OR.A5LA 15.13202 10.122934 14.27595 11.03686 12.65703 13.70458 12.63484
+      TCGA.OR.A5LB 16.41252  9.652670 14.38149 11.85931 13.17308 13.74812 13.66397
+      TCGA.OR.A5LC 14.04065 11.541029 13.21745 11.04311 12.00256 12.72659 12.89116
+      TCGA.OR.A5LD 13.71194 10.483012 13.74396 11.56547 12.80792 13.58071 12.72614
+      TCGA.OR.A5LE 16.06828 11.948176 14.63672 11.77146 13.81143 12.69694 12.40279
+      TCGA.OR.A5LG 15.38372 12.438689 14.77070 11.40205 12.16901 13.71480 13.08597
+      TCGA.OR.A5LH 15.70168 10.884651 14.39998 12.44790 13.35129 12.57172 12.41722
+      TCGA.OR.A5LJ 14.86344 10.451351 13.37398 10.86299 14.19409 14.07405 13.40100
+      TCGA.OR.A5LK 13.85063 11.350907 13.50938 12.64859 12.76807 13.38467 12.80459
+      TCGA.OR.A5LL 16.30123 11.995988 14.79106 13.06952 13.38087 13.48425 13.13042
+      TCGA.OR.A5LM 15.58160 10.933444 14.40639 11.98585 12.97592 12.39159 12.39322
+      TCGA.OR.A5LN 14.39102 11.253151 13.13497 12.30266 12.32137 13.21718 13.14340
+      TCGA.OR.A5LO 16.51977 11.477367 15.53556 11.99069 14.21871 12.35959 13.80713
+      TCGA.OR.A5LP 15.86746 10.765513 13.45946 11.69357 11.84346 12.77736 12.57687
+      TCGA.OR.A5LR 15.36460 11.424341 15.52425 11.28734 12.99688 12.11902 12.79558
+      TCGA.OR.A5LS 16.14783 10.650345 14.51966 11.34479 13.54418 12.90782 13.63265
+      TCGA.OR.A5LT 13.83249 11.291620 13.47807 12.54728 12.72477 13.30476 12.98746
+      TCGA.OU.A5PI 16.15306 10.463484 14.33905 11.58395 12.82490 13.48348 13.48199
+      TCGA.P6.A5OF 15.61202 10.056338 14.37897 11.46482 12.11123 12.85518 13.63673
+      TCGA.P6.A5OG 13.86699 12.126016 12.01598 12.24228 11.10653 11.30675 13.97386
+      TCGA.PA.A5YG 15.95814 11.419621 14.14686 12.03087 12.31720 13.33677 13.04575
+      TCGA.PK.A5H8 14.86109 11.025947 14.40883 12.00895 12.26674 12.43106 12.63080
+      TCGA.PK.A5H9 16.87900 11.745569 14.75972 13.48099 11.11207 13.11750 13.06000
+      TCGA.PK.A5HA 14.30112 12.194355 13.79938 12.42453 13.25265 12.82909 13.19812
+      TCGA.PK.A5HB 15.24742 11.463353 15.12748 11.89093 13.25708 12.31426 13.41990
+                       ABI2    ABI3BP      ABI3     ABL1 class
+      TCGA.OR.A5J1 14.38809  7.061616 11.435001 14.66646     0
+      TCGA.OR.A5J2 14.11378  9.178080 10.159842 14.54906     0
+      TCGA.OR.A5J3 12.53862  8.839738  9.536260 14.88422     1
+      TCGA.OR.A5J5 12.97173  8.587815  9.353291 14.92333     0
+      TCGA.OR.A5J6 13.11494  9.233416  9.873762 14.52122     1
+      TCGA.OR.A5J7 13.94935  5.294174 10.753176 15.01408     0
+      TCGA.OR.A5J8 13.97662 14.685035 12.271733 15.70137     0
+      TCGA.OR.A5J9 14.28839  6.966876 10.650092 14.91347     1
+      TCGA.OR.A5JA 13.00410 10.333174  9.870625 15.13621     0
+      TCGA.OR.A5JB 14.70158  5.989372 12.770174 15.67680     0
+      TCGA.OR.A5JC 13.26787 11.915453 11.053955 14.20154     0
+      TCGA.OR.A5JD 12.44236 15.579531 10.877271 14.93126     1
+      TCGA.OR.A5JE 13.38117  9.971541 11.645891 14.96110     0
+      TCGA.OR.A5JF 12.72300  9.181960  9.983219 15.00808     1
+      TCGA.OR.A5JG 12.75326  9.195766 10.585880 14.99892     0
+      TCGA.OR.A5JI 12.85819 14.952187 11.173395 15.05768     1
+      TCGA.OR.A5JJ 13.20809  9.182435 10.148555 15.45583     1
+      TCGA.OR.A5JK 12.88217 10.336351 12.253068 14.28676     1
+      TCGA.OR.A5JL 12.36440  7.937285  9.984240 14.04874     1
+      TCGA.OR.A5JM 13.81222  7.258640  8.494202 14.45011     0
+      TCGA.OR.A5JO 13.03968 13.834646 12.247705 15.00276     1
+      TCGA.OR.A5JP 13.69669  9.484988 10.221148 14.75828     1
+      TCGA.OR.A5JQ 13.33549 16.507263 11.130812 15.66854     1
+      TCGA.OR.A5JR 12.86894 15.970715 10.409885 15.10595     1
+      TCGA.OR.A5JS 12.73456  6.668497  9.656034 14.94750     1
+      TCGA.OR.A5JT 13.24682 15.653339 10.146789 14.58508     1
+      TCGA.OR.A5JV 13.17283 13.751554 13.114432 13.91242     1
+      TCGA.OR.A5JW 12.41025  6.446793 10.494854 14.94744     1
+      TCGA.OR.A5JX 12.55685 10.860263 10.881625 15.18495     1
+      TCGA.OR.A5JY 13.60640  6.365389 10.470791 13.87329     0
+      TCGA.OR.A5JZ 13.47724 14.615506 10.307421 15.02151     1
+      TCGA.OR.A5K0 14.14977  9.906034  8.187022 15.13070     1
+      TCGA.OR.A5K1 12.92967 12.592603 10.886651 14.29010     1
+      TCGA.OR.A5K2 13.90949  8.237994 11.360289 14.85580     0
+      TCGA.OR.A5K3 12.86477 12.593782 10.980154 13.91172     1
+      TCGA.OR.A5K4 12.71360 12.488603  8.621655 14.85405     1
+      TCGA.OR.A5K5 13.88220  7.620790  9.965382 14.51919     1
+      TCGA.OR.A5K6 13.28194  9.065818 10.430041 14.22317     1
+      TCGA.OR.A5K8 12.86585  7.818327 10.380688 15.29520     1
+      TCGA.OR.A5K9 13.81138  7.925713  9.937541 15.40618     0
+      TCGA.OR.A5KO 12.99263  6.837116  9.510919 15.70915     1
+      TCGA.OR.A5KT 13.00730 11.648196 11.366609 14.14174     1
+      TCGA.OR.A5KU 13.42879  8.177075  8.601108 13.96919     1
+      TCGA.OR.A5KV 13.79473  7.610939  8.338816 14.31376     1
+      TCGA.OR.A5KW 13.05752 10.927720  9.361037 14.30092     1
+      TCGA.OR.A5KX 14.85262 11.398871  9.805942 15.33501     1
+      TCGA.OR.A5KY 13.92186  9.370197 11.604919 15.37928     0
+      TCGA.OR.A5KZ 14.27526  8.250671 10.406188 14.57391     0
+      TCGA.OR.A5L3 12.50814  8.551745  9.797445 13.98678     1
+      TCGA.OR.A5L4 12.98347 12.126255 10.866232 14.72455     1
+      TCGA.OR.A5L5 12.91867 13.431937 10.675607 13.76577     1
+      TCGA.OR.A5L6 13.37559 12.812662 10.057206 14.39404     1
+      TCGA.OR.A5L8 14.07796  8.299091  9.002871 14.71643     1
+      TCGA.OR.A5L9 12.17307 11.835285 11.091891 14.16090     1
+      TCGA.OR.A5LA 12.44383 12.668004 11.582702 13.85134     1
+      TCGA.OR.A5LB 13.15787  7.836750  9.703832 15.02428     0
+      TCGA.OR.A5LC 14.12266  8.743563 11.171059 14.09424     0
+      TCGA.OR.A5LD 14.97475  9.094699  9.963443 15.24184     0
+      TCGA.OR.A5LE 13.62361  6.721775  9.242920 14.75872     0
+      TCGA.OR.A5LG 13.38204  9.455592 12.236942 14.81172     1
+      TCGA.OR.A5LH 12.85470 11.053753 10.472081 14.49472     0
+      TCGA.OR.A5LJ 13.54380  7.258142 10.278418 14.81616     0
+      TCGA.OR.A5LK 12.59539 14.975157 12.345683 14.40258     1
+      TCGA.OR.A5LL 12.70822  9.572676  8.537830 14.97149     0
+      TCGA.OR.A5LM 13.41089  9.803078  9.897923 13.41891     1
+      TCGA.OR.A5LN 11.98832 15.290120 11.548209 15.08645     1
+      TCGA.OR.A5LO 13.66936  8.838909  8.954144 14.89958     1
+      TCGA.OR.A5LP 12.81674 15.251234 11.283054 14.47479     1
+      TCGA.OR.A5LR 13.15868 14.256147  9.923553 14.67464     1
+      TCGA.OR.A5LS 12.83309  7.475373  8.792429 14.63259     1
+      TCGA.OR.A5LT 13.39286 15.342218  9.822010 14.53092     1
+      TCGA.OU.A5PI 13.04358 11.253130  9.707045 15.09477     1
+      TCGA.P6.A5OF 12.98281 10.804115 10.186969 15.15418     0
+      TCGA.P6.A5OG 13.98642  9.588787 12.725429 14.67547     0
+      TCGA.PA.A5YG 12.82970 15.133732 11.934960 14.50771     1
+      TCGA.PK.A5H8 13.08223 10.600067 10.095836 14.50694     1
+      TCGA.PK.A5H9 12.95396  8.189938  9.732879 14.65432     1
+      TCGA.PK.A5HA 12.06471 15.562196 10.874457 15.30980     1
+      TCGA.PK.A5HB 13.82834 10.480725  8.655293 15.57410     1
+      
+      $adjusted.data
+                        A1BG     A1CF     A2BP1     A2LD1     A2ML1      A2M
+      TCGA.OR.A5J1  7.560937 0.000000  7.642974 11.036356  9.300992 16.86444
+      TCGA.OR.A5J2  6.773795 0.000000  6.005574 11.390444  0.000000 16.75321
+      TCGA.OR.A5J3  7.615691 2.717043  6.403073 10.350504  4.147772 16.04832
+      TCGA.OR.A5J5 13.847984 3.854521  5.777711  9.128790  8.754515 14.64073
+      TCGA.OR.A5J6 12.531855 0.000000  5.495179 11.194768  3.588081 16.52919
+      TCGA.OR.A5J7  6.854414 0.000000  5.128837  9.889426  4.942071 16.76809
+      TCGA.OR.A5J8  9.045041 0.000000  0.000000  9.114176  5.601035 18.26233
+      TCGA.OR.A5J9  6.469174 0.000000  8.486572 11.524749  8.298688 17.21315
+      TCGA.OR.A5JA  8.969938 0.000000  6.059930 11.326948  8.319505 16.12317
+      TCGA.OR.A5JB 11.393284 0.000000  0.000000  9.360996  0.000000 15.50528
+      TCGA.OR.A5JC 10.973163 0.000000  9.355042 10.268890  5.794111 16.25649
+      TCGA.OR.A5JD 10.118468 0.000000  8.685463 10.841333  9.134689 16.46416
+      TCGA.OR.A5JE  9.292584 0.000000  0.000000 10.039781  5.633147 16.18217
+      TCGA.OR.A5JF  8.112546 0.000000 12.115718 10.756446 11.550323 16.27720
+      TCGA.OR.A5JG  8.786291 0.000000  8.183918 10.257370  6.550565 16.39726
+      TCGA.OR.A5JI 13.006602 0.000000  5.169043  8.989199  4.767311 17.12706
+      TCGA.OR.A5JJ  7.547856 0.000000  8.492910 10.319561 10.879498 15.99222
+      TCGA.OR.A5JK  9.057836 0.000000 10.866522 10.336351 10.391804 18.30053
+      TCGA.OR.A5JL  5.187265 0.000000  9.578991 11.485488  9.363087 15.93050
+      TCGA.OR.A5JM  8.017726 0.000000  0.000000 11.697081  3.353348 14.63948
+      TCGA.OR.A5JO 11.193074 7.171620  0.000000 11.016424  5.809031 20.34821
+      TCGA.OR.A5JP 10.790245 0.000000  3.397952  9.364869  5.606012 16.22697
+      TCGA.OR.A5JQ 11.306492 0.000000  2.469156 10.440228  5.221010 17.15223
+      TCGA.OR.A5JR 11.478423 0.000000  6.284494  9.206909  8.805148 16.46359
+      TCGA.OR.A5JS  6.722420 3.657851  0.000000  9.295952  3.128936 15.99933
+      TCGA.OR.A5JT  9.674795 0.000000  3.485976  8.544793 11.686928 16.38411
+      TCGA.OR.A5JV  8.603161 0.000000 11.820089  8.858896  9.362452 17.83816
+      TCGA.OR.A5JW  6.523925 0.000000  0.000000 10.215644  5.611966 16.22964
+      TCGA.OR.A5JX 12.065197 0.000000  8.382689 10.508634 10.364348 16.88707
+      TCGA.OR.A5JY  5.983740 0.000000  3.942321 11.997075  0.000000 16.03080
+      TCGA.OR.A5JZ 10.655100 0.000000  0.000000  9.019558  5.682572 15.53841
+      TCGA.OR.A5K0  7.715015 0.000000 10.333742  4.599001  4.203671 16.62095
+      TCGA.OR.A5K1  9.151462 0.000000  7.811406  9.963955  7.968282 17.50861
+      TCGA.OR.A5K2  9.235603 0.000000  0.000000 10.041932  3.463422 15.92346
+      TCGA.OR.A5K3  8.427819 0.000000  0.000000 10.508679  8.952608 16.64995
+      TCGA.OR.A5K4  5.963227 0.000000  3.730951  9.876911 10.062281 15.10361
+      TCGA.OR.A5K5  9.800926 0.000000  5.493815 10.731154  5.140364 15.21544
+      TCGA.OR.A5K6  7.425822 0.000000  0.000000 10.987483  5.307464 15.51394
+      TCGA.OR.A5K8  8.330981 0.000000 11.243566 11.103254  6.026864 16.32030
+      TCGA.OR.A5K9  6.931634 0.000000  2.701205 10.356255  3.585791 15.33478
+      TCGA.OR.A5KO  8.191954 0.000000 11.259262 11.021533  0.000000 15.13390
+      TCGA.OR.A5KT 10.153848 0.000000  8.969905  9.688667  0.000000 17.16950
+      TCGA.OR.A5KU 11.672598 0.000000  4.684968  9.536596  9.132834 15.13030
+      TCGA.OR.A5KV 11.700436 0.000000  2.361221 11.018314  3.745684 15.22126
+      TCGA.OR.A5KW  7.649836 0.000000  2.746194 11.566395 10.679138 15.75863
+      TCGA.OR.A5KX 13.672709 0.000000  0.000000 10.995978  5.334993 15.79796
+      TCGA.OR.A5KY  8.720773 0.000000  6.585608  9.214045  8.467674 16.59296
+      TCGA.OR.A5KZ 12.163779 0.000000  0.000000  9.114231  2.953487 16.62801
+      TCGA.OR.A5L3  7.555584 0.000000  0.000000 10.008728  0.000000 14.60120
+      TCGA.OR.A5L4 10.109189 0.000000  4.077057 10.626479  6.011480 17.42943
+      TCGA.OR.A5L5 11.185960 0.000000  0.000000  9.509249  5.967573 16.84980
+      TCGA.OR.A5L6 12.168058 0.000000  6.122512  6.920965  7.431962 16.76612
+      TCGA.OR.A5L8  9.393224 0.000000  7.368356 10.792585  7.038043 14.73571
+      TCGA.OR.A5L9 13.330441 0.000000  7.259374  7.259374  9.474349 16.17674
+      TCGA.OR.A5LA  9.303745 0.000000  4.372831 10.003306  9.975320 17.48363
+      TCGA.OR.A5LB  6.294337 2.546656  2.546656 11.152987  7.144054 16.42019
+      TCGA.OR.A5LC  8.446654 0.000000  5.218749  9.870320  6.049424 15.82930
+      TCGA.OR.A5LD  8.991801 0.000000  0.000000  9.094699  4.308773 16.14960
+      TCGA.OR.A5LE  6.501659 0.000000  8.035479 11.139731  0.000000 17.11160
+      TCGA.OR.A5LG  9.431379 0.000000  0.000000  9.842838  5.577185 16.55035
+      TCGA.OR.A5LH  7.683958 0.000000 10.117989 10.745229 10.454282 16.82922
+      TCGA.OR.A5LJ 10.708980 3.718789  0.000000  9.756246  0.000000 15.81614
+      TCGA.OR.A5LK 13.795443 0.000000  0.000000  8.864069  9.372162 17.62865
+      TCGA.OR.A5LL  6.858375 0.000000  4.731324  9.498138  3.784640 14.17239
+      TCGA.OR.A5LM  7.653368 0.000000  3.715979 10.254023 12.658651 16.37958
+      TCGA.OR.A5LN  9.045839 0.000000  6.324259 10.148714  3.826622 16.92744
+      TCGA.OR.A5LO  8.401906 0.000000  0.000000  9.904376  9.904376 15.91704
+      TCGA.OR.A5LP  8.399728 0.000000  3.802314  9.635425  6.298420 17.37699
+      TCGA.OR.A5LR 10.724793 0.000000  5.143298  9.627275  8.194285 16.44578
+      TCGA.OR.A5LS  7.860488 0.000000 10.600623  9.638979  9.228642 15.55024
+      TCGA.OR.A5LT  8.358499 0.000000  4.745926 10.002394  7.867249 14.84642
+      TCGA.OU.A5PI  7.650234 0.000000  7.563219  9.112768  9.860904 15.80930
+      TCGA.P6.A5OF  8.957537 0.000000  9.912690 11.746601  8.266506 16.23227
+      TCGA.P6.A5OG 11.709572 0.000000  0.000000 10.018655  0.000000 17.66978
+      TCGA.PA.A5YG  9.074969 0.000000  0.000000  9.572992 10.709462 17.63616
+      TCGA.PK.A5H8 14.115301 0.000000  5.609794 10.366140  7.174925 16.20515
+      TCGA.PK.A5H9  9.782479 6.825795  0.000000 12.045571  6.496513 21.38588
+      TCGA.PK.A5HA 12.681263 0.000000  8.420432 10.099635  0.000000 17.33602
+      TCGA.PK.A5HB 10.454410 3.593267  5.907759  9.868064  2.229513 16.72844
+                      A4GALT    A4GNT     AAAS    AACSL     AACS     AADAC     AADAT
+      TCGA.OR.A5J1 11.099466 0.000000 14.64360 0.000000 13.83005  0.000000 10.444129
+      TCGA.OR.A5J2 11.124601 0.000000 14.04796 2.464066 13.42720  3.863253  8.446515
+      TCGA.OR.A5J3  9.469754 4.542317 13.53308 0.000000 15.57347  9.980308  8.527343
+      TCGA.OR.A5J5 11.670477 2.950960 14.66748 4.803771 13.03790 10.344738  9.741542
+      TCGA.OR.A5J6 13.906388 2.703318 13.51484 0.000000 13.83307 11.613041  7.599573
+      TCGA.OR.A5J7 10.878933 0.000000 14.54624 0.000000 15.78052  4.942071  8.358194
+      TCGA.OR.A5J8 13.673446 0.000000 13.63867 0.000000 12.45168  0.000000 10.567848
+      TCGA.OR.A5J9 12.030571 0.000000 14.01481 0.000000 14.72742  0.000000 10.107547
+      TCGA.OR.A5JA 12.521583 0.000000 14.55026 5.372943 14.45898 11.190068  8.200595
+      TCGA.OR.A5JB 15.420815 2.858583 13.33382 0.000000 13.94099  4.304444  8.076175
+      TCGA.OR.A5JC 11.613825 2.965514 14.44346 0.000000 12.42456  8.472382  9.835543
+      TCGA.OR.A5JD 10.391263 0.000000 13.77667 0.000000 12.79685  8.419072 10.288249
+      TCGA.OR.A5JE 11.005363 0.000000 13.76628 0.000000 15.20350  8.715741  8.193680
+      TCGA.OR.A5JF 10.626965 0.000000 13.73828 0.000000 13.43077  8.553687  7.584346
+      TCGA.OR.A5JG 10.387918 0.000000 14.25797 0.000000 13.72379 13.892189  9.331749
+      TCGA.OR.A5JI 12.505835 0.000000 14.19454 0.000000 11.88698 11.906829  9.844192
+      TCGA.OR.A5JJ 12.363248 2.413724 14.14805 2.413724 14.33582  3.805854  7.705750
+      TCGA.OR.A5JK 11.316817 5.691009 14.50575 7.088487 12.94222  5.909407  8.605119
+      TCGA.OR.A5JL 10.183003 0.000000 13.83449 0.000000 14.15344  6.577340  8.850684
+      TCGA.OR.A5JM 11.495312 0.000000 13.74648 0.000000 15.35806 10.504995  8.209675
+      TCGA.OR.A5JO 14.152089 0.000000 13.48224 0.000000 12.38770  7.115437  9.474395
+      TCGA.OR.A5JP 10.474337 0.000000 14.13305 0.000000 13.94337 12.794485  9.199125
+      TCGA.OR.A5JQ 10.725685 3.332621 14.17021 0.000000 12.23467  9.827246  9.558755
+      TCGA.OR.A5JR  9.718242 0.000000 14.29458 0.000000 12.82065  9.655387  9.982455
+      TCGA.OR.A5JS 12.892104 4.044026 14.13473 0.000000 15.13655  4.999621  8.168282
+      TCGA.OR.A5JT 10.516992 0.000000 14.42497 0.000000 12.84815  5.198295  8.694437
+      TCGA.OR.A5JV  9.771023 2.675171 13.95709 0.000000 12.82525  4.804040  8.364642
+      TCGA.OR.A5JW 11.249511 2.533736 14.10894 0.000000 13.94726  9.745731  7.438500
+      TCGA.OR.A5JX 11.466333 0.000000 14.74218 0.000000 13.08589  8.120519  9.117925
+      TCGA.OR.A5JY 10.094531 0.000000 15.31037 4.894618 14.62943 14.453910  5.746871
+      TCGA.OR.A5JZ 13.885179 0.000000 14.03429 0.000000 13.19905  8.343153  9.292097
+      TCGA.OR.A5K0  9.227117 0.000000 13.59632 0.000000 12.89815 11.421376  6.143720
+      TCGA.OR.A5K1 11.395084 0.000000 14.26132 0.000000 12.87786  5.935649  7.865616
+      TCGA.OR.A5K2 10.684746 0.000000 14.32780 0.000000 15.68225  7.792272  7.242765
+      TCGA.OR.A5K3 11.656732 0.000000 14.07677 0.000000 14.08020  6.382131  8.369100
+      TCGA.OR.A5K4 12.465300 0.000000 14.31198 0.000000 13.18039  3.730951  9.857948
+      TCGA.OR.A5K5 10.718634 2.559662 14.22085 2.559662 15.41825  6.217917  7.757627
+      TCGA.OR.A5K6 10.583092 0.000000 14.09583 0.000000 13.32056 13.757935  7.861744
+      TCGA.OR.A5K8 11.480804 0.000000 14.28888 0.000000 13.40558 12.308631  7.818327
+      TCGA.OR.A5K9  9.651955 0.000000 13.61274 0.000000 16.39100 13.500750  4.524427
+      TCGA.OR.A5KO 12.134618 4.497453 13.25961 2.677367 13.90947  8.702378  6.448736
+      TCGA.OR.A5KT 13.360826 0.000000 14.57195 3.434609 14.96751 14.271953  5.645638
+      TCGA.OR.A5KU 12.494260 4.127779 14.06664 3.208031 13.55467  8.661077 10.152592
+      TCGA.OR.A5KV 12.149931 0.000000 13.32347 2.361221 14.06724 15.131307  7.862518
+      TCGA.OR.A5KW  9.845837 0.000000 13.85608 4.884952 15.02218 10.022534  9.457919
+      TCGA.OR.A5KX 11.751608 0.000000 14.44352 2.727575 12.81019  8.111382  8.561359
+      TCGA.OR.A5KY 10.923767 0.000000 14.16837 0.000000 15.80814  9.980519  8.591327
+      TCGA.OR.A5KZ 10.181581 0.000000 13.94892 2.953487 13.80810  8.640336 10.496539
+      TCGA.OR.A5L3  9.594157 0.000000 15.30990 0.000000 13.01771 12.912217  5.894285
+      TCGA.OR.A5L4 11.796702 0.000000 13.97416 0.000000 15.11762  5.822026  5.346764
+      TCGA.OR.A5L5 11.085477 3.608326 14.65175 2.722020 12.61956 13.958190  8.791940
+      TCGA.OR.A5L6 11.282143 4.183332 14.92348 4.183332 12.41026  6.440292  8.690114
+      TCGA.OR.A5L8  8.668004 0.000000 14.13949 0.000000 12.72459  4.344935  8.751221
+      TCGA.OR.A5L9 12.595935 0.000000 14.73111 0.000000 10.62008  6.679113  0.000000
+      TCGA.OR.A5LA 11.002603 0.000000 14.62907 0.000000 12.79151  8.976752  8.213220
+      TCGA.OR.A5LB 10.629894 0.000000 14.60541 6.380718 14.36668  3.417592  9.396919
+      TCGA.OR.A5LC 10.420845 0.000000 13.87585 0.000000 14.31654  9.503396  8.589221
+      TCGA.OR.A5LD 10.501858 0.000000 15.38449 5.844370 13.19423  6.831760  9.963443
+      TCGA.OR.A5LE  9.890892 0.000000 14.02877 0.000000 15.22968  0.000000  3.081990
+      TCGA.OR.A5LG 14.018915 0.000000 14.55863 0.000000 14.89542  7.554341  7.554341
+      TCGA.OR.A5LH 11.469359 2.420613 13.98080 0.000000 14.36111  5.477025 10.352260
+      TCGA.OR.A5LJ 12.453710 0.000000 14.38174 3.718789 13.73615 10.666414  7.519604
+      TCGA.OR.A5LK 11.500878 4.239029 13.90546 0.000000 11.84040  6.758876  9.292116
+      TCGA.OR.A5LL 11.774406 0.000000 12.90136 0.000000 10.79572 14.819395  5.870755
+      TCGA.OR.A5LM 12.235084 0.000000 14.50611 0.000000 14.47914  0.000000  9.925202
+      TCGA.OR.A5LN 10.542325 0.000000 14.66595 0.000000 11.32165 11.931001  8.118695
+      TCGA.OR.A5LO 12.074949 0.000000 14.00624 0.000000 14.59958  4.817460 10.915860
+      TCGA.OR.A5LP 11.708531 2.410628 13.79927 0.000000 11.81435 15.790323  9.292260
+      TCGA.OR.A5LR 11.015474 0.000000 14.13470 0.000000 13.09499 13.043107  9.461488
+      TCGA.OR.A5LS  9.178686 0.000000 13.84705 0.000000 14.05633  7.727822  8.959529
+      TCGA.OR.A5LT 12.487964 3.264676 13.92963 4.187599 11.77901  9.500480  9.583784
+      TCGA.OU.A5PI 11.273830 2.782199 13.83005 0.000000 15.20217  5.585924  8.260722
+      TCGA.P6.A5OF 11.642296 2.379804 14.07664 2.379804 14.78586  8.077340  8.932925
+      TCGA.P6.A5OG 12.389501 3.375529 13.09294 0.000000 11.10653  2.508241 10.107186
+      TCGA.PA.A5YG 11.175062 2.776354 14.24534 0.000000 12.53054 12.850421  7.312720
+      TCGA.PK.A5H8 10.943247 2.969626 14.44419 0.000000 13.50996  4.426264  7.031586
+      TCGA.PK.A5H9 11.631400 2.106710 13.35960 8.299998 12.16778 12.111746 10.269759
+      TCGA.PK.A5HA 12.863060 3.485089 13.68171 0.000000 11.90701  9.599914  8.028089
+      TCGA.PK.A5HB 14.800762 0.000000 13.57844 6.224872 13.27706 12.582466  7.384042
+                      AAGAB     AAK1     AAMP    AANAT    AARS2   AARSD1     AARS
+      TCGA.OR.A5J1 13.89793 13.28693 14.88819 4.135301 11.75163 13.34477 15.30545
+      TCGA.OR.A5J2 13.80003 14.15616 14.40327 0.000000 12.16317 11.98651 15.90566
+      TCGA.OR.A5J3 13.32545 13.41212 14.46814 0.000000 11.42207 12.05302 15.21526
+      TCGA.OR.A5J5 12.97414 12.45706 13.51948 3.854521 12.17984 11.89875 14.53913
+      TCGA.OR.A5J6 13.30768 13.57734 15.11818 0.000000 11.99652 13.02716 14.85144
+      TCGA.OR.A5J7 13.93455 13.97126 15.66870 0.000000 12.73467 11.36600 15.64438
+      TCGA.OR.A5J8 13.48565 13.79598 14.73802 3.803727 13.57725 12.49228 15.90194
+      TCGA.OR.A5J9 13.18031 13.47390 14.69165 0.000000 11.84551 12.09217 15.75622
+      TCGA.OR.A5JA 14.31219 13.24023 14.48115 0.000000 12.91059 12.20374 14.90023
+      TCGA.OR.A5JB 13.54630 12.92203 15.32429 0.000000 13.16631 13.54630 15.68573
+      TCGA.OR.A5JC 13.95160 13.63758 14.60517 0.000000 12.42635 12.77791 15.31287
+      TCGA.OR.A5JD 12.98153 13.55053 14.15205 2.762256 11.78764 12.44086 16.27979
+      TCGA.OR.A5JE 13.42887 13.83450 15.04987 0.000000 13.11372 13.44154 15.33301
+      TCGA.OR.A5JF 13.38191 13.43169 14.19323 3.012754 11.89644 11.81526 15.48373
+      TCGA.OR.A5JG 13.99154 13.72749 14.93655 0.000000 12.39645 12.55909 16.43135
+      TCGA.OR.A5JI 12.46848 13.21732 13.91474 0.000000 11.84301 12.41404 15.05100
+      TCGA.OR.A5JJ 13.69234 12.76153 14.13145 0.000000 11.85234 12.50213 15.54956
+      TCGA.OR.A5JK 14.28676 13.60642 14.25160 3.239327 12.07818 12.35889 16.09937
+      TCGA.OR.A5JL 14.59724 13.26158 14.26959 3.149668 12.27554 12.41521 14.27904
+      TCGA.OR.A5JM 13.45522 14.44476 14.38321 0.000000 12.32661 13.40889 16.02130
+      TCGA.OR.A5JO 13.00338 13.19854 14.52088 0.000000 11.77670 12.56597 14.69331
+      TCGA.OR.A5JP 13.22297 13.10996 14.69274 0.000000 11.99429 12.56954 16.18814
+      TCGA.OR.A5JQ 12.78841 13.60556 14.43896 0.000000 12.14357 12.78099 16.14598
+      TCGA.OR.A5JR 13.21400 13.80719 14.37863 0.000000 12.39953 12.01932 16.39560
+      TCGA.OR.A5JS 13.79311 14.37462 14.97292 2.285091 12.10134 12.61225 16.29151
+      TCGA.OR.A5JT 13.13671 13.86394 14.47140 0.000000 11.98081 12.13278 17.16399
+      TCGA.OR.A5JV 13.47609 13.95121 14.33310 4.101098 12.23072 11.86245 15.80933
+      TCGA.OR.A5JW 14.40113 13.62174 14.14296 3.403456 12.91416 11.70981 14.92451
+      TCGA.OR.A5JX 13.48265 13.19016 14.34229 0.000000 12.33671 12.70949 15.01110
+      TCGA.OR.A5JY 14.62260 13.17561 14.60190 0.000000 12.98416 12.66675 15.32897
+      TCGA.OR.A5JZ 13.07704 13.45708 14.08235 0.000000 12.08559 12.28801 16.26591
+      TCGA.OR.A5K0 13.28906 13.70573 14.71848 0.000000 12.10839 12.29672 14.46864
+      TCGA.OR.A5K1 13.20928 12.92330 14.42314 0.000000 12.12722 12.62046 16.58911
+      TCGA.OR.A5K2 14.54494 13.75583 14.78631 3.463422 12.13399 12.71885 15.69349
+      TCGA.OR.A5K3 13.57268 13.76287 14.51877 0.000000 12.28785 12.19370 16.56094
+      TCGA.OR.A5K4 13.19179 13.49156 14.23047 0.000000 12.29070 12.30127 16.33139
+      TCGA.OR.A5K5 13.88079 14.43560 15.01628 2.559662 12.37127 12.83378 16.53879
+      TCGA.OR.A5K6 13.89533 14.37990 15.10078 0.000000 12.62960 12.79433 14.91137
+      TCGA.OR.A5K8 13.16459 13.37321 14.10662 0.000000 11.70544 12.29947 15.12160
+      TCGA.OR.A5K9 13.37560 14.40731 15.03686 0.000000 12.58856 12.01335 16.36518
+      TCGA.OR.A5KO 13.24605 13.18884 14.08191 0.000000 12.24620 11.87338 15.29693
+      TCGA.OR.A5KT 13.66649 13.81139 14.78600 0.000000 12.23448 12.36634 15.91576
+      TCGA.OR.A5KU 14.02231 13.75543 14.61176 0.000000 12.07104 11.28655 15.05302
+      TCGA.OR.A5KV 13.54193 14.09956 15.01008 0.000000 12.12074 13.26524 15.98727
+      TCGA.OR.A5KW 14.40975 13.30872 14.69642 2.746194 11.63275 12.26853 15.50473
+      TCGA.OR.A5KX 13.08313 14.30289 15.86175 0.000000 12.48888 13.21013 14.38330
+      TCGA.OR.A5KY 13.53476 13.61606 14.34128 4.562504 12.17286 11.60492 15.65256
+      TCGA.OR.A5KZ 13.51408 12.62928 14.77406 0.000000 13.04772 12.12508 15.36074
+      TCGA.OR.A5L3 13.41993 14.16268 14.91536 0.000000 11.91896 13.67986 14.96790
+      TCGA.OR.A5L4 13.93521 13.88310 14.54023 0.000000 12.57976 12.35116 16.11776
+      TCGA.OR.A5L5 13.18028 13.37682 14.44170 0.000000 11.71174 13.01451 16.20420
+      TCGA.OR.A5L6 11.78154 12.86007 14.16782 0.000000 11.86359 12.60968 15.48593
+      TCGA.OR.A5L8 13.09088 14.06135 14.81401 0.000000 12.07982 12.04891 15.67863
+      TCGA.OR.A5L9 13.04018 12.68755 13.26502 0.000000 11.02321 13.26502 15.76039
+      TCGA.OR.A5LA 13.04815 13.28174 14.74394 0.000000 11.73651 13.34872 15.99584
+      TCGA.OR.A5LB 14.29376 13.49452 14.57568 2.546656 11.79784 11.63823 14.48047
+      TCGA.OR.A5LC 13.63245 13.96355 14.98559 3.044016 11.01812 12.85634 15.41409
+      TCGA.OR.A5LD 12.92426 14.36085 14.25790 0.000000 13.17675 13.09222 16.63310
+      TCGA.OR.A5LE 14.08688 14.08936 14.85820 0.000000 11.63923 12.24306 15.62970
+      TCGA.OR.A5LG 14.03658 13.23505 15.08512 0.000000 12.37822 12.86989 17.21952
+      TCGA.OR.A5LH 13.83797 13.56229 14.73710 0.000000 11.93328 12.46133 14.91964
+      TCGA.OR.A5LJ 13.10882 13.91724 15.39501 0.000000 12.31075 12.60083 14.88507
+      TCGA.OR.A5LK 12.49617 13.52916 14.30143 4.239029 12.79736 12.40397 15.07645
+      TCGA.OR.A5LL 13.58222 13.91625 14.45943 0.000000 12.26310 12.28173 15.67158
+      TCGA.OR.A5LM 14.07202 13.62219 14.68066 0.000000 11.99661 12.72354 15.45318
+      TCGA.OR.A5LN 13.13073 13.11366 13.84151 0.000000 12.96215 12.96215 15.47610
+      TCGA.OR.A5LO 13.70152 13.99427 14.69497 5.071942 12.34760 11.20560 15.89287
+      TCGA.OR.A5LP 13.24462 13.85330 14.21832 2.410628 11.97768 11.74528 16.96464
+      TCGA.OR.A5LR 13.06206 13.29925 14.28684 0.000000 11.85047 12.41504 16.56197
+      TCGA.OR.A5LS 13.62412 14.14355 14.46166 3.869079 11.50539 11.34101 15.38201
+      TCGA.OR.A5LT 12.98899 13.35186 13.91281 0.000000 11.67267 12.37790 15.07775
+      TCGA.OU.A5PI 13.43145 14.01201 14.69901 0.000000 11.27725 11.48385 15.35367
+      TCGA.P6.A5OF 13.43680 13.46336 14.06005 2.379804 11.93809 11.34401 14.92476
+      TCGA.P6.A5OG 13.21607 13.34844 14.72327 4.304295 12.34077 12.70733 16.06652
+      TCGA.PA.A5YG 13.58296 13.96773 14.82781 2.776354 12.02481 12.00029 16.38992
+      TCGA.PK.A5H8 14.05923 13.80474 14.46832 2.969626 13.08337 12.10831 15.13375
+      TCGA.PK.A5H9 13.10672 13.10510 13.77415 2.106710 11.71751 11.78125 14.51169
+      TCGA.PK.A5HA 12.23307 13.49618 13.70779 2.608499 12.85514 12.04917 16.08761
+      TCGA.PK.A5HB 14.17189 13.77199 14.79796 0.000000 13.11970 11.57225 15.45187
+                   AASDHPPT     AASDH      AASS     AATF      AATK      ABAT
+      TCGA.OR.A5J1 14.04286 10.188150 13.409926 13.81906  8.328290 14.150203
+      TCGA.OR.A5J2 13.16868 11.449899 11.006012 13.53216 13.566950 14.017239
+      TCGA.OR.A5J3 13.26790 10.922720 11.482353 13.04145  9.775302 13.115821
+      TCGA.OR.A5J5 12.32510 11.631209 12.451868 12.20269 11.936414 12.404282
+      TCGA.OR.A5J6 13.28794 11.388184 10.868746 13.44096  8.769922 12.493750
+      TCGA.OR.A5J7 13.43254 11.304321 12.128985 14.46075 10.350205 11.404949
+      TCGA.OR.A5J8 12.16852 10.478903 12.184682 13.45710 10.221303  8.729682
+      TCGA.OR.A5J9 12.84674 11.298860 11.844075 13.73946 14.041909 13.792749
+      TCGA.OR.A5JA 12.92847 11.301170 10.967779 13.06664 10.298849 15.000859
+      TCGA.OR.A5JB 13.82581  9.994697 13.054115 13.92019  9.733713  9.529151
+      TCGA.OR.A5JC 13.27680 11.288088 11.728301 13.58897  8.444447 15.513789
+      TCGA.OR.A5JD 12.95024 12.275650 12.347868 13.21096  9.026829 13.997862
+      TCGA.OR.A5JE 12.46357 10.541388 10.088922 13.89274 10.744174  9.703545
+      TCGA.OR.A5JF 13.36895 11.770702 11.545212 12.92474 11.394210 12.279593
+      TCGA.OR.A5JG 12.91140 11.439493  9.696703 13.57960  9.045619 12.155628
+      TCGA.OR.A5JI 13.44139 11.242714 11.600516 12.87676  9.108273 15.531951
+      TCGA.OR.A5JJ 13.08844 12.168100 11.921587 13.45328 10.845964 12.164024
+      TCGA.OR.A5JK 13.31520 11.496199 12.795726 13.60739  9.766005 16.801840
+      TCGA.OR.A5JL 13.65502 11.719085 12.047652 12.51853 11.997134 16.287892
+      TCGA.OR.A5JM 13.79922 10.563300 10.916347 13.78939 11.441327 12.925223
+      TCGA.OR.A5JO 12.79450 10.977554 11.673468 13.46267  8.138692 11.511481
+      TCGA.OR.A5JP 12.63700 10.986185 11.376231 12.61961 12.885522 12.816597
+      TCGA.OR.A5JQ 13.18547 11.811559 11.727191 13.64339  9.184283 16.218423
+      TCGA.OR.A5JR 13.60820 12.496217 11.816757 13.08110  7.367737 17.320525
+      TCGA.OR.A5JS 13.16220 11.230530 12.292829 13.38544 11.572664 11.159007
+      TCGA.OR.A5JT 13.85651 12.422826 12.277687 13.36526  8.355512 17.998424
+      TCGA.OR.A5JV 12.98620 12.402767 12.246802 13.14478  8.661906 17.502708
+      TCGA.OR.A5JW 12.92220 12.581270 12.748284 12.78400  9.891111 11.377120
+      TCGA.OR.A5JX 13.34140 10.535837 13.578968 13.67309 11.032491 13.005461
+      TCGA.OR.A5JY 13.66398 11.929575 13.472944 13.51783 11.382394  7.398182
+      TCGA.OR.A5JZ 13.98137 11.686492  9.870760 13.30847  7.027873 16.895264
+      TCGA.OR.A5K0 12.17514 11.602067 11.911447 14.25167 11.246161 11.104917
+      TCGA.OR.A5K1 13.42433 11.006098 11.839632 13.63407  8.017000 17.482425
+      TCGA.OR.A5K2 13.24831 10.425399 11.945069 13.99263 10.992362 11.915405
+      TCGA.OR.A5K3 13.64561 10.066516 12.023288 13.23730  8.870317 16.968368
+      TCGA.OR.A5K4 13.72073 12.681602 10.998071 13.11600  5.813791 17.398997
+      TCGA.OR.A5K5 12.98431 11.300514  9.224664 14.31291 11.834940  9.958300
+      TCGA.OR.A5K6 12.47888 11.673106 10.284547 13.86472 11.866609 11.397436
+      TCGA.OR.A5K8 13.04366 10.838244 11.792875 13.02433  9.561066 15.549560
+      TCGA.OR.A5K9 13.11692 11.455203  8.613770 13.60766 11.773631  9.819485
+      TCGA.OR.A5KO 13.67303 12.087092 10.455520 12.97049  9.107168 15.517296
+      TCGA.OR.A5KT 12.58485 10.924699 11.674420 14.00291 10.414599 10.249982
+      TCGA.OR.A5KU 13.35809 12.218028 12.424605 13.32487 11.177848 15.918380
+      TCGA.OR.A5KV 13.77015 11.330282  9.975198 13.66607 13.850353 13.781645
+      TCGA.OR.A5KW 13.67522 12.021493 11.041513 13.59095  9.781778 13.929186
+      TCGA.OR.A5KX 12.39409 11.253588 13.016162 12.82368 10.136584 13.810089
+      TCGA.OR.A5KY 13.28817 10.562849 11.951694 13.30504 11.765445 12.107776
+      TCGA.OR.A5KZ 13.71418 11.324491 11.012160 13.48382  9.810963 14.017429
+      TCGA.OR.A5L3 12.87676 11.008027 12.798396 13.98574 12.449020 12.075706
+      TCGA.OR.A5L4 13.86479 11.044907 11.284141 12.99895 10.034712 16.359782
+      TCGA.OR.A5L5 13.41872 10.920273 12.284471 13.27702  7.982469 16.045135
+      TCGA.OR.A5L6 12.79534 10.972738 12.178782 12.93156 10.717222 15.395160
+      TCGA.OR.A5L8 13.70008 11.619108 12.611102 14.34969 14.077560 14.717204
+      TCGA.OR.A5L9 12.37948 10.987604 11.987248 13.41329  8.254659 16.508116
+      TCGA.OR.A5LA 12.95090 11.389461 11.981297 13.32258  9.111426 16.596957
+      TCGA.OR.A5LB 13.22581 11.805670 13.815580 13.02839 12.546373 13.861835
+      TCGA.OR.A5LC 12.42767 11.152805 11.658896 14.14707 12.361650 13.911570
+      TCGA.OR.A5LD 13.82289 10.556963 12.635183 13.54026 10.444566 15.811530
+      TCGA.OR.A5LE 14.00537 11.168101 13.745498 13.29315 10.728086 14.037123
+      TCGA.OR.A5LG 13.42559 11.527274 12.608922 13.26018  7.080903 13.223635
+      TCGA.OR.A5LH 13.30425 11.966618 12.424096 13.28739  9.608003 15.709790
+      TCGA.OR.A5LJ 13.08478  9.334986 11.144626 13.77799 10.530618  9.321333
+      TCGA.OR.A5LK 12.86463 10.968605 12.109224 13.26134  8.165564 14.457511
+      TCGA.OR.A5LL 13.69009 11.531318 13.904875 13.49147 10.377487 12.040439
+      TCGA.OR.A5LM 13.74846 11.635666 13.164189 13.06446  8.278868 16.951359
+      TCGA.OR.A5LN 13.34154 11.415194 13.689954 13.18690  8.811855 15.139598
+      TCGA.OR.A5LO 13.82940 11.684668 13.378738 12.46883  9.422821 15.504334
+      TCGA.OR.A5LP 13.32268 11.029601 10.578597 13.23819  7.328505 16.064538
+      TCGA.OR.A5LR 13.69165 11.675976 11.738935 13.25938  7.199202 17.162931
+      TCGA.OR.A5LS 13.55156 12.366990 13.065035 12.62346 12.126876 14.209823
+      TCGA.OR.A5LT 13.85110 12.248573 12.854557 13.12592 11.614424 15.821942
+      TCGA.OU.A5PI 13.14725 12.065683 13.830048 13.48199 12.251095 15.046966
+      TCGA.P6.A5OF 13.21616 11.762402 10.604297 12.99698  9.974291 12.146449
+      TCGA.P6.A5OG 13.36200 11.169566 13.256032 13.75352 10.920103  8.625336
+      TCGA.PA.A5YG 13.52255 11.235828 12.701231 13.42154  9.550654 16.825811
+      TCGA.PK.A5H8 13.54667 10.912889 12.563990 13.47575  8.682994 17.011453
+      TCGA.PK.A5H9 13.57782 11.530177  9.502336 12.50962  8.070784 11.985657
+      TCGA.PK.A5HA 12.15296 11.078714 10.002585 13.21987 10.726018 15.319188
+      TCGA.PK.A5HB 12.57114 10.864439 10.588367 12.78912 10.574470 11.610205
+                      ABCA10   ABCA11P   ABCA12    ABCA13   ABCA17P     ABCA1
+      TCGA.OR.A5J1  9.667261  9.053494 0.000000  2.705842  8.928210 11.843417
+      TCGA.OR.A5J2  6.773795  9.747123 0.000000  3.327025  7.185532 13.554002
+      TCGA.OR.A5J3  8.437398  8.069377 5.677428 10.593710  8.238705 13.042401
+      TCGA.OR.A5J5  8.042057 10.493639 2.950960  6.672277 10.252200 11.399163
+      TCGA.OR.A5J6  7.425446  9.080211 0.000000  0.000000  9.407473 12.946831
+      TCGA.OR.A5J7  8.339393  9.032277 0.000000  6.108072  7.521144 11.763376
+      TCGA.OR.A5J8  8.401246  9.820526 0.000000  6.878769  4.498766 14.499650
+      TCGA.OR.A5J9  9.050467 11.075517 3.578882  3.578882  8.002753 13.114738
+      TCGA.OR.A5JA  7.475116  9.185671 2.598119 11.355061  8.879926 10.862039
+      TCGA.OR.A5JB  6.124809  7.780414 7.820874  2.858583  5.484498 14.956632
+      TCGA.OR.A5JC  8.771180 10.510331 8.837121  4.819880  9.324715 12.564152
+      TCGA.OR.A5JD  8.839142 10.057124 2.762256  5.158150  9.221127 13.220609
+      TCGA.OR.A5JE  7.739829  9.463807 0.000000  3.717820  6.208387 12.040835
+      TCGA.OR.A5JF  9.081974 10.189480 2.181267 12.504287  8.620009 13.541431
+      TCGA.OR.A5JG  5.565875  9.696703 4.596014  8.930370  9.045619 10.884583
+      TCGA.OR.A5JI  7.307438 10.486934 3.284588  5.169043  8.524616 15.230718
+      TCGA.OR.A5JJ  7.370533 10.494240 0.000000  6.042802  9.138790 14.639193
+      TCGA.OR.A5JK  8.404040 10.479737 8.404040  6.791371  8.666365 11.911112
+      TCGA.OR.A5JL  4.621966  9.849120 5.908305 10.943707  7.196513 12.545388
+      TCGA.OR.A5JM  6.224221 10.585112 0.000000  0.000000  6.802737 11.734648
+      TCGA.OR.A5JO  7.990385  9.164095 2.701884  0.000000  7.789602 13.202758
+      TCGA.OR.A5JP  9.426178 11.052495 2.528708  3.397952  9.278847 13.815542
+      TCGA.OR.A5JQ  6.838320 10.893366 2.469156  4.818809  7.648441 13.848123
+      TCGA.OR.A5JR  4.990064 10.534874 4.034760  6.544440  9.048204 12.383000
+      TCGA.OR.A5JS  8.108788  7.936984 6.824571  2.285091  7.052180 13.169494
+      TCGA.OR.A5JT  6.073129 10.450164 3.485976  2.609314 10.080354 13.620926
+      TCGA.OR.A5JV  5.058441  9.146315 3.557568  6.764778  9.679209 11.935701
+      TCGA.OR.A5JW  9.339278 10.523309 2.533736  7.993825  8.878013 14.349753
+      TCGA.OR.A5JX  9.481917 10.356741 0.000000  5.156357  9.287561 11.390125
+      TCGA.OR.A5JY  7.438586  9.753845 6.857776  5.110065  5.110065 11.229588
+      TCGA.OR.A5JZ  5.208338  9.859631 4.497155  6.562634  9.925151 14.844785
+      TCGA.OR.A5K0  9.595356  8.067159 3.657335  2.767373  8.770334 13.306534
+      TCGA.OR.A5K1  5.459620  9.778598 0.000000  7.361258  9.750062 12.973531
+      TCGA.OR.A5K2  9.803666  8.032278 0.000000  4.396498  7.975915 11.861980
+      TCGA.OR.A5K3  7.488265 10.638654 0.000000  8.737348 10.588060 11.600411
+      TCGA.OR.A5K4  4.279233  9.819258 0.000000  4.279233 10.353800 12.419151
+      TCGA.OR.A5K5  6.396207  7.882602 0.000000  2.559662  8.425000 10.457447
+      TCGA.OR.A5K6  6.867933  9.035817 2.703638  0.000000  8.112290 13.429847
+      TCGA.OR.A5K8  8.532031 10.448542 0.000000  9.176985  9.176985 14.223810
+      TCGA.OR.A5K9  3.585791  9.190727 2.701205  3.585791  8.767431 13.591023
+      TCGA.OR.A5KO  6.767357  9.304772 2.677367  4.497453 10.181560 14.267853
+      TCGA.OR.A5KT  7.006306  7.211259 0.000000  5.330897  7.623861 10.946383
+      TCGA.OR.A5KU 10.044166 10.077558 4.684968  6.756643  9.536596 12.293385
+      TCGA.OR.A5KV  7.188161  9.998729 0.000000  2.361221 10.021883 11.999130
+      TCGA.OR.A5KW  6.338643  8.583207 4.575179  9.008009  8.891432 13.137393
+      TCGA.OR.A5KX  8.140424  9.769225 0.000000  0.000000  9.313894 13.691841
+      TCGA.OR.A5KY  8.430306  9.537685 4.255759  8.352536  7.708666 13.914263
+      TCGA.OR.A5KZ  9.721567  9.964971 2.953487  0.000000  8.343484 12.456503
+      TCGA.OR.A5L3  8.506065  9.594157 0.000000  0.000000  6.372765 13.898929
+      TCGA.OR.A5L4  6.011480  9.967663 0.000000  5.033672  8.850052 10.803530
+      TCGA.OR.A5L5  9.486913 10.130045 2.722020  4.153309  8.755030 14.977049
+      TCGA.OR.A5L6  7.431962 10.702434 4.183332  5.143071  8.427778 12.716579
+      TCGA.OR.A5L8  7.489638 10.149923 2.543589  0.000000  7.527901 15.124900
+      TCGA.OR.A5L9  8.668515 10.987604 0.000000  0.000000  9.754099 14.807122
+      TCGA.OR.A5LA  6.898566  9.946779 5.337587  4.372831  9.512890 14.503646
+      TCGA.OR.A5LB  8.088502 10.476522 0.000000 11.014626  8.324738 14.362041
+      TCGA.OR.A5LC  8.561813  9.089020 0.000000  0.000000  9.252235 12.630917
+      TCGA.OR.A5LD  7.243628  9.935990 0.000000  0.000000  5.844370 12.718106
+      TCGA.OR.A5LE  7.302175  9.457330 0.000000  0.000000  6.615911 11.580638
+      TCGA.OR.A5LG  7.256551  9.974345 4.607091  5.893056  7.598502 13.323219
+      TCGA.OR.A5LH  7.261056 10.178864 4.761494  7.883347  9.567183 12.300042
+      TCGA.OR.A5LJ  8.778045  9.891752 0.000000  5.950281  6.323399 14.285262
+      TCGA.OR.A5LK  7.627277 11.172383 5.200313  6.180559  9.070107 13.999822
+      TCGA.OR.A5LL  8.140515  9.722066 3.784640  6.155772  7.637423 15.656308
+      TCGA.OR.A5LM  7.417608 10.767524 4.660014  9.424070  9.546235  9.763322
+      TCGA.OR.A5LN  8.310692 11.926120 0.000000  0.000000  6.903207 13.718465
+      TCGA.OR.A5LO  6.459920  9.132511 4.114208 10.853609  8.617042 12.335501
+      TCGA.OR.A5LP  6.448589  9.478394 5.151228  5.599544  8.683417 13.405950
+      TCGA.OR.A5LR  6.122742  9.513255 3.260841  0.000000 10.388367 13.190831
+      TCGA.OR.A5LS  8.325896 10.330167 0.000000  9.455361  8.164159 13.890374
+      TCGA.OR.A5LT  8.018634 10.834880 5.461223  0.000000  7.969916 14.150643
+      TCGA.OU.A5PI  7.421989  9.676277 3.673331  8.646638  7.650234 12.695340
+      TCGA.P6.A5OF  8.704807  9.949965 2.379804  6.729505 12.503735 13.913254
+      TCGA.P6.A5OG  3.913395  8.973700 0.000000 10.689666 10.705958 12.294391
+      TCGA.PA.A5YG  6.809576  9.594990 4.213624  4.609090  8.225981 14.681605
+      TCGA.PK.A5H8  8.026062 10.727636 2.969626 11.709658 10.431845 12.158767
+      TCGA.PK.A5H9  9.349822 10.007731 2.106710  3.449065  6.386759 14.784953
+      TCGA.PK.A5HA  4.727563 10.072566 0.000000  5.197347 11.622047 15.270888
+      TCGA.PK.A5HB  6.294343 10.215656 4.532226  6.850280  8.817464  8.732412
+                      ABCA2     ABCA3    ABCA4     ABCA5     ABCA6     ABCA7
+      TCGA.OR.A5J1 13.17591 13.034892 4.839048 14.516064  7.381383 12.276676
+      TCGA.OR.A5J2 13.44309 13.588803 6.281714 11.557609  8.329825 11.209620
+      TCGA.OR.A5J3 14.81587 15.467573 6.085401 13.013511  7.531248 11.944966
+      TCGA.OR.A5J5 14.83570 15.091897 0.000000 12.610936  3.854521 14.113196
+      TCGA.OR.A5J6 11.95505 13.057327 4.836172 13.129218 10.026459 11.934877
+      TCGA.OR.A5J7 13.74621 13.077984 4.942071 13.311148  6.194304 12.667485
+      TCGA.OR.A5J8 13.28602 10.200260 9.045041 10.157228 11.711913 11.316707
+      TCGA.OR.A5J9 13.91948 11.988427 4.517216 13.590759  6.059554 11.549554
+      TCGA.OR.A5JA 12.32950 14.588355 3.473778 11.879181  4.715610 12.627949
+      TCGA.OR.A5JB 14.61544 11.379805 4.701111 11.506137 12.746740 11.233868
+      TCGA.OR.A5JC 11.21969 13.508622 4.421769 12.956645  7.633141 12.291724
+      TCGA.OR.A5JD 14.94138 14.728555 5.374759 13.226716  7.186006 12.545074
+      TCGA.OR.A5JE 14.73826 10.930950 4.661927 13.592583  4.265762 12.237075
+      TCGA.OR.A5JF 15.17069 14.988914 4.686424 14.180101  8.166801 12.121453
+      TCGA.OR.A5JG 13.90151 13.310021 5.377574 11.063243  6.360117 11.820893
+      TCGA.OR.A5JI 13.82196 15.462123 5.740577 11.971086  7.528529 11.486431
+      TCGA.OR.A5JJ 15.65256 13.249077 3.805854 12.773171  7.168320 12.625842
+      TCGA.OR.A5JK 13.43443 14.791284 4.718669 13.363386  7.257233 13.766201
+      TCGA.OR.A5JL 12.57082 13.713700 5.810484 12.026023  6.516596 10.932125
+      TCGA.OR.A5JM 13.08913 11.782632 5.243391 11.414776  5.409078 12.948128
+      TCGA.OR.A5JO 12.85687 11.758471 5.089119 13.045332 14.301594 11.704745
+      TCGA.OR.A5JP 12.15383 13.107627 6.272933 14.230436  7.932497  8.632833
+      TCGA.OR.A5JQ 14.69928 15.842156 5.221010 12.766971  8.093982 12.245493
+      TCGA.OR.A5JR 14.64183 17.255743 4.427622 12.028206  4.427622 11.433639
+      TCGA.OR.A5JS 14.33758 12.878067 2.285091 13.734860  7.354962 12.731272
+      TCGA.OR.A5JT 13.98509 16.750458 6.276720 12.124563  3.485976 11.892577
+      TCGA.OR.A5JV 12.63310 15.573093 5.777984 11.120167  5.274635 12.149228
+      TCGA.OR.A5JW 13.09566 14.458743 3.942240 13.846702  7.553337 11.342938
+      TCGA.OR.A5JX 13.48090 13.605691 0.000000 13.518887  7.262258 12.146863
+      TCGA.OR.A5JY 12.26061 12.698290 9.306994 13.631666  7.516151 11.695384
+      TCGA.OR.A5JZ 13.78727 16.559607 4.497155 12.544060  5.208338 11.231155
+      TCGA.OR.A5K0 15.02584 13.445978 6.553647 14.773376  7.248168 14.079871
+      TCGA.OR.A5K1 12.89425 16.909478 5.145864 11.866467  4.744346 11.912258
+      TCGA.OR.A5K2 12.69504 12.315285 0.000000 14.543124  7.335279 10.693511
+      TCGA.OR.A5K3 13.11755 15.191847 5.805791 12.731265  6.122552 12.768659
+      TCGA.OR.A5K4 13.84028 17.756466 5.963227 12.618217  7.712346 11.844792
+      TCGA.OR.A5K5 13.28176 13.158177 7.255184 12.191179  5.642613 12.323840
+      TCGA.OR.A5K6 14.06692 13.301770 4.836537 11.426631  4.527177 11.449568
+      TCGA.OR.A5K8 14.69549 15.418227 5.048822 12.749609  7.472146 13.317590
+      TCGA.OR.A5K9 14.02076  9.810671 4.524427 10.392147  4.524427 13.388989
+      TCGA.OR.A5KO 14.21643 15.416220 3.559951 13.091394  5.631450 11.619935
+      TCGA.OR.A5KT 13.56151 13.915830 6.312863 11.561864 10.077296 11.494772
+      TCGA.OR.A5KU 12.46091 13.048594 5.085915 14.674941  7.373454 13.193970
+      TCGA.OR.A5KV 14.37489 12.592217 2.361221 13.237071  6.238116 13.520749
+      TCGA.OR.A5KW 13.41962 14.083290 4.575179 12.333810  6.119219 12.551139
+      TCGA.OR.A5KX 12.24329 13.703442 4.159487 12.580470  2.727575 13.618910
+      TCGA.OR.A5KY 14.68802 13.713087 2.466198 12.879689  8.504098 12.693123
+      TCGA.OR.A5KZ 12.03287 11.894004 2.953487 11.112277 13.398964 10.820960
+      TCGA.OR.A5L3 14.27163 12.553760 7.802300 13.597860  6.731461 10.852456
+      TCGA.OR.A5L4 11.78701 15.389588 5.603878 11.338227  8.163906 11.103340
+      TCGA.OR.A5L5 13.77790 15.663593 6.205030 13.616229 10.635555 12.143431
+      TCGA.OR.A5L6 13.47899 14.771477 6.440292 13.854969  7.280887 12.498509
+      TCGA.OR.A5L8 13.39445 13.684285 5.623626 12.674302  6.869489 10.261995
+      TCGA.OR.A5L9 12.66519 15.917653 7.259374 13.164968  8.989733 12.498104
+      TCGA.OR.A5LA 14.25864 15.572369 4.372831 12.717416  8.828200 10.268415
+      TCGA.OR.A5LB 13.84437 14.799204 4.348455 13.520918  7.093792 11.971424
+      TCGA.OR.A5LC 14.45892 12.363636 0.000000 12.404711  7.565626 12.843588
+      TCGA.OR.A5LD 11.81944 12.171027 4.308773 11.600863  5.271908 11.804336
+      TCGA.OR.A5LE 13.06827 11.364759 6.091919 12.478369  6.091919 11.455790
+      TCGA.OR.A5LG 12.89446 12.603515 3.665106 12.254300  8.195431 11.761380
+      TCGA.OR.A5LH 12.82644 14.419032 7.935597 13.110474  8.149793 11.094540
+      TCGA.OR.A5LJ 15.01426 13.686423 7.008397 12.643975  5.634175 11.010671
+      TCGA.OR.A5LK 13.98399 14.303985 6.180559 12.403970  8.072789 13.166312
+      TCGA.OR.A5LL 13.50581 12.480346 4.731324 13.712930  8.907788 11.038592
+      TCGA.OR.A5LM 11.56805 13.912496 3.715979 12.430188  4.660014 12.718348
+      TCGA.OR.A5LN 13.54785 14.702800 0.000000 13.457708  6.064821 12.522323
+      TCGA.OR.A5LO 13.42228 13.880245 0.000000 13.106270  6.459920 12.812145
+      TCGA.OR.A5LP 14.52268 15.596661 4.497311 12.333122  7.731562 11.695445
+      TCGA.OR.A5LR 13.74945 16.316832 5.714589 12.498742  7.915232 11.742554
+      TCGA.OR.A5LS 14.48839 14.519664 4.818847 13.887137  6.948457 11.893887
+      TCGA.OR.A5LT 15.70564 14.288636 8.018634 13.942311  5.937263 14.429290
+      TCGA.OU.A5PI 14.65924 15.008371 4.925762 13.509891  8.728900 10.986735
+      TCGA.P6.A5OF 15.63831 14.517065 3.234090 13.243940  9.359589 13.186537
+      TCGA.P6.A5OG 14.28030 13.257414 8.802451 10.137533 10.018655 12.092328
+      TCGA.PA.A5YG 14.35172 14.286471 0.000000 12.806319  6.882933 12.086279
+      TCGA.PK.A5H8 11.77300 14.923652 6.489179 12.873444  6.115477 12.385727
+      TCGA.PK.A5H9 12.51452 12.698037 3.449065 14.361345 14.373983 11.419572
+      TCGA.PK.A5HA 13.65744 15.695974 4.727563  9.958907  9.172807 11.019706
+      TCGA.PK.A5HB 12.05504 14.894451 5.244033 10.356302  5.718542 10.763939
+                       ABCA8     ABCA9    ABCB10   ABCB11     ABCB1     ABCB4
+      TCGA.OR.A5J1  5.664467  8.698110 12.214310 2.705842 13.563306 12.030308
+      TCGA.OR.A5J2 10.419815  8.836957 12.064667 0.000000 14.958426 15.923384
+      TCGA.OR.A5J3 13.652823  8.548980 10.718295 4.147772 17.441847 15.717167
+      TCGA.OR.A5J5 13.059679  8.685417 11.302489 0.000000 10.855238 10.946659
+      TCGA.OR.A5J6 15.590212  8.168296 11.411730 0.000000 15.131758  9.882215
+      TCGA.OR.A5J7 13.421968  7.305606 11.599222 0.000000 15.449939 12.139892
+      TCGA.OR.A5J8 10.496273 11.264441 11.328877 0.000000 10.365330  7.208818
+      TCGA.OR.A5J9 13.829022  8.101914  9.637831 0.000000 15.003267 13.099220
+      TCGA.OR.A5JA 13.153243 10.087221 11.158512 0.000000 15.816370 11.415046
+      TCGA.OR.A5JB  5.673110  8.042355 12.528969 0.000000  8.349424  6.566745
+      TCGA.OR.A5JC 12.640006  8.748512 10.657511 0.000000 16.516083 12.468569
+      TCGA.OR.A5JD 14.051929  8.705592 11.205244 0.000000 12.838466  7.127525
+      TCGA.OR.A5JE 11.974827  7.257100 10.992507 2.823500 14.698573 13.002701
+      TCGA.OR.A5JF 13.890795  9.489266  9.973105 2.181267 16.615285 16.167346
+      TCGA.OR.A5JG  8.000170  6.869412 11.197485 2.764715 15.598179  9.209956
+      TCGA.OR.A5JI 13.336750  8.558473 10.555600 0.000000 15.828841 10.095480
+      TCGA.OR.A5JJ 11.979951  8.002142 10.566024 0.000000 15.247843 15.126351
+      TCGA.OR.A5JK 12.043973  9.270010 11.373012 0.000000 14.395327 12.668656
+      TCGA.OR.A5JL 12.784750  7.684660 10.709371 5.335303 14.168019 12.004065
+      TCGA.OR.A5JM 10.823975  5.056176 12.120997 0.000000 15.774200 13.489743
+      TCGA.OR.A5JO 15.930930 11.603709 11.319684 3.586527 11.176007  8.465226
+      TCGA.OR.A5JP 12.757195  9.541494 11.752424 4.635332 14.388006  8.236227
+      TCGA.OR.A5JQ 15.011964  8.186761 10.865569 0.000000 16.018268 10.756283
+      TCGA.OR.A5JR 14.588454  4.034760 10.871499 2.615901 14.753223  8.666312
+      TCGA.OR.A5JS 12.484463  7.793214 11.608903 0.000000 16.130466 12.331295
+      TCGA.OR.A5JT 14.059838  5.552106 10.561509 0.000000 12.874854  8.029060
+      TCGA.OR.A5JV 13.332036  5.274635 10.678329 0.000000 13.020282  9.302173
+      TCGA.OR.A5JW 14.093602  9.471721 10.674745 0.000000 17.083114 13.588465
+      TCGA.OR.A5JX 12.763711  8.986070  9.964767 0.000000 16.041347 13.298360
+      TCGA.OR.A5JY 12.886220  7.313811 11.348337 2.533807 15.761437 14.545783
+      TCGA.OR.A5JZ 14.038612  7.440144 10.945614 0.000000 13.944316  6.946061
+      TCGA.OR.A5K0 10.678639  8.400464 11.833224 0.000000 16.264870 10.359485
+      TCGA.OR.A5K1 13.581393  7.201825 10.139232 0.000000 12.277247  5.459620
+      TCGA.OR.A5K2  9.942494  9.685622 10.889320 4.958444 15.251909 14.038070
+      TCGA.OR.A5K3 11.172710  8.427819 10.103008 0.000000 13.949784  8.369100
+      TCGA.OR.A5K4 13.715469  6.098627 11.082177 3.730951 11.908382  8.295014
+      TCGA.OR.A5K5 12.647089  6.396207 10.609849 0.000000 14.801586 14.875584
+      TCGA.OR.A5K6 13.309627  5.307464 11.449568 0.000000 16.620177 15.942635
+      TCGA.OR.A5K8 12.766324  8.914449 10.155578 0.000000 15.496450 13.514464
+      TCGA.OR.A5K9 14.923907  5.808243 10.409764 0.000000 16.817488 15.968648
+      TCGA.OR.A5KO 13.827222  7.086634 11.885776 0.000000 16.366938 12.453362
+      TCGA.OR.A5KT 16.796326  9.881093 11.678745 0.000000 15.179573 11.770746
+      TCGA.OR.A5KU 13.647465 10.077558 10.716082 0.000000 16.398167 13.610871
+      TCGA.OR.A5KV  5.405329  6.238116 10.061529 7.580072 14.967487 11.443932
+      TCGA.OR.A5KW 12.210623  7.565382 10.853981 6.436990 16.880368 12.485147
+      TCGA.OR.A5KX 14.913032  4.554199 10.914259 0.000000 14.156861  7.453895
+      TCGA.OR.A5KY 10.459986  9.309749 10.933816 6.008137 16.514573 14.888829
+      TCGA.OR.A5KZ 14.177267 13.045415 11.734636 0.000000 14.820212 12.283793
+      TCGA.OR.A5L3 12.581553  7.555584 10.303924 0.000000 14.687501 12.095119
+      TCGA.OR.A5L4 13.154007  7.696354 10.890569 0.000000 15.495776  9.498732
+      TCGA.OR.A5L5 13.846394 10.728925 10.856366 3.608326 14.810818 10.714578
+      TCGA.OR.A5L6 12.972199  8.106897 10.312243 0.000000 12.671732  9.011344
+      TCGA.OR.A5L8 14.771036  8.254148 11.349504 3.953370 16.899624 15.994538
+      TCGA.OR.A5L9 12.931936  8.838046  9.666741 0.000000 12.250223  6.679113
+      TCGA.OR.A5LA 13.939083  8.260369 10.357843 0.000000 14.402846  9.551312
+      TCGA.OR.A5LB 13.892480  7.531583 10.780483 0.000000 13.515558 14.106434
+      TCGA.OR.A5LC 13.017596  7.722379 11.224475 0.000000 10.495175  8.743563
+      TCGA.OR.A5LD 12.781176  7.700461  9.990383 0.000000 15.047099 13.911890
+      TCGA.OR.A5LE  6.501659  6.501659 11.618822 0.000000 15.280643 16.184807
+      TCGA.OR.A5LG 12.856316  9.221489 11.454050 0.000000 13.212133 11.956399
+      TCGA.OR.A5LH 13.286131  8.585529  9.956679 4.761494 14.019513 11.002623
+      TCGA.OR.A5LJ  8.337218  7.699251 11.782659 5.445673 15.806213 16.253543
+      TCGA.OR.A5LK 11.861358  9.716835 10.446966 0.000000 13.174707  8.334930
+      TCGA.OR.A5LL 15.409011  9.925374 11.917127 0.000000 17.524837 15.094647
+      TCGA.OR.A5LM 11.326865  7.893273 10.217712 0.000000 13.658539  8.413382
+      TCGA.OR.A5LN 13.896199  7.054004 11.809043 0.000000 13.758829  8.933585
+      TCGA.OR.A5LO 14.272837  7.039410 10.911792 0.000000 15.239312 12.649456
+      TCGA.OR.A5LP 12.977505  7.897471 10.594797 0.000000 15.219753  8.881295
+      TCGA.OR.A5LR 12.731457  8.061495 10.222038 0.000000 13.927734  6.700786
+      TCGA.OR.A5LS  7.773413  8.747444 11.665094 0.000000 14.508754 16.412591
+      TCGA.OR.A5LT 13.687479  7.636998 11.037593 0.000000 13.221364  7.969916
+      TCGA.OU.A5PI 13.617057  8.667648 10.351092 0.000000 17.056672 15.953402
+      TCGA.P6.A5OF 13.133521  9.703077 11.350991 3.234090 15.343487 14.519134
+      TCGA.P6.A5OG  9.910341  9.623508 11.914483 0.000000  9.150764  7.146470
+      TCGA.PA.A5YG 14.119140  6.732288 11.346945 0.000000 15.789695  9.371089
+      TCGA.PK.A5H8 13.582475  8.203755 10.972979 0.000000 14.227478  9.042115
+      TCGA.PK.A5H9 15.939444 12.006679 12.254307 0.000000 11.002386 10.030718
+      TCGA.PK.A5HA 12.080080  7.115456 10.980197 0.000000 11.832321  7.266418
+      TCGA.PK.A5HB 13.295710  5.816250 12.380650 3.978107 15.408468  8.263268
+                       ABCB5     ABCB6    ABCB7    ABCB8     ABCB9   ABCC10   ABCC11
+      TCGA.OR.A5J1  6.390010 14.354626 11.16341 13.36531 11.062678 13.18279 5.310001
+      TCGA.OR.A5J2  4.253292 12.316700 12.53668 14.00063 11.162059 13.10353 4.560011
+      TCGA.OR.A5J3  5.677428 13.162186 12.18670 14.39685 11.504670 12.60468 5.677428
+      TCGA.OR.A5J5  2.950960 13.007555 10.65895 14.54361 12.550693 12.89984 5.944711
+      TCGA.OR.A5J6  0.000000 13.019513 11.44349 13.20023 11.218326 14.08268 6.288760
+      TCGA.OR.A5J7  4.169492 15.306360 11.53664 14.04238 11.169780 13.39775 5.128837
+      TCGA.OR.A5J8  9.068456 13.404025 11.10375 13.40517 12.611646 12.61463 4.192703
+      TCGA.OR.A5J9  2.217182 13.450576 11.37617 14.77120 12.510134 12.66247 5.485366
+      TCGA.OR.A5JA 13.338545 12.786022 12.20374 14.15396 12.370020 13.61801 4.407344
+      TCGA.OR.A5JB  0.000000 13.459265 12.37104 13.77330 10.662253 12.58437 3.755534
+      TCGA.OR.A5JC  0.000000 12.151896 12.06971 13.56889 12.560903 13.84879 4.819880
+      TCGA.OR.A5JD 10.752213 12.761234 12.23814 14.24610 11.472295 11.82493 5.374759
+      TCGA.OR.A5JE  3.717820 14.641385 11.07206 13.21404 12.101961 13.39019 5.444649
+      TCGA.OR.A5JF  4.223236 12.500771 11.90711 15.49967 12.162086 11.92296 5.658133
+      TCGA.OR.A5JG 11.625661 13.014036 11.86640 15.29377 12.396447 11.58541 6.718779
+      TCGA.OR.A5JI  3.284588 12.717305 11.04792 13.46278 10.721688 12.42555 6.148853
+      TCGA.OR.A5JJ  4.194869 13.405740 11.99686 14.49601 12.050839 11.79199 4.968061
+      TCGA.OR.A5JK  0.000000 12.605555 11.55811 14.18580 11.578165 12.65550 3.239327
+      TCGA.OR.A5JL  5.187265 13.205561 12.84621 14.10752 12.443016 13.54051 4.621966
+      TCGA.OR.A5JM  0.000000 14.020264 10.77547 13.61165 11.182694 13.81500 6.224221
+      TCGA.OR.A5JO  2.701884 12.555456 12.01031 12.88129  9.662592 11.89406 3.586527
+      TCGA.OR.A5JP  0.000000 14.459095 11.29912 14.32132 12.333919 12.93030 4.888659
+      TCGA.OR.A5JQ  7.475334 12.764151 11.87393 13.87930 13.388340 12.53960 5.793021
+      TCGA.OR.A5JR  5.967185 11.635554 12.74397 14.33740 11.808527 12.75686 5.967185
+      TCGA.OR.A5JS  2.285091 13.527574 11.82918 13.65436 11.322875 12.71972 6.063009
+      TCGA.OR.A5JT  4.027366 12.229452 12.28655 13.96175 12.572924 12.54363 5.552106
+      TCGA.OR.A5JV 11.897505 11.514823 12.97852 14.21178 11.284968 11.92974 4.804040
+      TCGA.OR.A5JW  0.000000 12.030417 12.60587 14.59261 10.971759 13.55095 3.403456
+      TCGA.OR.A5JX  0.000000 12.694482 11.70971 13.62244 11.679534 13.10871 6.135987
+      TCGA.OR.A5JY  5.612051 13.228417 12.22929 13.59917 11.676503 13.51783 5.612051
+      TCGA.OR.A5JZ  3.034617 11.664279 12.50531 12.80995 12.243753 12.16005 5.464854
+      TCGA.OR.A5K0  0.000000 12.408837 11.02674 13.56623 12.298382 12.84902 2.767373
+      TCGA.OR.A5K1  0.000000 11.197901 12.11048 14.35490 12.404003 12.50566 4.186048
+      TCGA.OR.A5K2  4.958444 14.771384 12.19390 14.51867 11.802455 13.78175 4.396498
+      TCGA.OR.A5K3 15.653624 12.870073 12.26388 14.70982 11.734388 12.59057 4.831354
+      TCGA.OR.A5K4  6.951618 11.887495 12.90011 13.38796 12.520608 12.12015 6.222402
+      TCGA.OR.A5K5  3.431808 14.003698 11.32550 14.04774 12.329341 13.01791 4.671207
+      TCGA.OR.A5K6  0.000000 12.689841 12.05414 12.62457 10.623996 12.67288 2.703638
+      TCGA.OR.A5K8  6.824704 13.076195 11.65606 14.54959 11.154946 12.75297 0.000000
+      TCGA.OR.A5K9  0.000000 14.398879 11.79613 13.80861 11.370774 13.38157 2.701205
+      TCGA.OR.A5KO  3.559951 12.056345 12.41965 13.61711  9.995781 13.74000 4.497453
+      TCGA.OR.A5KT  7.390686 12.986521 11.67442 13.42144 10.495272 12.37436 6.122808
+      TCGA.OR.A5KU  0.000000 13.326028 12.13852 13.42123 12.982557 11.95605 3.208031
+      TCGA.OR.A5KV  0.000000 13.505430 12.05632 13.63450 12.748733 13.08323 5.880996
+      TCGA.OR.A5KW  6.233099 13.376899 12.05865 14.00829 13.226888 12.25343 5.544596
+      TCGA.OR.A5KX  0.000000 13.841378 11.09573 12.96127 11.963482 13.65584 2.727575
+      TCGA.OR.A5KY  6.365717 14.209968 11.39062 14.88560 11.984291 12.94325 5.030380
+      TCGA.OR.A5KZ  0.000000 13.355053 12.25222 13.55590 11.966322 13.44245 5.374245
+      TCGA.OR.A5L3  3.666258 14.184597 11.22798 14.19363 10.491412 13.08916 4.608290
+      TCGA.OR.A5L4  0.000000 10.955453 13.36303 14.18439 11.199009 13.32670 4.077057
+      TCGA.OR.A5L5  5.112189 12.364757 12.20460 13.50253 12.479507 12.32281 4.547933
+      TCGA.OR.A5L6  0.000000 12.349859 10.99718 13.85162 11.545081 13.13248 0.000000
+      TCGA.OR.A5L8  0.000000 12.152036 12.57158 13.77507 12.070132 12.63650 4.344935
+      TCGA.OR.A5L9  0.000000 13.323317 10.62008 13.54773 11.913266 12.53557 0.000000
+      TCGA.OR.A5LA  0.000000 12.842753 11.44664 14.80831 12.486587 11.77355 3.440837
+      TCGA.OR.A5LB  2.546656 13.317637 12.79174 14.30105 11.245098 12.00411 3.417592
+      TCGA.OR.A5LC  0.000000 13.266026 11.86075 14.34997 11.992331 12.26511 3.953793
+      TCGA.OR.A5LD  0.000000 14.439935 10.32267 13.53569 13.018885 13.56511 5.271908
+      TCGA.OR.A5LE  3.994185 14.155204 12.36448 14.03134 10.956695 12.96561 5.517493
+      TCGA.OR.A5LG  0.000000 13.889371 12.11872 14.06538 10.374281 13.90868 0.000000
+      TCGA.OR.A5LH  5.163172 12.705636 12.67330 14.50637 11.833539 12.58200 5.328617
+      TCGA.OR.A5LJ  8.515668 13.415534 12.74970 14.23608  9.937219 12.48313 4.973427
+      TCGA.OR.A5LK 14.162017 10.790701 12.26411 13.93211 12.540151 12.79373 5.200313
+      TCGA.OR.A5LL  0.000000 14.344473 12.48035 14.07746  9.847454 12.61577 4.731324
+      TCGA.OR.A5LM  2.821790 12.553314 11.85011 14.03494 14.242109 12.67749 4.970484
+      TCGA.OR.A5LN  3.826622 12.930816 11.71596 14.07881  9.872465 13.49444 3.826622
+      TCGA.OR.A5LO  0.000000 13.595839 13.39267 13.74732 10.862066 12.75085 6.050335
+      TCGA.OR.A5LP  6.039047 12.021787 12.31123 14.56723 11.784649 12.43111 5.722594
+      TCGA.OR.A5LR  0.000000 11.549453 12.31406 12.65862 12.314060 12.52420 5.143298
+      TCGA.OR.A5LS  0.000000 10.345342 12.12688 14.24969 11.075811 12.28476 7.632076
+      TCGA.OR.A5LT 10.215907 13.652211 11.27668 13.02670 13.156176 12.70816 4.745926
+      TCGA.OU.A5PI  5.397564 13.109364 12.16875 14.53898 11.249651 11.86202 4.925762
+      TCGA.P6.A5OF  4.927546 13.301551 12.04100 14.50824 11.525749 13.19626 4.460958
+      TCGA.P6.A5OG  4.611545 12.510379 12.42315 12.84335 10.734034 12.83596 0.000000
+      TCGA.PA.A5YG  9.898969 12.252928 13.06361 14.52571 11.310848 12.30056 3.667026
+      TCGA.PK.A5H8  0.000000 11.191059 12.53272 14.10750 11.932830 13.78532 6.115477
+      TCGA.PK.A5H9  4.132198 10.811169 12.36788 12.66829 10.952698 12.93092 4.943158
+      TCGA.PK.A5HA  6.177552  9.429036 12.75548 13.62578 10.874457 12.80257 4.419185
+      TCGA.PK.A5HB  5.244033 12.649451 12.69833 13.40820 11.010929 13.25980 5.907759
+                     ABCC12   ABCC13    ABCC1     ABCC2    ABCC3     ABCC4    ABCC5
+      TCGA.OR.A5J1 0.000000 0.000000 13.38556  5.498093 12.93258 10.962392 13.76798
+      TCGA.OR.A5J2 0.000000 0.000000 14.54415  5.663762 13.60144 11.195793 14.06137
+      TCGA.OR.A5J3 0.000000 0.000000 14.49347  7.394524 16.02438  9.599835 13.59679
+      TCGA.OR.A5J5 0.000000 0.000000 14.39284 10.507050 16.17155  7.566158 13.92744
+      TCGA.OR.A5J6 0.000000 0.000000 14.51546  6.387065 11.37327  9.552219 12.83154
+      TCGA.OR.A5J7 0.000000 3.780934 13.90008  8.466129 15.31841  9.176962 14.79700
+      TCGA.OR.A5J8 4.498766 2.411864 13.91902  8.574790 10.64385 11.137350 13.16836
+      TCGA.OR.A5J9 0.000000 0.000000 14.62278  6.278853 11.72469  9.951441 13.33711
+      TCGA.OR.A5JA 0.000000 0.000000 14.78561  4.969464 14.62950 10.473143 13.29495
+      TCGA.OR.A5JB 0.000000 2.858583 14.85101  6.827241 14.52267 10.472119 13.88484
+      TCGA.OR.A5JC 0.000000 0.000000 14.62319 11.063169 13.14849 10.260904 13.19639
+      TCGA.OR.A5JD 0.000000 0.000000 13.72769  7.860357 14.56672  8.875133 13.12483
+      TCGA.OR.A5JE 0.000000 0.000000 12.73199  5.227767 14.98699  8.796853 13.37788
+      TCGA.OR.A5JF 0.000000 2.181267 14.68887  8.365461 15.59921  9.962919 13.24256
+      TCGA.OR.A5JG 0.000000 0.000000 14.38456  6.550565 16.78814 10.304418 12.65296
+      TCGA.OR.A5JI 0.000000 0.000000 13.34040  8.302877 14.11927  9.239290 11.69867
+      TCGA.OR.A5JJ 0.000000 2.413724 13.81657  6.220797 11.38119 10.859471 13.36784
+      TCGA.OR.A5JK 0.000000 0.000000 14.22322  7.088487 11.23832  8.127409 13.23408
+      TCGA.OR.A5JL 3.679398 0.000000 12.98720  7.411951 13.34529 10.474060 12.98229
+      TCGA.OR.A5JM 0.000000 0.000000 13.16857  7.460933 14.15141  9.435697 13.80434
+      TCGA.OR.A5JO 0.000000 0.000000 14.01437  9.550526 13.64302 11.243093 12.67203
+      TCGA.OR.A5JP 2.528708 5.104078 13.97149  6.910057 15.32733  8.166076 11.77224
+      TCGA.OR.A5JQ 0.000000 0.000000 13.91703  5.535181 14.19973  9.783352 12.67488
+      TCGA.OR.A5JR 0.000000 0.000000 14.44849  5.967185 12.91279 10.583918 13.10229
+      TCGA.OR.A5JS 0.000000 2.285091 14.48744  6.965396 14.75395  9.054553 14.20329
+      TCGA.OR.A5JT 0.000000 0.000000 14.43763  5.198295 11.58039 10.632780 11.99531
+      TCGA.OR.A5JV 0.000000 4.101098 14.41792  6.834535 10.85656 12.020455 14.24097
+      TCGA.OR.A5JW 0.000000 0.000000 14.23041  9.824069 16.20332  9.628380 13.46371
+      TCGA.OR.A5JX 0.000000 0.000000 14.11089  9.424855 14.16471  8.986070 13.72350
+      TCGA.OR.A5JY 0.000000 2.533807 15.24068 10.872115 15.25612  4.894618 13.67828
+      TCGA.OR.A5JZ 0.000000 0.000000 14.48942  6.767048 14.08653 11.160364 11.61549
+      TCGA.OR.A5K0 4.599001 0.000000 14.12278  4.203671 14.08615  8.586360 13.53621
+      TCGA.OR.A5K1 0.000000 0.000000 14.56197  4.186048 12.95802 10.315115 12.59662
+      TCGA.OR.A5K2 0.000000 0.000000 14.42112  0.000000 14.72672  8.914273 13.47492
+      TCGA.OR.A5K3 0.000000 0.000000 14.40737  5.805791 10.28872  8.484242 12.38366
+      TCGA.OR.A5K4 0.000000 0.000000 15.31195  8.665938 11.98467 10.899514 12.13006
+      TCGA.OR.A5K5 0.000000 3.431808 14.37639  4.671207 12.74396  7.344810 14.18451
+      TCGA.OR.A5K6 0.000000 0.000000 12.74187  5.307464 16.71884 10.758664 13.31354
+      TCGA.OR.A5K8 0.000000 0.000000 14.17582  8.179476 14.94932 10.071996 13.20194
+      TCGA.OR.A5K9 0.000000 0.000000 14.20860  7.512652 15.77622 11.835770 13.59295
+      TCGA.OR.A5KO 0.000000 0.000000 13.94298  7.992390 16.32914  8.974155 14.97617
+      TCGA.OR.A5KT 0.000000 3.434609 13.78254  4.366303 16.11620 10.226542 12.53325
+      TCGA.OR.A5KU 3.208031 3.208031 14.58975  8.570162 11.68348  8.295326 13.35469
+      TCGA.OR.A5KV 0.000000 2.361221 13.81309  3.745684 13.92287  8.780157 13.05053
+      TCGA.OR.A5KW 4.180175 0.000000 15.01274  6.119219 14.47523 10.569583 13.76375
+      TCGA.OR.A5KX 2.727575 0.000000 14.86816  6.507392 15.74207 11.042877 12.84369
+      TCGA.OR.A5KY 0.000000 2.466198 13.96373  5.531648 16.07227  9.764812 13.77402
+      TCGA.OR.A5KZ 0.000000 0.000000 14.51277  4.806570 10.87896 11.990442 12.75569
+      TCGA.OR.A5L3 0.000000 0.000000 12.97224  6.153271 16.42212  5.173400 13.74029
+      TCGA.OR.A5L4 0.000000 0.000000 14.92526  4.077057 14.43557 10.744670 12.73735
+      TCGA.OR.A5L5 0.000000 0.000000 13.61365  7.249302 14.46938  9.626279 12.78546
+      TCGA.OR.A5L6 0.000000 0.000000 14.26538 11.396811 15.92425  8.859651 13.23366
+      TCGA.OR.A5L8 0.000000 0.000000 12.87688  6.927889 15.29852  9.586896 14.36430
+      TCGA.OR.A5L9 0.000000 0.000000 15.17280  5.693123 12.78411  9.252295 12.98707
+      TCGA.OR.A5LA 0.000000 0.000000 13.93818  0.000000 14.35817  9.902881 12.79352
+      TCGA.OR.A5LB 0.000000 0.000000 14.29828  7.192624 15.35536  8.705561 13.68852
+      TCGA.OR.A5LC 0.000000 0.000000 13.81982  7.450783 13.59238 12.170746 14.13201
+      TCGA.OR.A5LD 0.000000 0.000000 15.45207  4.308773 14.24258  7.052342 12.52434
+      TCGA.OR.A5LE 3.081990 0.000000 14.19021  6.501659  9.24292 11.310646 13.75722
+      TCGA.OR.A5LG 0.000000 0.000000 13.44386  5.893056 16.12704  7.080903 13.83157
+      TCGA.OR.A5LH 0.000000 3.813726 13.42454  6.387599 13.89392 10.226829 13.33558
+      TCGA.OR.A5LJ 0.000000 2.824401 13.65411  8.390495 14.52487 12.182569 15.23559
+      TCGA.OR.A5LK 0.000000 0.000000 12.84021  7.627277 12.13240 10.501376 13.81348
+      TCGA.OR.A5LL 0.000000 0.000000 14.86336  8.352807 16.19008  6.776644 13.71430
+      TCGA.OR.A5LM 0.000000 0.000000 13.99688  6.784858 13.89765 10.574280 13.07363
+      TCGA.OR.A5LN 0.000000 0.000000 12.10521  9.149985 14.87920  9.338119 12.68429
+      TCGA.OR.A5LO 0.000000 0.000000 14.24158  7.972754 14.25248 11.062498 14.58017
+      TCGA.OR.A5LP 0.000000 0.000000 14.36868  7.289226 14.76272 10.688351 12.28651
+      TCGA.OR.A5LR 0.000000 3.260841 14.96960  5.714589 14.33917 10.495205 12.53049
+      TCGA.OR.A5LS 2.964580 0.000000 13.81130  8.747444 14.77668  8.998446 14.76121
+      TCGA.OR.A5LT 3.264676 0.000000 13.45944  8.916513 11.15120  9.583784 12.63973
+      TCGA.OU.A5PI 0.000000 3.673331 13.58980  7.089763 15.08260  9.776386 14.28484
+      TCGA.P6.A5OF 0.000000 2.379804 13.97068  8.324424 15.30310 11.776304 14.14955
+      TCGA.P6.A5OG 7.662763 3.913395 13.00020  6.885471 10.03809 11.576347 13.92686
+      TCGA.PA.A5YG 0.000000 2.776354 14.33180  6.732288 14.84168 10.889340 14.05264
+      TCGA.PK.A5H8 0.000000 0.000000 14.91761  7.305301 11.33920 10.612715 13.49467
+      TCGA.PK.A5H9 0.000000 0.000000 15.63726 12.579883 13.73374 11.403810 12.56579
+      TCGA.PK.A5HA 0.000000 0.000000 13.54931  7.403069 13.84758  9.618749 12.94463
+      TCGA.PK.A5HB 0.000000 0.000000 15.80027  9.198866 14.59633 11.164925 12.45174
+                     ABCC6P1   ABCC6P2     ABCC6    ABCC8     ABCC9    ABCD1
+      TCGA.OR.A5J1  4.135301  8.960565  7.120078 0.000000  7.682308 14.59933
+      TCGA.OR.A5J2  4.560011  7.767187  7.796800 0.000000 11.470716 14.25081
+      TCGA.OR.A5J3  4.542317  6.085401  6.813842 2.717043 13.458587 13.89961
+      TCGA.OR.A5J5  9.481111 10.228108 10.019348 4.803771  9.560438 14.74664
+      TCGA.OR.A5J6  7.717631  9.795374 12.631732 0.000000  9.873762 14.21152
+      TCGA.OR.A5J7  6.956647 11.196144 10.862566 0.000000  9.548364 13.91761
+      TCGA.OR.A5J8  8.139065  8.401246  9.497272 2.411864 10.236887 11.91446
+      TCGA.OR.A5J9  8.691507  8.958201  9.528001 2.217182  9.752151 13.94240
+      TCGA.OR.A5JA  3.473778  4.969464  7.702198 2.598119 10.350035 14.54080
+      TCGA.OR.A5JB  7.972239  9.441047 10.774661 2.858583  8.857122 13.25203
+      TCGA.OR.A5JC  2.965514  8.793497  9.428181 3.870076  9.524722 14.91067
+      TCGA.OR.A5JD  7.494427  8.580376 10.281560 6.014136 10.604597 14.10167
+      TCGA.OR.A5JE  5.444649  9.988906  8.132494 0.000000  8.776999 14.48381
+      TCGA.OR.A5JF  3.012754  7.850554  8.632915 0.000000 14.270369 14.25480
+      TCGA.OR.A5JG  0.000000  5.732412  6.360117 0.000000  9.344668 14.27916
+      TCGA.OR.A5JI  9.950014 11.754503 11.521185 0.000000 11.567643 14.90444
+      TCGA.OR.A5JJ  6.521963  9.508161  9.059082 0.000000  9.082309 14.11112
+      TCGA.OR.A5JK  0.000000  9.539219  7.990422 0.000000  9.587518 14.70270
+      TCGA.OR.A5JL  2.303709  8.339204 10.923377 4.066005 10.525064 14.75491
+      TCGA.OR.A5JM  7.569958  9.077831  9.885800 0.000000 11.827243 15.53518
+      TCGA.OR.A5JO 10.495561  9.748219 12.973070 5.089119 10.134847 12.98488
+      TCGA.OR.A5JP  7.171090 10.043425  9.267724 2.528708 10.754835 14.92773
+      TCGA.OR.A5JQ  8.644842  9.403102  9.618266 3.332621 11.342228 14.65506
+      TCGA.OR.A5JR  8.991170  8.221797 10.686281 0.000000  9.256155 15.77289
+      TCGA.OR.A5JS  8.601380 10.031999 11.651221 0.000000  9.850187 14.26477
+      TCGA.OR.A5JT  5.836011  7.404038 10.879344 2.609314  9.899506 16.44536
+      TCGA.OR.A5JV  4.804040  7.246409  7.646194 0.000000  9.806173 15.21522
+      TCGA.OR.A5JW  3.403456  4.894534  6.666821 0.000000 10.618704 14.22717
+      TCGA.OR.A5JX  5.412634  7.387005  6.714096 0.000000 10.080133 13.74770
+      TCGA.OR.A5JY  5.983740  6.446878  9.328655 0.000000 13.270994 16.09787
+      TCGA.OR.A5JZ  7.711730  5.871702  5.682572 0.000000 10.971690 15.62783
+      TCGA.OR.A5K0  5.380614  8.711578 10.481731 0.000000  5.163982 14.87281
+      TCGA.OR.A5K1  7.811406  9.215482 11.921885 0.000000 10.214268 14.72205
+      TCGA.OR.A5K2  3.463422 10.069128  8.687373 0.000000  9.259411 15.90164
+      TCGA.OR.A5K3  5.399325  8.952608  8.590869 0.000000  9.030457 14.43447
+      TCGA.OR.A5K4  4.279233  7.433711  7.794426 0.000000  9.220321 16.51187
+      TCGA.OR.A5K5  8.652655 10.217538 10.492188 6.217917 11.421322 14.09895
+      TCGA.OR.A5K6  7.640385  8.554516  9.220518 0.000000  9.552596 14.21901
+      TCGA.OR.A5K8  4.091761  4.091761  7.184444 0.000000 10.590464 14.97472
+      TCGA.OR.A5K9  7.468505  8.939012 10.538122 0.000000 10.119844 14.59289
+      TCGA.OR.A5KO  9.267357 10.161305 11.287570 2.677367  8.367237 15.21044
+      TCGA.OR.A5KT  0.000000  5.330897  8.508022 3.434609 11.121796 14.95954
+      TCGA.OR.A5KU  6.232046  8.601108  4.684968 3.208031  9.877224 14.08932
+      TCGA.OR.A5KV  6.070578  7.516285  8.141532 5.539734  9.318000 14.52170
+      TCGA.OR.A5KW  0.000000  2.746194  5.995573 5.139825  9.974218 14.79533
+      TCGA.OR.A5KX  4.554199  5.838804  7.628040 0.000000 10.008547 13.72577
+      TCGA.OR.A5KY  5.531648  5.666314  6.585608 3.329369 10.173794 14.15912
+      TCGA.OR.A5KZ  3.857223  8.801704  9.199473 0.000000 11.934351 13.01869
+      TCGA.OR.A5L3  6.372765  7.946075  9.408001 0.000000  8.596022 15.40902
+      TCGA.OR.A5L4  3.160099  7.750544  8.607355 0.000000 12.643803 15.44276
+      TCGA.OR.A5L5 10.093552  9.011261 11.642699 6.091181 11.028623 14.27124
+      TCGA.OR.A5L6  6.920965  9.495972 10.009945 0.000000 11.774492 14.26034
+      TCGA.OR.A5L8  6.745079  8.633325 10.118923 4.652594  9.251784 12.89529
+      TCGA.OR.A5L9  6.679113  9.367590 11.642696 0.000000 11.365951 16.95038
+      TCGA.OR.A5LA  0.000000  7.013113 10.659904 0.000000 10.531254 15.22594
+      TCGA.OR.A5LB  5.762100  7.041716  6.462218 5.999012  9.407246 14.65527
+      TCGA.OR.A5LC  0.000000  8.668455  7.115916 0.000000 10.097273 14.55848
+      TCGA.OR.A5LD  0.000000  9.365548  6.831760 4.308773  8.991801 14.56057
+      TCGA.OR.A5LE  0.000000  8.153689  7.158747 0.000000 10.669757 14.70245
+      TCGA.OR.A5LG  0.000000  5.388850  6.730223 0.000000  8.739848 14.28439
+      TCGA.OR.A5LH  6.991699  8.769503 10.904449 0.000000  9.019936 15.21364
+      TCGA.OR.A5LJ  8.539450  9.115229  8.982724 4.973427 13.408287 14.52487
+      TCGA.OR.A5LK  7.339391 10.044540 10.290965 0.000000  9.805999 15.84530
+      TCGA.OR.A5LL  3.784640  7.328820  9.857427 2.885701 10.061018 14.24542
+      TCGA.OR.A5LM  5.442703  8.098914 10.556944 2.821790 11.037105 14.54143
+      TCGA.OR.A5LN  6.734788  9.629891 10.477078 0.000000 12.233231 15.03524
+      TCGA.OR.A5LO  4.114208  6.050335  6.164137 8.786559 10.022255 13.37357
+      TCGA.OR.A5LP  6.217036  7.609308  9.666413 3.268152 11.701068 14.73741
+      TCGA.OR.A5LR  9.332946  8.276473 10.997412 0.000000  9.688600 16.10981
+      TCGA.OR.A5LS  8.325896 10.267820  9.897600 2.964580  9.576050 13.82219
+      TCGA.OR.A5LT  7.203454 10.050045  8.837248 0.000000 10.455925 14.12306
+      TCGA.OU.A5PI  3.673331  6.570828  8.232800 7.987532 10.311594 13.59323
+      TCGA.P6.A5OF  4.713033  5.427827  6.729505 0.000000 11.735970 14.59806
+      TCGA.P6.A5OG  4.304295  6.058525  6.058525 2.508241 12.698202 11.90569
+      TCGA.PA.A5YG  0.000000  6.650623  9.445617 2.776354 12.914145 13.77524
+      TCGA.PK.A5H8  8.798201 10.305111 13.115937 0.000000 10.431845 15.83550
+      TCGA.PK.A5H9 13.760117 12.315492 15.725056 2.928685  9.663975 14.51780
+      TCGA.PK.A5HA  9.259373  9.418326 10.826654 0.000000 10.822598 14.65111
+      TCGA.PK.A5HB  3.066866  4.931591  6.850280 0.000000 12.856700 15.09728
+                       ABCD2    ABCD3    ABCD4    ABCE1    ABCF1    ABCF2    ABCF3
+      TCGA.OR.A5J1 10.601169 13.01385 13.01095 13.94972 13.79963 13.45888 16.63278
+      TCGA.OR.A5J2 13.006278 13.03529 11.87120 13.71969 14.18934 14.12367 15.19087
+      TCGA.OR.A5J3  8.156524 13.25150 13.24737 13.13204 13.45429 14.52041 14.48015
+      TCGA.OR.A5J5  6.851184 12.10244 13.51948 12.94857 12.43267 13.97164 15.49960
+      TCGA.OR.A5J6  8.325319 13.84285 12.14790 13.33488 14.42181 13.39075 13.99333
+      TCGA.OR.A5J7  6.906436 12.85207 12.59701 13.09630 14.76169 13.66596 15.29375
+      TCGA.OR.A5J8  7.872626 12.99439 13.02538 13.60604 14.53921 14.26425 13.83874
+      TCGA.OR.A5J9 11.256442 12.67460 12.21576 14.00555 14.00395 14.15418 15.75803
+      TCGA.OR.A5JA  6.810048 12.94336 13.28986 13.56904 14.61388 14.00845 15.33421
+      TCGA.OR.A5JB  6.827241 13.72880 13.50654 13.93927 14.51998 14.55638 14.79213
+      TCGA.OR.A5JC  7.582774 12.89089 12.61359 13.46497 14.00457 13.60404 16.45297
+      TCGA.OR.A5JD 10.198772 13.10507 11.50998 13.74177 13.18521 13.90571 15.15773
+      TCGA.OR.A5JE  7.137625 13.22232 12.84477 13.24869 14.76843 13.04274 15.69491
+      TCGA.OR.A5JF 11.252965 12.65898 11.69426 14.06667 13.32141 14.10769 14.58478
+      TCGA.OR.A5JG  8.647219 13.93713 12.99060 14.04693 13.94775 14.48352 15.15352
+      TCGA.OR.A5JI  9.153280 12.12870 12.20015 13.57454 13.33431 13.37288 15.67361
+      TCGA.OR.A5JJ 10.975664 12.81363 13.34702 13.25100 13.44491 14.21394 14.36037
+      TCGA.OR.A5JK 10.218610 12.13886 11.94240 13.74949 13.52712 14.29709 15.19228
+      TCGA.OR.A5JL 10.716141 12.94027 13.56086 13.66948 14.61840 13.99269 14.75799
+      TCGA.OR.A5JM 10.798061 13.73969 11.58030 13.53975 14.57853 13.39599 14.44326
+      TCGA.OR.A5JO  7.376736 13.14166 13.35988 13.14692 14.09285 13.29100 13.86318
+      TCGA.OR.A5JP  7.619064 14.61835 12.41681 14.34334 13.99487 13.83781 14.78461
+      TCGA.OR.A5JQ 10.254445 12.92598 11.79508 13.94178 13.82801 14.08689 15.74966
+      TCGA.OR.A5JR 10.128450 13.69392 12.09909 13.90113 13.88459 14.24208 15.82546
+      TCGA.OR.A5JS  9.223008 12.58794 12.30613 13.24051 14.04367 13.92544 14.66510
+      TCGA.OR.A5JT 11.365668 13.81472 12.06911 13.81472 13.93991 14.36763 14.76874
+      TCGA.OR.A5JV 10.067491 13.19620 11.58228 13.99328 14.15070 14.35922 15.21767
+      TCGA.OR.A5JW 11.564491 13.47953 12.78889 13.91452 14.48821 14.12101 14.58391
+      TCGA.OR.A5JX  8.703753 12.80901 12.56017 13.37756 13.58468 14.27628 16.56108
+      TCGA.OR.A5JY 12.055075 15.08214 12.27044 13.47294 14.72134 14.45606 14.66950
+      TCGA.OR.A5JZ  8.310833 13.49982 12.13026 12.96207 13.76805 13.50251 15.62270
+      TCGA.OR.A5K0 10.510740 12.57049 12.78752 13.32951 14.84546 14.22697 14.11099
+      TCGA.OR.A5K1  8.662682 12.82240 12.12444 12.91529 13.93593 14.29689 15.28913
+      TCGA.OR.A5K2  6.923216 13.47110 12.84221 13.10620 13.93004 13.53223 16.21793
+      TCGA.OR.A5K3  9.588997 13.03261 12.14641 13.11309 13.41652 14.05598 15.44336
+      TCGA.OR.A5K4  9.738618 13.27456 11.96264 13.74738 13.89188 13.35029 15.19640
+      TCGA.OR.A5K5  8.296110 12.62825 12.36057 13.23564 14.99654 13.96580 14.83096
+      TCGA.OR.A5K6  9.109681 13.01413 12.99866 13.76195 13.90728 12.74767 15.00894
+      TCGA.OR.A5K8  8.652013 12.98202 12.19470 13.97476 12.89654 14.05586 14.69112
+      TCGA.OR.A5K9 11.505226 13.77162 12.15588 14.49829 14.58452 14.10427 14.18833
+      TCGA.OR.A5KO  6.535227 13.12054 13.37477 14.15074 14.38202 13.74171 15.24855
+      TCGA.OR.A5KT  5.903862 13.33091 13.15894 13.15274 13.44701 13.42015 15.15883
+      TCGA.OR.A5KU 11.037839 12.90717 11.68348 14.09749 13.87262 14.00289 14.89694
+      TCGA.OR.A5KV  7.670759 13.46429 11.69144 13.73424 13.96977 14.08624 15.46538
+      TCGA.OR.A5KW  9.188252 13.15104 12.35440 13.33686 13.78900 14.72133 15.03278
+      TCGA.OR.A5KX  8.051483 13.06999 13.65709 13.11823 13.80386 13.30617 14.99034
+      TCGA.OR.A5KY  9.772298 13.31852 12.54257 13.65150 13.38106 13.83069 15.56030
+      TCGA.OR.A5KZ  9.864146 13.07504 12.63847 14.66290 14.99729 13.99793 14.87306
+      TCGA.OR.A5L3 10.394457 13.32282 12.46999 13.35378 13.60058 13.43829 15.11209
+      TCGA.OR.A5L4  5.603878 12.94623 12.41966 13.69036 14.60325 14.42520 15.63034
+      TCGA.OR.A5L5 11.009163 13.17941 12.44371 13.09517 13.43559 13.60201 15.25002
+      TCGA.OR.A5L6  9.961084 11.71679 12.44176 13.03552 13.17595 13.19457 16.13854
+      TCGA.OR.A5L8 12.882428 13.56917 12.29895 13.83400 13.66671 14.36165 15.89330
+      TCGA.OR.A5L9  8.838046 12.32346 12.02286 12.53557 12.87461 12.64247 15.55830
+      TCGA.OR.A5LA 10.135633 12.31576 12.79951 13.45514 13.44497 14.39362 15.20500
+      TCGA.OR.A5LB 10.025415 12.93602 13.30734 14.13273 13.09698 14.12102 14.84693
+      TCGA.OR.A5LC  9.587347 12.20215 12.14789 13.30684 13.29856 13.91496 14.92872
+      TCGA.OR.A5LD  9.963443 13.13208 13.51265 13.24545 14.01060 13.35575 15.41340
+      TCGA.OR.A5LE 11.912289 14.10900 12.45361 14.47250 13.62617 13.96552 14.15166
+      TCGA.OR.A5LG  4.607091 13.25846 13.44915 14.01739 14.16740 14.19822 15.61209
+      TCGA.OR.A5LH 10.288398 13.38926 12.53832 13.69893 13.74037 14.22340 15.24455
+      TCGA.OR.A5LJ  9.307548 12.98330 12.46927 13.94644 13.24432 14.20946 14.69863
+      TCGA.OR.A5LK  9.292116 12.73439 12.36048 13.43678 13.68812 14.06299 15.23002
+      TCGA.OR.A5LL  9.548255 12.01393 11.99599 14.21131 14.29304 13.68240 13.90908
+      TCGA.OR.A5LM 10.126643 12.45847 12.35194 13.89421 13.85396 14.32595 16.53991
+      TCGA.OR.A5LN  9.504526 12.77667 12.10952 14.03074 13.88995 13.82588 15.33224
+      TCGA.OR.A5LO  6.164137 12.43946 13.53632 13.64015 13.47285 13.39194 16.03217
+      TCGA.OR.A5LP 11.116322 13.18167 11.63406 13.16413 13.70867 14.48922 14.39204
+      TCGA.OR.A5LR 10.322184 13.04017 12.50515 12.75315 13.51140 13.49433 15.56058
+      TCGA.OR.A5LS 10.275763 13.53263 12.41273 12.91927 13.37519 13.97024 14.85564
+      TCGA.OR.A5LT  8.358499 13.66566 12.03725 13.55130 12.89099 12.96278 14.73831
+      TCGA.OU.A5PI 11.217955 12.93730 12.30740 14.06494 13.41757 14.30006 15.71909
+      TCGA.P6.A5OF 10.886532 12.98506 12.54898 13.48680 13.05871 13.73876 14.17863
+      TCGA.P6.A5OG  6.416277 12.88150 12.74330 14.50584 14.64252 14.42726 13.67345
+      TCGA.PA.A5YG 12.828538 13.29874 12.36599 13.33596 13.63432 14.46728 15.70642
+      TCGA.PK.A5H8  7.987737 13.08904 12.46110 13.26359 13.89745 14.19683 15.59698
+      TCGA.PK.A5H9  5.224113 14.80693 12.90379 13.12873 14.15269 12.87930 14.38227
+      TCGA.PK.A5HA  5.700076 12.22848 12.18333 12.32339 14.45937 13.84957 15.30145
+      TCGA.PK.A5HB  5.907759 14.18624 12.47904 13.20617 13.81362 14.08236 15.00008
+                       ABCG1     ABCG2    ABCG4    ABCG5    ABCG8   ABHD10   ABHD11
+      TCGA.OR.A5J1 11.960031  9.715458 4.135301 5.310001 0.000000 14.17627 12.60560
+      TCGA.OR.A5J2 13.216713 11.407340 6.005574 3.327025 4.560011 14.09825 12.69052
+      TCGA.OR.A5J3  9.855631 12.511326 5.961800 3.602941 0.000000 13.54053 13.56396
+      TCGA.OR.A5J5  9.338364  7.966404 6.229952 6.932952 5.588817 13.88312 13.14042
+      TCGA.OR.A5J6 10.406411 10.290534 8.769922 4.526816 5.307096 13.04515 11.77839
+      TCGA.OR.A5J7 10.350205 10.680341 8.762755 6.108072 3.780934 13.13701 12.83372
+      TCGA.OR.A5J8 13.596509 10.500583 6.519697 4.498766 0.000000 12.37394 12.00522
+      TCGA.OR.A5J9 13.300519 13.403729 4.517216 3.963416 0.000000 13.62158 12.47911
+      TCGA.OR.A5JA 10.919647  5.822848 4.715610 6.873619 0.000000 13.53872 13.62841
+      TCGA.OR.A5JB 15.082868  7.353841 6.468296 3.755534 2.858583 13.24369 12.79069
+      TCGA.OR.A5JC 13.789650 10.126717 3.870076 3.870076 0.000000 14.19107 12.80425
+      TCGA.OR.A5JD 11.091290 11.297652 8.291706 4.593249 0.000000 14.92779 13.81134
+      TCGA.OR.A5JE 13.305230  9.649972 5.633147 6.084629 0.000000 13.59754 12.09997
+      TCGA.OR.A5JF 12.601873 10.744604 5.847202 5.036488 0.000000 13.60011 13.26708
+      TCGA.OR.A5JG 10.243642  9.894161 3.654467 6.458482 0.000000 13.96668 12.86732
+      TCGA.OR.A5JI 15.754339 12.293571 5.169043 6.841451 0.000000 14.40979 12.61242
+      TCGA.OR.A5JJ 15.138175  9.677865 3.271569 5.468740 0.000000 13.18949 13.61033
+      TCGA.OR.A5JK 12.677980 10.198017 0.000000 3.239327 0.000000 14.22003 12.96067
+      TCGA.OR.A5JL 11.558869 11.179936 4.621966 4.835964 0.000000 13.74424 13.30151
+      TCGA.OR.A5JM 10.303968  9.510554 7.671320 6.678380 0.000000 13.38359 12.02372
+      TCGA.OR.A5JO 11.711867  8.856571 6.722790 5.944193 0.000000 13.13637 11.66126
+      TCGA.OR.A5JP 15.186961 10.454855 5.740820 8.303123 0.000000 13.70856 11.56297
+      TCGA.OR.A5JQ 13.139789 11.533227 6.446368 3.332621 2.469156 14.96730 13.06385
+      TCGA.OR.A5JR 11.783551 11.861201 4.990064 4.427622 0.000000 14.85463 13.73412
+      TCGA.OR.A5JS  9.999609  7.134038 7.009440 6.144272 2.285091 13.68735 13.01805
+      TCGA.OR.A5JT 15.034577 11.149397 6.073129 3.485976 0.000000 14.41051 13.93850
+      TCGA.OR.A5JV 13.143067 10.474929 6.255879 0.000000 0.000000 14.90606 13.25463
+      TCGA.OR.A5JW 14.332436 10.988864 3.403456 3.942240 0.000000 12.90698 12.79668
+      TCGA.OR.A5JX 10.943877  9.737603 5.412634 0.000000 3.893868 14.51669 12.11340
+      TCGA.OR.A5JY 10.192291  8.656218 4.641251 6.365389 0.000000 13.37550 12.37433
+      TCGA.OR.A5JZ 15.083504  9.356847 5.682572 3.034617 0.000000 14.05822 12.54058
+      TCGA.OR.A5K0  8.187022  7.674569 4.908973 2.767373 0.000000 13.20014 12.42873
+      TCGA.OR.A5K1 13.856170 12.082142 5.935649 4.186048 0.000000 14.24352 14.07974
+      TCGA.OR.A5K2 13.097971  7.504211 3.463422 5.676729 3.463422 13.84113 12.19390
+      TCGA.OR.A5K3 12.779973 10.335474 4.831354 0.000000 0.000000 15.19819 15.08359
+      TCGA.OR.A5K4 15.219100  8.598993 5.813791 4.986168 0.000000 14.69653 12.05919
+      TCGA.OR.A5K5 10.854535  6.119765 7.208193 4.924773 3.431808 13.95516 11.83880
+      TCGA.OR.A5K6 11.992995  6.934485 4.836537 4.132846 0.000000 13.94005 12.74882
+      TCGA.OR.A5K8 13.027107  9.591400 4.091761 5.048822 0.000000 13.91605 13.49855
+      TCGA.OR.A5K9 12.747103  7.512652 6.066980 6.865083 4.833762 13.38973 12.60777
+      TCGA.OR.A5KO 12.067272  9.189485 5.631450 5.060966 0.000000 13.30109 12.83213
+      TCGA.OR.A5KT 12.636901  9.341220 7.211259 7.211259 3.434609 13.80843 12.97250
+      TCGA.OR.A5KU 12.654048  6.518059 5.399322 5.656648 0.000000 13.60706 12.91489
+      TCGA.OR.A5KV 13.365369  9.250993 9.518525 7.188161 8.223710 14.58380 12.14071
+      TCGA.OR.A5KW 13.345589  9.762940 3.634465 5.995573 0.000000 13.83594 12.73152
+      TCGA.OR.A5KX 14.260944  7.988989 7.453895 5.334993 0.000000 14.32084 11.85159
+      TCGA.OR.A5KY 13.615537 10.622050 5.030380 5.217496 2.466198 13.82800 12.64602
+      TCGA.OR.A5KZ 12.414333 10.555932 6.232816 4.408615 0.000000 13.32312 12.36721
+      TCGA.OR.A5L3 13.539538  8.307344 7.802300 6.153271 0.000000 14.86422 13.76353
+      TCGA.OR.A5L4 11.134242  9.990361 5.033672 3.160099 3.160099 14.10472 13.75806
+      TCGA.OR.A5L5 14.315883 11.324667 5.112189 5.683180 2.722020 14.23484 12.45382
+      TCGA.OR.A5L6 13.014718 11.519999 5.143071 4.183332 0.000000 14.20895 13.15438
+      TCGA.OR.A5L8 14.823413 13.095667 4.652594 3.414237 2.543589 14.31181 12.70906
+      TCGA.OR.A5L9 13.995970  9.252295 6.679113 8.476376 0.000000 14.70941 13.56595
+      TCGA.OR.A5LA 16.295478 11.785685 7.479492 3.440837 0.000000 14.78129 14.74238
+      TCGA.OR.A5LB 12.966015 10.219562 5.885414 4.909615 0.000000 13.37137 12.59574
+      TCGA.OR.A5LC 12.269353  8.904957 5.882220 3.044016 0.000000 13.60166 13.08051
+      TCGA.OR.A5LD 11.609578 10.694379 5.844370 7.412495 4.308773 15.25925 14.86984
+      TCGA.OR.A5LE 11.424774  9.053152 4.548650 5.260744 0.000000 12.64069 11.97786
+      TCGA.OR.A5LG 10.411891 12.912061 5.172185 0.000000 0.000000 14.10992 13.05857
+      TCGA.OR.A5LH 12.893190 11.671601 7.801245 4.509058 0.000000 13.82461 14.56638
+      TCGA.OR.A5LJ 10.719428 10.360815 7.470966 2.824401 0.000000 14.22513 13.79969
+      TCGA.OR.A5LK 12.582830 12.031240 7.490503 5.200313 0.000000 14.94276 14.37734
+      TCGA.OR.A5LL 14.728923 11.086017 4.731324 2.885701 0.000000 12.65775 11.58632
+      TCGA.OR.A5LM 11.435201 11.090292 5.225828 5.442703 6.935552 14.33911 14.04171
+      TCGA.OR.A5LN 11.664137 11.476572 3.826622 7.315228 0.000000 14.49025 13.10936
+      TCGA.OR.A5LO 12.352106  8.176354 5.642536 4.114208 2.686918 13.94636 12.97889
+      TCGA.OR.A5LP 12.141034 11.434750 5.835968 0.000000 0.000000 13.47102 13.53276
+      TCGA.OR.A5LR 14.174769 10.634178 5.143298 6.700786 0.000000 14.17745 11.95088
+      TCGA.OR.A5LS 12.850478  9.651242 7.235839 4.818847 0.000000 14.68124 13.61006
+      TCGA.OR.A5LT 12.095184 10.834880 5.147459 6.126962 0.000000 14.69868 12.55762
+      TCGA.OU.A5PI 13.686251 13.566917 5.180864 0.000000 0.000000 14.30425 12.88331
+      TCGA.P6.A5OF 13.576926  9.906383 4.713033 4.155315 0.000000 13.45798 12.86579
+      TCGA.P6.A5OG 12.409535 10.125470 8.342337 2.508241 0.000000 13.06558 12.17219
+      TCGA.PA.A5YG 14.890018 12.926125 5.174211 0.000000 0.000000 14.03565 13.69604
+      TCGA.PK.A5H8 11.135174  8.449148 5.136136 2.969626 0.000000 13.87532 12.94395
+      TCGA.PK.A5H9 12.944304 11.952334 5.661242 4.779083 2.106710 14.19959 11.91452
+      TCGA.PK.A5HA 12.932453 10.334238 6.535686 3.485089 0.000000 13.65402 12.91351
+      TCGA.PK.A5HB 11.680005 10.179391 5.378072 6.850280 3.066866 13.03471 12.33810
+                     ABHD12B   ABHD12   ABHD13  ABHD14A  ABHD14B    ABHD15    ABHD1
+      TCGA.OR.A5J1  0.000000 14.43310 11.99364 12.51182 13.60356 11.477547 5.310001
+      TCGA.OR.A5J2  8.180568 13.34377 12.72943 13.05074 13.95047 10.869845 6.994302
+      TCGA.OR.A5J3  4.542317 13.12395 11.27403 13.31523 14.98017 11.283743 7.733755
+      TCGA.OR.A5J5  0.000000 13.52937 10.61628 13.61315 13.16284 10.990285 8.340591
+      TCGA.OR.A5J6  2.703318 14.14063 11.38224 12.16705 14.62402 11.553425 8.575145
+      TCGA.OR.A5J7  0.000000 14.01450 10.66154 12.97973 13.25770 10.702580 6.625255
+      TCGA.OR.A5J8  4.751125 14.92078 11.87683 12.36451 13.32967 12.479237 5.152707
+      TCGA.OR.A5J9  0.000000 13.63696 12.50108 13.37477 13.13009  9.823624 5.228758
+      TCGA.OR.A5JA  2.598119 13.25223 12.04713 12.01577 13.93259 11.562181 6.934507
+      TCGA.OR.A5JB  4.701111 14.08603 11.68117 12.74148 14.40908 11.633693 7.935860
+      TCGA.OR.A5JC  0.000000 14.06086 11.35714 13.74096 14.56681 10.212035 6.867743
+      TCGA.OR.A5JD  2.762256 14.95063 11.62013 12.69859 15.46131 11.593370 6.634267
+      TCGA.OR.A5JE  0.000000 14.41442 11.28384 12.47748 12.76134 11.018105 5.633147
+      TCGA.OR.A5JF  0.000000 14.12264 11.69734 12.66685 14.25323 10.936400 3.920491
+      TCGA.OR.A5JG  0.000000 14.06314 11.39361 13.21208 14.96271 11.387380 5.160954
+      TCGA.OR.A5JI  0.000000 15.42819 11.09482 14.97783 14.72927 11.886980 7.941611
+      TCGA.OR.A5JJ  2.413724 14.10865 11.21513 12.62188 13.29080 11.108867 6.712644
+      TCGA.OR.A5JK  0.000000 14.89528 11.42267 14.34938 14.04083 11.359167 5.119943
+      TCGA.OR.A5JL  0.000000 13.31105 12.63919 11.75075 14.13367 10.911630 7.378206
+      TCGA.OR.A5JM  0.000000 14.85567 13.27237 12.78337 12.66034 12.264431 4.280982
+      TCGA.OR.A5JO  3.586527 14.11362 12.22133 12.71874 14.56383 12.192766 8.614571
+      TCGA.OR.A5JP  0.000000 14.20806 12.11557 12.46264 12.37855  9.446049 6.440783
+      TCGA.OR.A5JQ  2.469156 15.14871 11.35228 13.46212 15.06238 13.077543 4.565962
+      TCGA.OR.A5JR  0.000000 15.48022 11.74741 13.17691 14.39315 11.855220 6.186280
+      TCGA.OR.A5JS  4.044026 13.38073 11.49540 13.64435 13.56449 10.696142 5.446701
+      TCGA.OR.A5JT  2.609314 15.15103 11.54880 12.08614 14.64348 11.741691 4.420114
+      TCGA.OR.A5JV  3.557568 14.79398 11.62965 12.11810 13.58256 11.682625 5.058441
+      TCGA.OR.A5JW  0.000000 13.38320 11.57812 12.22776 14.55089 10.915617 4.894534
+      TCGA.OR.A5JX  0.000000 14.60282 11.80782 15.18924 15.51730 10.805431 7.928614
+      TCGA.OR.A5JY  3.942321 13.81932 13.24132 12.06317 13.05977 11.390141 7.269700
+      TCGA.OR.A5JZ  0.000000 14.92671 11.53733 13.14163 15.67680 12.002020 0.000000
+      TCGA.OR.A5K0  4.203671 14.16673 12.35226 12.65996 13.56069 11.101107 8.629318
+      TCGA.OR.A5K1  3.263207 14.59193 11.36246 12.72862 14.83675 11.953516 0.000000
+      TCGA.OR.A5K2  0.000000 14.15691 11.28109 13.95940 14.23554  9.594971 4.958444
+      TCGA.OR.A5K3  0.000000 15.46805 11.36528 13.74854 14.79802 11.594016 5.805791
+      TCGA.OR.A5K4  0.000000 15.37999 11.64910 12.01494 14.46236 12.757747 4.675575
+      TCGA.OR.A5K5  0.000000 13.74077 11.73902 12.50729 13.04657 11.213962 6.309815
+      TCGA.OR.A5K6  3.588427 13.76367 12.48583 13.49538 14.96634 10.890236 8.168673
+      TCGA.OR.A5K8  0.000000 14.16073 12.54784 13.56693 14.51835 10.959487 4.091761
+      TCGA.OR.A5K9  2.701205 13.56898 12.46762 13.11960 13.67477 10.386227 5.808243
+      TCGA.OR.A5KO  0.000000 13.21691 11.87338 13.02662 14.57843 12.188990 7.248995
+      TCGA.OR.A5KT  0.000000 14.54021 11.19608 12.78063 13.97329 11.208099 3.434609
+      TCGA.OR.A5KU 10.694722 14.61508 11.07138 13.11844 13.85427 11.527104 5.085915
+      TCGA.OR.A5KV  3.745684 13.73993 12.18369 13.32986 15.46406 11.450346 6.457776
+      TCGA.OR.A5KW  0.000000 13.14378 12.35283 13.46403 14.44969 11.491133 4.884952
+      TCGA.OR.A5KX  0.000000 15.04296 12.48605 12.86450 14.09144 11.199419 6.507392
+      TCGA.OR.A5KY  0.000000 14.23049 12.37322 13.56363 13.79392 10.514568 5.217496
+      TCGA.OR.A5KZ  0.000000 14.59530 10.78831 11.70287 12.54548 10.804728 5.947566
+      TCGA.OR.A5L3  0.000000 15.09868 11.46727 14.36894 15.52842 10.163863 5.173400
+      TCGA.OR.A5L4  3.160099 13.78913 11.84108 12.18401 14.61151 10.611916 5.033672
+      TCGA.OR.A5L5  2.722020 15.74746 11.73325 13.59289 14.89301 11.179010 5.516761
+      TCGA.OR.A5L6  0.000000 15.17784 10.38813 14.15022 15.18982 11.272163 7.112121
+      TCGA.OR.A5L8  0.000000 12.68281 12.04726 13.33230 13.43466 10.728313 7.527901
+      TCGA.OR.A5L9  0.000000 15.35674 11.54809 14.92240 16.24052 10.572803 0.000000
+      TCGA.OR.A5LA  0.000000 15.25787 11.27359 14.05058 16.29282 10.802115 8.306026
+      TCGA.OR.A5LB  0.000000 14.08327 11.66645 13.28020 14.09370 10.823528 6.462218
+      TCGA.OR.A5LC  0.000000 14.23375 12.04772 13.43794 14.83130 11.994895 5.475312
+      TCGA.OR.A5LD  4.308773 14.66772 10.32267 14.18106 14.28400  9.850350 4.308773
+      TCGA.OR.A5LE  0.000000 14.48289 12.76353 12.71308 11.92065  9.378589 4.948193
+      TCGA.OR.A5LG  2.774574 14.78241 12.12628 14.69008 15.38608 11.341617 2.774574
+      TCGA.OR.A5LH  0.000000 13.74769 11.52157 12.30750 15.05828 11.688828 5.477025
+      TCGA.OR.A5LJ  4.973427 15.14693 11.96932 12.74715 12.06255 10.292481 6.429026
+      TCGA.OR.A5LK  5.200313 15.60247 10.63717 13.80449 13.85586 10.731235 9.021290
+      TCGA.OR.A5LL  0.000000 13.86527 11.60420 13.15994 13.95914 11.434707 0.000000
+      TCGA.OR.A5LM  0.000000 13.91306 12.28332 13.31532 14.10818 10.782518 6.784858
+      TCGA.OR.A5LN  0.000000 15.89675 11.36558 14.03188 14.84987 10.950726 6.734788
+      TCGA.OR.A5LO  0.000000 12.52982 11.38356 12.25591 14.23915 10.738903 8.229612
+      TCGA.OR.A5LP  3.268152 14.84142 11.47688 12.32100 14.27346 11.372687 5.722594
+      TCGA.OR.A5LR  4.741804 14.26057 11.68729 12.34057 14.94153 11.823385 3.260841
+      TCGA.OR.A5LS  0.000000 13.50755 10.68654 13.34908 13.60218 11.120599 6.369324
+      TCGA.OR.A5LT  0.000000 15.48720 11.84127 13.29243 13.71822 12.268853 5.147459
+      TCGA.OU.A5PI  0.000000 13.77605 11.52185 13.12369 13.88994 10.969918 4.925762
+      TCGA.P6.A5OF  0.000000 13.82028 12.67119 12.92704 14.24042 11.108816 2.379804
+      TCGA.P6.A5OG  3.913395 13.64785 11.93363 11.60486 13.97680 10.841172 4.864709
+      TCGA.PA.A5YG  3.667026 15.68543 12.14524 12.82505 14.52428 11.604475 7.415188
+      TCGA.PK.A5H8  0.000000 14.14227 12.18017 12.70058 14.42191 11.531300 5.136136
+      TCGA.PK.A5H9  0.000000 13.70937 12.40882 11.90460 14.32159 13.242884 7.161932
+      TCGA.PK.A5HA  0.000000 14.47431 10.78973 12.33482 14.40954 10.920726 6.755855
+      TCGA.PK.A5HB  0.000000 13.35889 10.79423 10.90665 12.93015 10.183974 4.745684
+                      ABHD2     ABHD3    ABHD4    ABHD5    ABHD6    ABHD8     ABI1
+      TCGA.OR.A5J1 14.65446 10.685858 13.81187 12.30215 11.42054 12.38941 12.90375
+      TCGA.OR.A5J2 16.56597 10.880256 13.30823 13.33623 14.42832 12.98232 13.43311
+      TCGA.OR.A5J3 15.48451  9.906802 15.02862 12.02627 12.49748 12.90549 12.31852
+      TCGA.OR.A5J5 13.87150 11.465926 14.71484 11.54931 13.01579 13.36694 12.41677
+      TCGA.OR.A5J6 14.70814 11.602848 13.99528 13.99674 13.39592 14.05817 12.79059
+      TCGA.OR.A5J7 15.09004 12.658032 14.25073 11.64970 12.98124 13.16398 14.12943
+      TCGA.OR.A5J8 15.89357 12.109076 14.88928 11.85174 11.78970 10.70489 13.00429
+      TCGA.OR.A5J9 15.76040 10.117062 14.72994 11.80193 12.12319 13.48864 13.03793
+      TCGA.OR.A5JA 15.89889 10.818281 14.99328 12.08287 13.01648 12.45560 12.40675
+      TCGA.OR.A5JB 13.59377 12.745427 13.23529 11.71376 10.93531 11.98253 13.67188
+      TCGA.OR.A5JC 15.62511  9.939269 13.74096 12.03734 12.78906 13.02544 12.95664
+      TCGA.OR.A5JD 14.98063 11.677306 13.31207 11.88353 13.16808 13.13228 12.99693
+      TCGA.OR.A5JE 14.54085 11.769102 15.18972 11.37581 12.94047 13.29915 11.81607
+      TCGA.OR.A5JF 15.29592  9.423936 12.94105 11.26752 12.53641 12.98826 12.57119
+      TCGA.OR.A5JG 14.74399 10.375382 14.96846 12.23929 13.56450 13.72564 12.85044
+      TCGA.OR.A5JI 13.98878 11.288824 13.83238 12.15383 12.51233 12.94874 12.92298
+      TCGA.OR.A5JJ 16.37053 11.068729 14.15491 11.35996 13.01716 13.74741 11.85403
+      TCGA.OR.A5JK 15.89285 11.597949 13.75743 11.23832 12.05832 13.02785 13.09621
+      TCGA.OR.A5JL 16.60394 10.625562 15.14700 12.31510 13.70096 12.09905 12.18573
+      TCGA.OR.A5JM 15.02801 14.471937 14.27532 12.59520 13.35531 12.93545 12.98715
+      TCGA.OR.A5JO 15.56035 11.678324 15.37985 13.86638 10.81949 12.52478 13.25489
+      TCGA.OR.A5JP 14.46001 10.982788 15.00365 12.08738 11.34482 12.56728 13.02334
+      TCGA.OR.A5JQ 14.58194 10.674537 12.78192 12.18070 12.82225 13.57209 12.65472
+      TCGA.OR.A5JR 15.75051 10.999925 14.42950 12.19375 12.87191 12.64460 12.83288
+      TCGA.OR.A5JS 15.74214 11.485689 15.18626 11.81219 13.46321 13.46074 11.95839
+      TCGA.OR.A5JT 15.56651 10.204073 14.31551 11.39330 12.91734 12.30121 12.63442
+      TCGA.OR.A5JV 16.12335 11.897505 13.83316 11.54114 14.30034 11.37551 13.29385
+      TCGA.OR.A5JW 17.35593  9.412100 14.74435 12.21328 12.94867 12.93726 13.37476
+      TCGA.OR.A5JX 15.46298  8.904935 14.64442 11.90230 12.25517 13.40732 12.77088
+      TCGA.OR.A5JY 16.05790 11.742541 15.50561 12.61039 13.09890 12.92228 11.73445
+      TCGA.OR.A5JZ 15.66925  9.987823 15.32667 11.66428 12.09273 11.30685 12.84986
+      TCGA.OR.A5K0 15.26276 13.189413 14.57410 13.50123 13.15308 14.09192 12.18418
+      TCGA.OR.A5K1 14.09259 10.445414 14.73939 11.54795 11.21888 12.10486 12.57644
+      TCGA.OR.A5K2 15.22647 11.257644 15.69594 12.08487 12.74438 12.49147 13.47238
+      TCGA.OR.A5K3 15.16675 10.410185 14.47854 11.18978 12.68085 12.98696 12.72250
+      TCGA.OR.A5K4 15.79185 11.086257 15.01571 10.92707 13.43430 11.55216 12.55927
+      TCGA.OR.A5K5 15.60683 11.292089 13.93185 12.18057 12.40161 13.79891 12.33482
+      TCGA.OR.A5K6 15.66812 11.132738 14.45551 12.05414 14.06553 13.73886 12.47888
+      TCGA.OR.A5K8 14.49347  9.561066 14.91075 11.38015 12.95312 13.77616 12.85963
+      TCGA.OR.A5K9 15.15995 12.084549 14.43230 10.90817 12.19366 13.66196 13.13292
+      TCGA.OR.A5KO 15.43022 11.816229 14.68603 12.51983 12.41823 13.29103 13.81916
+      TCGA.OR.A5KT 13.83870 10.670525 14.29467 12.62575 14.36479 14.51444 12.81050
+      TCGA.OR.A5KU 15.75621 11.093308 13.93543 11.81799 14.05551 13.15540 11.99152
+      TCGA.OR.A5KV 15.70730  9.963286 13.25367 10.96256 13.23336 13.99887 11.92430
+      TCGA.OR.A5KW 15.95061 10.771565 16.12428 11.80837 13.20350 13.62330 12.65185
+      TCGA.OR.A5KX 15.34225 12.005525 15.13444 11.92853 13.71555 13.36656 13.11640
+      TCGA.OR.A5KY 14.84668 10.074347 13.73958 11.93010 13.16845 13.47638 13.25982
+      TCGA.OR.A5KZ 15.29448 12.219942 12.66868 10.65583 10.58790 12.50921 12.90528
+      TCGA.OR.A5L3 14.40361 11.490911 14.68686 11.57627 13.82412 13.87217 12.07179
+      TCGA.OR.A5L4 15.79249 10.012707 14.90897 12.42175 12.05268 11.67238 12.87940
+      TCGA.OR.A5L5 14.73110 10.816618 13.94903 11.26028 12.21822 12.71153 12.96081
+      TCGA.OR.A5L6 12.85004 11.716793 13.50905 10.93528 11.30190 12.10198 12.53653
+      TCGA.OR.A5L8 16.68908  8.561362 13.45714 12.27243 12.67962 13.83400 13.30088
+      TCGA.OR.A5L9 13.16497  9.754099 13.87938 11.12504 12.37948 13.02269 12.42012
+      TCGA.OR.A5LA 15.13202 10.122934 14.27595 11.03686 12.65703 13.70458 12.63484
+      TCGA.OR.A5LB 16.41252  9.652670 14.38149 11.85931 13.17308 13.74812 13.66397
+      TCGA.OR.A5LC 14.04065 11.541029 13.21745 11.04311 12.00256 12.72659 12.89116
+      TCGA.OR.A5LD 13.71194 10.483012 13.74396 11.56547 12.80792 13.58071 12.72614
+      TCGA.OR.A5LE 16.06828 11.948176 14.63672 11.77146 13.81143 12.69694 12.40279
+      TCGA.OR.A5LG 15.38372 12.438689 14.77070 11.40205 12.16901 13.71480 13.08597
+      TCGA.OR.A5LH 15.70168 10.884651 14.39998 12.44790 13.35129 12.57172 12.41722
+      TCGA.OR.A5LJ 14.86344 10.451351 13.37398 10.86299 14.19409 14.07405 13.40100
+      TCGA.OR.A5LK 13.85063 11.350907 13.50938 12.64859 12.76807 13.38467 12.80459
+      TCGA.OR.A5LL 16.30123 11.995988 14.79106 13.06952 13.38087 13.48425 13.13042
+      TCGA.OR.A5LM 15.58160 10.933444 14.40639 11.98585 12.97592 12.39159 12.39322
+      TCGA.OR.A5LN 14.39102 11.253151 13.13497 12.30266 12.32137 13.21718 13.14340
+      TCGA.OR.A5LO 16.51977 11.477367 15.53556 11.99069 14.21871 12.35959 13.80713
+      TCGA.OR.A5LP 15.86746 10.765513 13.45946 11.69357 11.84346 12.77736 12.57687
+      TCGA.OR.A5LR 15.36460 11.424341 15.52425 11.28734 12.99688 12.11902 12.79558
+      TCGA.OR.A5LS 16.14783 10.650345 14.51966 11.34479 13.54418 12.90782 13.63265
+      TCGA.OR.A5LT 13.83249 11.291620 13.47807 12.54728 12.72477 13.30476 12.98746
+      TCGA.OU.A5PI 16.15306 10.463484 14.33905 11.58395 12.82490 13.48348 13.48199
+      TCGA.P6.A5OF 15.61202 10.056338 14.37897 11.46482 12.11123 12.85518 13.63673
+      TCGA.P6.A5OG 13.86699 12.126016 12.01598 12.24228 11.10653 11.30675 13.97386
+      TCGA.PA.A5YG 15.95814 11.419621 14.14686 12.03087 12.31720 13.33677 13.04575
+      TCGA.PK.A5H8 14.86109 11.025947 14.40883 12.00895 12.26674 12.43106 12.63080
+      TCGA.PK.A5H9 16.87900 11.745569 14.75972 13.48099 11.11207 13.11750 13.06000
+      TCGA.PK.A5HA 14.30112 12.194355 13.79938 12.42453 13.25265 12.82909 13.19812
+      TCGA.PK.A5HB 15.24742 11.463353 15.12748 11.89093 13.25708 12.31426 13.41990
+                       ABI2    ABI3BP      ABI3     ABL1 class
+      TCGA.OR.A5J1 14.38809  7.061616 11.435001 14.66646     0
+      TCGA.OR.A5J2 14.11378  9.178080 10.159842 14.54906     0
+      TCGA.OR.A5J3 12.53862  8.839738  9.536260 14.88422     1
+      TCGA.OR.A5J5 12.97173  8.587815  9.353291 14.92333     0
+      TCGA.OR.A5J6 13.11494  9.233416  9.873762 14.52122     1
+      TCGA.OR.A5J7 13.94935  5.294174 10.753176 15.01408     0
+      TCGA.OR.A5J8 13.97662 14.685035 12.271733 15.70137     0
+      TCGA.OR.A5J9 14.28839  6.966876 10.650092 14.91347     1
+      TCGA.OR.A5JA 13.00410 10.333174  9.870625 15.13621     0
+      TCGA.OR.A5JB 14.70158  5.989372 12.770174 15.67680     0
+      TCGA.OR.A5JC 13.26787 11.915453 11.053955 14.20154     0
+      TCGA.OR.A5JD 12.44236 15.579531 10.877271 14.93126     1
+      TCGA.OR.A5JE 13.38117  9.971541 11.645891 14.96110     0
+      TCGA.OR.A5JF 12.72300  9.181960  9.983219 15.00808     1
+      TCGA.OR.A5JG 12.75326  9.195766 10.585880 14.99892     0
+      TCGA.OR.A5JI 12.85819 14.952187 11.173395 15.05768     1
+      TCGA.OR.A5JJ 13.20809  9.182435 10.148555 15.45583     1
+      TCGA.OR.A5JK 12.88217 10.336351 12.253068 14.28676     1
+      TCGA.OR.A5JL 12.36440  7.937285  9.984240 14.04874     1
+      TCGA.OR.A5JM 13.81222  7.258640  8.494202 14.45011     0
+      TCGA.OR.A5JO 13.03968 13.834646 12.247705 15.00276     1
+      TCGA.OR.A5JP 13.69669  9.484988 10.221148 14.75828     1
+      TCGA.OR.A5JQ 13.33549 16.507263 11.130812 15.66854     1
+      TCGA.OR.A5JR 12.86894 15.970715 10.409885 15.10595     1
+      TCGA.OR.A5JS 12.73456  6.668497  9.656034 14.94750     1
+      TCGA.OR.A5JT 13.24682 15.653339 10.146789 14.58508     1
+      TCGA.OR.A5JV 13.17283 13.751554 13.114432 13.91242     1
+      TCGA.OR.A5JW 12.41025  6.446793 10.494854 14.94744     1
+      TCGA.OR.A5JX 12.55685 10.860263 10.881625 15.18495     1
+      TCGA.OR.A5JY 13.60640  6.365389 10.470791 13.87329     0
+      TCGA.OR.A5JZ 13.47724 14.615506 10.307421 15.02151     1
+      TCGA.OR.A5K0 14.14977  9.906034  8.187022 15.13070     1
+      TCGA.OR.A5K1 12.92967 12.592603 10.886651 14.29010     1
+      TCGA.OR.A5K2 13.90949  8.237994 11.360289 14.85580     0
+      TCGA.OR.A5K3 12.86477 12.593782 10.980154 13.91172     1
+      TCGA.OR.A5K4 12.71360 12.488603  8.621655 14.85405     1
+      TCGA.OR.A5K5 13.88220  7.620790  9.965382 14.51919     1
+      TCGA.OR.A5K6 13.28194  9.065818 10.430041 14.22317     1
+      TCGA.OR.A5K8 12.86585  7.818327 10.380688 15.29520     1
+      TCGA.OR.A5K9 13.81138  7.925713  9.937541 15.40618     0
+      TCGA.OR.A5KO 12.99263  6.837116  9.510919 15.70915     1
+      TCGA.OR.A5KT 13.00730 11.648196 11.366609 14.14174     1
+      TCGA.OR.A5KU 13.42879  8.177075  8.601108 13.96919     1
+      TCGA.OR.A5KV 13.79473  7.610939  8.338816 14.31376     1
+      TCGA.OR.A5KW 13.05752 10.927720  9.361037 14.30092     1
+      TCGA.OR.A5KX 14.85262 11.398871  9.805942 15.33501     1
+      TCGA.OR.A5KY 13.92186  9.370197 11.604919 15.37928     0
+      TCGA.OR.A5KZ 14.27526  8.250671 10.406188 14.57391     0
+      TCGA.OR.A5L3 12.50814  8.551745  9.797445 13.98678     1
+      TCGA.OR.A5L4 12.98347 12.126255 10.866232 14.72455     1
+      TCGA.OR.A5L5 12.91867 13.431937 10.675607 13.76577     1
+      TCGA.OR.A5L6 13.37559 12.812662 10.057206 14.39404     1
+      TCGA.OR.A5L8 14.07796  8.299091  9.002871 14.71643     1
+      TCGA.OR.A5L9 12.17307 11.835285 11.091891 14.16090     1
+      TCGA.OR.A5LA 12.44383 12.668004 11.582702 13.85134     1
+      TCGA.OR.A5LB 13.15787  7.836750  9.703832 15.02428     0
+      TCGA.OR.A5LC 14.12266  8.743563 11.171059 14.09424     0
+      TCGA.OR.A5LD 14.97475  9.094699  9.963443 15.24184     0
+      TCGA.OR.A5LE 13.62361  6.721775  9.242920 14.75872     0
+      TCGA.OR.A5LG 13.38204  9.455592 12.236942 14.81172     1
+      TCGA.OR.A5LH 12.85470 11.053753 10.472081 14.49472     0
+      TCGA.OR.A5LJ 13.54380  7.258142 10.278418 14.81616     0
+      TCGA.OR.A5LK 12.59539 14.975157 12.345683 14.40258     1
+      TCGA.OR.A5LL 12.70822  9.572676  8.537830 14.97149     0
+      TCGA.OR.A5LM 13.41089  9.803078  9.897923 13.41891     1
+      TCGA.OR.A5LN 11.98832 15.290120 11.548209 15.08645     1
+      TCGA.OR.A5LO 13.66936  8.838909  8.954144 14.89958     1
+      TCGA.OR.A5LP 12.81674 15.251234 11.283054 14.47479     1
+      TCGA.OR.A5LR 13.15868 14.256147  9.923553 14.67464     1
+      TCGA.OR.A5LS 12.83309  7.475373  8.792429 14.63259     1
+      TCGA.OR.A5LT 13.39286 15.342218  9.822010 14.53092     1
+      TCGA.OU.A5PI 13.04358 11.253130  9.707045 15.09477     1
+      TCGA.P6.A5OF 12.98281 10.804115 10.186969 15.15418     0
+      TCGA.P6.A5OG 13.98642  9.588787 12.725429 14.67547     0
+      TCGA.PA.A5YG 12.82970 15.133732 11.934960 14.50771     1
+      TCGA.PK.A5H8 13.08223 10.600067 10.095836 14.50694     1
+      TCGA.PK.A5H9 12.95396  8.189938  9.732879 14.65432     1
+      TCGA.PK.A5HA 12.06471 15.562196 10.874457 15.30980     1
+      TCGA.PK.A5HB 13.82834 10.480725  8.655293 15.57410     1
       
       
       Slot "metadata":
