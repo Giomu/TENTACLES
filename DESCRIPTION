@@ -69,3 +69,5 @@ Imports:
 Remotes: 
     stevenpawley/colino
 Config/testthat/edition: 3
+Depends: 
+    R (>= 3.5.0)

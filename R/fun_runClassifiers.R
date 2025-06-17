@@ -142,6 +142,7 @@ create_dynamic_workflow_sets <- function(models, selector.recipes, data, downsam
 
   # Map recipes names to respective recipe objects
   recipes_map <- list(
+    base   = recipes_base,
     boruta = recipe_boruta,
     roc = recipe_ROC,
     infgain = recipe_INFGAIN,
@@ -209,84 +210,164 @@ tune_and_fit <- function(
     cli::cli_abort("Invalid tuning method. Please refer to the documentation for valid options.")
   }
 
+  # Consider as successful those results where collect_metrics() returns a tibble with rows
+  is_valid_tune_result <- function(res) {
+    met <- tryCatch(tune::collect_metrics(res), error = function(e) NULL)
+    !is.null(met) && nrow(met) > 0
+  }
+
+  successful_idx <- which(
+    sapply(tune_results$result, is_valid_tune_result)
+  )
+  successful_ids <- tune_results$wflow_id[successful_idx]
+
+  if (length(successful_ids) == 0) {
+    cli::cli_alert_danger("All models failed during tuning. Execution stopped.")
+    stop("No models available for further steps.")
+  }
+
+
   cli::cli_h3("Best Parameters Selection")
   cli::cli_alert_info("Selecting best parameters for each model ...")
   # Select the best parameters for each model
+  # Select best parameters only for successful workflows
   best_params <- lapply(
-    tune_results$wflow_id,
+    successful_ids,
     function(id) {
-      tune::select_best(
-        workflowsets::extract_workflow_set_result(tune_results, id = id),
-        metric = metric
+      tryCatch(
+        tune::select_best(
+          workflowsets::extract_workflow_set_result(tune_results, id = id),
+          metric = metric
+        ),
+        error = function(e) {
+          cli::cli_alert_warning("Model {id} failed in select_best: {conditionMessage(e)}")
+          NULL
+        }
       )
     }
   )
+  names(best_params) <- successful_ids
+
+  # Filter out any models where select_best failed (best_params is NULL)
+  valid_idx <- which(!sapply(best_params, is.null))
+  valid_ids <- successful_ids[valid_idx]
+  best_params <- best_params[valid_idx]
+
+  if (length(valid_ids) == 0) {
+    cli::cli_alert_danger("All models failed during parameter selection. Execution stopped.")
+    stop("No models available for fitting.")
+  }
+
   cli::cli_alert_success("Succesfully selected parameters!")
 
   cli::cli_h3("Workflows Finalization")
   cli::cli_alert_info("Updating workflows with best parameters ...")
-  # Using the best parameters to finalize the workflows
+  # Finalize workflows only for valid models
   final_workflows <- lapply(
-    seq_along(tune_results$wflow_id),
+    seq_along(valid_ids),
     function(i) {
-      tune::finalize_workflow(
-        workflowsets::extract_workflow(tune_workflows, id = tune_results$wflow_id[i]),
-        best_params[[i]]
+      tryCatch(
+        tune::finalize_workflow(
+          workflowsets::extract_workflow(tune_workflows, id = valid_ids[i]),
+          best_params[[i]]
+        ),
+        error = function(e) {
+          cli::cli_alert_warning("Model {valid_ids[i]} failed in finalize_workflow: {conditionMessage(e)}")
+          NULL
+        }
       )
     }
   )
-  names(final_workflows) <- tune_results$wflow_id
+  names(final_workflows) <- valid_ids
+
+  # Filter out any models where finalize_workflow failed (workflow is NULL)
+  final_idx <- which(!sapply(final_workflows, is.null))
+  final_ids <- valid_ids[final_idx]
+  final_workflows <- final_workflows[final_idx]
+
+  if (length(final_ids) == 0) {
+    cli::cli_alert_danger("All models failed during workflow finalization. Execution stopped.")
+    stop("No models available for final fitting.")
+  }
+
   cli::cli_alert_success("Succesfully finalized the workflows!")
 
   cli::cli_h2("Model Fitting")
   cli::cli_alert_info("Fitting models on the entire dataset ...")
-  # Fit the finalized workflows on the entire dataset
+
+  # Fit only successful workflows
   last_fit_results <- lapply(
     final_workflows,
     function(workflow) {
-      parsnip::fit(workflow, data = data)
+      tryCatch(
+        parsnip::fit(workflow, data = data),
+        error = function(e) {
+          cli::cli_alert_warning("Model failed during fitting: {conditionMessage(e)}")
+          NULL
+        }
+      )
     }
   )
+  names(last_fit_results) <- final_ids
+
+  # Filter out failed fits
+  fit_idx <- which(!sapply(last_fit_results, is.null))
+  fit_ids <- final_ids[fit_idx]
+  last_fit_results <- last_fit_results[fit_idx]
+  final_workflows <- final_workflows[fit_idx]
+
+  if (length(fit_ids) == 0) {
+    cli::cli_alert_danger("All models failed during final fitting. Execution stopped.")
+    stop("No models successfully fitted.")
+  }
   cli::cli_alert_success("Models fitted succesfully.")
 
   cli::cli_alert_info("Computing metric performances ...")
-  # Compute metrics on tuning set selecting the best model based on the metric provided
-  tuning_metrics <- as.data.frame(workflowsets::rank_results(
-    tune_results,
+  # Compute tuning metrics only for models that made it to final fitting
+  tune_results_valid <- tune_results[tune_results$wflow_id %in% valid_ids, ]
+  tuning_metrics <- as.data.frame(
+    workflowsets::rank_results(
+    tune_results_valid,
     rank_metric = metric, select_best = TRUE
   ))
+  tuning_metrics <- tuning_metrics[tuning_metrics$wflow_id %in% fit_ids, ]
+
   # Define metrics to compute on test set
   multi_met <- yardstick::metric_set(
     yardstick::accuracy, yardstick::f_meas,
     yardstick::precision, yardstick::recall
   )
-  # Combine metrics and predictions in a list
-  results <- lapply(
-    last_fit_results,
-    function(model) {
+  # Compute predictions and metrics only for fitted models
+  results <- lapply(seq_along(last_fit_results), function(i) {
+    model <- last_fit_results[[i]]
+    model_name <- names(last_fit_results)[i]
+    tryCatch({
       # Prediction step
+      preds <- stats::predict(model, new_data = data)
       predictions <- data.frame(
-        stats::predict(model, new_data = data),
+        preds,
         class = data$class,
         ID = row.names(data),
-        model = deparse(substitute(model))
+        model = model_name
       )
-
       # Calculate metrics using multi_met()
       metrics <- multi_met(predictions, truth = class, estimate = .pred_class)
-      metrics$model <- deparse(substitute(model))
-
+      metrics$model <- model_name
       # Return a list with predictions and metrics
       list(predictions = predictions, metrics = metrics)
-    }
-  )
+    }, error = function(e) {
+      cli::cli_alert_warning("Model {model_name} failed during prediction or metric calculation: {conditionMessage(e)}")
+      NULL
+    })
+  })
+  names(results) <- names(last_fit_results)
+
+  # Filter out models that failed in the prediction/metric step
+  results <- Filter(Negate(is.null), results)
 
   # Extract predictions and metrics from results list
   predictions_df <- do.call(rbind, lapply(results, function(x) x$predictions))
-  predictions_df$model <- rep(names(results), sapply(results, function(x) nrow(x$predictions)))
-
   test_metrics <- do.call(rbind, lapply(results, function(x) x$metrics))
-  test_metrics$model <- rep(names(results), sapply(results, function(x) nrow(x$metrics)))
 
   cli::cli_alert_success("Metrics computed succesfully.")
   cli::cli_alert_success("Succesfully accomplished model fitting!")
@@ -298,11 +379,14 @@ tune_and_fit <- function(
     models.info = final_workflows,
     model.features = list(),
     performances = list(
-      tuning_metrics = tuning_metrics, final_metrics = test_metrics),
+      tuning_metrics = tuning_metrics,
+      final_metrics = test_metrics
+    ),
     predictions = predictions_df
   )
 
   return(list(runClassifiers.obj, last_fit_results, predictions_df))
+
 }
 
 # Helper function to calculate VIP for all models in last_fit_results
@@ -330,51 +414,68 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
   # Initialize an empty list to store results
   vip_list <- list()
 
-  # Iteration over all Models contained in last_fit_results
+  # Iterate only over non-NULL models
   for (name in names(last_fit_results)) {
-    cli::cli_alert_info("Processing model {name} ...")
-    model_fit <- workflows::extract_fit_parsnip(last_fit_results[[name]])$fit
-
-    # Check if the model is of class 'bagger'
-    if (inherits(model_fit, "bagger")) {
-      cli::cli_alert_info("Model {name} is a bagger. Using baguette::var_imp() ...")
-      vip_data <- baguette::var_imp(model_fit)
-      colnames(vip_data) <- c("Variable", "Importance", "std.error", "used")
-      # Keep only non-zero importance values
-      vip_data <- vip_data[vip_data$Importance != 0, ]
-    } else {
-      # Use VIP or permutation-based VIP
-      num_features <- ncol(test_x)
-
-      vip_data <- tryCatch(
-        {
-          vip_result <- vip::vip(model_fit, num_features = num_features)$data
-          # Keep only non-zero importance values using base R
-          vip_result[vip_result$Importance != 0, ]
-        },
-        error = function(e) {
-          cli::cli_alert_info("Direct VIP is not supported for model {name}. Using permutation-based method...")
-          vip_result <- vip::vip(
-            object = model_fit,
-            method = "permute",
-            parallel = TRUE,
-            nsim = n_sim,
-            metric = "roc_auc",
-            pred_wrapper = function(object, newdata) pfun(object, newdata),
-            train = test_x,
-            target = test_y,
-            event_level = "second",
-            num_features = num_features
-          )$data
-          # Keep only positive importance values using base R
-          vip_result[vip_result$Importance > 0, ]
-        }
-      )
+    model_obj <- last_fit_results[[name]]
+    if (is.null(model_obj)) {
+      cli::cli_alert_warning("Skipping model {name} (fit object is NULL).")
+      next
     }
 
-    # Store the VIP data if Importance > 0
-    vip_list[[name]] <- vip_data
-    cli::cli_alert_success("Variable importance computed!")
+    cli::cli_alert_info("Processing model {name} ...")
+
+    # Try extracting the parsnip fit, catch errors
+    model_fit <- tryCatch({
+      workflows::extract_fit_parsnip(model_obj)$fit
+    }, error = function(e) {
+      cli::cli_alert_warning("Failed to extract parsnip fit for model {name}: {conditionMessage(e)}")
+      return(NULL)
+    })
+    if (is.null(model_fit)) next
+
+    # Try to compute variable importance
+    vip_data <- tryCatch({
+      if (inherits(model_fit, "bagger")) {
+        cli::cli_alert_info("Model {name} is a bagger. Using baguette::var_imp() ...")
+        vip_data <- baguette::var_imp(model_fit)
+        colnames(vip_data) <- c("Variable", "Importance", "std.error", "used")
+        vip_data[vip_data$Importance != 0, ]
+      } else {
+        num_features <- ncol(test_x)
+        vip_result <- vip::vip(model_fit, num_features = num_features)$data
+        vip_result[vip_result$Importance != 0, ]
+      }
+    }, error = function(e) {
+      cli::cli_alert_info("Direct VIP failed for model {name}: {conditionMessage(e)}. Using permutation-based method...")
+      # Try permutation-based VIP, catch error if even that fails
+      tryCatch({
+        num_features <- ncol(test_x)
+        vip_result <- vip::vip(
+          object = model_fit,
+          method = "permute",
+          parallel = TRUE,
+          nsim = n_sim,
+          metric = "roc_auc",
+          pred_wrapper = function(object, newdata) pfun(object, newdata),
+          train = test_x,
+          target = test_y,
+          event_level = "second",
+          num_features = num_features
+        )$data
+        vip_result[vip_result$Importance > 0, ]
+      }, error = function(e2) {
+        cli::cli_alert_warning("Permutation VIP failed for model {name}: {conditionMessage(e2)}. Skipping model.")
+        return(NULL)
+      })
+    })
+
+    # Only store VIP data if it exists and is not empty
+    if (!is.null(vip_data) && nrow(vip_data) > 0) {
+      vip_list[[name]] <- vip_data
+      cli::cli_alert_success("Variable importance computed for model {name}!")
+    } else {
+      cli::cli_alert_warning("Variable importance not computed for model {name} (empty or failed).")
+    }
   }
 
   return(vip_list)
@@ -387,28 +488,51 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #'
 #' @param preProcess.obj An object of class preProcess.
 #' @param models A character vector specifying the classifiers to be used. Supported models include:
+#'
 #'   - `"xgboost"`: Extreme Gradient Boosting, an ensemble method using boosted trees.
+#'
 #'   - `"bag_tree"`: Bagged decision trees, a bootstrapped ensemble of tree models.
+#'
 #'   - `"lightGBM"`: A fast gradient boosting method optimized for large datasets.
+#'
 #'   - `"pls"`: Partial Least Squares regression.
+#'
 #'   - `"logistic"`: Logistic regression, a simple linear classifier.
+#'
 #'   - `"C5_rules"`: Rule-based classifier using C5.0 decision trees.
 #'   - `"mars"`: Multivariate Adaptive Regression Splines, a flexible non-linear regression method.
+#'
 #'   - `"bag_mars"`: Bagged version of MARS for increased stability.
+#'
 #'   - `"mlp"`: Multi-Layer Perceptron, a basic feedforward neural network.
+#'
 #'   - `"bag_mlp"`: Bagged version of MLP to reduce variance.
+#'
 #'   - `"decision_tree"`: A single decision tree.
+#'
 #'   - `"rand_forest"`: Random forest, an ensemble of decision trees with randomized splits.
+#'
 #'   - `"svm_linear"`: Support Vector Machine with a linear kernel.
+#'
 #'   - `"svm_poly"`: Support Vector Machine with a polynomial kernel.
+#'
 #'   - `"svm_rbf"`: Support Vector Machine with a radial basis function (RBF) kernel.
 #' @param selector.recipes A character vector specifying the feature selection methods to be applied before classification.
+#'
 #' Supported selection strategies include:
+#'
+#'   - `"base"`: Uses only the default pre-processing steps (normalization, near-zero variance removal), with no feature selection.
+#'
 #'   - `"boruta"`: Wrapper method that iteratively removes unimportant features using random forest.
+#'
 #'   - `"roc"`: Selects features based on Receiver Operating Characteristic (ROC) AUC scores.
+#'
 #'   - `"infgain"`: Uses Information Gain to select the most informative features.
+#'
 #'   - `"mrmr"`: Minimum Redundancy Maximum Relevance (mRMR), selects features that maximize relevance and minimize redundancy.
+#'
 #'   - `"corr"`: Filters features based on correlation thresholds to reduce multicollinearity.
+#'
 #' `models` and `selector.recipes` will be paired in the order they are provided. If the number of recipes
 #' does not match the number of models, the first recipe will be used for all models.
 #' @param tuning.method A character string specifying the hyperparameter tuning strategy. Options include:
@@ -503,7 +627,7 @@ runClassifiers <- function(
     "svm_rbf"
   )
   # Vector of available feature selectors
-  available_selectors <- c("boruta", "roc", "infgain", "mrmr", "corr")
+  available_selectors <- c("base", "boruta", "roc", "infgain", "mrmr", "corr")
 
   withr::with_seed(
     seed = seed,
@@ -579,20 +703,50 @@ runClassifiers <- function(
 
   if (plot == TRUE) {
     cli::cli_h2("Plots")
-    cli::cli_alert_info("Generating UpSet plot ...")
-    up <- upset.plot(obj)
-    print(up)
-    cli::cli_alert_success("Successfully generated UpSet plot!")
 
-    cli::cli_alert_info("Generating performances plot ...")
-    perf <- performances.plot(obj)
-    print(perf)
-    cli::cli_alert_success("Successfully generated performances plot!")
+    # UpSet plot - needs at least 2 models/features
+    if (!is.null(obj@model.features) && length(obj@model.features) >= 2) {
+      cli::cli_alert_info("Generating UpSet plot ...")
+      tryCatch({
+        up <- upset.plot(obj)
+        print(up)
+        cli::cli_alert_success("Successfully generated UpSet plot!")
+      }, error = function(e) {
+        cli::cli_alert_warning("Failed to generate UpSet plot: {conditionMessage(e)}")
+      })
+    } else {
+      cli::cli_alert_warning("UpSet plot requires at least 2 valid models with variable importance. Skipping.")
+    }
 
-    cli::cli_alert_info("Generating predictions heatmap ...")
-    wp <- wrong.preds.plot(t_and_f_output[[3]])
-    print(wp)
-    cli::cli_alert_success("Successfully generated predictions heatmap plot!")
+    # Performances plot - needs at least 1 model with metrics
+    has_perf <- !is.null(obj@performances$final_metrics) && nrow(obj@performances$final_metrics) > 0
+    if (has_perf) {
+      cli::cli_alert_info("Generating performances plot ...")
+      tryCatch({
+        perf <- performances.plot(obj)
+        print(perf)
+        cli::cli_alert_success("Successfully generated performances plot!")
+      }, error = function(e) {
+        cli::cli_alert_warning("Failed to generate performances plot: {conditionMessage(e)}")
+      })
+    } else {
+      cli::cli_alert_warning("No valid model performance available for plotting. Skipping performances plot.")
+    }
+
+    # Wrong predictions heatmap - needs at least 1 prediction
+    has_preds <- !is.null(obj@predictions) && nrow(obj@predictions) > 0
+    if (has_preds) {
+      cli::cli_alert_info("Generating predictions heatmap ...")
+      tryCatch({
+        wp <- wrong.preds.plot(obj@predictions)
+        print(wp)
+        cli::cli_alert_success("Successfully generated predictions heatmap plot!")
+      }, error = function(e) {
+        cli::cli_alert_warning("Failed to generate predictions heatmap plot: {conditionMessage(e)}")
+      })
+    } else {
+      cli::cli_alert_warning("No predictions available to plot. Skipping predictions heatmap.")
+    }
   }
 
   obj@data$adjusted.data <- preProcess.obj@processed$adjusted.data

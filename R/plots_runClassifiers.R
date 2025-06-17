@@ -219,7 +219,8 @@ wrong.preds.plot <- function(predictions_df) {
       theme(
           axis.text.x = element_text(angle = 45, hjust = 1, vjust = 2, margin = margin(t = 50), size = 9, color = "#7c7b7b"),
           axis.text.y = element_text(size = 13),
-          panel.grid.y = element_blank(),
+          panel.grid.major.y = element_blank(),
+          panel.grid.minor.y = element_blank(),
           panel.grid.major.x = element_line(color = "lightgray", size = 0.5, linetype = "solid"),
           legend.position = "right"
       )
