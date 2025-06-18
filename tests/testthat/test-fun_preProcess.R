@@ -128,13 +128,24 @@ test_that("preProcess results are consistent with snapshot", {
   acc.count <- acc.count[, 1:100]
 
   # Run preProcess
-  test_result <- preProcess(acc.count, acc.clin,
+  test_result_batch <- preProcess(acc.count, acc.clin,
     is.normalized = FALSE, batch = "patient.gender", plot = FALSE
+  )
+
+  test_result_covariate <- preProcess(acc.count, acc.clin,
+    is.normalized = FALSE, batch = "patient.gender", plot = FALSE,
+    covar.mod = "patient.primary_pathology.laterality"
+  )
+
+  test_result_no_batch <- preProcess(acc.count, acc.clin,
+    is.normalized = FALSE, plot = FALSE
   )
 
   # If there are non-deterministic components, consider removing them first
   # For example:
   # test_result$processed$adjusted.data$run_id <- NULL
 
-  expect_snapshot(test_result)
+  expect_snapshot(test_result_batch)
+  expect_snapshot(test_result_covariate)
+  expect_snapshot(test_result_no_batch)
 })
