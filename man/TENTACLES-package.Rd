@@ -8,4 +8,24 @@
 \description{
 Provides an integrated and user-friendly workflow for analyzing transcriptomic data, including RNA-Seq and microarray experiments. Implements automated data preprocessing with normalization and batch effect correction, multi-model classification with feature selection, consensus biomarker identification, and robust external validation. Offers extensive visualizations—such as PCA, PVCA, AUROC, UpSet plots, and heatmaps—to facilitate data exploration and model evaluation. Enables reproducible biomarker discovery by combining multiple machine learning classifiers and consensus approaches, helping researchers identify and validate robust gene signatures.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/Giomu/TENTACLES}
+  \item Report bugs at \url{https://github.com/Giomu/TENTACLES/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Giorgio Montesi \email{giorgio.montesi@unisi.it} (\href{https://orcid.org/0000-0002-9054-2756}{ORCID})
+
+Authors:
+\itemize{
+  \item Gabriel Mouta \email{gds.mouta@gmail.com} (\href{https://orcid.org/0000-0002-5796-9491}{ORCID})
+  \item André Cunha \email{cunhaandre@usp.br}
+  \item Maria Novedrati \email{m.novedrati@student.unisi.it}
+  \item Alessandro Fuschi \email{alessandro.fuschi2@unibo.it}
+}
+
+}
 \keyword{internal}

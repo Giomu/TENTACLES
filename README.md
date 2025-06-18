@@ -1,61 +1,82 @@
-# TENTACLES: Transcriptomics ExploratioN Tool through Aggregation of CLassifiErS
 
-**TENTACLES** is an R package designed to simplify and enhance the analysis of transcriptomic data, with a particular focus on discovering and validating robust biomarkers. By integrating multiple machine learning algorithms, feature selection methods, and consensus-based approaches, TENTACLES provides a powerful and flexible framework for working with RNA-Seq and microarray datasets.
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# TENTACLES: Transcriptomics ExploratioN Tool through Aggregation of CLassifiErS <a href="https://github.com/Giomu/TENTACLES"><img src="inst/images/logo-v2.jpeg" align="right" height="138" /></a>
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+**TENTACLES** is an R package designed to simplify and enhance the
+analysis of transcriptomic data, with a particular focus on discovering
+and validating robust biomarkers. By integrating multiple machine
+learning algorithms, feature selection methods, and consensus-based
+approaches, TENTACLES provides a powerful and flexible framework for
+working with RNA-Seq and microarray datasets.
 
 ## Workflow Overview
 
 The TENTACLES workflow is built around five key steps:
 
-1.  **Data Preprocessing (`preProcess`)**\
-    Start by preparing your dataset with normalization and batch effect correction. This step ensures clean and comparable data. You can also visualize the effects of these corrections using PCA and PVCA plots, both before and after batch correction, for quality assurance.
+1.  **Data Preprocessing (`preProcess`)**  
+    Start by preparing your dataset with normalization and batch effect
+    correction. This step ensures clean and comparable data. You can
+    also visualize the effects of these corrections using PCA and PVCA
+    plots, both before and after batch correction, for quality
+    assurance.
 
-2.  **Classifier Execution (`runClassifiers`)**\
-    Apply up to 15 machine learning classifiers to your data, pairing each with up to 5 feature selection algorithms to identify the most informative features. TENTACLES tunes model parameters, calculates variable importance scores, and provides visualizations, including:
+2.  **Classifier Execution (`runClassifiers`)**  
+    Apply up to 15 machine learning classifiers to your data, pairing
+    each with up to 5 feature selection algorithms to identify the most
+    informative features. TENTACLES tunes model parameters, calculates
+    variable importance scores, and provides visualizations, including:
 
-    -   An UpSet plot to show overlapping features.
+    - An UpSet plot to show overlapping features.
 
-    -   A heatmap highlighting misclassified samples.
+    - A heatmap highlighting misclassified samples.
 
-    -   A performance plot comparing classifiers.
+    - A performance plot comparing classifiers.
 
-3.  **Consensus Identification (`getConsensus`)**\
-    Combine results across classifiers to identify overlapping features, helping you uncover robust consensus biomarkers. This step includes detailed visualizations such as:
+3.  **Consensus Identification (`getConsensus`)**  
+    Combine results across classifiers to identify overlapping features,
+    helping you uncover robust consensus biomarkers. This step includes
+    detailed visualizations such as:
 
-    -   An AUROC plot for genes showing their discriminative power.
+    - An AUROC plot for genes showing their discriminative power.
 
-    -   A heatmap and PCA of the consensus features.
+    - A heatmap and PCA of the consensus features.
 
-    -   Variable importance rankings from a Multi-Layer Perceptron (MLP) model.
+    - Variable importance rankings from a Multi-Layer Perceptron (MLP)
+      model.
 
-4.  **Testing (`testConsensus`)**\
-    Further assess the consensus biomarkers on external datasets. This step evaluates their effectiveness using:
+4.  **Testing (`testConsensus`)**  
+    Further assess the consensus biomarkers on external datasets. This
+    step evaluates their effectiveness using:
 
-    -   PCA.
+    - PCA.
 
-    -   AUROC plots.
+    - AUROC plots.
 
-    -   Heatmaps combined with hierarchical clustering.
+    - Heatmaps combined with hierarchical clustering.
 
-    -   Tuning and fitting an MLP model for deeper analysis.
+    - Tuning and fitting an MLP model for deeper analysis.
 
-5.  **Validation (`valConsensus`)**\
-    Validate the consensus biomarkers by testing all possible combinations on external datasets. This step uses six different unsupervised clustering methods to ensure generalizability. Visualizations include:
+5.  **Validation (`valConsensus`)**  
+    Validate the consensus biomarkers by testing all possible
+    combinations on external datasets. This step uses six different
+    unsupervised clustering methods to ensure generalizability.
+    Visualizations include:
 
-    -   Model performance plots for the top N combinations of genes.
+    - Model performance plots for the top N combinations of genes.
 
-    -   A heatmap showing AUROC values for these combinations.
+    - A heatmap showing AUROC values for these combinations.
 
-The following flowchart illustrates the functionality of TENTACLES:\
+The following flowchart illustrates the functionality of TENTACLES:  
 
-![TENTACLES Workflow](inst/images/TENTACLES_flowchart.png)
-
-### Additional Analyses
-
-Beyond the main workflow, TENTACLES also supports:
-
--   **Enrichment Analysis**: Perform GO and KEGG enrichment using the `enrich.GO` and `enrich.KEGG` functions. Results can be visualized with `bar.plot` or `circos.plot`.
-
--   **Protein-Protein Interaction (PPI) Network Analysis**: Use the `ppiNetwork` function to explore relationships between genes and proteins.
+<figure>
+<img src="inst/images/TENTACLES_flowchart.png"
+alt="TENTACLES Workflow" />
+<figcaption aria-hidden="true">TENTACLES Workflow</figcaption>
+</figure>
 
 ## Installation
 
@@ -63,11 +84,14 @@ To install TENTACLES, simply run the following commands in R:
 
 ## Applications
 
--   **Biomarker Discovery**: Identify robust gene markers for diseases or conditions.
+- **Biomarker Discovery**: Identify robust gene markers for diseases or
+  conditions.
 
--   **Transcriptomic Analysis**: Analyze RNA-Seq and microarray datasets with ease.
+- **Transcriptomic Analysis**: Analyze RNA-Seq and microarray datasets
+  with ease.
 
--   **Model Validation**: Validate biomarkers across diverse datasets to ensure reproducibility.
+- **Model Validation**: Validate biomarkers across diverse datasets to
+  ensure reproducibility.
 
 ## License
 
@@ -75,10 +99,13 @@ TENTACLES is licensed under the MIT License.
 
 ## Contributing
 
-Contributions are welcome! Please refer to the [Contributing Guidelines](CONTRIBUTING.md) for more details.
+Contributions are welcome! Please refer to
+the [Contributing Guidelines](CONTRIBUTING.md) for more details.
 
 ## Acknowledgments
 
-This package was developed with a focus on integrating state-of-the-art machine learning techniques for transcriptomics. Special thanks to all collaborators and contributors.
+This package was developed with a focus on integrating state-of-the-art
+machine learning techniques for transcriptomics. Special thanks to all
+collaborators and contributors.
 
 Citations:

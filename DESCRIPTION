@@ -1,24 +1,32 @@
-Package: TENTACLES
 Type: Package
+Package: TENTACLES
 Title: Framework for Biomarker Discovery and Validation in Transcriptomics
 Version: 0.1.0
-Author: Giorgio Montesi
-Maintainer: Giorgio Montesi <yourself@somewhere.net>
-Description: Provides an integrated and user-friendly workflow for analyzing transcriptomic data, including RNA-Seq and microarray experiments. 
-    Implements automated data preprocessing with normalization and batch effect correction, multi-model classification with feature selection, 
-    consensus biomarker identification, and robust external validation. Offers extensive visualizations—such as PCA, PVCA, AUROC, UpSet plots, 
-    and heatmaps—to facilitate data exploration and model evaluation. Enables reproducible biomarker discovery by combining multiple machine learning 
-    classifiers and consensus approaches, helping researchers identify and validate robust gene signatures.
+Authors@R: c(
+    person("Giorgio", "Montesi", email = "giorgio.montesi@unisi.it", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-9054-2756")),
+    person("Gabriel", "Mouta", email = "gds.mouta@gmail.com", role = "aut",
+           comment = c(ORCID = "0000-0002-5796-9491")),
+    person("André", "Cunha", email = "cunhaandre@usp.br", role = "aut"),
+    person("Maria", "Novedrati", email = "m.novedrati@student.unisi.it", role = "aut"),
+    person("Alessandro", "Fuschi", email = "alessandro.fuschi2@unibo.it", role = "aut")
+  )
+Description: Provides an integrated and user-friendly workflow for
+    analyzing transcriptomic data, including RNA-Seq and microarray
+    experiments.  Implements automated data preprocessing with
+    normalization and batch effect correction, multi-model classification
+    with feature selection, consensus biomarker identification, and robust
+    external validation. Offers extensive visualizations—such as PCA,
+    PVCA, AUROC, UpSet plots, and heatmaps—to facilitate data exploration
+    and model evaluation. Enables reproducible biomarker discovery by
+    combining multiple machine learning classifiers and consensus
+    approaches, helping researchers identify and validate robust gene
+    signatures.
 License: GPL (>= 3)
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.3.2
-Suggests: 
-    knitr,
-    rmarkdown,
-    stringr,
-    testthat (>= 3.0.0)
-VignetteBuilder: knitr
+URL: https://github.com/Giomu/TENTACLES
+BugReports: https://github.com/Giomu/TENTACLES/issues
+Depends: 
+    R (>= 3.5.0)
 Imports: 
     baguette,
     Biobase,
@@ -66,8 +74,16 @@ Imports:
     workflows,
     workflowsets,
     yardstick
+Suggests: 
+    knitr,
+    rmarkdown,
+    stringr,
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
 Remotes: 
     stevenpawley/colino
 Config/testthat/edition: 3
-Depends: 
-    R (>= 3.5.0)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
