@@ -82,7 +82,11 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes: 
-    stevenpawley/colino
+    stevenpawley/colino,
+    bioc::Biobase,
+    bioc::edgeR,
+    bioc::pvca,
+    bioc::sva
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
