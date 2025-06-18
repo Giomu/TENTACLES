@@ -4,7 +4,11 @@
 \alias{mlp.model.plot}
 \title{Plot Variable Importance for MLP Model with Performance Metrics}
 \usage{
-mlp.model.plot(importances, test_performance)
+mlp.model.plot(
+  importances,
+  test_performance,
+  colors = (grDevices::colorRampPalette(c("#2E4057", "#66A182", "#EDAE49")))(64)
+)
 }
 \arguments{
 \item{importances}{A data frame with variable importance results, typically with columns:

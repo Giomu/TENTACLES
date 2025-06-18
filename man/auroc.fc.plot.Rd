@@ -4,7 +4,12 @@
 \alias{auroc.fc.plot}
 \title{Plot AUROC and Fold Change for Genes}
 \usage{
-auroc.fc.plot(results)
+auroc.fc.plot(
+  results,
+  low_color = "#187498",
+  middle_color = "#E5E5E5",
+  high_color = "#C62E2E"
+)
 }
 \arguments{
 \item{results}{A data frame with at least the following columns:

@@ -4,7 +4,13 @@
 \alias{wrong.preds.plot}
 \title{Plot of Model Prediction Errors}
 \usage{
-wrong.preds.plot(predictions_df)
+wrong.preds.plot(
+  predictions_df,
+  color_correct = "#BEBEBE",
+  color_wrong = "#BD2B48",
+  shape_correct = 16,
+  shape_wrong = 16
+)
 }
 \arguments{
 \item{predictions_df}{A data frame containing prediction results. It must include the following columns:
@@ -12,6 +18,14 @@ wrong.preds.plot(predictions_df)
 - `.pred_class`: The predicted class label.
 - `class`: The true class label.
 - `model`: The name of the model that made the prediction.}
+
+\item{color_correct}{Color for correct predictions (default: "#6c757d").}
+
+\item{color_wrong}{Color for wrong predictions (default: "#D7263D").}
+
+\item{shape_correct}{Point shape for correct predictions (default: 16, circle).}
+
+\item{shape_wrong}{Point shape for wrong predictions (default: 4, X).}
 }
 \value{
 A ggplot2 object displaying a scatter plot where:
@@ -20,7 +34,7 @@ A ggplot2 object displaying a scatter plot where:
 - The x-axis only labels misclassified samples.
 }
 \description{
-This function creates a scatter plot to visualize correct and incorrect predictions
+Creates a scatter plot to visualize correct and incorrect predictions
 across multiple models. Wrong predictions are highlighted, and only misclassified sample IDs
 are displayed on the x-axis.
 }
