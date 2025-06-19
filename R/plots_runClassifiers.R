@@ -167,7 +167,7 @@ performances.plot <- function(data.obj) {
 }
 
 #' @title Plot of Model Prediction Errors
-#' @description This function creates a scatter plot to visualize correct and incorrect predictions
+#' @description Creates a scatter plot to visualize correct and incorrect predictions
 #' across multiple models. Wrong predictions are highlighted, and only misclassified sample IDs
 #' are displayed on the x-axis.
 #'
@@ -176,6 +176,10 @@ performances.plot <- function(data.obj) {
 #' - `.pred_class`: The predicted class label.
 #' - `class`: The true class label.
 #' - `model`: The name of the model that made the prediction.
+#' @param color_correct Color for correct predictions (default: "#6c757d").
+#' @param color_wrong   Color for wrong predictions (default: "#D7263D").
+#' @param shape_correct Point shape for correct predictions (default: 16, circle).
+#' @param shape_wrong   Point shape for wrong predictions (default: 4, X).
 #'
 #' @return A ggplot2 object displaying a scatter plot where:
 #' - Each point represents a prediction made by a model.
@@ -200,30 +204,41 @@ performances.plot <- function(data.obj) {
 #' }
 #'
 #' @export
-wrong.preds.plot <- function(predictions_df) {
-    predictions_df$result <- ifelse(predictions_df$.pred_class == predictions_df$class, "Correct", "Wrong")
-    wrong_ids <- unique(predictions_df[predictions_df$result == "Wrong", "ID"])
-    x_breaks <- ifelse(predictions_df$ID %in% wrong_ids, predictions_df$ID, "")
+wrong.preds.plot <- function(
+    predictions_df,
+    color_correct = "#BEBEBE",
+    color_wrong   = "#BD2B48",
+    shape_correct = 16,
+    shape_wrong   = 16
+) {
+  predictions_df$result <- ifelse(predictions_df$.pred_class == predictions_df$class, "Correct", "Wrong")
+  wrong_ids <- unique(predictions_df[predictions_df$result == "Wrong", "ID"])
+  x_breaks <- ifelse(predictions_df$ID %in% wrong_ids, predictions_df$ID, "")
 
-    p <- ggplot(predictions_df, aes(x = ID, y = model, color = result)) +
-      geom_point(size = ifelse(predictions_df$result == "Wrong", 4, 1.5), alpha = 0.9) +
-      scale_color_manual(values = c("Correct" = "gray", "Wrong" = "indianred")) +
-      labs(
-          x = "",
-          y = "",
-          color = "Prediction"
-      ) +
-      # put breaks on the x-axis only on the Wrong samples
-      scale_x_discrete(breaks = x_breaks) +
-      theme_minimal() +
-      theme(
-          axis.text.x = element_text(angle = 45, hjust = 1, vjust = 2, margin = margin(t = 50), size = 9, color = "#7c7b7b"),
-          axis.text.y = element_text(size = 13),
-          panel.grid.major.y = element_blank(),
-          panel.grid.minor.y = element_blank(),
-          panel.grid.major.x = element_line(color = "lightgray", size = 0.5, linetype = "solid"),
-          legend.position = "right"
-      )
+  p <- ggplot(predictions_df, aes(x = ID, y = model)) +
+    geom_point(
+      aes(color = result, shape = result),
+      size = ifelse(predictions_df$result == "Wrong", 4, 1.5),
+      alpha = 0.9
+    ) +
+    scale_color_manual(values = c("Correct" = color_correct, "Wrong" = color_wrong)) +
+    scale_shape_manual(values = c("Correct" = shape_correct, "Wrong" = shape_wrong)) +
+    labs(
+      x = "",
+      y = "",
+      color = "Prediction",
+      shape = "Prediction"
+    ) +
+    scale_x_discrete(breaks = x_breaks) +
+    theme_minimal() +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1, vjust = 2, margin = margin(t = 50), size = 9, color = "#7c7b7b"),
+      axis.text.y = element_text(size = 13),
+      panel.grid.major.y = element_blank(),
+      panel.grid.minor.y = element_blank(),
+      panel.grid.major.x = element_line(color = "lightgray", size = 0.5, linetype = "solid"),
+      legend.position = "right"
+    )
 
-    return(p)
+  return(p)
 }

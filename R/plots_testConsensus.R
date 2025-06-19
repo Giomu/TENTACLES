@@ -23,11 +23,14 @@
 #'
 #' @import patchwork
 #' @export
-pca.plot <- function(pca_scores, pca_top_loadings, labels) {
+pca.plot <- function(pca_scores, pca_top_loadings, labels,
+                     color_class_0 = "#535965",
+                     color_class_1 = "#96CDCF",
+                     arrow_color = "#595959") {
 
   # create the plot
   pca_plot <- ggplot(pca_scores, aes(x = PC1, y = PC2, colour = factor(labels))) +
-    scale_color_manual(values = c("#2e4057", "#BD2B48")) +
+    scale_color_manual(values = c(color_class_0, color_class_1)) +
     geom_point(size = 3) +
     stat_ellipse(linewidth = 0.7, linetype = 2, type = "norm") +
     stat_ellipse(type = "t") +
@@ -42,18 +45,12 @@ pca.plot <- function(pca_scores, pca_top_loadings, labels) {
       axis.title = element_text(size = 13, color = "#8f8f8f"),
     )
 
-  # Assign colors based on quadrants (4 colors)
-  pca_top_loadings$Col <- ifelse(pca_top_loadings$PC1 > 0 & pca_top_loadings$PC2 > 0, "#66C2A5",
-                                 ifelse(pca_top_loadings$PC1 < 0 & pca_top_loadings$PC2 < 0, "#E5C494",
-                                        ifelse(pca_top_loadings$PC1 > 0 & pca_top_loadings$PC2 < 0, "#8DA0CB",
-                                               "#FC8D62")))
-
   # Plot of top loadings for each of PC1 and PC2
   loadings_plot <- ggplot(data = pca_top_loadings) +
     geom_segment(aes(x = 0, y = 0, xend = PC1, yend = PC2),
                  arrow = arrow(length = unit(0.08, "in")),
                  linewidth = 0.8,
-                 colour = pca_top_loadings$Col
+                 colour = arrow_color
     ) +
     ggrepel::geom_text_repel(aes(x = PC1, y = PC2, label = gene),
                              nudge_y = 0.001, size = 2.5,
@@ -69,9 +66,7 @@ pca.plot <- function(pca_scores, pca_top_loadings, labels) {
       panel.grid.minor = element_blank()
     )
 
-  p <- (pca_plot | loadings_plot)
-
-  return(p)
+  return(list(pca_plot = pca_plot, loadings_plot = loadings_plot))
 }
 
 #' Plot AUROC and Fold Change for Genes
@@ -108,13 +103,17 @@ pca.plot <- function(pca_scores, pca_top_loadings, labels) {
 #' }
 #'
 #' @export
-auroc.fc.plot <- function(results) {
+auroc.fc.plot <- function(results,
+                          low_color = "#187498",
+                          middle_color = "#E5E5E5",
+                          high_color = "#C62E2E"
+) {
 
   p <- ggplot(results, aes(x = reorder(gene, auroc), y = auroc)) +
     geom_hline(yintercept = 0.5, linetype = "solid", color = "#7e7e7e", linewidth = 0.4) +
     geom_errorbar(aes(ymin = auroc_lower, ymax = auroc_upper, color = FC), width = 0, linewidth = 0.4, position = position_dodge(0.5)) +
     geom_point(aes(color = FC), size = 5, position = position_dodge(0.5)) +
-    scale_color_gradient2(low = "#187498", mid = "gray90", high = "#C62E2E", midpoint = 0, limits = c(-2.1, 2.1)) +
+    scale_color_gradient2(low = low_color, mid = middle_color, high = high_color, midpoint = 0, limits = c(-2.1, 2.1)) +
     scale_y_continuous(limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1)) +
     labs(x = "", y = "AUROC") +
     theme_minimal() +
@@ -130,6 +129,8 @@ auroc.fc.plot <- function(results) {
       axis.line.x = element_line(color = "#7e7e7e", linewidth = 0.3),
       axis.line.y = element_line(color = "#7e7e7e", linewidth = 0.3)
     )
+
+  return(p)
 
 }
 
@@ -182,7 +183,7 @@ heatmap.plot <- function(heatmap_data,
                          dendrogram = "both",
                          show_dendrogram = c(FALSE, TRUE),
                          scale = "row",
-                         custom_colors = c("1" = "#9E363A", "0" = "#467599"),
+                         custom_colors = c("1" = "#535965", "0" = "#96CDCF"),
                          margins = c(60, 100, 40, 20),
                          grid_color = "white",
                          grid_width = 0.00001,
@@ -264,7 +265,10 @@ heatmap.plot <- function(heatmap_data,
 #'
 #' @import ggplot2
 #' @export
-mlp.model.plot <- function(importances, test_performance){
+mlp.model.plot <- function(importances,
+                           test_performance,
+                           colors = grDevices::colorRampPalette(c("#2E4057", "#66A182", "#EDAE49"))(64)
+){
 
   # Create the plot
   cli::cli_alert_info("Creating plot ...")
@@ -300,7 +304,7 @@ mlp.model.plot <- function(importances, test_performance){
       axis.title.x = element_text(size = 14, color = "#7e7e7e"),
       axis.text.x = element_text(size = 12, color = "#7e7e7e")
     ) +
-    scale_color_gradientn(colors = grDevices::colorRampPalette(c("#2E4057", "#66A182", "#EDAE49"))(64)) +
+    scale_color_gradientn(colors = colors) +
     coord_flip()
   cli::cli_alert_success("MLP Plot created successfully!")
 

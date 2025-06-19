@@ -4,7 +4,14 @@
 \alias{pca.plot}
 \title{Plot PCA Scores and Top Loadings for Consensus Genes}
 \usage{
-pca.plot(pca_scores, pca_top_loadings, labels)
+pca.plot(
+  pca_scores,
+  pca_top_loadings,
+  labels,
+  color_class_0 = "#535965",
+  color_class_1 = "#96CDCF",
+  arrow_color = "#595959"
+)
 }
 \arguments{
 \item{pca_scores}{Data frame with columns `PC1`, `PC2`, and optionally sample labels.}

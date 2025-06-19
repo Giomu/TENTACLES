@@ -23,7 +23,11 @@
 #' @export
 #' @import ggplot2
 
-plotTopMetrics <- function(top_results, title = "Top Model Metrics") {
+plotTopMetrics <- function(top_results,
+                           title = "Top Model Metrics",
+                           low_color = "white",
+                           high_color = "steelblue",
+                           limits = c(0,1)) {
 
   if(!"Gene_Combination" %in% names(top_results)) {
     stop("Input data frame must contain 'Gene_Combination' column.")
@@ -82,7 +86,9 @@ plotTopMetrics <- function(top_results, title = "Top Model Metrics") {
   # Create heatmap with ordered axis
   heatmap <- ggplot(long_results, aes(x = factor(Pretty_Label, levels = level_order), y = Model, fill = Value)) +
     geom_tile(color = "white", size = 0.2) +
-    scale_fill_gradient2(low = "white", high = "steelblue") +
+    scale_fill_gradient2(low = low_color,
+                         high = high_color,
+                         limits = limits) +
     facet_wrap(~Metric) +
     geom_text(aes(label = round(Value, 2)), color = "black", size = 3) +
     theme_minimal() +

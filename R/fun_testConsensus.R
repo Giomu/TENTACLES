@@ -589,7 +589,10 @@ testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display
 
   cli::cli_alert_success("PCA plot created!")
 
-  if (display_plots) plot(pca_plot)
+  if (display_plots) {
+    print(pca_results$plots$pca_plot)
+    print(pca_results$plots$loadings_plot)
+  }
 
   # -------- AUROC and FC Analysis --------
 
