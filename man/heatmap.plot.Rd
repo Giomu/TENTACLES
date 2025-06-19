@@ -10,7 +10,7 @@ heatmap.plot(
   dendrogram = "both",
   show_dendrogram = c(FALSE, TRUE),
   scale = "row",
-  custom_colors = c(`1` = "#9E363A", `0` = "#467599"),
+  custom_colors = c(`1` = "#535965", `0` = "#96CDCF"),
   margins = c(60, 100, 40, 20),
   grid_color = "white",
   grid_width = 1e-05,

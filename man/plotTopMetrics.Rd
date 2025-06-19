@@ -4,7 +4,13 @@
 \alias{plotTopMetrics}
 \title{Plot Heatmap of Model Performance Metrics}
 \usage{
-plotTopMetrics(top_results, title = "Top Model Metrics")
+plotTopMetrics(
+  top_results,
+  title = "Top Model Metrics",
+  low_color = "white",
+  high_color = "steelblue",
+  limits = c(0, 1)
+)
 }
 \arguments{
 \item{top_results}{A data frame returned by `selectTopCombinations()`, containing

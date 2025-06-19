@@ -8,8 +8,9 @@ pca.plot(
   pca_scores,
   pca_top_loadings,
   labels,
-  color_class_0 = "#3D5A80",
-  color_class_1 = "#EE6C97"
+  color_class_0 = "#535965",
+  color_class_1 = "#96CDCF",
+  arrow_color = "#595959"
 )
 }
 \arguments{

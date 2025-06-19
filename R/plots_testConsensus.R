@@ -24,8 +24,9 @@
 #' @import patchwork
 #' @export
 pca.plot <- function(pca_scores, pca_top_loadings, labels,
-                     color_class_0 = "#3D5A80",
-                     color_class_1 = "#EE6C97") {
+                     color_class_0 = "#535965",
+                     color_class_1 = "#96CDCF",
+                     arrow_color = "#595959") {
 
   # create the plot
   pca_plot <- ggplot(pca_scores, aes(x = PC1, y = PC2, colour = factor(labels))) +
@@ -44,18 +45,12 @@ pca.plot <- function(pca_scores, pca_top_loadings, labels,
       axis.title = element_text(size = 13, color = "#8f8f8f"),
     )
 
-  # Assign colors based on quadrants (4 colors)
-  pca_top_loadings$Col <- ifelse(pca_top_loadings$PC1 > 0 & pca_top_loadings$PC2 > 0, "#66C2A5",
-                                 ifelse(pca_top_loadings$PC1 < 0 & pca_top_loadings$PC2 < 0, "#E5C494",
-                                        ifelse(pca_top_loadings$PC1 > 0 & pca_top_loadings$PC2 < 0, "#8DA0CB",
-                                               "#FC8D62")))
-
   # Plot of top loadings for each of PC1 and PC2
   loadings_plot <- ggplot(data = pca_top_loadings) +
     geom_segment(aes(x = 0, y = 0, xend = PC1, yend = PC2),
                  arrow = arrow(length = unit(0.08, "in")),
                  linewidth = 0.8,
-                 colour = pca_top_loadings$Col
+                 colour = arrow_color
     ) +
     ggrepel::geom_text_repel(aes(x = PC1, y = PC2, label = gene),
                              nudge_y = 0.001, size = 2.5,
@@ -71,9 +66,7 @@ pca.plot <- function(pca_scores, pca_top_loadings, labels,
       panel.grid.minor = element_blank()
     )
 
-  p <- (pca_plot | loadings_plot)
-
-  return(p)
+  return(list(pca_plot = pca_plot, loadings_plot = loadings_plot))
 }
 
 #' Plot AUROC and Fold Change for Genes
@@ -190,7 +183,7 @@ heatmap.plot <- function(heatmap_data,
                          dendrogram = "both",
                          show_dendrogram = c(FALSE, TRUE),
                          scale = "row",
-                         custom_colors = c("1" = "#9E363A", "0" = "#467599"),
+                         custom_colors = c("1" = "#535965", "0" = "#96CDCF"),
                          margins = c(60, 100, 40, 20),
                          grid_color = "white",
                          grid_width = 0.00001,

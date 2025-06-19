@@ -1,12 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# TENTACLES: Transcriptomics ExploratioN Tool through Aggregation of CLassifiErS <a href="https://github.com/Giomu/TENTACLES"><img src="inst/images/logo-v2.png" align="right" height="138" /></a>
+# TENTACLES <a href="https://github.com/Giomu/TENTACLES"><img src="inst/images/logo-v2.png" align="right" height="138"/></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-**TENTACLES** is an R package designed to simplify and enhance the
+**TENTACLES**: Transcriptomics ExploratioN Tool through Aggregation of
+CLassifiErS is an R package designed to simplify and enhance the
 analysis of transcriptomic data, with a particular focus on discovering
 and validating robust biomarkers. By integrating multiple machine
 learning algorithms, feature selection methods, and consensus-based
