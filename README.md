@@ -4,6 +4,8 @@
 # TENTACLES <a href="https://github.com/Giomu/TENTACLES"><img src="inst/images/logo-v2.png" align="right" height="138"/></a>
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/Giomu/TENTACLES/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Giomu/TENTACLES/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 **TENTACLES**: Transcriptomics ExploratioN Tool through Aggregation of
