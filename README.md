@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# TENTACLES: Transcriptomics ExploratioN Tool through Aggregation of CLassifiErS <a href="https://github.com/Giomu/TENTACLES"><img src="inst/images/logo-v2.jpeg" align="right" height="138" /></a>
+# TENTACLES: Transcriptomics ExploratioN Tool through Aggregation of CLassifiErS <a href="https://github.com/Giomu/TENTACLES"><img src="inst/images/logo-v2.png" align="right" height="138" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
