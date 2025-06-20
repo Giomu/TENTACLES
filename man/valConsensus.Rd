@@ -11,12 +11,12 @@ valConsensus(df.count, gene.list, class, N = 10, metric = "FScore")
 
 \item{gene.list}{A character vector specifying the consensus genes to be evaluated.}
 
+\item{class}{A factor vector specifying the true class labels for the samples.}
+
 \item{N}{An integer specifying the number of top gene combinations to select based on the metric.}
 
 \item{metric}{A character string specifying the metric to use for selecting the top gene combinations.
 Possible values are 'Accuracy', 'Precision', 'Recall', and 'FScore'.}
-
-\item{labels}{A factor vector specifying the true class labels for the samples.}
 }
 \value{
 A list containing the clustering results for each combination of genes and clustering methods.

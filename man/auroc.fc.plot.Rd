@@ -18,6 +18,12 @@ auroc.fc.plot(
 - `auroc_lower`: Numeric, lower confidence interval for AUROC.
 - `auroc_upper`: Numeric, upper confidence interval for AUROC.
 - `FC`: Numeric, fold change value for each gene.}
+
+\item{low_color}{Color for the lowest fold change values (downregulated genes). Default: "#187498".}
+
+\item{middle_color}{Color for neutral fold change (midpoint). Default: "#E5E5E5".}
+
+\item{high_color}{Color for the highest fold change values (upregulated genes). Default: "#C62E2E".}
 }
 \value{
 A ggplot2 object visualizing the AUROC (with confidence interval bars) and fold change for each gene.
@@ -41,7 +47,12 @@ The horizontal dashed line at 0.5 indicates random classification performance.
 #   auroc_upper = c(0.96, 0.88),
 #   FC = c(1.5, -1.2)
 # )
-p <- auroc.fc.plot(results)
+p <- auroc.fc.plot(
+  results,
+  low_color = "#187498",
+  middle_color = "#E5E5E5",
+  high_color = "#C62E2E"
+)
 print(p)
 }
 

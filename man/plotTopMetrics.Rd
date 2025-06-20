@@ -17,6 +17,12 @@ plotTopMetrics(
 performance metrics of multiple models for each gene combination.}
 
 \item{title}{A character string specifying the plot title. Default is "Top Model Metrics".}
+
+\item{low_color}{Color for the lowest values in the heatmap gradient. Default: "white".}
+
+\item{high_color}{Color for the highest values in the heatmap gradient. Default: "steelblue".}
+
+\item{limits}{Numeric vector of length 2, specifying the minimum and maximum values for the fill scale. Default: c(0, 1).}
 }
 \value{
 A `ggplot2` object representing the heatmap.
@@ -31,7 +37,13 @@ gene summary on the y-axis, prefixed by a combination number (C1, C2, ...).
 \dontrun{
 vc <- valConsensus(df.count = count_table, gene.list = gene_list,
                    labels = labels, N = 10, metric = "FScore")
-p <- plotTopMetrics(vc$topCombinations)
+p <- plotTopMetrics(
+  vc$topCombinations,
+  title = "Top Model Metrics",
+  low_color = "white",
+  high_color = "steelblue",
+  limits = c(0, 1)
+)
 print(p)
 }
 
