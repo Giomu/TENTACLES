@@ -42,7 +42,28 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: |
+              any::rcmdcheck
+              any::xgboost
+              any::lightgbm
+              any::rpart
+              any::mixOmics
+              any::C50
+              any::earth
+              any::nnet
+              any::themis
+              any::vip
+              any::baguette
+              any::colino
+              any::Boruta
+              any::praznik
+              any::FSelectorRcpp
+              any::workflowsets
+              any::rsample
+              any::yardstick
+              any::parsnip
+              any::recipes
+              any::kernlab
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
