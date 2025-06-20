@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/Giomu/TENTACLES/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Giomu/TENTACLES/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/Giomu/TENTACLES/graph/badge.svg)](https://app.codecov.io/gh/Giomu/TENTACLES)
 <!-- badges: end -->
 
 **TENTACLES**: Transcriptomics ExploratioN Tool through Aggregation of
