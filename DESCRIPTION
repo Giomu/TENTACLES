@@ -13,7 +13,7 @@ Authors@R: c(
   )
 Description: Provides an integrated and user-friendly workflow for
     analyzing transcriptomic data, including RNA-Seq and microarray
-    experiments.  Implements automated data preprocessing with
+    experiments. Implements automated data preprocessing with
     normalization and batch effect correction, multi-model classification
     with feature selection, consensus biomarker identification, and robust
     external validation. Offers extensive visualizations—such as PCA,
