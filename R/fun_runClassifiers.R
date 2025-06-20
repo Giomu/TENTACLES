@@ -19,6 +19,24 @@ methods::setClass("runClassifiers.obj",
 )
 
 ### ------------------------ Helper Functions ------------------------ ###
+#' Check if required packages are installed
+#'
+#' @param pkgs Character vector of package names to check.
+#' @return Invisibly TRUE if all packages installed, otherwise stops with a CLI alert.
+#' @keywords internal
+check_required_pkgs <- function(pkgs) {
+  not_installed <- pkgs[!vapply(pkgs, requireNamespace, FUN.VALUE = logical(1), quietly = TRUE)]
+  if (length(not_installed) > 0) {
+    cli::cli_abort(
+      "The following packages are required but not installed: {paste(not_installed, collapse = ', ')}.
+      Please install them with {.code install.packages()} before running this function."
+    )
+  }
+  invisible(TRUE)
+}
+
+
+
 # Create model specifications
 create_model_specs <- function() {
   list(
@@ -222,10 +240,8 @@ tune_and_fit <- function(
   successful_ids <- tune_results$wflow_id[successful_idx]
 
   if (length(successful_ids) == 0) {
-    cli::cli_alert_danger("All models failed during tuning. Execution stopped.")
-    stop("No models available for further steps.")
+    cli::cli_abort("All models failed during tuning. Execution stopped.")
   }
-
 
   cli::cli_h3("Best Parameters Selection")
   cli::cli_alert_info("Selecting best parameters for each model ...")
@@ -254,8 +270,7 @@ tune_and_fit <- function(
   best_params <- best_params[valid_idx]
 
   if (length(valid_ids) == 0) {
-    cli::cli_alert_danger("All models failed during parameter selection. Execution stopped.")
-    stop("No models available for fitting.")
+    cli::cli_abort("All models failed during parameter selection. Execution stopped.")
   }
 
   cli::cli_alert_success("Succesfully selected parameters!")
@@ -286,8 +301,7 @@ tune_and_fit <- function(
   final_workflows <- final_workflows[final_idx]
 
   if (length(final_ids) == 0) {
-    cli::cli_alert_danger("All models failed during workflow finalization. Execution stopped.")
-    stop("No models available for final fitting.")
+    cli::cli_abort("All models failed during workflow finalization. Execution stopped.")
   }
 
   cli::cli_alert_success("Succesfully finalized the workflows!")
@@ -317,9 +331,9 @@ tune_and_fit <- function(
   final_workflows <- final_workflows[fit_idx]
 
   if (length(fit_ids) == 0) {
-    cli::cli_alert_danger("All models failed during final fitting. Execution stopped.")
-    stop("No models successfully fitted.")
+    cli::cli_abort("All models failed during final fitting. Execution stopped.")
   }
+
   cli::cli_alert_success("Models fitted succesfully.")
 
   cli::cli_alert_info("Computing metric performances ...")
@@ -626,8 +640,34 @@ runClassifiers <- function(
     "decision_tree", "rand_forest", "svm_linear", "svm_poly",
     "svm_rbf"
   )
+
   # Vector of available feature selectors
   available_selectors <- c("base", "boruta", "roc", "infgain", "mrmr", "corr")
+
+  # Map each model to its required package (only non-base R packages)
+  model_pkgs <- list(
+    xgboost        = "xgboost",
+    bag_tree       = "rpart",
+    lightGBM       = "lightgbm",
+    pls            = "mixOmics",
+    logistic       = NULL,   # stats is base R
+    C5_rules       = "C50",
+    mars           = "earth",
+    bag_mars       = "earth",
+    mlp            = "nnet",
+    bag_mlp        = "nnet",
+    decision_tree  = "rpart",
+    rand_forest    = "ranger",
+    svm_linear     = "kernlab",
+    svm_poly       = "kernlab",
+    svm_rbf        = "kernlab"
+  )
+  # Identify which packages are required by the selected models
+  required_pkgs <- unique(unlist(model_pkgs[models]))
+  required_pkgs <- required_pkgs[!is.null(required_pkgs)]
+
+  # Check if required packages are installed
+  check_required_pkgs(required_pkgs)
 
   withr::with_seed(
     seed = seed,
