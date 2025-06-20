@@ -59,6 +59,8 @@ methods::setClass(
 #' }
 #'
 # Custom 'show' method for the 'testConsensus.obj' class with enhanced display
+#' @importFrom methods slot slotNames
+#' @importFrom utils head
 methods::setMethod(
   "show", "testConsensus.obj",
   function(object) {
