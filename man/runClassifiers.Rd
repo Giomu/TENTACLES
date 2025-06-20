@@ -19,8 +19,7 @@ runClassifiers(
   filter = TRUE,
   seed = 123,
   downsample = FALSE,
-  plot = TRUE,
-  parallel_plan = c("multisession", "sequential")
+  plot = TRUE
 )
 }
 \arguments{

@@ -467,7 +467,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
         vip_result <- vip::vip(
           object = model_fit,
           method = "permute",
-          parallel = (parallel_plan != "sequential"),
+          #parallel = (parallel_plan != "sequential"),
           nsim = n_sim,
           metric = "roc_auc",
           pred_wrapper = function(object, newdata) pfun(object, newdata),
@@ -617,16 +617,17 @@ runClassifiers <- function(
     tuning.method = "tune_grid", n = 5, v = 3,
     boruta.maxRuns = 100, selector.threshold = 0.95,
     metric = "accuracy",
-    nsim = 2, filter = TRUE, seed = 123, downsample = FALSE, plot = TRUE,
-    parallel_plan = c("multisession", "sequential")) {
+    nsim = 2, filter = TRUE, seed = 123, downsample = FALSE, plot = TRUE#,
+    #parallel_plan = c("multisession", "sequential")
+    ) {
   # Parallelization configuration for modeling and variable importance.
   # Set to 'sequential' for vignettes, CRAN, or macOS; use 'multisession' for full performance locally.
-  parallel_plan <- match.arg(parallel_plan)
-  if (parallel_plan == "sequential") {
-    future::plan(future::sequential)
-  } else {
-    future::plan(future::multisession, workers = parallel::detectCores() - 1)
-  }
+  # parallel_plan <- match.arg(parallel_plan)
+  # if (parallel_plan == "sequential") {
+  #   future::plan(future::sequential)
+  # } else {
+  #   future::plan(future::multisession, workers = parallel::detectCores() - 1)
+  # }
   cli::cli_h1("runClassifiers")
 
   # Take arguments passed in ...
