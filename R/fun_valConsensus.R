@@ -38,7 +38,9 @@
 #' }
 selectTopCombinations <- function(results, N, metric) {
   allowed_metrics <- c("Accuracy", "Precision", "Recall", "FScore")
-  if (!metric %in% allowed_metrics) stop("Invalid metric selected.")
+  if (!metric %in% allowed_metrics) {
+    cli::cli_abort("Invalid metric selected. Allowed metrics are: {paste(allowed_metrics, collapse = ', ')}.")
+  }
 
   methods <- names(results[[1]])  # assume all combinations have same methods
   metric_names <- paste0(rep(methods, each = length(allowed_metrics)), "_", allowed_metrics)
@@ -121,11 +123,11 @@ evaluate_one_side <- function(pred, truth, metric = metric) {
   )
 
   metric_fun <- switch(metric,
-                       Accuracy = yardstick::accuracy,
+                       Accuracy  = yardstick::accuracy,
                        Precision = yardstick::precision,
-                       Recall = yardstick::recall,
-                       FScore = yardstick::f_meas,
-                       stop("Unsupported metric")
+                       Recall    = yardstick::recall,
+                       FScore    = yardstick::f_meas,
+                       cli::cli_abort("Unsupported metric: {metric}")
   )
 
   val_cluster     <- metric_fun(df, truth = labels, estimate = cluster, event_level = "second")[[".estimate"]]

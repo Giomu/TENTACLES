@@ -283,11 +283,14 @@ heatmap_calculation <- function(df, cons_genes, class,
   # Transpose the matrix (genes x samples)
   df_t <- as.data.frame(t(df))
 
-  # Verificando se o número de classes é igual ao número de colunas
+  # Check if the number of class labels matches the number of columns
   if (length(class) != ncol(df_t)) {
-    cli::cli_alert_danger("The number of class labels ({length(class)}) does not match the number of samples (columns) in the heatmap matrix ({ncol(df_t)}).")
-    stop("The length of 'class' must match the number of columns in the heatmap matrix.")
+    cli::cli_abort(
+      "The number of class labels ({length(class)}) does not match the number of samples (columns) in the heatmap matrix ({ncol(df_t)}).
+    The length of 'class' must match the number of columns in the heatmap matrix."
+    )
   }
+
 
   # Create side colors based on the class (matching columns)
   side_colors_df <- data.frame(class = as.factor(class))

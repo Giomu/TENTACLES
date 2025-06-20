@@ -38,8 +38,8 @@ plotTopMetrics <- function(top_results,
                            high_color = "steelblue",
                            limits = c(0,1)) {
 
-  if(!"Gene_Combination" %in% names(top_results)) {
-    stop("Input data frame must contain 'Gene_Combination' column.")
+  if (!"Gene_Combination" %in% names(top_results)) {
+    cli::cli_abort("Input data frame must contain a 'Gene_Combination' column.")
   }
 
   # Extract unique gene combinations
