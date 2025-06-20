@@ -175,6 +175,7 @@ Main steps of `valConsensus` include:
 ```{r validation, message=FALSE, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
 # Import NEW data
 count_table <- as.data.frame((rc@data$adjusted.data))
+
 gene_list <- gc$consensusGenes[1:7]
 labels <- as.factor(rc@data$metadata$class)
 
