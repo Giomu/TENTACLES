@@ -7,8 +7,11 @@
 #' @param pca_scores Data frame with columns `PC1`, `PC2`, and optionally sample labels.
 #' @param pca_top_loadings Data frame with columns `PC1`, `PC2`, and `gene` for top loadings.
 #' @param labels Vector or factor indicating class/group of each sample (used for coloring).
+#' @param color_class_0 Color for class 0 samples (default: "#535965").
+#' @param color_class_1 Color for class 1 samples (default: "#96CDCF").
+#' @param arrow_color Color for the arrows representing gene loadings (default: "#595959").
 #'
-#' @return A patchwork object combining the two ggplot2 plots: sample scores and top gene loadings.
+#' @return A list with two ggplot2 objects: \code{pca_plot} (sample scores) and \code{loadings_plot} (top gene loadings).
 #'
 #' @details
 #' Use this function after running PCA on your gene expression data and extracting the relevant
@@ -17,11 +20,18 @@
 #' @examples
 #' \dontrun{
 #' # After running PCA and extracting scores/loadings:
-#' p <- pca.plot(pca_scores = my_scores, pca_top_loadings = my_top_loadings, labels = my_labels)
-#' print(p)
+#' p <- pca.plot(
+#'   pca_scores = my_scores,
+#'   pca_top_loadings = my_top_loadings,
+#'   labels = my_labels,
+#'   color_class_0 = "#535965",
+#'   color_class_1 = "#96CDCF",
+#'   arrow_color = "#595959"
+#' )
+#' print(p$pca_plot)
+#' print(p$loadings_plot)
 #' }
 #'
-#' @import patchwork
 #' @export
 pca.plot <- function(pca_scores, pca_top_loadings, labels,
                      color_class_0 = "#535965",
@@ -81,6 +91,9 @@ pca.plot <- function(pca_scores, pca_top_loadings, labels,
 #'   - `auroc_lower`: Numeric, lower confidence interval for AUROC.
 #'   - `auroc_upper`: Numeric, upper confidence interval for AUROC.
 #'   - `FC`: Numeric, fold change value for each gene.
+#' @param low_color Color for the lowest fold change values (downregulated genes). Default: "#187498".
+#' @param middle_color Color for neutral fold change (midpoint). Default: "#E5E5E5".
+#' @param high_color Color for the highest fold change values (upregulated genes). Default: "#C62E2E".
 #'
 #' @return A ggplot2 object visualizing the AUROC (with confidence interval bars) and fold change for each gene.
 #'
@@ -98,7 +111,12 @@ pca.plot <- function(pca_scores, pca_top_loadings, labels,
 #' #   auroc_upper = c(0.96, 0.88),
 #' #   FC = c(1.5, -1.2)
 #' # )
-#' p <- auroc.fc.plot(results)
+#' p <- auroc.fc.plot(
+#'   results,
+#'   low_color = "#187498",
+#'   middle_color = "#E5E5E5",
+#'   high_color = "#C62E2E"
+#' )
 #' print(p)
 #' }
 #'
@@ -234,11 +252,17 @@ heatmap.plot <- function(heatmap_data,
 #' The plot also annotates the key model performance metrics: Accuracy, AUROC, and Brier Score.
 #'
 #' @param importances A data frame with variable importance results, typically with columns:
+#'
 #'   - `Variable`: Character, gene/feature name.
+#'
 #'   - `Importance`: Numeric, scaled variable importance (typically from -1 to 1).
+#'
 #'   - `type`, `type_hjust`: Numeric, used internally for text positioning (optional, if precomputed).
+#'
 #' @param test_performance A data frame with at least three performance metrics for the MLP model, expected columns:
+#'
 #'   - `.estimate`: Numeric, containing values for Accuracy, AUROC, and Brier Score (in this order).
+#' @param colors Vector of colors for the gradient scale used to color points by importance. Default is a palette from blue to green to yellow.
 #'
 #' @return A `ggplot2` object showing variable importance bars for the MLP model, with an annotation of the main performance metrics.
 #'

@@ -21,6 +21,7 @@ library(TENTACLES)
 
 # Load data
 data(acc.count, acc.clin)
+acc.count <- acc.count[,1:2000]
 ```
 
 The count table (`acc.count`) should have samples as rows in the row names, and the row names of the clinical table (`acc.clin`) should correspond to the row names from the count data.
@@ -174,7 +175,7 @@ Main steps of `valConsensus` include:
 ```{r validation, message=FALSE, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
 # Import NEW data
 count_table <- as.data.frame((rc@data$adjusted.data))
-gene_list <- gc$consensusGenes
+gene_list <- gc$consensusGenes[1:7]
 labels <- as.factor(rc@data$metadata$class)
 
 # Validation

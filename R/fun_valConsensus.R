@@ -148,7 +148,7 @@ evaluate_one_side <- function(pred, truth, metric = metric) {
 #'
 #' @param df.count A numeric matrix containing the gene expression data. Rows represent samples and columns represent genes.
 #' @param gene.list A character vector specifying the consensus genes to be evaluated.
-#' @param labels A factor vector specifying the true class labels for the samples.
+#' @param class A factor vector specifying the true class labels for the samples.
 #' @param N An integer specifying the number of top gene combinations to select based on the metric.
 #' @param metric A character string specifying the metric to use for selecting the top gene combinations.
 #' Possible values are 'Accuracy', 'Precision', 'Recall', and 'FScore'.

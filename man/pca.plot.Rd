@@ -19,9 +19,15 @@ pca.plot(
 \item{pca_top_loadings}{Data frame with columns `PC1`, `PC2`, and `gene` for top loadings.}
 
 \item{labels}{Vector or factor indicating class/group of each sample (used for coloring).}
+
+\item{color_class_0}{Color for class 0 samples (default: "#535965").}
+
+\item{color_class_1}{Color for class 1 samples (default: "#96CDCF").}
+
+\item{arrow_color}{Color for the arrows representing gene loadings (default: "#595959").}
 }
 \value{
-A patchwork object combining the two ggplot2 plots: sample scores and top gene loadings.
+A list with two ggplot2 objects: \code{pca_plot} (sample scores) and \code{loadings_plot} (top gene loadings).
 }
 \description{
 This function generates two plots based on precomputed PCA results:
@@ -35,8 +41,16 @@ scores and top gene loadings. This function does not perform PCA; it only visual
 \examples{
 \dontrun{
 # After running PCA and extracting scores/loadings:
-p <- pca.plot(pca_scores = my_scores, pca_top_loadings = my_top_loadings, labels = my_labels)
-print(p)
+p <- pca.plot(
+  pca_scores = my_scores,
+  pca_top_loadings = my_top_loadings,
+  labels = my_labels,
+  color_class_0 = "#535965",
+  color_class_1 = "#96CDCF",
+  arrow_color = "#595959"
+)
+print(p$pca_plot)
+print(p$loadings_plot)
 }
 
 }

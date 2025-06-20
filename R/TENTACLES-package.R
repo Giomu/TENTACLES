@@ -4,7 +4,6 @@
 ## usethis namespace: start
 #' @import ggplot2
 #' @import cli
-#' @import dplyr
 #' @import tune
 #' @import workflows
 #' @import parsnip

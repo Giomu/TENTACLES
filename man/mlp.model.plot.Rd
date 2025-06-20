@@ -12,12 +12,18 @@ mlp.model.plot(
 }
 \arguments{
 \item{importances}{A data frame with variable importance results, typically with columns:
-- `Variable`: Character, gene/feature name.
-- `Importance`: Numeric, scaled variable importance (typically from -1 to 1).
-- `type`, `type_hjust`: Numeric, used internally for text positioning (optional, if precomputed).}
+
+  - `Variable`: Character, gene/feature name.
+
+  - `Importance`: Numeric, scaled variable importance (typically from -1 to 1).
+
+  - `type`, `type_hjust`: Numeric, used internally for text positioning (optional, if precomputed).}
 
 \item{test_performance}{A data frame with at least three performance metrics for the MLP model, expected columns:
-- `.estimate`: Numeric, containing values for Accuracy, AUROC, and Brier Score (in this order).}
+
+  - `.estimate`: Numeric, containing values for Accuracy, AUROC, and Brier Score (in this order).}
+
+\item{colors}{Vector of colors for the gradient scale used to color points by importance. Default is a palette from blue to green to yellow.}
 }
 \value{
 A `ggplot2` object showing variable importance bars for the MLP model, with an annotation of the main performance metrics.
