@@ -19,7 +19,8 @@ runClassifiers(
   filter = TRUE,
   seed = 123,
   downsample = FALSE,
-  plot = TRUE
+  plot = TRUE,
+  parallel_plan = c("multisession", "sequential")
 )
 }
 \arguments{
@@ -104,6 +105,15 @@ does not match the number of models, the first recipe will be used for all model
 \item{downsample}{A logical specifying whether to downsample the majority class.}
 
 \item{plot}{A logical specifying whether to generate plots. Default is TRUE.}
+
+\item{parallel_plan}{Character. Defines the parallelization strategy to use during model fitting and variable importance calculation.
+  Options:
+
+  - `"multisession"`: (Default) Use all available cores for parallel computation.
+
+  - `"sequential"`: Run all computations sequentially.
+
+  This affects both model tuning and the permutation-based variable importance calculation.}
 }
 \value{
 An object of class `runClassifiers.obj` containing:
