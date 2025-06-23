@@ -40,6 +40,8 @@ create_binary_df <- function(b) {
 #' @param meth2 A character string specifying the method to be used to compute the consensus genes in group2. Possible values are 'intersect' and 'union'.
 #' @param meth.comb A character string specifying the method to be used to combine the consensus genes from group1 and group2. Possible values are 'intersect' and 'union'.
 #' @param exclude A character vector specifying the algorithms to be excluded from the analysis.
+#' @param plot A logical value indicating whether to generate and display plots (PCA, AUROC, Heatmap, and MLP).
+#' Default is `TRUE`. If set to `FALSE`, plots will not be generated or saved in the results object.
 #'
 #' @return A list containing the consensus genes, the binary data frame,
 #'         and the input parameters.
@@ -69,7 +71,7 @@ create_binary_df <- function(b) {
 getConsensus <- function(x, n.min = NULL,
                          group1 = NULL, group2 = NULL,
                          meth1 = NULL, meth2 = NULL, meth.comb = NULL,
-                         exclude = NULL) {
+                         exclude = NULL, plot = TRUE) {
   # Store input parameters for reference
   inputParams <- list(
     n.min = n.min,
@@ -199,7 +201,8 @@ getConsensus <- function(x, n.min = NULL,
     consensus$test_consensus <- testConsensus(
       df.count = x@data$adjusted.data,
       gene.list = consensus.list[[1]],
-      class = as.factor(x@data$metadata$class)
+      class = as.factor(x@data$metadata$class),
+      plot = plot
     )
   }
 

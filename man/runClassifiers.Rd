@@ -19,7 +19,8 @@ runClassifiers(
   filter = TRUE,
   seed = 123,
   downsample = FALSE,
-  plot = TRUE
+  plot = TRUE,
+  parallel = FALSE
 )
 }
 \arguments{
@@ -104,6 +105,14 @@ does not match the number of models, the first recipe will be used for all model
 \item{downsample}{A logical specifying whether to downsample the majority class.}
 
 \item{plot}{A logical specifying whether to generate plots. Default is TRUE.}
+
+\item{parallel}{A logical specifying whether to use parallel computation for model fitting and variable importance. Default is FALSE.
+
+  - TRUE: Use all available cores for parallel computation.
+
+  - FALSE: Run all computations sequentially.
+
+  This affects both model tuning and the permutation-based variable importance calculation.}
 }
 \value{
 An object of class `runClassifiers.obj` containing:

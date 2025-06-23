@@ -484,9 +484,8 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 #' @param top_loadings An integer specifying the number of top genes to select based on absolute loadings in PCA.
 #' Default is 15. Must be greater than zero and less than or equal to the total number of genes in `gene.list`.
 #'
-#' @param display_plots A logical value indicating whether to display the generated plots (PCA, AUROC, Heatmap, and MLP).
-#' Default is `TRUE`. Set to `FALSE` to suppress the automatic display of plots.
-#' Regardless of this setting, all plots will still be saved in the returned S4 object.
+#' @param plot A logical value indicating whether to generate and display plots (PCA, AUROC, Heatmap, and MLP).
+#' Default is `TRUE`. If set to `FALSE`, plots will not be generated or saved in the results object.
 #'
 #' @return An S4 object of class `testConsensus.obj`, containing:
 #'
@@ -552,7 +551,7 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 #'     gene.list = gene_list,
 #'     class = class,
 #'     top_loadings = 5,
-#'     display_plots = TRUE
+#'     plot = TRUE
 #' )
 #'
 #' # Displaying the full results
@@ -566,7 +565,7 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 #' }
 #'
 #' @export
-testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display_plots = TRUE) {
+testConsensus <- function(df.count, gene.list, class, top_loadings = 15, plot = TRUE) {
 
   cli::cli_h2("Consensus Genes Testing")
 
@@ -578,92 +577,145 @@ testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display
   )
 
   # -------- PCA Analysis --------
+
+  # Announce the start of PCA analysis
   cli::cli_h3("Principal Component Analysis")
+
+  # Perform PCA calculation with error handling
   pca_results <- tryCatch(
     pca_calculation(df.count, gene.list, top_loadings),
     error = function(e) cli::cli_abort(paste("Error in PCA analysis:", e$message))
   )
 
+  # Inform the user that PCA completed successfully
   cli::cli_alert_success("PCA analysis completed successfully!")
 
   # ----- PCA Plotting -----
-  pca_plot <- pca.plot(pca_results$scores, pca_results$top_loadings, class)
+  if (plot) {
+    # Generate the PCA and loadings plots
+    pca_plots <- pca.plot(pca_results$scores, pca_results$top_loadings, class)
 
-  # Adding PCA Plot to Results
-  pca_results$plot <- pca_plot
+    # Save the plots to the results object
+    pca_results$plots <- pca_plots
 
-  cli::cli_alert_success("PCA plot created!")
+    # Inform the user that the plots were created
+    cli::cli_alert_success("PCA plot created!")
 
-  if (display_plots) {
+    # Display the PCA and loadings plots
     print(pca_results$plots$pca_plot)
     print(pca_results$plots$loadings_plot)
+
+  } else {
+    # Do not generate or plot the PCA figures; store NULL
+    pca_results$plots <- NULL
+    cli::cli_alert_info("PCA plots skipped (plot = FALSE).")
   }
 
   # -------- AUROC and FC Analysis --------
 
+  # Announce the start of AUROC and Fold Change analysis
   cli::cli_h3("AUROC and Fold Change Analysis")
 
+  # Run AUROC and Fold Change calculations with error handling
   auroc_fc.calc <- tryCatch(
     auroc_fc_calculation(df.count, gene.list, class),
     error = function(e) cli::cli_abort(paste("Error in AUROC and FC analysis:", e$message))
   )
 
+  # Inform the user that the calculation completed successfully
   cli::cli_alert_success("AUROC and FC analysis completed successfully!")
 
   # ----- AUROC and FC Plotting -----
-  auroc_fc.plot <- auroc.fc.plot(auroc_fc.calc)
+  if (plot) {
+    # Generate the AUROC and Fold Change plot
+    auroc_fc.plot <- auroc.fc.plot(auroc_fc.calc)
 
-  cli::cli_alert_success("AUROC and FC plot created!")
+    # Inform the user that the plot was created
+    cli::cli_alert_success("AUROC and FC plot created!")
 
-  if (display_plots) plot(auroc_fc.plot)
+    # Display the plot
+    plot(auroc_fc.plot)
+  } else {
+    # Do not generate or plot the AUROC/FC figure; store NULL
+    auroc_fc.plot <- NULL
+    cli::cli_alert_info("AUROC and FC plot skipped (plot = FALSE).")
+  }
 
-  #Gathering the results in one place
+  # Gather the results into a list for output
   auroc_fc_results <- list(
     data = auroc_fc.calc,
     plot = auroc_fc.plot
   )
 
   # -------- Heatmap with HC Analysis --------
+
+  # Announce the start of Heatmap with HC analysis
   cli::cli_h3("Heatmap with HC Analysis")
+
+  # Run Heatmap with HC analysis with error handling
   heatmap_results <- tryCatch(
     heatmap_calculation(df.count, gene.list, class),
     error = function(e) cli::cli_abort(paste("Error in Heatmap analysis:", e$message))
   )
 
+  # Inform the user that the analysis completed successfully
   cli::cli_alert_success("Heatmap analysis completed successfully!")
 
   # ----- Heatmap with HC Plotting -----
+  if (plot) {
+    # Generate the heatmap plot using the clustering results
+    heatmap_plot <- heatmap.plot(heatmap_results)
 
-  heatmap_plot <- heatmap.plot(heatmap_results)
+    # Save the generated heatmap plot to the results object
+    heatmap_results$plot <- heatmap_plot
 
-  # Adding PCA Plot to Results
-  heatmap_results$plot <- heatmap_plot
+    # Inform the user that the heatmap plot was created successfully
+    cli::cli_alert_success("Heatmap plot created!")
 
-  cli::cli_alert_success("Heatmap plot created!")
+    # Display the heatmap plot in the current device
+    print(heatmap_plot)
 
-  #TODO: Fix the Print plot in this heatmap
-  if (display_plots) print(heatmap_plot)
+  } else {
+    # Do not generate or plot the heatmap, and store NULL instead
+    heatmap_results$plot <- NULL
+
+    # Inform the user that the plot was intentionally skipped
+    cli::cli_alert_info("Heatmap plot skipped (plot = FALSE).")
+  }
 
   # -------- MLP Model Analysis --------
 
+  # Announce the start of the MLP model validation
   cli::cli_h3("Validation MLP Model")
 
+  # Run the MLP model calculation with error handling
   mlp_results <- tryCatch(
     mlp_model_calculation(df.count, gene.list, class),
     error = function(e) cli::cli_abort(paste("Error in MLP Model:", e$message))
   )
 
+  # Inform the user that the MLP model ran successfully
   cli::cli_alert_success("MLP Model completed successfully!")
 
   # ----- MLP Model Plotting -----
-  mlp.plot <- mlp.model.plot(mlp_results$importances, mlp_results$test_performance)
+  if (plot) {
+    # Generate the MLP model plot
+    mlp.plot <- mlp.model.plot(mlp_results$importances, mlp_results$test_performance)
 
-  # Adding PCA Plot to Results
-  mlp_results$plot <- mlp.plot
+    # Save the plot to the results object
+    mlp_results$plot <- mlp.plot
 
-  cli::cli_alert_success("MLP plot created!")
+    # Inform the user that the plot was created
+    cli::cli_alert_success("MLP plot created!")
 
-  if (display_plots) plot(mlp.plot)
+    # Display the MLP model plot
+    plot(mlp.plot)
+
+  } else {
+    # Do not generate or plot the MLP model figure; store NULL
+    mlp_results$plot <- NULL
+    cli::cli_alert_info("MLP plot skipped (plot = FALSE).")
+  }
 
   # -------- Finishing --------
 
