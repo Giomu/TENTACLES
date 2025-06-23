@@ -12,7 +12,8 @@ getConsensus(
   meth1 = NULL,
   meth2 = NULL,
   meth.comb = NULL,
-  exclude = NULL
+  exclude = NULL,
+  plot = TRUE
 )
 }
 \arguments{
@@ -31,6 +32,10 @@ getConsensus(
 \item{meth.comb}{A character string specifying the method to be used to combine the consensus genes from group1 and group2. Possible values are 'intersect' and 'union'.}
 
 \item{exclude}{A character vector specifying the algorithms to be excluded from the analysis.}
+
+\item{plot}{A logical value indicating whether to display the generated plots (PCA, AUROC, Heatmap, and MLP).
+Default is `TRUE`. Set to `FALSE` to suppress the automatic display of plots.
+Regardless of this setting, all plots will still be saved in the returned S4 object.}
 }
 \value{
 A list containing the consensus genes, the binary data frame,

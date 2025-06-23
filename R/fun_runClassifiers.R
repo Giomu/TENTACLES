@@ -467,7 +467,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
         vip_result <- vip::vip(
           object = model_fit,
           method = "permute",
-          #parallel = (parallel_plan != "sequential"),
+          parallel = parallel,
           nsim = n_sim,
           metric = "roc_auc",
           pred_wrapper = function(object, newdata) pfun(object, newdata),
@@ -567,12 +567,11 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
 #' @param plot A logical specifying whether to generate plots. Default is TRUE.
 #' @param ... Arguments passed to the function. If preProcess.obj is not provided, the function looks
 #' for df.count, df.clin and class in ... as specified in the documentation of preProcess function.
-#' @param parallel_plan Character. Defines the parallelization strategy to use during model fitting and variable importance calculation.
-#'   Options:
+#' @param parallel A logical specifying whether to use parallel computation for model fitting and variable importance. Default is FALSE.
 #'
-#'   - `"multisession"`: (Default) Use all available cores for parallel computation.
+#'   - TRUE: Use all available cores for parallel computation.
 #'
-#'   - `"sequential"`: Run all computations sequentially.
+#'   - FALSE: Run all computations sequentially.
 #'
 #'   This affects both model tuning and the permutation-based variable importance calculation.
 #'
@@ -617,17 +616,15 @@ runClassifiers <- function(
     tuning.method = "tune_grid", n = 5, v = 3,
     boruta.maxRuns = 100, selector.threshold = 0.95,
     metric = "accuracy",
-    nsim = 2, filter = TRUE, seed = 123, downsample = FALSE, plot = TRUE#,
-    #parallel_plan = c("multisession", "sequential")
+    nsim = 2, filter = TRUE, seed = 123, downsample = FALSE, plot = TRUE,
+    parallel = FALSE
     ) {
-  # Parallelization configuration for modeling and variable importance.
-  # Set to 'sequential' for vignettes, CRAN, or macOS; use 'multisession' for full performance locally.
-  # parallel_plan <- match.arg(parallel_plan)
-  # if (parallel_plan == "sequential") {
-  #   future::plan(future::sequential)
-  # } else {
-  #   future::plan(future::multisession, workers = parallel::detectCores() - 1)
-  # }
+  #Parallelization configuration for modeling and variable importance.
+  if (isTRUE(parallel)) {
+    future::plan(future::multisession, workers = parallel::detectCores() - 1)
+  } else {
+    future::plan(future::sequential)
+  }
   cli::cli_h1("runClassifiers")
 
   # Take arguments passed in ...

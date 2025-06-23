@@ -19,7 +19,8 @@ runClassifiers(
   filter = TRUE,
   seed = 123,
   downsample = FALSE,
-  plot = TRUE
+  plot = TRUE,
+  parallel = FALSE
 )
 }
 \arguments{
@@ -105,12 +106,11 @@ does not match the number of models, the first recipe will be used for all model
 
 \item{plot}{A logical specifying whether to generate plots. Default is TRUE.}
 
-\item{parallel_plan}{Character. Defines the parallelization strategy to use during model fitting and variable importance calculation.
-  Options:
+\item{parallel}{A logical specifying whether to use parallel computation for model fitting and variable importance. Default is FALSE.
 
-  - `"multisession"`: (Default) Use all available cores for parallel computation.
+  - TRUE: Use all available cores for parallel computation.
 
-  - `"sequential"`: Run all computations sequentially.
+  - FALSE: Run all computations sequentially.
 
   This affects both model tuning and the permutation-based variable importance calculation.}
 }

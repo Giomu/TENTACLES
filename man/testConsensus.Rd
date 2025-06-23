@@ -5,13 +5,7 @@
 \title{Consensus Gene Analysis with PCA, AUROC, Heatmap, and MLP
 Test Consensus Genes with PCA, AUROC, and Other Analyses}
 \usage{
-testConsensus(
-  df.count,
-  gene.list,
-  class,
-  top_loadings = 15,
-  display_plots = TRUE
-)
+testConsensus(df.count, gene.list, class, top_loadings = 15, plot = TRUE)
 }
 \arguments{
 \item{df.count}{A numeric data frame where rows represent samples and columns represent genes (gene expression counts).
@@ -26,7 +20,7 @@ The length of this vector must match the number of rows in `df.count`.}
 \item{top_loadings}{An integer specifying the number of top genes to select based on absolute loadings in PCA.
 Default is 15. Must be greater than zero and less than or equal to the total number of genes in `gene.list`.}
 
-\item{display_plots}{A logical value indicating whether to display the generated plots (PCA, AUROC, Heatmap, and MLP).
+\item{plot}{A logical value indicating whether to display the generated plots (PCA, AUROC, Heatmap, and MLP).
 Default is `TRUE`. Set to `FALSE` to suppress the automatic display of plots.
 Regardless of this setting, all plots will still be saved in the returned S4 object.}
 }
@@ -104,7 +98,7 @@ test_obj <- testConsensus(
     gene.list = gene_list,
     class = class,
     top_loadings = 5,
-    display_plots = TRUE
+    plot = TRUE
 )
 
 # Displaying the full results

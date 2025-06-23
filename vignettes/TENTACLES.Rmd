@@ -81,15 +81,11 @@ Main steps of `runClassifiers` function include:
 # Increase max size for parallel processing
 #options(future.globals.maxSize = 2 * 1024^3)
 
-# Detect OS and set parallel plan
-# parallel_plan <- if (tolower(Sys.info()[["sysname"]]) == "darwin") "sequential" else "multisession"
-
 # Run classifiers
 rc <- runClassifiers(pp,
-  models = c("bag_mlp", "rand_forest", "mlp", "C5_rules", "logistic"),
-  selector.recipes = c("boruta", "roc", "boruta", "boruta", "roc"),
+  models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
+  selector.recipes = c("boruta", "roc", "boruta", "boruta"),
   filter = TRUE, downsample = TRUE
-  #parallel_plan = parallel_plan
 )
 ```
 
@@ -119,7 +115,7 @@ Main steps of `getConsensus` function include:
 
 ```{r getConsensus, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
 # Get and test consensus
-gc <- getConsensus(rc, n.min = 3)
+gc <- getConsensus(rc, n.min = 3, plot = FALSE)
 ```
 
 The function returns a list containing three objects:
@@ -140,7 +136,11 @@ count_table <- as.data.frame((rc@data$adjusted.data))
 gene_list <- gc$consensusGenes
 labels <- as.factor(rc@data$metadata$class)
 # test consensus on an external dataset
-testConsensus(df.count = count_table, gene.list = gene_list, class = labels)
+tc <- testConsensus(df.count = count_table, 
+              gene.list = gene_list, 
+              class = labels,
+              plot = FALSE
+              )
 ```
 
 The function performs the following steps, generating visualizations for each:

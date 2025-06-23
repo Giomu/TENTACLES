@@ -484,7 +484,7 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 #' @param top_loadings An integer specifying the number of top genes to select based on absolute loadings in PCA.
 #' Default is 15. Must be greater than zero and less than or equal to the total number of genes in `gene.list`.
 #'
-#' @param display_plots A logical value indicating whether to display the generated plots (PCA, AUROC, Heatmap, and MLP).
+#' @param plot A logical value indicating whether to display the generated plots (PCA, AUROC, Heatmap, and MLP).
 #' Default is `TRUE`. Set to `FALSE` to suppress the automatic display of plots.
 #' Regardless of this setting, all plots will still be saved in the returned S4 object.
 #'
@@ -552,7 +552,7 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 #'     gene.list = gene_list,
 #'     class = class,
 #'     top_loadings = 5,
-#'     display_plots = TRUE
+#'     plot = TRUE
 #' )
 #'
 #' # Displaying the full results
@@ -566,7 +566,7 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 #' }
 #'
 #' @export
-testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display_plots = TRUE) {
+testConsensus <- function(df.count, gene.list, class, top_loadings = 15, plot = TRUE) {
 
   cli::cli_h2("Consensus Genes Testing")
 
@@ -590,11 +590,11 @@ testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display
   pca_plot <- pca.plot(pca_results$scores, pca_results$top_loadings, class)
 
   # Adding PCA Plot to Results
-  pca_results$plot <- pca_plot
+  pca_results$plots <- pca_plot
 
   cli::cli_alert_success("PCA plot created!")
 
-  if (display_plots) {
+  if (plot) {
     print(pca_results$plots$pca_plot)
     print(pca_results$plots$loadings_plot)
   }
@@ -615,7 +615,7 @@ testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display
 
   cli::cli_alert_success("AUROC and FC plot created!")
 
-  if (display_plots) plot(auroc_fc.plot)
+  if (plot) plot(auroc_fc.plot)
 
   #Gathering the results in one place
   auroc_fc_results <- list(
@@ -642,7 +642,7 @@ testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display
   cli::cli_alert_success("Heatmap plot created!")
 
   #TODO: Fix the Print plot in this heatmap
-  if (display_plots) print(heatmap_plot)
+  if (plot) print(heatmap_plot)
 
   # -------- MLP Model Analysis --------
 
@@ -663,7 +663,7 @@ testConsensus <- function(df.count, gene.list, class, top_loadings = 15, display
 
   cli::cli_alert_success("MLP plot created!")
 
-  if (display_plots) plot(mlp.plot)
+  if (plot) plot(mlp.plot)
 
   # -------- Finishing --------
 
