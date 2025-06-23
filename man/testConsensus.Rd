@@ -20,9 +20,8 @@ The length of this vector must match the number of rows in `df.count`.}
 \item{top_loadings}{An integer specifying the number of top genes to select based on absolute loadings in PCA.
 Default is 15. Must be greater than zero and less than or equal to the total number of genes in `gene.list`.}
 
-\item{plot}{A logical value indicating whether to display the generated plots (PCA, AUROC, Heatmap, and MLP).
-Default is `TRUE`. Set to `FALSE` to suppress the automatic display of plots.
-Regardless of this setting, all plots will still be saved in the returned S4 object.}
+\item{plot}{A logical value indicating whether to generate and display plots (PCA, AUROC, Heatmap, and MLP).
+Default is `TRUE`. If set to `FALSE`, plots will not be generated or saved in the results object.}
 }
 \value{
 An S4 object of class `testConsensus.obj`, containing:

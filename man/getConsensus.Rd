@@ -33,9 +33,8 @@ getConsensus(
 
 \item{exclude}{A character vector specifying the algorithms to be excluded from the analysis.}
 
-\item{plot}{A logical value indicating whether to display the generated plots (PCA, AUROC, Heatmap, and MLP).
-Default is `TRUE`. Set to `FALSE` to suppress the automatic display of plots.
-Regardless of this setting, all plots will still be saved in the returned S4 object.}
+\item{plot}{A logical value indicating whether to generate and display plots (PCA, AUROC, Heatmap, and MLP).
+Default is `TRUE`. If set to `FALSE`, plots will not be generated or saved in the results object.}
 }
 \value{
 A list containing the consensus genes, the binary data frame,
