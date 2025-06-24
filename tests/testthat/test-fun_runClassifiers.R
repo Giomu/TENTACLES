@@ -21,7 +21,8 @@ test_that("runClassifiers results are consistent with snapshot", {
       test_results <- runClassifiers(pp,
         models = c("bag_mlp", "rand_forest"),
         selector.recipes = c("boruta", "roc"),
-        filter = TRUE, downsample = TRUE, plot = FALSE
+        filter = TRUE, downsample = TRUE, plot = FALSE,
+        parallel = FALSE
       )
     }
   )
@@ -65,7 +66,8 @@ test_that("runClassifiers results with all options enabled are consistent with s
       test_results <- runClassifiers(pp,
         models = all_models,
         selector.recipes = all_selectors,
-        filter = TRUE, downsample = TRUE, plot = FALSE
+        filter = TRUE, downsample = TRUE, plot = FALSE,
+        parallel = FALSE
       )
     }
   )

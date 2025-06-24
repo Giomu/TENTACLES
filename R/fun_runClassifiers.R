@@ -404,7 +404,7 @@ tune_and_fit <- function(
 }
 
 # Helper function to calculate VIP for all models in last_fit_results
-calculate_vip <- function(last_fit_results, test_x, test_y, n_sim) {
+calculate_vip <- function(last_fit_results, test_x, test_y, n_sim, parallel = parallel) {
   # Wrapper function for predictions with models
   pfun <- function(model, new_data) {
     if ("ksvm" %in% class(model) || "_ksvm" %in% class(model)) {
@@ -619,13 +619,16 @@ runClassifiers <- function(
     nsim = 2, filter = TRUE, seed = 123, downsample = FALSE, plot = TRUE,
     parallel = FALSE
     ) {
-  #Parallelization configuration for modeling and variable importance.
+  #Message to show the start
+  cli::cli_h1("runClassifiers")
+    #Parallelization configuration for modeling and variable importance.
   if (isTRUE(parallel)) {
+    cli::cli_alert_info("Parallelization enabled: running with multiple cores (multisession).")
     future::plan(future::multisession, workers = parallel::detectCores() - 1)
   } else {
+    cli::cli_alert_info("Sequential mode: running on a single core.")
     future::plan(future::sequential)
   }
-  cli::cli_h1("runClassifiers")
 
   # Take arguments passed in ...
   dots <- list(...)
@@ -746,7 +749,8 @@ runClassifiers <- function(
         last_fit_results = t_and_f_output[[2]],
         test_x = data[, -ncol(data)],
         test_y = data$class,
-        n_sim = nsim
+        n_sim = nsim,
+        parallel = parallel
       )
     }
   )
