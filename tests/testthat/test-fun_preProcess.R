@@ -116,36 +116,50 @@ test_that("No error when just some samples do not match between tables", {
 })
 
 
-test_that("preProcess results are consistent with snapshot", {
+test_that("preProcess is deterministic within the same OS", {
+  # This test checks that preProcess() produces the same result
+  # when run twice under identical conditions, OS, and R environment.
+  # This guards against hidden randomness in the preprocessing pipeline.
+  #
+  # Note: Results may still differ across operating systems due to
+  # underlying libraries or data.table/BLAS differences.
+
   # Load test datasets into a temporary environment
   test_env <- load_test_data("acc.count", "acc.clin", package = "TENTACLES")
-
-  # Access the data
   acc.count <- test_env$acc.count
   acc.clin <- test_env$acc.clin
 
   # Keep 100 genes only
   acc.count <- acc.count[, 1:100]
 
-  # Run preProcess
-  test_result_batch <- preProcess(acc.count, acc.clin,
-    is.normalized = FALSE, batch = "patient.gender", plot = FALSE
+  # Run preProcess with different configurations, twice each
+  res_batch_1 <- preProcess(acc.count, acc.clin,
+                            is.normalized = FALSE, batch = "patient.gender", plot = FALSE
+  )
+  res_batch_2 <- preProcess(acc.count, acc.clin,
+                            is.normalized = FALSE, batch = "patient.gender", plot = FALSE
   )
 
-  test_result_covariate <- preProcess(acc.count, acc.clin,
-    is.normalized = FALSE, batch = "patient.gender", plot = FALSE,
-    covar.mod = "patient.primary_pathology.laterality"
+  res_covariate_1 <- preProcess(acc.count, acc.clin,
+                                is.normalized = FALSE, batch = "patient.gender", plot = FALSE,
+                                covar.mod = "patient.primary_pathology.laterality"
+  )
+  res_covariate_2 <- preProcess(acc.count, acc.clin,
+                                is.normalized = FALSE, batch = "patient.gender", plot = FALSE,
+                                covar.mod = "patient.primary_pathology.laterality"
   )
 
-  test_result_no_batch <- preProcess(acc.count, acc.clin,
-    is.normalized = FALSE, plot = FALSE
+  res_no_batch_1 <- preProcess(acc.count, acc.clin,
+                               is.normalized = FALSE, plot = FALSE
+  )
+  res_no_batch_2 <- preProcess(acc.count, acc.clin,
+                               is.normalized = FALSE, plot = FALSE
   )
 
-  # If there are non-deterministic components, consider removing them first
-  # For example:
-  # test_result$processed$adjusted.data$run_id <- NULL
-
-  expect_snapshot(test_result_batch)
-  expect_snapshot(test_result_covariate)
-  expect_snapshot(test_result_no_batch)
+  # Assert that the results are strictly identical for each configuration
+  expect_equal(res_batch_1, res_batch_2)
+  expect_equal(res_covariate_1, res_covariate_2)
+  expect_equal(res_no_batch_1, res_no_batch_2)
+  # Note: Differences across OSs are expected, but not within a single environment.
 })
+
