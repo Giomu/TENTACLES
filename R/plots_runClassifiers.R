@@ -16,11 +16,15 @@
 #' @examples
 #' \dontrun{
 #' # Example usage of upset.plot
-#' pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
-#'                 batch = "batch", covar.mod = "covar")
-#' rc <- runClassifiers(pp, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
-#'                      selector.recipes = c("boruta", "roc", "boruta", "boruta"),
-#'                      filter = TRUE, downsample = TRUE)
+#' pp <- preProcess(
+#'     df.count = acc.count, df.clin = acc.clin,
+#'     batch = "batch", covar.mod = "covar"
+#' )
+#' rc <- runClassifiers(pp,
+#'     models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
+#'     selector.recipes = c("boruta", "roc", "boruta", "boruta"),
+#'     filter = TRUE, downsample = TRUE
+#' )
 #' upset.plot(rc)
 #' }
 #'
@@ -106,11 +110,15 @@ upset.plot <- function(data.obj) {
 #' @examples
 #' \dontrun{
 #' # Example usage of performances.plot
-#' pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
-#'                 batch = "batch", covar.mod = "covar")
-#' rc <- runClassifiers(pp, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
-#'                      selector.recipes = c("boruta", "roc", "boruta", "boruta"),
-#'                      filter = TRUE, downsample = TRUE)
+#' pp <- preProcess(
+#'     df.count = acc.count, df.clin = acc.clin,
+#'     batch = "batch", covar.mod = "covar"
+#' )
+#' rc <- runClassifiers(pp,
+#'     models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
+#'     selector.recipes = c("boruta", "roc", "boruta", "boruta"),
+#'     filter = TRUE, downsample = TRUE
+#' )
 #' performances.plot(rc)
 #' }
 #'
@@ -195,11 +203,15 @@ performances.plot <- function(data.obj) {
 #'
 #' @examples
 #' \dontrun{
-#' pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
-#'                  batch = "batch", covar.mod = "covar")
-#' rc <- runClassifiers(pp, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
-#'                      selector.recipes = c("boruta", "roc", "boruta", "boruta"),
-#'                      filter = TRUE, downsample = TRUE)
+#' pp <- preProcess(
+#'     df.count = acc.count, df.clin = acc.clin,
+#'     batch = "batch", covar.mod = "covar"
+#' )
+#' rc <- runClassifiers(pp,
+#'     models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
+#'     selector.recipes = c("boruta", "roc", "boruta", "boruta"),
+#'     filter = TRUE, downsample = TRUE
+#' )
 #' wrong.preds.plot(rc@predictions)
 #' }
 #'
@@ -207,38 +219,37 @@ performances.plot <- function(data.obj) {
 wrong.preds.plot <- function(
     predictions_df,
     color_correct = "#BEBEBE",
-    color_wrong   = "#BD2B48",
+    color_wrong = "#BD2B48",
     shape_correct = 16,
-    shape_wrong   = 16
-) {
-  predictions_df$result <- ifelse(predictions_df$.pred_class == predictions_df$class, "Correct", "Wrong")
-  wrong_ids <- unique(predictions_df[predictions_df$result == "Wrong", "ID"])
-  x_breaks <- ifelse(predictions_df$ID %in% wrong_ids, predictions_df$ID, "")
+    shape_wrong = 16) {
+    predictions_df$result <- ifelse(predictions_df$.pred_class == predictions_df$class, "Correct", "Wrong")
+    wrong_ids <- unique(predictions_df[predictions_df$result == "Wrong", "ID"])
+    x_breaks <- ifelse(predictions_df$ID %in% wrong_ids, predictions_df$ID, "")
 
-  p <- ggplot(predictions_df, aes(x = ID, y = model)) +
-    geom_point(
-      aes(color = result, shape = result),
-      size = ifelse(predictions_df$result == "Wrong", 4, 1.5),
-      alpha = 0.9
-    ) +
-    scale_color_manual(values = c("Correct" = color_correct, "Wrong" = color_wrong)) +
-    scale_shape_manual(values = c("Correct" = shape_correct, "Wrong" = shape_wrong)) +
-    labs(
-      x = "",
-      y = "",
-      color = "Prediction",
-      shape = "Prediction"
-    ) +
-    scale_x_discrete(breaks = x_breaks) +
-    theme_minimal() +
-    theme(
-      axis.text.x = element_text(angle = 45, hjust = 1, vjust = 2, margin = margin(t = 50), size = 9, color = "#7c7b7b"),
-      axis.text.y = element_text(size = 13),
-      panel.grid.major.y = element_blank(),
-      panel.grid.minor.y = element_blank(),
-      panel.grid.major.x = element_line(color = "lightgray", size = 0.5, linetype = "solid"),
-      legend.position = "right"
-    )
+    p <- ggplot(predictions_df, aes(x = ID, y = model)) +
+        geom_point(
+            aes(color = result, shape = result),
+            size = ifelse(predictions_df$result == "Wrong", 4, 1.5),
+            alpha = 0.9
+        ) +
+        scale_color_manual(values = c("Correct" = color_correct, "Wrong" = color_wrong)) +
+        scale_shape_manual(values = c("Correct" = shape_correct, "Wrong" = shape_wrong)) +
+        labs(
+            x = "",
+            y = "",
+            color = "Prediction",
+            shape = "Prediction"
+        ) +
+        scale_x_discrete(breaks = x_breaks) +
+        theme_minimal() +
+        theme(
+            axis.text.x = element_text(angle = 45, hjust = 1, vjust = 2, margin = margin(t = 50), size = 9, color = "#7c7b7b"),
+            axis.text.y = element_text(size = 13),
+            panel.grid.major.y = element_blank(),
+            panel.grid.minor.y = element_blank(),
+            panel.grid.major.x = element_line(color = "lightgray", linewidth = 0.5, linetype = "solid"),
+            legend.position = "right"
+        )
 
-  return(p)
+    return(p)
 }
