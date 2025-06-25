@@ -650,7 +650,7 @@ runClassifiers <- function(
     }
   }
 
-  # Vector of available classifiers
+  # Define the available classifiers (supported model names)
   available_models <- c(
     "xgboost", "bag_tree", "lightGBM", "pls", "logistic",
     "C5_rules", "mars", "bag_mars", "mlp", "bag_mlp",
@@ -658,10 +658,26 @@ runClassifiers <- function(
     "svm_rbf"
   )
 
-  # Vector of available feature selectors
+  # Validate if all provided models are supported
+  if (!all(models %in% available_models)) {
+    cli::cli_abort("Invalid model(s) selected. Please refer to the documentation for valid options.")
+  }
+
+  # Define the available feature selection methods
   available_selectors <- c("base", "boruta", "roc", "infgain", "mrmr", "corr")
 
-  # Map each model to its required package (only non-base R packages)
+  # Ensure the number of selectors matches the number of models; recycle if necessary
+  if (length(selector.recipes) >= 1 && length(selector.recipes) != length(models)) {
+    cli::cli_alert_info("The number of recipes does not match the number of models. Using the first recipe for all models.")
+    selector.recipes <- rep(selector.recipes[1], length(models))
+  }
+
+  # Validate if all provided selectors are supported
+  if (!all(selector.recipes %in% available_selectors)) {
+    cli::cli_abort("Invalid selector recipe(s) selected. Please refer to the documentation for valid options.")
+  }
+
+  # Map each model to its required external package (NULL = base R)
   model_pkgs <- list(
     xgboost        = "xgboost",
     bag_tree       = "rpart",
@@ -679,12 +695,35 @@ runClassifiers <- function(
     svm_poly       = "kernlab",
     svm_rbf        = "kernlab"
   )
-  # Identify which packages are required by the selected models
+
+  # Get unique required packages for the selected models (ignore NULLs)
   required_pkgs <- unique(unlist(model_pkgs[models]))
   required_pkgs <- required_pkgs[!is.null(required_pkgs)]
 
-  # Check if required packages are installed
+  # Check if all required packages are installed, abort if missing
   check_required_pkgs(required_pkgs)
+
+  # Define available performance metrics for tuning
+  available_metrics <- c("accuracy", "precision", "recall", "f_meas")
+
+  # Validate if the selected metric is supported
+  if (!metric %in% available_metrics) {
+    cli::cli_abort(
+      "The selected metric '{metric}' is not available. Please choose one of: {toString(available_metrics)}"
+    )
+  }
+
+  # Define available tuning methods
+  available_tuning_methods <- c(
+    "tune_grid", "tune_race_anova", "tune_race_win_loss", "tune_bayes", "tune_sim_anneal"
+  )
+
+  # Validate tuning.method
+  if (!tuning.method %in% available_tuning_methods) {
+    cli::cli_abort(
+      "The selected tuning.method '{tuning.method}' is not available. Please choose one of: {toString(available_tuning_methods)}"
+    )
+  }
 
   withr::with_seed(
     seed = seed,
@@ -715,20 +754,6 @@ runClassifiers <- function(
       # Split data into v resamples for tuning inside cross-validation
       data <- preProcess.obj@processed$adjusted.data
       train_resamples <- rsample::vfold_cv(data, v = v, strata = class)
-
-
-      if (length(selector.recipes) >= 1 && length(selector.recipes) != length(models)) {
-        cli::cli_alert_info("The number of recipes does not match the number of models. Using the first recipe for all models.")
-        selector.recipes <- rep(selector.recipes[1], length(models))
-      }
-
-      if (!any(models %in% available_models)) {
-        cli::cli_abort("Invalid model(s) selected. Please refer to the documentation for valid options.")
-      }
-
-      if (!any(selector.recipes %in% available_selectors)) {
-        cli::cli_abort("Invalid selector recipe(s) selected. Please refer to the documentation for valid options.")
-      }
 
       # Tune and fit the models
       t_and_f_output <- tune_and_fit(
