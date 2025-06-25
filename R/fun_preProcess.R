@@ -42,7 +42,7 @@ match.samples <- function(df.count, df.clin) {
   }
 
   # Filter out samples that are not in the clinical data
-  df.clin <- df.clin[m, ]
+  df.clin <- df.clin[m, , drop = FALSE]
   return(rownames(df.clin))
 }
 
@@ -60,6 +60,11 @@ data.import <- function(
     cli::cli_abort("Input data must be in data frame format.")
   }
 
+  # Check if the class is a string
+  if (!is.character(class) || length(class) != 1) {
+    cli::cli_abort("The argument 'class' must be a character string.")
+  }
+
   # Check if the class column exists in the clinical data
   if (!class %in% colnames(df.clin)) {
     cli::cli_abort("Class column not found in clinical data.")
@@ -75,8 +80,8 @@ data.import <- function(
 
   # Get matching samples in both data tables
   samples_in_common <- match.samples(df.count, df.clin)
-  df.count <- df.count[samples_in_common, ]
-  df.clin <- df.clin[samples_in_common, ]
+  df.count <- df.count[samples_in_common, , drop = FALSE]
+  df.clin <- df.clin[samples_in_common, , drop = FALSE]
 
   # Transform class labels to binary factors
   cli::cli_alert_info("Transforming class labels to binary factors...")
@@ -110,39 +115,34 @@ data.import <- function(
 
 # Helper function to normalize data in log2(CPM + 1) scale
 normalization <- function(df.count, class, mincpm = 1, minfraction = 0.1) {
-  # Filter Low CPM function
-  filter.low.cpm <- function(filtered.counts) {
-    keep <- rowSums(edgeR::cpm(filtered.counts) > mincpm) >= ncol(filtered.counts) * minfraction
-    return(filtered.counts[keep, ])
-  }
-
-  # Normalize data using edgeR function
-  edgeR.normalize <- function(data, filter = FALSE) {
-    if (filter) {
-      data <- filter.low.cpm(data)
-    }
-    data <- edgeR::calcNormFactors(data)
-    norm_data <- edgeR::cpm(data, normalized.lib.sizes = TRUE, log = FALSE)
-    norm_data <- log2(norm_data + 1)
-    norm_data <- as.data.frame(t(norm_data))
-  }
-
   # Remove the class column and create a DGEList object
   data_noclass <- df.count[, -which(colnames(df.count) == class), drop = FALSE]
   data_noclass <- t(data_noclass)
-  data_noclass <- edgeR::DGEList(
-    counts = data_noclass, gene = rownames(data_noclass),
-    group = df.count[, class]
+
+  # Filter low-expressed genes
+  dge_temp <- edgeR::DGEList(counts = data_noclass)
+  keep <- rowSums(edgeR::cpm(dge_temp) > mincpm) >= ncol(data_noclass) * minfraction
+  data_noclass_filtered <- data_noclass[keep, , drop = FALSE]
+
+  # Create DGEList for normalization
+  dge <- edgeR::DGEList(
+    counts = data_noclass_filtered,
+    gene = rownames(data_noclass_filtered),
+    group = df.count[, class, drop = TRUE]
   )
 
-  # Normalize and filter training data
-  norm_data <- edgeR.normalize(data_noclass, filter = TRUE)
+  # Normalize and compute log2(CPM + 1)
+  dge <- edgeR::calcNormFactors(dge)
+  norm_data <- edgeR::cpm(dge, normalized.lib.sizes = TRUE, log = FALSE)
+  norm_data <- log2(norm_data + 1)
+  norm_data <- as.data.frame(t(norm_data))
 
   # Add the class column back
-  norm_data[, class] <- df.count[, class]
+  norm_data[, class] <- df.count[, class, drop = TRUE]
 
   return(norm_data)
 }
+
 
 # Helper function to perform batch correction using ComBat
 correct.batches <- function(data, class, metadata,
@@ -150,6 +150,12 @@ correct.batches <- function(data, class, metadata,
                             covar.mod) {
   # Check input parameters
   if (!is.null(batch)) {
+
+    # Check if the batch is a string
+    if (!is.character(batch) || length(batch) != 1) {
+      cli::cli_abort("The argument 'batch' must be a character string.")
+    }
+
     if (!batch %in% names(metadata)) {
       cli::cli_abort("Batch variable {batch} not found in metadata.")
     }
@@ -196,7 +202,7 @@ correct.batches <- function(data, class, metadata,
 #'
 #' @param df.count A data frame containing the count data. Rows are samples and columns are genes.
 #' @param df.clin A data frame containing the clinical data. Rows are samples and columns are clinical variables.
-#' @param class A character string specifying the column name in df.clin that contains the class labels.
+#' @param class A character string specifying the column name in df.clin that contains the class labels. Default is "class".
 #' @param case.label A character string specifying the case label in the class column. Default is NULL.
 #' @param mincpm An integer specifying the minimum count per million (CPM) value for filtering genes. Default is 1.
 #' @param minfraction A numeric value specifying the minimum fraction of samples a gene must be present in to be retained. Default is 0.1.
