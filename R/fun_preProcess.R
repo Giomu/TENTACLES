@@ -115,30 +115,34 @@ data.import <- function(
 
 # Helper function to normalize data in log2(CPM + 1) scale
 normalization <- function(df.count, class, mincpm = 1, minfraction = 0.1) {
-  # Remove the class column and create a DGEList object
-  data_noclass <- df.count[, -which(colnames(df.count) == class), drop = FALSE]
-  data_noclass <- t(data_noclass)
+  # Extract class vector
+  class_vector <- df.count[[class]]
 
-  # Filter low-expressed genes
-  dge_temp <- edgeR::DGEList(counts = data_noclass)
-  keep <- rowSums(edgeR::cpm(dge_temp) > mincpm) >= ncol(data_noclass) * minfraction
-  data_noclass_filtered <- data_noclass[keep, , drop = FALSE]
+  # Remove the class column and transpose the data
+  count_data <- df.count[, setdiff(colnames(df.count), class), drop = FALSE]
+  count_data <- t(count_data)
 
-  # Create DGEList for normalization
+  # Create DGEList object with count data and group labels
   dge <- edgeR::DGEList(
-    counts = data_noclass_filtered,
-    gene = rownames(data_noclass_filtered),
-    group = df.count[, class, drop = TRUE]
+    counts = count_data,
+    genes = rownames(count_data),
+    group = class_vector
   )
 
-  # Normalize and compute log2(CPM + 1)
-  dge <- edgeR::calcNormFactors(dge)
-  norm_data <- edgeR::cpm(dge, normalized.lib.sizes = TRUE, log = FALSE)
-  norm_data <- log2(norm_data + 1)
-  norm_data <- as.data.frame(t(norm_data))
+  # Filter out low-expressed genes
+  keep_genes <- rowSums(edgeR::cpm(dge) > mincpm) >= ncol(dge) * minfraction
+  dge_filtered <- dge[keep_genes, , keep.lib.sizes = FALSE]
 
-  # Add the class column back
-  norm_data[, class] <- df.count[, class, drop = TRUE]
+  # Normalize library sizes and calculate log2(CPM + 1)
+  dge_filtered <- edgeR::calcNormFactors(dge_filtered)
+  norm_counts <- edgeR::cpm(dge_filtered, normalized.lib.sizes = TRUE, log = FALSE)
+  log2_cpm <- log2(norm_counts + 1)
+
+  # Transpose the result to restore sample-wise rows
+  norm_data <- as.data.frame(t(log2_cpm))
+
+  # Add class column back
+  norm_data[[class]] <- class_vector
 
   return(norm_data)
 }
