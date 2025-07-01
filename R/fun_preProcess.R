@@ -18,11 +18,14 @@ methods::setClass("preProcess.obj",
 
 # Helper function to check data type and normalization status
 data.check <- function(data.type = "rnaseq", is.normalized = FALSE) {
+  if (!is.character(data.type) || length(data.type) != 1) {
+    cli::cli_abort("data.type must be a character string of length 1.")
+  }
   if (!data.type %in% c("rnaseq", "array")) {
     cli::cli_abort("Invalid data type. Please choose from 'rnaseq' or 'array'.")
   }
-  if (!is.logical(is.normalized)) {
-    cli::cli_abort("is.normalized must be a logical value.")
+  if (!is.logical(is.normalized) || length(is.normalized) != 1) {
+    cli::cli_abort("is.normalized must be a single logical value.")
   }
   output <- list(type = data.type, normalized = is.normalized)
   return(output)
@@ -169,6 +172,10 @@ normalization <- function(df.count, class, mincpm = 1, minfraction = 0.1) {
 
   # Filter out low-expressed genes
   keep_genes <- rowSums(edgeR::cpm(dge) > mincpm) >= ncol(dge) * minfraction
+  # Throw error if no genes survive filtering
+  if (!any(keep_genes)) {
+    cli::cli_abort("No genes passed the expression filtering. Try lowering 'mincpm' or 'minfraction'.")
+  }
   dge_filtered <- dge[keep_genes, , keep.lib.sizes = FALSE]
 
   # Normalize library sizes and calculate log2(CPM + 1)
