@@ -113,6 +113,44 @@ data.import <- function(
   return(preProcess.obj)
 }
 
+# Helper function to validate arguments for batch correction.
+# Ensures that the 'batch' and 'covar.mod' variables are properly defined,
+# exist in the metadata, contain no missing values, and do not overlap.
+validate_batch_args <- function(metadata, batch = NULL, covar.mod = NULL) {
+  # Check 'batch'
+  if (!is.null(batch)) {
+    if (!is.character(batch) || length(batch) != 1) {
+      cli::cli_abort("The argument 'batch' must be a character string of length 1.")
+    }
+    if (!batch %in% colnames(metadata)) {
+      cli::cli_abort("Batch variable '{batch}' not found in metadata.")
+    }
+    if (anyNA(metadata[[batch]])) {
+      cli::cli_abort("Missing values detected in batch column '{batch}'.")
+    }
+  }
+
+  # Check 'covar.mod'
+  if (!is.null(covar.mod)) {
+    if (!is.character(covar.mod)) {
+      cli::cli_abort("The argument 'covar.mod' must be a character vector.")
+    }
+    if (!all(covar.mod %in% colnames(metadata))) {
+      cli::cli_abort("One or more covar.mod variables not found in metadata: {covar.mod}")
+    }
+    if (anyNA(metadata[, covar.mod, drop = FALSE])) {
+      cli::cli_abort("Missing values detected in covariate columns: {covar.mod}")
+    }
+  }
+
+  # Check that batch is not in covar.mod
+  if (!is.null(batch) && !is.null(covar.mod)) {
+    if (batch %in% covar.mod) {
+      cli::cli_abort("The batch variable '{batch}' must not be included in covar.mod.")
+    }
+  }
+}
+
 # Helper function to normalize data in log2(CPM + 1) scale
 normalization <- function(df.count, class, mincpm = 1, minfraction = 0.1) {
   # Extract class vector
@@ -147,30 +185,13 @@ normalization <- function(df.count, class, mincpm = 1, minfraction = 0.1) {
   return(norm_data)
 }
 
-
 # Helper function to perform batch correction using ComBat
-correct.batches <- function(data, class, metadata,
-                            batch,
-                            covar.mod) {
-  # Check input parameters
-  if (!is.null(batch)) {
+correct.batches <- function(data, class, metadata, batch = NULL, covar.mod = NULL) {
+  # Validate batch and covariate arguments
+  validate_batch_args(metadata, batch, covar.mod)
 
-    # Check if the batch is a string
-    if (!is.character(batch) || length(batch) != 1) {
-      cli::cli_abort("The argument 'batch' must be a character string.")
-    }
-
-    if (!batch %in% names(metadata)) {
-      cli::cli_abort("Batch variable {batch} not found in metadata.")
-    }
-  }
-
+  # Build covariate model matrix
   if (!is.null(covar.mod)) {
-    if (!all(covar.mod %in% names(metadata))) {
-      cli::cli_abort("covar.mod variable {covar.mod} not found in metadata.")
-    }
-
-    # Ensure covar.mod is either a single string or a character vector
     if (length(covar.mod) == 1) {
       # When covar.mod is a single string
       covar_mod_matrix <- stats::model.matrix(~ as.factor(metadata[[covar.mod]]), data = metadata)
@@ -182,19 +203,24 @@ correct.batches <- function(data, class, metadata,
       covar_mod_matrix <- stats::model.matrix(~ as.factor(combined_factor), data = metadata)
     }
   } else {
-    covar_mod_matrix <- covar.mod
+    covar_mod_matrix <- NULL
   }
 
-  # Format data for ComBat
-  data_noclass <- data[, -which(colnames(data) == class), drop = FALSE]
+  # Prepare expression matrix for ComBat: remove class column and transpose
+  data_noclass <- data[, setdiff(colnames(data), class), drop = FALSE]
   data_noclass <- t(data_noclass)
-  batch_factor <- as.factor(metadata[, batch])
 
-  # Perform batch correction using ComBat
-  corrected_data <- suppressMessages(sva::ComBat(dat = data_noclass, batch = batch_factor, mod = covar_mod_matrix))
+  # Extract batch factor
+  batch_factor <- as.factor(metadata[[batch]])
 
+  # Apply ComBat for batch correction
+  corrected_data <- suppressMessages(
+    sva::ComBat(dat = data_noclass, batch = batch_factor, mod = covar_mod_matrix)
+  )
+
+  # Restore format and add class column back
   corrected_data <- as.data.frame(t(corrected_data))
-  corrected_data[, class] <- data[, class]
+  corrected_data[[class]] <- data[[class]]
 
   return(corrected_data)
 }
@@ -208,7 +234,7 @@ correct.batches <- function(data, class, metadata,
 #' @param df.clin A data frame containing the clinical data. Rows are samples and columns are clinical variables.
 #' @param class A character string specifying the column name in df.clin that contains the class labels. Default is "class".
 #' @param case.label A character string specifying the case label in the class column. Default is NULL.
-#' @param mincpm An integer specifying the minimum count per million (CPM) value for filtering genes. Default is 1.
+#' @param mincpm An integer specifying the minimum count per million (CPM) value for filtering genes. Set to 0 to disable CPM filtering. Default is 1.
 #' @param minfraction A numeric value specifying the minimum fraction of samples a gene must be present in to be retained. Default is 0.1.
 #' @param data.type A character string specifying the data type. Possible values are 'rnaseq' and 'array'. Default is 'rnaseq'.
 #' @param is.normalized A logical value specifying if the data is already normalized. Default is FALSE.
@@ -272,7 +298,10 @@ preProcess <- function(
   # Perform batch correction if batch variable is provided.
   if (!is.null(batch)) {
     cli::cli_alert_info("Performing batch correction...")
-    corrected_data <- correct.batches(data.obj@processed$normalized, data.obj@metadata, class = class, batch = batch, covar.mod = covar.mod)
+    corrected_data <- correct.batches(data = data.obj@processed$normalized,
+                                      class = class,
+                                      metadata = data.obj@metadata,
+                                      batch = batch, covar.mod = covar.mod)
     data.obj@processed$sbatched <- corrected_data
     cli::cli_alert_success("Batch correction complete!")
 
