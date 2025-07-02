@@ -194,8 +194,6 @@ normalization <- function(df.count, class, mincpm = 1, minfraction = 0.1) {
 
 # Helper function to perform batch correction using ComBat
 correct.batches <- function(data, class, metadata, batch = NULL, covar.mod = NULL) {
-  # Validate batch and covariate arguments
-  validate_batch_args(metadata, batch, covar.mod)
 
   # Build covariate model matrix
   if (!is.null(covar.mod)) {
@@ -284,6 +282,7 @@ preProcess <- function(
   # Import data
   cli::cli_alert_info("Importing data...")
   data.obj <- data.import(df.count, df.clin, class, case.label, data.type, is.normalized)
+  validate_batch_args(metadata, batch, covar.mod)
   cli::cli_alert_success("Data Imported!")
 
   # Normalize data if data type is RNA-seq and data is not normalized.
