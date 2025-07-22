@@ -258,18 +258,234 @@ test_that("normalization returns expected log2 CPM values", {
   expect_equal(norm2, expected, tolerance = 1e-5)
 })
 
+# --------------------------------------------------------#
+#                   correct.batches tests                 #
+# --------------------------------------------------------#
 
+test_that("correct.batches works with batch only", {
+  set.seed(1)
+  df <- data.frame(
+    gene1 = rnorm(6),
+    gene2 = rnorm(6),
+    class = factor(c(0, 0, 0, 1, 1, 1))
+  )
+  rownames(df) <- paste0("S", 1:6)
 
+  meta <- data.frame(
+    batch = rep(c("A", "B"), each = 3)
+  )
+  rownames(meta) <- rownames(df)
 
+  corrected <- correct.batches(df, class = "class", metadata = meta, batch = "batch")
 
+  expect_s3_class(corrected, "data.frame")
+  expect_equal(dim(corrected), dim(df))
+  expect_equal(corrected$class, df$class)
 
+  diff_matrix <- abs(as.matrix(corrected[, 1:2] - df[, 1:2]))
+  expect_true(any(diff_matrix > 1e-3))
 
+  expected <- data.frame(
+    gene1 = c(-0.54144792,  0.92044294, -0.91892208,
+              0.83125186,  0.06154715, -0.63774257),
+    gene2 = c( 0.38669415,  0.99471212,  0.60080621,
+               -0.02218239,  1.08168546,  0.40014685),
+    class = factor(c(0, 0, 0, 1, 1, 1))
+  )
+  rownames(expected) <- paste0("S", 1:6)
 
+  expect_equal(corrected, expected, tolerance = 1e-6)
+})
 
+test_that("correct.batches works with batch and one covariate", {
+  set.seed(2)
+  df <- data.frame(
+    gene1 = rnorm(6),
+    gene2 = rnorm(6),
+    class = factor(c(0, 0, 0, 1, 1, 1))
+  )
+  rownames(df) <- paste0("S", 1:6)
 
+  meta <- data.frame(
+    batch = rep(c("A", "B"), each = 3),
+    sex = factor(c("M", "F", "M", "F", "M", "F"))
+  )
+  rownames(meta) <- rownames(df)
 
+  corrected <- correct.batches(df, class = "class", metadata = meta, batch = "batch", covar.mod = "sex")
 
+  expect_s3_class(corrected, "data.frame")
+  expect_equal(dim(corrected), dim(df))
+  expect_equal(corrected$class, df$class)
 
+  diff_matrix <- abs(as.matrix(corrected[, 1:2] - df[, 1:2]))
+  expect_true(any(diff_matrix > 1e-3))
+
+  # Expected output (manually inserted and copied)
+  expected <- data.frame(
+    gene1 = c(-0.7409965, -0.0521645,  1.0318513,
+              -1.0013922,  0.1105154,  0.3640008),
+    gene2 = c( 0.694628335, -0.209480878,  1.616232608,
+               -0.007078139, 0.547188776,  1.123830349),
+    class = factor(c(0, 0, 0, 1, 1, 1))
+  )
+  rownames(expected) <- paste0("S", 1:6)
+
+  # Check if corrected output matches expected
+  expect_equal(corrected, expected, tolerance = 1e-6)
+})
+
+test_that("correct.batches works with batch and multiple covariates", {
+  set.seed(3)
+  df <- data.frame(
+    gene1 = rnorm(6),
+    gene2 = rnorm(6),
+    class = factor(c(0, 0, 0, 1, 1, 1))
+  )
+  rownames(df) <- paste0("S", 1:6)
+
+  meta <- data.frame(
+    batch = rep(c("A", "B"), each = 3),
+    sex = factor(c("M", "F", "M", "F", "M", "F")),
+    treatment = factor(c("ctrl", "ctrl", "trt", "ctrl", "trt", "trt"))
+  )
+  rownames(meta) <- rownames(df)
+
+  corrected <- correct.batches(df, class = "class", metadata = meta, batch = "batch", covar.mod = c("sex", "treatment"))
+
+  expect_s3_class(corrected, "data.frame")
+  expect_equal(dim(corrected), dim(df))
+  expect_equal(corrected$class, df$class)
+
+  diff_matrix <- abs(as.matrix(corrected[, 1:2] - df[, 1:2]))
+  expect_true(any(diff_matrix > 1e-3))
+})
+
+test_that("correct.batches works with batch and multiple covariates", {
+  set.seed(3)
+  df <- data.frame(
+    gene1 = rnorm(6),
+    gene2 = rnorm(6),
+    class = factor(c(0, 0, 0, 1, 1, 1))
+  )
+  rownames(df) <- paste0("S", 1:6)
+
+  meta <- data.frame(
+    batch = rep(c("A", "B"), each = 3),
+    sex = factor(c("M", "F", "M", "F", "M", "F")),
+    treatment = factor(c("ctrl", "ctrl", "trt", "ctrl", "trt", "trt"))
+  )
+  rownames(meta) <- rownames(df)
+
+  corrected <- correct.batches(df, class = "class", metadata = meta, batch = "batch", covar.mod = c("sex", "treatment"))
+
+  expect_s3_class(corrected, "data.frame")
+  expect_equal(dim(corrected), dim(df))
+  expect_equal(corrected$class, df$class)
+
+  diff_matrix <- abs(as.matrix(corrected[, 1:2] - df[, 1:2]))
+  expect_true(any(diff_matrix > 1e-3))
+
+  # Expected output (manually inserted and copied)
+  expected <- data.frame(
+    gene1 = c(-1.1761936, -0.5433306,  0.0810728,
+              -0.9013270,  0.3734982,  0.2443841),
+    gene2 = c( 0.2349730, 1.2513330,  -1.0544697,
+               1.1326459, -0.9091693,  -1.2807738),
+    class = factor(c(0, 0, 0, 1, 1, 1))
+  )
+  rownames(expected) <- paste0("S", 1:6)
+
+  # Check if corrected output matches expected
+  expect_equal(corrected, expected, tolerance = 1e-6)
+})
+
+test_that("correct.batches throws error if covariate is confounded with batch", {
+  df <- data.frame(
+    gene1 = rnorm(4),
+    gene2 = rnorm(4),
+    class = factor(c(0, 0, 1, 1))
+  )
+  rownames(df) <- paste0("S", 1:4)
+
+  meta <- data.frame(
+    batch = c("A", "A", "B", "B"),
+    sex = c("M", "M", "F", "F")  # perfectly confounded with batch
+  )
+  rownames(meta) <- rownames(df)
+
+  expect_error(
+    correct.batches(df, class = "class", metadata = meta, batch = "batch", covar.mod = "sex"),
+    "confounded"
+  )
+})
+
+# --------------------------------------------------------#
+#                      preProcess tests                   #
+# --------------------------------------------------------#
+
+test_that("preProcess works with RNA-seq data without batch", {
+  df.count <- data.frame(
+    gene1 = c(100, 200, 300, 400),
+    gene2 = c(10, 40, 30, 60)
+  )
+  rownames(df.count) <- paste0("S", 1:4)
+
+  df.clin <- data.frame(class = factor(c(0, 0, 1, 1)))
+  rownames(df.clin) <- rownames(df.count)
+
+  obj <- preProcess(df.count, df.clin, class = "class", is.normalized = FALSE, plot = FALSE)
+
+  expect_s4_class(obj, "preProcess.obj")
+  expect_equal(obj@data.info$type, "rnaseq")
+  expect_false(obj@data.info$normalized)
+  expect_true(identical(cbind(df.count, df.clin), obj@raw))
+  expect_true(identical(df.clin, obj@metadata))
+  expect_equal(ncol(obj@processed$normalized), 3)  # 2 genes + class
+
+  diff_matrix <- abs(as.matrix(obj@processed$normalized[, 1:2] - df.count[, 1:2]))
+  expect_true(any(diff_matrix > 1e-3))
+
+  # Expected output (manually inserted and copied)
+  expected_normalized <- data.frame(
+    gene1 = c(19.75300, 19.73304,  19.75433, 19.74623),
+    gene2 = c( 16.43109, 17.41112,  16.43242, 17.00927),
+    class = factor(c(0, 0, 1, 1))
+  )
+  rownames(expected_normalized) <- paste0("S", 1:4)
+  expect_equal(obj@processed$normalized, expected_normalized, tolerance = 1e-6)
+
+  expect_true(identical(obj@processed$normalized, obj@processed$adjusted.data))
+})
+
+test_that("preProcess applies batch correction with covariates", {
+  df.count <- data.frame(
+    gene1 = c(100, 200, 300, 400),
+    gene2 = c(10, 40, 30, 60)
+  )
+  rownames(df.count) <- paste0("S", 1:4)
+
+  df.clin <- data.frame(
+    class = factor(c(0, 0, 1, 1)),
+    batch = factor(c("A", "A", "B", "B")),
+    sex = factor(c("M", "F", "M", "F"))
+  )
+  rownames(df.clin) <- rownames(df.count)
+
+  obj <- preProcess(df.count = df.count, df.clin = df.clin, class = "class", batch = "batch", covar.mod = "sex", is.normalized = FALSE, plot = FALSE)
+
+  expect_s4_class(obj, "preProcess.obj")
+  expect_equal(obj@data.info$type, "rnaseq")
+  expect_false(obj@data.info$normalized)
+  expect_true(identical(cbind(df.count, df.clin["class"]), obj@raw))
+  expect_true(identical(df.clin, obj@metadata))
+
+  # Normalized and adjusted.data should now be different
+  expect_false(identical(obj@processed$normalized, obj@processed$adjusted.data))
+
+  # Check if class column is preserved and in same position
+  expect_equal(obj@processed$adjusted.data$class, obj@processed$normalized$class)
+})
 
 test_that("Importing with different class column name works", {
   # Load test datasets into a temporary environment
@@ -435,4 +651,3 @@ test_that("preProcess is deterministic within the same OS", {
   expect_equal(res_no_batch_1, res_no_batch_2)
   # Note: Differences across OSs are expected, but not within a single environment.
 })
-

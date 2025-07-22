@@ -282,7 +282,7 @@ preProcess <- function(
   # Import data
   cli::cli_alert_info("Importing data...")
   data.obj <- data.import(df.count, df.clin, class, case.label, data.type, is.normalized)
-  validate_batch_args(metadata, batch, covar.mod)
+  validate_batch_args(df.clin, batch, covar.mod)
   cli::cli_alert_success("Data Imported!")
 
   # Normalize data if data type is RNA-seq and data is not normalized.
