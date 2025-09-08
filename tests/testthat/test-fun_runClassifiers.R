@@ -21,7 +21,7 @@ test_that("runClassifiers is deterministic within the same OS", {
 
   # Preprocess the data (including normalization and batch correction)
   pp <- preProcess(acc.count, acc.clin,
-                   is.normalized = FALSE, batch = "patient.gender", plot = FALSE
+    is.normalized = FALSE, batch = "patient.gender", plot = FALSE
   )
 
   # Ensure a high memory limit for future globals (for compatibility)
@@ -31,22 +31,65 @@ test_that("runClassifiers is deterministic within the same OS", {
       # Run runClassifiers() twice in the exact same environment and configuration
       # This should produce identical results on the same OS, seed, and package versions
       res1 <- runClassifiers(pp,
-                             models = c("bag_mlp", "rand_forest"),
-                             selector.recipes = c("boruta", "roc"),
-                             filter = TRUE, downsample = TRUE, plot = FALSE,
-                             parallel = FALSE
+        models = c("bag_mlp", "rand_forest"),
+        selector.recipes = c("boruta", "roc"),
+        filter = TRUE, downsample = TRUE, plot = FALSE,
+        parallel = FALSE
       )
       res2 <- runClassifiers(pp,
-                             models = c("bag_mlp", "rand_forest"),
-                             selector.recipes = c("boruta", "roc"),
-                             filter = TRUE, downsample = TRUE, plot = FALSE,
-                             parallel = FALSE
+        models = c("bag_mlp", "rand_forest"),
+        selector.recipes = c("boruta", "roc"),
+        filter = TRUE, downsample = TRUE, plot = FALSE,
+        parallel = FALSE
       )
     }
   )
 
   # Assert that both results are strictly identical (deterministic within OS)
   expect_equal(res1, res2)
+})
+
+
+test_that("runClassifiers object is created even if a model fails to tune", {
+  # This test verifies that the `runClassifiers` function successfully creates a results object
+  # even if one of the specified models fails to tune.
+  # It ensures that the function is robust to model tuning failures
+  # and still returns a valid results object for further analysis.
+
+  # Note: For this particular test, the random forest model is expected to fail
+  # to tune due to the small number of cases in the clinical data.
+
+  # Load test datasets into a temporary environment
+  test_env <- load_test_data("acc.count", "acc.clin", package = "TENTACLES")
+
+  acc.count <- test_env$acc.count
+  acc.clin <- test_env$acc.clin
+
+  # Keep a few genes
+  acc.count <- acc.count[, 1:100]
+
+  # Break the response variable so only random forest will fail to tune
+  acc.clin$class <- factor(c(rep("control", nrow(acc.clin) - 5), rep("case", 5))) # 5 cases, rest controls
+
+  pp <- preProcess(acc.count, acc.clin,
+    is.normalized = FALSE, batch = "patient.gender", plot = FALSE
+  )
+
+  withr::with_options(
+    new = list(future.globals.maxSize = 2 * 1024^3),
+    code = {
+      suppressWarnings(
+        test_results <- runClassifiers(pp,
+          models = c("bag_mlp", "rand_forest"),
+          selector.recipes = c("boruta"),
+          filter = TRUE, downsample = TRUE, plot = FALSE
+        )
+      )
+    }
+  )
+
+  expect_true(exists("test_results"))
+  expect_false(is.null(test_results))
 })
 
 test_that("runClassifiers is deterministic with all options enabled (heavy test)", {
@@ -72,7 +115,7 @@ test_that("runClassifiers is deterministic with all options enabled (heavy test)
 
   # Preprocess the data
   pp <- preProcess(acc.count, acc.clin,
-                   is.normalized = FALSE, batch = "patient.gender", plot = FALSE
+    is.normalized = FALSE, batch = "patient.gender", plot = FALSE
   )
 
   all_models <- c(
@@ -89,16 +132,16 @@ test_that("runClassifiers is deterministic with all options enabled (heavy test)
     code = {
       # Run twice under identical conditions
       res1 <- runClassifiers(pp,
-                             models = all_models,
-                             selector.recipes = all_selectors,
-                             filter = TRUE, downsample = TRUE, plot = FALSE,
-                             parallel = FALSE
+        models = all_models,
+        selector.recipes = all_selectors,
+        filter = TRUE, downsample = TRUE, plot = FALSE,
+        parallel = FALSE
       )
       res2 <- runClassifiers(pp,
-                             models = all_models,
-                             selector.recipes = all_selectors,
-                             filter = TRUE, downsample = TRUE, plot = FALSE,
-                             parallel = FALSE
+        models = all_models,
+        selector.recipes = all_selectors,
+        filter = TRUE, downsample = TRUE, plot = FALSE,
+        parallel = FALSE
       )
     }
   )
