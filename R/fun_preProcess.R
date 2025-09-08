@@ -18,11 +18,14 @@ methods::setClass("preProcess.obj",
 
 # Helper function to check data type and normalization status
 data.check <- function(data.type = "rnaseq", is.normalized = FALSE) {
+  if (!is.character(data.type) || length(data.type) != 1) {
+    cli::cli_abort("data.type must be a character string of length 1.")
+  }
   if (!data.type %in% c("rnaseq", "array")) {
     cli::cli_abort("Invalid data type. Please choose from 'rnaseq' or 'array'.")
   }
-  if (!is.logical(is.normalized)) {
-    cli::cli_abort("is.normalized must be a logical value.")
+  if (!is.logical(is.normalized) || length(is.normalized) != 1) {
+    cli::cli_abort("is.normalized must be a single logical value.")
   }
   output <- list(type = data.type, normalized = is.normalized)
   return(output)
@@ -42,7 +45,7 @@ match.samples <- function(df.count, df.clin) {
   }
 
   # Filter out samples that are not in the clinical data
-  df.clin <- df.clin[m, ]
+  df.clin <- df.clin[m, , drop = FALSE]
   return(rownames(df.clin))
 }
 
@@ -60,6 +63,11 @@ data.import <- function(
     cli::cli_abort("Input data must be in data frame format.")
   }
 
+  # Check if the class is a string
+  if (!is.character(class) || length(class) != 1) {
+    cli::cli_abort("The argument 'class' must be a character string.")
+  }
+
   # Check if the class column exists in the clinical data
   if (!class %in% colnames(df.clin)) {
     cli::cli_abort("Class column not found in clinical data.")
@@ -75,8 +83,8 @@ data.import <- function(
 
   # Get matching samples in both data tables
   samples_in_common <- match.samples(df.count, df.clin)
-  df.count <- df.count[samples_in_common, ]
-  df.clin <- df.clin[samples_in_common, ]
+  df.count <- df.count[samples_in_common, , drop = FALSE]
+  df.clin <- df.clin[samples_in_common, , drop = FALSE]
 
   # Transform class labels to binary factors
   cli::cli_alert_info("Transforming class labels to binary factors...")
@@ -108,59 +116,87 @@ data.import <- function(
   return(preProcess.obj)
 }
 
+# Helper function to validate arguments for batch correction.
+# Ensures that the 'batch' and 'covar.mod' variables are properly defined,
+# exist in the metadata, contain no missing values, and do not overlap.
+validate_batch_args <- function(metadata, batch = NULL, covar.mod = NULL) {
+  # Check 'batch'
+  if (!is.null(batch)) {
+    if (!is.character(batch) || length(batch) != 1) {
+      cli::cli_abort("The argument 'batch' must be a character string of length 1.")
+    }
+    if (!batch %in% colnames(metadata)) {
+      cli::cli_abort("Batch variable '{batch}' not found in metadata.")
+    }
+    if (anyNA(metadata[[batch]])) {
+      cli::cli_abort("Missing values detected in batch column '{batch}'.")
+    }
+  }
+
+  # Check 'covar.mod'
+  if (!is.null(covar.mod)) {
+    if (!is.character(covar.mod)) {
+      cli::cli_abort("The argument 'covar.mod' must be a character vector.")
+    }
+    if (!all(covar.mod %in% colnames(metadata))) {
+      cli::cli_abort("One or more covar.mod variables not found in metadata: {covar.mod}")
+    }
+    if (anyNA(metadata[, covar.mod, drop = FALSE])) {
+      cli::cli_abort("Missing values detected in covariate columns: {covar.mod}")
+    }
+  }
+
+  # Check that batch is not in covar.mod
+  if (!is.null(batch) && !is.null(covar.mod)) {
+    if (batch %in% covar.mod) {
+      cli::cli_abort("The batch variable '{batch}' must not be included in covar.mod.")
+    }
+  }
+}
+
 # Helper function to normalize data in log2(CPM + 1) scale
 normalization <- function(df.count, class, mincpm = 1, minfraction = 0.1) {
-  # Filter Low CPM function
-  filter.low.cpm <- function(filtered.counts) {
-    keep <- rowSums(edgeR::cpm(filtered.counts) > mincpm) >= ncol(filtered.counts) * minfraction
-    return(filtered.counts[keep, ])
-  }
+  # Extract class vector
+  class_vector <- df.count[[class]]
 
-  # Normalize data using edgeR function
-  edgeR.normalize <- function(data, filter = FALSE) {
-    if (filter) {
-      data <- filter.low.cpm(data)
-    }
-    data <- edgeR::calcNormFactors(data)
-    norm_data <- edgeR::cpm(data, normalized.lib.sizes = TRUE, log = FALSE)
-    norm_data <- log2(norm_data + 1)
-    norm_data <- as.data.frame(t(norm_data))
-  }
+  # Remove the class column and transpose the data
+  count_data <- df.count[, setdiff(colnames(df.count), class), drop = FALSE]
+  count_data <- t(count_data)
 
-  # Remove the class column and create a DGEList object
-  data_noclass <- df.count[, -which(colnames(df.count) == class), drop = FALSE]
-  data_noclass <- t(data_noclass)
-  data_noclass <- edgeR::DGEList(
-    counts = data_noclass, gene = rownames(data_noclass),
-    group = df.count[, class]
+  # Create DGEList object with count data and group labels
+  dge <- edgeR::DGEList(
+    counts = count_data,
+    genes = rownames(count_data),
+    group = class_vector
   )
 
-  # Normalize and filter training data
-  norm_data <- edgeR.normalize(data_noclass, filter = TRUE)
+  # Filter out low-expressed genes
+  keep_genes <- rowSums(edgeR::cpm(dge) > mincpm) >= ncol(dge) * minfraction
+  # Throw error if no genes survive filtering
+  if (!any(keep_genes)) {
+    cli::cli_abort("No genes passed the expression filtering. Try lowering 'mincpm' or 'minfraction'.")
+  }
+  dge_filtered <- dge[keep_genes, , keep.lib.sizes = FALSE]
 
-  # Add the class column back
-  norm_data[, class] <- df.count[, class]
+  # Normalize library sizes and calculate log2(CPM + 1)
+  dge_filtered <- edgeR::calcNormFactors(dge_filtered)
+  norm_counts <- edgeR::cpm(dge_filtered, normalized.lib.sizes = TRUE, log = FALSE)
+  log2_cpm <- log2(norm_counts + 1)
+
+  # Transpose the result to restore sample-wise rows
+  norm_data <- as.data.frame(t(log2_cpm))
+
+  # Add class column back
+  norm_data[[class]] <- class_vector
 
   return(norm_data)
 }
 
 # Helper function to perform batch correction using ComBat
-correct.batches <- function(data, class, metadata,
-                            batch,
-                            covar.mod) {
-  # Check input parameters
-  if (!is.null(batch)) {
-    if (!batch %in% names(metadata)) {
-      cli::cli_abort("Batch variable {batch} not found in metadata.")
-    }
-  }
+correct.batches <- function(data, class, metadata, batch = NULL, covar.mod = NULL) {
 
+  # Build covariate model matrix
   if (!is.null(covar.mod)) {
-    if (!all(covar.mod %in% names(metadata))) {
-      cli::cli_abort("covar.mod variable {covar.mod} not found in metadata.")
-    }
-
-    # Ensure covar.mod is either a single string or a character vector
     if (length(covar.mod) == 1) {
       # When covar.mod is a single string
       covar_mod_matrix <- stats::model.matrix(~ as.factor(metadata[[covar.mod]]), data = metadata)
@@ -172,19 +208,24 @@ correct.batches <- function(data, class, metadata,
       covar_mod_matrix <- stats::model.matrix(~ as.factor(combined_factor), data = metadata)
     }
   } else {
-    covar_mod_matrix <- covar.mod
+    covar_mod_matrix <- NULL
   }
 
-  # Format data for ComBat
-  data_noclass <- data[, -which(colnames(data) == class), drop = FALSE]
+  # Prepare expression matrix for ComBat: remove class column and transpose
+  data_noclass <- data[, setdiff(colnames(data), class), drop = FALSE]
   data_noclass <- t(data_noclass)
-  batch_factor <- as.factor(metadata[, batch])
 
-  # Perform batch correction using ComBat
-  corrected_data <- suppressMessages(sva::ComBat(dat = data_noclass, batch = batch_factor, mod = covar_mod_matrix))
+  # Extract batch factor
+  batch_factor <- as.factor(metadata[[batch]])
 
+  # Apply ComBat for batch correction
+  corrected_data <- suppressMessages(
+    sva::ComBat(dat = data_noclass, batch = batch_factor, mod = covar_mod_matrix)
+  )
+
+  # Restore format and add class column back
   corrected_data <- as.data.frame(t(corrected_data))
-  corrected_data[, class] <- data[, class]
+  corrected_data[[class]] <- data[[class]]
 
   return(corrected_data)
 }
@@ -196,9 +237,9 @@ correct.batches <- function(data, class, metadata,
 #'
 #' @param df.count A data frame containing the count data. Rows are samples and columns are genes.
 #' @param df.clin A data frame containing the clinical data. Rows are samples and columns are clinical variables.
-#' @param class A character string specifying the column name in df.clin that contains the class labels.
+#' @param class A character string specifying the column name in df.clin that contains the class labels. Default is "class".
 #' @param case.label A character string specifying the case label in the class column. Default is NULL.
-#' @param mincpm An integer specifying the minimum count per million (CPM) value for filtering genes. Default is 1.
+#' @param mincpm An integer specifying the minimum count per million (CPM) value for filtering genes. Set to 0 to disable CPM filtering. Default is 1.
 #' @param minfraction A numeric value specifying the minimum fraction of samples a gene must be present in to be retained. Default is 0.1.
 #' @param data.type A character string specifying the data type. Possible values are 'rnaseq' and 'array'. Default is 'rnaseq'.
 #' @param is.normalized A logical value specifying if the data is already normalized. Default is FALSE.
@@ -241,6 +282,7 @@ preProcess <- function(
   # Import data
   cli::cli_alert_info("Importing data...")
   data.obj <- data.import(df.count, df.clin, class, case.label, data.type, is.normalized)
+  validate_batch_args(df.clin, batch, covar.mod)
   cli::cli_alert_success("Data Imported!")
 
   # Normalize data if data type is RNA-seq and data is not normalized.
@@ -262,7 +304,10 @@ preProcess <- function(
   # Perform batch correction if batch variable is provided.
   if (!is.null(batch)) {
     cli::cli_alert_info("Performing batch correction...")
-    corrected_data <- correct.batches(data.obj@processed$normalized, data.obj@metadata, class = class, batch = batch, covar.mod = covar.mod)
+    corrected_data <- correct.batches(data = data.obj@processed$normalized,
+                                      class = class,
+                                      metadata = data.obj@metadata,
+                                      batch = batch, covar.mod = covar.mod)
     data.obj@processed$sbatched <- corrected_data
     cli::cli_alert_success("Batch correction complete!")
 
