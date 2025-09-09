@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# TENTACLES <img src="man/figures/logo-v2.png" alt="TENTACLES Logo" style="float:right; height:138px;" />
+# TENTACLES <a href="https://github.com/Giomu/TENTACLES"><img src="man/figures/logo-v2.png" alt="TENTACLES logo" align="right" height="138" style="float:right; height:138px;"/></a>
 
 <!-- badges: start -->
 
