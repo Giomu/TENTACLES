@@ -105,7 +105,7 @@ remotes::install_github("Giomu/TENTACLES")
 ## License
 
 TENTACLES is licensed under the GPL-3 License. See
-the [LICENSE](LICENSE.html) file for details.
+the [LICENSE](LICENSE.md) file for details.
 
 ## Contributing
 
