@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# TENTACLES <a href="https://github.com/Giomu/TENTACLES"><img src="inst/images/logo-v2.png" align="right" height="138"/></a>
+# TENTACLES <a href="https://github.com/Giomu/TENTACLES"><img src="man/figures/logo-v2.png" alt="TENTACLES logo" align="right" height="138" style="float:right; height:138px;"/></a>
 
 <!-- badges: start -->
 
@@ -10,8 +10,8 @@
 coverage](https://codecov.io/gh/Giomu/TENTACLES/graph/badge.svg?token=MB5EJRTE6V)](https://app.codecov.io/gh/Giomu/TENTACLES)
 <!-- badges: end -->
 
-**TENTACLES**: Transcriptomics ExploratioN Tool through Aggregation of
-CLassifiErS is an R package designed to simplify and enhance the
+**TENTACLES**: **Transcriptomics ExploratioN Tool through Aggregation of
+CLassifiErS** is a R package designed to simplify and enhance the
 analysis of transcriptomic data, with a particular focus on discovering
 and validating robust biomarkers. By integrating multiple machine
 learning algorithms, feature selection methods, and consensus-based
@@ -77,15 +77,19 @@ The TENTACLES workflow is built around five key steps:
 
 The following flowchart illustrates the functionality of TENTACLES:  
 
-<figure>
-<img src="inst/images/TENTACLES_flowchart.png"
-alt="TENTACLES Workflow" />
-<figcaption aria-hidden="true">TENTACLES Workflow</figcaption>
-</figure>
+<img src="man/figures/TENTACLES_flowchart.png" alt="TENTACLES Workflow" style="max-width:100%;" />
 
 ## Installation
 
 To install TENTACLES, simply run the following commands in R:
+
+``` r
+# If you don't have it already, install the remotes package
+install.packages("remotes")
+
+# Install TENTACLES from GitHub
+remotes::install_github("Giomu/TENTACLES")
+```
 
 ## Applications
 
@@ -100,7 +104,8 @@ To install TENTACLES, simply run the following commands in R:
 
 ## License
 
-TENTACLES is licensed under the MIT License.
+TENTACLES is licensed under the GPL-3 License. See
+the [LICENSE](LICENSE.md) file for details.
 
 ## Contributing
 
