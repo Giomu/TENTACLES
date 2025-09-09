@@ -21,7 +21,7 @@ library(TENTACLES)
 
 # Load data
 data(acc.count, acc.clin)
-acc.count <- acc.count[,1:2000]
+acc.count <- acc.count[, 1:2000]
 ```
 
 The count table (`acc.count`) should have samples as rows in the row names, and the row names of the clinical table (`acc.clin`) should correspond to the row names from the count data.
@@ -38,7 +38,7 @@ Main steps of the preProcess function include:
 
 4.  **Plots**: PCA and PVCA before and after batch correction if `plot = TRUE` and batch correction is performed.
 
-```{r preProcess, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
+```{r preProcess, fig.align='center', fig.width=12, fig.height=7, warning=FALSE}
 # pre-Process data
 pp <- preProcess(
   df.count = acc.count, df.clin = acc.clin,
@@ -77,9 +77,9 @@ Main steps of `runClassifiers` function include:
 
     -   UpSet plot of common genes found
 
-```{r runClassifiers, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
+```{r runClassifiers, fig.align='center', fig.width=12, fig.height=7, warning=FALSE}
 # Increase max size for parallel processing
-#options(future.globals.maxSize = 2 * 1024^3)
+# options(future.globals.maxSize = 2 * 1024^3)
 
 # Run classifiers
 rc <- runClassifiers(pp,
@@ -136,11 +136,12 @@ count_table <- as.data.frame((rc@data$adjusted.data))
 gene_list <- gc$consensusGenes
 labels <- as.factor(rc@data$metadata$class)
 # test consensus on an external dataset
-tc <- testConsensus(df.count = count_table, 
-              gene.list = gene_list, 
-              class = labels,
-              plot = FALSE
-              )
+tc <- testConsensus(
+  df.count = count_table,
+  gene.list = gene_list,
+  class = labels,
+  plot = FALSE
+)
 ```
 
 The function performs the following steps, generating visualizations for each:
