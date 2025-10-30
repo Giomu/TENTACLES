@@ -23,11 +23,11 @@ preProcess(
 
 \item{df.clin}{A data frame containing the clinical data. Rows are samples and columns are clinical variables.}
 
-\item{class}{A character string specifying the column name in df.clin that contains the class labels.}
+\item{class}{A character string specifying the column name in df.clin that contains the class labels. Default is "class".}
 
 \item{case.label}{A character string specifying the case label in the class column. Default is NULL.}
 
-\item{mincpm}{An integer specifying the minimum count per million (CPM) value for filtering genes. Default is 1.}
+\item{mincpm}{An integer specifying the minimum count per million (CPM) value for filtering genes. Set to 0 to disable CPM filtering. Default is 1.}
 
 \item{minfraction}{A numeric value specifying the minimum fraction of samples a gene must be present in to be retained. Default is 0.1.}
 

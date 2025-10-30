@@ -43,6 +43,7 @@ An S4 object of class `testConsensus.obj`, containing:
   - `plot`: A heatmap plot object for gene expression.
 
 - `mlp`: A list with the Multi-Layer Perceptron (MLP) model results:
+  - `models.info`: A list containing the finalized workflows parameters.
   - `importances`: A data frame with the feature importances.
   - `test_performance`: A summary of model performance on the test data.
   - `plot`: A ggplot object showing the MLP model performance.
