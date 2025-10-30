@@ -45,11 +45,15 @@ with a larger point size and assigns unique IDs on the x-axis only for misclassi
 }
 \examples{
 \dontrun{
-pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
-                 batch = "batch", covar.mod = "covar")
-rc <- runClassifiers(pp, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
-                     selector.recipes = c("boruta", "roc", "boruta", "boruta"),
-                     filter = TRUE, downsample = TRUE)
+pp <- preProcess(
+    df.count = acc.count, df.clin = acc.clin,
+    batch = "batch", covar.mod = "covar"
+)
+rc <- runClassifiers(pp,
+    models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
+    selector.recipes = c("boruta", "roc", "boruta", "boruta"),
+    filter = TRUE, downsample = TRUE
+)
 wrong.preds.plot(rc@predictions)
 }
 

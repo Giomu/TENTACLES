@@ -22,7 +22,7 @@ Useful links:
 Authors:
 \itemize{
   \item Gabriel Mouta \email{gds.mouta@gmail.com} (\href{https://orcid.org/0000-0002-5796-9491}{ORCID})
-  \item André Cunha \email{cunhaandre@usp.br}
+  \item Andr<U+00E9> Cunha \email{cunhaandre@usp.br} (\href{https://orcid.org/0000-0002-2682-701X}{ORCID})
   \item Maria Novedrati \email{m.novedrati@student.unisi.it}
   \item Alessandro Fuschi \email{alessandro.fuschi2@unibo.it}
 }

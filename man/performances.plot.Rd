@@ -29,11 +29,15 @@ The plot uses facets to display different metrics.
 \examples{
 \dontrun{
 # Example usage of performances.plot
-pp <- preProcess(df.count = acc.count, df.clin = acc.clin,
-                batch = "batch", covar.mod = "covar")
-rc <- runClassifiers(pp, models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
-                     selector.recipes = c("boruta", "roc", "boruta", "boruta"),
-                     filter = TRUE, downsample = TRUE)
+pp <- preProcess(
+    df.count = acc.count, df.clin = acc.clin,
+    batch = "batch", covar.mod = "covar"
+)
+rc <- runClassifiers(pp,
+    models = c("bag_mlp", "rand_forest", "mlp", "C5_rules"),
+    selector.recipes = c("boruta", "roc", "boruta", "boruta"),
+    filter = TRUE, downsample = TRUE
+)
 performances.plot(rc)
 }
 
