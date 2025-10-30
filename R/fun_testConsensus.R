@@ -24,6 +24,7 @@
 #'   - `plot`: A heatmap plot object.
 #'
 #' @slot mlp A list containing the Multi-Layer Perceptron (MLP) model results:
+#'   - `models.info`: A list containing the finalized workflows parameters.
 #'   - `importances`: A data frame of feature importances.
 #'   - `test_performance`: A list with model performance metrics (accuracy, precision, recall).
 #'   - `plot`: A ggplot object of the MLP performance visualization.
@@ -36,7 +37,7 @@ methods::setClass(
     pca = "list",        # PCA results (scores, loadings, explained variance, plot)
     auroc_fc = "list",   # AUROC and FC results (data, plot)
     heatmap = "list",    # Heatmap with HC results (data, plot)
-    mlp = "list"         # MLP model results (importances, test_performance, plot)
+    mlp = "list"         # MLP model results (models.info, importances, test_performance, plot)
   )
 )
 
@@ -441,6 +442,11 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 
       importances <- as.data.frame(vip::vi(mlp_obj))
       cli::cli_alert_success("Variable importance assessed successfully!")
+
+      # Save hyperparameters and selection metrics.
+      #best_params <- dplyr::mutate(param_final, .metric = "roc_auc")
+      workflow_final <- mlp_workflow
+
     }
   )
 
@@ -454,6 +460,8 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 
   # Return the results
   return(list(
+    models.info = workflow_final,
+    #parameters = best_params,
     importances = importances,
     test_performance = test_performance
   ))
@@ -506,6 +514,7 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 #'   - `plot`: A heatmap plot object for gene expression.
 #'
 #' - `mlp`: A list with the Multi-Layer Perceptron (MLP) model results:
+#'   - `models.info`: A list containing the finalized workflows parameters.
 #'   - `importances`: A data frame with the feature importances.
 #'   - `test_performance`: A summary of model performance on the test data.
 #'   - `plot`: A ggplot object showing the MLP model performance.

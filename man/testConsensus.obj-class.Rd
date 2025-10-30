@@ -31,6 +31,7 @@ The `testConsensus.obj` class is an S4 class designed to store and organize the 
 - `plot`: A heatmap plot object.}
 
 \item{\code{mlp}}{A list containing the Multi-Layer Perceptron (MLP) model results:
+- `models.info`: A list containing the finalized workflows parameters.
 - `importances`: A data frame of feature importances.
 - `test_performance`: A list with model performance metrics (accuracy, precision, recall).
 - `plot`: A ggplot object of the MLP performance visualization.}
