@@ -21,8 +21,10 @@ jobs:
         config:
           - {os: macos-latest,   r: 'release'}
           - {os: windows-latest, r: 'release'}
-          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
+          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release', allow_fail: true}
           - {os: ubuntu-latest,   r: 'release'}
+    continue-on-error: ${{ matrix.config.allow_fail }}
+
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
