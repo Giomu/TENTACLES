@@ -56,7 +56,7 @@ Imports:
     nnet,
     parsnip,
     plsmod,
-    praznik (== 11.0.0),
+    praznik,
     pROC,
     pvca,
     ranger,
