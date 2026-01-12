@@ -21,10 +21,9 @@ jobs:
         config:
           - {os: macos-latest,   r: 'release'}
           - {os: windows-latest, r: 'release'}
-          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release', allow_fail: true}
+          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,   r: 'release'}
-    continue-on-error: ${{ matrix.config.allow_fail }}
-
+          - {os: ubuntu-latest,   r: 'oldrel-1'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -43,28 +42,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: |
-              any::rcmdcheck
-              any::xgboost
-              any::lightgbm
-              any::rpart
-              any::mixOmics
-              any::C50
-              any::earth
-              any::nnet
-              any::themis
-              any::vip
-              any::baguette
-              any::colino
-              any::Boruta
-              any::praznik
-              any::FSelectorRcpp
-              any::workflowsets
-              any::rsample
-              any::yardstick
-              any::parsnip
-              any::recipes
-              any::kernlab
+          extra-packages: any::rcmdcheck
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
