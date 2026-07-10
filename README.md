@@ -118,4 +118,5 @@ This package was developed with a focus on integrating state-of-the-art
 machine learning techniques for transcriptomics. Special thanks to all
 collaborators and contributors.
 
-Citations:
+Cite us:
+Montesi, G., Mouta, G.D.S., Novedrati, M., Cunha, A.F., Fuschi, A., Lucchesi, S., Sonnati, C., Ciabattini, A., Santoro, F., Medaglini, D. and Nakaya, H.I., 2026. TENTACLES: a consensus machine learning tool for robust biomarker discovery in heterogeneous data. BioData Mining.
