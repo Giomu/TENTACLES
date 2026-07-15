@@ -456,7 +456,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim, parallel = pa
         vip_data[vip_data$Importance != 0, ]
       } else {
         num_features <- ncol(test_x)
-        vip_result <- vip::vip(model_fit, num_features = num_features)$data
+        vip_result <- vip::vi(model_fit, num_features = num_features)
         vip_result[vip_result$Importance != 0, ]
       }
     }, error = function(e) {
@@ -464,7 +464,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim, parallel = pa
       # Try permutation-based VIP, catch error if even that fails
       tryCatch({
         num_features <- ncol(test_x)
-        vip_result <- vip::vip(
+        vip_result <- vip::vi(
           object = model_fit,
           method = "permute",
           parallel = parallel,
@@ -475,7 +475,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim, parallel = pa
           target = test_y,
           event_level = "second",
           num_features = num_features
-        )$data
+        )
         vip_result[vip_result$Importance > 0, ]
       }, error = function(e2) {
         cli::cli_alert_warning("Permutation VIP failed for model {name}: {conditionMessage(e2)}. Skipping model.")
