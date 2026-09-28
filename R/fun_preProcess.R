@@ -84,10 +84,14 @@ data.import <- function(
   }
 
   # Check if the selected column as 'class' has another name, and then rename it
-  ## If the dataset already has a 'class' column, it won't accept
+  ## If the dataset already has a 'class' column, it is renamed to 'class_0' (or the first free 'class_<i>')
   if (class != "class") {
     if ("class" %in% colnames(df.clin)) {
-      cli::cli_abort("df.clin already has a 'class' column; cannot rename '{class}' to 'class'.")
+      i <- 0
+      while (paste0("class_", i) %in% colnames(df.clin)) i <- i + 1
+      new.name <- paste0("class_", i)
+      cli::cli_alert_warning("df.clin already has a 'class' column. Renaming it to '{new.name}'.")
+      colnames(df.clin)[colnames(df.clin) == "class"] <- new.name
     }
     cli::cli_alert_info("Renaming class column '{class}' to 'class'.")
     colnames(df.clin)[colnames(df.clin) == class] <- "class"

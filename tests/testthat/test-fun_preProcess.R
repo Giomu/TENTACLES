@@ -128,16 +128,23 @@ test_that("data.import handles renamed class and enforces binary labels", {
   rownames(df.clin2) <- rownames(df.count)
   expect_error(data.import(df.count, df.clin2, class = "class"), "2 unique values")
 
-  # Error: df.clin already has a 'class' column and another column is selected as class
+  # df.clin already has a 'class' column and another column is selected as class:
+  # the original 'class' is renamed to 'class_0'
   df.clin3 <- data.frame(
     group = c("A", "B", "A", "B"),
-    class = c(0, 1, 0, 1)
+    class = c("x", "y", "z", "x")
   )
   rownames(df.clin3) <- rownames(df.count)
-  expect_error(
-    data.import(df.count, df.clin3, class = "group", case.label = "A"),
-    "already has a 'class' column"
-  )
+  obj3 <- data.import(df.count, df.clin3, class = "group", case.label = "A")
+  expect_equal(as.character(obj3@metadata$class), c("1", "0", "1", "0"))
+  expect_equal(obj3@metadata$class_0, c("x", "y", "z", "x"))
+  expect_false("group" %in% colnames(obj3@metadata))
+
+  # If 'class_0' is also taken, the next free suffix is used
+  df.clin4 <- cbind(df.clin3, class_0 = 1:4)
+  obj4 <- data.import(df.count, df.clin4, class = "group", case.label = "A")
+  expect_equal(obj4@metadata$class_0, 1:4)
+  expect_equal(obj4@metadata$class_1, c("x", "y", "z", "x"))
 
 })
 
