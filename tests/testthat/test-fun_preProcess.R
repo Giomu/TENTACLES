@@ -117,7 +117,8 @@ test_that("data.import handles renamed class and enforces binary labels", {
 
   obj <- data.import(df.count, df.clin1, class = "group", case.label = "A", is.normalized = FALSE)
   expect_s4_class(obj, "preProcess.obj")
-  expect_equal(levels(obj@metadata$group), c("0", "1"))
+  expect_equal(levels(obj@metadata$class), c("0", "1"))
+  expect_false("group" %in% colnames(obj@metadata))
 
   # Error: class not binary
   df.clin2 <- data.frame(
@@ -126,6 +127,34 @@ test_that("data.import handles renamed class and enforces binary labels", {
   )
   rownames(df.clin2) <- rownames(df.count)
   expect_error(data.import(df.count, df.clin2, class = "class"), "2 unique values")
+
+  # Error: df.clin already has a 'class' column and another column is selected as class
+  df.clin3 <- data.frame(
+    group = c("A", "B", "A", "B"),
+    class = c(0, 1, 0, 1)
+  )
+  rownames(df.clin3) <- rownames(df.count)
+  expect_error(
+    data.import(df.count, df.clin3, class = "group", case.label = "A"),
+    "already has a 'class' column"
+  )
+
+})
+
+test_that("data.import errors when df.count has a gene named 'class'", {
+  # 4 samples x 10 genes, the last gene named 'class'
+  df.count <- as.data.frame(matrix(
+    rnbinom(40, size = 10, mu = 100), nrow = 4,
+    dimnames = list(paste0("S", 1:4), c(paste0("G", 1:9), "class"))
+  ))
+  df.clin <- data.frame(class = c(0, 1, 0, 1))
+  rownames(df.clin) <- rownames(df.count)
+
+  expect_error(data.import(df.count, df.clin), "df.count has a column named 'class'")
+
+  # Similar but different names must not trigger the check
+  colnames(df.count)[10] <- "Class"
+  expect_no_error(data.import(df.count, df.clin))
 })
 
 test_that("data.import throws error with mismatched sample IDs or invalid input types", {

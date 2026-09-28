@@ -63,6 +63,11 @@ data.import <- function(
     cli::cli_abort("Input data must be in data frame format.")
   }
 
+  # Check that no gene is named 'class', as that name is reserved for the class labels
+  if ("class" %in% colnames(df.count)) {
+    cli::cli_abort("df.count has a column named 'class'. Rename it, as 'class' is reserved for the class labels.")
+  }
+
   # Check if the class is a string
   if (!is.character(class) || length(class) != 1) {
     cli::cli_abort("The argument 'class' must be a character string.")
@@ -76,6 +81,17 @@ data.import <- function(
   # Check if the class column has more or less than 2 unique values
   if (length(unique(df.clin[, class])) != 2) {
     cli::cli_abort("Class column must have exactly 2 unique values.")
+  }
+
+  # Check if the selected column as 'class' has another name, and then rename it
+  ## If the dataset already has a 'class' column, it won't accept
+  if (class != "class") {
+    if ("class" %in% colnames(df.clin)) {
+      cli::cli_abort("df.clin already has a 'class' column; cannot rename '{class}' to 'class'.")
+    }
+    cli::cli_alert_info("Renaming class column '{class}' to 'class'.")
+    colnames(df.clin)[colnames(df.clin) == class] <- "class"
+    class <- "class"
   }
 
   # Get data information.
@@ -282,6 +298,7 @@ preProcess <- function(
   # Import data
   cli::cli_alert_info("Importing data...")
   data.obj <- data.import(df.count, df.clin, class, case.label, data.type, is.normalized)
+  class <- "class"
   validate_batch_args(df.clin, batch, covar.mod)
   cli::cli_alert_success("Data Imported!")
 
