@@ -302,8 +302,19 @@ preProcess <- function(
   # Import data
   cli::cli_alert_info("Importing data...")
   data.obj <- data.import(df.count, df.clin, class, case.label, data.type, is.normalized)
+
+  # The class labels must not be used as batch or covariate, under their original or renamed name
+  if (any(c(batch, covar.mod) %in% c(class, "class"))) {
+    msg <- "The class column '{class}' cannot be used as 'batch' or 'covar.mod'."
+    ## A pre-existing 'class' column was renamed by data.import
+    renamed <- setdiff(colnames(data.obj@metadata), colnames(df.clin))
+    if (class != "class" && "class" %in% c(batch, covar.mod) && length(renamed) == 1) {
+      msg <- c(msg, "i" = "The original 'class' column of df.clin was renamed to '{renamed}'.")
+    }
+    cli::cli_abort(msg)
+  }
   class <- "class"
-  validate_batch_args(df.clin, batch, covar.mod)
+  validate_batch_args(data.obj@metadata, batch, covar.mod)
   cli::cli_alert_success("Data Imported!")
 
   # Normalize data if data type is RNA-seq and data is not normalized.

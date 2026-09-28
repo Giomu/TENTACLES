@@ -523,6 +523,59 @@ test_that("preProcess applies batch correction with covariates", {
   expect_equal(obj@processed$adjusted.data$class, obj@processed$normalized$class)
 })
 
+test_that("preProcess rejects the class column as batch or covariate", {
+  df.count <- data.frame(
+    gene1 = c(100, 200, 300, 400),
+    gene2 = c(10, 40, 30, 60)
+  )
+  rownames(df.count) <- paste0("S", 1:4)
+
+  df.clin <- data.frame(
+    group = c("A", "A", "B", "B"),
+    class = factor(c("x", "y", "x", "y")),
+    sex = factor(c("M", "F", "M", "F"))
+  )
+  rownames(df.clin) <- rownames(df.count)
+
+  # Original class column name
+  expect_error(
+    preProcess(df.count, df.clin, class = "group", case.label = "A", batch = "group", plot = FALSE),
+    "cannot be used as 'batch' or 'covar.mod'"
+  )
+  expect_error(
+    preProcess(df.count, df.clin, class = "group", case.label = "A", covar.mod = "group", plot = FALSE),
+    "cannot be used as 'batch' or 'covar.mod'"
+  )
+
+  # 'class' now refers to the class labels; the original 'class' column is 'class_0'
+  expect_error(
+    preProcess(df.count, df.clin, class = "group", case.label = "A", batch = "class", plot = FALSE),
+    "renamed to 'class_0'"
+  )
+
+  # The renamed column can be used as batch
+  expect_no_error(
+    preProcess(df.count, df.clin, class = "group", case.label = "A", batch = "class_0", plot = FALSE)
+  )
+})
+
+test_that("preProcess validates batch on matched samples only", {
+  df.count <- data.frame(
+    gene1 = c(100, 200, 300, 400),
+    gene2 = c(10, 40, 30, 60)
+  )
+  rownames(df.count) <- paste0("S", 1:4)
+
+  # S5 is not in df.count and has a missing batch value
+  df.clin <- data.frame(
+    class = factor(c(0, 0, 1, 1, 1)),
+    batch = factor(c("A", "B", "A", "B", NA))
+  )
+  rownames(df.clin) <- paste0("S", 1:5)
+
+  expect_no_error(preProcess(df.count, df.clin, batch = "batch", plot = FALSE))
+})
+
 test_that("Importing with different class column name works", {
   # Load test datasets into a temporary environment
   test_env <- load_test_data("acc.count", "acc.clin", package = "TENTACLES")
