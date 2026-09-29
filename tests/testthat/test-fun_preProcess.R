@@ -117,7 +117,8 @@ test_that("data.import handles renamed class and enforces binary labels", {
 
   obj <- data.import(df.count, df.clin1, class = "group", case.label = "A", is.normalized = FALSE)
   expect_s4_class(obj, "preProcess.obj")
-  expect_equal(levels(obj@metadata$group), c("0", "1"))
+  expect_equal(levels(obj@metadata$class), c("0", "1"))
+  expect_false("group" %in% colnames(obj@metadata))
 
   # Error: class not binary
   df.clin2 <- data.frame(
@@ -126,6 +127,41 @@ test_that("data.import handles renamed class and enforces binary labels", {
   )
   rownames(df.clin2) <- rownames(df.count)
   expect_error(data.import(df.count, df.clin2, class = "class"), "2 unique values")
+
+  # df.clin already has a 'class' column and another column is selected as class:
+  # the original 'class' is renamed to 'class_0'
+  df.clin3 <- data.frame(
+    group = c("A", "B", "A", "B"),
+    class = c("x", "y", "z", "x")
+  )
+  rownames(df.clin3) <- rownames(df.count)
+  obj3 <- data.import(df.count, df.clin3, class = "group", case.label = "A")
+  expect_equal(as.character(obj3@metadata$class), c("1", "0", "1", "0"))
+  expect_equal(obj3@metadata$class_0, c("x", "y", "z", "x"))
+  expect_false("group" %in% colnames(obj3@metadata))
+
+  # If 'class_0' is also taken, the next free suffix is used
+  df.clin4 <- cbind(df.clin3, class_0 = 1:4)
+  obj4 <- data.import(df.count, df.clin4, class = "group", case.label = "A")
+  expect_equal(obj4@metadata$class_0, 1:4)
+  expect_equal(obj4@metadata$class_1, c("x", "y", "z", "x"))
+
+})
+
+test_that("data.import errors when df.count has a gene named 'class'", {
+  # 4 samples x 10 genes, the last gene named 'class'
+  df.count <- as.data.frame(matrix(
+    rnbinom(40, size = 10, mu = 100), nrow = 4,
+    dimnames = list(paste0("S", 1:4), c(paste0("G", 1:9), "class"))
+  ))
+  df.clin <- data.frame(class = c(0, 1, 0, 1))
+  rownames(df.clin) <- rownames(df.count)
+
+  expect_error(data.import(df.count, df.clin), "df.count has a column named 'class'")
+
+  # Similar but different names must not trigger the check
+  colnames(df.count)[10] <- "Class"
+  expect_no_error(data.import(df.count, df.clin))
 })
 
 test_that("data.import throws error with mismatched sample IDs or invalid input types", {
@@ -145,6 +181,45 @@ test_that("data.import throws error with mismatched sample IDs or invalid input 
                          dimnames = list(paste0("S", 1:4), paste0("G", 1:10)))
   rownames(df.clin) <- paste0("S", 1:4)
   expect_error(data.import(df.count.mat, df.clin, class = "class"), "data.frame")
+})
+
+test_that("data.import validates class labels on matched samples only", {
+  df.count <- as.data.frame(matrix(rnbinom(40, size = 10, mu = 100), nrow = 4,
+                                   dimnames = list(paste0("S", 1:4), paste0("G", 1:10))))
+
+  # S5 and S6 are not in df.count, so only class 'A' is left after matching
+  df.clin <- data.frame(class = c("A", "A", "A", "A", "B", "B"))
+  rownames(df.clin) <- paste0("S", 1:6)
+  expect_error(data.import(df.count, df.clin, case.label = "A"), "after matching")
+  expect_error(data.import(df.count, df.clin), "after matching")
+
+  # Same with binary (0 and 1) labels
+  df.clin$class <- c(0, 0, 0, 0, 1, 1)
+  expect_error(data.import(df.count, df.clin), "after matching")
+
+  # A third label only in unmatched samples does not count
+  df.clin$class <- c("A", "B", "A", "B", "C", "C")
+  obj <- data.import(df.count, df.clin, case.label = "A")
+  expect_equal(as.character(obj@metadata$class), c("1", "0", "1", "0"))
+})
+
+test_that("data.import rejects missing values in the class column", {
+  df.count <- as.data.frame(matrix(rnbinom(40, size = 10, mu = 100), nrow = 4,
+                                   dimnames = list(paste0("S", 1:4), paste0("G", 1:10))))
+
+  # NA plus two labels
+  df.clin <- data.frame(class = c("A", "B", NA, "A"))
+  rownames(df.clin) <- rownames(df.count)
+  expect_error(data.import(df.count, df.clin, case.label = "A"), "Missing values")
+
+  # NA plus a single label: must not be taken as the second class
+  df.clin$class <- c("A", NA, "A", NA)
+  expect_error(data.import(df.count, df.clin, case.label = "A"), "Missing values")
+
+  # NA only in an unmatched sample is ignored
+  df.clin <- data.frame(class = c("A", "B", "A", "B", NA))
+  rownames(df.clin) <- paste0("S", 1:5)
+  expect_no_error(data.import(df.count, df.clin, case.label = "A"))
 })
 
 
@@ -485,6 +560,67 @@ test_that("preProcess applies batch correction with covariates", {
 
   # Check if class column is preserved and in same position
   expect_equal(obj@processed$adjusted.data$class, obj@processed$normalized$class)
+})
+
+test_that("preProcess rejects the class column as batch or covariate", {
+  df.count <- data.frame(
+    gene1 = c(100, 200, 300, 400),
+    gene2 = c(10, 40, 30, 60)
+  )
+  rownames(df.count) <- paste0("S", 1:4)
+
+  df.clin <- data.frame(
+    group = c("A", "A", "B", "B"),
+    class = factor(c("x", "y", "x", "y")),
+    sex = factor(c("M", "F", "M", "F"))
+  )
+  rownames(df.clin) <- rownames(df.count)
+
+  # Original class column name
+  expect_error(
+    preProcess(df.count, df.clin, class = "group", case.label = "A", batch = "group", plot = FALSE),
+    "cannot be used as 'batch' or 'covar.mod'"
+  )
+  expect_error(
+    preProcess(df.count, df.clin, class = "group", case.label = "A", covar.mod = "group", plot = FALSE),
+    "cannot be used as 'batch' or 'covar.mod'"
+  )
+
+  # 'class' now refers to the class labels; the original 'class' column is 'class_0'
+  expect_error(
+    preProcess(df.count, df.clin, class = "group", case.label = "A", batch = "class", plot = FALSE),
+    "renamed to 'class_0'"
+  )
+
+  # The renamed column can be used as batch
+  expect_no_error(
+    preProcess(df.count, df.clin, class = "group", case.label = "A", batch = "class_0", plot = FALSE)
+  )
+
+  # Without a pre-existing 'class' column, there is no rename hint
+  df.clin$class <- NULL
+  err <- expect_error(
+    preProcess(df.count, df.clin, class = "group", case.label = "A", batch = "class", plot = FALSE),
+    "cannot be used as 'batch' or 'covar.mod'"
+  )
+  expect_false(grepl("renamed", conditionMessage(err)))
+})
+
+test_that("preProcess validates batch on matched samples only", {
+  df.count <- data.frame(
+    gene1 = c(100, 200, 300, 400),
+    gene2 = c(10, 40, 30, 60)
+  )
+  rownames(df.count) <- paste0("S", 1:4)
+
+  # S5 is not in df.count and has a missing batch value
+  df.clin <- data.frame(
+    class = factor(c(0, 0, 1, 1, 1)),
+    batch = factor(c("A", "B", "A", "B", NA))
+  )
+  rownames(df.clin) <- paste0("S", 1:5)
+
+  expect_no_error(preProcess(df.count, df.clin, batch = "batch", plot = FALSE))
 })
 
 test_that("Importing with different class column name works", {

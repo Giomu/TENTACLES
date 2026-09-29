@@ -63,6 +63,11 @@ data.import <- function(
     cli::cli_abort("Input data must be in data frame format.")
   }
 
+  # Check that no gene is named 'class', as that name is reserved for the class labels
+  if ("class" %in% colnames(df.count)) {
+    cli::cli_abort("df.count has a column named 'class'. Rename it, as 'class' is reserved for the class labels.")
+  }
+
   # Check if the class is a string
   if (!is.character(class) || length(class) != 1) {
     cli::cli_abort("The argument 'class' must be a character string.")
@@ -73,9 +78,19 @@ data.import <- function(
     cli::cli_abort("Class column not found in clinical data.")
   }
 
-  # Check if the class column has more or less than 2 unique values
-  if (length(unique(df.clin[, class])) != 2) {
-    cli::cli_abort("Class column must have exactly 2 unique values.")
+  # Check if the selected column as 'class' has another name, and then rename it
+  ## If the dataset already has a 'class' column, it is renamed to 'class_0' (or the first free 'class_<i>')
+  if (class != "class") {
+    if ("class" %in% colnames(df.clin)) {
+      i <- 0
+      while (paste0("class_", i) %in% colnames(df.clin)) i <- i + 1
+      new.name <- paste0("class_", i)
+      cli::cli_alert_warning("df.clin already has a 'class' column. Renaming it to '{new.name}'.")
+      colnames(df.clin)[colnames(df.clin) == "class"] <- new.name
+    }
+    cli::cli_alert_info("Renaming class column '{class}' to 'class'.")
+    colnames(df.clin)[colnames(df.clin) == class] <- "class"
+    class <- "class"
   }
 
   # Get data information.
@@ -85,6 +100,15 @@ data.import <- function(
   samples_in_common <- match.samples(df.count, df.clin)
   df.count <- df.count[samples_in_common, , drop = FALSE]
   df.clin <- df.clin[samples_in_common, , drop = FALSE]
+
+  # Check the class labels of the matched samples: no missing values and exactly 2 unique values
+  if (anyNA(df.clin[, class])) {
+    cli::cli_abort("Missing values detected in the class column.")
+  }
+  labels <- unique(df.clin[, class])
+  if (length(labels) != 2) {
+    cli::cli_abort("Class column must have exactly 2 unique values after matching samples. Found: {.val {as.character(labels)}}.")
+  }
 
   # Transform class labels to binary factors
   cli::cli_alert_info("Transforming class labels to binary factors...")
@@ -282,7 +306,19 @@ preProcess <- function(
   # Import data
   cli::cli_alert_info("Importing data...")
   data.obj <- data.import(df.count, df.clin, class, case.label, data.type, is.normalized)
-  validate_batch_args(df.clin, batch, covar.mod)
+
+  # The class labels must not be used as batch or covariate, under their original or renamed name
+  if (any(c(batch, covar.mod) %in% c(class, "class"))) {
+    msg <- "The class column '{class}' cannot be used as 'batch' or 'covar.mod'."
+    ## A pre-existing 'class' column was renamed by data.import
+    renamed <- setdiff(colnames(data.obj@metadata), colnames(df.clin))
+    if (class != "class" && "class" %in% c(batch, covar.mod) && "class" %in% colnames(df.clin)) {
+      msg <- c(msg, "i" = "The original 'class' column of df.clin was renamed to '{renamed}'.")
+    }
+    cli::cli_abort(msg)
+  }
+  class <- "class"
+  validate_batch_args(data.obj@metadata, batch, covar.mod)
   cli::cli_alert_success("Data Imported!")
 
   # Normalize data if data type is RNA-seq and data is not normalized.
