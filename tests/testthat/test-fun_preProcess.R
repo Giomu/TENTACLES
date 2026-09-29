@@ -183,6 +183,45 @@ test_that("data.import throws error with mismatched sample IDs or invalid input 
   expect_error(data.import(df.count.mat, df.clin, class = "class"), "data.frame")
 })
 
+test_that("data.import validates class labels on matched samples only", {
+  df.count <- as.data.frame(matrix(rnbinom(40, size = 10, mu = 100), nrow = 4,
+                                   dimnames = list(paste0("S", 1:4), paste0("G", 1:10))))
+
+  # S5 and S6 are not in df.count, so only class 'A' is left after matching
+  df.clin <- data.frame(class = c("A", "A", "A", "A", "B", "B"))
+  rownames(df.clin) <- paste0("S", 1:6)
+  expect_error(data.import(df.count, df.clin, case.label = "A"), "after matching")
+  expect_error(data.import(df.count, df.clin), "after matching")
+
+  # Same with binary (0 and 1) labels
+  df.clin$class <- c(0, 0, 0, 0, 1, 1)
+  expect_error(data.import(df.count, df.clin), "after matching")
+
+  # A third label only in unmatched samples does not count
+  df.clin$class <- c("A", "B", "A", "B", "C", "C")
+  obj <- data.import(df.count, df.clin, case.label = "A")
+  expect_equal(as.character(obj@metadata$class), c("1", "0", "1", "0"))
+})
+
+test_that("data.import rejects missing values in the class column", {
+  df.count <- as.data.frame(matrix(rnbinom(40, size = 10, mu = 100), nrow = 4,
+                                   dimnames = list(paste0("S", 1:4), paste0("G", 1:10))))
+
+  # NA plus two labels
+  df.clin <- data.frame(class = c("A", "B", NA, "A"))
+  rownames(df.clin) <- rownames(df.count)
+  expect_error(data.import(df.count, df.clin, case.label = "A"), "Missing values")
+
+  # NA plus a single label: must not be taken as the second class
+  df.clin$class <- c("A", NA, "A", NA)
+  expect_error(data.import(df.count, df.clin, case.label = "A"), "Missing values")
+
+  # NA only in an unmatched sample is ignored
+  df.clin <- data.frame(class = c("A", "B", "A", "B", NA))
+  rownames(df.clin) <- paste0("S", 1:5)
+  expect_no_error(data.import(df.count, df.clin, case.label = "A"))
+})
+
 
 # --------------------------------------------------------#
 #                validate_batch_args tests                #

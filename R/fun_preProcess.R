@@ -78,11 +78,6 @@ data.import <- function(
     cli::cli_abort("Class column not found in clinical data.")
   }
 
-  # Check if the class column has more or less than 2 unique values
-  if (length(unique(df.clin[, class])) != 2) {
-    cli::cli_abort("Class column must have exactly 2 unique values.")
-  }
-
   # Check if the selected column as 'class' has another name, and then rename it
   ## If the dataset already has a 'class' column, it is renamed to 'class_0' (or the first free 'class_<i>')
   if (class != "class") {
@@ -105,6 +100,15 @@ data.import <- function(
   samples_in_common <- match.samples(df.count, df.clin)
   df.count <- df.count[samples_in_common, , drop = FALSE]
   df.clin <- df.clin[samples_in_common, , drop = FALSE]
+
+  # Check the class labels of the matched samples: no missing values and exactly 2 unique values
+  if (anyNA(df.clin[, class])) {
+    cli::cli_abort("Missing values detected in the class column.")
+  }
+  labels <- unique(df.clin[, class])
+  if (length(labels) != 2) {
+    cli::cli_abort("Class column must have exactly 2 unique values after matching samples. Found: {.val {as.character(labels)}}.")
+  }
 
   # Transform class labels to binary factors
   cli::cli_alert_info("Transforming class labels to binary factors...")
