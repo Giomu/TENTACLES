@@ -557,6 +557,14 @@ test_that("preProcess rejects the class column as batch or covariate", {
   expect_no_error(
     preProcess(df.count, df.clin, class = "group", case.label = "A", batch = "class_0", plot = FALSE)
   )
+
+  # Without a pre-existing 'class' column, there is no rename hint
+  df.clin$class <- NULL
+  err <- expect_error(
+    preProcess(df.count, df.clin, class = "group", case.label = "A", batch = "class", plot = FALSE),
+    "cannot be used as 'batch' or 'covar.mod'"
+  )
+  expect_false(grepl("renamed", conditionMessage(err)))
 })
 
 test_that("preProcess validates batch on matched samples only", {

@@ -308,7 +308,7 @@ preProcess <- function(
     msg <- "The class column '{class}' cannot be used as 'batch' or 'covar.mod'."
     ## A pre-existing 'class' column was renamed by data.import
     renamed <- setdiff(colnames(data.obj@metadata), colnames(df.clin))
-    if (class != "class" && "class" %in% c(batch, covar.mod) && length(renamed) == 1) {
+    if (class != "class" && "class" %in% c(batch, covar.mod) && "class" %in% colnames(df.clin)) {
       msg <- c(msg, "i" = "The original 'class' column of df.clin was renamed to '{renamed}'.")
     }
     cli::cli_abort(msg)
