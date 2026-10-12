@@ -576,15 +576,21 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim, parallel = pa
 #'   This affects both model tuning and the permutation-based variable importance calculation.
 #'
 #' @return An object of class `runClassifiers.obj` containing:
-#'   - `data`: A list containing the adjusted data and metadata.
-#'   - `models.info`: A list containing the finalized workflows for each model.
-#'   - `model.features`: A list containing the variable importance for each model.
+#'   - `data`: A list containing the adjusted data, the metadata and `feature.map`, a named character
+#'     vector mapping the internal feature names (names) to the original ones (values).
+#'   - `models.info`: A list containing the finalized workflows for each model. The workflows use the
+#'     internal feature names, so new data must be renamed with `feature.map` before prediction.
+#'   - `model.features`: A list containing the variable importance for each model, with the original
+#'     feature names.
 #'   - `performances`: A list containing the tuning and final metrics for each model.
 #'   - `predictions`: A data frame containing the predictions for each model.
 #'
 #' @details
 #' The function runs specified classifiers paired with provided selector.recipes on pre-processed data.
 #' If filter = TRUE, the function first filters the genes that are not annotated in the GO and KEGG databases.
+#' Feature names are then replaced by syntactic ASCII names (e.g. "HLA-B" becomes "HLA.B.1" if "HLA.B"
+#' also exists), because names like "HLA-B" or "C18:1" break formula-based selectors and some engines.
+#' Feature names must be unique, non-missing, non-empty and different from "class".
 #' Then, the function tunes and fits the models using the specified tuning method.
 #' Finally it computes the variable importances for each model using the permutation-based VIP,
 #' when the direct VIP computation fails.
@@ -751,8 +757,16 @@ runClassifiers <- function(
         cli::cli_alert_info("Skipping gene filtering using {ncol(preProcess.obj@processed$adjusted.data) - 1} genes ...")
       }
 
-      # Split data into v resamples for tuning inside cross-validation
       data <- preProcess.obj@processed$adjusted.data
+
+      # Use syntactic ASCII names internally: names like "HLA-B" or "C18:1"
+      # break formula-based selectors and some engines. feature.map maps them
+      # back to the original names.
+      outcome_col <- match("class", colnames(data))
+      feature.map <- encode_feature_names(colnames(data)[-outcome_col])
+      colnames(data)[-outcome_col] <- names(feature.map)
+
+      # Split data into v resamples for tuning inside cross-validation
       train_resamples <- rsample::vfold_cv(data, v = v, strata = class)
 
       # Tune and fit the models
@@ -779,6 +793,12 @@ runClassifiers <- function(
       )
     }
   )
+
+  # Report variable importances with the original feature names
+  vip_results <- lapply(vip_results, function(vi) {
+    vi$Variable <- decode_feature_names(vi$Variable, feature.map)
+    vi
+  })
 
   obj <- t_and_f_output[[1]]
   obj@model.features <- vip_results
@@ -834,6 +854,7 @@ runClassifiers <- function(
 
   obj@data$adjusted.data <- preProcess.obj@processed$adjusted.data
   obj@data$metadata <- preProcess.obj@metadata
+  obj@data$feature.map <- feature.map
 
 
   cli::cli_alert_success("Successfully executed runClassifiers function!")

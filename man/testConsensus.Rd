@@ -12,7 +12,8 @@ testConsensus(df.count, gene.list, class, top_loadings = 15, plot = TRUE)
 Each value should represent the expression level of a gene for a given sample.}
 
 \item{gene.list}{A character vector containing the names of consensus genes to be tested.
-These gene names must match the column names in `df.count`.}
+These gene names must match the column names in `df.count`. Names not found in `df.count` are
+ignored with a warning.}
 
 \item{class}{A binary vector (0 and 1) indicating the class labels for each sample.
 The length of this vector must match the number of rows in `df.count`.}
@@ -43,8 +44,11 @@ An S4 object of class `testConsensus.obj`, containing:
   - `plot`: A heatmap plot object for gene expression.
 
 - `mlp`: A list with the Multi-Layer Perceptron (MLP) model results:
-  - `models.info`: A list containing the finalized workflows parameters.
-  - `importances`: A data frame with the feature importances.
+  - `models.info`: A list containing the finalized workflows parameters. The workflow uses
+    internal feature names, so new data must be renamed with `feature.map` before prediction.
+  - `importances`: A data frame with the feature importances, with the original feature names.
+  - `feature.map`: A named character vector mapping the internal feature names (names) to the
+    original ones (values).
   - `test_performance`: A summary of model performance on the test data.
   - `plot`: A ggplot object showing the MLP model performance.
 }

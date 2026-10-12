@@ -106,3 +106,127 @@ test_that("runClassifiers is deterministic with all options enabled (heavy test)
   # Assert strict equality (deterministic within OS)
   expect_equal(res1, res2)
 })
+
+test_that("make_tricky_pp keeps the non-syntactic names through preProcess", {
+  pp <- make_tricky_pp()
+  expect_true(all(tricky_names %in% colnames(pp@processed$adjusted.data)))
+})
+
+test_that("runClassifiers fits every workflow when feature names are non-syntactic", {
+  # Formula-based components (colino's infgain selector, baguette's bag_tree
+  # and bag_mars) parse "HLA-B" as "HLA - B" and fail during tuning.
+  pp <- make_tricky_pp()
+
+  rc <- runClassifiers(pp,
+                       models = c("decision_tree", "bag_tree", "bag_mars", "mlp"),
+                       selector.recipes = c("infgain", "base", "base", "base"),
+                       n = 2, v = 3, nsim = 1,
+                       filter = FALSE, plot = FALSE, parallel = FALSE
+  )
+
+  expect_setequal(
+    names(rc@models.info),
+    c("decision_tree_infgain", "bag_tree_base", "bag_mars_base", "mlp_base")
+  )
+})
+
+test_that("runClassifiers fits engines that may reject non-ASCII column names", {
+  skip_if_not_installed("xgboost")
+  skip_if_not_installed("C50")
+  skip_if_not_installed("lightgbm")
+  pp <- make_tricky_pp()
+
+  rc <- runClassifiers(pp,
+                       models = c("xgboost", "C5_rules", "lightGBM"),
+                       selector.recipes = c("base", "base", "base"),
+                       n = 2, v = 3, nsim = 1,
+                       filter = FALSE, plot = FALSE, parallel = FALSE
+  )
+
+  expect_setequal(
+    names(rc@models.info),
+    c("xgboost_base", "C5_rules_base", "lightGBM_base")
+  )
+})
+
+test_that("runClassifiers returns variable importances with the original feature names", {
+  # Some engines escape non-syntactic names in their importance output
+  # (e.g. mlp returns `HLA-B` with backticks), so features no longer match
+  # the input column names.
+  pp <- make_tricky_pp()
+
+  rc <- runClassifiers(pp,
+                       models = c("mlp", "rand_forest"),
+                       selector.recipes = c("base", "base"),
+                       n = 2, v = 3, nsim = 1,
+                       filter = FALSE, plot = FALSE, parallel = FALSE
+  )
+
+  all_features <- unique(unlist(lapply(rc@model.features, function(x) x$Variable)))
+  expect_true(all(all_features %in% colnames(rc@data$adjusted.data)))
+  expect_true("HLA-B" %in% rc@model.features$mlp_base$Variable)
+})
+
+test_that("runClassifiers stores a one-to-one map from internal to original names", {
+  pp <- make_tricky_pp()
+
+  rc <- runClassifiers(pp,
+                       models = "rand_forest",
+                       selector.recipes = "base",
+                       n = 2, v = 3, nsim = 1,
+                       filter = FALSE, plot = FALSE, parallel = FALSE
+  )
+
+  map <- rc@data$feature.map
+  features <- setdiff(colnames(pp@processed$adjusted.data), "class")
+  expect_type(map, "character")
+  expect_setequal(unname(map), features)
+  expect_false(anyDuplicated(names(map)) > 0)
+  expect_equal(make.names(names(map)), names(map))
+  # Internal names must be ASCII: C5.0 cannot parse its names file otherwise
+  # (C5imp() fails with "cannot parse names file" for "\u03b2.alanine").
+  expect_false(any(grepl("[^ -~]", names(map))))
+  # Names that are already syntactic are kept as they are
+  expect_equal(unname(map[c("HLA.B", "C18.1", "A2ML1")]), c("HLA.B", "C18.1", "A2ML1"))
+})
+
+test_that("runClassifiers aborts on missing or empty feature names", {
+  pp <- make_tricky_pp()
+
+  expect_error(
+    runClassifiers(rename_pp_features(pp, "A2ML1", NA),
+                   models = "rand_forest", selector.recipes = "base",
+                   filter = FALSE, plot = FALSE, parallel = FALSE),
+    class = "tentacles_invalid_feature_names"
+  )
+  expect_error(
+    runClassifiers(rename_pp_features(pp, "A2ML1", ""),
+                   models = "rand_forest", selector.recipes = "base",
+                   filter = FALSE, plot = FALSE, parallel = FALSE),
+    class = "tentacles_invalid_feature_names"
+  )
+})
+
+test_that("runClassifiers aborts on duplicated feature names, naming them", {
+  pp <- rename_pp_features(make_tricky_pp(), "A2ML1", "HLA-B")
+
+  expect_error(
+    runClassifiers(pp,
+                   models = "rand_forest", selector.recipes = "base",
+                   filter = FALSE, plot = FALSE, parallel = FALSE),
+    regexp = "HLA-B",
+    class = "tentacles_invalid_feature_names"
+  )
+})
+
+test_that("runClassifiers aborts when a feature is named 'class'", {
+  # It would collide with the outcome column.
+  pp <- rename_pp_features(make_tricky_pp(), "A2ML1", "class")
+
+  expect_error(
+    runClassifiers(pp,
+                   models = "rand_forest", selector.recipes = "base",
+                   filter = FALSE, plot = FALSE, parallel = FALSE),
+    class = "tentacles_invalid_feature_names"
+  )
+})

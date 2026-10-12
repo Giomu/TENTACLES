@@ -116,9 +116,12 @@ does not match the number of models, the first recipe will be used for all model
 }
 \value{
 An object of class `runClassifiers.obj` containing:
-  - `data`: A list containing the adjusted data and metadata.
-  - `models.info`: A list containing the finalized workflows for each model.
-  - `model.features`: A list containing the variable importance for each model.
+  - `data`: A list containing the adjusted data, the metadata and `feature.map`, a named character
+    vector mapping the internal feature names (names) to the original ones (values).
+  - `models.info`: A list containing the finalized workflows for each model. The workflows use the
+    internal feature names, so new data must be renamed with `feature.map` before prediction.
+  - `model.features`: A list containing the variable importance for each model, with the original
+    feature names.
   - `performances`: A list containing the tuning and final metrics for each model.
   - `predictions`: A data frame containing the predictions for each model.
 }
@@ -129,6 +132,9 @@ on the data provided in the arguments ...
 \details{
 The function runs specified classifiers paired with provided selector.recipes on pre-processed data.
 If filter = TRUE, the function first filters the genes that are not annotated in the GO and KEGG databases.
+Feature names are then replaced by syntactic ASCII names (e.g. "HLA-B" becomes "HLA.B.1" if "HLA.B"
+also exists), because names like "HLA-B" or "C18:1" break formula-based selectors and some engines.
+Feature names must be unique, non-missing, non-empty and different from "class".
 Then, the function tunes and fits the models using the specified tuning method.
 Finally it computes the variable importances for each model using the permutation-based VIP,
 when the direct VIP computation fails.

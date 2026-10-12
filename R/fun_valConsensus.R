@@ -149,7 +149,8 @@ evaluate_one_side <- function(pred, truth, metric = metric) {
 #' @description This function validates the consensus genes in a provided dataset using clustering methods.
 #'
 #' @param df.count A numeric matrix containing the gene expression data. Rows represent samples and columns represent genes.
-#' @param gene.list A character vector specifying the consensus genes to be evaluated.
+#' @param gene.list A character vector specifying the consensus genes to be evaluated. All of them
+#' must be columns of `df.count`.
 #' @param class A factor vector specifying the true class labels for the samples.
 #' @param N An integer specifying the number of top gene combinations to select based on the metric.
 #' @param metric A character string specifying the metric to use for selecting the top gene combinations.
@@ -181,6 +182,15 @@ evaluate_one_side <- function(pred, truth, metric = metric) {
 valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") {
 
   cli::cli_h1("Validating Consensus Genes")
+
+  # Fail before testing any combination, naming the missing features
+  missing_genes <- setdiff(gene.list, colnames(df.count))
+  if (length(missing_genes) > 0) {
+    cli::cli_abort(c(
+      "{length(missing_genes)} feature{?s} of {.arg gene.list} {?is/are} not in {.arg df.count}:",
+      "x" = "{.val {missing_genes}}"
+    ))
+  }
 
   gene_list <- gene.list
   labels <- class

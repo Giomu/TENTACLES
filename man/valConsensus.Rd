@@ -9,7 +9,8 @@ valConsensus(df.count, gene.list, class, N = 10, metric = "FScore")
 \arguments{
 \item{df.count}{A numeric matrix containing the gene expression data. Rows represent samples and columns represent genes.}
 
-\item{gene.list}{A character vector specifying the consensus genes to be evaluated.}
+\item{gene.list}{A character vector specifying the consensus genes to be evaluated. All of them
+must be columns of `df.count`.}
 
 \item{class}{A factor vector specifying the true class labels for the samples.}
 

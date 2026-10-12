@@ -33,50 +33,70 @@ import(praznik)
 import(rules)
 import(tune)
 import(workflows)
-importFrom(colino,step_select_boruta)
-importFrom(colino,step_select_infgain)
-importFrom(colino,step_select_mrmr)
-importFrom(colino,step_select_roc)
-importFrom(edgeR,DGEList)
-importFrom(edgeR,calcNormFactors)
-importFrom(edgeR,cpm)
-importFrom(future,multisession)
-importFrom(future,plan)
-importFrom(future,sequential)
+importFrom(colino,
+  step_select_boruta,
+  step_select_infgain,
+  step_select_mrmr,
+  step_select_roc
+)
+importFrom(edgeR,
+  DGEList,
+  calcNormFactors,
+  cpm
+)
+importFrom(future,
+  multisession,
+  plan,
+  sequential
+)
 importFrom(grDevices,colorRampPalette)
 importFrom(magrittr,"%>%")
-importFrom(mclust,Mclust)
-importFrom(mclust,mclustBIC)
-importFrom(methods,new)
-importFrom(methods,slot)
-importFrom(methods,slotNames)
-importFrom(recipes,all_numeric)
-importFrom(recipes,all_predictors)
-importFrom(recipes,juice)
-importFrom(recipes,prep)
-importFrom(recipes,recipe)
-importFrom(recipes,step_corr)
-importFrom(recipes,step_normalize)
-importFrom(recipes,step_zv)
-importFrom(rsample,testing)
-importFrom(rsample,training)
-importFrom(rsample,vfold_cv)
-importFrom(stats,as.dendrogram)
-importFrom(stats,cutree)
-importFrom(stats,dist)
-importFrom(stats,hclust)
-importFrom(stats,kmeans)
-importFrom(stats,median)
-importFrom(stats,model.matrix)
-importFrom(stats,p.adjust)
-importFrom(stats,prcomp)
-importFrom(stats,predict)
-importFrom(stats,reorder)
+importFrom(mclust,
+  Mclust,
+  mclustBIC
+)
+importFrom(methods,
+  new,
+  slot,
+  slotNames
+)
+importFrom(recipes,
+  all_numeric,
+  all_predictors,
+  juice,
+  prep,
+  recipe,
+  step_corr,
+  step_normalize,
+  step_zv
+)
+importFrom(rsample,
+  testing,
+  training,
+  vfold_cv
+)
+importFrom(stats,
+  as.dendrogram,
+  cutree,
+  dist,
+  hclust,
+  kmeans,
+  median,
+  model.matrix,
+  p.adjust,
+  prcomp,
+  predict,
+  reorder
+)
 importFrom(sva,ComBat)
-importFrom(utils,combn)
-importFrom(utils,globalVariables)
-importFrom(utils,head)
-importFrom(yardstick,accuracy)
-importFrom(yardstick,f_meas)
-importFrom(yardstick,precision)
-importFrom(yardstick,recall)
+importFrom(utils,
+  combn,
+  globalVariables,
+  head
+)
+importFrom(yardstick,
+  accuracy,
+  f_meas,
+  precision,
+  recall
+)

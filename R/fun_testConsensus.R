@@ -340,7 +340,12 @@ mlp_model_calculation <- function(df, cons_genes, class) {
     code = {
       # Keep from df only genes of consensus
       df <- df[, colnames(df) %in% cons_genes]
-      cli::cli_alert_info("Setting up MLP on {length(cons_genes)} genes ...")
+      cli::cli_alert_info("Setting up MLP on {ncol(df)} genes ...")
+
+      # Use syntactic ASCII names internally; nnet's importances come back
+      # escaped (`HLA-B`) otherwise. feature.map maps them back.
+      feature.map <- encode_feature_names(colnames(df))
+      colnames(df) <- names(feature.map)
 
       # Put class column at the end
       df$class <- class
@@ -441,6 +446,7 @@ mlp_model_calculation <- function(df, cons_genes, class) {
       mlp_obj <- workflowsets::extract_fit_parsnip(final_model)
 
       importances <- as.data.frame(vip::vi(mlp_obj))
+      importances$Variable <- decode_feature_names(importances$Variable, feature.map)
       cli::cli_alert_success("Variable importance assessed successfully!")
 
       # Save hyperparameters and selection metrics.
@@ -463,6 +469,7 @@ mlp_model_calculation <- function(df, cons_genes, class) {
     models.info = workflow_final,
     #parameters = best_params,
     importances = importances,
+    feature.map = feature.map,
     test_performance = test_performance
   ))
 
@@ -484,7 +491,8 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 #' Each value should represent the expression level of a gene for a given sample.
 #'
 #' @param gene.list A character vector containing the names of consensus genes to be tested.
-#' These gene names must match the column names in `df.count`.
+#' These gene names must match the column names in `df.count`. Names not found in `df.count` are
+#' ignored with a warning.
 #'
 #' @param class A binary vector (0 and 1) indicating the class labels for each sample.
 #' The length of this vector must match the number of rows in `df.count`.
@@ -514,8 +522,11 @@ mlp_model_calculation <- function(df, cons_genes, class) {
 #'   - `plot`: A heatmap plot object for gene expression.
 #'
 #' - `mlp`: A list with the Multi-Layer Perceptron (MLP) model results:
-#'   - `models.info`: A list containing the finalized workflows parameters.
-#'   - `importances`: A data frame with the feature importances.
+#'   - `models.info`: A list containing the finalized workflows parameters. The workflow uses
+#'     internal feature names, so new data must be renamed with `feature.map` before prediction.
+#'   - `importances`: A data frame with the feature importances, with the original feature names.
+#'   - `feature.map`: A named character vector mapping the internal feature names (names) to the
+#'     original ones (values).
 #'   - `test_performance`: A summary of model performance on the test data.
 #'   - `plot`: A ggplot object showing the MLP model performance.
 #'
@@ -584,6 +595,16 @@ testConsensus <- function(df.count, gene.list, class, top_loadings = 15, plot = 
     gene.list = gene.list,
     class = class
   )
+
+  # Analyses below use only the features found in df.count
+  missing_genes <- setdiff(gene.list, colnames(df.count))
+  if (length(missing_genes) > 0) {
+    cli::cli_warn(c(
+      "{length(missing_genes)} feature{?s} of {.arg gene.list} {?is/are} not in {.arg df.count} and will be ignored:",
+      "x" = "{.val {missing_genes}}"
+    ))
+    gene.list <- intersect(gene.list, colnames(df.count))
+  }
 
   # -------- PCA Analysis --------
 
