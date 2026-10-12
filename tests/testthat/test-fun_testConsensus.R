@@ -1,4 +1,4 @@
-Consensus features with non-syntactic names, plus the expression table and
+#Consensus features with non-syntactic names, plus the expression table and
 # class labels they are tested on.
 make_tricky_consensus <- function() {
   data <- make_tricky_pp()@processed$adjusted.data
