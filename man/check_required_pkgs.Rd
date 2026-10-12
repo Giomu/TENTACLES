@@ -2,17 +2,23 @@
 % Please edit documentation in R/fun_runClassifiers.R
 \name{check_required_pkgs}
 \alias{check_required_pkgs}
-\title{Check if required packages are installed}
+\title{Check that the packages behind the selected models and selectors are installed}
 \usage{
-check_required_pkgs(pkgs)
+check_required_pkgs(models, selectors, call = parent.frame())
 }
 \arguments{
-\item{pkgs}{Character vector of package names to check.}
+\item{models}{Character vector of model names.}
+
+\item{selectors}{Character vector of selector recipe names.}
+
+\item{call}{Environment of the calling function, used in error messages.}
 }
 \value{
-Invisibly TRUE if all packages installed, otherwise stops with a CLI alert.
+Invisibly TRUE if all packages are installed, otherwise aborts with
+  an error of class `tentacles_missing_packages`.
 }
 \description{
-Check if required packages are installed
+Aborts listing each model or selector whose packages are missing, followed
+by the commands to install them from CRAN or Bioconductor.
 }
 \keyword{internal}

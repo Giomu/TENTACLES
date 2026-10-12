@@ -31,15 +31,12 @@ Depends:
 Imports: 
     baguette,
     Biobase,
-    bonsai,
     Boruta,
     C50,
     cli,
     colino (>= 0.0.1),
     ComplexUpset,
-    earth,
     edgeR,
-    FSelectorRcpp,
     future,
     ggplot2,
     ggrepel,
@@ -47,16 +44,12 @@ Imports:
     grDevices,
     heatmaply,
     kernlab,
-    lightgbm,
     magrittr,
     mclust,
     methods,
-    mixOmics,
     NeuralNetTools,
     nnet,
     parsnip,
-    plsmod,
-    praznik,
     pROC,
     pvca,
     ranger,
@@ -77,13 +70,20 @@ Imports:
     withr,
     workflows,
     workflowsets,
-    xgboost,
     yardstick
 Suggests: 
+    bonsai,
+    earth,
+    FSelectorRcpp,
     knitr,
+    lightgbm,
+    mixOmics,
+    plsmod,
+    praznik,
     rmarkdown,
     stringr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    xgboost
 VignetteBuilder: 
     knitr
 Remotes: 
