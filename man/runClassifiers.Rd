@@ -77,7 +77,11 @@ Supported selection strategies include:
   - `"corr"`: Filters features based on correlation thresholds to reduce multicollinearity.
 
 `models` and `selector.recipes` will be paired in the order they are provided. If the number of recipes
-does not match the number of models, the first recipe will be used for all models.}
+does not match the number of models, the first recipe will be used for all models.
+
+Some models and selectors need packages that are suggested, not installed with TENTACLES:
+`"xgboost"` (xgboost), `"lightGBM"` (bonsai, lightgbm), `"pls"` (plsmod, mixOmics),
+`"mars"` and `"bag_mars"` (earth), `"infgain"` (FSelectorRcpp) and `"mrmr"` (praznik). The function aborts naming the missing packages if they are not installed.}
 
 \item{tuning.method}{A character string specifying the hyperparameter tuning strategy. Options include:
 - `"tune_grid"` (default): Grid search across a pre-defined set of hyperparameters.

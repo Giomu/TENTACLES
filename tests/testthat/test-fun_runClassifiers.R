@@ -61,6 +61,11 @@ test_that("runClassifiers is deterministic with all options enabled (heavy test)
   # Skip heavy tests on CRAN and unless explicitly requested
   skip_on_cran()
   skip_if(Sys.getenv("RUN_HEAVY_TESTS") != "true")
+  # Suggested packages needed by some models and selectors
+  for (pkg in c("xgboost", "bonsai", "lightgbm", "plsmod", "mixOmics", "earth",
+                "FSelectorRcpp", "praznik")) {
+    skip_if_not_installed(pkg)
+  }
 
   # Load test datasets into a temporary environment
   test_env <- load_test_data("acc.count", "acc.clin", package = "TENTACLES")
@@ -113,6 +118,8 @@ test_that("make_tricky_pp keeps the non-syntactic names through preProcess", {
 })
 
 test_that("runClassifiers fits every workflow when feature names are non-syntactic", {
+  skip_if_not_installed("FSelectorRcpp")
+  skip_if_not_installed("earth")
   # Formula-based components (colino's infgain selector, baguette's bag_tree
   # and bag_mars) parse "HLA-B" as "HLA - B" and fail during tuning.
   pp <- make_tricky_pp()
@@ -132,7 +139,7 @@ test_that("runClassifiers fits every workflow when feature names are non-syntact
 
 test_that("runClassifiers fits engines that may reject non-ASCII column names", {
   skip_if_not_installed("xgboost")
-  skip_if_not_installed("C50")
+  skip_if_not_installed("bonsai")
   skip_if_not_installed("lightgbm")
   pp <- make_tricky_pp()
 
@@ -229,4 +236,53 @@ test_that("runClassifiers aborts when a feature is named 'class'", {
                    filter = FALSE, plot = FALSE, parallel = FALSE),
     class = "tentacles_invalid_feature_names"
   )
+})
+
+test_that("required_model_pkgs lists engines, parsnip extensions and selector backends", {
+  expect_setequal(
+    required_model_pkgs(c("lightGBM", "C5_rules", "pls"), c("base", "roc", "corr")),
+    c("bonsai", "lightgbm", "rules", "C50", "plsmod", "mixOmics")
+  )
+  expect_setequal(
+    required_model_pkgs("logistic", c("infgain", "mrmr", "boruta")),
+    c("FSelectorRcpp", "praznik", "Boruta")
+  )
+  expect_null(required_model_pkgs("logistic", "base"))
+})
+
+test_that("check_required_pkgs names the model or selector behind each missing package", {
+  local_mocked_bindings(is_installed = function(pkg) !pkg %in% c("plsmod", "mixOmics", "FSelectorRcpp"))
+
+  err <- expect_error(
+    check_required_pkgs(c("pls", "rand_forest"), c("infgain", "base")),
+    class = "tentacles_missing_packages"
+  )
+  msg <- conditionMessage(err)
+  expect_match(msg, 'Model "pls" needs plsmod and mixOmics', fixed = TRUE)
+  expect_match(msg, 'Selector "infgain" needs FSelectorRcpp', fixed = TRUE)
+  expect_no_match(msg, "rand_forest", fixed = TRUE)
+})
+
+test_that("check_required_pkgs gives install commands for CRAN and Bioconductor", {
+  local_mocked_bindings(is_installed = function(pkg) !pkg %in% c("plsmod", "mixOmics", "earth"))
+
+  err <- expect_error(check_required_pkgs(c("pls", "mars"), "base"),
+                      class = "tentacles_missing_packages")
+  msg <- conditionMessage(err)
+  expect_match(msg, 'install.packages(c("plsmod", "earth"))', fixed = TRUE)
+  expect_match(msg, 'BiocManager::install("mixOmics")', fixed = TRUE)
+})
+
+test_that("check_required_pkgs adds BiocManager when a Bioconductor package needs it", {
+  local_mocked_bindings(is_installed = function(pkg) !pkg %in% c("mixOmics", "BiocManager"))
+
+  err <- expect_error(check_required_pkgs("pls", "base"),
+                      class = "tentacles_missing_packages")
+  expect_match(conditionMessage(err), 'install.packages("BiocManager")', fixed = TRUE)
+})
+
+test_that("check_required_pkgs passes when every package is installed", {
+  local_mocked_bindings(is_installed = function(pkg) TRUE)
+
+  expect_invisible(check_required_pkgs(c("pls", "mars"), "infgain"))
 })

@@ -19,23 +19,108 @@ methods::setClass("runClassifiers.obj",
 )
 
 ### ------------------------ Helper Functions ------------------------ ###
-#' Check if required packages are installed
+# Packages behind each model and feature selector (NULL = nothing beyond the
+# core imports). Most engines and selector backends outside the default models
+# are in Suggests; rules and C50 stay in Imports because the vignette uses
+# C5_rules. parsnip extensions (bonsai, rules, plsmod) register their engines
+# when loaded, so they are listed with the engine package.
+model_pkg_map <- list(
+  models = list(
+    xgboost        = "xgboost",
+    bag_tree       = c("baguette", "rpart"),
+    lightGBM       = c("bonsai", "lightgbm"),
+    pls            = c("plsmod", "mixOmics"),
+    logistic       = NULL,
+    C5_rules       = c("rules", "C50"),
+    mars           = "earth",
+    bag_mars       = c("baguette", "earth"),
+    mlp            = "nnet",
+    bag_mlp        = c("baguette", "nnet"),
+    decision_tree  = "rpart",
+    rand_forest    = "ranger",
+    svm_linear     = "kernlab",
+    svm_poly       = "kernlab",
+    svm_rbf        = "kernlab"
+  ),
+  selectors = list(
+    boruta  = "Boruta",
+    infgain = "FSelectorRcpp",
+    mrmr    = "praznik"
+  )
+)
+
+# Packages in model_pkg_map distributed by Bioconductor rather than CRAN
+bioc_pkgs <- "mixOmics"
+
+#' Packages required by the selected models and feature selectors
 #'
-#' @param pkgs Character vector of package names to check.
-#' @return Invisibly TRUE if all packages installed, otherwise stops with a CLI alert.
+#' @param models Character vector of model names.
+#' @param selectors Character vector of selector recipe names.
+#' @return Character vector of package names, or NULL if none is needed.
 #' @keywords internal
-check_required_pkgs <- function(pkgs) {
-  not_installed <- pkgs[!vapply(pkgs, requireNamespace, FUN.VALUE = logical(1), quietly = TRUE)]
-  if (length(not_installed) > 0) {
-    cli::cli_abort(
-      "The following packages are required but not installed: {paste(not_installed, collapse = ', ')}.
-      Please install them with {.code install.packages()} before running this function."
-    )
-  }
-  invisible(TRUE)
+required_model_pkgs <- function(models, selectors) {
+  unique(unlist(c(model_pkg_map$models[models], model_pkg_map$selectors[selectors])))
 }
 
+# Wrapper around requireNamespace(), so tests can mock a missing package
+is_installed <- function(pkg) {
+  requireNamespace(pkg, quietly = TRUE)
+}
 
+#' Check that the packages behind the selected models and selectors are installed
+#'
+#' Aborts listing each model or selector whose packages are missing, followed
+#' by the commands to install them from CRAN or Bioconductor.
+#'
+#' @param models Character vector of model names.
+#' @param selectors Character vector of selector recipe names.
+#' @param call Environment of the calling function, used in error messages.
+#' @return Invisibly TRUE if all packages are installed, otherwise aborts with
+#'   an error of class `tentacles_missing_packages`.
+#' @keywords internal
+check_required_pkgs <- function(models, selectors, call = parent.frame()) {
+  # One line per model or selector that needs a missing package
+  missing_lines <- function(map, items, kind) {
+    lines <- character()
+    for (item in unique(items)) {
+      missing <- Filter(Negate(is_installed), map[[item]])
+      if (length(missing) > 0) {
+        lines <- c(lines, cli::format_inline("{kind} {.val {item}} needs {.pkg {missing}}."))
+      }
+    }
+    lines
+  }
+  lines <- c(
+    missing_lines(model_pkg_map$models, models, "Model"),
+    missing_lines(model_pkg_map$selectors, selectors, "Selector")
+  )
+  if (length(lines) == 0) {
+    return(invisible(TRUE))
+  }
+
+  # Install commands, split by repository
+  pkgs <- required_model_pkgs(models, selectors)
+  missing <- pkgs[!vapply(pkgs, is_installed, FUN.VALUE = logical(1))]
+  bioc <- intersect(missing, bioc_pkgs)
+  cran <- setdiff(missing, bioc)
+  if (length(bioc) > 0 && !is_installed("BiocManager")) {
+    cran <- c("BiocManager", cran)
+  }
+  as_arg <- function(x) paste(deparse(x, width.cutoff = 500L), collapse = "")
+  cmds <- c(
+    if (length(cran) > 0) paste0("install.packages(", as_arg(cran), ")"),
+    if (length(bioc) > 0) paste0("BiocManager::install(", as_arg(bioc), ")")
+  )
+  cmds <- vapply(cmds, function(cmd) cli::format_inline("{.code {cmd}}"), FUN.VALUE = character(1))
+
+  cli::cli_abort(
+    c("Some of the selected models or selectors need packages that are not installed.",
+      stats::setNames(lines, rep("x", length(lines))),
+      "i" = "Install them with:",
+      stats::setNames(cmds, rep(" ", length(cmds)))),
+    class = "tentacles_missing_packages", call = call
+  )
+}
 
 # Create model specifications
 create_model_specs <- function() {
@@ -549,6 +634,10 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim, parallel = pa
 #'
 #' `models` and `selector.recipes` will be paired in the order they are provided. If the number of recipes
 #' does not match the number of models, the first recipe will be used for all models.
+#'
+#' Some models and selectors need packages that are suggested, not installed with TENTACLES:
+#' `"xgboost"` (xgboost), `"lightGBM"` (bonsai, lightgbm), `"pls"` (plsmod, mixOmics),
+#' `"mars"` and `"bag_mars"` (earth), `"infgain"` (FSelectorRcpp) and `"mrmr"` (praznik). The function aborts naming the missing packages if they are not installed.
 #' @param tuning.method A character string specifying the hyperparameter tuning strategy. Options include:
 #'   - `"tune_grid"` (default): Grid search across a pre-defined set of hyperparameters.
 #'   - `"tune_race_anova"`: Adaptive search using ANOVA-based pruning to speed up tuning.
@@ -596,14 +685,10 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim, parallel = pa
 #' when the direct VIP computation fails.
 #'
 #' @import baguette
-#' @import bonsai
-#' @import plsmod
 #' @import rules
 #' @import nnet
 #' @import NeuralNetTools
 #' @import Boruta
-#' @import praznik
-#' @import FSelectorRcpp
 #' @importFrom colino step_select_boruta step_select_roc step_select_infgain step_select_mrmr
 #'
 #' @examples
@@ -683,31 +768,11 @@ runClassifiers <- function(
     cli::cli_abort("Invalid selector recipe(s) selected. Please refer to the documentation for valid options.")
   }
 
-  # Map each model to its required external package (NULL = base R)
-  model_pkgs <- list(
-    xgboost        = "xgboost",
-    bag_tree       = "rpart",
-    lightGBM       = "lightgbm",
-    pls            = "mixOmics",
-    logistic       = NULL,   # stats is base R
-    C5_rules       = "C50",
-    mars           = "earth",
-    bag_mars       = "earth",
-    mlp            = "nnet",
-    bag_mlp        = "nnet",
-    decision_tree  = "rpart",
-    rand_forest    = "ranger",
-    svm_linear     = "kernlab",
-    svm_poly       = "kernlab",
-    svm_rbf        = "kernlab"
-  )
-
-  # Get unique required packages for the selected models (ignore NULLs)
-  required_pkgs <- unique(unlist(model_pkgs[models]))
-  required_pkgs <- required_pkgs[!is.null(required_pkgs)]
-
-  # Check if all required packages are installed, abort if missing
-  check_required_pkgs(required_pkgs)
+  # Check that the packages behind the selected models and selectors are
+  # installed, then load them: parsnip extensions register their engines on
+  # load, and tune needs them registered to load them on parallel workers
+  check_required_pkgs(models, selector.recipes)
+  invisible(lapply(required_model_pkgs(models, selector.recipes), loadNamespace))
 
   # Define available performance metrics for tuning
   available_metrics <- c("accuracy", "precision", "recall", "f_meas")
