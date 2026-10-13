@@ -156,6 +156,43 @@ test_that("runClassifiers fits engines that may reject non-ASCII column names", 
   )
 })
 
+test_that("calculate_vip computes variable importances for xgboost, lightGBM and mars", {
+  # vip::vi() forwards extra arguments to the engine's importance function;
+  # xgb.importance, lgb.importance and evimp reject unknown ones, and the
+  # model was then silently left out of model.features.
+  # Fixed hyperparameters: tuned fits on small data can have no splits and
+  # legitimately no important features.
+  skip_if_not_installed("xgboost")
+  skip_if_not_installed("bonsai")
+  skip_if_not_installed("lightgbm")
+  skip_if_not_installed("earth")
+  loadNamespace("bonsai")
+
+  data <- make_tricky_pp()@processed$adjusted.data
+  outcome_col <- match("class", colnames(data))
+  colnames(data)[-outcome_col] <- names(encode_feature_names(colnames(data)[-outcome_col]))
+  rec <- recipes::recipe(class ~ ., data = data)
+
+  specs <- list(
+    xgboost = parsnip::boost_tree(trees = 20, min_n = 5) |>
+      parsnip::set_engine("xgboost"),
+    lightGBM = parsnip::boost_tree(trees = 20, min_n = 5) |>
+      parsnip::set_engine("lightgbm"),
+    mars = parsnip::mars() |>
+      parsnip::set_engine("earth")
+  )
+  fits <- lapply(specs, function(spec) {
+    wf <- workflows::workflow(rec, parsnip::set_mode(spec, "classification"))
+    withr::with_seed(123, parsnip::fit(wf, data = data))
+  })
+
+  vip_list <- calculate_vip(fits,
+                            test_x = data[, -outcome_col], test_y = data$class,
+                            n_sim = 1, parallel = FALSE)
+
+  expect_setequal(names(vip_list), names(specs))
+})
+
 test_that("runClassifiers returns variable importances with the original feature names", {
   # Some engines escape non-syntactic names in their importance output
   # (e.g. mlp returns `HLA-B` with backticks), so features no longer match
