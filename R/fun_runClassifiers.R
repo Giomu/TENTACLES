@@ -540,15 +540,15 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim, parallel = pa
         colnames(vip_data) <- c("Variable", "Importance", "std.error", "used")
         vip_data[vip_data$Importance != 0, ]
       } else {
-        num_features <- ncol(test_x)
-        vip_result <- vip::vi(model_fit, num_features = num_features)
+        # vi() returns all features; extra arguments would be forwarded to the
+        # engine's importance function (e.g. xgb.importance), which rejects them
+        vip_result <- vip::vi(model_fit)
         vip_result[vip_result$Importance != 0, ]
       }
     }, error = function(e) {
       cli::cli_alert_info("Direct VIP failed for model {name}: {conditionMessage(e)}. Using permutation-based method...")
       # Try permutation-based VIP, catch error if even that fails
       tryCatch({
-        num_features <- ncol(test_x)
         vip_result <- vip::vi(
           object = model_fit,
           method = "permute",
@@ -558,8 +558,7 @@ calculate_vip <- function(last_fit_results, test_x, test_y, n_sim, parallel = pa
           pred_wrapper = function(object, newdata) pfun(object, newdata),
           train = test_x,
           target = test_y,
-          event_level = "second",
-          num_features = num_features
+          event_level = "second"
         )
         vip_result[vip_result$Importance > 0, ]
       }, error = function(e2) {
