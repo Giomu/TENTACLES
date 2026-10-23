@@ -20,25 +20,28 @@ test_that("gene_combination_matrix marks genes per combination, most frequent fi
   expect_equal(unname(m["B", ]), c(1L, 0L, 1L))
 })
 
-test_that("gene_frequency counts and lists the combinations of each gene", {
+test_that("gene_frequency keeps the binary columns and adds counts and combinations", {
   m <- gene_combination_matrix(list(c("A", "B"), c("A", "C")))
   freq <- gene_frequency(m)
 
+  expect_equal(names(freq), c("Gene", "C1", "C2", "Count", "Combinations"))
   expect_equal(freq$Gene, c("A", "B", "C"))
+  expect_equal(freq$C1, c(1L, 1L, 0L))
   expect_equal(freq$Count, c(2L, 1L, 1L))
   expect_equal(freq$Combinations, c("C1, C2", "C1", "C2"))
 })
 
 test_that("plotGeneCombinations returns a ggplot object", {
-  m <- gene_combination_matrix(list(c("A", "B"), c("A", "C")))
+  freq <- gene_frequency(gene_combination_matrix(list(c("A", "B"), c("A", "C"))))
 
-  expect_s3_class(plotGeneCombinations(m), "ggplot")
-  expect_error(plotGeneCombinations(data.frame(A = 1)), "matrix")
+  expect_s3_class(plotGeneCombinations(freq), "ggplot")
+  expect_error(plotGeneCombinations(data.frame(A = 1)), "Gene")
+  expect_error(plotGeneCombinations(as.matrix(freq)), "data frame")
 })
 
 test_that("plotGeneCombinations shows how many combinations contain each gene", {
-  m <- gene_combination_matrix(list(c("A", "B"), c("A", "C")))
-  p <- plotGeneCombinations(m)
+  freq <- gene_frequency(gene_combination_matrix(list(c("A", "B"), c("A", "C"))))
+  p <- plotGeneCombinations(freq)
 
   counts <- p$layers[[2]]$data
   expect_equal(counts$Gene, c("A", "B", "C"))
@@ -58,8 +61,9 @@ test_that("valConsensus returns gene frequencies of the top combinations", {
   # N = 4 keeps all combinations: three pairs and the triple, so each gene is in three
   expect_setequal(vc$geneFrequency$Gene, genes)
   expect_equal(vc$geneFrequency$Count, c(3L, 3L, 3L))
-  expect_equal(dim(vc$geneCombinations), c(3L, 4L))
-  expect_equal(sort(unname(colSums(vc$geneCombinations))), c(2, 2, 2, 3))
+  expect_equal(names(vc$geneFrequency), c("Gene", paste0("C", 1:4), "Count", "Combinations"))
+  expect_equal(sort(unname(colSums(vc$geneFrequency[paste0("C", 1:4)]))), c(2, 2, 2, 3))
+  expect_null(vc$geneCombinations)
 })
 
 test_that("valConsensus warns and caps N at the number of combinations", {

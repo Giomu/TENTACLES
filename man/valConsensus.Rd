@@ -34,12 +34,13 @@ A list containing:
   by \code{"_"}, \code{Mean_Metric} the mean of \code{metric} across the six methods, and the
   remaining columns, named \code{<Method>_<Metric>} (e.g. \code{KMeans_FScore}), the four metrics
   of each method.}
-  \item{geneFrequency}{A data frame with, for each gene in the top combinations, the number of
-  combinations containing it (\code{Count}) and their identifiers (\code{Combinations}). Combination
-  \code{Ci} is the i-th row of \code{topCombinations}.}
-  \item{geneCombinations}{A binary matrix with genes in rows and top combinations (\code{C1},
-  \code{C2}, ...) in columns, with 1 when the gene is in the combination. Genes are ordered as in
-  \code{geneFrequency}.}
+  \item{geneFrequency}{A data frame with one row per gene in the top combinations, sorted by
+  decreasing \code{Count} and then by name. Columns: \code{Gene}; one binary column per top
+  combination (\code{C1}, \code{C2}, ...), with 1 when the gene is in the combination; \code{Count},
+  the number of combinations containing the gene; and \code{Combinations}, their identifiers
+  (e.g. \code{"C1, C3"}). Combination \code{Ci} is the i-th row of \code{topCombinations}. The
+  binary matrix can be extracted with
+  \code{as.matrix(geneFrequency[grep("^C[0-9]+$", names(geneFrequency))])}.}
 }
 }
 \description{

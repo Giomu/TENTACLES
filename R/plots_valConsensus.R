@@ -158,8 +158,10 @@ plotTopMetrics <- function(top_results,
 #' each top gene combination (columns). A last column shows, for each gene, the number
 #' of combinations containing it out of the total (e.g. "9/10").
 #'
-#' @param gene_combinations A binary matrix with genes in rows and combinations in columns,
-#' such as the \code{geneCombinations} element returned by \code{\link{valConsensus}}.
+#' @param gene_freq The \code{geneFrequency} data frame returned by \code{\link{valConsensus}}: a
+#' \code{Gene} column and one binary column per combination (\code{C1}, \code{C2}, ...). Other
+#' columns, such as \code{Count} and \code{Combinations}, are ignored. Genes are plotted in the
+#' order of the rows.
 #' @param title A character string specifying the plot title. Default is "Gene frequencies in top combinations".
 #' @param present_color Color of the tiles where the gene is in the combination. Default: "#1b4965".
 #' @param absent_color Color of the tiles where the gene is not in the combination. Default: "#e1e5f2".
@@ -170,22 +172,28 @@ plotTopMetrics <- function(top_results,
 #' \dontrun{
 #' vc <- valConsensus(df.count = count_table, gene.list = gene_list,
 #'                    class = class, N = 10, metric = "FScore")
-#' p <- plotGeneCombinations(vc$geneCombinations)
+#' p <- plotGeneCombinations(vc$geneFrequency)
 #' print(p)
 #' }
 #'
 #' @export
 #' @import ggplot2
 
-plotGeneCombinations <- function(gene_combinations,
+plotGeneCombinations <- function(gene_freq,
                                  title = "Gene frequencies in top combinations",
                                  present_color = "#1b4965",
                                  absent_color = "#e1e5f2") {
 
-  if (!is.matrix(gene_combinations) || is.null(rownames(gene_combinations)) ||
-      is.null(colnames(gene_combinations))) {
-    cli::cli_abort("Input must be a matrix with genes as row names and combinations as column names.")
+  combo_cols <- grep("^C[0-9]+$", names(gene_freq), value = TRUE)
+  if (!is.data.frame(gene_freq) || !"Gene" %in% names(gene_freq) || length(combo_cols) == 0) {
+    cli::cli_abort(
+      "Input must be a data frame with a {.field Gene} column and combination columns {.field C1}, {.field C2}, ..."
+    )
   }
+
+  # Binary gene x combination matrix, in the row and column order of the input
+  gene_combinations <- as.matrix(gene_freq[combo_cols])
+  rownames(gene_combinations) <- gene_freq$Gene
 
   # Convert matrix to long format, keeping the row and column order
   n_combos <- ncol(gene_combinations)

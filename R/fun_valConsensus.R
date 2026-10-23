@@ -161,17 +161,16 @@ gene_combination_matrix <- function(combos) {
   gene_matrix[order(-rowSums(gene_matrix), genes), , drop = FALSE]
 }
 
-# Helper function to count, for each gene of a gene x combination matrix, the
-# combinations containing it
+# Helper function to turn a gene x combination matrix into a data frame with
+# one row per gene: the binary combination columns, then the number of
+# combinations containing the gene and their identifiers
 gene_frequency <- function(gene_matrix) {
-  data.frame(
-    Gene = rownames(gene_matrix),
-    Count = as.integer(rowSums(gene_matrix)),
-    Combinations = apply(gene_matrix, 1, function(x) {
-      paste(colnames(gene_matrix)[x == 1], collapse = ", ")
-    }),
-    row.names = NULL
-  )
+  freq <- data.frame(Gene = rownames(gene_matrix), gene_matrix, row.names = NULL, check.names = FALSE)
+  freq$Count <- as.integer(rowSums(gene_matrix))
+  freq$Combinations <- unname(apply(gene_matrix, 1, function(x) {
+    paste(colnames(gene_matrix)[x == 1], collapse = ", ")
+  }))
+  freq
 }
 
 #' @title valConsensus
@@ -199,12 +198,13 @@ gene_frequency <- function(gene_matrix) {
 #'   by \code{"_"}, \code{Mean_Metric} the mean of \code{metric} across the six methods, and the
 #'   remaining columns, named \code{<Method>_<Metric>} (e.g. \code{KMeans_FScore}), the four metrics
 #'   of each method.}
-#'   \item{geneFrequency}{A data frame with, for each gene in the top combinations, the number of
-#'   combinations containing it (\code{Count}) and their identifiers (\code{Combinations}). Combination
-#'   \code{Ci} is the i-th row of \code{topCombinations}.}
-#'   \item{geneCombinations}{A binary matrix with genes in rows and top combinations (\code{C1},
-#'   \code{C2}, ...) in columns, with 1 when the gene is in the combination. Genes are ordered as in
-#'   \code{geneFrequency}.}
+#'   \item{geneFrequency}{A data frame with one row per gene in the top combinations, sorted by
+#'   decreasing \code{Count} and then by name. Columns: \code{Gene}; one binary column per top
+#'   combination (\code{C1}, \code{C2}, ...), with 1 when the gene is in the combination; \code{Count},
+#'   the number of combinations containing the gene; and \code{Combinations}, their identifiers
+#'   (e.g. \code{"C1, C3"}). Combination \code{Ci} is the i-th row of \code{topCombinations}. The
+#'   binary matrix can be extracted with
+#'   \code{as.matrix(geneFrequency[grep("^C[0-9]+$", names(geneFrequency))])}.}
 #' }
 #'
 #' @details
@@ -373,17 +373,15 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
 
   # Count how often each gene appears in the top combinations
   cli::cli_h3("Gene Frequency in Top Combinations")
-  geneCombinations <- gene_combination_matrix(combo_genes[topCombinations$Gene_Combination])
-  geneFrequency <- gene_frequency(geneCombinations)
-  print(plotGeneCombinations(geneCombinations))
+  geneFrequency <- gene_frequency(gene_combination_matrix(combo_genes[topCombinations$Gene_Combination]))
+  print(plotGeneCombinations(geneFrequency))
   cli::cli_alert_success("Gene frequency plotted successfully!")
 
   # Store the results in a list
   results <- list(
     allResults = all_results,
     topCombinations = topCombinations,
-    geneFrequency = geneFrequency,
-    geneCombinations = geneCombinations
+    geneFrequency = geneFrequency
   )
 
   return(results)

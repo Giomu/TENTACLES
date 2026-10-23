@@ -5,15 +5,17 @@
 \title{Plot Genes in Top Combinations}
 \usage{
 plotGeneCombinations(
-  gene_combinations,
+  gene_freq,
   title = "Gene frequencies in top combinations",
   present_color = "#1b4965",
   absent_color = "#e1e5f2"
 )
 }
 \arguments{
-\item{gene_combinations}{A binary matrix with genes in rows and combinations in columns,
-such as the \code{geneCombinations} element returned by \code{\link{valConsensus}}.}
+\item{gene_freq}{The \code{geneFrequency} data frame returned by \code{\link{valConsensus}}: a
+\code{Gene} column and one binary column per combination (\code{C1}, \code{C2}, ...). Other
+columns, such as \code{Count} and \code{Combinations}, are ignored. Genes are plotted in the
+order of the rows.}
 
 \item{title}{A character string specifying the plot title. Default is "Gene frequencies in top combinations".}
 
@@ -33,7 +35,7 @@ of combinations containing it out of the total (e.g. "9/10").
 \dontrun{
 vc <- valConsensus(df.count = count_table, gene.list = gene_list,
                    class = class, N = 10, metric = "FScore")
-p <- plotGeneCombinations(vc$geneCombinations)
+p <- plotGeneCombinations(vc$geneFrequency)
 print(p)
 }
 
