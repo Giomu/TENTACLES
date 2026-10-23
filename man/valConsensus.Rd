@@ -27,13 +27,25 @@ and \code{"FScore"}.}
 \value{
 A list containing:
 \describe{
-  \item{allResults}{A list with the clustering results for each combination of genes and clustering
-  methods.}
-  \item{topCombinations}{A data frame with the top \code{N} combinations, one per row, sorted by
-  decreasing \code{Mean_Metric}. \code{Gene_Combination} holds the genes of the combination joined
-  by \code{"_"}, \code{Mean_Metric} the mean of \code{metric} across the six methods, and the
-  remaining columns, named \code{<Method>_<Metric>} (e.g. \code{KMeans_FScore}), the four metrics
-  of each method.}
+  \item{allResults}{A list with the results of all tested combinations:
+  \describe{
+    \item{trueClass}{An integer vector with the true class (0/1) of each sample, named by the
+    row names of \code{df.count}.}
+    \item{clusters}{An integer array with dimensions \code{[sample, combination, method]} holding
+    the cluster (0/1) predicted for each sample, already assigned to the classes as described in
+    Details. Combinations are named by their genes joined by \code{"_"} and methods are
+    \code{"KMeans"}, \code{"GMM"}, \code{"HC"}, \code{"PCA"}, \code{"tSNE"} and \code{"UMAP"}.
+    For example, \code{cbind(trueClass = trueClass, clusters[, "GENE1_GENE2", ])} gives the true
+    and predicted classes of the combination of GENE1 and GENE2.}
+    \item{metrics}{A data frame with one row per combination, in the order of the
+    \code{combination} dimension of \code{clusters}. \code{Gene_Combination} holds the genes of the
+    combination joined by \code{"_"}, \code{Mean_Metric} the mean of \code{metric} across the six
+    methods, and the remaining columns, named \code{<Method>_<Metric>} (e.g.
+    \code{KMeans_FScore}), the four metrics of each method, computed from \code{trueClass} and
+    \code{clusters}.}
+  }}
+  \item{topCombinations}{The rows of \code{allResults$metrics} for the top \code{N} combinations,
+  sorted by decreasing \code{Mean_Metric}.}
   \item{geneFrequency}{A data frame with one row per gene in the top combinations, sorted by
   decreasing \code{Count} and then by name. Columns: \code{Gene}; one binary column per top
   combination (\code{C1}, \code{C2}, ...), with 1 when the gene is in the combination; \code{Count},
@@ -74,7 +86,8 @@ heatmap (\code{\link{plotGeneCombinations}}).
 The random seed is fixed at 123 inside the function, so results are reproducible but
 cannot be varied. t-SNE with perplexity 10 requires at least 31 samples. The number of
 combinations grows exponentially with the number of genes: 15 genes give 32,752
-combinations.
+combinations. The \code{clusters} array takes 4 bytes per sample, combination and method,
+about 79 MB for 15 genes and 100 samples; a warning is shown when it exceeds 1 GB.
 }
 \examples{
 \dontrun{

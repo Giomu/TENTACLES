@@ -192,8 +192,10 @@ vc <- valConsensus(
 )
 ```
 
-The function returns a list containing two elements:
+The function returns a list containing three elements:
 
--   **allResults**: A list of results for each gene combination, with details provided for each of the six implemented clustering algorithms. For each algorithm, it includes the predicted clustering labels and the associated performance metrics.
+-   **allResults**: The results of all tested combinations: the true class of each sample (`trueClass`), an array with the cluster predicted for each sample by each of the six clustering algorithms in each combination (`clusters`), and a data frame with the performance metrics of every algorithm in every combination (`metrics`). Each metric can be recomputed from `trueClass` and `clusters`.
 
 -   **topCombinations**: A data frame summarizing the performance metrics of the top `N` gene combinations, ranked based on their mean `metric` values.
+
+-   **geneFrequency**: A data frame showing which genes are in each top combination and how many top combinations contain each gene.

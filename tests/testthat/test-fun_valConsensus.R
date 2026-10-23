@@ -117,19 +117,68 @@ test_that("valConsensus warns and caps N at the number of combinations", {
   expect_equal(nrow(vc$topCombinations), 1)
 })
 
-# Two combinations scored by two clustering methods, as selectTopCombinations() returns
+test_that("valConsensus keeps the clusters and metrics of all combinations", {
+  data <- make_tricky_pp()@processed$adjusted.data
+  genes <- c("A1CF", "A2BP1", "A2LD1")
+
+  withr::local_pdf(tempfile(fileext = ".pdf"))
+  vc <- suppressMessages(valConsensus(data[, genes], genes, data$class, N = 2, metric = "Accuracy"))
+  res <- vc$allResults
+  methods <- c("KMeans", "GMM", "HC", "PCA", "tSNE", "UMAP")
+  combos <- c("A1CF_A2BP1", "A1CF_A2LD1", "A2BP1_A2LD1", "A1CF_A2BP1_A2LD1")
+
+  expect_equal(unname(res$trueClass), as.integer(as.character(data$class)))
+  expect_equal(names(res$trueClass), rownames(data))
+  expect_equal(dim(res$clusters), c(nrow(data), 4L, 6L))
+  expect_equal(dimnames(res$clusters)$combination, combos)
+  expect_equal(dimnames(res$clusters)$method, methods)
+  expect_type(res$clusters, "integer")
+  expect_equal(res$metrics$Gene_Combination, combos)
+  expect_equal(res$metrics$Mean_Metric, rowMeans(res$metrics[paste0(methods, "_Accuracy")]))
+
+  # Every metric can be recomputed from trueClass and clusters
+  truth <- factor(res$trueClass, levels = c(0, 1))
+  for (combo in combos) {
+    for (m in methods) {
+      estimate <- factor(res$clusters[, combo, m], levels = c(0, 1))
+      row <- res$metrics[res$metrics$Gene_Combination == combo, ]
+      expect_equal(yardstick::accuracy_vec(truth, estimate, event_level = "second"), row[[paste0(m, "_Accuracy")]])
+      expect_equal(yardstick::recall_vec(truth, estimate, event_level = "second"), row[[paste0(m, "_Recall")]])
+      expect_equal(
+        suppressWarnings(yardstick::f_meas_vec(truth, estimate, event_level = "second")),
+        row[[paste0(m, "_FScore")]]
+      )
+    }
+  }
+
+  # topCombinations is the top of metrics
+  top <- res$metrics[order(res$metrics$Mean_Metric, decreasing = TRUE)[1:2], ]
+  rownames(top) <- NULL
+  expect_equal(vc$topCombinations, top)
+})
+
+test_that("selectTopCombinations ranks by mean metric, keeping ties in order and NA last", {
+  expect_equal(selectTopCombinations(c(0.5, NA, 0.9, 0.5), N = 4), c(3L, 1L, 4L, 2L))
+  expect_equal(selectTopCombinations(c(0.5, NA, 0.9, 0.5), N = 2), c(3L, 1L))
+})
+
+test_that("valConsensus aborts on an unknown metric before testing combinations", {
+  data <- make_tricky_pp()@processed$adjusted.data
+  genes <- c("A1CF", "A2BP1")
+
+  expect_error(valConsensus(data[, genes], genes, data$class, metric = "AUC"), "must be one of")
+})
+
+# Two combinations scored by two clustering methods, as in topCombinations
 make_top_results <- function() {
-  results <- list(
-    GeneA_GeneB = list(
-      KMeans = list(Accuracy = 0.85, Precision = 0.82, Recall = 0.80, FScore = 0.81),
-      GMM    = list(Accuracy = 0.86, Precision = 0.83, Recall = 0.82, FScore = 0.82)
-    ),
-    GeneC_GeneD = list(
-      KMeans = list(Accuracy = 0.10, Precision = 0.15, Recall = 0.20, FScore = 0.17),
-      GMM    = list(Accuracy = 0.98, Precision = NA, Recall = 0.97, FScore = 0.95)
-    )
+  data.frame(
+    Gene_Combination = c("GeneA_GeneB", "GeneC_GeneD"),
+    Mean_Metric = c(0.855, 0.54),
+    KMeans_Accuracy = c(0.85, 0.10), KMeans_Precision = c(0.82, 0.15),
+    KMeans_Recall = c(0.80, 0.20), KMeans_FScore = c(0.81, 0.17),
+    GMM_Accuracy = c(0.86, 0.98), GMM_Precision = c(0.83, NA),
+    GMM_Recall = c(0.82, 0.97), GMM_FScore = c(0.82, 0.95)
   )
-  selectTopCombinations(results, N = 2, metric = "Accuracy")
 }
 
 test_that("label_colors picks the text color with the higher contrast", {

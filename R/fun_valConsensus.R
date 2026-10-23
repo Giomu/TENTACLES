@@ -1,81 +1,9 @@
-#' @title Select Top Gene Combinations Based on Clustering Metrics
-#'
-#' @description
-#' Ranks and selects the top gene combinations based on the average value of a specified metric
-#' across multiple clustering methods. Returns a data frame with the top N combinations and all evaluated metrics.
-#'
-#' @param results A named list containing the clustering results for each gene combination. Each element should be
-#' a list of clustering results for the given gene combination, as produced by \code{valConsensus}.
-#' @param N An integer specifying the number of top combinations to return.
-#' @param metric A character string indicating the evaluation metric to use for ranking.
-#' Possible values are \code{"Accuracy"}, \code{"Precision"}, \code{"Recall"}, and \code{"FScore"}.
-#'
-#' @return A data frame containing the top N gene combinations, the average metric across all clustering methods
-#' (\code{Mean_Metric}), and the individual metrics for each method.
-#'
-#' @details
-#' This function aggregates the results from multiple clustering methods for all tested gene combinations.
-#' For each combination, it computes the mean of the specified metric across all methods and selects the top N combinations.
-#' The resulting data frame includes the gene combination identifier, the average metric, and the individual
-#' metrics for each method and metric type.
-#'
-#' @seealso \code{\link{valConsensus}}
-#'
-#' @examples
-#' \dontrun{
-#' # Example structure of 'results' (as produced by valConsensus)
-#' results <- list(
-#'   GeneA_GeneB = list(
-#'     KMeans = list(Accuracy = 0.85, Precision = 0.82, Recall = 0.80, FScore = 0.81),
-#'     GMM    = list(Accuracy = 0.86, Precision = 0.83, Recall = 0.82, FScore = 0.82)
-#'   ),
-#'   GeneC_GeneD = list(
-#'     KMeans = list(Accuracy = 0.78, Precision = 0.75, Recall = 0.74, FScore = 0.74),
-#'     GMM    = list(Accuracy = 0.80, Precision = 0.76, Recall = 0.76, FScore = 0.75)
-#'   )
-#' )
-#' top_df <- selectTopCombinations(results, N = 1, metric = "Accuracy")
-#' }
-#' @noRd
-selectTopCombinations <- function(results, N, metric) {
-  allowed_metrics <- c("Accuracy", "Precision", "Recall", "FScore")
-  if (!metric %in% allowed_metrics) {
-    cli::cli_abort("Invalid metric selected. Allowed metrics are: {paste(allowed_metrics, collapse = ', ')}.")
-  }
-
-  methods <- names(results[[1]])  # assume all combinations have same methods
-  metric_names <- paste0(rep(methods, each = length(allowed_metrics)), "_", allowed_metrics)
-
-  results_list <- list()
-  for (combo_name in names(results)) {
-    combo_results <- results[[combo_name]]
-
-    # Extract metric values from all clustering methods for this gene combination
-    metric_values <- unlist(lapply(combo_results, `[[`, metric))
-    mean_metric <- mean(metric_values)
-
-    # Extract all metrics for all methods
-    row_data <- unlist(lapply(methods, function(m) {
-      unlist(combo_results[[m]][allowed_metrics])
-    }))
-
-    # Store as row
-    results_list[[combo_name]] <- c(combo_name, mean_metric, row_data)
-  }
-
-  # Convert list to data frame
-  results_df <- as.data.frame(do.call(rbind, results_list), stringsAsFactors = FALSE)
-  colnames(results_df) <- c("Gene_Combination", "Mean_Metric", metric_names)
-
-  # Sort and select top N
-  results_df$Mean_Metric <- as.numeric(results_df$Mean_Metric)
-  results_df[, -1] <- lapply(results_df[, -1], as.numeric)
-
-  # Sort and select top N
-  results_df <- results_df[order(-results_df$Mean_Metric), , drop = FALSE]
-  results_df <- results_df[seq_len(min(N, nrow(results_df))), , drop = FALSE]
-
-  return(results_df)
+# Helper function to pick the top N combinations: returns the indices of the N
+# highest mean metrics, in decreasing order. Ties keep the order in which the
+# combinations were tested, and NA means go last
+selectTopCombinations <- function(mean_metric, N) {
+  ranked <- order(mean_metric, decreasing = TRUE)
+  ranked[seq_len(min(N, length(ranked)))]
 }
 
 #' @title Evaluate Clustering Results with Metric Orientation
@@ -206,13 +134,25 @@ gene_frequency <- function(gene_matrix) {
 #'
 #' @return A list containing:
 #' \describe{
-#'   \item{allResults}{A list with the clustering results for each combination of genes and clustering
-#'   methods.}
-#'   \item{topCombinations}{A data frame with the top \code{N} combinations, one per row, sorted by
-#'   decreasing \code{Mean_Metric}. \code{Gene_Combination} holds the genes of the combination joined
-#'   by \code{"_"}, \code{Mean_Metric} the mean of \code{metric} across the six methods, and the
-#'   remaining columns, named \code{<Method>_<Metric>} (e.g. \code{KMeans_FScore}), the four metrics
-#'   of each method.}
+#'   \item{allResults}{A list with the results of all tested combinations:
+#'   \describe{
+#'     \item{trueClass}{An integer vector with the true class (0/1) of each sample, named by the
+#'     row names of \code{df.count}.}
+#'     \item{clusters}{An integer array with dimensions \code{[sample, combination, method]} holding
+#'     the cluster (0/1) predicted for each sample, already assigned to the classes as described in
+#'     Details. Combinations are named by their genes joined by \code{"_"} and methods are
+#'     \code{"KMeans"}, \code{"GMM"}, \code{"HC"}, \code{"PCA"}, \code{"tSNE"} and \code{"UMAP"}.
+#'     For example, \code{cbind(trueClass = trueClass, clusters[, "GENE1_GENE2", ])} gives the true
+#'     and predicted classes of the combination of GENE1 and GENE2.}
+#'     \item{metrics}{A data frame with one row per combination, in the order of the
+#'     \code{combination} dimension of \code{clusters}. \code{Gene_Combination} holds the genes of the
+#'     combination joined by \code{"_"}, \code{Mean_Metric} the mean of \code{metric} across the six
+#'     methods, and the remaining columns, named \code{<Method>_<Metric>} (e.g.
+#'     \code{KMeans_FScore}), the four metrics of each method, computed from \code{trueClass} and
+#'     \code{clusters}.}
+#'   }}
+#'   \item{topCombinations}{The rows of \code{allResults$metrics} for the top \code{N} combinations,
+#'   sorted by decreasing \code{Mean_Metric}.}
 #'   \item{geneFrequency}{A data frame with one row per gene in the top combinations, sorted by
 #'   decreasing \code{Count} and then by name. Columns: \code{Gene}; one binary column per top
 #'   combination (\code{C1}, \code{C2}, ...), with 1 when the gene is in the combination; \code{Count},
@@ -250,7 +190,8 @@ gene_frequency <- function(gene_matrix) {
 #' The random seed is fixed at 123 inside the function, so results are reproducible but
 #' cannot be varied. t-SNE with perplexity 10 requires at least 31 samples. The number of
 #' combinations grows exponentially with the number of genes: 15 genes give 32,752
-#' combinations.
+#' combinations. The \code{clusters} array takes 4 bytes per sample, combination and method,
+#' about 79 MB for 15 genes and 100 samples; a warning is shown when it exceeds 1 GB.
 #'
 #' @importFrom mclust Mclust mclustBIC
 #' @importFrom yardstick accuracy precision recall f_meas
@@ -300,20 +241,27 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
     cli::cli_abort("{.arg class} must contain both classes, 0 and 1.")
   }
 
-  gene_list <- gene.list
+  allowed_metrics <- c("Accuracy", "Precision", "Recall", "FScore")
+  if (!metric %in% allowed_metrics) {
+    cli::cli_abort("{.arg metric} must be one of {.val {allowed_metrics}}, not {.val {metric}}.")
+  }
+
+  gene_list <- unique(gene.list)
+  if (length(gene_list) < 2) {
+    cli::cli_abort("{.arg gene.list} must contain at least two distinct genes.")
+  }
   labels <- class
+  methods <- c("KMeans", "GMM", "HC", "PCA", "tSNE", "UMAP")
 
-  # Maximum number of genes to consider
-  max_genes <- length(unique(gene_list))
+  # All combinations of 2 or more genes, in the order they are tested. Genes are
+  # kept as vectors because gene names may contain the "_" used to build the keys
+  combo_genes <- unlist(
+    lapply(2:length(gene_list), function(n) combn(gene_list, n, simplify = FALSE)),
+    recursive = FALSE
+  )
+  combo_keys <- vapply(combo_genes, paste, character(1), collapse = "_")
+  total_combinations <- length(combo_genes)
 
-  # List to save results for all combinations
-  all_results <- list()
-  # Genes of each combination, keyed like all_results. Kept as vectors because
-  # gene names may contain the "_" used to build the keys
-  combo_genes <- list()
-
-  # Compute total number of combinations
-  total_combinations <- as.numeric(sum(sapply(2:max_genes, function(n) choose(length(gene_list), n))))
   cli::cli_alert_info("Applying models to {total_combinations} combination{?s} ...")
   if (N > total_combinations) {
     cli::cli_alert_warning(
@@ -324,6 +272,25 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
   if (total_combinations > 1000000) {
     cli::cli_alert_warning("The number of combinations is > 1M. This may take a long time to complete. Consider reducing the number of genes.")
   }
+  # The clusters array holds one 4-byte integer per sample, combination and method
+  clusters_gb <- nrow(df.count) * total_combinations * length(methods) * 4 / 1024^3
+  if (clusters_gb > 1) {
+    cli::cli_alert_warning("Storing the predicted clusters will take about {round(clusters_gb, 1)} GB of memory.")
+  }
+
+  # Results of all combinations, filled in place: predicted clusters (already
+  # oriented by evaluate_one_side) and the four metrics of each method
+  clusters <- array(
+    NA_integer_,
+    dim = c(nrow(df.count), total_combinations, length(methods)),
+    dimnames = list(sample = rownames(df.count), combination = combo_keys, method = methods)
+  )
+  metric_values <- matrix(
+    NA_real_,
+    nrow = total_combinations,
+    ncol = length(methods) * length(allowed_metrics),
+    dimnames = list(NULL, paste0(rep(methods, each = length(allowed_metrics)), "_", allowed_metrics))
+  )
 
   # Initialize progress bar
   progress_bar <- cli::cli_progress_bar(
@@ -335,55 +302,51 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
   withr::with_seed(
     seed = 123,
     code = {
-      # For each number of genes up to the maximum
-      for (n in 2:max_genes) {
-        gene_combinations <- combn(gene_list, n, simplify = FALSE)
+      for (i in seq_len(total_combinations)) {
+        combo <- combo_genes[[i]]
+        # Increment progress bar
+        cli::cli_progress_update(inc = 1)
+        # Subset the table with the specified genes
+        count_subset <- df.count[, combo, drop = FALSE]
 
-        # For each combination of genes
-        for (combo in gene_combinations) {
-          # Increment progress bar
-          cli::cli_progress_update(inc = 1)
-          # Subset the table with the specified genes
-          count_subset <- df.count[, combo, drop = FALSE]
+        # Ensure data is numeric and scaled
+        count_subset <- as.data.frame(lapply(count_subset, as.numeric))
+        count_subset <- scale(count_subset)
+        rownames(count_subset) <- rownames(df.count)
 
-          # Ensure data is numeric and scaled
-          count_subset <- as.data.frame(lapply(count_subset, as.numeric))
-          count_subset <- scale(count_subset)
-          rownames(count_subset) <- rownames(df.count)
+        # Predicted clusters (0/1) of each method. The methods run in a fixed
+        # order, so the random draws, and the results, are reproducible
+        predictions <- list()
 
-          clustering_results <- list()
+        # K-Means Clustering
+        kmeans_result <- stats::kmeans(count_subset, centers = 2, iter.max = 100, algorithm = "MacQueen")
+        predictions$KMeans <- kmeans_result$cluster - 1
 
-          # K-Means Clustering
-          kmeans_result <- stats::kmeans(count_subset, centers = 2, iter.max = 100, algorithm = "MacQueen")
-          clustering_results$KMeans <- evaluate_one_side(kmeans_result$cluster - 1, labels, metric)
+        # Gaussian Mixture Model (GMM)
+        gmm_result <- mclust::Mclust(count_subset, G = 2, verbose = FALSE)
+        predictions$GMM <- gmm_result$classification - 1
 
-          # Gaussian Mixture Model (GMM)
-          gmm_result <- mclust::Mclust(count_subset, G = 2, verbose = FALSE)
-          clustering_results$GMM <- evaluate_one_side(gmm_result$classification - 1, labels, metric)
+        # Hierarchical Clustering
+        hc_result <- stats::hclust(dist(count_subset), method = "complete")
+        predictions$HC <- stats::cutree(hc_result, k = 2) - 1
 
-          # Hierarchical Clustering
-          hc_result <- stats::hclust(dist(count_subset), method = "complete")
-          hc_clusters <- stats::cutree(hc_result, k = 2) - 1
-          clustering_results$HC <- evaluate_one_side(hc_clusters, labels, metric)
+        # PCA + KMeans
+        pca_result <- stats::prcomp(count_subset, scale = FALSE)
+        predictions$PCA <- stats::kmeans(pca_result$x[, 1:2], centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster - 1
 
-          # PCA + KMeans
-          pca_result <- stats::prcomp(count_subset, scale = FALSE)
-          pca_clusters <- stats::kmeans(pca_result$x[, 1:2], centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster - 1
-          clustering_results$PCA <- evaluate_one_side(pca_clusters, labels, metric)
+        # t-SNE + KMeans
+        tsne_result <- Rtsne::Rtsne(count_subset, dims = 2, perplexity = 10, check_duplicates = FALSE)
+        predictions$tSNE <- stats::kmeans(tsne_result$Y, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster - 1
 
-          # t-SNE + KMeans
-          tsne_result <- Rtsne::Rtsne(count_subset, dims = 2, perplexity = 10, check_duplicates = FALSE)
-          tsne_clusters <- stats::kmeans(tsne_result$Y, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster - 1
-          clustering_results$tSNE <- evaluate_one_side(tsne_clusters, labels, metric)
+        # UMAP + KMeans
+        umap_result <- umap::umap(count_subset)
+        predictions$UMAP <- stats::kmeans(umap_result$layout, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster - 1
 
-          # UMAP + KMeans
-          umap_result <- umap::umap(count_subset)
-          umap_clusters <- stats::kmeans(umap_result$layout, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster - 1
-          clustering_results$UMAP <- evaluate_one_side(umap_clusters, labels, metric)
-
-          # Save results for this combination
-          all_results[[paste(combo, collapse = "_")]] <- clustering_results
-          combo_genes[[paste(combo, collapse = "_")]] <- combo
+        # Orient the clusters, compute the metrics and save them for this combination
+        for (m in methods) {
+          evaluation <- evaluate_one_side(predictions[[m]], labels, metric)
+          clusters[, i, m] <- evaluation$clusters
+          metric_values[i, paste0(m, "_", allowed_metrics)] <- unlist(evaluation[allowed_metrics])
         }
       }
     }
@@ -393,10 +356,18 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
   cli::cli_progress_done()
   cli::cli_alert_success("All combinations tested successfully!")
 
-  # Add a new element to the list to store the top genes combinations by running the selectTopCombinations function
+  all_metrics <- data.frame(
+    Gene_Combination = combo_keys,
+    Mean_Metric = rowMeans(metric_values[, paste0(methods, "_", metric), drop = FALSE]),
+    metric_values,
+    check.names = FALSE
+  )
+
   cli::cli_h3("Top Combinations Selection")
   cli::cli_alert_info("Selecting top {N} combination{?s} based on {metric} ...")
-  topCombinations <- selectTopCombinations(all_results, N = N, metric = metric)
+  top_index <- selectTopCombinations(all_metrics$Mean_Metric, N = N)
+  topCombinations <- all_metrics[top_index, , drop = FALSE]
+  rownames(topCombinations) <- NULL
   cli::cli_alert_success("Top combinations selected successfully!")
 
   # Plot the top combinations using the plotTopMetrics function
@@ -408,13 +379,17 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
 
   # Count how often each gene appears in the top combinations
   cli::cli_h3("Gene Frequency in Top Combinations")
-  geneFrequency <- gene_frequency(gene_combination_matrix(combo_genes[topCombinations$Gene_Combination]))
+  geneFrequency <- gene_frequency(gene_combination_matrix(combo_genes[top_index]))
   print(plotGeneCombinations(geneFrequency))
   cli::cli_alert_success("Gene frequency plotted successfully!")
 
   # Store the results in a list
   results <- list(
-    allResults = all_results,
+    allResults = list(
+      trueClass = stats::setNames(as.integer(as.character(class)), rownames(df.count)),
+      clusters = clusters,
+      metrics = all_metrics
+    ),
     topCombinations = topCombinations,
     geneFrequency = geneFrequency
   )
