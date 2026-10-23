@@ -103,7 +103,8 @@ selectTopCombinations <- function(results, N, metric) {
 #' Since unsupervised clustering labels (e.g., 0/1) may be assigned arbitrarily compared to
 #' ground truth, this function evaluates both the predicted and inverted cluster assignments.
 #' It then returns the set of metrics corresponding to the orientation that yields the
-#' highest value for the selected metric.
+#' highest value for the selected metric. An orientation whose metric is \code{NA} (e.g. Precision
+#' when all samples are predicted as 0) loses to one where it can be computed.
 #'
 #' @seealso \code{\link[yardstick]{accuracy}}, \code{\link[yardstick]{precision}},
 #'   \code{\link[yardstick]{recall}}, \code{\link[yardstick]{f_meas}}
@@ -117,10 +118,12 @@ selectTopCombinations <- function(results, N, metric) {
 #' @noRd
 # Helper function for assessment based on a choose metric
 evaluate_one_side <- function(pred, truth, metric = metric) {
+  # Fixed levels, so a method that puts all samples in one cluster still gives
+  # two-level factors, as yardstick requires
   df <- data.frame(
-    labels = factor(truth),
-    cluster = factor(pred),
-    cluster_inv = factor(1 - as.numeric(as.character(pred)))
+    labels = factor(truth, levels = c(0, 1)),
+    cluster = factor(pred, levels = c(0, 1)),
+    cluster_inv = factor(1 - as.numeric(as.character(pred)), levels = c(0, 1))
   )
 
   metric_fun <- switch(metric,
@@ -131,19 +134,31 @@ evaluate_one_side <- function(pred, truth, metric = metric) {
                        cli::cli_abort("Unsupported metric: {metric}")
   )
 
-  val_cluster     <- metric_fun(df, truth = labels, estimate = cluster, event_level = "second")[[".estimate"]]
-  val_cluster_inv <- metric_fun(df, truth = labels, estimate = cluster_inv, event_level = "second")[[".estimate"]]
+  # With a single cluster, the orientation predicting no 1s has undefined
+  # Precision and FScore (NA). That is expected, so yardstick's warning is muffled
+  # and the NA is kept in the returned metrics
+  withCallingHandlers({
+    val_cluster     <- metric_fun(df, truth = labels, estimate = cluster, event_level = "second")[[".estimate"]]
+    val_cluster_inv <- metric_fun(df, truth = labels, estimate = cluster_inv, event_level = "second")[[".estimate"]]
 
-  best_col <- if (val_cluster >= val_cluster_inv) "cluster" else "cluster_inv"
-  df_pred <- data.frame(labels = df$labels, pred = df[[best_col]])
+    # An orientation whose metric is NA loses to one where it can be computed
+    best_col <- if (is.na(val_cluster_inv) || (!is.na(val_cluster) && val_cluster >= val_cluster_inv)) {
+      "cluster"
+    } else {
+      "cluster_inv"
+    }
+    df_pred <- data.frame(labels = df$labels, pred = df[[best_col]])
 
-  return(list(
-    clusters  = as.integer(as.character(df_pred$pred)),
-    Accuracy  = yardstick::accuracy(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
-    Precision = yardstick::precision(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
-    Recall    = yardstick::recall(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
-    FScore    = yardstick::f_meas(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]]
-  ))
+    result <- list(
+      clusters  = as.integer(as.character(df_pred$pred)),
+      Accuracy  = yardstick::accuracy(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
+      Precision = yardstick::precision(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
+      Recall    = yardstick::recall(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]],
+      FScore    = yardstick::f_meas(df_pred, truth = labels, estimate = pred, event_level = "second")[[".estimate"]]
+    )
+  }, yardstick_warning_precision_undefined = function(w) invokeRestart("muffleWarning"))
+
+  return(result)
 }
 
 # Helper function to build the binary gene x combination matrix of the top
@@ -181,8 +196,8 @@ gene_frequency <- function(gene_matrix) {
 #' @param gene.list A character vector with the consensus genes to evaluate, at least two. All of them
 #' must be columns of \code{df.count}.
 #' @param class A vector with the true class of each sample (row of \code{df.count}), coded as 0 (control)
-#' and 1 (case). It can be numeric or a factor with levels \code{"0"} and \code{"1"}. Class 1 is the positive
-#' class for Precision, Recall and FScore.
+#' and 1 (case), with both classes present. It can be numeric or a factor with levels \code{"0"} and \code{"1"}.
+#' Class 1 is the positive class for Precision, Recall and FScore.
 #' @param N An integer specifying the number of top gene combinations to return. If it is larger than
 #' the number of possible combinations, it is reduced to that number with a message.
 #' @param metric A character string specifying the metric used to rank the combinations and to orient
@@ -222,7 +237,10 @@ gene_frequency <- function(gene_matrix) {
 #'
 #' Cluster labels are arbitrary, so each clustering is evaluated with both assignments of
 #' its clusters to classes 0 and 1, and the one with the higher \code{metric} is kept. Accuracy,
-#' Precision, Recall and FScore are then computed for that assignment.
+#' Precision, Recall and FScore are then computed for that assignment. If a method puts all samples
+#' in a single cluster, the assignment where \code{metric} can be computed is kept; Precision and
+#' FScore are \code{NA} when the kept assignment predicts no sample as 1, which can only happen
+#' when \code{metric} is \code{"Accuracy"}.
 #'
 #' Combinations are ranked by the mean of \code{metric} across the six methods, and the top
 #' \code{N} are returned. For these, the function counts how many combinations contain each gene
@@ -263,6 +281,23 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
       "{length(missing_genes)} feature{?s} of {.arg gene.list} {?is/are} not in {.arg df.count}:",
       "x" = "{.val {missing_genes}}"
     ))
+  }
+  # Metrics need classes coded 0/1; other values would become NA and be dropped
+  bad_classes <- setdiff(unique(as.character(class)), c("0", "1"))
+  if (length(bad_classes) > 0) {
+    cli::cli_abort(c(
+      "{.arg class} must be coded as 0 (control) and 1 (case).",
+      "x" = "Found {.val {bad_classes}}."
+    ))
+  }
+  if (length(class) != nrow(df.count)) {
+    cli::cli_abort(
+      "{.arg class} has {length(class)} value{?s}, but {.arg df.count} has {nrow(df.count)} sample{?s}."
+    )
+  }
+  # Clusters are compared with the classes, so both must be present
+  if (length(unique(as.character(class))) < 2) {
+    cli::cli_abort("{.arg class} must contain both classes, 0 and 1.")
   }
 
   gene_list <- gene.list

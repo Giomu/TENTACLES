@@ -14,8 +14,8 @@ columns. A matrix is not supported.}
 must be columns of \code{df.count}.}
 
 \item{class}{A vector with the true class of each sample (row of \code{df.count}), coded as 0 (control)
-and 1 (case). It can be numeric or a factor with levels \code{"0"} and \code{"1"}. Class 1 is the positive
-class for Precision, Recall and FScore.}
+and 1 (case), with both classes present. It can be numeric or a factor with levels \code{"0"} and \code{"1"}.
+Class 1 is the positive class for Precision, Recall and FScore.}
 
 \item{N}{An integer specifying the number of top gene combinations to return. If it is larger than
 the number of possible combinations, it is reduced to that number with a message.}
@@ -61,7 +61,10 @@ standard deviation) and the samples are split into two clusters by six methods:
 
 Cluster labels are arbitrary, so each clustering is evaluated with both assignments of
 its clusters to classes 0 and 1, and the one with the higher \code{metric} is kept. Accuracy,
-Precision, Recall and FScore are then computed for that assignment.
+Precision, Recall and FScore are then computed for that assignment. If a method puts all samples
+in a single cluster, the assignment where \code{metric} can be computed is kept; Precision and
+FScore are \code{NA} when the kept assignment predicts no sample as 1, which can only happen
+when \code{metric} is \code{"Accuracy"}.
 
 Combinations are ranked by the mean of \code{metric} across the six methods, and the top
 \code{N} are returned. For these, the function counts how many combinations contain each gene

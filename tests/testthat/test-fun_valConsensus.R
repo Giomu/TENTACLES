@@ -9,6 +9,44 @@ test_that("valConsensus aborts naming features missing from df.count", {
   )
 })
 
+test_that("valConsensus aborts when class is not coded 0/1", {
+  data <- make_tricky_pp()@processed$adjusted.data
+  genes <- c("A1CF", "A2BP1")
+  class <- as.numeric(as.character(data$class)) + 1
+
+  expect_error(valConsensus(data[, genes], genes, class, N = 1), "0 \\(control\\)")
+})
+
+test_that("valConsensus aborts when class does not match the samples", {
+  data <- make_tricky_pp()@processed$adjusted.data
+  genes <- c("A1CF", "A2BP1")
+
+  expect_error(valConsensus(data[, genes], genes, data$class[-1], N = 1), "samples")
+  expect_error(valConsensus(data[, genes], genes, rep(0, nrow(data)), N = 1), "both classes")
+})
+
+test_that("evaluate_one_side handles a method that puts all samples in one cluster", {
+  truth <- c(1, 0, 1, 0, 1, 1)
+  pred <- rep(0, 6)
+
+  # Predicting no 1s leaves FScore undefined, so the inverted assignment is kept
+  expect_no_warning(res <- evaluate_one_side(pred, truth, "FScore"))
+  expect_equal(res$clusters, rep(1L, 6))
+  expect_equal(res$Accuracy, 4 / 6)
+  expect_equal(res$Precision, 4 / 6)
+  expect_equal(res$Recall, 1)
+  expect_equal(res$FScore, 0.8)
+
+  # Accuracy is defined for both; with mostly controls, all 0 wins and Precision is NA
+  truth <- c(0, 0, 0, 0, 1, 1)
+  expect_no_warning(res <- evaluate_one_side(pred, truth, "Accuracy"))
+  expect_equal(res$clusters, rep(0L, 6))
+  expect_equal(res$Accuracy, 4 / 6)
+  expect_equal(res$Recall, 0)
+  expect_true(is.na(res$Precision))
+  expect_true(is.na(res$FScore))
+})
+
 test_that("gene_combination_matrix marks genes per combination, most frequent first", {
   combos <- list(c("B", "GENE_X"), c("A", "GENE_X"), c("A", "B", "GENE_X"))
   m <- gene_combination_matrix(combos)
