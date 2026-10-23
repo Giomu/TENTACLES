@@ -7,39 +7,83 @@
 valConsensus(df.count, gene.list, class, N = 10, metric = "FScore")
 }
 \arguments{
-\item{df.count}{A numeric matrix containing the gene expression data. Rows represent samples and columns represent genes.}
+\item{df.count}{A data frame with the gene expression data, with samples in rows and genes in
+columns. A matrix is not supported.}
 
-\item{gene.list}{A character vector specifying the consensus genes to be evaluated. All of them
-must be columns of `df.count`.}
+\item{gene.list}{A character vector with the consensus genes to evaluate, at least two. All of them
+must be columns of \code{df.count}.}
 
-\item{class}{A factor vector specifying the true class labels for the samples.}
+\item{class}{A vector with the true class of each sample (row of \code{df.count}), coded as 0 (control)
+and 1 (case). It can be numeric or a factor with levels \code{"0"} and \code{"1"}. Class 1 is the positive
+class for Precision, Recall and FScore.}
 
-\item{N}{An integer specifying the number of top gene combinations to select based on the metric.}
+\item{N}{An integer specifying the number of top gene combinations to return. If it is larger than
+the number of possible combinations, it is reduced to that number with a message.}
 
-\item{metric}{A character string specifying the metric to use for selecting the top gene combinations.
-Possible values are 'Accuracy', 'Precision', 'Recall', and 'FScore'.}
+\item{metric}{A character string specifying the metric used to rank the combinations and to orient
+the clusters (see Details). Possible values are \code{"Accuracy"}, \code{"Precision"}, \code{"Recall"},
+and \code{"FScore"}.}
 }
 \value{
-A list containing the clustering results for each combination of genes and clustering methods.
+A list containing:
+\describe{
+  \item{allResults}{A list with the clustering results for each combination of genes and clustering
+  methods.}
+  \item{topCombinations}{A data frame with the top \code{N} combinations, one per row, sorted by
+  decreasing \code{Mean_Metric}. \code{Gene_Combination} holds the genes of the combination joined
+  by \code{"_"}, \code{Mean_Metric} the mean of \code{metric} across the six methods, and the
+  remaining columns, named \code{<Method>_<Metric>} (e.g. \code{KMeans_FScore}), the four metrics
+  of each method.}
+  \item{geneFrequency}{A data frame with, for each gene in the top combinations, the number of
+  combinations containing it (\code{Count}) and their identifiers (\code{Combinations}). Combination
+  \code{Ci} is the i-th row of \code{topCombinations}.}
+  \item{geneCombinations}{A binary matrix with genes in rows and top combinations (\code{C1},
+  \code{C2}, ...) in columns, with 1 when the gene is in the combination. Genes are ordered as in
+  \code{geneFrequency}.}
+}
 }
 \description{
 This function validates the consensus genes in a provided dataset using clustering methods.
 }
 \details{
-The function evaluates the clustering performance of different combinations of genes using various clustering methods.
-The function calculates the accuracy, precision, recall, and F1 score for each clustering method.
-The function implements the following clustering methods: K-Means, Gaussian Mixture Model (GMM),
-Hierarchical Clustering, k-Means on PCA dimensions, k-Means on t-SNE dimensions, and k-Means on UMAP dimensions.
+For every combination of 2 to \code{length(gene.list)} genes (\eqn{2^k - k - 1} combinations
+for \eqn{k} genes), the expression of the genes is scaled (centered and divided by the
+standard deviation) and the samples are split into two clusters by six methods:
+\describe{
+  \item{KMeans}{k-means (MacQueen algorithm) on the scaled data.}
+  \item{GMM}{Gaussian mixture model with two components (\code{mclust::Mclust()}).}
+  \item{HC}{Hierarchical clustering with complete linkage on Euclidean distances, cut into two clusters.}
+  \item{PCA}{k-means on the first two principal components.}
+  \item{tSNE}{k-means on a two-dimensional t-SNE embedding (perplexity 10).}
+  \item{UMAP}{k-means on a two-dimensional UMAP embedding (default settings).}
+}
+
+Cluster labels are arbitrary, so each clustering is evaluated with both assignments of
+its clusters to classes 0 and 1, and the one with the higher \code{metric} is kept. Accuracy,
+Precision, Recall and FScore are then computed for that assignment.
+
+Combinations are ranked by the mean of \code{metric} across the six methods, and the top
+\code{N} are returned. For these, the function counts how many combinations contain each gene
+and prints two plots: the metrics heatmap (\code{\link{plotTopMetrics}}) and the gene presence
+heatmap (\code{\link{plotGeneCombinations}}).
+
+The random seed is fixed at 123 inside the function, so results are reproducible but
+cannot be varied. t-SNE with perplexity 10 requires at least 31 samples. The number of
+combinations grows exponentially with the number of genes: 15 genes give 32,752
+combinations.
 }
 \examples{
 \dontrun{
-count_table <- matrix(rnorm(1000), nrow = 100, ncol = 10)
-gene_list <- c("Gene1", "Gene2", "Gene3")
-class <- factor(sample(1:2, 100, replace = TRUE))
+data("acc.count", "acc.clin", package = "TENTACLES")
+pp <- preProcess(acc.count[, 1:100], acc.clin, is.normalized = FALSE,
+                 batch = "patient.gender", plot = FALSE)
+data <- pp@processed$adjusted.data
+genes <- c("A1BG", "A1CF", "A2BP1", "A2LD1")
 vc <- valConsensus(
-  df.count = count_table, gene.list = gene_list,
-  class = class, N = 10, metric = "FScore"
+  df.count = data[, genes], gene.list = genes,
+  class = data$class, N = 5, metric = "FScore"
 )
+vc$geneFrequency
 }
 
 }

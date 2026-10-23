@@ -6,42 +6,48 @@
 \usage{
 plotTopMetrics(
   top_results,
-  title = "Top Model Metrics",
-  low_color = "white",
-  high_color = "steelblue",
-  limits = c(0, 1)
+  title = "Performance metrics of top combinations",
+  colors = c("#b7efc5", "#10451d"),
+  limits = c(0, 1),
+  low_color = NULL,
+  high_color = NULL
 )
 }
 \arguments{
-\item{top_results}{A data frame returned by `selectTopCombinations()`, containing
-performance metrics of multiple models for each gene combination.}
+\item{top_results}{The \code{topCombinations} data frame returned by \code{\link{valConsensus}},
+containing the performance metrics of the clustering methods for each gene combination.}
 
-\item{title}{A character string specifying the plot title. Default is "Top Model Metrics".}
+\item{title}{A character string specifying the plot title. Default is "Performance metrics of top combinations".}
 
-\item{low_color}{Color for the lowest values in the heatmap gradient. Default: "white".}
-
-\item{high_color}{Color for the highest values in the heatmap gradient. Default: "steelblue".}
+\item{colors}{A character vector of at least two colors, from the lowest to the highest values,
+used as the heatmap gradient. Default: \code{c("#b7efc5", "#10451d")}.}
 
 \item{limits}{Numeric vector of length 2, specifying the minimum and maximum values for the fill scale. Default: c(0, 1).}
+
+\item{low_color, high_color}{Deprecated, use \code{colors} instead.
+If any of them is given, the gradient goes from \code{low_color} to \code{high_color}, and the missing one is
+taken from the ends of \code{colors}.}
 }
 \value{
-A `ggplot2` object representing the heatmap.
+A \code{ggplot2} object representing the heatmap.
 }
 \description{
-Creates a heatmap using `ggplot2` to visualize the performance of different
+Creates a heatmap using \code{ggplot2} to visualize the performance of different
 clustering and dimensionality reduction models across multiple evaluation metrics,
 for each gene combination. Each combination is labeled with a concise and readable
 gene summary on the y-axis, prefixed by a combination number (C1, C2, ...).
 }
+\details{
+Values are printed in black or white, whichever contrasts more with the tile color.
+}
 \examples{
 \dontrun{
 vc <- valConsensus(df.count = count_table, gene.list = gene_list,
-                   labels = labels, N = 10, metric = "FScore")
+                   class = class, N = 10, metric = "FScore")
 p <- plotTopMetrics(
   vc$topCombinations,
-  title = "Top Model Metrics",
-  low_color = "white",
-  high_color = "steelblue",
+  title = "Performance metrics of top combinations",
+  colors = c("white", "steelblue"),
   limits = c(0, 1)
 )
 print(p)
