@@ -143,7 +143,7 @@ auroc.fc.plot <- function(results,
       legend.text = element_text(size = 11, hjust = 0),
       panel.grid.minor = element_blank(),
       panel.grid.major.x = element_blank(),
-      axis.ticks = element_line(color = "#7e7e7e", size = 0.3),
+      axis.ticks = element_line(color = "#7e7e7e", linewidth = 0.3),
       axis.line.x = element_line(color = "#7e7e7e", linewidth = 0.3),
       axis.line.y = element_line(color = "#7e7e7e", linewidth = 0.3)
     )

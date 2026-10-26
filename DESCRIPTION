@@ -38,7 +38,7 @@ Imports:
     ComplexUpset,
     edgeR,
     future,
-    ggplot2,
+    ggplot2 (>= 3.4.0),
     ggrepel,
     ggside,
     grDevices,

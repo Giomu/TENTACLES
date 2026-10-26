@@ -166,7 +166,7 @@ performances.plot <- function(data.obj) {
             #     legend.text = element_text(size = 12),
             strip.text = element_text(size = 13),
             #     panel.grid.minor = element_blank(),
-            #     panel.border = element_rect(colour = "black", fill = NA, size = 0.5),
+            #     panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.5),
             #     plot.title = element_text(size = 18, hjust = 0.5)
         ) +
         facet_wrap(~metric) # , scales = "free_y")
