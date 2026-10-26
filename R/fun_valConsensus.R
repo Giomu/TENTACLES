@@ -103,6 +103,20 @@ gmm_clusters <- function(x) {
   gmm_result$classification - 1
 }
 
+# Helper function to split the scaled data of a combination into two clusters
+# (0/1) with one of the valConsensus methods
+cluster_samples <- function(x, method) {
+  kmeans2 <- function(y) stats::kmeans(y, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster - 1
+  switch(method,
+    KMeans = kmeans2(x),
+    GMM = gmm_clusters(x),
+    HC = stats::cutree(stats::hclust(dist(x), method = "complete"), k = 2) - 1,
+    PCA = kmeans2(stats::prcomp(x, scale = FALSE)$x[, 1:2]),
+    tSNE = kmeans2(Rtsne::Rtsne(x, dims = 2, perplexity = 10, check_duplicates = FALSE)$Y),
+    UMAP = kmeans2(umap::umap(x)$layout)
+  )
+}
+
 # Helper function to build the binary gene x combination matrix of the top
 # combinations. combos is a list of gene vectors in rank order; columns are
 # named C1, C2, ... and genes are sorted by the number of combinations
@@ -146,6 +160,9 @@ gene_frequency <- function(gene_matrix) {
 #' @param metric A character string specifying the metric used to rank the combinations and to orient
 #' the clusters (see Details). Possible values are \code{"Accuracy"}, \code{"Precision"}, \code{"Recall"},
 #' and \code{"FScore"}.
+#' @param methods A character vector with the clustering methods to run: any of \code{"KMeans"},
+#' \code{"GMM"}, \code{"HC"}, \code{"PCA"}, \code{"tSNE"} and \code{"UMAP"} (see Details). All six by
+#' default. They always run in this order, whatever the order given.
 #'
 #' @return A list containing:
 #' \describe{
@@ -155,14 +172,15 @@ gene_frequency <- function(gene_matrix) {
 #'     row names of \code{df.count}.}
 #'     \item{clusters}{An integer array with dimensions \code{[sample, combination, method]} holding
 #'     the cluster (0/1) predicted for each sample, already assigned to the classes as described in
-#'     Details. Combinations are named by their genes joined by \code{"_"} and methods are
-#'     \code{"KMeans"}, \code{"GMM"}, \code{"HC"}, \code{"PCA"}, \code{"tSNE"} and \code{"UMAP"}.
+#'     Details. Combinations are named by their genes joined by \code{"_"} and methods are those in
+#'     \code{methods}, in the order \code{"KMeans"}, \code{"GMM"}, \code{"HC"}, \code{"PCA"},
+#'     \code{"tSNE"}, \code{"UMAP"}.
 #'     For example, \code{cbind(trueClass = trueClass, clusters[, "GENE1_GENE2", ])} gives the true
 #'     and predicted classes of the combination of GENE1 and GENE2.}
 #'     \item{metrics}{A data frame with one row per combination, in the order of the
 #'     \code{combination} dimension of \code{clusters}. \code{Gene_Combination} holds the genes of the
-#'     combination joined by \code{"_"}, \code{Mean_Metric} the mean of \code{metric} across the six
-#'     methods, and the remaining columns, named \code{<Method>_<Metric>} (e.g.
+#'     combination joined by \code{"_"}, \code{Mean_Metric} the mean of \code{metric} across the
+#'     selected methods, and the remaining columns, named \code{<Method>_<Metric>} (e.g.
 #'     \code{KMeans_FScore}), the four metrics of each method, computed from \code{trueClass} and
 #'     \code{clusters}.}
 #'   }}
@@ -180,7 +198,8 @@ gene_frequency <- function(gene_matrix) {
 #' @details
 #' For every combination of 2 to \code{length(gene.list)} genes (\eqn{2^k - k - 1} combinations
 #' for \eqn{k} genes), the expression of the genes is scaled (centered and divided by the
-#' standard deviation) and the samples are split into two clusters by six methods:
+#' standard deviation) and the samples are split into two clusters by each method in
+#' \code{methods}:
 #' \describe{
 #'   \item{KMeans}{k-means (MacQueen algorithm) on the scaled data.}
 #'   \item{GMM}{Gaussian mixture model with two components (\code{mclust::Mclust()}).}
@@ -197,13 +216,17 @@ gene_frequency <- function(gene_matrix) {
 #' FScore are \code{NA} when the kept assignment predicts no sample as 1, which can only happen
 #' when \code{metric} is \code{"Accuracy"}.
 #'
-#' Combinations are ranked by the mean of \code{metric} across the six methods, and the top
+#' Combinations are ranked by the mean of \code{metric} across the selected methods, so rankings
+#' from runs with different \code{methods} are not comparable. The top
 #' \code{N} are returned. For these, the function counts how many combinations contain each gene
 #' and prints two plots: the metrics heatmap (\code{\link{plotTopMetrics}}) and the gene presence
 #' heatmap (\code{\link{plotGeneCombinations}}).
 #'
 #' The random seed is fixed at 123 inside the function, so results are reproducible but
-#' cannot be varied. t-SNE with perplexity 10 requires at least 31 samples. The number of
+#' cannot be varied. The methods that use random numbers (all but GMM and HC) draw them from a
+#' single stream across all combinations, so their results change when \code{methods} changes.
+#' t-SNE with perplexity 10 requires at
+#' least 31 samples; with fewer, leave \code{"tSNE"} out of \code{methods}. The number of
 #' combinations grows exponentially with the number of genes: 15 genes give 32,752
 #' combinations. The \code{clusters} array takes 4 bytes per sample, combination and method,
 #' about 79 MB for 15 genes and 100 samples; a warning is shown when it exceeds 1 GB.
@@ -226,7 +249,8 @@ gene_frequency <- function(gene_matrix) {
 #' }
 #'
 #' @export
-valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") {
+valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore",
+                         methods = c("KMeans", "GMM", "HC", "PCA", "tSNE", "UMAP")) {
 
   cli::cli_h1("Validating Consensus Genes")
 
@@ -273,12 +297,34 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
     cli::cli_abort("{.arg metric} must be one of {.val {allowed_metrics}}, not {.val {metric}}.")
   }
 
+  all_methods <- c("KMeans", "GMM", "HC", "PCA", "tSNE", "UMAP")
+  if (!is.character(methods) || length(methods) == 0) {
+    cli::cli_abort("{.arg methods} must be a character vector with at least one of {.val {all_methods}}.")
+  }
+  unknown_methods <- setdiff(methods, all_methods)
+  if (length(unknown_methods) > 0) {
+    cli::cli_abort(c(
+      "{.arg methods} must be one of {.val {all_methods}}.",
+      "x" = "Unknown method{?s}: {.val {unknown_methods}}."
+    ))
+  }
+  # A fixed order keeps the random draws, and so the results, independent of
+  # the order given
+  methods <- intersect(all_methods, methods)
+  # Rtsne requires nrow - 1 >= 3 * perplexity; checked here so the error comes
+  # before testing any combination
+  if ("tSNE" %in% methods && nrow(df.count) < 31) {
+    cli::cli_abort(c(
+      "t-SNE needs at least 31 samples, but {.arg df.count} has {nrow(df.count)}.",
+      "i" = "Leave {.val tSNE} out of {.arg methods}."
+    ))
+  }
+
   gene_list <- unique(gene.list)
   if (length(gene_list) < 2) {
     cli::cli_abort("{.arg gene.list} must contain at least two distinct genes.")
   }
   labels <- class
-  methods <- c("KMeans", "GMM", "HC", "PCA", "tSNE", "UMAP")
 
   # All combinations of 2 or more genes, in the order they are tested. Genes are
   # kept as vectors because gene names may contain the "_" used to build the keys
@@ -341,36 +387,11 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
         count_subset <- scale(count_subset)
         rownames(count_subset) <- rownames(df.count)
 
-        # Predicted clusters (0/1) of each method. The methods run in a fixed
-        # order, so the random draws, and the results, are reproducible
-        predictions <- list()
-
-        # K-Means Clustering
-        kmeans_result <- stats::kmeans(count_subset, centers = 2, iter.max = 100, algorithm = "MacQueen")
-        predictions$KMeans <- kmeans_result$cluster - 1
-
-        # Gaussian Mixture Model (GMM)
-        predictions$GMM <- gmm_clusters(count_subset)
-
-        # Hierarchical Clustering
-        hc_result <- stats::hclust(dist(count_subset), method = "complete")
-        predictions$HC <- stats::cutree(hc_result, k = 2) - 1
-
-        # PCA + KMeans
-        pca_result <- stats::prcomp(count_subset, scale = FALSE)
-        predictions$PCA <- stats::kmeans(pca_result$x[, 1:2], centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster - 1
-
-        # t-SNE + KMeans
-        tsne_result <- Rtsne::Rtsne(count_subset, dims = 2, perplexity = 10, check_duplicates = FALSE)
-        predictions$tSNE <- stats::kmeans(tsne_result$Y, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster - 1
-
-        # UMAP + KMeans
-        umap_result <- umap::umap(count_subset)
-        predictions$UMAP <- stats::kmeans(umap_result$layout, centers = 2, iter.max = 100, algorithm = "MacQueen")$cluster - 1
-
-        # Orient the clusters, compute the metrics and save them for this combination
+        # Cluster with each method, orient the clusters, compute the metrics and
+        # save them for this combination. The methods run in a fixed order, so
+        # the random draws, and the results, are reproducible
         for (m in methods) {
-          evaluation <- evaluate_one_side(predictions[[m]], labels, metric)
+          evaluation <- evaluate_one_side(cluster_samples(count_subset, m), labels, metric)
           clusters[, i, m] <- evaluation$clusters
           metric_values[i, paste0(m, "_", allowed_metrics)] <- unlist(evaluation[allowed_metrics])
         }

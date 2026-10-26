@@ -4,7 +4,14 @@
 \alias{valConsensus}
 \title{valConsensus}
 \usage{
-valConsensus(df.count, gene.list, class, N = 10, metric = "FScore")
+valConsensus(
+  df.count,
+  gene.list,
+  class,
+  N = 10,
+  metric = "FScore",
+  methods = c("KMeans", "GMM", "HC", "PCA", "tSNE", "UMAP")
+)
 }
 \arguments{
 \item{df.count}{A data frame with the gene expression data, with samples in rows and genes in
@@ -24,6 +31,10 @@ the number of possible combinations, it is reduced to that number with a message
 \item{metric}{A character string specifying the metric used to rank the combinations and to orient
 the clusters (see Details). Possible values are \code{"Accuracy"}, \code{"Precision"}, \code{"Recall"},
 and \code{"FScore"}.}
+
+\item{methods}{A character vector with the clustering methods to run: any of \code{"KMeans"},
+\code{"GMM"}, \code{"HC"}, \code{"PCA"}, \code{"tSNE"} and \code{"UMAP"} (see Details). All six by
+default. They always run in this order, whatever the order given.}
 }
 \value{
 A list containing:
@@ -34,14 +45,15 @@ A list containing:
     row names of \code{df.count}.}
     \item{clusters}{An integer array with dimensions \code{[sample, combination, method]} holding
     the cluster (0/1) predicted for each sample, already assigned to the classes as described in
-    Details. Combinations are named by their genes joined by \code{"_"} and methods are
-    \code{"KMeans"}, \code{"GMM"}, \code{"HC"}, \code{"PCA"}, \code{"tSNE"} and \code{"UMAP"}.
+    Details. Combinations are named by their genes joined by \code{"_"} and methods are those in
+    \code{methods}, in the order \code{"KMeans"}, \code{"GMM"}, \code{"HC"}, \code{"PCA"},
+    \code{"tSNE"}, \code{"UMAP"}.
     For example, \code{cbind(trueClass = trueClass, clusters[, "GENE1_GENE2", ])} gives the true
     and predicted classes of the combination of GENE1 and GENE2.}
     \item{metrics}{A data frame with one row per combination, in the order of the
     \code{combination} dimension of \code{clusters}. \code{Gene_Combination} holds the genes of the
-    combination joined by \code{"_"}, \code{Mean_Metric} the mean of \code{metric} across the six
-    methods, and the remaining columns, named \code{<Method>_<Metric>} (e.g.
+    combination joined by \code{"_"}, \code{Mean_Metric} the mean of \code{metric} across the
+    selected methods, and the remaining columns, named \code{<Method>_<Metric>} (e.g.
     \code{KMeans_FScore}), the four metrics of each method, computed from \code{trueClass} and
     \code{clusters}.}
   }}
@@ -62,7 +74,8 @@ This function validates the consensus genes in a provided dataset using clusteri
 \details{
 For every combination of 2 to \code{length(gene.list)} genes (\eqn{2^k - k - 1} combinations
 for \eqn{k} genes), the expression of the genes is scaled (centered and divided by the
-standard deviation) and the samples are split into two clusters by six methods:
+standard deviation) and the samples are split into two clusters by each method in
+\code{methods}:
 \describe{
   \item{KMeans}{k-means (MacQueen algorithm) on the scaled data.}
   \item{GMM}{Gaussian mixture model with two components (\code{mclust::Mclust()}).}
@@ -79,13 +92,17 @@ in a single cluster, the assignment where \code{metric} can be computed is kept;
 FScore are \code{NA} when the kept assignment predicts no sample as 1, which can only happen
 when \code{metric} is \code{"Accuracy"}.
 
-Combinations are ranked by the mean of \code{metric} across the six methods, and the top
+Combinations are ranked by the mean of \code{metric} across the selected methods, so rankings
+from runs with different \code{methods} are not comparable. The top
 \code{N} are returned. For these, the function counts how many combinations contain each gene
 and prints two plots: the metrics heatmap (\code{\link{plotTopMetrics}}) and the gene presence
 heatmap (\code{\link{plotGeneCombinations}}).
 
 The random seed is fixed at 123 inside the function, so results are reproducible but
-cannot be varied. t-SNE with perplexity 10 requires at least 31 samples. The number of
+cannot be varied. The methods that use random numbers (all but GMM and HC) draw them from a
+single stream across all combinations, so their results change when \code{methods} changes.
+t-SNE with perplexity 10 requires at
+least 31 samples; with fewer, leave \code{"tSNE"} out of \code{methods}. The number of
 combinations grows exponentially with the number of genes: 15 genes give 32,752
 combinations. The \code{clusters} array takes 4 bytes per sample, combination and method,
 about 79 MB for 15 genes and 100 samples; a warning is shown when it exceeds 1 GB.

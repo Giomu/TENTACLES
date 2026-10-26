@@ -186,6 +186,44 @@ test_that("valConsensus keeps the clusters and metrics of all combinations", {
   expect_equal(vc$topCombinations, top)
 })
 
+test_that("valConsensus runs only the selected methods, in the fixed order", {
+  data <- make_tricky_pp()@processed$adjusted.data
+  genes <- c("A1CF", "A2BP1", "A2LD1")
+
+  withr::local_pdf(tempfile(fileext = ".pdf"))
+  full <- suppressMessages(valConsensus(data[, genes], genes, data$class, N = 2))
+  vc <- suppressMessages(valConsensus(data[, genes], genes, data$class, N = 2, methods = c("HC", "KMeans")))
+  res <- vc$allResults
+  metric_cols <- paste0(rep(c("KMeans", "HC"), each = 4), "_", c("Accuracy", "Precision", "Recall", "FScore"))
+
+  expect_equal(dimnames(res$clusters)$method, c("KMeans", "HC"))
+  expect_equal(names(res$metrics), c("Gene_Combination", "Mean_Metric", metric_cols))
+  expect_equal(res$metrics$Mean_Metric, rowMeans(res$metrics[c("KMeans_FScore", "HC_FScore")]))
+  # HC uses no random numbers, so it matches the full run; KMeans shares the
+  # random stream with the other methods and matches only in the first combination
+  expect_equal(res$clusters[, , "HC"], full$allResults$clusters[, , "HC"])
+  expect_equal(res$clusters[, 1, "KMeans"], full$allResults$clusters[, 1, "KMeans"])
+})
+
+test_that("valConsensus aborts on unknown or empty methods", {
+  data <- make_tricky_pp()@processed$adjusted.data
+  genes <- c("A1CF", "A2BP1")
+
+  expect_error(valConsensus(data[, genes], genes, data$class, methods = c("KMeans", "SVM")), "SVM")
+  expect_error(valConsensus(data[, genes], genes, data$class, methods = character()), "at least one")
+})
+
+test_that("valConsensus asks to leave out t-SNE with fewer than 31 samples", {
+  data <- make_tricky_pp()@processed$adjusted.data
+  small <- data[c(which(data$class == 0)[1:10], which(data$class == 1)[1:10]), ]
+  genes <- c("A1CF", "A2BP1")
+
+  expect_error(valConsensus(small[, genes], genes, small$class), "at least 31 samples")
+  withr::local_pdf(tempfile(fileext = ".pdf"))
+  vc <- suppressMessages(valConsensus(small[, genes], genes, small$class, N = 1, methods = c("KMeans", "HC")))
+  expect_equal(dimnames(vc$allResults$clusters)$method, c("KMeans", "HC"))
+})
+
 test_that("selectTopCombinations ranks by mean metric, keeping ties in order and NA last", {
   expect_equal(selectTopCombinations(c(0.5, NA, 0.9, 0.5), N = 4), c(3L, 1L, 4L, 2L))
   expect_equal(selectTopCombinations(c(0.5, NA, 0.9, 0.5), N = 2), c(3L, 1L))

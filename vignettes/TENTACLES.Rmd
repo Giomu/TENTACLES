@@ -174,6 +174,8 @@ Main steps of `valConsensus` include:
 
     -   UMAP followed by k-Means
 
+    The `methods` argument selects which of them to run; all six run by default.
+
 3.  **Top combinations**: it selects the best `N` combinations of genes that maximize the mean of `metric` across the 6 clustering methods
 
 4.  **Plots**: for the top `N` combinations it plots a heatmap of the performances (Accuracy, Precision, Recall, F-Score) of the 6 methods and a heatmap of the genes contained in each combination
