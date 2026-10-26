@@ -124,18 +124,18 @@ The function returns a list containing three objects:
 
 -   **dataFrame**: A binary data frame indicating the presence (`1`) or absence (`0`) of each gene across the implemented models.
 
--   **inputParams**: A list of the input parameters provided to the function.Validate Consensus genes
+-   **inputParams**: A list of the input parameters provided to the function.
 
 ## Test Consensus genes
 
 The `testConsensus` function evaluates a list of consensus genes (`gene.list`) using a series of analyses to assess their performance and relevance in classifying samples in the provided (pre-processed) `df.count`. It provides visual outputs and summaries for Principal Component Analysis (PCA), AUROC analysis, heatmap visualization, and validation using a Multi-Layer Perceptron (MLP) model.
 
 ```{r, message=FALSE, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
-# Import NEW data
+# Data the consensus genes were selected from; replace with an independent dataset
 count_table <- as.data.frame((rc@data$adjusted.data))
 gene_list <- gc$consensusGenes
 labels <- as.factor(rc@data$metadata$class)
-# test consensus on an external dataset
+# Test consensus
 tc <- testConsensus(
   df.count = count_table,
   gene.list = gene_list,
@@ -158,7 +158,7 @@ The function performs the following steps, generating visualizations for each:
 
 Main steps of `valConsensus` include:
 
-1.  **Gene combinations**: given a `gene.list`, it computes all possible combinations of variable length of genes
+1.  **Gene combinations**: given a `gene.list`, it computes all possible combinations of 2 or more genes
 
 2.  **Unsupervised Clustering**: it computes for each combination of genes, 6 clustering methods on the `df.count` provided: 
 
@@ -176,10 +176,12 @@ Main steps of `valConsensus` include:
 
 3.  **Top combinations**: it selects the best `N` combinations of genes that maximize the mean of `metric` across the 6 clustering methods
 
-4.  **Plots**: for the top `N` combinations it plots performances (Accuracy, Precision, Recall, F-Score) of the 6 methods and the AUROC heatmap
+4.  **Plots**: for the top `N` combinations it plots a heatmap of the performances (Accuracy, Precision, Recall, F-Score) of the 6 methods and a heatmap of the genes contained in each combination
+
+`valConsensus` is meant to be run on an independent dataset, pre-processed with `preProcess`. The package ships only the ACC dataset, so the example below reuses the data the consensus genes were selected from, and its results are optimistic.
 
 ```{r validation, message=FALSE, fig.align='center', fig.width=7, fig.height=5, warning=FALSE}
-# Import NEW data
+# Data the consensus genes were selected from; replace with an independent dataset
 count_table <- as.data.frame((rc@data$adjusted.data))
 
 gene_list <- gc$consensusGenes[1:7]
