@@ -134,7 +134,8 @@ gene_frequency <- function(gene_matrix) {
 #' @description This function validates the consensus genes in a provided dataset using clustering methods.
 #'
 #' @param df.count A data frame with the gene expression data, with samples in rows and genes in
-#' columns. A matrix is not supported.
+#' columns. A matrix is not supported. The genes in \code{gene.list} must have no missing or infinite
+#' values and must not be constant across samples, since each gene is scaled before clustering.
 #' @param gene.list A character vector with the consensus genes to evaluate, at least two. All of them
 #' must be columns of \code{df.count}.
 #' @param class A vector with the true class of each sample (row of \code{df.count}), coded as 0 (control)
@@ -235,6 +236,18 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
     cli::cli_abort(c(
       "{length(missing_genes)} feature{?s} of {.arg gene.list} {?is/are} not in {.arg df.count}:",
       "x" = "{.val {missing_genes}}"
+    ))
+  }
+  # Scaling turns a non-finite or constant feature into NaN, which breaks five of
+  # the six methods; hierarchical clustering would silently ignore the feature
+  gene_values <- lapply(df.count[unique(gene.list)], as.numeric)
+  nonfinite_genes <- names(gene_values)[vapply(gene_values, function(x) any(!is.finite(x)), logical(1))]
+  constant_genes <- names(gene_values)[vapply(gene_values, function(x) length(unique(x[is.finite(x)])) < 2, logical(1))]
+  if (length(nonfinite_genes) > 0 || length(constant_genes) > 0) {
+    cli::cli_abort(c(
+      "Features of {.arg gene.list} must have finite values that vary across samples.",
+      "x" = if (length(nonfinite_genes) > 0) "Missing or infinite values in {.val {nonfinite_genes}}.",
+      "x" = if (length(constant_genes) > 0) "Same value in all samples: {.val {constant_genes}}."
     ))
   }
   # Metrics need classes coded 0/1; other values would become NA and be dropped

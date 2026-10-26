@@ -9,6 +9,23 @@ test_that("valConsensus aborts naming features missing from df.count", {
   )
 })
 
+test_that("valConsensus aborts naming features that cannot be scaled", {
+  # Without the check, a constant or NA feature becomes NaN after scaling and
+  # kmeans fails with "NA/NaN/Inf in foreign function call"
+  data <- make_tricky_pp()@processed$adjusted.data
+  genes <- c("A1CF", "A2BP1", "A2LD1", "A2ML1")
+  df.count <- data[, genes]
+  df.count$A1CF[3] <- NA
+  df.count$A2BP1[5] <- -Inf
+  df.count$A2LD1 <- 1
+
+  err <- expect_error(valConsensus(df.count, genes, data$class, N = 1))
+  msg <- cli::ansi_strip(conditionMessage(err))
+  expect_match(msg, "Missing or infinite values in \"A1CF\" and \"A2BP1\"")
+  expect_match(msg, "Same value in all samples: \"A2LD1\"")
+  expect_no_match(msg, "A2ML1")
+})
+
 test_that("valConsensus aborts when class is not coded 0/1", {
   data <- make_tricky_pp()@processed$adjusted.data
   genes <- c("A1CF", "A2BP1")

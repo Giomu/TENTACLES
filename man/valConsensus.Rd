@@ -8,7 +8,8 @@ valConsensus(df.count, gene.list, class, N = 10, metric = "FScore")
 }
 \arguments{
 \item{df.count}{A data frame with the gene expression data, with samples in rows and genes in
-columns. A matrix is not supported.}
+columns. A matrix is not supported. The genes in \code{gene.list} must have no missing or infinite
+values and must not be constant across samples, since each gene is scaled before clustering.}
 
 \item{gene.list}{A character vector with the consensus genes to evaluate, at least two. All of them
 must be columns of \code{df.count}.}
