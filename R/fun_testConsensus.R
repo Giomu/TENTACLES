@@ -340,7 +340,7 @@ mlp_model_calculation <- function(df, cons_genes, class) {
     code = {
       # Keep from df only genes of consensus
       df <- df[, colnames(df) %in% cons_genes]
-      cli::cli_alert_info("Setting up MLP on {ncol(df)} genes ...")
+      cli::cli_alert_info("Setting up MLP on {ncol(df)} gene{?s} ...")
 
       # Use syntactic ASCII names internally; nnet's importances come back
       # escaped (`HLA-B`) otherwise. feature.map maps them back.

@@ -815,10 +815,10 @@ runClassifiers <- function(
         preProcess.obj@processed$adjusted.data <- cbind(preProcess.obj@processed$adjusted.data, class)
         # Compute the number of columns after filter. class col is excluded from computation
         ncol_post <- ncol(preProcess.obj@processed$adjusted.data) - 1
-        cli::cli_alert_success("Filtered {ncol_pre - ncol_post} genes. Total number of genes is now: {ncol_post}!")
+        cli::cli_alert_success("Filtered {ncol_pre - ncol_post} gene{?s}. Total number of genes is now: {ncol_post}!")
       } else {
         preProcess.obj@processed$adjusted.data <- preProcess.obj@processed$adjusted.data
-        cli::cli_alert_info("Skipping gene filtering using {ncol(preProcess.obj@processed$adjusted.data) - 1} genes ...")
+        cli::cli_alert_info("Skipping gene filtering using {ncol(preProcess.obj@processed$adjusted.data) - 1} gene{?s} ...")
       }
 
       data <- preProcess.obj@processed$adjusted.data

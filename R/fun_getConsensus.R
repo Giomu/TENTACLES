@@ -125,9 +125,9 @@ getConsensus <- function(x, n.min = NULL,
   if (!is.null(n.min)) {
     selected_genes <- colnames(df)[colSums(df) >= n.min]
     if (length(selected_genes) == 0) {
-      cli::cli_warn("No genes found in at least {n.min} algorithms.")
+      cli::cli_warn("No genes found in at least {n.min} algorithm{?s}.")
     } else {
-      cli::cli_alert_success("{length(selected_genes)} genes found in at least {n.min} algorithms.")
+      cli::cli_alert_success("{length(selected_genes)} gene{?s} found in at least {n.min} algorithm{?s}.")
     }
     consensus.list <- list(consensusGenes = selected_genes)
   } else if (!is.null(group1) && is.null(group2)) {
@@ -149,19 +149,19 @@ getConsensus <- function(x, n.min = NULL,
     # Compute consensus for group1
     if (meth1 == "intersect") {
       consensus1 <- colnames(subset1)[colSums(subset1) == nrow(subset1)]
-      cli::cli_alert_info("Found {length(consensus1)} genes with method 'intersect' in group1")
+      cli::cli_alert_info("Found {length(consensus1)} gene{?s} with method 'intersect' in group1")
     } else if (meth1 == "union") {
       consensus1 <- colnames(subset1)[colSums(subset1) > 0]
-      cli::cli_alert_info("Found {length(consensus1)} genes with method 'union' in group1")
+      cli::cli_alert_info("Found {length(consensus1)} gene{?s} with method 'union' in group1")
     }
 
     # Compute consensus for group2
     if (meth2 == "intersect") {
       consensus2 <- colnames(subset2)[colSums(subset2) == nrow(subset2)]
-      cli::cli_alert_info("Found {length(consensus2)} genes with method 'intersect' in group2")
+      cli::cli_alert_info("Found {length(consensus2)} gene{?s} with method 'intersect' in group2")
     } else if (meth2 == "union") {
       consensus2 <- colnames(subset2)[colSums(subset2) > 0]
-      cli::cli_alert_info("Found {length(consensus2)} genes with method 'union' in group2")
+      cli::cli_alert_info("Found {length(consensus2)} gene{?s} with method 'union' in group2")
     }
 
     # Combine group1 and group2 using meth_comb
@@ -190,7 +190,7 @@ getConsensus <- function(x, n.min = NULL,
     cli::cli_alert_danger("No features overlapping. Please try with different set up.")
   } else {
     # Final success message
-    cli::cli_alert_info("Found {length(consensus$consensusGenes)} genes")
+    cli::cli_alert_info("Found {length(consensus$consensusGenes)} gene{?s}")
     cli::cli_alert_success("Consensus successfully generated!")
   }
 
