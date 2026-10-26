@@ -47,6 +47,18 @@ test_that("evaluate_one_side handles a method that puts all samples in one clust
   expect_true(is.na(res$FScore))
 })
 
+test_that("gmm_clusters finishes when a covariance model does not converge", {
+  # On this combination the VEE model of Mclust looped forever with the default
+  # iteration limit: A1CF has only 9 distinct values in 79 samples
+  data <- make_tricky_pp()@processed$adjusted.data
+  genes <- c("β-alanine", "A1CF", "A2LD1", "A2ML1")
+  x <- scale(as.data.frame(lapply(data[, genes], as.numeric)))
+
+  clusters <- gmm_clusters(x)
+  expect_length(clusters, nrow(data))
+  expect_setequal(unique(clusters), c(0, 1))
+})
+
 test_that("gene_combination_matrix marks genes per combination, most frequent first", {
   combos <- list(c("B", "GENE_X"), c("A", "GENE_X"), c("A", "B", "GENE_X"))
   m <- gene_combination_matrix(combos)

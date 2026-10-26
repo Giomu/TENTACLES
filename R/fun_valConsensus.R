@@ -89,6 +89,20 @@ evaluate_one_side <- function(pred, truth, metric = metric) {
   return(result)
 }
 
+# Helper function to split the samples into two clusters (0/1) with a Gaussian
+# mixture model. Mclust fits several covariance models and keeps the best by
+# BIC. The inner M-step loop of models such as VEE has no practical iteration
+# limit by default, and on degenerate data (e.g. a gene with many tied values)
+# it never converges, so it is capped at 1000; such a model then returns NULL
+# and is skipped, as the other degenerate models are
+gmm_clusters <- function(x) {
+  gmm_result <- mclust::Mclust(
+    x, G = 2, verbose = FALSE,
+    control = mclust::emControl(itmax = c(.Machine$integer.max, 1000))
+  )
+  gmm_result$classification - 1
+}
+
 # Helper function to build the binary gene x combination matrix of the top
 # combinations. combos is a list of gene vectors in rank order; columns are
 # named C1, C2, ... and genes are sorted by the number of combinations
@@ -323,8 +337,7 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore") 
         predictions$KMeans <- kmeans_result$cluster - 1
 
         # Gaussian Mixture Model (GMM)
-        gmm_result <- mclust::Mclust(count_subset, G = 2, verbose = FALSE)
-        predictions$GMM <- gmm_result$classification - 1
+        predictions$GMM <- gmm_clusters(count_subset)
 
         # Hierarchical Clustering
         hc_result <- stats::hclust(dist(count_subset), method = "complete")
