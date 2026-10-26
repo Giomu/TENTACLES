@@ -36,7 +36,7 @@ Imports:
     cli,
     colino (>= 0.0.1),
     ComplexUpset,
-    edgeR,
+    edgeR (>= 3.42.0),
     future,
     ggplot2 (>= 3.4.0),
     ggrepel,

@@ -37,8 +37,8 @@ importFrom(colino,
 )
 importFrom(edgeR,
   DGEList,
-  calcNormFactors,
-  cpm
+  cpm,
+  normLibSizes
 )
 importFrom(future,
   multisession,

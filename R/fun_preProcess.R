@@ -203,7 +203,7 @@ normalization <- function(df.count, class, mincpm = 1, minfraction = 0.1) {
   dge_filtered <- dge[keep_genes, , keep.lib.sizes = FALSE]
 
   # Normalize library sizes and calculate log2(CPM + 1)
-  dge_filtered <- edgeR::calcNormFactors(dge_filtered)
+  dge_filtered <- edgeR::normLibSizes(dge_filtered)
   norm_counts <- edgeR::cpm(dge_filtered, normalized.lib.sizes = TRUE, log = FALSE)
   log2_cpm <- log2(norm_counts + 1)
 
@@ -280,7 +280,7 @@ correct.batches <- function(data, class, metadata, batch = NULL, covar.mod = NUL
 #' 3. Perform batch correction if the batch variable is provided.
 #' 4. Generate PCA and PVCA plots before and after batch correction.
 #'
-#' @importFrom edgeR calcNormFactors cpm DGEList
+#' @importFrom edgeR normLibSizes cpm DGEList
 #' @importFrom sva ComBat
 #'
 #' @examples
