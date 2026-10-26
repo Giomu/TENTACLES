@@ -207,6 +207,18 @@ test_that("valConsensus runs only the selected methods, in the fixed order", {
   expect_equal(res$clusters[, 1, "KMeans"], full$allResults$clusters[, 1, "KMeans"])
 })
 
+test_that("valConsensus aborts with fewer than two distinct genes", {
+  data <- make_tricky_pp()@processed$adjusted.data
+
+  expect_error(valConsensus(data, c("A1CF", "A1CF"), data$class), "at least two distinct genes")
+})
+
+test_that("warn_run_size warns about long runs and large clusters arrays", {
+  expect_message(warn_run_size(10, 2e6, 1), "> 1M")
+  expect_message(warn_run_size(1000, 1e5, 6), "about 2.2 GB of memory")
+  expect_no_message(warn_run_size(79, 11, 6))
+})
+
 test_that("valConsensus aborts on unknown or empty methods", {
   data <- make_tricky_pp()@processed$adjusted.data
   genes <- c("A1CF", "A2BP1")
@@ -314,6 +326,7 @@ test_that("plotTopMetrics uses colors as the fill gradient", {
   expect_equal(toupper(fill_scale$palette(c(0, 1))), c("#FFFFFF", "#FF0000"))
   expect_equal(fill_scale$limits, c(0, 1))
   expect_error(plotTopMetrics(make_top_results(), colors = "red"), "at least two colors")
+  expect_error(plotTopMetrics(data.frame(KMeans_FScore = 0.8)), "Gene_Combination")
 })
 
 test_that("plotTopMetrics still accepts the deprecated low_color and high_color", {

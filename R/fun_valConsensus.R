@@ -114,6 +114,20 @@ gmm_clusters <- function(x) {
   gmm_result$classification - 1
 }
 
+# Helper function to warn before a run with too many combinations or a clusters
+# array too large for memory, which holds one 4-byte integer per sample,
+# combination and method
+warn_run_size <- function(n_samples, n_combinations, n_methods) {
+  if (n_combinations > 1000000) {
+    cli::cli_alert_warning("The number of combinations is > 1M. This may take a long time to complete. Consider reducing the number of genes.")
+  }
+  clusters_gb <- n_samples * n_combinations * n_methods * 4 / 1024^3
+  if (clusters_gb > 1) {
+    cli::cli_alert_warning("Storing the predicted clusters will take about {round(clusters_gb, 1)} GB of memory.")
+  }
+  invisible(clusters_gb)
+}
+
 # Helper function to split the scaled data of a combination into two clusters
 # (0/1) with one of the valConsensus methods
 cluster_samples <- function(x, method) {
@@ -365,14 +379,7 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore",
     )
     N <- total_combinations
   }
-  if (total_combinations > 1000000) {
-    cli::cli_alert_warning("The number of combinations is > 1M. This may take a long time to complete. Consider reducing the number of genes.")
-  }
-  # The clusters array holds one 4-byte integer per sample, combination and method
-  clusters_gb <- nrow(df.count) * total_combinations * length(methods) * 4 / 1024^3
-  if (clusters_gb > 1) {
-    cli::cli_alert_warning("Storing the predicted clusters will take about {round(clusters_gb, 1)} GB of memory.")
-  }
+  warn_run_size(nrow(df.count), total_combinations, length(methods))
 
   # Results of all combinations, filled in place: predicted clusters (already
   # oriented by evaluate_one_side) and the four metrics of each method
