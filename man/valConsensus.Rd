@@ -56,10 +56,15 @@ A list containing:
     selected methods, and the remaining columns, named \code{<Method>_<Metric>} (e.g.
     \code{KMeans_FScore}), the four metrics of each method, computed from \code{trueClass} and
     \code{clusters}.}
+    \item{failures}{Only present when a method failed on some combination (see Details): a
+    data frame with one row per failure and columns \code{Gene_Combination}, \code{Method} and
+    \code{Error}, the error message.}
   }}
   \item{topCombinations}{The rows of \code{allResults$metrics} for the top \code{N} combinations,
-  sorted by decreasing \code{Mean_Metric}.}
-  \item{geneFrequency}{A data frame with one row per gene in the top combinations, sorted by
+  sorted by decreasing \code{Mean_Metric}. Combinations where a method failed are left out, so
+  there may be fewer than \code{N}.}
+  \item{geneFrequency}{\code{NULL} if no combination ranks. Otherwise, a data frame with one row
+  per gene in the top combinations, sorted by
   decreasing \code{Count} and then by name. Columns: \code{Gene}; one binary column per top
   combination (\code{C1}, \code{C2}, ...), with 1 when the gene is in the combination; \code{Count},
   the number of combinations containing the gene; and \code{Combinations}, their identifiers
@@ -97,6 +102,13 @@ from runs with different \code{methods} are not comparable. The top
 \code{N} are returned. For these, the function counts how many combinations contain each gene
 and prints two plots: the metrics heatmap (\code{\link{plotTopMetrics}}) and the gene presence
 heatmap (\code{\link{plotGeneCombinations}}).
+
+A method that fails on a combination does not stop the run: its clusters and metrics for that
+combination are \code{NA}, the failure is recorded in \code{allResults$failures}, the
+combination's \code{Mean_Metric} is \code{NA}, so it is left out of the ranking, and a warning
+at the end reports the failures. To keep these combinations, run again without the failing
+method. GMM fails when \code{mclust::Mclust()} cannot fit any covariance model; when the samples
+of a combination take exactly two distinct values, they are split by value instead.
 
 The random seed is fixed at 123 inside the function, so results are reproducible but
 cannot be varied. The methods that use random numbers (all but GMM and HC) draw them from a

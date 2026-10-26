@@ -1,8 +1,9 @@
 # Helper function to pick the top N combinations: returns the indices of the N
 # highest mean metrics, in decreasing order. Ties keep the order in which the
-# combinations were tested, and NA means go last
+# combinations were tested. NA means, from combinations where a method failed,
+# are left out, so fewer than N indices may be returned
 selectTopCombinations <- function(mean_metric, N) {
-  ranked <- order(mean_metric, decreasing = TRUE)
+  ranked <- order(mean_metric, decreasing = TRUE, na.last = NA)
   ranked[seq_len(min(N, length(ranked)))]
 }
 
@@ -94,12 +95,22 @@ evaluate_one_side <- function(pred, truth, metric = metric) {
 # BIC. The inner M-step loop of models such as VEE has no practical iteration
 # limit by default, and on degenerate data (e.g. a gene with many tied values)
 # it never converges, so it is capped at 1000; such a model then returns NULL
-# and is skipped, as the other degenerate models are
+# and is skipped, as the other degenerate models are. When every model fails,
+# Mclust returns NULL, which becomes an error recorded by valConsensus
 gmm_clusters <- function(x) {
+  # With exactly two distinct points, both clusters have zero variance and no
+  # model can be fitted; the two points are then the two clusters
+  points <- unique(x)
+  if (nrow(points) == 2) {
+    return(as.numeric(apply(x, 1, function(row) all(row == points[2, ]))))
+  }
   gmm_result <- mclust::Mclust(
     x, G = 2, verbose = FALSE,
     control = mclust::emControl(itmax = c(.Machine$integer.max, 1000))
   )
+  if (is.null(gmm_result)) {
+    stop("Mclust could not fit any covariance model.", call. = FALSE)
+  }
   gmm_result$classification - 1
 }
 
@@ -183,10 +194,15 @@ gene_frequency <- function(gene_matrix) {
 #'     selected methods, and the remaining columns, named \code{<Method>_<Metric>} (e.g.
 #'     \code{KMeans_FScore}), the four metrics of each method, computed from \code{trueClass} and
 #'     \code{clusters}.}
+#'     \item{failures}{Only present when a method failed on some combination (see Details): a
+#'     data frame with one row per failure and columns \code{Gene_Combination}, \code{Method} and
+#'     \code{Error}, the error message.}
 #'   }}
 #'   \item{topCombinations}{The rows of \code{allResults$metrics} for the top \code{N} combinations,
-#'   sorted by decreasing \code{Mean_Metric}.}
-#'   \item{geneFrequency}{A data frame with one row per gene in the top combinations, sorted by
+#'   sorted by decreasing \code{Mean_Metric}. Combinations where a method failed are left out, so
+#'   there may be fewer than \code{N}.}
+#'   \item{geneFrequency}{\code{NULL} if no combination ranks. Otherwise, a data frame with one row
+#'   per gene in the top combinations, sorted by
 #'   decreasing \code{Count} and then by name. Columns: \code{Gene}; one binary column per top
 #'   combination (\code{C1}, \code{C2}, ...), with 1 when the gene is in the combination; \code{Count},
 #'   the number of combinations containing the gene; and \code{Combinations}, their identifiers
@@ -221,6 +237,13 @@ gene_frequency <- function(gene_matrix) {
 #' \code{N} are returned. For these, the function counts how many combinations contain each gene
 #' and prints two plots: the metrics heatmap (\code{\link{plotTopMetrics}}) and the gene presence
 #' heatmap (\code{\link{plotGeneCombinations}}).
+#'
+#' A method that fails on a combination does not stop the run: its clusters and metrics for that
+#' combination are \code{NA}, the failure is recorded in \code{allResults$failures}, the
+#' combination's \code{Mean_Metric} is \code{NA}, so it is left out of the ranking, and a warning
+#' at the end reports the failures. To keep these combinations, run again without the failing
+#' method. GMM fails when \code{mclust::Mclust()} cannot fit any covariance model; when the samples
+#' of a combination take exactly two distinct values, they are split by value instead.
 #'
 #' The random seed is fixed at 123 inside the function, so results are reproducible but
 #' cannot be varied. The methods that use random numbers (all but GMM and HC) draw them from a
@@ -364,6 +387,9 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore",
     ncol = length(methods) * length(allowed_metrics),
     dimnames = list(NULL, paste0(rep(methods, each = length(allowed_metrics)), "_", allowed_metrics))
   )
+  # Error message of each method that fails on a combination, NA otherwise
+  error_messages <- matrix(NA_character_, nrow = total_combinations, ncol = length(methods),
+                           dimnames = list(NULL, methods))
 
   # Initialize progress bar
   progress_bar <- cli::cli_progress_bar(
@@ -389,9 +415,17 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore",
 
         # Cluster with each method, orient the clusters, compute the metrics and
         # save them for this combination. The methods run in a fixed order, so
-        # the random draws, and the results, are reproducible
+        # the random draws, and the results, are reproducible. A failure leaves
+        # NA results, so a long run is not lost to one combination
         for (m in methods) {
-          evaluation <- evaluate_one_side(cluster_samples(count_subset, m), labels, metric)
+          evaluation <- tryCatch(
+            evaluate_one_side(cluster_samples(count_subset, m), labels, metric),
+            error = function(e) e
+          )
+          if (inherits(evaluation, "error")) {
+            error_messages[i, m] <- conditionMessage(evaluation)
+            next
+          }
           clusters[, i, m] <- evaluation$clusters
           metric_values[i, paste0(m, "_", allowed_metrics)] <- unlist(evaluation[allowed_metrics])
         }
@@ -401,7 +435,28 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore",
 
   # End Progress bar
   cli::cli_progress_done()
-  cli::cli_alert_success("All combinations tested successfully!")
+
+  failed <- which(!is.na(error_messages), arr.ind = TRUE)
+  failed <- failed[order(failed[, 1], failed[, 2]), , drop = FALSE]
+  failures <- data.frame(
+    Gene_Combination = combo_keys[failed[, 1]],
+    Method = methods[failed[, 2]],
+    Error = error_messages[failed],
+    row.names = NULL
+  )
+  if (nrow(failures) == 0) {
+    cli::cli_alert_success("All combinations tested successfully!")
+  } else {
+    n_failed_combos <- length(unique(failures$Gene_Combination))
+    failed_methods <- unique(failures$Method)
+    cli::cli_alert_warning("All combinations tested, but {nrow(failures)} clustering run{?s} failed.")
+    cli::cli_warn(c(
+      "{nrow(failures)} clustering run{?s} failed in {n_failed_combos} combination{?s}, left out of the ranking.",
+      "i" = "Failed method{?s}: {.val {failed_methods}}.",
+      "i" = "First error ({failures$Method[1]} on {failures$Gene_Combination[1]}): {failures$Error[1]}",
+      "i" = "See {.code allResults$failures}, or leave the failing {qty(failed_methods)}method{?s} out of {.arg methods}."
+    ))
+  }
 
   all_metrics <- data.frame(
     Gene_Combination = combo_keys,
@@ -415,28 +470,44 @@ valConsensus <- function(df.count, gene.list, class, N = 10, metric = "FScore",
   top_index <- selectTopCombinations(all_metrics$Mean_Metric, N = N)
   topCombinations <- all_metrics[top_index, , drop = FALSE]
   rownames(topCombinations) <- NULL
-  cli::cli_alert_success("Top combinations selected successfully!")
+  if (length(top_index) < N) {
+    cli::cli_alert_warning(
+      "Only {length(top_index)} combination{?s} {?has/have} results from all methods, fewer than {.arg N} = {N}."
+    )
+    N <- length(top_index)
+  }
 
-  # Plot the top combinations using the plotTopMetrics function
-  cli::cli_h3("Top Combinations Plotting")
-  cli::cli_alert_info("Generating plots of top {N} combination{?s} ...")
-  p <- plotTopMetrics(topCombinations)
-  print(p)
-  cli::cli_alert_success("Top combinations plotted successfully!")
+  geneFrequency <- NULL
+  if (N == 0) {
+    cli::cli_alert_warning("No combination ranks, so nothing is plotted.")
+  } else {
+    cli::cli_alert_success("Top combinations selected successfully!")
 
-  # Count how often each gene appears in the top combinations
-  cli::cli_h3("Gene Frequency in Top Combinations")
-  geneFrequency <- gene_frequency(gene_combination_matrix(combo_genes[top_index]))
-  print(plotGeneCombinations(geneFrequency))
-  cli::cli_alert_success("Gene frequency plotted successfully!")
+    # Plot the top combinations using the plotTopMetrics function
+    cli::cli_h3("Top Combinations Plotting")
+    cli::cli_alert_info("Generating plots of top {N} combination{?s} ...")
+    p <- plotTopMetrics(topCombinations)
+    print(p)
+    cli::cli_alert_success("Top combinations plotted successfully!")
 
-  # Store the results in a list
+    # Count how often each gene appears in the top combinations
+    cli::cli_h3("Gene Frequency in Top Combinations")
+    geneFrequency <- gene_frequency(gene_combination_matrix(combo_genes[top_index]))
+    print(plotGeneCombinations(geneFrequency))
+    cli::cli_alert_success("Gene frequency plotted successfully!")
+  }
+
+  # Store the results in a list; failures only when a method failed
+  all_results <- list(
+    trueClass = stats::setNames(as.integer(as.character(class)), rownames(df.count)),
+    clusters = clusters,
+    metrics = all_metrics
+  )
+  if (nrow(failures) > 0) {
+    all_results$failures <- failures
+  }
   results <- list(
-    allResults = list(
-      trueClass = stats::setNames(as.integer(as.character(class)), rownames(df.count)),
-      clusters = clusters,
-      metrics = all_metrics
-    ),
+    allResults = all_results,
     topCombinations = topCombinations,
     geneFrequency = geneFrequency
   )

@@ -156,6 +156,8 @@ test_that("valConsensus keeps the clusters and metrics of all combinations", {
   methods <- c("KMeans", "GMM", "HC", "PCA", "tSNE", "UMAP")
   combos <- c("A1CF_A2BP1", "A1CF_A2LD1", "A2BP1_A2LD1", "A1CF_A2BP1_A2LD1")
 
+  # failures is only present when a method failed
+  expect_named(res, c("trueClass", "clusters", "metrics"))
   expect_equal(unname(res$trueClass), as.integer(as.character(data$class)))
   expect_equal(names(res$trueClass), rownames(data))
   expect_equal(dim(res$clusters), c(nrow(data), 4L, 6L))
@@ -224,9 +226,57 @@ test_that("valConsensus asks to leave out t-SNE with fewer than 31 samples", {
   expect_equal(dimnames(vc$allResults$clusters)$method, c("KMeans", "HC"))
 })
 
-test_that("selectTopCombinations ranks by mean metric, keeping ties in order and NA last", {
-  expect_equal(selectTopCombinations(c(0.5, NA, 0.9, 0.5), N = 4), c(3L, 1L, 4L, 2L))
+test_that("selectTopCombinations ranks by mean metric, keeping ties in order and leaving out NA", {
+  expect_equal(selectTopCombinations(c(0.5, NA, 0.9, 0.5), N = 4), c(3L, 1L, 4L))
   expect_equal(selectTopCombinations(c(0.5, NA, 0.9, 0.5), N = 2), c(3L, 1L))
+})
+
+test_that("gmm_clusters splits two distinct points by value and errors when no model fits", {
+  b <- rep(0:1, length.out = 40)
+  expect_equal(gmm_clusters(scale(cbind(b, b))), b)
+
+  local_mocked_bindings(Mclust = function(...) NULL, .package = "mclust")
+  expect_error(gmm_clusters(scale(cbind(1:40, (1:40)^2))), "could not fit any covariance model")
+})
+
+test_that("valConsensus records failed methods and leaves their combinations out of the ranking", {
+  data <- make_tricky_pp()@processed$adjusted.data
+  genes <- c("A1CF", "A2BP1", "A2LD1")
+  real_mclust <- mclust::Mclust
+  local_mocked_bindings(
+    Mclust = function(data, ...) if ("A1CF" %in% colnames(data)) NULL else real_mclust(data, ...),
+    .package = "mclust"
+  )
+
+  withr::local_pdf(tempfile(fileext = ".pdf"))
+  expect_warning(
+    vc <- suppressMessages(valConsensus(data[, genes], genes, data$class, N = 4, methods = c("KMeans", "GMM"))),
+    "failed in 3 combinations"
+  )
+  res <- vc$allResults
+  failed <- c("A1CF_A2BP1", "A1CF_A2LD1", "A1CF_A2BP1_A2LD1")
+
+  expect_equal(res$failures$Gene_Combination, failed)
+  expect_equal(res$failures$Method, rep("GMM", 3))
+  expect_match(res$failures$Error, "could not fit any covariance model")
+  expect_true(all(is.na(res$clusters[, failed, "GMM"])))
+  expect_false(anyNA(res$clusters[, , "KMeans"]))
+  expect_true(all(is.na(res$metrics$Mean_Metric[res$metrics$Gene_Combination %in% failed])))
+  expect_equal(vc$topCombinations$Gene_Combination, "A2BP1_A2LD1")
+  expect_equal(names(vc$geneFrequency), c("Gene", "C1", "Count", "Combinations"))
+})
+
+test_that("valConsensus returns no ranking when every combination has a failed method", {
+  data <- make_tricky_pp()@processed$adjusted.data
+  genes <- c("A1CF", "A2BP1")
+  local_mocked_bindings(Mclust = function(...) NULL, .package = "mclust")
+
+  expect_warning(
+    vc <- suppressMessages(valConsensus(data[, genes], genes, data$class, N = 1, methods = "GMM")),
+    "failed"
+  )
+  expect_equal(nrow(vc$topCombinations), 0)
+  expect_null(vc$geneFrequency)
 })
 
 test_that("valConsensus aborts on an unknown metric before testing combinations", {
